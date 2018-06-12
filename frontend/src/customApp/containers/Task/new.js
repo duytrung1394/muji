@@ -3,11 +3,11 @@ import {withRouter, Link} from 'react-router-dom';
 import {connect} from "react-redux";
 import {message} from 'antd';
 import TaskForm from './form';
-import LayoutWrapper from "../../components/utility/layoutWrapper";
-import PageHeader from "../../components/utility/pageHeader";
-import Box from '../../components/utility/box';
-import Spin from '../../components/uielements/spin';
-import Button from '../../components/uielements/button';
+import LayoutWrapper from "../../../components/utility/layoutWrapper";
+import PageHeader from "../../../components/utility/pageHeader";
+import Box from '../../../components/utility/box';
+import Spin from '../../../components/uielements/spin';
+import Button from '../../../components/uielements/button';
 import actions from "../../redux/task/entity/actions";
 
 class NewTask extends Component {

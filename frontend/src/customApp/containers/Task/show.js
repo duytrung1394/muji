@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {Modal, message} from 'antd';
 import actions from '../../redux/task/entity/actions';
-import LayoutWrapper from "../../components/utility/layoutWrapper";
-import PageHeader from "../../components/utility/pageHeader";
-import Box from '../../components/utility/box';
-import Button from '../../components/uielements/button';
-import Spin from '../../components/uielements/spin';
+import LayoutWrapper from "../../../components/utility/layoutWrapper";
+import PageHeader from "../../../components/utility/pageHeader";
+import Box from '../../../components/utility/box';
+import Button from '../../../components/uielements/button';
+import Spin from '../../../components/uielements/spin';
 
 const confirm = Modal.confirm;
 

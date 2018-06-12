@@ -1,3 +1,5 @@
-import githubSearch from './githubSearch/reducers';
+import Task from './task/reducers';
 
-export default { githubSearch };
+export default {
+  Task
+};

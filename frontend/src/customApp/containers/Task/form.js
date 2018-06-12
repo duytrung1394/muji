@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Prompt} from 'react-router-dom';
-import Input from '../../components/uielements/input';
-import Button from '../../components/uielements/button';
-import Form from '../../components/uielements/form';
+import Input from '../../../components/uielements/input';
+import Button from '../../../components/uielements/button';
+import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 
 const FormItem = Form.Item;

@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {message, Modal } from 'antd';
 import actions from '../../redux/task/list/actions';
-import Button from '../../components/uielements/button';
-import Table from '../../components/uielements/table';
-import LayoutWrapper from "../../components/utility/layoutWrapper";
-import PageHeader from "../../components/utility/pageHeader";
+import Button from '../../../components/uielements/button';
+import Table from '../../../components/uielements/table';
+import LayoutWrapper from "../../../components/utility/layoutWrapper";
+import PageHeader from "../../../components/utility/pageHeader";
 import { withRouter } from 'react-router-dom'
 
 const confirm = Modal.confirm;
