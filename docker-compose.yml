@@ -1,0 +1,46 @@
+version: "3.1"
+services:
+  backend:
+    build: backend
+    command: "php -S 0.0.0.0:8080 -t public"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    volumes:
+      - ./backend:/app
+      - ./backend/config/php-ini-overrides.ini:/etc/php/7.2/cli/conf.d/99-overrides.ini
+    env_file:
+      - ./backend/.env.dev
+  frontend:
+    build: frontend
+    command: "yarn start"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+      - backend_cache:/usr/local/share/.cache
+  mariadb:
+    image: mariadb:10.3.5
+    environment:
+      MYSQL_DATABASE: muji_admin
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "13306:3306"
+  deployer:
+    restart: 'no'
+    build: deployer
+    command: 'echo "USE docker-compose run instead of docker-compose up"'
+    volumes:
+      - ./deployer:/deployer
+  builder:
+    restart: 'no'
+    build:
+      context: .
+      dockerfile: ./builder/Dockerfile
+    command: 'echo "USE docker-compose run instead of docker-compose up"'
+    volumes:
+      - .:/builder
+volumes:
+  backend_cache:

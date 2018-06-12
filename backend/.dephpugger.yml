@@ -1,0 +1,7 @@
+--- 
+server:
+  path: "./public/ "
+  host: 0.0.0.0
+  port: 8080
+debugger:
+  host: 0.0.0.0
