@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Satoshi SUZUKI",
+      "authorEmail": "akn@s-satoshi.net",
+      "authorUrl": ""
+    }
+  }
+}
