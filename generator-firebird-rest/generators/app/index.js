@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 
 module.exports = class extends Generator {
-  prompting() {
+  async prompting() {
     // Have Yeoman greet the user.
     this.log(
       yosay(`Welcome to the marvelous ${chalk.red('generator-firebird-rest')} generator!`)
@@ -12,27 +12,49 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+        type: 'input',
+        name: 'name',
+        message: 'リソース名を入力してください',
+        default: 'task'
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+    const props = await this.prompt(prompts)
+    this.props = props;
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+    const props = this.props;
+    const name = props.name.toLowerCase();
+    //TODO: Capitalize name by better npm
+    const camelcasedName = name[0].toUpperCase() + name.substring(1);
+    const files = [
+      'src/customApp/redux/_RESOURCE_/entity/actions.js',
+      'src/customApp/redux/_RESOURCE_/entity/reducer.js',
+      'src/customApp/redux/_RESOURCE_/entity/saga.js',
+      'src/customApp/redux/_RESOURCE_/list/actions.js',
+      'src/customApp/redux/_RESOURCE_/list/reducer.js',
+      'src/customApp/redux/_RESOURCE_/list/saga.js',
+      'src/customApp/redux/_RESOURCE_/reducers.js',
+      'src/customApp/redux/_RESOURCE_/sagas.js',
+    ];
+
+    for( const i in files ){
+      const file = files[i];
+      const dest = "frontend/" + file.replace('_RESOURCE_', name);
+      this.fs.copyTpl(
+        this.templatePath(file),
+        this.destinationPath(dest),
+        {
+          name,
+          camelcasedName,
+        }
+      );
+    }
+
   }
 
   install() {
-    this.installDependencies();
+    // this.installDependencies();
   }
 };
