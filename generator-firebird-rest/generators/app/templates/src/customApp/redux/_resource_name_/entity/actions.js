@@ -2,9 +2,9 @@ import {createActions} from "redux-actions";
 import restActions from '../../shared/entity/actions';
 
 const actions = createActions({
-  TASK: {
+  <%= RESOURCE_NAME %>: {
     ENTITY: restActions,
   },
 });
 
-export default actions.task.entity;
+export default actions.<%= resource_name %>.entity;
