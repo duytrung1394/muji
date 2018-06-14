@@ -1,3 +1,4 @@
+import asyncComponent from '../helpers/AsyncFunc';
 export default function restRoutes(path, componentName){
   // componentName
   return [
