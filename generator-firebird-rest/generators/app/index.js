@@ -25,7 +25,14 @@ module.exports = class extends Generator {
       name: 'endpoint',
       message: 'APIエンドポイントを入力してください',
       default: (props)=> pluralize(props.name),
-    }]);
+    },
+    {
+      type: 'input',
+      name: 'urlbase',
+      message: 'URLのベース部を入力してください',
+      default: (props)=> pluralize(props.name),
+    }
+  ]);
 
     if(props.name == "shared"){
       throw "名前をsharedにすることは出来ません";
@@ -42,15 +49,24 @@ module.exports = class extends Generator {
     const RESOURCE_NAME = constantCase(rawname);
     const ResourceName = pascalCase(rawname);
     const resourceNameSagas = `${resourceName}Sagas`;
+    const urlbase = this.props.urlbase;
+    const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
+      'src/customApp/redux/_resource_name_/entity/' + name
+    );
+    const listFiles = ['actions.js','reducer.js','saga.js'].map(name =>
+      'src/customApp/redux/_resource_name_/list/' + name
+    );
+    const combineFiles = ['reducers.js','sagas.js'].map(name =>
+      'src/customApp/redux/_resource_name_/' + name
+    );
+    const containerFiles = ['edit.js','form.js','index.js','new.js','show.js'].map(name =>
+      'src/customApp/containers/_resource_name_/' + name
+    )
     const files = [
-      'src/customApp/redux/_resource_name_/entity/actions.js',
-      'src/customApp/redux/_resource_name_/entity/reducer.js',
-      'src/customApp/redux/_resource_name_/entity/saga.js',
-      'src/customApp/redux/_resource_name_/list/actions.js',
-      'src/customApp/redux/_resource_name_/list/reducer.js',
-      'src/customApp/redux/_resource_name_/list/saga.js',
-      'src/customApp/redux/_resource_name_/reducers.js',
-      'src/customApp/redux/_resource_name_/sagas.js',
+      ...entityFiles,
+      ...combineFiles,
+      ...combineFiles,
+      ...containerFiles,
     ];
 
     for( const i in files ){
@@ -66,6 +82,7 @@ module.exports = class extends Generator {
           resourceName,
           ResourceName,
           endpoint,
+          urlbase,
         }
       );
     }
@@ -174,9 +191,47 @@ module.exports = class extends Generator {
         }
       }
     );
+    // router.js
+
+    // sagas.js
+    const router_path = this.destinationPath("frontend/src/customApp/router.js");
+    this.fs.copy(
+      router_path,
+      router_path,
+      {
+        process: (content) => {
+          const script = content.toString();
+          const ast = esprima.parseModule(script, { sourceType: 'module'});
+          const len = ast.body.length;
+          const routesAst = ast.body[len-2];
+
+          const elements = routesAst.declarations[0].init.elements;
+          elements.push({
+            "type": "SpreadElement",
+            "argument": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "restRoutes"
+              },
+              "arguments": [{
+                "type": "Literal",
+                "value": urlbase,
+              }, {
+                "type": "Literal",
+                "value": ResourceName,
+              }]
+            }
+          })
+          const code = ast.body.map((ast_node)=>{
+            return escodegen.generate(ast_node)
+          }).join("\n")
+
+          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+          return `${comment}\n${code}`;
+        }
+      }
+    );
   }
 
-  install() {
-    // this.installDependencies();
-  }
 };
