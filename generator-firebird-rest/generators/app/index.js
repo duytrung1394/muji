@@ -7,6 +7,17 @@ const pluralize =  require('pluralize');
 const esprima = require('esprima');
 const escodegen = require('escodegen');
 
+const escodegenOption = {
+  option: {
+    format: {
+      indent: {
+        style: '  '
+      }
+    }
+  }
+};
+const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+
 module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
@@ -23,13 +34,13 @@ module.exports = class extends Generator {
     {
       type: 'input',
       name: 'endpoint',
-      message: 'APIエンドポイントを入力してください',
+      message: 'APIのエンドポイントを入力してください',
       default: (props)=> pluralize(props.name),
     },
     {
       type: 'input',
       name: 'urlbase',
-      message: 'URLのベース部を入力してください',
+      message: 'ブラウザからアクセスするURLのベース部を入力してください',
       default: (props)=> pluralize(props.name),
     }
   ]);
@@ -60,18 +71,18 @@ module.exports = class extends Generator {
       'src/customApp/redux/_resource_name_/' + name
     );
     const containerFiles = ['edit.js','form.js','index.js','new.js','show.js'].map(name =>
-      'src/customApp/containers/_resource_name_/' + name
+      'src/customApp/containers/_ResourceName_/' + name
     )
     const files = [
       ...entityFiles,
-      ...combineFiles,
+      ...listFiles,
       ...combineFiles,
       ...containerFiles,
     ];
 
     for( const i in files ){
       const file = files[i];
-      const dest = "frontend/" + file.replace('_resource_name_', resource_name);
+      const dest = "frontend/" + file.replace('_resource_name_', resource_name).replace('_ResourceName_', ResourceName);
       this.fs.copyTpl(
         this.templatePath(file),
         this.destinationPath(dest),
@@ -132,10 +143,9 @@ module.exports = class extends Generator {
           }
 
           const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node)
+            return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
           return `${comment}\n${code}`;
         }
       }
@@ -183,17 +193,15 @@ module.exports = class extends Generator {
           }
 
           const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node)
+            return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
           return `${comment}\n${code}`;
         }
       }
     );
-    // router.js
 
-    // sagas.js
+    // router.js
     const router_path = this.destinationPath("frontend/src/customApp/router.js");
     this.fs.copy(
       router_path,
@@ -224,10 +232,75 @@ module.exports = class extends Generator {
             }
           })
           const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node)
+            return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+          return `${comment}\n${code}`;
+        }
+      }
+    );
+
+    // sidebar.js
+    const sidebar_path = this.destinationPath("frontend/src/customApp/sidebar.js");
+    this.fs.copy(
+      sidebar_path,
+      sidebar_path,
+      {
+        process: (content) => {
+          const script = content.toString();
+          const ast = esprima.parseModule(script, { sourceType: 'module'});
+          const optionsAst = ast.body[0];
+          const elements = optionsAst.declarations[0].init.elements;
+          elements.push({
+            "type": "ObjectExpression",
+            "properties": [{
+              "type": "Property",
+              "key": {
+                "type": "Identifier",
+                "name": "key"
+              },
+              "computed": false,
+              "value": {
+                "type": "Literal",
+                "value": urlbase,
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false
+            }, {
+              "type": "Property",
+              "key": {
+                "type": "Identifier",
+                "name": "label"
+              },
+              "computed": false,
+              "value": {
+                "type": "Literal",
+                "value": `sidebar.${resource_name}`,
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false
+            }, {
+              "type": "Property",
+              "key": {
+                "type": "Identifier",
+                "name": "leftIcon"
+              },
+              "computed": false,
+              "value": {
+                "type": "Literal",
+                "value": "ion-android-checkbox-outline",
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false
+            }]
+          })
+          const code = ast.body.map((ast_node)=>{
+            return escodegen.generate(ast_node, escodegenOption)
+          }).join("\n")
+
           return `${comment}\n${code}`;
         }
       }
