@@ -159,3 +159,14 @@ git push
 user: kotsutsumi@xenophy.com
 password: 1234
 ```
+
+## コードジェネレータの使い方
+
+※まだDocker化していないです。
+ジェネレータは(Unix系OSユーザーにとっては)Docker化しない方が利便性が高いかもしれません。
+
+```
+# プロジェクト直下で
+yarn
+yarn scaffold
+```
