@@ -8,11 +8,9 @@ const esprima = require('esprima');
 const escodegen = require('escodegen');
 
 const escodegenOption = {
-  option: {
-    format: {
-      indent: {
-        style: '  '
-      }
+  format: {
+    indent: {
+      style: '  '
     }
   }
 };
