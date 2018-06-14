@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "change-case": "^3.0.2",
+    "escodegen": "^1.10.0",
+    "esprima": "^4.0.0",
     "pluralize": "^7.0.0"
   }
 }
