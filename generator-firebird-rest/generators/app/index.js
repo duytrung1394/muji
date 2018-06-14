@@ -3,6 +3,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const {camelCase, snakeCase, constantCase, pascalCase} = require('change-case');
+const pluralize =  require('pluralize');
 
 module.exports = class extends Generator {
   async prompting() {
@@ -11,21 +12,25 @@ module.exports = class extends Generator {
       yosay(`Welcome to the marvelous ${chalk.red('generator-firebird-rest')} generator!`)
     );
 
-    const prompts = [
-      {
-        type: 'input',
-        name: 'name',
-        message: 'リソース名を入力してください',
-        default: 'task'
-      }
-    ];
+    const props = await this.prompt([{
+      type: 'input',
+      name: 'name',
+      message: 'リソース名を入力してください',
+      default: 'task',
+    },
+    {
+      type: 'input',
+      name: 'endpoint',
+      message: 'APIエンドポイントを入力してください',
+      default: (props)=> pluralize(props.name),
+    }]);
 
-    const props = await this.prompt(prompts)
     this.props = props;
   }
 
   writing() {
     const rawname = this.props.name;
+    const endpoint = this.props.endpoint;
     const resource_name = snakeCase(rawname);
     const resourceName = camelCase(rawname);
     const RESOURCE_NAME = constantCase(rawname);
@@ -53,6 +58,7 @@ module.exports = class extends Generator {
           RESOURCE_NAME,
           resourceName,
           ResourceName,
+          endpoint,
         }
       );
     }
