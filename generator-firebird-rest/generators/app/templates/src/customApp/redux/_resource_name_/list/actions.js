@@ -2,9 +2,9 @@ import {createActions} from "redux-actions";
 import restActions from '../../shared/list/actions';
 
 const actions = createActions({
-  TASK: {
+  <%= RESOURCE_NAME %>: {
     LIST: restActions,
   },
 });
 
-export default actions.task.list;
+export default actions.<%= resource_name %>.list;
