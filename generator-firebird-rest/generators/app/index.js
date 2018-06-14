@@ -41,6 +41,7 @@ module.exports = class extends Generator {
     const resourceName = camelCase(rawname);
     const RESOURCE_NAME = constantCase(rawname);
     const ResourceName = pascalCase(rawname);
+    const resourceNameSagas = `${resourceName}Sagas`;
     const files = [
       'src/customApp/redux/_resource_name_/entity/actions.js',
       'src/customApp/redux/_resource_name_/entity/reducer.js',
@@ -117,11 +118,62 @@ module.exports = class extends Generator {
             return escodegen.generate(ast_node)
           }).join("\n")
 
-          return code;
+          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+          return `${comment}\n${code}`;
         }
       }
     );
+    // sagas.js
+    const sagas_path = this.destinationPath("frontend/src/customApp/redux/sagas.js");
+    this.fs.copy(
+      sagas_path,
+      sagas_path,
+      {
+        process: (content) => {
+          const script = content.toString();
+          const ast = esprima.parseModule(script, { sourceType: 'module'});
+          const len = ast.body.length;
+          const lastBody = ast.body[len-1];
+          // all() のブロック
+          const yieldedAllFunc = lastBody.declaration.body.body[0].expression.argument;
+          const exporetedSagas = yieldedAllFunc.arguments[0].elements.map((elm)=> elm.callee.name)
 
+          // 再生成を考慮して既にあったら飛ばす
+          if( ! exporetedSagas.includes(resourceNameSagas) ){
+            // yield allの中身を足す
+            const sagasLen = yieldedAllFunc.arguments[0].elements.length;
+            yieldedAllFunc.arguments[0].elements.splice(sagasLen, 0, {
+              type: 'CallExpression',
+              callee: {
+                type: 'Identifier',
+                name: resourceNameSagas,
+              },
+              arguments: []
+            })
+
+            // import句を足す
+            ast.body.splice(2, 0,{
+              type: 'ImportDeclaration',
+              specifiers: [ {
+                type: 'ImportDefaultSpecifier',
+                local: { type: 'Identifier', name: resourceNameSagas },
+              } ],
+              source: {
+                type: 'Literal',
+                value: `./${resource_name}/sagas`,
+              }
+            })
+          }
+
+          const code = ast.body.map((ast_node)=>{
+            return escodegen.generate(ast_node)
+          }).join("\n")
+
+          const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+          return `${comment}\n${code}`;
+        }
+      }
+    );
   }
 
   install() {
