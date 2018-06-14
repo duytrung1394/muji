@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "88c1f6f56aa8cccbbb6c84b0eacc5c4a",
+    "content-hash": "e4eca325f4c581a6ba0dd0ede00864f7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2805,8 +2805,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://kotsutsumi:eQDy4vTdjfqbC6QusP9a@xenophy.info:9090/xenophy/prismatix-sdk-php.git",
-                "reference": "d71a3371d4ff1d70872433ce33438e39052c8567"
+                "url": "https://xenophy.info:9090/xenophy/prismatix-sdk-php.git",
+                "reference": "813af089db256f22fcf3c13ed1f5a6bd065df5ae"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
@@ -2814,7 +2814,8 @@
             },
             "require-dev": {
                 "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "~6.0"
+                "phpunit/phpunit": "~6.0",
+                "squizlabs/php_codesniffer": "*"
             },
             "type": "library",
             "autoload": {
@@ -2824,7 +2825,7 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Prismatix\\": "test/Prismatix/"
+                    "Prismatix\\Test\\": "tests"
                 }
             },
             "license": [
@@ -2836,7 +2837,7 @@
                     "email": "kotsutsumi@xenophy.com"
                 }
             ],
-            "time": "2018-03-15T09:43:08+00:00"
+            "time": "2018-06-14T08:58:38+00:00"
         },
         {
             "name": "psr/container",

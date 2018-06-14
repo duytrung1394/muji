@@ -17,4 +17,7 @@ require_once 'api/v1/admins.php';
 // /api/v1/tasks
 require_once 'api/v1/tasks.php';
 
+// /api/v1/categories
+require_once 'api/v1/categories.php';
+
 // EOF

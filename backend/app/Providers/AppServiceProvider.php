@@ -35,6 +35,14 @@ class AppServiceProvider extends ServiceProvider {
 
             return ($ret === 0);
         });
+
+        class_alias("Prismatix\Prismatix", "Prismatix");
+
+        \Prismatix::initialize(
+            env('PRISMATIX_ACCESS_DOMAIN'),
+            env('PRISMATIX_ACCESS_TOKEN'),
+            env('PRISMATIX_ACCESS_TOKEN_SECRET')
+        );
     }
 
     /**
