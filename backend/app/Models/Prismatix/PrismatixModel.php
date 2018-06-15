@@ -15,6 +15,13 @@ abstract class PrismatixModel
     protected $resourceKey = '';
 
     /**
+     * Prismatix resource key
+     *
+     * @var string
+     */
+    protected $rootParamName = '';
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -38,7 +45,7 @@ abstract class PrismatixModel
     public function show($id)
     {
         $responce = \Prismatix::resource($this->resourceKey)->show([
-            'category_code' => $id,
+            $this->rootParamName => $id,
         ]);
 
         return $responce;
@@ -100,7 +107,7 @@ abstract class PrismatixModel
     {
 
         $responce = \Prismatix::resource($this->resourceKey)->destroy([
-            'category_code' => $id,
+            $this->rootParamName => $id,
         ]);
 
         return $responce;
@@ -119,7 +126,7 @@ abstract class PrismatixModel
         foreach ($request->input('ids') as $id) {
 
             $responce = \Prismatix::resource($this->resourceKey)->destroy([
-                'category_code' => $id,
+                $this->rootParamName => $id,
             ]);
 
             $data[] = $responce->data;

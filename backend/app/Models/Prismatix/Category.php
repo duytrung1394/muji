@@ -12,4 +12,11 @@ class Category extends PrismatixModel
      */
     // TODO: sdk側で列挙
     protected $resourceKey = 'item.Category';
+
+    /**
+     * Prismatix resource key
+     *
+     * @var string
+     */
+    protected $rootParamName = 'category_code';
 }

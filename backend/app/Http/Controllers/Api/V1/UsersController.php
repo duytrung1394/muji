@@ -465,359 +465,147 @@ class UsersController extends Controller {
 
     }
 
+
     /**
-     * get_list メソッド
+     * Display a listing of the resource.
      *
-     * ユーザーリストを追加します。
+     * @return Response
      */
-    public function get_list(Request $request) {
-
-        $page = $request->has('page') ? $request->input('page') : 0;
-        $size = $request->has('size') ? $request->input('size') : 20;
-
-        $rules = [
-            'page' => 'numeric',
-            'size' => 'numeric',
-        ];
-
-        // 入力チェック
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-
-            // 400 Bad Request
-            return $this->abort400($validator);
-
-        }
-
-        $users = User::skip($size * $page)->take($size)->get();
-
-        // 返却データ生成
-        $data = [];
-        $data[ 'total' ] = User::count();
-        $data[ 'page' ] = $page;
-        $data[ 'size' ] = $size;
-        $data[ 'data' ] = [];
-
-        $i = 0;
-        foreach ($users as $user) {
-
-            $data[ 'data' ][] = [
-                'id' => $user->id,
-                'key' => $i,
-                'username' => $user->username,
-                'last_name' => $user->last_name,
-                'first_name' => $user->first_name,
-                'last_login_at' => strtotime($user->last_login_at),
-                'created_at' => strtotime($user->created_at),
-                'updated_at' => strtotime($user->updated_at),
-            ];
-
-            $i++;
-        }
-
-        // JSON出力
-        return response(
-            json_encode($data)
-        );
-
+    public function index()
+    {
+        return User::paginate(10);
     }
 
     /**
-     * get_user メソッド
+     * Display the specified resource.
      *
-     * ユーザー情報を取得します。
+     * @param  int  $id
+     * @return Response
      */
-    public function get_user($user_id, Request $request) {
-
-        // ユーザー取得
-        $user = User::find($user_id);
-
-        if (is_null($user)) {
-
-            // 404 Unauthorized
-            abort(404, 'Not Found');
-
-        }
-
-        // 返却データ生成
-        $data = [];
-
-        $roles = [];
-
-        // ロール一覧
-        $user->roles()->each(function ($role) use (&$roles) {
-            $roles[] = $role->id;
-        });
-
-        $data[ 'data' ] = [
-            'id' => $user->id,
-            'username' => $user->username,
-            'last_name' => $user->last_name,
-            'first_name' => $user->first_name,
-            'roles' => json_encode($roles),
-            'last_login_at' => strtotime($user->last_login_at),
-            'created_at' => strtotime($user->created_at),
-            'updated_at' => strtotime($user->updated_at),
+    public function show($id)
+    {
+        return [
+            'item' => User::find($id),
         ];
-
-        // JSON出力
-        return response(
-            json_encode($data)
-        );
-
     }
 
     /**
-     * add メソッド
+     * Store a newly created resource in storage.
      *
-     * 新規管理ユーザーを追加します。
+     * @param  Request  $request
+     * @return Response
      */
-    public function add(Request $request) {
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'user.username'     => 'required',
+            'user.last_name'    => 'required',
+            'user.first_name'   => 'required',
+            'user.password'     => 'required',
+        ], [], [
+            'user.username'     => 'ユーザ名',
+            'user.last_name'    => '性',
+            'user.first_name'   => '名',
+            'user.password'     => 'パスワード',
+        ]);
 
-        // ユーザー取得
-        $user = Auth::user();
+        $user = new User;
 
-        $rules = [
-            'username' => 'required|unique:users|max:255',
-            'password' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'first_name' => 'required|max:255',
-            'roles' => 'required|requiredRoles',
-            'reset_password' => 'required|numeric|resetPasswordFlag',
-        ];
+        $user->username     = $request->input('user.username');
+        $user->last_name    = $request->input('user.last_name');
+        $user->first_name   = $request->input('user.first_name');
+        $user->password     = \Hash::make($request->input('user.password'));
 
-        // 入力チェック
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-
-            // 400 Not Found
-            return $this->abort400($validator);
-
-        }
-
-        // Fernet 生成
-        try {
-
-            $fernet = new Fernet(User::getPrivateKey());
-
-        } catch (\Exception $e) {
-
-            // 500 Internal Server Error
-            abort(500, 'Internal Server Error');
-
-        }
-
-        // ユーザー生成
-        $userItem = new User();
-
-        $userItem->username = $request->input('username');
-        $userItem->password = hash('sha512', $request->input('password') . User::$salt);
-        $userItem->api_token = '';
-        $userItem->last_name = $request->input('last_name');
-        $userItem->first_name = $request->input('first_name');
-        $userItem->reset_password = $request->input('reset_password');
-        $userItem->save();
-
-        $roles = json_decode($request->input('roles'));
-
-        foreach ($roles as $roleId) {
-
-            $roleItem = Role::where('id', $roleId)->first();
-
-            // ユーザーにロールをアタッチ
-            $userItem->attachRole($roleItem);
-        }
-
-        // プロフィール画像の移動
-        if (!empty($request->input('photo'))) {
-
-            $photo = $fernet->decode($request->input('photo'));
-            $photo = json_decode($photo);
-
-            // 取得ファイルパス取得
-            $profilesPath = storage_path('app') . '/users/profiles/' . $photo->filename;
-            $profilesNewPath = storage_path('app') . '/users/profiles/' . $userItem->id;
-
-            if (file_exists($profilesPath)) {
-                rename($profilesPath, $profilesNewPath);
-            }
-
-        }
-
-        // 返却データ生成
-        $data = [];
-        $data[ 'id' ] = $userItem->id;
-
-        // JSON出力
-        echo(json_encode($data));
-    }
-
-    /**
-     * modify メソッド
-     *
-     * ユーザー情報を更新します。
-     */
-    public function modify($user_id, Request $request) {
-
-        // ユーザー取得
-        $user = User::find($user_id);
-
-        // Fernet 生成
-        try {
-
-            $fernet = new Fernet(User::getPrivateKey());
-
-        } catch (\Exception $e) {
-
-            // 500 Internal Server Error
-            abort(500, 'Internal Server Error');
-
-        }
-
-        $rules = [
-            'username' => 'max:255|uniqueExcludeOwn:users,' . $user_id,
-            'password' => 'max:255',
-            'last_name' => 'max:255',
-            'first_name' => 'max:255',
-            'roles' => 'requiredRoles',
-            'reset_password' => '|numeric|resetPasswordFlag',
-        ];
-
-        // 入力チェック
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            //abort(400, $validator->errors()->first());
-            abort(400, $validator->errors()->first());
-        }
-
-        // ユーザー名設定
-        if ($request->exists('username')) {
-            $user->username = $request->input('username');
-        }
-
-        // パスワード設定
-        if ($request->exists('username')) {
-            $user->password = hash('sha512', $request->input('password') . User::$salt);
-        }
-
-        // 姓設定
-        if ($request->exists('last_name')) {
-            $user->last_name = $request->input('last_name');
-        }
-
-        // 名設定
-        if ($request->exists('first_name')) {
-            $user->first_name = $request->input('first_name');
-        }
-
-        // パスワード再設定フラグ設定
-        if ($request->exists('reset_password')) {
-            $user->reset_password = (int)$request->input('reset_password');
-        }
-
-        $roles = json_decode($request->input('roles'));
-
-        $user->detachRoles($user->roles);
-        foreach ($roles as $roleId) {
-
-            $roleItem = Role::where('id', $roleId)->first();
-
-            // ユーザーにロールをアタッチ
-            $user->attachRole($roleItem);
-        }
-
-        // プロフィール画像の移動
-        if (!empty($request->input('photo'))) {
-
-            $photo = $fernet->decode($request->input('photo'));
-            $photo = json_decode($photo);
-
-            // 取得ファイルパス取得
-            $profilesPath = storage_path('app') . '/users/profiles/' . $photo->filename;
-            $profilesNewPath = storage_path('app') . '/users/profiles/' . $user->id;
-
-            if (file_exists($profilesPath)) {
-                rename($profilesPath, $profilesNewPath);
-            }
-
-        }
-
-        // 保存
         $user->save();
+
+        return [
+            'item' => $user->toArray(),
+        ];
     }
 
     /**
-     * destroy メソッド
+     * Update the specified resource in storage.
      *
-     * ユーザーを削除します。
+     * @param  Request  $request
+     * @param  int      $id
+     * @return Response
      */
-    public function destroy($user_id, Request $request) {
+    public function update(Request $request, $id)
+    {
+/*        $this->validate($request, [
+            'user.username'     => '',
+            'user.last_name'    => '',
+            'user.first_name'   => '',
+            'user.password'     => '',
+        ], [], [
+            'user.username'     => 'ユーザ名',
+            'user.last_name'    => '性',
+            'user.first_name'   => '名',
+            'user.password'     => 'パスワード',
+        ]);*/
 
-        // ユーザー取得
-        $user = User::find($user_id);
+        $user = User::find($id);
 
-        if (is_null($user)) {
-            abort(400, 'ユーザーが存在しません');
+        if ($request->has('user.username')) {
+
+            $user->username     = $request->input('user.username');
         }
 
-        // 削除
-        User::destroy($user_id);
+        if ($request->has('user.last_name')) {
 
-        // 204 No Content
-        abort(204, 'No Content');
+            $user->last_name    = $request->input('user.last_name');
+        }
+
+        if ($request->has('user.first_name')) {
+
+            $user->first_name   = $request->input('user.first_name');
+        }
+
+        if ($request->has('user.password')) {
+
+            $user->password     = \Hash::make($request->input('user.password'));
+        }
+
+        $user->save();
+
+        return [
+            'item' => $user->toArray(),
+        ];
     }
 
     /**
-     * multi_destroy メソッド
+     * Remove the specified resource from storage.
      *
-     * 複数のユーザーを削除します。
+     * @param  int  $id
+     * @return Response
      */
-    public function multi_destroy(Request $request) {
+    public function destroy($id)
+    {
 
-        if (!$request->exists('ids')) {
-            return;
-        }
+        $user = User::find($id);
 
-        $ids = json_decode($request->input('ids'));
+        $user->delete();
 
-        if (is_null($ids)) {
-            abort(400, 'IDは、数値を配列として指定してください');
-        }
-
-        $count = 0;
-
-        // ユーザー取得
-        $loginUser = Auth::user();
-
-        foreach ($ids as $id) {
-
-            // ユーザー取得
-            $user = User::find($id);
-
-            DB::transaction(function () use ($user, $loginUser, $count) {
-
-                if (!is_null($user) && $user->id !== $loginUser->id) {
-
-                    // 削除
-                    User::destroy($user->id);
-
-                    $count++;
-                }
-
-            });
-
-        }
-
-        // 返却データ生成
-        $data = [];
-        $data[ 'count' ] = $count;
-
-        // JSON出力
-        echo(json_encode($data));
-
+        return [
+            'item' => $user,
+        ];
     }
 
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroyMulti(Request $request)
+    {
+        $ids = explode(',', $request->input('ids'));
+        $count = User::destroy($ids);
+
+        return [
+            'count' => $count,
+        ];
+    }
 }
 
 // EOF
