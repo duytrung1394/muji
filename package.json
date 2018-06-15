@@ -1,0 +1,25 @@
+{
+  "name": "prismatix-admin",
+  "version": "1.0.0",
+  "description": "``` origin: git@xenophy.info:xenophy/muji.git",
+  "main": "no",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "scaffold": "yo firebird-rest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@xenophy.info:xenophy/prismatix-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "change-case": "^3.0.2",
+    "escodegen": "^1.10.0",
+    "esprima": "^4.0.0",
+    "generator-firebird-rest": "file:./generator-firebird-rest",
+    "pluralize": "^7.0.0"
+  }
+}
