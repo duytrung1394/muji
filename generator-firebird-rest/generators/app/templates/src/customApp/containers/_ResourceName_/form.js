@@ -5,8 +5,9 @@ export default class Form extends Component {
   render() {
     return (
       <RestForm {...this.props}>
-        <RestFormInput name="name" />
-        <RestFormInput name="description" />
+        <% columns.forEach((column) => { %>
+          <RestFormInput name="<%= column %>" />
+        <% }); %>
         <RestFormSubmit label="保存" />
       </RestForm>
     );
