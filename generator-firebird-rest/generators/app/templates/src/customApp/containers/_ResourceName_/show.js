@@ -17,7 +17,7 @@ class ShowTask extends Component {
         {...this.props}
       >
         <ul>
-          <% columns.forEach((column) => { %>
+          <% detailColumns.forEach((column) => { %>
           <li><%= pascalCase(column) %>: {entity.<%= column %>}</li><%
           }); %>
         </ul>

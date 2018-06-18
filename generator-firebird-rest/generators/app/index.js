@@ -32,15 +32,22 @@ module.exports = class extends Generator {
     },
     {
       type: 'input',
-      name: 'columns',
-      message: 'リソースのカラム名をカンマ(,)区切りで入力してください',
+      name: 'detailColumns',
+      message: '編集・詳細表示するカラム名をカンマ(,)区切りで入力してください',
       default: 'name,description',
+    },
+    {
+      type: 'input',
+      name: 'listColumns',
+      message: 'リスト表示するカラム名をカンマ(,)区切りで入力してください',
+      default: 'id,name',
     },
     {
       type: 'list',
       name: 'linkColumnName',
-      message: '詳細へリンクするカラムを選んでください',
-      choices: (props) => props.columns.split(",").map( s => s.trim() ),
+      message: 'リストから詳細へリンクするカラムを選んでください',
+      choices: (props) => props.listColumns.split(",").map( s => s.trim() ),
+      default: (props) => props.listColumns.split(",").map( s => s.trim() ).filter( s => s != "id")[0]
     },
     {
       type: 'input',
@@ -72,7 +79,8 @@ module.exports = class extends Generator {
     const ResourceName = pascalCase(rawname);
     const resourceNameSagas = `${resourceName}Sagas`;
     const urlbase = this.props.urlbase;
-    const columns = this.props.columns.split(',').map( s => s.trim() );
+    const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
+    const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
     const linkColumnName = this.props.linkColumnName;
 
     // 置換対象ファイルパスを羅列
@@ -109,7 +117,8 @@ module.exports = class extends Generator {
           ResourceName,
           endpoint,
           urlbase,
-          columns,
+          listColumns,
+          detailColumns,
           linkColumnName,
           // bind functions...
           pascalCase,

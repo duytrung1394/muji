@@ -10,7 +10,7 @@ class Index extends Component {
       <RestIndex
         name="<%= resource_name %>"
         baseUrl="/dashboard/<%= urlbase %>"
-        columnNames={<%- JSON.stringify(columns) %>}
+        columnNames={<%- JSON.stringify(listColumns) %>}
         linkColumn="<%= linkColumnName %>"
         {...this.props}
       />
