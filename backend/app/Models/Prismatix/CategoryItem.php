@@ -63,16 +63,24 @@ class CategoryItem extends PrismatixModel
      */
     public function store(Request $request)
     {
-        $response = \Prismatix::resource($this->resourceKey)->store([
-            'category_code'         => $request->input('category_code'),
-            'item_code'             => $request->input('item_code'),
-            'priority'              => $request->input('priority'),
-            'deleted'               => $request->input('deleted'),
-            // 'attributes'            => $request->input('attributes'),         // {}
-            // 'access_policy'         => $request->input('access_policy'),         // { }
-        ]);
+        $body = [];
 
-        return $response;
+        foreach ([
+        'category_code',
+        'item_code',
+        'priority',
+        'deleted',
+        'attributes',
+        'access_policy',
+        ] as $property) {
+
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->store($body);
     }
 
     /**
@@ -84,17 +92,24 @@ class CategoryItem extends PrismatixModel
      */
     public function update(Request $request, $id)
     {
+        $body = [];
 
-        $response = \Prismatix::resource($this->resourceKey)->update([
-            'category_code'         => $request->input('category_code'),
-            'item_code'             => $request->input('item_code'),
-            'priority'              => $request->input('priority'),             // 0, 1, 2, ....
-            'deleted'               => $request->input('deleted'),
-            // 'attributes'            => $request->input('attributes'),         // {}
-            // 'access_policy'         => $request->input('access_policy'),         // { }
-        ]);
+        foreach ([
+        'category_code',
+        'item_code',
+        'priority',
+        'deleted',
+        'attributes',
+        'access_policy',
+        ] as $property) {
 
-        return $response;
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->update($body);
     }
 
     /**
