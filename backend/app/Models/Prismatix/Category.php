@@ -60,18 +60,34 @@ class Category extends PrismatixModel
      */
     public function store(Request $request)
     {
-        $responce = \Prismatix::resource($this->resourceKey)->store([
-            'lang'              => $request->input('lang'),
-            'category_code'     => $request->input('category_code'),
-            'status'            => $request->input('status'),
-            'start_timestamp'   => $request->input('start_timestamp'),
-            'end_timestamp'     => $request->input('end_timestamp'),
-            'category_name'     => $request->input('category_name'),
-            'facet_disp_flag'   => $request->input('facet_disp_flag'),
-            // TODO: ...
-        ]);
+        $body = [];
 
-        return $responce;
+        foreach ([
+            'lang',
+            'category_code',
+            'status',
+            'start_timestamp',
+            'end_timestamp',
+            'category_name',
+            'facet_disp_flag',
+            'memo',
+            'category_path',
+            'priority',
+            'description',
+            'attributes',
+            'branches',
+            'badges',
+            'keywords',
+            'tags',
+        ] as $property) {
+
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->store($body);
     }
 
     /**
@@ -83,19 +99,34 @@ class Category extends PrismatixModel
      */
     public function update(Request $request, $id)
     {
+        $body = [];
 
-        $responce = \Prismatix::resource($this->resourceKey)->update([
-            'lang'              => $request->input('lang'),
-            'category_code'     => $request->input('category_code'),
-            'status'            => $request->input('status'),
-            'start_timestamp'   => $request->input('start_timestamp'),
-            'end_timestamp'     => $request->input('end_timestamp'),
-            'category_name'     => $request->input('category_name'),
-            'facet_disp_flag'   => $request->input('facet_disp_flag'),
-            // TODO: ...
-        ]);
+        foreach ([
+            'lang',
+            'category_code',
+            'status',
+            'start_timestamp',
+            'end_timestamp',
+            'category_name',
+            'facet_disp_flag',
+            'memo',
+            'category_path',
+            'priority',
+            'description',
+            'attributes',
+            'branches',
+            'badges',
+            'keywords',
+            'tags',
+        ] as $property) {
 
-        return $responce;
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->update($body);
     }
 
     /**
