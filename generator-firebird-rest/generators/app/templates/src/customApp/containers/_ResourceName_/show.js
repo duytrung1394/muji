@@ -18,8 +18,8 @@ class ShowTask extends Component {
       >
         <ul>
           <% columns.forEach((column) => { %>
-            <li><%= pascalCase(column) %>: entity.<%= column %></li>
-          <% }); %>
+          <li><%= pascalCase(column) %>: {entity.<%= column %>}</li><%
+          }); %>
         </ul>
       </RestShow>
     );
