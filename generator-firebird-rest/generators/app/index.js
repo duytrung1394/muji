@@ -34,7 +34,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'columns',
       message: 'リソースのカラム名をカンマ(,)区切りで入力してください',
-      default: 'id,name',
+      default: 'name,description',
     },
     {
       type: 'list',
