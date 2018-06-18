@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import TaskForm from './form';
+import Form from './form';
 import actions from "../../redux/task/entity/actions";
 import RestNew from "../shared/new";
 
-class NewTask extends Component {
+class NewEntity extends Component {
   render() {
     // TODO: if createError で簡単なエラー表示？いらない？
     return (
       <RestNew
-        name="task" 
+        name="task"
         baseUrl="/dashboard/tasks"
         {...this.props}
-        formComponent={TaskForm}
+        formComponent={Form}
       />
     );
   }
@@ -31,4 +31,4 @@ const mapStateToProps = (state) => {
 export default withRouter(connect(mapStateToProps, {
   request,
   cleanup,
-})(NewTask));
+})(NewEntity));

@@ -12,7 +12,7 @@ class ShowTask extends Component {
 
     return (
       <RestShow
-        name="task" 
+        name="task"
         baseUrl="/dashboard/tasks"
         {...this.props}
       >

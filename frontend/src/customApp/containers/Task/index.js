@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import actions from '../../redux/task/list/actions';
 import RestIndex from '../shared/index';
 
-class TaskIndex extends Component {
+class Index extends Component {
   render() {
     return (
       <RestIndex
-        name="task" 
+        name="task"
         baseUrl="/dashboard/tasks"
         columnNames={['id','name']}
         linkColumn="name"
@@ -31,4 +31,4 @@ export default withRouter(connect(mapStateToProps, {
   fetchRequest: fetch.request,
   destroyRequest: destroy.request,
   destroyCleanup: destroy.cleanup,
-})(TaskIndex));
+})(Index));
