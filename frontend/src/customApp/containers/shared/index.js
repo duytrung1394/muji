@@ -32,7 +32,7 @@ class TaskIndex extends Component {
   componentDidUpdate(prevProps, prevState, snapshot){
     const props = this.props;
     if( this.getPage(prevProps) !== this.getPage(props) ){
-      props.load( this.getPage(props) );
+      props.fetchRequest( this.getPage(props) );
     }
 
     if( this.state.selectedIds.length > 0 && props.destroyed ){
