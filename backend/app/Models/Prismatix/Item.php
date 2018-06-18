@@ -60,35 +60,44 @@ class Item extends PrismatixModel
      */
     public function store(Request $request)
     {
-        $response = \Prismatix::resource($this->resourceKey)->store([
-            'lang'                  => $request->input('lang'),
-            'item_code'             => $request->input('item_code'),
-            'status'                => $request->input('status'),
-            'start_timestamp'       => $request->input('start_timestamp'),
-            'end_timestamp'         => $request->input('end_timestamp'),
-            'item_name'             => $request->input('item_name'),
-            'item_label'            => $request->input('item_label'),
-            'item_code_alt'         => $request->input('item_code_alt'),
-            'reservation_flag'      => $request->input('reservation_flag'),
-            'store_receive_flag'    => $request->input('store_receive_flag '),
-            'priority'              => $request->input('priority'),
-            'memo'                  => $request->input('memo'),
-            'description'           => $request->input('description'),
-            'attributes'            => $request->input('attributes'),
-            'brand_code'            => $request->input('brand_code'),
-            'promotion_status'      => $request->input('promotion_status'),
-            // 'spec_info'             => $request->input('spec_info'),
-            // 'size_info'             => $request->input('size_info'),
-            'link_urls'             => $request->input('link_urls'),
-            'branches'              => $request->input('branches'),
-            'badges'                => $request->input('badges'),
-            'keywords'              => $request->input('keywords'),
-            'tags'                  => $request->input('tags'),
-            'access_policy'         => $request->input('access_policy'),
-            // 'addon_service_codes'   => $request->input('addon_service_codes'),
-        ]);
+        $body = [];
 
-        return $response;
+        foreach ([
+            'lang'               ,
+            'item_code'          ,
+            'status'             ,
+            'start_timestamp'    ,
+            'end_timestamp'      ,
+            'item_name'          ,
+            'item_label'         ,
+            'item_code_alt'      ,
+            'reservation_flag'   ,
+            'store_receive_flag' ,
+            'priority'           ,
+            'memo'               ,
+            'description'        ,
+            'attributes'         ,
+            'brand_code'         ,
+            'promotion_status'   ,
+            // 'spec_info'       ,
+            // 'size_info'       ,
+            'link_urls'          ,
+            'branches'           ,
+            'badges'             ,
+            'keywords'           ,
+            'tags'               ,
+            'access_policy'      ,
+            // 'addon_service_codes',
+        ] as $property) {
+
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->store($body);
+
     }
 
     /**
@@ -100,36 +109,42 @@ class Item extends PrismatixModel
      */
     public function update(Request $request, $id)
     {
+        $body = [];
 
-        $response = \Prismatix::resource($this->resourceKey)->update([
-            'lang'                  => $request->input('lang'),
-            'item_code'             => $id,
-            'status'                => $request->input('status'),
-            'start_timestamp'       => $request->input('start_timestamp'),
-            'end_timestamp'         => $request->input('end_timestamp'),
-            'item_name'             => $request->input('item_name'),
-            'item_label'            => $request->input('item_label'),
-            'item_code_alt'         => $request->input('item_code_alt'),
-            'reservation_flag'      => $request->input('reservation_flag'),
-            'store_receive_flag'    => $request->input('store_receive_flag '),
-            'priority'              => $request->input('priority'),
-            'memo'                  => $request->input('memo'),
-            'description'           => $request->input('description'),
-            'attributes'            => $request->input('attributes'),
-            'brand_code'            => $request->input('brand_code'),
-            'promotion_status'      => $request->input('promotion_status'),
-            // 'spec_info'             => $request->input('spec_info'),
-            // 'size_info'             => $request->input('size_info'),
-            'link_urls'             => $request->input('link_urls'),
-            'branches'              => $request->input('branches'),
-            'badges'                => $request->input('badges'),
-            'keywords'              => $request->input('keywords'),
-            'tags'                  => $request->input('tags'),
-            'access_policy'         => $request->input('access_policy'),
-            // 'addon_service_codes'   => $request->input('addon_service_codes'),
-        ]);
+        foreach ([
+            'lang'                  ,
+            'item_code'             ,
+            'status'                ,
+            'start_timestamp'       ,
+            'end_timestamp'         ,
+            'item_name'             ,
+            'item_label'            ,
+            'item_code_alt'         ,
+            'reservation_flag'      ,
+            'store_receive_flag'    ,
+            'priority'              ,
+            'memo'                  ,
+            'description'           ,
+            'attributes'            ,
+            'brand_code'            ,
+            'promotion_status'      ,
+            // 'spec_info'          ,
+            // 'size_info'          ,
+            'link_urls'             ,
+            'branches'              ,
+            'badges'                ,
+            'keywords'              ,
+            'tags'                  ,
+            'access_policy'         ,
+        ] as $property) {
 
-        return $response;
+            if ($request->has($property)) {
+
+                $body[$property] = $request->input($property);
+            }
+        }
+
+        return \Prismatix::resource($this->resourceKey)->update($body);
     }
 
     /**
