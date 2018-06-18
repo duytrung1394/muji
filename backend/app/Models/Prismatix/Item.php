@@ -61,31 +61,31 @@ class Item extends PrismatixModel
     public function store(Request $request)
     {
         $response = \Prismatix::resource($this->resourceKey)->store([
-            'lang'                  => $request->input('lang'),                 // ja_JP
+            'lang'                  => $request->input('lang'),
             'item_code'             => $request->input('item_code'),
+            'status'                => $request->input('status'),
+            'start_timestamp'       => $request->input('start_timestamp'),
+            'end_timestamp'         => $request->input('end_timestamp'),
+            'item_name'             => $request->input('item_name'),
             'item_label'            => $request->input('item_label'),
             'item_code_alt'         => $request->input('item_code_alt'),
-            'reservation_flag'      => $request->input('reservation_flag'),     // false, true
-            'store_receive_flag'    => $request->input('store_receive_flag '),  // false, true
-            'priority'              => $request->input('priority'),             // 0, 1, 2, ....
-            'status'                => $request->input('status'),               // PUBLISHED
-            'start_timestamp'       => $request->input('start_timestamp'),      // 0
-            'end_timestamp'         => $request->input('end_timestamp'),        // 0
-            'item_name'             => $request->input('item_name'),
+            'reservation_flag'      => $request->input('reservation_flag'),
+            'store_receive_flag'    => $request->input('store_receive_flag '),
+            'priority'              => $request->input('priority'),
             'memo'                  => $request->input('memo'),
             'description'           => $request->input('description'),
-            // 'attributes'            => $request->input('attributes'),         // {}
+            'attributes'            => $request->input('attributes'),
             'brand_code'            => $request->input('brand_code'),
             'promotion_status'      => $request->input('promotion_status'),
-            // 'spec_info'             => $request->input('spec_info'),             // {}
-            // 'size_info'             => $request->input('size_info'),             // {}
-            // 'link_urls'             => $request->input('link_urls'),             // [ {} ]
-            // 'branches'              => $request->input('branches'),              // [ string ]
-            // 'badges'                => $request->input('badges'),                // [ string ]
-            // 'addon_service_codes'   => $request->input('addon_service_codes'),   // [ string ]
-            // 'keywords'              => $request->input('keywords'),              // [ string ]
-            // 'tags'                  => $request->input('tags'),                  // [ string ]
-            // 'access_policy'         => $request->input('access_policy'),         // { }
+            // 'spec_info'             => $request->input('spec_info'),
+            // 'size_info'             => $request->input('size_info'),
+            'link_urls'             => $request->input('link_urls'),
+            'branches'              => $request->input('branches'),
+            'badges'                => $request->input('badges'),
+            'keywords'              => $request->input('keywords'),
+            'tags'                  => $request->input('tags'),
+            'access_policy'         => $request->input('access_policy'),
+            // 'addon_service_codes'   => $request->input('addon_service_codes'),
         ]);
 
         return $response;
@@ -102,14 +102,31 @@ class Item extends PrismatixModel
     {
 
         $response = \Prismatix::resource($this->resourceKey)->update([
-            'lang'              => $request->input('lang'),
-            'category_code'     => $request->input('category_code'),
-            'status'            => $request->input('status'),
-            'start_timestamp'   => $request->input('start_timestamp'),
-            'end_timestamp'     => $request->input('end_timestamp'),
-            'category_name'     => $request->input('category_name'),
-            'facet_disp_flag'   => $request->input('facet_disp_flag'),
-            // TODO: ...
+            'lang'                  => $request->input('lang'),
+            'item_code'             => $id,
+            'status'                => $request->input('status'),
+            'start_timestamp'       => $request->input('start_timestamp'),
+            'end_timestamp'         => $request->input('end_timestamp'),
+            'item_name'             => $request->input('item_name'),
+            'item_label'            => $request->input('item_label'),
+            'item_code_alt'         => $request->input('item_code_alt'),
+            'reservation_flag'      => $request->input('reservation_flag'),
+            'store_receive_flag'    => $request->input('store_receive_flag '),
+            'priority'              => $request->input('priority'),
+            'memo'                  => $request->input('memo'),
+            'description'           => $request->input('description'),
+            'attributes'            => $request->input('attributes'),
+            'brand_code'            => $request->input('brand_code'),
+            'promotion_status'      => $request->input('promotion_status'),
+            // 'spec_info'             => $request->input('spec_info'),
+            // 'size_info'             => $request->input('size_info'),
+            'link_urls'             => $request->input('link_urls'),
+            'branches'              => $request->input('branches'),
+            'badges'                => $request->input('badges'),
+            'keywords'              => $request->input('keywords'),
+            'tags'                  => $request->input('tags'),
+            'access_policy'         => $request->input('access_policy'),
+            // 'addon_service_codes'   => $request->input('addon_service_codes'),
         ]);
 
         return $response;

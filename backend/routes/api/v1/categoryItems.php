@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('category-items', [
+$router->get('categoryitems', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('category-items', [
 /**
  * 詳細取得
  */
-$router->get('category-items/{categoryId}/{itemId}', [
+$router->get('categoryitems/{categoryId}/{itemId}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('category-items/{categoryId}/{itemId}', [
 /**
  * 登録
  */
-$router->post('category-items', [
+$router->post('categoryitems', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('category-items', [
 /**
  * 更新
  */
-$router->put('category-items/{id}', [
+$router->put('categoryitems/{categoryId}/{itemId}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('category-items/{id}', [
 /**
  * 削除
  */
-$router->delete('category-items/{id}', [
+$router->delete('categoryitems/{categoryId}/{itemId}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@destroy',
 ]);
@@ -49,7 +49,7 @@ $router->delete('category-items/{id}', [
 /**
  * 削除(複数)
  */
-$router->delete('category-items', [
+$router->delete('categoryitems', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryItemsController@destroyMulti',
 ]);
