@@ -50,4 +50,7 @@ require_once 'api/v1/stores.php';
 // /api/v1/categoryimages
 require_once 'api/v1/categoryimages.php';
 
+// /api/v1/itemimages
+require_once 'api/v1/itemimages.php';
+
 // EOF
