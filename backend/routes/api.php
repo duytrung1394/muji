@@ -29,4 +29,7 @@ require_once 'api/v1/categoryItems.php';
 // /api/v1/skus
 require_once 'api/v1/skus.php';
 
+// /api/v1/prices
+require_once 'api/v1/prices.php';
+
 // EOF
