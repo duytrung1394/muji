@@ -47,4 +47,7 @@ require_once 'api/v1/staffs.php';
 // /api/v1/stores
 require_once 'api/v1/stores.php';
 
+// /api/v1/categoryimages
+require_once 'api/v1/categoryimages.php';
+
 // EOF
