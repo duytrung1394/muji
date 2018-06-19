@@ -79,15 +79,15 @@ class Item extends PrismatixModel
             'attributes'         ,
             'brand_code'         ,
             'promotion_status'   ,
-            // 'spec_info'       ,
-            // 'size_info'       ,
+            'spec_info'          ,
+            'size_info'          ,
             'link_urls'          ,
             'branches'           ,
             'badges'             ,
             'keywords'           ,
             'tags'               ,
             'access_policy'      ,
-            // 'addon_service_codes',
+            'addon_service_codes',
         ] as $property) {
 
             if ($request->has($property)) {
