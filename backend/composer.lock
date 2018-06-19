@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "e4eca325f4c581a6ba0dd0ede00864f7",
@@ -2806,7 +2806,7 @@
             "source": {
                 "type": "git",
                 "url": "https://xenophy.info:9090/xenophy/prismatix-sdk-php.git",
-                "reference": "813af089db256f22fcf3c13ed1f5a6bd065df5ae"
+                "reference": "b951df30058effbe0db9a83921548176bc89f9ba"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
@@ -2837,7 +2837,7 @@
                     "email": "kotsutsumi@xenophy.com"
                 }
             ],
-            "time": "2018-06-14T08:58:38+00:00"
+            "time": "2018-06-18T13:13:55+00:00"
         },
         {
             "name": "psr/container",
