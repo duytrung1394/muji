@@ -41,6 +41,9 @@ require_once 'api/v1/addonservices.php';
 // /api/v1/discounts
 require_once 'api/v1/discounts.php';
 
+// /api/v1/staffs
+require_once 'api/v1/staffs.php';
+
 // /api/v1/stores
 require_once 'api/v1/stores.php';
 
