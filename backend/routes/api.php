@@ -38,4 +38,7 @@ require_once 'api/v1/brands.php';
 // /api/v1/addonservices
 require_once 'api/v1/addonservices.php';
 
+// /api/v1/discounts
+require_once 'api/v1/discounts.php';
+
 // EOF
