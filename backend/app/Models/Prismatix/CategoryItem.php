@@ -66,12 +66,12 @@ class CategoryItem extends PrismatixModel
         $body = [];
 
         foreach ([
-        'category_code',
-        'item_code',
-        'priority',
-        'deleted',
-        'attributes',
-        'access_policy',
+            'category_code',
+            'item_code',
+            'priority',
+            'deleted',
+            'attributes',
+            'access_policy',
         ] as $property) {
 
             if ($request->has($property)) {
@@ -92,16 +92,15 @@ class CategoryItem extends PrismatixModel
      */
     public function update(Request $request, $categoryId, $itemId)
     {
-        Log::debug('>>>>>>>>>>>>>>>>>> '.$categoryId.' ---- '.$itemId);
         $body = [];
 
         foreach ([
-        'category_code',
-        'item_code',
-        'priority',
-        'deleted',
-        'attributes',
-        'access_policy',
+            'category_code',
+            'item_code',
+            'priority',
+            'deleted',
+            'attributes',
+            'access_policy',
         ] as $property) {
 
             if ($request->has($property)) {
@@ -121,12 +120,10 @@ class CategoryItem extends PrismatixModel
      */
     public function destroy($categoryId, $itemId)
     {
-        Log::debug('>>>>>>> destroy: ' . $categoryId . ' ---- ' . $itemId);
         $response = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $categoryId, // category_code = prx_skd_php_category_0001 
-            $this->rootItemParamName => $itemId, // item_code = prx_sdk_php_item_0001  
+            $this->rootParamName => $categoryId,
+            $this->rootItemParamName => $itemId,
         ]);
-        Log::debug('>>>>>>> end destroy' . $response);
         return $response;
     }
 
