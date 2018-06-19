@@ -32,4 +32,7 @@ require_once 'api/v1/skus.php';
 // /api/v1/prices
 require_once 'api/v1/prices.php';
 
+// /api/v1/brands
+require_once 'api/v1/brands.php';
+
 // EOF
