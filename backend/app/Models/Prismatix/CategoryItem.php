@@ -123,11 +123,10 @@ class CategoryItem extends PrismatixModel
     {
         Log::debug('>>>>>>> destroy: ' . $categoryId . ' ---- ' . $itemId);
         $response = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $categoryId,
-            $this->rootItemParamName => $itemId,
+            $this->rootParamName => $categoryId, // category_code = prx_skd_php_category_0001 
+            $this->rootItemParamName => $itemId, // item_code = prx_sdk_php_item_0001  
         ]);
-        $response = \Prismatix::resource($this->resourceKey)->destroy($body);
-        
+        Log::debug('>>>>>>> end destroy' . $response);
         return $response;
     }
 
