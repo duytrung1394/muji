@@ -53,4 +53,7 @@ require_once 'api/v1/categoryimages.php';
 // /api/v1/itemimages
 require_once 'api/v1/itemimages.php';
 
+// /api/v1/skuimages
+require_once 'api/v1/skuimages.php';
+
 // EOF
