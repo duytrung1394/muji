@@ -76,10 +76,10 @@ class CategoryItemsController extends Controller
      * @param  int      $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $category_id, $item_id)
     {
 
-        $response = $this->categoryItem->update($request, $id);
+        $response = $this->categoryItem->update($request, $category_id, $item_id);
 
         return [
             'item'  => $response->data,
@@ -92,9 +92,9 @@ class CategoryItemsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($category_id, $item_id)
     {
-        $response = $this->categoryItem->destroy($id);
+        $response = $this->categoryItem->destroy($category_id, $item_id);
 
         return [
             'item'  => $response->data,

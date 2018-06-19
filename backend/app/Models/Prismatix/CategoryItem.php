@@ -90,8 +90,9 @@ class CategoryItem extends PrismatixModel
      * @param  int      $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $categoryId, $itemId)
     {
+        Log::debug('>>>>>>>>>>>>>>>>>> '.$categoryId.' ---- '.$itemId);
         $body = [];
 
         foreach ([
@@ -118,13 +119,15 @@ class CategoryItem extends PrismatixModel
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($categoryId, $itemId)
     {
-
+        Log::debug('>>>>>>> destroy: ' . $categoryId . ' ---- ' . $itemId);
         $response = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $id,
+            $this->rootParamName => $categoryId,
+            $this->rootItemParamName => $itemId,
         ]);
-
+        $response = \Prismatix::resource($this->resourceKey)->destroy($body);
+        
         return $response;
     }
 
