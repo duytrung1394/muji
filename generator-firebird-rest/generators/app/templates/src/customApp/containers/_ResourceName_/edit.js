@@ -24,11 +24,11 @@ const {
   update,
 } = actions;
 
-const mapStateToProps = (state) => state.Task.Entity.toJS();
+const mapStateToProps = (state) => state.<%= ResourceName %>.Entity.toJS();
 
 export default withRouter(connect(mapStateToProps, {
   fetchRequest: fetch.request,
   fetchCleanup: fetch.cleanup,
   updateRequest: update.request,
   updateCleanup: update.cleanup,
-})(EditTask));
+})(EditEntity));

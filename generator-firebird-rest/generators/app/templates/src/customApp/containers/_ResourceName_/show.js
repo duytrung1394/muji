@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import RestShow from '../shared/show';
 import actions from '../../redux/<%= resource_name %>/entity/actions';
 
-class ShowTask extends Component {
+class ShowEntity extends Component {
 
   render() {
     const {
@@ -12,7 +12,7 @@ class ShowTask extends Component {
 
     return (
       <RestShow
-        name="task"
+        name="<%= resource_name %>"
         baseUrl="/dashboard/<%= urlbase %>"
         {...this.props}
       >
@@ -41,4 +41,4 @@ export default connect(mapStateToProps, {
   cleanup,
   destroy: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup,
-})(ShowTask);
+})(ShowEntity);
