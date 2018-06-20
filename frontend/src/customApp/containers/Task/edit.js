@@ -31,4 +31,4 @@ export default withRouter(connect(mapStateToProps, {
   fetchCleanup: fetch.cleanup,
   updateRequest: update.request,
   updateCleanup: update.cleanup,
-})(EditTask));
+})(EditEntity));
