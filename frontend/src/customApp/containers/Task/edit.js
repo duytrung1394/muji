@@ -12,7 +12,7 @@ class EditTask extends Component {
         name="task" 
         baseUrl="/dashboard/tasks"
         {...this.props}
-        errors={ this.props.updateErrors }
+        errors={ this.props.updateErrors.task }
         formComponent={TaskForm}
       />
     );
