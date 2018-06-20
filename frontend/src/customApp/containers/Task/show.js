@@ -17,9 +17,8 @@ class ShowTask extends Component {
         {...this.props}
       >
         <ul>
-          <li>ID: {entity.id}</li>
+          
           <li>Name: {entity.name}</li>
-          <li>CreatedAt: {entity.created_at}</li>
           <li>Description: {entity.description}</li>
         </ul>
       </RestShow>

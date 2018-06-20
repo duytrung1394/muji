@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 import actions from "../../redux/task/entity/actions";
-import TaskForm from "./form";
+import Form from "./form";
 import RestEdit from "../shared/edit";
 
-class EditTask extends Component {
+class EditEntity extends Component {
   render() {
     return (
       <RestEdit
-        name="task" 
+        name="task"
         baseUrl="/dashboard/tasks"
-        {...this.props}
         errors={ this.props.updateErrors.task }
-        formComponent={TaskForm}
+        {...this.props}
+        formComponent={Form}
       />
     );
   }
