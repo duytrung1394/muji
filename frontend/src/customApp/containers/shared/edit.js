@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
-import {connect} from "react-redux";
-import TaskForm from './form';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
-import actions from "../../redux/task/entity/actions";
 import {message} from "antd/lib/index";
 
 export default class RestEdit extends Component {
@@ -52,8 +49,7 @@ export default class RestEdit extends Component {
       entity,
       updating,
       updated,
-      updateError,
-      updateErrors,
+      errors,
       // methods
       updateRequest,
     } = this.props;
@@ -77,9 +73,9 @@ export default class RestEdit extends Component {
             { (() => {
               if( fetched && !updated ){
                 return React.createElement(formComponent,{
-                  entity: entity,
+                  entity,
+                  errors,
                   onSubmit: entity => updateRequest(id, entity),
-                  errors: updateErrors.task,
                 });
               }
             })() }

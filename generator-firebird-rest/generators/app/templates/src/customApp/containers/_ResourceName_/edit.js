@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import actions from "../../redux/task/entity/actions";
-import TaskForm from "./form";
+import actions from "../../redux/<%= resource_name %>/entity/actions";
+import Form from "./form";
 import RestEdit from "../shared/edit";
 
-class EditTask extends Component {
+class EditEntity extends Component {
   render() {
     return (
       <RestEdit
-        name="task" 
-        baseUrl="/dashboard/tasks"
+        name="<%= resource_name %>"
+        baseUrl="/dashboard/<%= urlbase %>"
+        errors={ this.props.updateErrors.<%= resource_name %> }
         {...this.props}
-        formComponent={TaskForm}
+        formComponent={Form}
       />
     );
   }
@@ -23,11 +24,11 @@ const {
   update,
 } = actions;
 
-const mapStateToProps = (state) => state.Task.Entity.toJS();
+const mapStateToProps = (state) => state.<%= ResourceName %>.Entity.toJS();
 
 export default withRouter(connect(mapStateToProps, {
   fetchRequest: fetch.request,
   fetchCleanup: fetch.cleanup,
   updateRequest: update.request,
   updateCleanup: update.cleanup,
-})(EditTask));
+})(EditEntity));

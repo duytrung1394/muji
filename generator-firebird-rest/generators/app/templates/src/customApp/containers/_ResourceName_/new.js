@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import Form from './form';
 import actions from "../../redux/<%= resource_name %>/entity/actions";
+import Form from "./form";
 import RestNew from "../shared/new";
 
 class NewEntity extends Component {
   render() {
-    // TODO: if createError で簡単なエラー表示？いらない？
     return (
       <RestNew
         name="<%= resource_name %>"
         baseUrl="/dashboard/<%= urlbase %>"
+        errors={ this.props.createErrors.<%= resource_name %> }
         {...this.props}
         formComponent={Form}
       />

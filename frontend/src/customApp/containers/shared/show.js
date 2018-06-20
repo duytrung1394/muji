@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {Modal, message} from 'antd';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
@@ -10,7 +9,7 @@ import Spin from '../../../components/uielements/spin';
 
 const confirm = Modal.confirm;
 
-export default class ShowTask extends Component {
+export default class ShowEntity extends Component {
 
   componentDidMount() {
     this.props.destroyCleanup();

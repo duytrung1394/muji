@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
-import {connect} from "react-redux";
 import {message} from 'antd';
-import TaskForm from './form';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
-import actions from "../../redux/task/entity/actions";
 
-class NewTask extends Component {
+export default class NewEntity extends Component {
 
   componentDidUpdate(prevProps, prevState, prevContext){
     const {
@@ -39,8 +36,7 @@ class NewTask extends Component {
       // redux store
       creating,
       created,
-      createError,
-      createErrors,
+      errors,
       // redux action
       request,
     } = this.props;
@@ -62,7 +58,7 @@ class NewTask extends Component {
               if( !created ){
                 return React.createElement(formComponent,{
                   onSubmit: entity => request(entity),
-                  errors: createErrors.task,
+                  errors,
                 });
               }
             })() }
@@ -72,17 +68,3 @@ class NewTask extends Component {
     );
   }
 }
-
-const {
-  request,
-  cleanup
-} = actions.create;
-
-const mapStateToProps = (state) => {
-  return state.Task.Entity.toJS();
-};
-
-export default withRouter(connect(mapStateToProps, {
-  request,
-  cleanup,
-})(NewTask));

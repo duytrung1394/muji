@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import RestShow from '../shared/show';
 import actions from '../../redux/task/entity/actions';
 
-class ShowTask extends Component {
+class ShowEntity extends Component {
 
   render() {
     const {
@@ -17,9 +17,8 @@ class ShowTask extends Component {
         {...this.props}
       >
         <ul>
-          <li>ID: {entity.id}</li>
+          
           <li>Name: {entity.name}</li>
-          <li>CreatedAt: {entity.created_at}</li>
           <li>Description: {entity.description}</li>
         </ul>
       </RestShow>
@@ -42,4 +41,4 @@ export default connect(mapStateToProps, {
   cleanup,
   destroy: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup,
-})(ShowTask);
+})(ShowEntity);
