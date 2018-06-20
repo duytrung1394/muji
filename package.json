@@ -20,6 +20,7 @@
     "escodegen": "^1.10.0",
     "esprima": "^4.0.0",
     "generator-firebird-rest": "file:./generator-firebird-rest",
-    "pluralize": "^7.0.0"
+    "pluralize": "^7.0.0",
+    "prettier": "^1.13.5"
   }
 }

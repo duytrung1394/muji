@@ -1,71 +1,20 @@
 import React, {Component} from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import {message} from 'antd';
-import EntityForm from './form';
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import PageHeader from "../../../components/utility/pageHeader";
-import Box from '../../../components/utility/box';
-import Spin from '../../../components/uielements/spin';
-import Button from '../../../components/uielements/button';
+import Form from './form';
 import actions from "../../redux/<%= resource_name %>/entity/actions";
+import RestNew from "../shared/new";
 
 class NewEntity extends Component {
-
-  componentDidUpdate(prevProps, prevState, prevContext){
-    const {
-      created,
-      entity,
-      cleanup,
-      history
-    } = this.props;
-
-    if(created){
-      message.success('タスクを新規作成しました');
-      const id = entity.id;
-      cleanup();
-      history.push(`/dashboard/<%= urlbase %>/${id}`);
-    }
-
-  }
-
   render() {
-    const {
-      // redux store
-      creating,
-      created,
-      createError,
-      createErrors,
-      // redux action
-      request,
-    } = this.props;
-
     // TODO: if createError で簡単なエラー表示？いらない？
     return (
-      <LayoutWrapper>
-        <PageHeader>
-          タスクの新規作成
-        </PageHeader>
-        <Box>
-          <Link to={`/dashboard/<%= urlbase %>/`}>
-            <Button>
-              一覧にもどる
-            </Button>
-          </Link>
-          <Spin spinning={creating}>
-            { (() => {
-              if( !created ){
-                return (
-                  <EntityForm
-                    onSubmit={ (entity) => request(entity) }
-                    errors={ createErrors.<%= resource_name %> }
-                  />
-                );
-              }
-            })() }
-          </Spin>
-        </Box>
-      </LayoutWrapper>
+      <RestNew
+        name="<%= resource_name %>"
+        baseUrl="/dashboard/<%= urlbase %>"
+        {...this.props}
+        formComponent={Form}
+      />
     );
   }
 }

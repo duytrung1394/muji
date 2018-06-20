@@ -7,4 +7,4 @@ const actions = createActions({
   },
 });
 
-export default actions.<%= resource_name %>.list;
+export default actions.<%= resourceName %>.list;

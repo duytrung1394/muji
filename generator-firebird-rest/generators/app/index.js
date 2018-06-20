@@ -6,6 +6,7 @@ const {camelCase, snakeCase, constantCase, pascalCase} = require('change-case');
 const pluralize =  require('pluralize');
 const esprima = require('esprima');
 const escodegen = require('escodegen');
+const prettier = require('prettier');
 
 const escodegenOption = {
   format: {
@@ -28,6 +29,25 @@ module.exports = class extends Generator {
       name: 'name',
       message: 'reduxにおけるリソース名を入力してください',
       default: 'task',
+    },
+    {
+      type: 'input',
+      name: 'detailColumns',
+      message: '編集・詳細表示するカラム名をカンマ(,)区切りで入力してください',
+      default: 'name,description',
+    },
+    {
+      type: 'input',
+      name: 'listColumns',
+      message: 'リスト表示するカラム名をカンマ(,)区切りで入力してください',
+      default: 'id,name',
+    },
+    {
+      type: 'list',
+      name: 'linkColumnName',
+      message: 'リストから詳細へリンクするカラムを選んでください',
+      choices: (props) => props.listColumns.split(",").map( s => s.trim() ),
+      default: (props) => props.listColumns.split(",").map( s => s.trim() ).filter( s => s != "id")[0]
     },
     {
       type: 'input',
@@ -59,6 +79,11 @@ module.exports = class extends Generator {
     const ResourceName = pascalCase(rawname);
     const resourceNameSagas = `${resourceName}Sagas`;
     const urlbase = this.props.urlbase;
+    const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
+    const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
+    const linkColumnName = this.props.linkColumnName;
+
+    // 置換対象ファイルパスを羅列
     const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
       'src/customApp/redux/_resource_name_/entity/' + name
     );
@@ -92,6 +117,17 @@ module.exports = class extends Generator {
           ResourceName,
           endpoint,
           urlbase,
+          listColumns,
+          detailColumns,
+          linkColumnName,
+          // bind functions...
+          pascalCase,
+        },
+        {
+          process: (content) => {
+            const script = content.toString();
+            return prettier.format(script);
+          }
         }
       );
     }
@@ -144,7 +180,7 @@ module.exports = class extends Generator {
             return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          return `${comment}\n${code}`;
+          return prettier.format(`${comment}\n${code}`);
         }
       }
     );
@@ -194,7 +230,7 @@ module.exports = class extends Generator {
             return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          return `${comment}\n${code}`;
+          return prettier.format(`${comment}\n${code}`);
         }
       }
     );
@@ -233,7 +269,7 @@ module.exports = class extends Generator {
             return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          return `${comment}\n${code}`;
+          return prettier.format(`${comment}\n${code}`);
         }
       }
     );
@@ -299,7 +335,7 @@ module.exports = class extends Generator {
             return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
 
-          return `${comment}\n${code}`;
+          return prettier.format(`${comment}\n${code}`);
         }
       }
     );
