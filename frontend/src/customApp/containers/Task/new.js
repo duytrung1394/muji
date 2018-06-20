@@ -13,6 +13,7 @@ class NewEntity extends Component {
         name="task"
         baseUrl="/dashboard/tasks"
         {...this.props}
+        errors={ this.props.createErrors }
         formComponent={Form}
       />
     );

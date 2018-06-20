@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {message, Modal } from 'antd';
-import actions from '../../redux/task/list/actions';
 import Button from '../../../components/uielements/button';
 import Table from '../../../components/uielements/table';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
@@ -11,7 +10,7 @@ import { withRouter } from 'react-router-dom'
 
 const confirm = Modal.confirm;
 
-class TaskIndex extends Component {
+export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -171,19 +170,3 @@ class TaskIndex extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return state.Task.List.toJS();
-};
-
-
-const {
-  fetch,
-  destroy
-} = actions;
-
-export default withRouter(connect(mapStateToProps, {
-  fetchRequest: fetch.request,
-  destroyRequest: destroy.request,
-  destroyCleanup: destroy.cleanup,
-})(TaskIndex));
