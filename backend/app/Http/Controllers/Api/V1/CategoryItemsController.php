@@ -113,8 +113,9 @@ class CategoryItemsController extends Controller
 
         foreach ($request->input('ids') as $id) {
 
-            $response = \Prismatix::resource('categoryItem.CategoryItem')->destroy([
-                'item_code' => $id,
+            $response = \Prismatix::resource('item.CategoryItem')->destroy([
+                'category_code' => $id['category_code'],
+                'item_code' => $id['item_code'],
             ]);
 
             $data[] = $response->data;
