@@ -555,7 +555,7 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 "generator-firebird-rest@file:./generator-firebird-rest":
-  version "0.0.0"
+  version "0.9.0"
   dependencies:
     chalk "^2.1.0"
     yeoman-generator "^2.0.1"
