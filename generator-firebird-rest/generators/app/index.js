@@ -129,7 +129,7 @@ module.exports = class extends Generator {
           listColumns,
           detailColumns,
           linkColumnName,
-          pk_name,
+          pkName,
           // bind functions...
           pascalCase,
         },
