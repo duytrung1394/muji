@@ -13,6 +13,7 @@ class ShowEntity extends Component {
     return (
       <RestShow
         name="<%= resource_name %>"
+        pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         {...this.props}
       >
