@@ -4,7 +4,7 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/addonservices
+// {{{ /api/v1/addonServices
 
 /**
  * 一覧取得

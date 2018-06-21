@@ -4,12 +4,12 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/item-images
+// {{{ /api/v1/itemImages
 
 /**
  * 一覧取得
  */
-$router->get('itemimages/{item_code}', [
+$router->get('itemimages/{itemCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemImagesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('itemimages/{item_code}', [
 /**
  * 詳細取得
  */
-$router->get('itemimages/{item_code}/{item_image_code}', [
+$router->get('itemimages/{itemCode}/{itemImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemImagesController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('itemimages/{item_code}/{item_image_code}', [
 /**
  * 登録
  */
-$router->post('itemimages/{item_code}', [
+$router->post('itemimages/{itemCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemImagesController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('itemimages/{item_code}', [
 /**
  * 更新
  */
-$router->put('itemimages/{item_code}/{item_image_code}', [
+$router->put('itemimages/{itemCode}/{itemImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemImagesController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('itemimages/{item_code}/{item_image_code}', [
 /**
  * 削除
  */
-$router->delete('itemimages/{item_code}/{item_image_code}', [
+$router->delete('itemimages/{itemCode}/{itemImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemImagesController@destroy',
 ]);

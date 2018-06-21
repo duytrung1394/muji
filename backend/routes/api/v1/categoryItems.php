@@ -4,7 +4,7 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/category-items
+// {{{ /api/v1/categoryItems
 
 /**
  * 一覧取得

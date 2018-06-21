@@ -35,8 +35,8 @@ require_once 'api/v1/prices.php';
 // /api/v1/brands
 require_once 'api/v1/brands.php';
 
-// /api/v1/addonservices
-require_once 'api/v1/addonservices.php';
+// /api/v1/addonServices
+require_once 'api/v1/addonServices.php';
 
 // /api/v1/discounts
 require_once 'api/v1/discounts.php';
@@ -47,13 +47,13 @@ require_once 'api/v1/staffs.php';
 // /api/v1/stores
 require_once 'api/v1/stores.php';
 
-// /api/v1/categoryimages
-require_once 'api/v1/categoryimages.php';
+// /api/v1/categoryImages
+require_once 'api/v1/categoryImages.php';
 
-// /api/v1/itemimages
-require_once 'api/v1/itemimages.php';
+// /api/v1/itemImages
+require_once 'api/v1/itemImages.php';
 
-// /api/v1/skuimages
-require_once 'api/v1/skuimages.php';
+// /api/v1/skuImages
+require_once 'api/v1/skuImages.php';
 
 // EOF

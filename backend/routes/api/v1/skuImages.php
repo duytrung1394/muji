@@ -4,12 +4,12 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/sku-images
+// {{{ /api/v1/skuImages
 
 /**
  * 一覧取得
  */
-$router->get('skuimages/{sku_code}', [
+$router->get('skuimages/{skuCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkuImagesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('skuimages/{sku_code}', [
 /**
  * 詳細取得
  */
-$router->get('skuimages/{sku_code}/{sku_image_code}', [
+$router->get('skuimages/{skuCode}/{skuImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkuImagesController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('skuimages/{sku_code}/{sku_image_code}', [
 /**
  * 登録
  */
-$router->post('skuimages/{sku_code}', [
+$router->post('skuimages/{skuCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkuImagesController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('skuimages/{sku_code}', [
 /**
  * 更新
  */
-$router->put('skuimages/{sku_code}/{sku_image_code}', [
+$router->put('skuimages/{skuCode}/{skuImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkuImagesController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('skuimages/{sku_code}/{sku_image_code}', [
 /**
  * 削除
  */
-$router->delete('skuimages/{sku_code}/{sku_image_code}', [
+$router->delete('skuimages/{skuCode}/{skuImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkuImagesController@destroy',
 ]);

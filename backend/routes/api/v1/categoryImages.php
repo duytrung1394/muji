@@ -4,12 +4,12 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/category-images
+// {{{ /api/v1/categoryImages
 
 /**
  * 一覧取得
  */
-$router->get('categoryimages/{category_code}', [
+$router->get('categoryimages/{categoryCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryImagesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('categoryimages/{category_code}', [
 /**
  * 詳細取得
  */
-$router->get('categoryimages/{category_code}/{category_image_code}', [
+$router->get('categoryimages/{categoryCode}/{categoryImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryImagesController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('categoryimages/{category_code}/{category_image_code}', [
 /**
  * 登録
  */
-$router->post('categoryimages/{category_code}', [
+$router->post('categoryimages/{categoryCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryImagesController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('categoryimages/{category_code}', [
 /**
  * 更新
  */
-$router->put('categoryimages/{category_code}/{category_image_code}', [
+$router->put('categoryimages/{categoryCode}/{categoryImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryImagesController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('categoryimages/{category_code}/{category_image_code}', [
 /**
  * 削除
  */
-$router->delete('categoryimages/{category_code}/{category_image_code}', [
+$router->delete('categoryimages/{categoryCode}/{categoryImageCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoryImagesController@destroy',
 ]);
