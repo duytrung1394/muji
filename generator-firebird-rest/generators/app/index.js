@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const {camelCase, snakeCase, constantCase, pascalCase} = require('change-case');
+const {camelCase, snakeCase, constantCase, pascalCase, paramCase} = require('change-case');
 const pluralize =  require('pluralize');
 const esprima = require('esprima');
 const escodegen = require('escodegen');
@@ -26,21 +26,27 @@ module.exports = class extends Generator {
 
     const props = await this.prompt([{
       type: 'input',
-      name: 'name',
-      message: 'reduxにおけるリソース名を入力してください',
+      name: 'rawname',
+      message: 'reduxにおけるリソース名を入力してください。複数語の場合はcamelCaseで入力してください',
       default: 'task',
     },
     {
       type: 'input',
-      name: 'detailColumns',
-      message: '編集・詳細表示するカラム名をカンマ(,)区切りで入力してください',
-      default: 'name,description',
+      name: 'endpoint',
+      message: 'APIのエンドポイントを入力してください',
+      default: (props)=> paramCase(props.rawname),
+    },
+    {
+      type: 'input',
+      name: 'pkName',
+      message: 'プライマリキーの名前を入力してください',
+      default: (props)=> snakeCase(props.rawname) + "_code",
     },
     {
       type: 'input',
       name: 'listColumns',
       message: 'リスト表示するカラム名をカンマ(,)区切りで入力してください',
-      default: 'id,name',
+      default: (props) => [props.pkName,'name'].join(','),
     },
     {
       type: 'list',
@@ -51,15 +57,15 @@ module.exports = class extends Generator {
     },
     {
       type: 'input',
-      name: 'endpoint',
-      message: 'APIのエンドポイントを入力してください',
-      default: (props)=> pluralize(props.name),
+      name: 'detailColumns',
+      message: '編集・詳細表示するカラム名をカンマ(,)区切りで入力してください',
+      default: 'name,description',
     },
     {
       type: 'input',
       name: 'urlbase',
       message: 'ブラウザからアクセスするURLのベース部を入力してください',
-      default: (props)=> pluralize(props.name),
+      default: (props)=> pluralize(props.rawname),
     }
   ]);
 
@@ -71,14 +77,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const rawname = this.props.name;
-    const endpoint = this.props.endpoint;
+    const {
+      rawname,
+      endpoint,
+      urlbase,
+      pkName
+    } = this.props;
     const resource_name = snakeCase(rawname);
     const resourceName = camelCase(rawname);
     const RESOURCE_NAME = constantCase(rawname);
     const ResourceName = pascalCase(rawname);
     const resourceNameSagas = `${resourceName}Sagas`;
-    const urlbase = this.props.urlbase;
     const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
     const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
     const linkColumnName = this.props.linkColumnName;
@@ -120,8 +129,10 @@ module.exports = class extends Generator {
           listColumns,
           detailColumns,
           linkColumnName,
+          pkName,
           // bind functions...
           pascalCase,
+          pluralize,
         },
         {
           process: (content) => {

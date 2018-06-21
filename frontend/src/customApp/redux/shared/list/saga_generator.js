@@ -11,7 +11,7 @@ export function restSagaFunctions(api, actions) {
         yield put(actions.fetch.failure(error));
       }
     },
-    // USAGE: destroy.request(ids)
+    // USAGE: destroy.request(primary_keys)
     destroy: function* ({payload}) {
       try {
         const response = yield call(api.DELETE, payload);

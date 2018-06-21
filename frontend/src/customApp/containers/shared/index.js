@@ -14,7 +14,7 @@ export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIds: [],
+      selectedKeys: [],
     };
 
     this.recordsSelected = this.recordsSelected.bind(this);
@@ -34,8 +34,8 @@ export default class Index extends Component {
       props.fetchRequest( this.getPage(props) );
     }
 
-    if( this.state.selectedIds.length > 0 && props.destroyed ){
-      this.setState({selectedIds: []});
+    if( this.state.selectedKeys.length > 0 && props.destroyed ){
+      this.setState({selectedKeys: []});
     }
 
     const {
@@ -52,7 +52,7 @@ export default class Index extends Component {
   }
   
   recordsSelected(){
-    return this.state.selectedIds.length > 0
+    return this.state.selectedKeys.length > 0
   }
 
   render() {
@@ -86,7 +86,7 @@ export default class Index extends Component {
       if( linkColumn === name ){
         column.render = (value, record) => 
         {
-          return <Link to={`${baseUrl}/${record.id}`}>{value}</Link>
+          return <Link to={`${baseUrl}/${record[this.props.pkName]}`}>{value}</Link>
         }
       }
 
@@ -95,7 +95,7 @@ export default class Index extends Component {
 
     const rowSelection = {
       onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({selectedIds: selectedRowKeys});
+        this.setState({selectedKeys: selectedRowKeys});
       },
       getCheckboxProps: record => ({
         name: record.name,
@@ -137,12 +137,12 @@ export default class Index extends Component {
               type="danger"
               disabled={ ! this.recordsSelected() }
               onClick={ (event)=> {
-                const ids = this.state.selectedIds;
+                const keys = this.state.selectedKeys;
                 confirm({
-                  title: `選択した${this.state.selectedIds.length}件のタスクを削除してよろしいですか？`,
+                  title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
                   content: '削除したタスクを元に戻すことは出来ません',
                   onOk() {
-                    destroyRequest(ids);
+                    destroyRequest(keys);
                   },
                   onCancel() {},
                 });
@@ -150,14 +150,14 @@ export default class Index extends Component {
             >
               削除
             </Button>
-            {this.state.selectedIds.length > 0 &&
-            <span>（{ this.state.selectedIds.length }件選択中）</span>
+            {this.state.selectedKeys.length > 0 &&
+            <span>（{ this.state.selectedKeys.length }件選択中）</span>
             }
           </p>
 
           <div key={page}>
             <Table
-              rowKey='id'
+              rowKey={ this.props.pkName }
               dataSource={ entities }
               columns={ columns }
               rowSelection={ rowSelection }

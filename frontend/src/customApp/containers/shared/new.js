@@ -21,9 +21,9 @@ export default class NewEntity extends Component {
 
     if(created){
       message.success(`${name}を新規作成しました`);
-      const id = entity.id;
+      const primaryKey = entity[this.props.pkName];
       cleanup();
-      history.push(`${baseUrl}/${id}`);
+      history.push(`${baseUrl}/${primaryKey}`);
     }
 
   }

@@ -10,11 +10,11 @@ import {message} from "antd/lib/index";
 export default class RestEdit extends Component {
   componentDidMount(){
     // showから来たときはデータが既にある。 そうじゃない時はないのでロードが必要。
-    const {id} =  this.props.match.params;
-    if( this.props.entity.id !== parseInt(id) ){
+    const primaryKey = this.props.match.params.id;
+    if( this.props.entity[this.props.pkName] !== parseInt(primaryKey) ){
       // 読まれてるデータがURLと一致しない時はリロードする
       this.props.fetchCleanup();
-      this.props.fetchRequest(id);
+      this.props.fetchRequest(primaryKey);
     }
   }
 
@@ -30,9 +30,9 @@ export default class RestEdit extends Component {
 
     if(updated){
       message.success(`${name}を更新しました`);
-      const id = entity.id;
+      const primaryKey = entity[this.props.pkName];
       updateCleanup();
-      history.push(`${baseUrl}/${id}`);
+      history.push(`${baseUrl}/${primaryKey}`);
     }
   }
 
@@ -54,16 +54,14 @@ export default class RestEdit extends Component {
       updateRequest,
     } = this.props;
 
-    const {
-      id
-    } = match.params;
+    const primaryKey = match.params.id;
 
     return (
       <LayoutWrapper>
         <PageHeader>
           {name}の編集
         </PageHeader>
-        <Link to={`${baseUrl}/${entity.id}`}>
+        <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>
             {name}詳細にもどる
           </Button>
@@ -75,7 +73,7 @@ export default class RestEdit extends Component {
                 return React.createElement(formComponent,{
                   entity,
                   errors,
-                  onSubmit: entity => updateRequest(id, entity),
+                  onSubmit: entity => updateRequest(primaryKey, entity),
                 });
               }
             })() }
