@@ -26,7 +26,7 @@ module.exports = class extends Generator {
 
     const props = await this.prompt([{
       type: 'input',
-      name: 'name',
+      name: 'rawname',
       message: 'reduxにおけるリソース名を入力してください。複数語の場合はcamelCaseで入力してください',
       default: 'task',
     },
@@ -34,13 +34,13 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'endpoint',
       message: 'APIのエンドポイントを入力してください',
-      default: (props)=> paramCase(props.name),
+      default: (props)=> paramCase(props.rawname),
     },
     {
       type: 'input',
       name: 'pkName',
       message: 'プライマリキーの名前を入力してください',
-      default: (props)=> snakeCase(props.name) + "_code",
+      default: (props)=> snakeCase(props.rawname) + "_code",
     },
     {
       type: 'input',
@@ -65,7 +65,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'urlbase',
       message: 'ブラウザからアクセスするURLのベース部を入力してください',
-      default: (props)=> pluralize(props.name),
+      default: (props)=> pluralize(props.rawname),
     }
   ]);
 
