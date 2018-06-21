@@ -132,6 +132,7 @@ module.exports = class extends Generator {
           pkName,
           // bind functions...
           pascalCase,
+          pluralize,
         },
         {
           process: (content) => {
