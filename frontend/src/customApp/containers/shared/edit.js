@@ -11,7 +11,7 @@ export default class RestEdit extends Component {
   componentDidMount(){
     // showから来たときはデータが既にある。 そうじゃない時はないのでロードが必要。
     const primaryKey = this.props.match.params.id;
-    if( this.props.entity[this.props.pkName] !== parseInt(primaryKey) ){
+    if( this.props.entity[this.props.pkName] !== (primaryKey) ){
       // 読まれてるデータがURLと一致しない時はリロードする
       this.props.fetchCleanup();
       this.props.fetchRequest(primaryKey);

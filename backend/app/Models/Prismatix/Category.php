@@ -81,9 +81,9 @@ class Category extends PrismatixModel
             'tags',
         ] as $property) {
 
-            if ($request->has($property)) {
+            if ($request->has('category.' . $property)) {
 
-                $body[$property] = $request->input($property);
+                $body[$property] = $request->input('category.' . $property);
             }
         }
 
@@ -120,9 +120,9 @@ class Category extends PrismatixModel
             'tags',
         ] as $property) {
 
-            if ($request->has($property)) {
+            if ($request->has('category.' . $property)) {
 
-                $body[$property] = $request->input($property);
+                $body[$property] = $request->input('category.' . $property);
             }
         }
 
