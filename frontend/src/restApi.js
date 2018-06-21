@@ -26,7 +26,7 @@ export function RESTEntityApi(endpoint){
   };
 }
 
-export function RESTListApi(endpoint){
+export function RESTListApi(endpoint, pkNamePlural='ids'){
   const GET = (page) => {
     let url = `${base}/${endpoint}`;
     if( page && page > 0 ){
@@ -37,7 +37,7 @@ export function RESTListApi(endpoint){
   const DELETE = (primary_keys) =>
     axios.delete(`${base}/${endpoint}`, {
       ...option,
-      params: {primary_keys: primary_keys.join(',') },
+      params: {[pkNamePlural]: primary_keys.join(',') },
     });
 
   return {
