@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
-use Log;
 
 class PricesController extends Controller
 {
@@ -112,7 +111,6 @@ class PricesController extends Controller
         $data = [];
 
         foreach ($request->input('ids') as $id) {
-            Log::debug(">>>>>> destroyMulti: " . $id['sku_code'] . " ---- " . $id['price_code']);
             $response = \Prismatix::resource('item.Price')->destroy([
                 'price_code' => $id['price_code'],
                 'sku_code' => $id['sku_code'],

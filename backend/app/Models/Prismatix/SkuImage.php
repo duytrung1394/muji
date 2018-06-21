@@ -3,7 +3,6 @@
 namespace App\Models\Prismatix;
 
 use Illuminate\Http\Request;
-use Log;
 
 class SkuImage extends PrismatixModel
 {
