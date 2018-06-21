@@ -3,7 +3,7 @@ export default function restRoutes(path, componentName){
   // componentName
   return [
     {
-      path: `${path}/`,
+      path: `${path}`,
       component: asyncComponent(() => import(`./containers/${componentName}/index`))
     },
     {
