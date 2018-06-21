@@ -9,14 +9,14 @@ const option = { headers };
 const base = "http://localhost:8080";
 
 export function RESTEntityApi(endpoint){
-  const GET = (id) =>
-    axios.get(`${base}/${endpoint}/${id}`, option);
+  const GET = (primary_key) =>
+    axios.get(`${base}/${endpoint}/${primary_key}`, option);
   const POST = (body) =>
     axios.post(`${base}/${endpoint}/`, body, option);
-  const PUT = (id, body) =>
-    axios.put(`${base}/${endpoint}/${id}`, body, option);
-  const DELETE = (id) =>
-    axios.delete(`${base}/${endpoint}/${id}`, option);
+  const PUT = (primary_key, body) =>
+    axios.put(`${base}/${endpoint}/${primary_key}`, body, option);
+  const DELETE = (primary_key) =>
+    axios.delete(`${base}/${endpoint}/${primary_key}`, option);
 
   return {
     GET,
@@ -34,10 +34,10 @@ export function RESTListApi(endpoint){
     }
     return axios.get(url, option);
   };
-  const DELETE = (ids) =>
+  const DELETE = (primary_keys) =>
     axios.delete(`${base}/${endpoint}`, {
       ...option,
-      params: {ids: ids.join(',') },
+      params: {primary_keys: primary_keys.join(',') },
     });
 
   return {

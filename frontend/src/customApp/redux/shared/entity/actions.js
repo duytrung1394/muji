@@ -5,7 +5,7 @@ const restEntityActions = {
   CREATE: req,
   UPDATE: {
     ...req,
-    REQUEST: (id, entity) => ({id, entity}),
+    REQUEST: (primaryKey, entity) => ({primaryKey, entity}),
   },
   DESTROY: req,
 };

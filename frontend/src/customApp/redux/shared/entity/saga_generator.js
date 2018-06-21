@@ -2,7 +2,7 @@ import {call, put, all, takeEvery} from "redux-saga/effects";
 
 export function restSagaFunctions(name, api, actions) {
   return {
-    // USAGE: fetch.request(id)
+    // USAGE: fetch.request(primary_key)
     fetch: function* ({payload}) {
       try {
         const response = yield call(api.GET, payload);
@@ -20,17 +20,17 @@ export function restSagaFunctions(name, api, actions) {
         yield put(actions.create.failure(error));
       }
     },
-    // USAGE: update.request(id, entity)
+    // USAGE: update.request(primary_key, entity)
     update: function* ({payload}) {
       try {
-        const {id, entity} = payload;
-        const response = yield call(api.PUT, id, {[name]: entity});
+        const {primaryKey, entity} = payload;
+        const response = yield call(api.PUT, primaryKey, {[name]: entity});
         yield put(actions.update.success(response.data));
       } catch (error) {
         yield put(actions.update.failure(error));
       }
     },
-    // USAGE: destroy.request(id)
+    // USAGE: destroy.request(primary_key)
     destroy: function* ({payload}) {
       try {
         const response = yield call(api.DELETE, payload);

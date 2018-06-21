@@ -46,11 +46,7 @@ export default class ShowEntity extends Component {
       cleanup,
     } = this.props;
 
-    const {
-      id
-    } = match.params;
-
-
+    const primaryKey = match.params.id;
 
     // TODO: fetchErrorを表示してUIからfetchしなおせるようにしたい
     return (
@@ -59,7 +55,7 @@ export default class ShowEntity extends Component {
           <Link to={ baseUrl }>
             <Button>一覧に戻る</Button>
           </Link>
-          <Link to={`${baseUrl}/${id}/edit`}>
+          <Link to={`${baseUrl}/${primaryKey}/edit`}>
             <Button>編集</Button>
           </Link>
           <Button
@@ -69,7 +65,7 @@ export default class ShowEntity extends Component {
                 title: `この${name}を削除してよろしいですか？`,
                 content: `削除した${name}を元に戻すことは出来ません`,
                 onOk() {
-                  destroy(id);
+                  destroy(primaryKey);
                 },
                 onCancel() {},
               });
@@ -82,7 +78,7 @@ export default class ShowEntity extends Component {
 
         <Box>
           <Spin spinning={fetching}>
-            <div key={id}>
+            <div key={primaryKey}>
               { this.props.children }
             </div>
           </Spin>

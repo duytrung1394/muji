@@ -9,6 +9,7 @@ class Index extends Component {
     return (
       <RestIndex
         name="task"
+        pkName="id"
         baseUrl="/dashboard/tasks"
         columnNames={["id","name"]}
         linkColumn="name"

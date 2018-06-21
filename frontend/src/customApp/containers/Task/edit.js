@@ -10,6 +10,7 @@ class EditEntity extends Component {
     return (
       <RestEdit
         name="task"
+        pkName="id"
         baseUrl="/dashboard/tasks"
         errors={ this.props.updateErrors.task }
         {...this.props}
