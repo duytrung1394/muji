@@ -114,7 +114,7 @@ class TasksController extends Controller
      */
     public function destroyMulti(Request $request)
     {
-        $ids = explode(',', $request->input('ids'));
+        $ids = $request->input('code');
         $count = Task::destroy($ids);
 
         return [
