@@ -126,7 +126,7 @@ export default class Index extends Component {
         </PageHeader>
         <div className='isoLayoutContent'>
           <p>
-            <Link to={`${baseUrl}/new`}>
+            <Link to={`${baseUrl}/!new`}>
               <Button type="primary">
                 新規作成
               </Button>
