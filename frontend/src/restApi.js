@@ -26,7 +26,7 @@ export function RESTEntityApi(endpoint){
   };
 }
 
-export function RESTListApi(endpoint, pkNamePlural='ids'){
+export function RESTListApi(endpoint, keyName='code'){
   const GET = (page) => {
     let url = `${base}/${endpoint}`;
     if( page && page > 0 ){
@@ -34,11 +34,10 @@ export function RESTListApi(endpoint, pkNamePlural='ids'){
     }
     return axios.get(url, option);
   };
-  const DELETE = (primary_keys) =>
-    axios.delete(`${base}/${endpoint}`, {
-      ...option,
-      params: {[pkNamePlural]: primary_keys.join(',') },
-    });
+  const DELETE = (keys) => {
+    const codes = keys.map((code)=> `${keyName}[]=${code}`).join('&')
+    return axios.delete(`${base}/${endpoint}?${codes}`, option);
+  }
 
   return {
     GET,
