@@ -11,15 +11,15 @@ export default function restRoutes(path, componentName){
       component: asyncComponent(() => import(`./containers/${componentName}/index`))
     },
     {
-      path: `${path}/new`,
+      path: `${path}/!new`,
       component: asyncComponent(() => import(`./containers/${componentName}/new`))
     },
     {
-      path: `${path}/:id`,
+      path: `${path}/:id([^!]+)`,
       component: asyncComponent(() => import(`./containers/${componentName}/show`))
     },
     {
-      path: `${path}/:id/edit`,
+      path: `${path}/:id([^!]+)/edit`,
       component: asyncComponent(() => import(`./containers/${componentName}/edit`))
     }
   ];
