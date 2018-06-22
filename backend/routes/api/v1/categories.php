@@ -41,15 +41,7 @@ $router->put('categories/{id}', [
 /**
  * 削除
  */
-$router->delete('categories/{id}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CategoriesController@destroy',
-]);
-
-/**
- * 削除(複数)
- */
 $router->delete('categories', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\CategoriesController@destroyMulti',
+    'uses'          => 'Api\V1\CategoriesController@destroy',
 ]);

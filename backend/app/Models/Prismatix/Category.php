@@ -130,35 +130,19 @@ class Category extends PrismatixModel
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-
-        $responce = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $id,
-        ]);
-
-        return $responce;
-    }
-
-    /**
      * Remove somev resources from storage.
      *
-     * @param  int  $id
+     * @param  Request  $request
      * @return Response
      */
-/*    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
         $data = [];
 
-        foreach ($request->input('ids') as $id) {
+        foreach ($request->input('category_codes') as $code) {
 
             $responce = \Prismatix::resource($this->resourceKey)->destroy([
-                $this->rootParamName => $id,
+                $this->rootParamName => $code,
             ]);
 
             $data[] = $responce->data;
@@ -168,5 +152,5 @@ class Category extends PrismatixModel
             'data'  => $data,
             'count' => count($data),
         ];
-    }*/
+    }
 }

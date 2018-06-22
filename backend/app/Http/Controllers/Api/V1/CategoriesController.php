@@ -86,42 +86,13 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $responce = $this->category->destroy($id);
-
-        return [
-            'item'  => $responce->data,
-        ];
-    }
-
-    /**
      * Remove some resources from storage.
      *
      * @param  int  $id
      * @return Response
      */
-    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
-        $data = [];
-
-        foreach ($request->input('ids') as $id) {
-
-            $responce = \Prismatix::resource('item.Category')->destroy([
-                'category_code' => $id,
-            ]);
-
-            $data[] = $responce->data;
-        }
-
-        return [
-            'data'  => $data,
-            'count' => count($data),
-        ];
+        return $this->category->destroy($request);
     }
 }
