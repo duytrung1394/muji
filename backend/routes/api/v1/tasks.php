@@ -41,15 +41,7 @@ $router->put('tasks/{id}', [
 /**
  * 削除
  */
-$router->delete('tasks/{id}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\TasksController@destroy',
-]);
-
-/**
- * 削除(複数)
- */
 $router->delete('tasks', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\TasksController@destroyMulti',
+    'uses'          => 'Api\V1\TasksController@destroy',
 ]);

@@ -207,17 +207,9 @@ $router->put('users/{id}', [
 /**
  * 削除
  */
-$router->delete('users/{id}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\UsersController@destroy',
-]);
-
-/**
- * 削除(複数)
- */
 $router->delete('users', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\UsersController@destroyMulti',
+    'uses'          => 'Api\V1\UsersController@destroy',
 ]);
 
 // }}}

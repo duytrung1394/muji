@@ -89,33 +89,14 @@ class TasksController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove some resources from storage.
      *
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-
-        $task = Task::find($id);
-
-        $task->delete();
-
-        return [
-            'item' => $task,
-        ];
-    }
-
-    /**
-     * Remove the specified resources from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroyMulti(Request $request)
-    {
-        $ids = $request->input('codes');
-        $count = Task::destroy($ids);
+        $count = Task::destroy($request->input('codes'));
 
         return [
             'count' => $count,

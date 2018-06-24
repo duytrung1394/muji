@@ -574,33 +574,14 @@ class UsersController extends Controller {
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove some resources from storage.
      *
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-
-        $user = User::find($id);
-
-        $user->delete();
-
-        return [
-            'item' => $user,
-        ];
-    }
-
-    /**
-     * Remove the specified resources from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroyMulti(Request $request)
-    {
-        $ids = explode(',', $request->input('ids'));
-        $count = User::destroy($ids);
+        $count = User::destroy($request->input('codes'));
 
         return [
             'count' => $count,
