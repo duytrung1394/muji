@@ -139,7 +139,7 @@ class Category extends PrismatixModel
     {
         $data = [];
 
-        foreach ($request->input('category_codes') as $code) {
+        foreach ($request->input('codes') as $code) {
 
             $responce = \Prismatix::resource($this->resourceKey)->destroy([
                 $this->rootParamName => $code,

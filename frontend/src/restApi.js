@@ -8,15 +8,21 @@ const option = { headers };
 
 const base = "http://localhost:8080";
 
-export function RESTEntityApi(endpoint){
+export function RESTEntityApi(endpoint, keyName='codes'){
   const GET = (primary_key) =>
     axios.get(`${base}/${endpoint}/${primary_key}`, option);
   const POST = (body) =>
     axios.post(`${base}/${endpoint}/`, body, option);
   const PUT = (primary_key, body) =>
     axios.put(`${base}/${endpoint}/${primary_key}`, body, option);
-  const DELETE = (primary_key) =>
-    axios.delete(`${base}/${endpoint}/${primary_key}`, option);
+  const DELETE = (primary_key) => {
+    return axios.delete(`${base}/${endpoint}`, {
+      ...option,
+      params: {
+        [keyName]: [primary_key]
+      }
+    });
+  }
 
   return {
     GET,
@@ -26,7 +32,7 @@ export function RESTEntityApi(endpoint){
   };
 }
 
-export function RESTListApi(endpoint, keyName='code'){
+export function RESTListApi(endpoint, keyName='codes'){
   const GET = (page) => {
     let url = `${base}/${endpoint}`;
     if( page && page > 0 ){
@@ -35,9 +41,13 @@ export function RESTListApi(endpoint, keyName='code'){
     return axios.get(url, option);
   };
   const DELETE = (keys) => {
-    const codes = keys.map((code)=> `${keyName}[]=${code}`).join('&')
-    return axios.delete(`${base}/${endpoint}?${codes}`, option);
-  }
+    return axios.delete(`${base}/${endpoint}`, {
+      ...option,
+      params: {
+        [keyName]: keys
+      }
+    });
+  };
 
   return {
     GET,
