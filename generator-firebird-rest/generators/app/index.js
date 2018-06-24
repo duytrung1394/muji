@@ -34,7 +34,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'endpoint',
       message: 'APIのエンドポイントを入力してください',
-      default: (props)=> paramCase(props.rawname),
+      default: (props)=> paramCase(pluralize(props.rawname)),
     },
     {
       type: 'input',
