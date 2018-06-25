@@ -4,6 +4,7 @@ const actions = {
   LOGOUT: 'LOGOUT',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_ERROR: 'LOGIN_ERROR',
+  UNAUTHORIZED: 'UNAUTHORIZED',
   checkAuthorization: () => ({ type: actions.CHECK_AUTHORIZATION }),
   login: (username, password) => ({
     type: actions.LOGIN_REQUEST,
@@ -14,6 +15,10 @@ const actions = {
   }),
   logout: () => ({
     type: actions.LOGOUT
-  })
+  }),
+  unauthorized: (error) => ({
+    type: actions.UNAUTHORIZED,
+    payload: error,
+  }),
 };
 export default actions;
