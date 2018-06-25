@@ -4,6 +4,7 @@ const routes = [
   ...restRoutes("tasks", "Task"),
   ...restRoutes("users", "User"),
   ...restRoutes("categories", "Category"),
-  ...restRoutes("items", "Item")
+  ...restRoutes("items", "Item"),
+  ...restRoutes("skus", "Sku")
 ];
 export default routes;

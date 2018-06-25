@@ -19,6 +19,11 @@ const options = [
     key: "items",
     label: "sidebar.item",
     leftIcon: "ion-android-checkbox-outline"
+  },
+  {
+    key: "skus",
+    label: "sidebar.sku",
+    leftIcon: "ion-android-checkbox-outline"
   }
 ];
 export default options;
