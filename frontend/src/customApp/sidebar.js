@@ -29,6 +29,11 @@ const options = [
     key: "brands",
     label: "sidebar.brand",
     leftIcon: "ion-android-checkbox-outline"
+  },
+  {
+    key: "addon-services",
+    label: "sidebar.addon_service",
+    leftIcon: "ion-android-checkbox-outline"
   }
 ];
 export default options;
