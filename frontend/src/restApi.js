@@ -1,3 +1,5 @@
+import settings from './settings';
+
 const axios = require('axios');
 
 const headers = {
@@ -6,7 +8,7 @@ const headers = {
 };
 const option = { headers };
 
-const base = "http://localhost:8080";
+const base = settings.apiUrl;
 
 export function RESTEntityApi(endpoint, keyName='codes'){
   const GET = (primary_key) =>
