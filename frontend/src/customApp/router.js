@@ -11,6 +11,7 @@ const routes = [
   ...restRoutes("addon-services", "AddonService"),
   ...restRoutes("addon-services", "AddonService"),
   ...restRoutes("discounts", "Discount"),
-  ...restRoutes("stores", "Store")
+  ...restRoutes("stores", "Store"),
+  ...restRoutes("staffs", "Staff")
 ];
 export default routes;
