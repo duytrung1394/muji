@@ -1,5 +1,6 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
+import Store from "./store/reducers";
 import Discount from "./discount/reducers";
 import AddonService from "./addon_service/reducers";
 import Brand from "./brand/reducers";
@@ -15,5 +16,6 @@ export default {
   Sku,
   Brand,
   AddonService,
-  Discount
+  Discount,
+  Store
 };
