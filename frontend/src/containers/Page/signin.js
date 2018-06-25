@@ -7,13 +7,29 @@ import Button from '../../components/uielements/button';
 import authAction from '../../redux/auth/actions';
 import IntlMessages from '../../components/utility/intlMessages';
 import SignInStyleWrapper from './signin.style';
-
-const { login } = authAction;
+import Form from '../../components/uielements/form';
+const FormItem = Form.Item;
 
 class SignIn extends Component {
-  state = {
-    redirectToReferrer: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToReferrer: false,
+    };
+    
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const {target} = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const {name} = target;
+    this.setState({
+      [name]: value
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       this.props.isLoggedIn !== nextProps.isLoggedIn &&
@@ -22,11 +38,12 @@ class SignIn extends Component {
       this.setState({ redirectToReferrer: true });
     }
   }
-  handleLogin = () => {
+
+  handleLogin(){
     const { login } = this.props;
-    login();
-    this.props.history.push('/dashboard');
+    login(this.state.username, this.state.password);
   };
+
   render() {
     const from = { pathname: '/dashboard' };
     const { redirectToReferrer } = this.state;
@@ -34,6 +51,14 @@ class SignIn extends Component {
     if (redirectToReferrer) {
       return <Redirect to={from} />;
     }
+
+    let errorState = this.props.isLoginError === true ? 'error' : '';
+    let errorMessage = '';
+
+    if (errorState === 'error') {
+        errorMessage = 'メールアドレス、または、パスワードが違います。';
+    }
+
     return (
       <SignInStyleWrapper className="isoSignInPage">
         <div className="isoLoginContentWrapper">
@@ -45,13 +70,35 @@ class SignIn extends Component {
             </div>
 
             <div className="isoSignInForm">
-              <div className="isoInputWrapper">
-                <Input size="large" placeholder="Username" />
-              </div>
+              <FormItem
+                hasFeedback
+                validateStatus={errorState}
+              >
+                <div className="isoInputWrapper">
+                  <Input
+                    size="large"
+                    placeholder="Username"
+                    name="username"
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+              </FormItem>
 
-              <div className="isoInputWrapper">
-                <Input size="large" type="password" placeholder="Password" />
-              </div>
+              <FormItem
+                hasFeedback
+                validateStatus={errorState}
+                help={errorMessage}
+              >
+                <div className="isoInputWrapper">
+                  <Input
+                    size="large"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+              </FormItem>
 
               <div className="isoInputWrapper isoLeftRightComponent">
                 <Checkbox>
@@ -73,9 +120,12 @@ class SignIn extends Component {
   }
 }
 
+const { login } = authAction;
+
 export default connect(
   state => ({
     isLoggedIn: state.Auth.get('idToken') !== null ? true : false,
+    isLoginError: state.Auth.get('isError'),
   }),
   { login }
 )(SignIn);
