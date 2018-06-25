@@ -5,6 +5,7 @@ const routes = [
   ...restRoutes("users", "User"),
   ...restRoutes("categories", "Category"),
   ...restRoutes("items", "Item"),
-  ...restRoutes("skus", "Sku")
+  ...restRoutes("skus", "Sku"),
+  ...restRoutes("brands", "Brand")
 ];
 export default routes;

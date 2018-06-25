@@ -41,15 +41,7 @@ $router->put('brands/{id}', [
 /**
  * 削除
  */
-$router->delete('brands/{id}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\BrandsController@destroy',
-]);
-
-/**
- * 削除(複数)
- */
 $router->delete('brands', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\BrandsController@destroyMulti',
+    'uses'          => 'Api\V1\BrandsController@destroy',
 ]);

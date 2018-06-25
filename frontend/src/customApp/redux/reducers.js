@@ -1,5 +1,6 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
+import Brand from "./brand/reducers";
 import Sku from "./sku/reducers";
 import Item from "./item/reducers";
 import Category from "./category/reducers";
@@ -9,5 +10,6 @@ export default {
   User,
   Category,
   Item,
-  Sku
+  Sku,
+  Brand
 };
