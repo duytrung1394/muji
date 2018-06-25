@@ -8,14 +8,12 @@ import CryptoJS from 'crypto-js';
 
 const apiUrl = settings.apiUrl;
 
-const dc = () => '_dc=' + Math.floor((new Date()).getTime() / 1000);
-
 export function* loginRequest() {
 
     yield takeEvery('LOGIN_REQUEST', function* (action) {
         const { payload } = action;
         const postLoginApi = () => axios.post(
-            `${apiUrl}/api/v1/users/auth?${dc()}`,
+            `${apiUrl}/api/v1/users/auth?${settings.dc()}`,
             {
                 username: payload.username,
                 password: payload.password

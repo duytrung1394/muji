@@ -14,6 +14,8 @@ import ThemeSwitcher from './themeSwitcher/reducer';
 // import Invoices from './invoice/reducer';
 import LanguageSwitcher from './languageSwitcher/reducer';
 // import YoutubeSearch from './youtubeSearch/reducers';
+import PasswordRenewals from './passwordRenewals/reducer';
+import PasswordResets from './passwordResets/reducer';
 import DevReducers from '../customApp/redux/reducers';
 
 export default {
@@ -33,5 +35,7 @@ export default {
   Ecommerce,
   // Invoices,
   // YoutubeSearch,
+  PasswordRenewals,
+  PasswordResets,
   ...DevReducers
 };

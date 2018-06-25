@@ -116,11 +116,7 @@ class SignIn extends Component {
                 <Link to="/forgotpassword" className="isoForgotPass">
                   <IntlMessages id="page.signInForgotPass" />
                 </Link>
-                <Link to="/signup">
-                  <IntlMessages id="page.signInCreateAccount" />
-                </Link>
               </div>
-
             </div>
           </div>
         </div>
