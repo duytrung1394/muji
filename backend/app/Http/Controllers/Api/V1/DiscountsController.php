@@ -86,42 +86,13 @@ class DiscountsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $response = $this->discount->destroy($id);
-
-        return [
-            'item'  => $response->data,
-        ];
-    }
-
-    /**
      * Remove some resources from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return Response
      */
-    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
-        $data = [];
-
-        foreach ($request->input('ids') as $id) {
-
-            $response = \Prismatix::resource('item.Discount')->destroy([
-                'discount_code' => $id,
-            ]);
-
-            $data[] = $response->data;
-        }
-
-        return [
-            'data'  => $data,
-            'count' => count($data),
-        ];
+        return $this->discount->destroy($request);
     }
 }
