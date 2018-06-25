@@ -14,7 +14,7 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false,
+      redirectToReferrer: (props.isLoggedIn === true),
     };
     
     this.handleLogin = this.handleLogin.bind(this);
@@ -124,7 +124,7 @@ const { login } = authAction;
 
 export default connect(
   state => ({
-    isLoggedIn: state.Auth.get('idToken') !== null ? true : false,
+    isLoggedIn: state.Auth.get('idToken') !== null,
     isLoginError: state.Auth.get('isError'),
   }),
   { login }
