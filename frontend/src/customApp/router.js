@@ -7,8 +7,6 @@ const routes = [
   ...restRoutes("items", "Item"),
   ...restRoutes("skus", "Sku"),
   ...restRoutes("brands", "Brand"),
-  ...restRoutes("addonServices", "AddonService"),
-  ...restRoutes("addon-services", "AddonService"),
   ...restRoutes("addon-services", "AddonService"),
   ...restRoutes("discounts", "Discount"),
   ...restRoutes("stores", "Store"),
