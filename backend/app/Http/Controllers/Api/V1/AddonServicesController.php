@@ -88,40 +88,11 @@ class AddonServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $response = $this->addonService->destroy($id);
-
-        return [
-            'item'  => $response->data,
-        ];
-    }
-
-    /**
-     * Remove some resources from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroyMulti(Request $request)
-    {
-        $data = [];
-
-        foreach ($request->input('ids') as $id) {
-
-            $response = \Prismatix::resource('item.AddonService')->destroy([
-                'addon_service_code' => $id,
-            ]);
-
-            $data[] = $response->data;
-        }
-
-        return [
-            'data'  => $data,
-            'count' => count($data),
-        ];
+        return $this->addonService->destroy($request);
     }
 }

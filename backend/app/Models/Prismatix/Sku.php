@@ -100,9 +100,9 @@ class Sku extends PrismatixModel
             'access_policy',
         ] as $property) {
 
-            if ($request->has($property)) {
+            if ($request->has('sku.' . $property)) {
 
-                $body[$property] = $request->input($property);
+                $body[$property] = $request->input('sku.' . $property);
             }
         }
 
@@ -158,9 +158,9 @@ class Sku extends PrismatixModel
             'access_policy',
         ] as $property) {
 
-            if ($request->has($property)) {
+            if ($request->has('sku.' . $property)) {
 
-                $body[$property] = $request->input($property);
+                $body[$property] = $request->input('sku.' . $property);
             }
         }
 
@@ -170,33 +170,17 @@ class Sku extends PrismatixModel
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Request  $request
      * @return Response
      */
-    public function destroy($id)
-    {
-
-        $response = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $id,
-        ]);
-
-        return $response;
-    }
-
-    /**
-     * Remove somev resources from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-/*    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
         $data = [];
 
-        foreach ($request->input('ids') as $id) {
+        foreach ($request->input('codes') as $code) {
 
             $response = \Prismatix::resource($this->resourceKey)->destroy([
-                $this->rootParamName => $id,
+                $this->rootParamName => $code,
             ]);
 
             $data[] = $response->data;
@@ -206,5 +190,5 @@ class Sku extends PrismatixModel
             'data'  => $data,
             'count' => count($data),
         ];
-    }*/
+    }
 }
