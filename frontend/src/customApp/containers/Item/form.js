@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RestForm, {RestFormInput, RestFormSubmit} from '../shared/form';
+import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormSubmit} from '../shared/form';
 
 export default class Form extends Component {
   render() {
@@ -8,8 +8,8 @@ export default class Form extends Component {
         <RestFormInput label="JANコード" name="item_code" />
         <RestFormInput label="商品番号" name="item_code_alt" />
         <RestFormInput label="公開・非公開" name="status" />
-        <RestFormInput label="有効期限(FROM)" name="start_timestamp" />
-        <RestFormInput label="有効期限(TO)" name="end_timestamp" />
+        <RestFormDatePicker label="有効期限(FROM)" name="start_timestamp" />
+        <RestFormDatePicker label="有効期限(TO)" name="end_timestamp" />
         <RestFormInput label="商品名" name="item_name" />
         <RestFormInput label="メモ" name="memo" />
         <RestFormInput label="商品ラベル" name="item_label" />
@@ -17,7 +17,7 @@ export default class Form extends Component {
         <RestFormInput label="予約フラグ" name="reservation_flag" />
         <RestFormInput label="店頭受取フラグ" name="store_receive_flag" />
         <RestFormInput label="ブランドコード" name="brand_code" />
-        <RestFormInput label="ソート順" name="priority" />
+        <RestFormInputNumber label="ソート順" name="priority" />
         <RestFormInput label="プロモーションステータス" name="promotion_status" />
         <RestFormInput label="仕様情報" name="spec_info" />
         <RestFormInput label="サイズ情報" name="size_info" />
