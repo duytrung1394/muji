@@ -12,7 +12,7 @@ class ShowEntity extends Component {
 
     return (
       <RestShow
-        name="item"
+        name="アイテム"
         pkName="item_code"
         baseUrl="/dashboard/items"
         {...this.props}
