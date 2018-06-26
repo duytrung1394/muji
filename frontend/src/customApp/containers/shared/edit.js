@@ -59,7 +59,7 @@ export default class RestEdit extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}の編集
+          {name}編集
         </PageHeader>
         <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>

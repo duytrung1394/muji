@@ -17,7 +17,7 @@ const options = [
   },
   {
     key: "items",
-    label: "sidebar.item",
+    label: "商品管理",
     leftIcon: "ion-android-checkbox-outline"
   }
 ];

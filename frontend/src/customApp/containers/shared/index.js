@@ -122,7 +122,7 @@ export default class Index extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          タスク一覧
+          {name}一覧
         </PageHeader>
         <div className='isoLayoutContent'>
           <p>
