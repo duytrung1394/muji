@@ -41,7 +41,15 @@ $router->put('skus/{id}', [
 /**
  * 削除
  */
-$router->delete('skus', [
+$router->delete('skus/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\SkusController@destroy',
+]);
+
+/**
+ * 削除(複数)
+ */
+$router->delete('skus', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\SkusController@destroyMulti',
 ]);

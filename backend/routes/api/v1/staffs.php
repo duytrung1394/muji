@@ -41,7 +41,15 @@ $router->put('staffs/{id}', [
 /**
  * 削除
  */
-$router->delete('staffs', [
+$router->delete('staffs/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\StaffsController@destroy',
+]);
+
+/**
+ * 削除(複数)
+ */
+$router->delete('staffs', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\StaffsController@destroyMulti',
 ]);

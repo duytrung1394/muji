@@ -41,7 +41,15 @@ $router->put('discounts/{id}', [
 /**
  * 削除
  */
-$router->delete('discounts', [
+$router->delete('discounts/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DiscountsController@destroy',
+]);
+
+/**
+ * 削除(複数)
+ */
+$router->delete('discounts', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DiscountsController@destroyMulti',
 ]);

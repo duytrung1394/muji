@@ -86,13 +86,42 @@ class SkusController extends Controller
     }
 
     /**
-     * Remove some resources from storage.
+     * Remove the specified resource from storage.
      *
-     * @param  Request  $request
+     * @param  int  $id
      * @return Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        return $this->sku->destroy($request);
+        $response = $this->sku->destroy($id);
+
+        return [
+            'item'  => $response->data,
+        ];
+    }
+
+    /**
+     * Remove some resources from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroyMulti(Request $request)
+    {
+        $data = [];
+
+        foreach ($request->input('ids') as $id) {
+
+            $response = \Prismatix::resource('sku.Sku')->destroy([
+                'sku_code' => $id,
+            ]);
+
+            $data[] = $response->data;
+        }
+
+        return [
+            'data'  => $data,
+            'count' => count($data),
+        ];
     }
 }

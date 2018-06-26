@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('addon-services', [
+$router->get('addonservices', [
     'middleware'    => [],
     'uses'          => 'Api\V1\AddonServicesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('addon-services', [
 /**
  * 詳細取得
  */
-$router->get('addon-services/{id}', [
+$router->get('addonservices/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\AddonServicesController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('addon-services/{id}', [
 /**
  * 登録
  */
-$router->post('addon-services', [
+$router->post('addonservices', [
     'middleware'    => [],
     'uses'          => 'Api\V1\AddonServicesController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('addon-services', [
 /**
  * 更新
  */
-$router->put('addon-services/{id}', [
+$router->put('addonservices/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\AddonServicesController@update',
 ]);
@@ -41,7 +41,15 @@ $router->put('addon-services/{id}', [
 /**
  * 削除
  */
-$router->delete('addon-services', [
+$router->delete('addonservices/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\AddonServicesController@destroy',
+]);
+
+/**
+ * 削除(複数)
+ */
+$router->delete('addonservices', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\AddonServicesController@destroyMulti',
 ]);
