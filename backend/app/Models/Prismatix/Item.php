@@ -27,7 +27,7 @@ class Item extends PrismatixModel
      *
      * @return Response
      */
-    public function index()
+/*    public function index()
     {
         // TODO: pagination
         $response = \Prismatix::resource($this->resourceKey)->index([
@@ -35,7 +35,7 @@ class Item extends PrismatixModel
         ]);
 
         return $response;
-    }
+    }*/
 
     /**
      * Display the specified resource.
@@ -43,14 +43,14 @@ class Item extends PrismatixModel
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+/*    public function show($id)
     {
         $response = \Prismatix::resource($this->resourceKey)->show([
             $this->rootParamName => $id,
         ]);
 
         return $response;
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
