@@ -142,6 +142,7 @@ export default class RestForm extends Component {
 export function RestFormInput(props){
   const {
     name,
+    label,
     errorMessage, 
     entity,
   } = props;
@@ -150,7 +151,7 @@ export function RestFormInput(props){
   return (
     <FormItem
       {...formItemLayout}
-      label={ name }
+      label={ label ? label : name}
       validateStatus={ validateStatus }
       help={ errorMessage }
     >

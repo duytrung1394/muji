@@ -5,32 +5,31 @@ export default class Form extends Component {
   render() {
     return (
       <RestForm {...this.props}>
-        
-        <RestFormInput name="lang" />
-        <RestFormInput name="item_code" />
-        <RestFormInput name="item_label" />
-        <RestFormInput name="item_code_alt" />
-        <RestFormInput name="reservation_flag" />
-        <RestFormInput name="store_receive_flag" />
-        <RestFormInput name="priority" />
-        <RestFormInput name="status" />
-        <RestFormInput name="start_timestamp" />
-        <RestFormInput name="end_timestamp" />
-        <RestFormInput name="item_name" />
-        <RestFormInput name="memo" />
-        <RestFormInput name="description" />
-        <RestFormInput name="attributes" />
-        <RestFormInput name="brand_code" />
-        <RestFormInput name="promotion_status" />
-        <RestFormInput name="spec_info" />
-        <RestFormInput name="size_info" />
-        <RestFormInput name="link_urls" />
-        <RestFormInput name="branches" />
-        <RestFormInput name="badges" />
-        <RestFormInput name="addon_service_codes" />
-        <RestFormInput name="keywords" />
-        <RestFormInput name="tags" />
-        <RestFormInput name="access_policy" />
+        <RestFormInput label="JANコード" name="item_code" />
+        <RestFormInput label="商品番号" name="item_code_alt" />
+        <RestFormInput label="公開・非公開" name="status" />
+        <RestFormInput label="有効期限(FROM)" name="start_timestamp" />
+        <RestFormInput label="有効期限(TO)" name="end_timestamp" />
+        <RestFormInput label="商品名" name="item_name" />
+        <RestFormInput label="メモ" name="memo" />
+        <RestFormInput label="商品ラベル" name="item_label" />
+        <RestFormInput label="概要" name="description" />
+        <RestFormInput label="予約フラグ" name="reservation_flag" />
+        <RestFormInput label="店頭受取フラグ" name="store_receive_flag" />
+        <RestFormInput label="ブランドコード" name="brand_code" />
+        <RestFormInput label="ソート順" name="priority" />
+        <RestFormInput label="プロモーションステータス" name="promotion_status" />
+        <RestFormInput label="仕様情報" name="spec_info" />
+        <RestFormInput label="サイズ情報" name="size_info" />
+        <RestFormInput label="リンクURL" name="link_urls" />
+        <RestFormInput label="商品属性" name="attributes" />
+        <RestFormInput label="キーワード" name="keywords" />
+        <RestFormInput label="タグ" name="tags" />
+        <RestFormInput label="アクセスポリシー" name="access_policy" />
+        <RestFormInput label="ブランチ情報" name="branches" />
+        <RestFormInput label="バッヂ" name="badges" />
+        <RestFormInput label="lang" name="lang" />
+        <RestFormInput label="addon_service_codes" name="addon_service_codes" />
         <RestFormSubmit label="保存" />
       </RestForm>
     );

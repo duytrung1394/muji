@@ -18,32 +18,32 @@ class ShowEntity extends Component {
         {...this.props}
       >
         <ul>
+          <li>JANコード: {entity.item_code}</li>
+          <li>商品番号: {entity.item_code_alt}</li>
+          <li>公開・非公開: {entity.status}</li>
+          <li>有効期限(FROM): {entity.start_timestamp}</li>
+          <li>有効期限(TO): {entity.end_timestamp}</li>
+          <li>商品名: {entity.item_name}</li>
+          <li>メモ: {entity.memo}</li>
+          <li>商品ラベル: {entity.item_label}</li>
+          <li>概要: {entity.description}</li>
+          <li>予約フラグ: {entity.reservation_flag}</li>
+          <li>店頭受取フラグ: {entity.store_receive_flag}</li>
+          <li>ブランドコード: {entity.brand_code}</li>
+          <li>ソート順: {entity.priority}</li>
+          <li>プロモーションステータス: {entity.promotion_status}</li>
+          <li>仕様情報: {entity.spec_info}</li>
+          <li>サイズ情報: {entity.size_info}</li>
+          <li>リンクURL: {entity.link_urls}</li>
+          <li>商品属性: {entity.attributes}</li>
+          <li>キーワード: {entity.keywords}</li>
+          <li>タグ: {entity.tags}</li>
+          <li>アクセスポリシー: {entity.access_policy}</li>
+          <li>ブランチ情報: {entity.branches}</li>
+          <li>バッヂ: {entity.badges}</li>
           
-          <li>Lang: {entity.lang}</li>
-          <li>ItemCode: {entity.item_code}</li>
-          <li>ItemLabel: {entity.item_label}</li>
-          <li>ItemCodeAlt: {entity.item_code_alt}</li>
-          <li>ReservationFlag: {entity.reservation_flag}</li>
-          <li>StoreReceiveFlag: {entity.store_receive_flag}</li>
-          <li>Priority: {entity.priority}</li>
-          <li>Status: {entity.status}</li>
-          <li>StartTimestamp: {entity.start_timestamp}</li>
-          <li>EndTimestamp: {entity.end_timestamp}</li>
-          <li>ItemName: {entity.item_name}</li>
-          <li>Memo: {entity.memo}</li>
-          <li>Description: {entity.description}</li>
-          <li>Attributes: {entity.attributes}</li>
-          <li>BrandCode: {entity.brand_code}</li>
-          <li>PromotionStatus: {entity.promotion_status}</li>
-          <li>SpecInfo: {entity.spec_info}</li>
-          <li>SizeInfo: {entity.size_info}</li>
-          <li>LinkUrls: {entity.link_urls}</li>
-          <li>Branches: {entity.branches}</li>
-          <li>Badges: {entity.badges}</li>
           <li>AddonServiceCodes: {entity.addon_service_codes}</li>
-          <li>Keywords: {entity.keywords}</li>
-          <li>Tags: {entity.tags}</li>
-          <li>AccessPolicy: {entity.access_policy}</li>
+          <li>Lang: {entity.lang}</li>
         </ul>
       </RestShow>
     );
