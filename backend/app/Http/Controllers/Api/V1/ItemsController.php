@@ -109,6 +109,9 @@ class ItemsController extends Controller
             'description'           => 'description',
         ]);
 
+        // FIX: 
+        usleep(500000);
+
         return [
             'item'  => $response->data,
         ];
@@ -140,6 +143,9 @@ class ItemsController extends Controller
             'end_timestamp'         => 0,
             'item_name'             => $request->input('item.item_name'),
         ]);
+
+        // FIX: 
+        usleep(500000);
 
         return [
             'item'  => $response->data,
