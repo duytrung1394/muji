@@ -69,6 +69,60 @@ class ShowEntity extends Component {
               </Box>
             );
           })}
+          <BoxTitle title="アイテム画像" />
+          {(entity.images ? entity.images : []).map(image => {
+            return (
+              <Box>
+                <ul>
+                  <li>item_image_code: {image.item_image_code}</li>
+                  <li>item_code: {image.item_code}</li>
+                  <li>image_size: {image.image_size}</li>
+                  <li>image_url: {image.image_url}</li>
+                </ul>
+              </Box>
+            );
+          })}
+          <BoxTitle title="付帯商品" />
+          {(entity.addon_services ? entity.addon_services : []).map(addon_service => {
+            return (
+              <Box>
+                <ul>
+                  <li>addon_service_code: {addon_service.addon_service_code}</li>
+                  <li>addon_service_name: {addon_service.addon_service_name}</li>
+                  <li>price_ex_vat: {addon_service.price_ex_vat}</li>
+                  <li>price_in_vat: {addon_service.price_in_vat}</li>
+                  <li>description: {addon_service.description}</li>
+                  <li>currency_code: {addon_service.currency_code}</li>
+                  <li>memo: {addon_service.memo}</li>
+                </ul>
+              </Box>
+            );
+          })}
+          <BoxTitle title="カテゴリ" />
+          {(entity.categories ? entity.categories : []).map(category => {
+            return (
+              <Box>
+                <ul>
+                  <li>status: {category.status}</li>
+                  <li>category_code: {category.category_code}</li>
+                  <li>category_name: {category.category_name}</li>
+                  <li>category_path: {category.category_path}</li>
+                  <li>category_key: {category.category_key}</li>
+                  <li>start_timestamp: {category.start_timestamp}</li>
+                  <li>end_timestamp: {category.end_timestamp}</li>
+                  <li>description: {category.description}</li>
+                  <li>memo: {category.memo}</li>
+                </ul>
+              </Box>
+            );
+          })}
+          <BoxTitle title="関連商品" />
+          <Box>
+          <ul>
+            <li>code: .....</li>
+            <li>name: .....</li>
+          </ul>
+          </Box>
         </div>
       </RestShow>
     );
