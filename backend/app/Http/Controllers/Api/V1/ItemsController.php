@@ -141,6 +141,7 @@ class ItemsController extends Controller
             'status'                => 'PUBLISHED',
             'start_timestamp'       => 1508918790,
             'end_timestamp'         => 0,
+            'memo'                  => "memo\nEnd Of Line",
             'item_name'             => $request->input('item.item_name'),
         ]);
 

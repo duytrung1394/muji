@@ -1,23 +1,35 @@
 import React, {Component} from 'react';
-import RestForm, {RestFormInput, RestFormSubmit} from '../shared/form';
+import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormSelect, RestFormRadioGroup, RestFormTextarea, RestFormSubmit} from '../shared/form';
 
 export default class Form extends Component {
   render() {
+    const statusOptions = [
+      {label: '公開', value: 'PUBLISHED'},
+      {label: '非公開', value: 'UNPUBLISHED'},
+    ];
+    const reservationOptions = [
+      {label: '予約販売', value: true},
+      {label: '通常販売', value: false},
+    ];
+    const storeReceiveOptions = [
+      {label: '可能', value: true},
+      {label: '不可能', value: false},
+    ];
     return (
       <RestForm {...this.props}>
         <RestFormInput label="JANコード" name="item_code" />
         <RestFormInput label="商品番号" name="item_code_alt" />
-        <RestFormInput label="公開・非公開" name="status" />
-        <RestFormInput label="有効期限(FROM)" name="start_timestamp" />
-        <RestFormInput label="有効期限(TO)" name="end_timestamp" />
+        <RestFormSelect label="公開・非公開" name="status" options={statusOptions} />
+        <RestFormDatePicker label="有効期限(FROM)" name="start_timestamp" />
+        <RestFormDatePicker label="有効期限(TO)" name="end_timestamp" />
         <RestFormInput label="商品名" name="item_name" />
-        <RestFormInput label="メモ" name="memo" />
+        <RestFormTextarea label="メモ" name="memo" />
         <RestFormInput label="商品ラベル" name="item_label" />
-        <RestFormInput label="概要" name="description" />
-        <RestFormInput label="予約フラグ" name="reservation_flag" />
-        <RestFormInput label="店頭受取フラグ" name="store_receive_flag" />
+        <RestFormTextarea label="概要" name="description" />
+        <RestFormRadioGroup label="予約フラグ" name="reservation_flag" options={reservationOptions} />
+        <RestFormRadioGroup label="店頭受取フラグ" name="store_receive_flag" options={storeReceiveOptions} />
         <RestFormInput label="ブランドコード" name="brand_code" />
-        <RestFormInput label="ソート順" name="priority" />
+        <RestFormInputNumber label="ソート順" name="priority" />
         <RestFormInput label="プロモーションステータス" name="promotion_status" />
         <RestFormInput label="仕様情報" name="spec_info" />
         <RestFormInput label="サイズ情報" name="size_info" />

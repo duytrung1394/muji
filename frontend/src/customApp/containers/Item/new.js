@@ -9,7 +9,7 @@ class NewEntity extends Component {
   render() {
     return (
       <RestNew
-        name="item"
+        name="アイテム"
         pkName="item_code"
         baseUrl="/dashboard/items"
         errors={ this.props.createErrors.item }
