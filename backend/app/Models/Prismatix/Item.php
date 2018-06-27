@@ -139,11 +139,13 @@ class Item extends PrismatixModel
         ] as $property) {
 
             if ($request->has('item.' . $property)) {
-
-                $body[$property] = $request->input('item.' . $property);
+                if ($property === 'memo' || $property === 'description') {
+                    $body[$property] = str_replace(["\r\n", "\n", "\r"], "\\n", $request->input('item.' . $property));
+                } else {
+                    $body[$property] = $request->input('item.' . $property);
+                }
             }
         }
-
         return \Prismatix::resource($this->resourceKey)->update($body);
     }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormSubmit} from '../shared/form';
+import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormTextarea, RestFormSubmit} from '../shared/form';
 
 export default class Form extends Component {
   render() {
@@ -11,9 +11,9 @@ export default class Form extends Component {
         <RestFormDatePicker label="有効期限(FROM)" name="start_timestamp" />
         <RestFormDatePicker label="有効期限(TO)" name="end_timestamp" />
         <RestFormInput label="商品名" name="item_name" />
-        <RestFormInput label="メモ" name="memo" />
+        <RestFormTextarea label="メモ" name="memo" />
         <RestFormInput label="商品ラベル" name="item_label" />
-        <RestFormInput label="概要" name="description" />
+        <RestFormTextarea label="概要" name="description" />
         <RestFormInput label="予約フラグ" name="reservation_flag" />
         <RestFormInput label="店頭受取フラグ" name="store_receive_flag" />
         <RestFormInput label="ブランドコード" name="brand_code" />

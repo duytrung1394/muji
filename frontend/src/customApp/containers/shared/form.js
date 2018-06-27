@@ -2,7 +2,7 @@ import React, {Component, Children} from 'react';
 import {Prompt} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/ja';
-import Input from '../../../components/uielements/input';
+import Input, {Textarea} from '../../../components/uielements/input';
 import InputNumber from '../../../components/uielements/InputNumber';
 import DatePicker from '../../../components/uielements/datePicker';
 import Button from '../../../components/uielements/button';
@@ -162,6 +162,30 @@ export function RestFormInput(props){
       <Input
         placeholder={ name }
         value={ entity[name] }
+        onChange={ event => props.updateEntity(name, event.target.value) }
+      />
+    </FormItem>
+  );
+}
+export function RestFormTextarea(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <Textarea
+        placeholder={ name }
+        value={ entity[name] ? entity[name].replace(/\\n/g, '\n') : '' }
         onChange={ event => props.updateEntity(name, event.target.value) }
       />
     </FormItem>
