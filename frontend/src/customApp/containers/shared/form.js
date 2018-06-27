@@ -208,7 +208,7 @@ export function RestFormDatePicker(props){
       help={ errorMessage }
     >
       <DatePicker
-        defaultValue={ moment(new Date(entity[name] * 1000)) }
+        defaultValue={ entity[name] ? moment(new Date(entity[name] * 1000)) : ''}
         onChange={ m => props.updateEntity(name, m.unix()) }
       />
     </FormItem>
