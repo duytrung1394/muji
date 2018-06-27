@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormTextarea, RestFormSubmit} from '../shared/form';
+import RestForm, {RestFormInput, RestFormInputNumber, RestFormDatePicker, RestFormSelect, RestFormTextarea, RestFormSubmit} from '../shared/form';
 
 export default class Form extends Component {
   render() {
+    const statusOptions = [
+      {label: '公開', value: 'PUBLISHED'},
+      {label: '非公開', value: 'UNPUBLISHED'},
+    ];
     return (
       <RestForm {...this.props}>
         <RestFormInput label="JANコード" name="item_code" />
         <RestFormInput label="商品番号" name="item_code_alt" />
-        <RestFormInput label="公開・非公開" name="status" />
+        <RestFormSelect label="公開・非公開" name="status" options={statusOptions}/>
         <RestFormDatePicker label="有効期限(FROM)" name="start_timestamp" />
         <RestFormDatePicker label="有効期限(TO)" name="end_timestamp" />
         <RestFormInput label="商品名" name="item_name" />

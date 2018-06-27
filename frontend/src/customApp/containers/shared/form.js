@@ -5,6 +5,7 @@ import 'moment/locale/ja';
 import Input, {Textarea} from '../../../components/uielements/input';
 import InputNumber from '../../../components/uielements/InputNumber';
 import DatePicker from '../../../components/uielements/datePicker';
+import Select, {SelectOption} from '../../../components/uielements/select';
 import Button from '../../../components/uielements/button';
 import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
@@ -212,6 +213,32 @@ export function RestFormInputNumber(props){
         value={ entity[name] }
         onChange={ value => props.updateEntity(name, value) }
       />
+    </FormItem>
+  );
+}
+export function RestFormSelect(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+    options,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <Select
+        defaultValue={entity[name]}
+        onChange={ value => props.updateEntity(name, value) }
+      >
+        {options.map(o => <SelectOption value={o.value}>{o.label}</SelectOption>)}
+      </Select>
     </FormItem>
   );
 }
