@@ -52,7 +52,7 @@ class ShowEntity extends Component {
           <BoxTitle title="SKU" />
           {(entity.sku ? entity.sku : []).map(sku => {
             return (
-              <Box>
+              <Box key={sku.sku_code}>
                 <ul>
                   <li>sku_code: {sku.sku_code}</li>
                   <li>sales_start_timestamp: {sku.sales_start_timestamp}</li>
