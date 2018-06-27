@@ -187,7 +187,7 @@ export function RestFormTextarea(props){
     >
       <Textarea
         placeholder={ name }
-        value={ entity[name] ? entity[name].replace(/\\n/g, '\n') : '' }
+        value={ entity[name] }
         onChange={ event => props.updateEntity(name, event.target.value) }
       />
     </FormItem>
