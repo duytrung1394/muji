@@ -6,6 +6,7 @@ import Input, {Textarea} from '../../../components/uielements/input';
 import InputNumber from '../../../components/uielements/InputNumber';
 import DatePicker from '../../../components/uielements/datePicker';
 import Select, {SelectOption} from '../../../components/uielements/select';
+import Radio, {RadioGroup} from '../../../components/uielements/radio';
 import Button from '../../../components/uielements/button';
 import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
@@ -239,6 +240,32 @@ export function RestFormSelect(props){
       >
         {options.map(o => <SelectOption value={o.value}>{o.label}</SelectOption>)}
       </Select>
+    </FormItem>
+  );
+}
+export function RestFormRadioGroup(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+    options,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <RadioGroup
+        value={entity[name]}
+        onChange={ event => props.updateEntity(name, event.target.value) }
+      >
+        {options.map(o => <Radio value={o.value}>{o.label}</Radio>)}
+      </RadioGroup>
     </FormItem>
   );
 }
