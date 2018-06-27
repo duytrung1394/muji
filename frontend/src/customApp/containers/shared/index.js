@@ -8,6 +8,8 @@ import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import { withRouter } from 'react-router-dom'
 
+import ItemSearch from '../Item/search';
+
 const confirm = Modal.confirm;
 
 export default class Index extends Component {
@@ -73,6 +75,7 @@ export default class Index extends Component {
       destroyRequest,
       // react-router
       history,
+      searchComponent,
     } = this.props;
 
     let columns = [];
@@ -154,7 +157,9 @@ export default class Index extends Component {
             <span>（{ this.state.selectedKeys.length }件選択中）</span>
             }
           </p>
-
+          <p>
+            { searchComponent ? React.createElement(searchComponent) : ''}
+          </p>
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }
