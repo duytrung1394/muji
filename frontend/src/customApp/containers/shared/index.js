@@ -8,8 +8,6 @@ import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import { withRouter } from 'react-router-dom'
 
-import ItemSearch from '../Item/search';
-
 const confirm = Modal.confirm;
 
 export default class Index extends Component {
@@ -75,7 +73,7 @@ export default class Index extends Component {
       destroyRequest,
       // react-router
       history,
-      searchComponent,
+      SearchComponent,
     } = this.props;
 
     let columns = [];
@@ -128,38 +126,32 @@ export default class Index extends Component {
           {name}一覧
         </PageHeader>
         <div className='isoLayoutContent'>
-          <p>
-            <Link to={`${baseUrl}/!new`}>
-              <Button type="primary">
-                新規作成
-              </Button>
-            </Link>
-          </p>
-          <p>
-            <Button
-              type="danger"
-              disabled={ ! this.recordsSelected() }
-              onClick={ (event)=> {
-                const keys = this.state.selectedKeys;
-                confirm({
-                  title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
-                  content: '削除したタスクを元に戻すことは出来ません',
-                  onOk() {
-                    destroyRequest(keys);
-                  },
-                  onCancel() {},
-                });
-              } }
-            >
-              削除
+          <Link to={`${baseUrl}/!new`}>
+            <Button type="primary">
+              新規作成
             </Button>
-            {this.state.selectedKeys.length > 0 &&
-            <span>（{ this.state.selectedKeys.length }件選択中）</span>
-            }
-          </p>
-          <p>
-            { searchComponent ? React.createElement(searchComponent) : ''}
-          </p>
+          </Link>
+          <Button
+            type="danger"
+            disabled={ ! this.recordsSelected() }
+            onClick={ (event)=> {
+              const keys = this.state.selectedKeys;
+              confirm({
+                title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
+                content: '削除したタスクを元に戻すことは出来ません',
+                onOk() {
+                  destroyRequest(keys);
+                },
+                onCancel() {},
+              });
+            } }
+          >
+            削除
+          </Button>
+          {this.state.selectedKeys.length > 0 &&
+          <span>（{ this.state.selectedKeys.length }件選択中）</span>
+          }
+          { SearchComponent ? <SearchComponent /> : null }
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }

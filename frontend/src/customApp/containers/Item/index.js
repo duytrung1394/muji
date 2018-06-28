@@ -14,7 +14,7 @@ class Index extends Component {
         baseUrl="/dashboard/items"
         columnNames={["item_code","item_name"]}
         linkColumn="item_code"
-        searchComponent={ItemSearch}
+        SearchComponent={ItemSearch}
         {...this.props}
       />
     );
