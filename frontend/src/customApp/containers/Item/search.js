@@ -2,34 +2,95 @@ import React, {Component} from 'react';
 import { Modal } from 'antd';
 import Button from '../../../components/uielements/button';
 import RestForm, {RestFormInput, RestFormDatePicker, RestFormSelect} from '../shared/form';
+import Input, {Textarea} from '../../../components/uielements/input';
+import Select, {SelectOption} from '../../../components/uielements/select';
+import Form from '../../../components/uielements/form';
 
+const FormItem = Form.Item;
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 6 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 14 },
+  },
+};
+const defaultValues = {
+  item_name : '',
+  item_code : '',
+  status    : '',
+}
 
 export default class extends Component {
-  state = {
-    loading: false,
-    visible: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      filters: this.props.filters,
+    };
   };
+  componentWillReceiveProps() {
+    this.setState({
+      filters: this.props.filters
+    });
+  }
+
   showModal = () => {
     this.setState({
       visible: true
     });
   };
   handleOk = () => {
-    this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 2000);
+    this.setState({ visible: false });
+
+    this.props.setFilters(this.state.filters);
+
+    // TODO: ここでfetchしたくない
+    if (this.getPage() > 1) {
+      this.props.history.push(this.props.baseUrl);
+    } else {
+      this.props.fetchRequest({
+        filters : JSON.stringify(this.state.filters)
+      });
+    }
   };
   handleCancel = () => {
     this.setState({ visible: false });
+    this.props.setFilters([]);
+
+    if (this.getPage() > 1) {
+      this.props.history.push(this.props.baseUrl);
+    } else {
+      this.props.fetchRequest({
+        filters : JSON.stringify([])
+      });
+    }
   };
+
+  handleChange = (field, value) => {
+
+    let filters = { ...this.state.filters };
+
+    if (value === defaultValues[field]) {
+
+      delete filters[field];
+    } else {
+
+      filters[field] = value;
+    }
+
+    this.setState({filters});
+  }
+
+  getPage = () => {
+    return parseInt(this.props.match.params.page) || 1;
+  }
+
   render() {
-    const categoryOptions = [
-      {label: 'カテゴリ1', value: 'category1'},
-      {label: 'カテゴリ2', value: 'category2'},
-      {label: 'カテゴリ3', value: 'category3'},
-    ];
     const statusOptions = [
+      {label: '未選択', value: ''},
       {label: '公開', value: 'PUBLISHED'},
       {label: '非公開', value: 'UNPUBLISHED'},
     ];
@@ -40,20 +101,34 @@ export default class extends Component {
           title="絞り込み検索"
           visible={this.state.visible}
           onOk={this.handleOk}
-          confirmLoading={this.state.loading}
           onCancel={this.handleCancel}
           okText="この条件で絞り込む"
           cancelText="取り消し"
         >
-          <RestForm>
-            <RestFormInput label="品目名" name="item_name"/>
-            <RestFormInput label="JANコード" name="item_code" />
-            <RestFormSelect label="カテゴリ" name="category" options={categoryOptions} />
-            <RestFormSelect label="公開状態" name="status" options={statusOptions} />
-            <RestFormDatePicker label="有効期限(FROM)" name="start_timestamp" />
-            <RestFormDatePicker label="有効期限(TO)" name="end_timestamp" />
-          </RestForm>
-
+          <Form>
+            <FormItem {...formItemLayout} label='品目名'>
+              <Input
+                placeholder='item_name'
+                value={ this.state.filters.item_name }
+                onChange={ event => this.handleChange('item_name', event.target.value) }
+              />
+            </FormItem>
+            <FormItem {...formItemLayout} label='JANコード'>
+              <Input
+                placeholder='item_code'
+                value={ this.state.filters.item_code }
+                onChange={ event => this.handleChange('item_code', event.target.value) }
+              />
+            </FormItem>
+            <FormItem {...formItemLayout} label='公開状態'>
+              <Select
+                defaultValue={ this.state.filters.status || '' }
+                onChange={ value => this.handleChange('status', value) }
+              >
+                {statusOptions.map(o => <SelectOption value={o.value}>{o.label}</SelectOption>)}
+              </Select>
+            </FormItem>
+          </Form>
         </Modal>
       </div>
     );

@@ -25,13 +25,17 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest( this.getPage(this.props) );
+    this.fetchRequest();
   }
+
+/*  componentWillReceiveProps(nextProps) {
+    // TODO: filtersの変更を検知してここでfetchしたい
+  }*/
 
   componentDidUpdate(prevProps, prevState, snapshot){
     const props = this.props;
     if( this.getPage(prevProps) !== this.getPage(props) ){
-      props.fetchRequest( this.getPage(props) );
+      this.fetchRequest();
     }
 
     if( this.state.selectedKeys.length > 0 && props.destroyed ){
@@ -40,19 +44,25 @@ export default class Index extends Component {
 
     const {
       destroyCleanup,
-      fetchRequest,
       destroyed,
     } = props;
 
-    if( destroyed ){
+  if( destroyed ){
       destroyCleanup();
-      fetchRequest();
+      this.fetchRequest();
       message.error('削除しました');
     }
   }
   
   recordsSelected(){
     return this.state.selectedKeys.length > 0
+  }
+
+  fetchRequest = () => {
+    this.props.fetchRequest({
+      page    : this.getPage(this.props),
+      filters : JSON.stringify(this.props.filters || [])
+    });
   }
 
   render() {
@@ -151,7 +161,7 @@ export default class Index extends Component {
           {this.state.selectedKeys.length > 0 &&
           <span>（{ this.state.selectedKeys.length }件選択中）</span>
           }
-          { SearchComponent && <SearchComponent /> }
+          { SearchComponent && <SearchComponent {...this.props} /> }
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }

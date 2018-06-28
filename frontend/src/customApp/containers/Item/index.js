@@ -27,10 +27,12 @@ const mapStateToProps = (state) => {
 
 const {
   fetch,
-  destroy
+  destroy,
+  setFilters
 } = actions;
 
 export default withRouter(connect(mapStateToProps, {
+  setFilters: setFilters,
   fetchRequest: fetch.request,
   destroyRequest: destroy.request,
   destroyCleanup: destroy.cleanup,
