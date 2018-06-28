@@ -151,7 +151,7 @@ export default class Index extends Component {
           {this.state.selectedKeys.length > 0 &&
           <span>（{ this.state.selectedKeys.length }件選択中）</span>
           }
-          { SearchComponent ? <SearchComponent /> : null }
+          { SearchComponent && <SearchComponent /> }
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }
