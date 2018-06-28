@@ -44,29 +44,12 @@ export default class extends Component {
   };
   handleOk = () => {
     this.setState({ visible: false });
-
     this.props.setFilters(this.state.filters);
 
-    // TODO: ここでfetchしたくない
-    if (this.getPage() > 1) {
-      this.props.history.push(this.props.baseUrl);
-    } else {
-      this.props.fetchRequest({
-        filters : JSON.stringify(this.state.filters)
-      });
-    }
   };
   handleCancel = () => {
     this.setState({ visible: false });
     this.props.setFilters([]);
-
-    if (this.getPage() > 1) {
-      this.props.history.push(this.props.baseUrl);
-    } else {
-      this.props.fetchRequest({
-        filters : JSON.stringify([])
-      });
-    }
   };
 
   handleChange = (field, value) => {
@@ -82,10 +65,6 @@ export default class extends Component {
     }
 
     this.setState({filters});
-  }
-
-  getPage = () => {
-    return parseInt(this.props.match.params.page) || 1;
   }
 
   render() {

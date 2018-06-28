@@ -28,9 +28,17 @@ export default class Index extends Component {
     this.fetchRequest();
   }
 
-/*  componentWillReceiveProps(nextProps) {
-    // TODO: filtersの変更を検知してここでfetchしたい
-  }*/
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.doSearch) {
+      if (this.getPage(nextProps) > 1) {
+        this.props.history.push(this.props.baseUrl);
+      } else {
+        this.props.fetchRequest({
+          filters : JSON.stringify(nextProps.filters || [])
+        });
+      }
+    }
+  }
 
   componentDidUpdate(prevProps, prevState, snapshot){
     const props = this.props;
@@ -161,7 +169,12 @@ export default class Index extends Component {
           {this.state.selectedKeys.length > 0 &&
           <span>（{ this.state.selectedKeys.length }件選択中）</span>
           }
-          { SearchComponent && <SearchComponent {...this.props} /> }
+          { SearchComponent &&
+          <SearchComponent
+            filters={this.props.filters}
+            setFilters={this.props.setFilters}
+          />
+          }
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }
