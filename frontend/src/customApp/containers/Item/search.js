@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Modal } from 'antd';
 import Button from '../../../components/uielements/button';
-import RestForm, {RestFormInput, RestFormDatePicker, RestFormSelect, RestFormSubmit} from '../shared/form';
+import RestForm, {RestFormInput, RestFormDatePicker, RestFormSelect} from '../shared/form';
 
 
 export default class extends Component {
