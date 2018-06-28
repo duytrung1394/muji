@@ -25,7 +25,7 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    this.fetchRequest();
+    this.fetchRequest(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,9 +33,7 @@ export default class Index extends Component {
       if (this.getPage(nextProps) > 1) {
         this.props.history.push(this.props.baseUrl);
       } else {
-        this.props.fetchRequest({
-          filters : JSON.stringify(nextProps.filters || [])
-        });
+        this.fetchRequest(nextProps);
       }
     }
   }
@@ -43,7 +41,7 @@ export default class Index extends Component {
   componentDidUpdate(prevProps, prevState, snapshot){
     const props = this.props;
     if( this.getPage(prevProps) !== this.getPage(props) ){
-      this.fetchRequest();
+      this.fetchRequest(this.props);
     }
 
     if( this.state.selectedKeys.length > 0 && props.destroyed ){
@@ -57,7 +55,7 @@ export default class Index extends Component {
 
   if( destroyed ){
       destroyCleanup();
-      this.fetchRequest();
+      this.fetchRequest(this.props);
       message.error('削除しました');
     }
   }
@@ -66,10 +64,10 @@ export default class Index extends Component {
     return this.state.selectedKeys.length > 0
   }
 
-  fetchRequest = () => {
-    this.props.fetchRequest({
-      page    : this.getPage(this.props),
-      filters : JSON.stringify(this.props.filters || [])
+  fetchRequest = (props) => {
+    props.fetchRequest({
+      page    : this.getPage(props),
+      filters : JSON.stringify(props.filters || [])
     });
   }
 
