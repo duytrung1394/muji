@@ -636,5 +636,9 @@
   "topbar.logout": "Logout",
   "topbar.viewAll": "View All",
   "topbar.viewCart": "View Cart",
-  "topbar.totalPrice": "Total Price"
+  "topbar.totalPrice": "Total Price",
+  "task.title": "タスク",
+  "task.name": "タスク名称",
+  "task.description": "タスク概要",
+  "task.form.save": "保存する"
 }

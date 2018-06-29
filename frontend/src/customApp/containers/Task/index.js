@@ -3,12 +3,13 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import actions from '../../redux/task/list/actions';
 import RestIndex from '../shared/index';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 class Index extends Component {
   render() {
     return (
       <RestIndex
-        name="task"
+        name={<IntlMessages id="task.title" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
         columnNames={["id","name"]}
