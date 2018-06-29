@@ -1,25 +1,22 @@
 import { Map } from 'immutable';
 import actions from './actions';
 
-const localStorageKey = 'idToken';
+import { getToken } from './localStorage';
 
-const newInitState = () => new Map({
-  idToken: localStorage.getItem(localStorageKey),
+const initState = new Map({
+  idToken: getToken(),
   isError: false
 });
 
-export default function authReducer(state = newInitState(), action) {
+export default function authReducer(state = initState, action) {
   switch (action.type) {
-    case actions.LOGIN_SUCCESS:{
-      localStorage.setItem(localStorageKey, action.token);
-      return newInitState().set('idToken', action.token);
-    }
+    case actions.LOGIN_SUCCESS:
+      return state.set('idToken', action.payload.token);
     case actions.LOGIN_ERROR:
-      return newInitState().set('isError', true);
+      return state.set('isError', true).set('idToken', undefined);
     case actions.LOGOUT:
     case actions.UNAUTHORIZED:
-      localStorage.removeItem(localStorageKey);
-      return newInitState();
+      return state.set('idToken', undefined);
     default:
       return state;
   }

@@ -1,80 +1,71 @@
-import axios from 'axios';
 import {all, takeEvery, put, call, fork} from 'redux-saga/effects';
 import {push} from 'react-router-redux';
-import {clearToken, getToken} from '../../helpers/utility';
 import actions from './actions';
 import settings from '../../settings';
-import CryptoJS from 'crypto-js';
+import { saveToken, clearToken } from './localStorage';
+import api from '../../api';
 
-const apiUrl = settings.apiUrl;
-
-export function* loginRequest() {
+function* loginRequest() {
 
     yield takeEvery('LOGIN_REQUEST', function* (action) {
         const { payload } = action;
-        const postLoginApi = () => axios.post(
-            `${apiUrl}/api/v1/users/auth?${settings.dc()}`,
+        const postLoginApi = () => api.post(
+            `/api/v1/users/auth?${settings.dc()}`,
             {
                 username: payload.username,
                 password: payload.password
-            }, {
-                'Accept': 'application/json'
             });
 
         try {
             const response = yield call(postLoginApi);
-            yield put({
-                type: actions.LOGIN_SUCCESS,
-                token: response.data.token,
-                profile: response.data.profile,
-            });
-
+            yield put(actions.loginSuccess(
+                response.data.token,
+                response.data.profile,
+                payload.rememberMe,
+            ));
         } catch (e) {
-            yield put({type: actions.LOGIN_ERROR});
+            console.error(e)
+            yield put(actions.loginError(e));
         }
 
     });
 }
 
-export function* loginSuccess() {
-    yield takeEvery(actions.LOGIN_SUCCESS, function* (payload) {
+function* loginSuccess() {
+    yield takeEvery(actions.LOGIN_SUCCESS, function* (action) {
+        const payload = action.payload;
+        if( payload.rememberMe ){
+            saveToken( payload.token );
 
-        // トークン保存
-        yield localStorage.setItem('id_token', payload.token);
-
-        // プロフィール情報保存
-        yield localStorage.setItem(
-            'profile',
-            CryptoJS.AES.encrypt(
-                JSON.stringify(payload.profile),
-                payload.token
-            ).toString()
-        );
-
+            // プロフィール情報保存...?
+            // → localStorageに保存すべき情報なのか？ ログイン後に変更されるケースなども考慮すると
+            // SPAロード時にサーバーに確認に行ってredux上にだけ保存するのが正しいのでは？
+            // localStorage.setItem(
+            //     'profile',
+            //     CryptoJS.AES.encrypt(
+            //         JSON.stringify(payload.profile),
+            //         payload.token
+            //     ).toString()
+            // );
+        }
     });
 }
 
-export function* loginError() {
+function* loginError() {
     yield takeEvery(actions.LOGIN_ERROR, function* () {
+        clearToken();
     });
 }
 
-export function* logout() {
+function* logout() {
     yield takeEvery(actions.LOGOUT, function* () {
 
-        const postLogoutApi = () => axios.delete(
-            apiUrl + '/api/v1/users/auth',
-            {
-                headers: {
-                    'Accept': 'application/json',
-                    'content-type': 'application/json',
-                    'Authorization': 'Bearer ' + getToken().get('idToken')
-                }
-            });
+        const postLogoutApi = () => api.delete('/api/v1/users/auth');
 
         try {
             yield call(postLogoutApi);
         } catch (e) {
+            console.error(e);
         }
 
         clearToken();

@@ -2,9 +2,6 @@ import axios from 'axios';
 import {all, takeEvery, put, call, fork} from 'redux-saga/effects';
 import actions from './actions';
 import settings from '../../settings';
-import {getToken} from "../../helpers/utility";
-import GlobalState from "../../globalState";
-import CryptoJS from 'crypto-js';
 
 export function* renewalRequest() {
 
@@ -18,26 +15,28 @@ export function* renewalRequest() {
                 headers: {
                     'Accept': 'application/json',
                     'content-type': 'application/json',
-                    'Authorization': 'Bearer ' + getToken().get('idToken')
+                    // TODO:
+                    //'Authorization': 'Bearer ' + getToken().get('idToken')
                 }
             });
 
         try {
             yield call(postRenewalPasswordApi);
 
+            // ここ意味不明なので手入れ必須だなぁ
             // プロフィール情報取得
-            let profile = GlobalState.profile;
-            profile.reset_password = 0;
-            profile = JSON.stringify(profile);
+            // let profile = GlobalState.profile;
+            // profile.reset_password = 0;
+            // profile = JSON.stringify(profile);
 
             // プロフィール情報保存
-            localStorage.setItem(
-                'profile',
-                CryptoJS.AES.encrypt(
-                    profile,
-                    getToken().get('idToken')
-                ).toString()
-            );
+            // localStorage.setItem(
+            //     'profile',
+            //     CryptoJS.AES.encrypt(
+            //         profile,
+            //         getToken().get('idToken')
+            //     ).toString()
+            // );
 
             yield put({
                 type: actions.RENEWAL_SUCCESS

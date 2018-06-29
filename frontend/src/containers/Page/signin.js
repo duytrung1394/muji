@@ -10,15 +10,19 @@ import SignInStyleWrapper from './signin.style';
 import Form from '../../components/uielements/form';
 const FormItem = Form.Item;
 
+const RememberMeKey = "rememberMe"
+
 class SignIn extends Component {
   constructor(props) {
     super(props);
+    const rememberMe = localStorage.getItem(RememberMeKey) === "true";
     this.state = {
       redirectToReferrer: (props.isLoggedIn === true),
+      rememberMe: rememberMe,
     };
-    
     this.handleLogin = this.handleLogin.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.toggleRememberMe = this.toggleRememberMe.bind(this);
   }
 
   handleInputChange(event) {
@@ -30,6 +34,14 @@ class SignIn extends Component {
     });
   }
 
+  toggleRememberMe(event) {
+    const checked = event.target.checked;
+    this.setState({
+      rememberMe: checked,
+    })
+    localStorage.setItem(RememberMeKey, checked);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       this.props.isLoggedIn !== nextProps.isLoggedIn &&
@@ -39,9 +51,10 @@ class SignIn extends Component {
     }
   }
 
+  
   handleLogin(){
     const { login } = this.props;
-    login(this.state.username, this.state.password);
+    login(this.state.username, this.state.password, this.state.rememberMe);
   };
 
   render() {
@@ -101,7 +114,10 @@ class SignIn extends Component {
               </FormItem>
 
               <div className="isoInputWrapper isoLeftRightComponent">
-                <Checkbox>
+                <Checkbox
+                  checked={this.state.rememberMe}
+                  onChange={this.toggleRememberMe}
+                >
                   <IntlMessages id="page.signInRememberMe" />
                 </Checkbox>
                 <Button type="primary" onClick={this.handleLogin}>
