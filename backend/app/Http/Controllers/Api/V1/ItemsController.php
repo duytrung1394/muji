@@ -30,14 +30,24 @@ class ItemsController extends Controller
      */
     public function index(Request $request)
     {
-        $size = 10;
+        $size       = 10;
+        $filters    = json_decode($request->input('filters', '[]'), true);
+
+        foreach (json_decode($request->input('filters', '[]'), true) as $key => $value) {
+
+            $filters[] = [
+                'term' => [
+                    $key => $value
+                ],
+            ];
+        }
 
         $response = \Prismatix::resource('item.Item')->search([
             'from' => (($request->has('page') ? (int)$request->input('page') : 1) - 1) * $size,
             'size' => $size,
+            // TODO: 暫定
+            'filters' => $filters,
         ]);
-
-        $items = [];
 
         if(!property_exists($response->data, 'hits')) {
 
@@ -46,6 +56,8 @@ class ItemsController extends Controller
                 'total' => 0,
             ];
         }
+
+        $items = [];
 
         foreach ($response->data->hits->hits as $hit) {
 
@@ -161,6 +173,8 @@ class ItemsController extends Controller
      */
     public function destroy(Request $request)
     {
-        return $this->item->destroy($request);
+        // return $this->item->destroy($request);
+
+        return [];
     }
 }

@@ -33,12 +33,11 @@ export function RESTEntityApi(endpoint, keyName='codes'){
 }
 
 export function RESTListApi(endpoint, keyName='codes'){
-  const GET = (page) => {
-    let url = `${base}/${endpoint}`;
-    if( page && page > 0 ){
-      url = `${url}?page=${page}`
-    }
-    return axios.get(url, option);
+  const GET = (params) => {
+    return axios.get(`${base}/${endpoint}`, {
+      ...option,
+      params: params,
+    });
   };
   const DELETE = (keys) => {
     return axios.delete(`${base}/${endpoint}`, {

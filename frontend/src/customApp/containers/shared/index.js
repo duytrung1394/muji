@@ -25,13 +25,23 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest( this.getPage(this.props) );
+    this.fetchRequest(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.doSearch) {
+      if (this.getPage(nextProps) > 1) {
+        this.props.history.push(this.props.baseUrl);
+      } else {
+        this.fetchRequest(nextProps);
+      }
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot){
     const props = this.props;
     if( this.getPage(prevProps) !== this.getPage(props) ){
-      props.fetchRequest( this.getPage(props) );
+      this.fetchRequest(this.props);
     }
 
     if( this.state.selectedKeys.length > 0 && props.destroyed ){
@@ -40,19 +50,25 @@ export default class Index extends Component {
 
     const {
       destroyCleanup,
-      fetchRequest,
       destroyed,
     } = props;
 
-    if( destroyed ){
+  if( destroyed ){
       destroyCleanup();
-      fetchRequest();
+      this.fetchRequest(this.props);
       message.error('削除しました');
     }
   }
   
   recordsSelected(){
     return this.state.selectedKeys.length > 0
+  }
+
+  fetchRequest = (props) => {
+    props.fetchRequest({
+      page    : this.getPage(props),
+      filters : JSON.stringify(props.filters || [])
+    });
   }
 
   render() {
@@ -73,6 +89,7 @@ export default class Index extends Component {
       destroyRequest,
       // react-router
       history,
+      SearchComponent,
     } = this.props;
 
     let columns = [];
@@ -125,36 +142,37 @@ export default class Index extends Component {
           {name}一覧
         </PageHeader>
         <div className='isoLayoutContent'>
-          <p>
-            <Link to={`${baseUrl}/!new`}>
-              <Button type="primary">
-                新規作成
-              </Button>
-            </Link>
-          </p>
-          <p>
-            <Button
-              type="danger"
-              disabled={ ! this.recordsSelected() }
-              onClick={ (event)=> {
-                const keys = this.state.selectedKeys;
-                confirm({
-                  title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
-                  content: '削除したタスクを元に戻すことは出来ません',
-                  onOk() {
-                    destroyRequest(keys);
-                  },
-                  onCancel() {},
-                });
-              } }
-            >
-              削除
+          <Link to={`${baseUrl}/!new`}>
+            <Button type="primary">
+              新規作成
             </Button>
-            {this.state.selectedKeys.length > 0 &&
-            <span>（{ this.state.selectedKeys.length }件選択中）</span>
-            }
-          </p>
-
+          </Link>
+          <Button
+            type="danger"
+            disabled={ ! this.recordsSelected() }
+            onClick={ (event)=> {
+              const keys = this.state.selectedKeys;
+              confirm({
+                title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
+                content: '削除したタスクを元に戻すことは出来ません',
+                onOk() {
+                  destroyRequest(keys);
+                },
+                onCancel() {},
+              });
+            } }
+          >
+            削除
+          </Button>
+          {this.state.selectedKeys.length > 0 &&
+          <span>（{ this.state.selectedKeys.length }件選択中）</span>
+          }
+          { SearchComponent &&
+          <SearchComponent
+            filters={this.props.filters}
+            setFilters={this.props.setFilters}
+          />
+          }
           <div key={page}>
             <Table
               rowKey={ this.props.pkName }
