@@ -31,9 +31,9 @@ export default class extends Component {
       filters: this.props.filters,
     };
   };
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      filters: this.props.filters
+      filters: nextProps.filters
     });
   }
 

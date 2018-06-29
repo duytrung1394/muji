@@ -30,11 +30,17 @@ class ItemsController extends Controller
      */
     public function index(Request $request)
     {
-        $size = 10;
-        $filters = json_decode($request->input('filters', '[]'), true);
-        $filters = count($filters) > 0 ? [[
-            'term' => $filters,
-        ]] : [];
+        $size       = 10;
+        $filters    = json_decode($request->input('filters', '[]'), true);
+
+        foreach (json_decode($request->input('filters', '[]'), true) as $key => $value) {
+
+            $filters[] = [
+                'term' => [
+                    $key => $value
+                ],
+            ];
+        }
 
         $response = \Prismatix::resource('item.Item')->search([
             'from' => (($request->has('page') ? (int)$request->input('page') : 1) - 1) * $size,
