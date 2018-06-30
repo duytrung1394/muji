@@ -825,11 +825,4 @@ class ComponentGuide extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { colors } = state.Todos.toJS();
-  return {
-    colors,
-  };
-}
-export default connect(mapStateToProps, {
-})(ComponentGuide);
+export default ComponentGuide;
