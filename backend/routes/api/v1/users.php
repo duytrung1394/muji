@@ -5,6 +5,9 @@ if (empty($router)) {
 }
 
 // {{{ /api/v1/users
+$api_middleware = [
+    //'accept_header_json',
+];
 
 /**
  * ログイン

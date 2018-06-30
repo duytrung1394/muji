@@ -8,8 +8,6 @@ import passwordResetsAction from "../../redux/passwordResets/actions";
 import Spin from '../../components/uielements/spin';
 import {connect} from "react-redux";
 
-const {send} = passwordResetsAction;
-
 class ForgotPassword extends Component {
 
     /**
@@ -74,6 +72,7 @@ class ForgotPassword extends Component {
     render() {
 
         if (this.props.isSendDone === true) {
+            this.props.clear();
             const to = {pathname: '/signin'};
             return <Redirect to={to}/>;
         }
@@ -131,9 +130,11 @@ function mapStateToProps(state) {
     }
 }
 
+const {send, clear} = passwordResetsAction;
+
 export default connect(
     mapStateToProps,
-    {send},
+    {send, clear},
 )(ForgotPassword);
 
 // EOF

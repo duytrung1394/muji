@@ -6,6 +6,8 @@ const passwordResetsActions = {
 
     SEND_ERROR: 'SEND_ERROR',
 
+    SEND_CLEAR: 'SEND_CLEAR',
+
     RESET_REQUEST: 'RESET_REQUEST',
 
     RESET_SUCCESS: 'RESET_SUCCESS',
@@ -15,6 +17,10 @@ const passwordResetsActions = {
     send: (email) => ({
         type: passwordResetsActions.SEND_REQUEST,
         email: email
+    }),
+
+    clear: () => ({
+        type: passwordResetsActions.SEND_CLEAR
     }),
 
     reset: (token, password) => ({

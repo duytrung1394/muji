@@ -30,6 +30,12 @@ export default function passwordResetsReducer(state = initState.merge({}), actio
                 'isSendError': true,
             });
 
+        case actions.SEND_CLEAR:
+            return initState.merge({
+                'isSendDone': false,
+                'isSendError': false,
+            });
+
         case actions.RESET_REQUEST:
             return initState.merge({
                 'isResetting': true
