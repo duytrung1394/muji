@@ -47,7 +47,6 @@ export function* sendError() {
 export function* resetRequest() {
 
     yield takeEvery('RESET_REQUEST', function* (data) {
-        debugger;
         const postResetPasswordApi = () => axios.post(
             `${settings.apiUrl}/api/v1/users/reset_password?${settings.dc()}`,
             {
