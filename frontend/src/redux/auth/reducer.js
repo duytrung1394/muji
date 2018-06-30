@@ -16,7 +16,7 @@ export default function authReducer(state = initState, action) {
       return state.set('isError', true).set('idToken', undefined);
     case actions.LOGOUT:
     case actions.UNAUTHORIZED:
-      return state.set('idToken', undefined);
+      return state.set('idToken', null);
     default:
       return state;
   }

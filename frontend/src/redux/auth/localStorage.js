@@ -9,5 +9,10 @@ export function clearToken(){
 }
 
 export function getToken(){
-  return localStorage.getItem(key);
+  const token = localStorage.getItem(key)
+  if(token){
+    return token;
+  }else{
+    return null;
+  }
 }
