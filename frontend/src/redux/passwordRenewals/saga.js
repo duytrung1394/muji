@@ -8,7 +8,7 @@ export function* renewalRequest() {
     yield takeEvery('RENEWAL_REQUEST', function* (data) {
 
         const postRenewalPasswordApi = () => axios.post(
-            `${settings.apiUrl}/users/renewal_password?${settings.dc()}`,
+            `${settings.apiUrl}/api/v1/users/renewal_password?${settings.dc()}`,
             {
                 password: data.password,
             }, {
