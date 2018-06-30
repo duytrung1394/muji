@@ -13,7 +13,7 @@ export default function authReducer(state = initState, action) {
     case actions.LOGIN_SUCCESS:
       return state.set('idToken', action.payload.token);
     case actions.LOGIN_ERROR:
-      return state.set('isError', true).set('idToken', undefined);
+      return state.set('isError', true).set('idToken', null);
     case actions.LOGOUT:
     case actions.UNAUTHORIZED:
       return state.set('idToken', null);
