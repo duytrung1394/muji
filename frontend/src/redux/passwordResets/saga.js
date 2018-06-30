@@ -12,7 +12,7 @@ export function* sendRequest() {
         let url = protocol + '//' + host + (window.location.port ? ':' + window.location.port : '');
 
         const postSendResetPasswordMailApi = () => axios.post(
-            `${settings.apiUrl}/users/send_reset_password_mail?${settings.dc()}`,
+            `${settings.apiUrl}/api/v1/users/send_reset_password_mail?${settings.dc()}`,
             {
                 email: data.email,
                 url: url,
@@ -49,7 +49,7 @@ export function* resetRequest() {
     yield takeEvery('RESET_REQUEST', function* (data) {
         debugger;
         const postResetPasswordApi = () => axios.post(
-            `${settings.apiUrl}/users/reset_password?${settings.dc()}`,
+            `${settings.apiUrl}/api/v1/users/reset_password?${settings.dc()}`,
             {
                 token: data.token,
                 password: data.password,
