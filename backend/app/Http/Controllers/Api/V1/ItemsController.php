@@ -31,7 +31,7 @@ class ItemsController extends Controller
     public function index(Request $request)
     {
         $size       = 10;
-        $filters    = json_decode($request->input('filters', '[]'), true);
+        $filters    = [];
 
         foreach (json_decode($request->input('filters', '[]'), true) as $key => $value) {
 
@@ -173,8 +173,8 @@ class ItemsController extends Controller
      */
     public function destroy(Request $request)
     {
-        // return $this->item->destroy($request);
+        return $this->item->destroy($request);
 
-        return [];
+        // return [];
     }
 }
