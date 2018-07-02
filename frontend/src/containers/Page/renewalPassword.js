@@ -4,17 +4,17 @@ import {Link, Redirect} from 'react-router-dom';
 import Input from '../../components/uielements/input';
 import Button from '../../components/uielements/button';
 import IntlMessages from '../../components/utility/intlMessages';
-import ResetPasswordStyleWrapper from './resetPassword.style';
-import passwordResetsAction from "../../redux/passwordResets/actions";
+import RenewalPasswordStyleWrapper from './renewalPassword.style';
+import passwordRenewalsAction from '../../redux/passwordRenewals/actions';
 import Spin from '../../components/uielements/spin';
 import Form from '../../components/uielements/form';
 import Modals from '../../components/feedback/modal';
 import {connect} from "react-redux";
 
-const {reset} = passwordResetsAction;
+const {renewal} = passwordRenewalsAction;
 const FormItem = Form.Item;
 
-class ResetPassword extends Component {
+class RenewalPassword extends Component {
 
     /**
      * 状態フラグ
@@ -39,7 +39,7 @@ class ResetPassword extends Component {
      */
     componentWillReceiveProps(nextProps) {
 
-        if (nextProps.isResetError) {
+        if (nextProps.isRenewalError) {
 
             let error = this.state.error;
 
@@ -93,13 +93,12 @@ class ResetPassword extends Component {
         });
 
         // リセットリクエスト実行
-        const {reset} = this.props;
+        const {renewal} = this.props;
 
         // クエリーストリングのトークン取得
         const parsed = queryString.parse(window.location.search);
 
-        reset(
-            parsed.token,
+        renewal(
             this.state.data.new_password,
         );
 
@@ -112,11 +111,11 @@ class ResetPassword extends Component {
         Modals.error({
             title: 'エラー',
             content:
-                "パスワードの更新に失敗しました。もう一度、再発行メールを送信してください。",
+                "パスワードの更新に失敗しました。しばらく経ってから、もう一度、実行してください。",
             okText: 'OK',
             onOk() {
                 return new Promise((resolve, reject) => {
-                    window.location.href = "/forgotpassword";
+                    window.location.href = "/renewalpassword";
                 }).catch(() => {
                 });
             },
@@ -154,14 +153,13 @@ class ResetPassword extends Component {
      */
     render() {
 
-        if (this.props.isResetDone === true) {
+        if (this.props.isRenewalDone === true) {
             const to = {pathname: '/signin'};
             return <Redirect to={to}/>;
         }
 
         let errorState = false;
         let errorMessage = '';
-
 
         if (this.state.error['isEmpty'] === true) {
             errorState = true;
@@ -178,27 +176,27 @@ class ResetPassword extends Component {
         }
 
         return (
-            <Spin size="large" tip="Sending..." spinning={this.props.isResetDone}>
-                <ResetPasswordStyleWrapper className="isoResetPassPage">
+            <Spin size="large" tip="Sending..." spinning={this.props.isRenewalDone}>
+                <RenewalPasswordStyleWrapper className="isoRenewalPassPage">
                     <div className="isoFormContentWrapper">
                         <div className="isoFormContent">
                             <div className="isoLogoWrapper">
                                 <Link to="/dashboard">
                                     <img src="/images/logos/logo-32x32.png" alt="Firebird Platform Logo"/>
-                                    <IntlMessages id="page.resetPassTitle"/>
+                                    <IntlMessages id="page.renewalPassTitle"/>
                                 </Link>
                             </div>
 
                             <div className="isoFormHeadText">
                                 <h3>
-                                    <IntlMessages id="page.resetPassSubTitle"/>
+                                    <IntlMessages id="page.renewalPassSubTitle"/>
                                 </h3>
                                 <p>
-                                    <IntlMessages id="page.resetPassDescription"/>
+                                    <IntlMessages id="page.renewalPassDescription"/>
                                 </p>
                             </div>
 
-                            <div className="isoResetPassForm">
+                            <div className="isoRenewalPassForm">
 
                                 <FormItem
                                     hasFeedback
@@ -235,32 +233,29 @@ class ResetPassword extends Component {
 
                                 <div className="isoInputWrapper">
                                     <Button type="primary" onClick={this.handleReset}>
-                                        <IntlMessages id="page.resetPassSave"/>
+                                        <IntlMessages id="page.renewalPassSave"/>
                                     </Button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </ResetPasswordStyleWrapper>
+                </RenewalPasswordStyleWrapper>
             </Spin>
         );
     }
 }
 
 function mapStateToProps(state) {
-
-    console.log("state.PasswordResets.get('isResetError') * " + state.PasswordResets.get('isResetError'));
-
     return {
-        isResetDone: state.PasswordResets.get('isResetDone'),
-        isResetting: state.PasswordResets.get('isResetting'),
-        isResetError: state.PasswordResets.get('isResetError'),
+        isRenewalling: state.PasswordRenewals.get('isRenewalling'),
+        isRenewalDone: state.PasswordRenewals.get('isRenewalDone'),
+        isRenewalError: state.PasswordRenewals.get('isRenewalError'),
     }
 }
 
 export default connect(
     mapStateToProps,
-    {reset},
-)(ResetPassword);
+    {renewal},
+)(RenewalPassword);
 
 // EOF

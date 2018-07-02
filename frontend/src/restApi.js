@@ -1,23 +1,14 @@
-const axios = require('axios');
-
-const headers = {
-  'Accept': 'application/json',
-  'content-type': 'application/json',
-};
-const option = { headers };
-
-const base = "http://localhost:8080";
+import api from './api.js';
 
 export function RESTEntityApi(endpoint, keyName='codes'){
   const GET = (primary_key) =>
-    axios.get(`${base}/${endpoint}/${primary_key}`, option);
+    api.get(`${endpoint}/${primary_key}`);
   const POST = (body) =>
-    axios.post(`${base}/${endpoint}/`, body, option);
+    api.post(endpoint, body);
   const PUT = (primary_key, body) =>
-    axios.put(`${base}/${endpoint}/${primary_key}`, body, option);
+    api.put(`${endpoint}/${primary_key}`, body);
   const DELETE = (primary_key) => {
-    return axios.delete(`${base}/${endpoint}`, {
-      ...option,
+    return api.delete(endpoint, {
       params: {
         [keyName]: [primary_key]
       }
@@ -34,14 +25,12 @@ export function RESTEntityApi(endpoint, keyName='codes'){
 
 export function RESTListApi(endpoint, keyName='codes'){
   const GET = (params) => {
-    return axios.get(`${base}/${endpoint}`, {
-      ...option,
-      params: params,
+    return api.get(endpoint, {
+      params,
     });
   };
   const DELETE = (keys) => {
-    return axios.delete(`${base}/${endpoint}`, {
-      ...option,
+    return api.delete(endpoint, {
       params: {
         [keyName]: keys
       }

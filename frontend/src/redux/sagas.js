@@ -9,6 +9,9 @@ import ecommerceSaga from './ecommerce/saga';
 // import cardsSagas from './card/saga';
 // import chatSagas from './chat/sagas';
 // import youtubeSearchSagas from './youtubeSearch/sagas';
+import passwordResetSagas from './passwordResets/saga';
+import passwordRenewalSagas from './passwordRenewals/saga';
+
 import devSagas from '../customApp/redux/sagas';
 
 export default function* rootSaga() {
@@ -23,6 +26,8 @@ export default function* rootSaga() {
     // invoicesSagas(),
     // chatSagas(),
     // youtubeSearchSagas(),
+    passwordResetSagas(),
+    passwordRenewalSagas(),
     devSagas()
   ]);
 }

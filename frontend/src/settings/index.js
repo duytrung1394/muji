@@ -1,5 +1,6 @@
 export default {
-  apiUrl: 'http://yoursite.com/api/'
+  apiUrl: 'http://localhost:8080',
+  dc: () => '_dc=' + Math.floor((new Date()).getTime() / 1000),
 };
 const siteConfig = {
   siteName: 'ISOMORPHIC',
