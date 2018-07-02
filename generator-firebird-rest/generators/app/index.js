@@ -8,6 +8,7 @@ const esprima = require('esprima');
 const escodegen = require('escodegen');
 const prettier = require('prettier');
 const translate = require('translate');
+const jsonBeautify = require("json-beautify");
 
 // 鈴木が適当に取得したyandexのapiキーを使います
 translate.engine = 'yandex';
@@ -21,6 +22,15 @@ const escodegenOption = {
   }
 };
 const comment = "// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください";
+
+// 配列を元に翻訳する。カラム用を想定したもの。
+const genTranslatedMap = async (array, lang = 'ja') => {
+  let dict = new Map();
+  await Promise.all(array.map( async (v) => {
+    dict[v] = await translate(titleCase(v), {from: 'en', to: lang})
+  }));
+  return dict;
+}
 
 module.exports = class extends Generator {
   async prompting() {
@@ -87,12 +97,13 @@ module.exports = class extends Generator {
     this.props = props;
   }
 
-  writing() {
+  async writing() {
     const {
       rawname,
       endpoint,
       urlbase,
-      pkName
+      pkName,
+      jaName
     } = this.props;
     const resource_name = snakeCase(rawname);
     const resourceName = camelCase(rawname);
@@ -102,6 +113,9 @@ module.exports = class extends Generator {
     const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
     const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
     const linkColumnName = this.props.linkColumnName;
+    // list,detailのカラムを統合したもの。 Setを使う事でユニークに。
+    const columns = Array.from(new Set(listColumns.concat(detailColumns)))
+    const jaColumns = await genTranslatedMap(columns, 'ja');
 
     // 置換対象ファイルパスを羅列
     const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
@@ -358,6 +372,55 @@ module.exports = class extends Generator {
           }).join("\n")
 
           return prettier.format(`${comment}\n${code}`);
+        }
+      }
+    );
+
+
+    // en_US.json
+    const en_US_path = this.destinationPath("frontend/src/languageProvider/locales/en_US.json");
+    this.fs.copy(
+      en_US_path,
+      en_US_path,
+      {
+        process: (content) => {
+          let json = JSON.parse(content.toString());
+
+          json[`${resourceName}.sidebar`] = `${titleCase(resourceName)} Management`
+          json[`${resourceName}.name`] = titleCase(resourceName),
+          columns.map((column)=>{
+            json[`${resourceName}.attributes.${column}`] = titleCase(column)
+          });
+
+          // jsonをキーで辞書ソート
+          json = Object.entries(json).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} )
+
+          // 1000は改行する文字数。translate用のjsonは改行したくないので大きめの数字にしています。
+          return jsonBeautify(json, null, 2, 1000);
+        }
+      }
+    );
+
+    // ja_JP.json
+    const ja_JP_path = this.destinationPath("frontend/src/languageProvider/locales/ja_JP.json");
+    this.fs.copy(
+      ja_JP_path,
+      ja_JP_path,
+      {
+        process: (content) => {
+          let json = JSON.parse(content.toString());
+
+          json[`${resourceName}.sidebar`] = `${jaName}管理`
+          json[`${resourceName}.name`] = jaName,
+          columns.map((column)=>{
+            json[`${resourceName}.attributes.${column}`] = jaColumns[column]
+          });
+
+          // jsonをキーで辞書ソート
+          json = Object.entries(json).sort().reduce( (o,[k,v]) => (o[k]=v,o), {} )
+
+          // 1000は改行する文字数。translate用のjsonは改行したくないので大きめの数字にしています。
+          return jsonBeautify(json, null, 2, 1000);
         }
       }
     );
