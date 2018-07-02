@@ -321,6 +321,7 @@
   "sidebar.uppy": "Uppy Uploader",
   "sidebar.youtubeSearch": "Youtube Search",
   "task.attributes.description": "Description",
+  "task.attributes.id": "Id",
   "task.attributes.name": "Name",
   "task.attributes.task_code": "Task Code",
   "task.name": "Task",

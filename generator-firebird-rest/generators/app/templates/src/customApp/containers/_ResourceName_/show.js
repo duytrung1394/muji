@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import RestShow from '../shared/show';
 import actions from '../../redux/<%= resource_name %>/entity/actions';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 class ShowEntity extends Component {
 
@@ -12,14 +13,14 @@ class ShowEntity extends Component {
 
     return (
       <RestShow
-        name="<%= resource_name %>"
+        name="<%= resourceName %>"
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         {...this.props}
       >
         <ul>
           <% detailColumns.forEach((column) => { %>
-          <li><%= pascalCase(column) %>: {entity.<%= column %>}</li><%
+          <li><IntlMessages id="<%= resourceName %>.attributes.<%= column %>" />: {entity.<%= column %>}</li><%
           }); %>
         </ul>
       </RestShow>

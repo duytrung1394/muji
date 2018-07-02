@@ -6,6 +6,7 @@ import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Button from '../../../components/uielements/button';
 import Spin from '../../../components/uielements/spin';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const confirm = Modal.confirm;
 
@@ -58,6 +59,7 @@ export default class ShowEntity extends Component {
           <Link to={`${baseUrl}/${primaryKey}/edit`}>
             <Button>編集</Button>
           </Link>
+          {/* TODO: confirmのtitle,contentに IntlMessages を渡す方法がわからず。 */}
           <Button
             type="danger"
             onClick={ ()=> {

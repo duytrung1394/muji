@@ -6,7 +6,7 @@ import Button from '../../../components/uielements/button';
 import Table from '../../../components/uielements/table';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
-import { withRouter } from 'react-router-dom'
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const confirm = Modal.confirm;
 
@@ -76,6 +76,7 @@ export default class Index extends Component {
 
     const {
       name,
+      title,
       baseUrl,
       columnNames,
       linkColumn,
@@ -93,14 +94,14 @@ export default class Index extends Component {
     } = this.props;
 
     let columns = [];
-    columnNames.forEach(name => {
+    columnNames.forEach(colName => {
       let column = {
-        title: name,
-        dataIndex: name,
-        key: name,
+        title: <IntlMessages id={`${name}.attributes.${colName}`} />,
+        dataIndex: colName,
+        key: colName,
       };
 
-      if( linkColumn === name ){
+      if( linkColumn === colName ){
         column.render = (value, record) => 
         {
           return <Link to={`${baseUrl}/${record[this.props.pkName]}`}>{value}</Link>
@@ -139,7 +140,7 @@ export default class Index extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}一覧
+          {title ? title : name}一覧
         </PageHeader>
         <div className='isoLayoutContent'>
           <Link to={`${baseUrl}/!new`}>

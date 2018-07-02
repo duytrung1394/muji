@@ -10,6 +10,7 @@ import Radio, {RadioGroup} from '../../../components/uielements/radio';
 import Button from '../../../components/uielements/button';
 import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const FormItem = Form.Item;
 
@@ -303,7 +304,13 @@ export function RestFormSubmit(props){
           props.submit()
         }}
       >
-        { props.label }
+        {(()=> {
+          if(props.label){
+            return props.label;
+          }else{
+            return (<IntlMessages id="rest.save" />);
+          }
+        })()}
       </Button>
     </FormItem>
   );

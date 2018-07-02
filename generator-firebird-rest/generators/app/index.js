@@ -346,7 +346,7 @@ module.exports = class extends Generator {
               "computed": false,
               "value": {
                 "type": "Literal",
-                "value": `sidebar.${resource_name}`,
+                "value": `${resourceName}.sidebar`,
               },
               "kind": "init",
               "method": false,

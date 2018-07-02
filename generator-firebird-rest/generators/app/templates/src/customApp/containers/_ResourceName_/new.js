@@ -4,12 +4,13 @@ import {connect} from "react-redux";
 import actions from "../../redux/<%= resource_name %>/entity/actions";
 import Form from "./form";
 import RestNew from "../shared/new";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 class NewEntity extends Component {
   render() {
     return (
       <RestNew
-        name="<%= resource_name %>"
+        name={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         errors={ this.props.createErrors.<%= resource_name %> }

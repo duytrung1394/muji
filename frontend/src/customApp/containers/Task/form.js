@@ -7,9 +7,9 @@ export default class Form extends Component {
     return (
       <RestForm {...this.props}>
         
-        <RestFormInput name="name" label={<IntlMessages id="task.name" />} />
-        <RestFormInput name="description " label={<IntlMessages id="task.description" />} />
-        <RestFormSubmit label={<IntlMessages id="task.form.save" />} />
+        <RestFormInput name="name" label={<IntlMessages id="task.attributes.name" />} />
+        <RestFormInput name="description" label={<IntlMessages id="task.attributes.description" />} />
+        <RestFormSubmit />
       </RestForm>
     );
   }

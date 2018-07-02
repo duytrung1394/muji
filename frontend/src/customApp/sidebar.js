@@ -2,7 +2,7 @@
 const options = [
   {
     key: "tasks",
-    label: "sidebar.tasks",
+    label: "task.sidebar",
     leftIcon: "ion-android-checkbox-outline"
   },
   {

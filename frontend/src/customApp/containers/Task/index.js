@@ -9,7 +9,8 @@ class Index extends Component {
   render() {
     return (
       <RestIndex
-        name={<IntlMessages id="task.title" />}
+        name="task"
+        title={<IntlMessages id="task.name" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
         columnNames={["id","name"]}
