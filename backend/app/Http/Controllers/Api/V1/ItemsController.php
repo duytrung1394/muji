@@ -28,13 +28,45 @@ class ItemsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $response = $this->item->index();
+        $size       = 10;
+        $filters    = [];
+
+        foreach (json_decode($request->input('filters', '[]'), true) as $key => $value) {
+
+            $filters[] = [
+                'term' => [
+                    $key => $value
+                ],
+            ];
+        }
+
+        $response = \Prismatix::resource('item.Item')->search([
+            'from' => (($request->has('page') ? (int)$request->input('page') : 1) - 1) * $size,
+            'size' => $size,
+            // TODO: 暫定
+            'filters' => $filters,
+        ]);
+
+        if(!property_exists($response->data, 'hits')) {
+
+            return [
+                'data'  => [],
+                'total' => 0,
+            ];
+        }
+
+        $items = [];
+
+        foreach ($response->data->hits->hits as $hit) {
+
+            $items[] = $hit->_source;
+        }
 
         return [
-            'data'  => $response->data->_embedded->items,
-            'total' => $response->data->chunk->size,
+            'data'  => $items,
+            'total' => $response->data->hits->total,
         ];
     }
 
@@ -46,7 +78,10 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        $response = $this->item->show($id);
+
+        $response = \Prismatix::resource('item.Item')->showDocument([
+            'item_code' => $id,
+        ]);
 
         return [
             'item'  => $response->data,
@@ -61,7 +96,33 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        $response = $this->item->store($request);
+        // TODO: 仮データ登録
+        $this->validate($request, [
+            'item.item_code'    => 'required|max:64',
+            'item.item_name'    => 'required|max:64',
+        ], [], [
+            'item.item_code'    => 'JANコード',
+            'item.item_name'    => '商品名',
+        ]);
+
+        $response = \Prismatix::resource('item.Item')->store([
+            'lang'                  => 'ja_JP',
+            'item_code'             => $request->input('item.item_code'),
+            'status'                => 'PUBLISHED',
+            'start_timestamp'       => 1508918790,
+            'end_timestamp'         => 0,
+            'item_name'             => $request->input('item.item_name'),
+            'item_label'            => 'item_label',
+            'item_code_alt'         => 'item_code_alt',
+            'reservation_flag'      => true,
+            'store_receive_flag'    => true,
+            'priority'              => 0,
+            'memo'                  => 'memo',
+            'description'           => 'description',
+        ]);
+
+        // FIX: 
+        usleep(500000);
 
         return [
             'item'  => $response->data,
@@ -77,23 +138,27 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO: 仮データ更新
+        $this->validate($request, [
+            'item.item_code'    => 'required|max:64',
+            'item.item_name'    => 'required|max:64',
+        ], [], [
+            'item.item_code'    => 'JANコード',
+            'item.item_name'    => '商品名',
+        ]);
 
-        $response = $this->item->update($request, $id);
+        $response = \Prismatix::resource('item.Item')->update([
+            'lang'                  => 'ja_JP',
+            'item_code'             => $id,
+            'status'                => 'PUBLISHED',
+            'start_timestamp'       => 1508918790,
+            'end_timestamp'         => 0,
+            'memo'                  => "memo\nEnd Of Line",
+            'item_name'             => $request->input('item.item_name'),
+        ]);
 
-        return [
-            'item'  => $response->data,
-        ];
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $response = $this->item->destroy($id);
+        // FIX: 
+        usleep(500000);
 
         return [
             'item'  => $response->data,
@@ -103,25 +168,13 @@ class ItemsController extends Controller
     /**
      * Remove some resources from storage.
      *
-     * @param  int  $id
+     * @param  Request  $request
      * @return Response
      */
-    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
-        $data = [];
+        return $this->item->destroy($request);
 
-        foreach ($request->input('ids') as $id) {
-
-            $response = \Prismatix::resource('item.Item')->destroy([
-                'item_code' => $id,
-            ]);
-
-            $data[] = $response->data;
-        }
-
-        return [
-            'data'  => $data,
-            'count' => count($data),
-        ];
+        // return [];
     }
 }

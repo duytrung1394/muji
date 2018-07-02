@@ -1,6 +1,12 @@
 import React, {Component, Children} from 'react';
 import {Prompt} from 'react-router-dom';
-import Input from '../../../components/uielements/input';
+import moment from 'moment';
+import 'moment/locale/ja';
+import Input, {Textarea} from '../../../components/uielements/input';
+import InputNumber from '../../../components/uielements/InputNumber';
+import DatePicker from '../../../components/uielements/datePicker';
+import Select, {SelectOption} from '../../../components/uielements/select';
+import Radio, {RadioGroup} from '../../../components/uielements/radio';
 import Button from '../../../components/uielements/button';
 import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
@@ -142,6 +148,7 @@ export default class RestForm extends Component {
 export function RestFormInput(props){
   const {
     name,
+    label,
     errorMessage, 
     entity,
   } = props;
@@ -150,7 +157,7 @@ export function RestFormInput(props){
   return (
     <FormItem
       {...formItemLayout}
-      label={ name }
+      label={ label ? label : name}
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -158,6 +165,129 @@ export function RestFormInput(props){
         placeholder={ name }
         value={ entity[name] }
         onChange={ event => props.updateEntity(name, event.target.value) }
+      />
+    </FormItem>
+  );
+}
+export function RestFormTextarea(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <Textarea
+        placeholder={ name }
+        value={ entity[name] }
+        onChange={ event => props.updateEntity(name, event.target.value) }
+      />
+    </FormItem>
+  );
+}
+export function RestFormInputNumber(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <InputNumber
+        placeholder={ name }
+        value={ entity[name] }
+        onChange={ value => props.updateEntity(name, value) }
+      />
+    </FormItem>
+  );
+}
+export function RestFormSelect(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+    options,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <Select
+        defaultValue={entity[name]}
+        onChange={ value => props.updateEntity(name, value) }
+      >
+        {options.map(o => <SelectOption value={o.value}>{o.label}</SelectOption>)}
+      </Select>
+    </FormItem>
+  );
+}
+export function RestFormRadioGroup(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+    options,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <RadioGroup
+        value={entity[name]}
+        onChange={ event => props.updateEntity(name, event.target.value) }
+      >
+        {options.map(o => <Radio value={o.value}>{o.label}</Radio>)}
+      </RadioGroup>
+    </FormItem>
+  );
+}
+export function RestFormDatePicker(props){
+  const {
+    name,
+    label,
+    errorMessage,
+    entity,
+  } = props;
+  const validateStatus = errorMessage ? 'error' : '';
+  // TODO: i18nベースのlabel自動使用
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={ label ? label : name}
+      validateStatus={ validateStatus }
+      help={ errorMessage }
+    >
+      <DatePicker
+        defaultValue={ entity[name] ? moment(new Date(entity[name] * 1000)) : ''}
+        onChange={ m => props.updateEntity(name, m.unix()) }
       />
     </FormItem>
   );

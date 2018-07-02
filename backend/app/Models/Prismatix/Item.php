@@ -27,7 +27,7 @@ class Item extends PrismatixModel
      *
      * @return Response
      */
-    public function index()
+/*    public function index()
     {
         // TODO: pagination
         $response = \Prismatix::resource($this->resourceKey)->index([
@@ -35,7 +35,7 @@ class Item extends PrismatixModel
         ]);
 
         return $response;
-    }
+    }*/
 
     /**
      * Display the specified resource.
@@ -43,14 +43,14 @@ class Item extends PrismatixModel
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+/*    public function show($id)
     {
         $response = \Prismatix::resource($this->resourceKey)->show([
             $this->rootParamName => $id,
         ]);
 
         return $response;
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -90,9 +90,12 @@ class Item extends PrismatixModel
             'addon_service_codes',
         ] as $property) {
 
-            if ($request->has($property)) {
-
-                $body[$property] = $request->input($property);
+            if ($request->has('item.' . $property)) {
+                if ($property === 'memo' || $property === 'description') {
+                    $body[$property] = str_replace(["\r\n", "\r"], "\n", $request->input('item.' . $property));
+                } else {
+                    $body[$property] = $request->input('item.' . $property);
+                }
             }
         }
 
@@ -128,8 +131,8 @@ class Item extends PrismatixModel
             'attributes',
             'brand_code',
             'promotion_status',
-            // 'spec_info',
-            // 'size_info',
+            'spec_info',
+            'size_info',
             'link_urls',
             'branches',
             'badges',
@@ -138,45 +141,31 @@ class Item extends PrismatixModel
             'access_policy',
         ] as $property) {
 
-            if ($request->has($property)) {
-
-                $body[$property] = $request->input($property);
+            if ($request->has('item.' . $property)) {
+                if ($property === 'memo' || $property === 'description') {
+                    $body[$property] = str_replace(["\r\n", "\r"], "\n", $request->input('item.' . $property));
+                } else {
+                    $body[$property] = $request->input('item.' . $property);
+                }
             }
         }
-
         return \Prismatix::resource($this->resourceKey)->update($body);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-
-        $response = \Prismatix::resource($this->resourceKey)->destroy([
-            $this->rootParamName => $id,
-        ]);
-
-        return $response;
     }
 
     /**
      * Remove somev resources from storage.
      *
-     * @param  int  $id
+     * @param  Request  $request
      * @return Response
      */
-/*    public function destroyMulti(Request $request)
+    public function destroy(Request $request)
     {
         $data = [];
 
-        foreach ($request->input('ids') as $id) {
+        foreach ($request->input('codes') as $code) {
 
             $response = \Prismatix::resource($this->resourceKey)->destroy([
-                $this->rootParamName => $id,
+                $this->rootParamName => $code,
             ]);
 
             $data[] = $response->data;
@@ -186,5 +175,5 @@ class Item extends PrismatixModel
             'data'  => $data,
             'count' => count($data),
         ];
-    }*/
+    }
 }

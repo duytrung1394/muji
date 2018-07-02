@@ -24,12 +24,10 @@ export function RESTEntityApi(endpoint, keyName='codes'){
 }
 
 export function RESTListApi(endpoint, keyName='codes'){
-  const GET = (page) => {
-    let url = endpoint;
-    if( page && page > 0 ){
-      url = `${url}?page=${page}`
-    }
-    return api.get(url);
+  const GET = (params) => {
+    return api.get(endpoint, {
+      params,
+    });
   };
   const DELETE = (keys) => {
     return api.delete(endpoint, {

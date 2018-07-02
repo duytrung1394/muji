@@ -3,6 +3,7 @@ import restRoutes from "./restRoutes";
 const routes = [
   ...restRoutes("tasks", "Task"),
   ...restRoutes("users", "User"),
-  ...restRoutes("categories", "Category")
+  ...restRoutes("categories", "Category"),
+  ...restRoutes("items", "Item")
 ];
 export default routes;
