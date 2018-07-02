@@ -2,11 +2,16 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const {camelCase, snakeCase, constantCase, pascalCase, paramCase} = require('change-case');
+const {camelCase, snakeCase, constantCase, pascalCase, paramCase, titleCase} = require('change-case');
 const pluralize =  require('pluralize');
 const esprima = require('esprima');
 const escodegen = require('escodegen');
 const prettier = require('prettier');
+const translate = require('translate');
+
+// 鈴木が適当に取得したyandexのapiキーを使います
+translate.engine = 'yandex';
+translate.key = 'trnsl.1.1.20180702T044209Z.446364a6562a5ca9.f10245d83ffaf6fcc6ebb263829d2dde7ad0bfb0';
 
 const escodegenOption = {
   format: {
@@ -66,7 +71,13 @@ module.exports = class extends Generator {
       name: 'urlbase',
       message: 'ブラウザからアクセスするURLのベース部を入力してください',
       default: (props)=> pluralize(props.rawname),
-    }
+    },
+    {
+      type: 'input',
+      name: 'jaName',
+      message: '日本語名を入力してください',
+      default: (props)=> translate(titleCase(props.rawname), { from: 'en', to: 'ja' }),
+    },
   ]);
 
     if(props.name == "shared"){
