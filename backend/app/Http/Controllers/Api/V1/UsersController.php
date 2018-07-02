@@ -229,6 +229,8 @@ class UsersController extends Controller {
 
             // 有効期限が切れている場合、400エラー
             abort(400, 'Bad Request');
+            print_r($json);
+
 
         }
 

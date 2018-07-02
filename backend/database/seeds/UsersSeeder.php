@@ -182,7 +182,7 @@ class UsersSeeder extends Seeder {
 
         }
 
-        for ($i = 1; $i < 1234; $i++) {
+        for ($i = 1; $i < 123; $i++) {
             $userItem = new User;
 
             $userItem->username = 'test' . $i . '@test.com';

@@ -5,6 +5,7 @@ ENV APP_HOME /app
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
 ENV COMPOSER_VERSION 1.6.3
+ENV COMPOSER_PROCESS_TIMEOUT 3600
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install  php7.2-mysql php-xdebug \

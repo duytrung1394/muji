@@ -5,58 +5,61 @@ if (empty($router)) {
 }
 
 // {{{ /api/v1/users
+$api_middleware = [
+    //'accept_header_json',
+];
 
 /**
  * ログイン
  */
-// $router->post('/api/v1/users/auth', [
-//     'middleware' => $api_middleware,
-//     'uses' => 'Api\V1\UsersController@login'
-// ]);
+$router->post('/api/v1/users/auth', [
+    'middleware' => $api_middleware,
+    'uses' => 'Api\V1\UsersController@login'
+]);
 
-// /**
-//  * トークン認証&更新
-//  */
-// $router->put('/api/v1/users/auth', [
-//     'middleware' => array_merge([
-//         'auth'
-//     ], $api_middleware),
-//     'uses' => 'Api\V1\UsersController@token'
-// ]);
+/**
+ * トークン認証&更新
+ */
+$router->put('/api/v1/users/auth', [
+    'middleware' => array_merge([
+        'auth'
+    ], $api_middleware),
+    'uses' => 'Api\V1\UsersController@token'
+]);
 
-// /**
-//  * ログアウト
-//  */
-// $router->delete('/api/v1/users/auth', [
-//     'middleware' => $api_middleware,
-//     'uses' => 'Api\V1\UsersController@logout'
-// ]);
+/**
+ * ログアウト
+ */
+$router->delete('/api/v1/users/auth', [
+    'middleware' => $api_middleware,
+    'uses' => 'Api\V1\UsersController@logout'
+]);
 
-// /**
-//  * パスワードリセットメール送信
-//  */
-// $router->post('/api/v1/users/send_reset_password_mail', [
-//     'middleware' => $api_middleware,
-//     'uses' => 'Api\V1\UsersController@send_reset_password_mail'
-// ]);
+/**
+ * パスワードリセットメール送信
+ */
+$router->post('/api/v1/users/send_reset_password_mail', [
+    'middleware' => $api_middleware,
+    'uses' => 'Api\V1\UsersController@send_reset_password_mail'
+]);
 
-// /**
-//  * パスワードリセット
-//  */
-// $router->post('/api/v1/users/reset_password', [
-//     'middleware' => $api_middleware,
-//     'uses' => 'Api\V1\UsersController@reset_password'
-// ]);
+/**
+ * パスワードリセット
+ */
+$router->post('/api/v1/users/reset_password', [
+    'middleware' => $api_middleware,
+    'uses' => 'Api\V1\UsersController@reset_password'
+]);
 
-// /**
-//  * パスワード更新
-//  */
-// $router->post('/api/v1/users/renewal_password', [
-//     'middleware' => array_merge([
-//         'auth'
-//     ], $api_middleware),
-//     'uses' => 'Api\V1\UsersController@renewal_password'
-// ]);
+/**
+ * パスワード更新
+ */
+$router->post('/api/v1/users/renewal_password', [
+    'middleware' => array_merge([
+        'auth'
+    ], $api_middleware),
+    'uses' => 'Api\V1\UsersController@renewal_password'
+]);
 
 // /**
 //  * アプリケーション情報取得

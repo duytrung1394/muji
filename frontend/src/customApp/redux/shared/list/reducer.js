@@ -8,10 +8,14 @@ export const restInitState = new Map({
   fetchError: false,
   destroying: false,
   destroyed: false,
+  destroyError: false,
+  filters: [],
+  doSearch: false,
 });
 
 // GET
 export const fetchRequest = (state, action) => state
+  .set('doSearch', false)
   .set('fetching', true)
   .set('fetched', false)
   .set('fetchError', false);
@@ -53,6 +57,10 @@ export const destroyCleanup = (state, action) => state
   .set('destroyed', false)
   .set('destroyError', false);
 
+export const setFilters = (state, action) => state
+  .set('doSearch', true)
+  .set('filters', action.payload);
+
 const restReducer = {
   FETCH: {
     REQUEST: fetchRequest,
@@ -66,6 +74,7 @@ const restReducer = {
     FAILURE: destroyFailure,
     CLEANUP: destroyCleanup,
   },
+  SET_FILTERS: setFilters,
 };
 
 export default restReducer;

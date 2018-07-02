@@ -3,7 +3,7 @@ import { palette } from 'styled-theme';
 import bgImage from '../../image/image5.jpg';
 import WithDirection from '../../settings/withDirection';
 
-const ResetPasswordStyleWrapper = styled.div`
+const RenewalPasswordStyleWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100vh;
@@ -91,7 +91,7 @@ const ResetPasswordStyleWrapper = styled.div`
       }
     }
 
-    .isoResetPassForm {
+    .isoRenewalPassForm {
       width: 100%;
       display: flex;
       flex-shrink: 0;
@@ -132,4 +132,4 @@ const ResetPasswordStyleWrapper = styled.div`
   }
 `;
 
-export default WithDirection(ResetPasswordStyleWrapper);
+export default WithDirection(RenewalPasswordStyleWrapper);

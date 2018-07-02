@@ -1,4 +1,5 @@
 import {call, put, all, takeEvery} from "redux-saga/effects";
+import authActions from "../../../../redux/auth/actions";
 
 export function restSagaFunctions(name, api, actions) {
   return {
@@ -8,7 +9,11 @@ export function restSagaFunctions(name, api, actions) {
         const response = yield call(api.GET, payload);
         yield put(actions.fetch.success(response.data));
       } catch (error) {
-        yield put(actions.fetch.failure(error));
+        if( error.response.status == 401 ){
+          yield put(authActions.unauthorized(error));
+        }else{
+          yield put(actions.fetch.failure(error));
+        }
       }
     },
     // USAGE: create.request(entity)
@@ -17,7 +22,11 @@ export function restSagaFunctions(name, api, actions) {
         const response = yield call(api.POST, {[name]: payload});
         yield put(actions.create.success(response.data));
       } catch (error) {
-        yield put(actions.create.failure(error));
+        if( error.response.status == 401 ){
+          yield put(authActions.unauthorized(error));
+        }else{
+          yield put(actions.create.failure(error));
+        }
       }
     },
     // USAGE: update.request(primary_key, entity)
@@ -27,7 +36,11 @@ export function restSagaFunctions(name, api, actions) {
         const response = yield call(api.PUT, primaryKey, {[name]: entity});
         yield put(actions.update.success(response.data));
       } catch (error) {
-        yield put(actions.update.failure(error));
+        if( error.response.status == 401 ){
+          yield put(authActions.unauthorized(error));
+        }else{
+          yield put(actions.update.failure(error));
+        }
       }
     },
     // USAGE: destroy.request(primary_key)
@@ -36,7 +49,11 @@ export function restSagaFunctions(name, api, actions) {
         const response = yield call(api.DELETE, payload);
         yield put(actions.destroy.success(response.data));
       } catch (error) {
-        yield put(actions.destroy.failure(error));
+        if( error.response.status == 401 ){
+          yield put(authActions.unauthorized(error));
+        }else{
+          yield put(actions.destroy.failure(error));
+        }
       }
     },
   };

@@ -1,58 +1,86 @@
-import { all, takeEvery, put, fork } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
-import { getToken, clearToken } from '../../helpers/utility';
+import {all, takeEvery, put, call, fork} from 'redux-saga/effects';
+import {push} from 'react-router-redux';
 import actions from './actions';
+import settings from '../../settings';
+import { saveToken, clearToken } from './localStorage';
+import api from '../../api';
 
-const fakeApiCall = true; // auth0 or express JWT
+function* loginRequest() {
 
-export function* loginRequest() {
-  yield takeEvery('LOGIN_REQUEST', function*() {
-    if (fakeApiCall) {
-      yield put({
-        type: actions.LOGIN_SUCCESS,
-        token: 'secret token',
-        profile: 'Profile'
-      });
-    } else {
-      yield put({ type: actions.LOGIN_ERROR });
-    }
-  });
+    yield takeEvery('LOGIN_REQUEST', function* (action) {
+        const { payload } = action;
+        const postLoginApi = () => api.post(
+            `/api/v1/users/auth?${settings.dc()}`,
+            {
+                username: payload.username,
+                password: payload.password
+            });
+
+        try {
+            const response = yield call(postLoginApi);
+            yield put(actions.loginSuccess(
+                response.data.token,
+                response.data.profile,
+                payload.rememberMe,
+            ));
+        } catch (e) {
+            console.error(e)
+            yield put(actions.loginError(e));
+        }
+
+    });
 }
 
-export function* loginSuccess() {
-  yield takeEvery(actions.LOGIN_SUCCESS, function*(payload) {
-    yield localStorage.setItem('id_token', payload.token);
-  });
+function* loginSuccess() {
+    yield takeEvery(actions.LOGIN_SUCCESS, function* (action) {
+        const payload = action.payload;
+        if( payload.rememberMe ){
+            saveToken( payload.token );
+
+            // プロフィール情報保存...?
+            // → localStorageに保存すべき情報なのか？ ログイン後に変更されるケースなども考慮すると
+            // SPAロード時にサーバーに確認に行ってredux上にだけ保存するのが正しいのでは？
+            // localStorage.setItem(
+            //     'profile',
+            //     CryptoJS.AES.encrypt(
+            //         JSON.stringify(payload.profile),
+            //         payload.token
+            //     ).toString()
+            // );
+        }
+    });
 }
 
-export function* loginError() {
-  yield takeEvery(actions.LOGIN_ERROR, function*() {});
+function* loginError() {
+    yield takeEvery(actions.LOGIN_ERROR, function* () {
+        clearToken();
+    });
 }
 
-export function* logout() {
-  yield takeEvery(actions.LOGOUT, function*() {
-    clearToken();
-    yield put(push('/'));
-  });
+function* logout() {
+    yield takeEvery(actions.LOGOUT, function* () {
+
+        const postLogoutApi = () => api.delete('/api/v1/users/auth');
+
+        try {
+            yield call(postLogoutApi);
+        } catch (e) {
+            console.error(e);
+        }
+
+        clearToken();
+
+        yield put(push('/'));
+    });
 }
-export function* checkAuthorization() {
-  yield takeEvery(actions.CHECK_AUTHORIZATION, function*() {
-    const token = getToken().get('idToken');
-    if (token) {
-      yield put({
-        type: actions.LOGIN_SUCCESS,
-        token,
-        profile: 'Profile'
-      });
-    }
-  });
-}
+
 export default function* rootSaga() {
-  yield all([
-    fork(checkAuthorization),
-    fork(loginRequest),
-    fork(loginSuccess),
-    fork(loginError),
-    fork(logout)
-  ]);
+    yield all([
+        fork(loginRequest),
+        fork(loginSuccess),
+        fork(loginError),
+        fork(logout),
+    ]);
 }
+
+// EOF
