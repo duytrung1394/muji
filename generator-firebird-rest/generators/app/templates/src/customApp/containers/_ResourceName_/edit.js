@@ -10,7 +10,8 @@ class EditEntity extends Component {
   render() {
     return (
       <RestEdit
-      name={<IntlMessages id="<%= resourceName %>.name" />}
+        name="<%= resourceName %>"
+        title={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         errors={ this.props.updateErrors.<%= resource_name %> }

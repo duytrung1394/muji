@@ -140,12 +140,12 @@ export default class Index extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {title ? title : name}一覧
+          {title ? title : name}<IntlMessages id="rest.index" />
         </PageHeader>
         <div className='isoLayoutContent'>
           <Link to={`${baseUrl}/!new`}>
             <Button type="primary">
-              新規作成
+              <IntlMessages id="rest.new" />
             </Button>
           </Link>
           <Button
@@ -163,7 +163,7 @@ export default class Index extends Component {
               });
             } }
           >
-            削除
+            <IntlMessages id="rest.delete" />
           </Button>
           {this.state.selectedKeys.length > 0 &&
           <span>（{ this.state.selectedKeys.length }件選択中）</span>

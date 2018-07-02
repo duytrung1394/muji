@@ -14,6 +14,7 @@ class ShowEntity extends Component {
     return (
       <RestShow
         name="<%= resourceName %>"
+        title={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         {...this.props}

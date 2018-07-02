@@ -10,7 +10,8 @@ class NewEntity extends Component {
   render() {
     return (
       <RestNew
-        name={<IntlMessages id="task.name" />}
+        name="task"
+        title={<IntlMessages id="task.name" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
         errors={ this.props.createErrors.task }

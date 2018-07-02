@@ -54,10 +54,10 @@ export default class ShowEntity extends Component {
       <LayoutWrapper>
         <div>
           <Link to={ baseUrl }>
-            <Button>一覧に戻る</Button>
+            <Button><IntlMessages id="rest.index" /></Button>
           </Link>
           <Link to={`${baseUrl}/${primaryKey}/edit`}>
-            <Button>編集</Button>
+            <Button><IntlMessages id="rest.edit" /></Button>
           </Link>
           {/* TODO: confirmのtitle,contentに IntlMessages を渡す方法がわからず。 */}
           <Button
@@ -71,11 +71,11 @@ export default class ShowEntity extends Component {
                 },
                 onCancel() {},
               });
-            } }>削除</Button>
+            } }><IntlMessages id="rest.delete" /></Button>
         </div>
 
         <PageHeader>
-          {name}詳細
+          <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.show" />
         </PageHeader>
 
         <Box>

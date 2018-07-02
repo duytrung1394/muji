@@ -6,6 +6,7 @@ import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
 import {message} from "antd/lib/index";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 export default class RestEdit extends Component {
   componentDidMount(){
@@ -59,11 +60,11 @@ export default class RestEdit extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}編集
+        <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.edit" />
         </PageHeader>
         <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>
-            {name}詳細にもどる
+            <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.show" />
           </Button>
         </Link>
         <Box>

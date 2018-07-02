@@ -10,7 +10,8 @@ class NewEntity extends Component {
   render() {
     return (
       <RestNew
-        name={<IntlMessages id="<%= resourceName %>.name" />}
+        name="<%= resourceName %>"
+        title={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         errors={ this.props.createErrors.<%= resource_name %> }

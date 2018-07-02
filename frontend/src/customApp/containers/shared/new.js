@@ -6,6 +6,7 @@ import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 export default class NewEntity extends Component {
 
@@ -45,12 +46,12 @@ export default class NewEntity extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}の新規作成
+        <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.new" />
         </PageHeader>
         <Box>
           <Link to={baseUrl}>
             <Button>
-              一覧にもどる
+            <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.index" />
             </Button>
           </Link>
           <Spin spinning={creating}>
