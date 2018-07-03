@@ -4,14 +4,12 @@ import {connect} from "react-redux";
 import actions from "../../redux/<%= resource_name %>/entity/actions";
 import Form from "./form";
 import RestEdit from "../shared/edit";
-import IntlMessages from "../../../components/utility/intlMessages";
 
 class EditEntity extends Component {
   render() {
     return (
       <RestEdit
         name="<%= resourceName %>"
-        title={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         errors={ this.props.updateErrors.<%= resource_name %> }

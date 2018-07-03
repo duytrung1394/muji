@@ -10,7 +10,6 @@ class Index extends Component {
     return (
       <RestIndex
         name="<%= resourceName %>"
-        title={<IntlMessages id="<%= resourceName %>.name" />}
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         columnNames={<%- JSON.stringify(listColumns) %>}

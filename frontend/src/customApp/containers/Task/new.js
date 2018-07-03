@@ -4,14 +4,12 @@ import {connect} from "react-redux";
 import actions from "../../redux/task/entity/actions";
 import Form from "./form";
 import RestNew from "../shared/new";
-import IntlMessages from "../../../components/utility/intlMessages";
 
 class NewEntity extends Component {
   render() {
     return (
       <RestNew
         name="task"
-        title={<IntlMessages id="task.name" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
         errors={ this.props.createErrors.task }

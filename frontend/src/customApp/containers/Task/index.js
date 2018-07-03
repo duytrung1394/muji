@@ -10,10 +10,9 @@ class Index extends Component {
     return (
       <RestIndex
         name="task"
-        title={<IntlMessages id="task.name" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
-        columnNames={["id","name"]}
+        columnNames={["id","task_code","name"]}
         linkColumn="name"
         {...this.props}
       />

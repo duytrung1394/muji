@@ -14,7 +14,6 @@ class ShowEntity extends Component {
     return (
       <RestShow
         name="task"
-        title={<IntlMessages id="task.name" />}
         pkName="id"
         baseUrl="/dashboard/tasks"
         {...this.props}

@@ -73,9 +73,9 @@ export default class Index extends Component {
 
   render() {
     const page = this.getPage(this.props);
-
     const {
       name,
+      id,
       title,
       baseUrl,
       columnNames,
@@ -140,7 +140,7 @@ export default class Index extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {title ? title : name}<IntlMessages id="rest.index" />
+          <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.index" />
         </PageHeader>
         <div className='isoLayoutContent'>
           <Link to={`${baseUrl}/!new`}>

@@ -152,13 +152,14 @@ export function RestFormInput(props){
     label,
     errorMessage, 
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -176,13 +177,14 @@ export function RestFormTextarea(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -200,13 +202,14 @@ export function RestFormInputNumber(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -225,13 +228,14 @@ export function RestFormSelect(props){
     errorMessage,
     entity,
     options,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -251,13 +255,14 @@ export function RestFormRadioGroup(props){
     errorMessage,
     entity,
     options,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -276,13 +281,14 @@ export function RestFormDatePicker(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
