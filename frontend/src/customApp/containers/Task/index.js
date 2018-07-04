@@ -3,7 +3,6 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import actions from '../../redux/task/list/actions';
 import RestIndex from '../shared/index';
-import IntlMessages from "../../../components/utility/intlMessages";
 
 class Index extends Component {
   render() {
