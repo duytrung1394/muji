@@ -14,28 +14,28 @@ function getHeaders(){
 }
 
 function getApi(path, option={}){
-  return axios.get(`${base}/${path}`, {
+  return axios.get(`${base}/${path.replace(/^\//,'')}`, {
     ...option,
     headers: getHeaders()
   });
 }
 
 function postApi(path, body, option={}){
-  return axios.post(`${base}/${path}`, body, {
+  return axios.post(`${base}/${path.replace(/^\//,'')}`, body, {
     ...option,
     headers: getHeaders()
   });
 }
 
 function putApi(path, body, option={}){
-  return axios.put(`${base}/${path}`, body, {
+  return axios.put(`${base}/${path.replace(/^\//,'')}`, body, {
     ...option,
     headers: getHeaders()
   });
 }
 
 function deleteApi(path, option={}){
-  return axios.delete(`${base}/${path}`, {
+  return axios.delete(`${base}/${path.replace(/^\//,'')}`, {
     ...option,
     headers: getHeaders()
   });
