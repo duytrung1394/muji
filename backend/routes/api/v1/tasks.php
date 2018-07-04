@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('tasks', [
+$router->get('/api/v1/tasks', [
     'middleware'    => [],
     'uses'          => 'Api\V1\TasksController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('tasks', [
 /**
  * 詳細取得
  */
-$router->get('tasks/{id}', [
+$router->get('/api/v1/tasks/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\TasksController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('tasks/{id}', [
 /**
  * 登録
  */
-$router->post('tasks', [
+$router->post('/api/v1/tasks', [
     'middleware'    => [],
     'uses'          => 'Api\V1\TasksController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('tasks', [
 /**
  * 更新
  */
-$router->put('tasks/{id}', [
+$router->put('/api/v1/tasks/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\TasksController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('tasks/{id}', [
 /**
  * 削除
  */
-$router->delete('tasks', [
+$router->delete('/api/v1/tasks', [
     'middleware'    => [],
     'uses'          => 'Api\V1\TasksController@destroy',
 ]);

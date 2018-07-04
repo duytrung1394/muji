@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('items', [
+$router->get('/api/v1/items', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemsController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('items', [
 /**
  * 詳細取得
  */
-$router->get('items/{id}', [
+$router->get('/api/v1/items/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemsController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('items/{id}', [
 /**
  * 登録
  */
-$router->post('items', [
+$router->post('/api/v1/items', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemsController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('items', [
 /**
  * 更新
  */
-$router->put('items/{id}', [
+$router->put('/api/v1/items/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemsController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('items/{id}', [
 /**
  * 削除
  */
-$router->delete('items', [
+$router->delete('/api/v1/items', [
     'middleware'    => [],
     'uses'          => 'Api\V1\ItemsController@destroy',
 ]);

@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('categories', [
+$router->get('/api/v1/categories', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoriesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('categories', [
 /**
  * 詳細取得
  */
-$router->get('categories/{id}', [
+$router->get('/api/v1/categories/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoriesController@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('categories/{id}', [
 /**
  * 登録
  */
-$router->post('categories', [
+$router->post('/api/v1/categories', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoriesController@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('categories', [
 /**
  * 更新
  */
-$router->put('categories/{id}', [
+$router->put('/api/v1/categories/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoriesController@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('categories/{id}', [
 /**
  * 削除
  */
-$router->delete('categories', [
+$router->delete('/api/v1/categories', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CategoriesController@destroy',
 ]);

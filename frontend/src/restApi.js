@@ -1,6 +1,9 @@
 import api from './api.js';
 
 export function RESTEntityApi(endpoint, keyName='codes'){
+  // FIX
+  endpoint = `/api/v1/${endpoint}`;
+
   const GET = (primary_key) =>
     api.get(`${endpoint}/${primary_key}`);
   const POST = (body) =>
@@ -24,6 +27,9 @@ export function RESTEntityApi(endpoint, keyName='codes'){
 }
 
 export function RESTListApi(endpoint, keyName='codes'){
+  // FIX
+  endpoint = `/api/v1/${endpoint}`;
+
   const GET = (params) => {
     return api.get(endpoint, {
       params,

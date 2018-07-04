@@ -178,7 +178,7 @@ $router->post('/api/v1/users/renewal_password', [
 /**
  * 一覧取得
  */
-$router->get('users', [
+$router->get('/api/v1/users', [
     'middleware'    => [],
     'uses'          => 'Api\V1\UsersController@index',
 ]);
@@ -186,7 +186,7 @@ $router->get('users', [
 /**
  * 詳細取得
  */
-$router->get('users/{id}', [
+$router->get('/api/v1/users/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\UsersController@show',
 ]);
@@ -194,7 +194,7 @@ $router->get('users/{id}', [
 /**
  * 登録
  */
-$router->post('users', [
+$router->post('/api/v1/users', [
     'middleware'    => [],
     'uses'          => 'Api\V1\UsersController@store',
 ]);
@@ -202,7 +202,7 @@ $router->post('users', [
 /**
  * 更新
  */
-$router->put('users/{id}', [
+$router->put('/api/v1/users/{id}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\UsersController@update',
 ]);
@@ -210,7 +210,7 @@ $router->put('users/{id}', [
 /**
  * 削除
  */
-$router->delete('users', [
+$router->delete('/api/v1/users', [
     'middleware'    => [],
     'uses'          => 'Api\V1\UsersController@destroy',
 ]);
