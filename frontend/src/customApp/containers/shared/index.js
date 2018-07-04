@@ -7,6 +7,7 @@ import Table from '../../../components/uielements/table';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import IntlMessages from "../../../components/utility/intlMessages";
+import Txt from './txt';
 
 const confirm = Modal.confirm;
 
@@ -56,7 +57,7 @@ export default class Index extends Component {
   if( destroyed ){
       destroyCleanup();
       this.fetchRequest(this.props);
-      message.error('削除しました');
+      message.error(<Txt><IntlMessages id="rest.deleted.message"/></Txt>);
     }
   }
   
@@ -124,7 +125,7 @@ export default class Index extends Component {
       defaultCurrent: page,
       total: total,
       showTotal: (total, range) => {
-        return `${total} 件中 ${range[0]} - ${range[1]}件目 を表示`
+        return <IntlMessages id="rest.index.pagination.show.total" values={{total:total, from:range[0], to:range[1]}}/>
       },
       onChange: page => {
         let url;
@@ -137,15 +138,37 @@ export default class Index extends Component {
       }
     };
 
+    const deleteMessageTitle = (
+      <Txt>
+        <IntlMessages
+          id="rest.index.delete.message.title"
+          values={{
+            name: <IntlMessages id={`${name}.name`} />,
+            num: this.state.selectedKeys.length
+          }}
+          />
+      </Txt>
+    );
+    const deleteMessageContent = (
+      <Txt>
+        <IntlMessages
+          id="rest.index.delete.message.content"
+          values={{
+            name: <IntlMessages id={`${name}.name`} />
+          }}
+          />
+      </Txt>
+    );
+
     return (
       <LayoutWrapper>
         <PageHeader>
-          <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.index" />
+          <IntlMessages id="rest.index" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
         <div className='isoLayoutContent'>
           <Link to={`${baseUrl}/!new`}>
             <Button type="primary">
-              <IntlMessages id="rest.new" />
+              <IntlMessages id="rest.new" values={{name: ''}}/>
             </Button>
           </Link>
           <Button
@@ -154,8 +177,8 @@ export default class Index extends Component {
             onClick={ (event)=> {
               const keys = this.state.selectedKeys;
               confirm({
-                title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
-                content: '削除したタスクを元に戻すことは出来ません',
+                title: deleteMessageTitle,
+                content: deleteMessageContent,
                 onOk() {
                   destroyRequest(keys);
                 },
@@ -163,10 +186,10 @@ export default class Index extends Component {
               });
             } }
           >
-            <IntlMessages id="rest.delete" />
+            <IntlMessages id="rest.delete" values={{name: ''}}/>
           </Button>
           {this.state.selectedKeys.length > 0 &&
-          <span>（{ this.state.selectedKeys.length }件選択中）</span>
+            <span>（<IntlMessages id="rest.index.n.items.selected" values={{num: this.state.selectedKeys.length}}/>）</span>
           }
           { SearchComponent &&
           <SearchComponent

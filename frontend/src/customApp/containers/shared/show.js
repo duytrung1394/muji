@@ -7,6 +7,7 @@ import Box from '../../../components/utility/box';
 import Button from '../../../components/uielements/button';
 import Spin from '../../../components/uielements/spin';
 import IntlMessages from "../../../components/utility/intlMessages";
+import Txt from "./txt";
 
 const confirm = Modal.confirm;
 
@@ -27,7 +28,7 @@ export default class ShowEntity extends Component {
 
     if( destroyed ){
       destroyCleanup();
-      message.error('削除しました');
+      message.error(<Txt><IntlMessages id="rest.deleted.message"/></Txt>);
       history.push(baseUrl);
     }
   }
@@ -49,33 +50,53 @@ export default class ShowEntity extends Component {
 
     const primaryKey = match.params.id;
 
+    const deleteMessageTitle = (
+      <Txt>
+        <IntlMessages
+          id="rest.show.delete.message.title"
+          values={{
+            name: <IntlMessages id={`${name}.name`} />
+          }}
+          />
+      </Txt>
+    );
+    const deleteMessageContent = (
+      <Txt>
+        <IntlMessages
+          id="rest.show.delete.message.content"
+          values={{
+            name: <IntlMessages id={`${name}.name`} />
+          }}
+          />
+      </Txt>
+    );
+
     // TODO: fetchErrorを表示してUIからfetchしなおせるようにしたい
     return (
       <LayoutWrapper>
         <div>
           <Link to={ baseUrl }>
-            <Button><IntlMessages id="rest.index" /></Button>
+            <Button><IntlMessages id="rest.index" values={{name: ''}}/></Button>
           </Link>
           <Link to={`${baseUrl}/${primaryKey}/edit`}>
-            <Button><IntlMessages id="rest.edit" /></Button>
+            <Button><IntlMessages id="rest.edit"  values={{name: ''}}/></Button>
           </Link>
-          {/* TODO: confirmのtitle,contentに IntlMessages を渡す方法がわからず。 */}
           <Button
             type="danger"
             onClick={ ()=> {
               confirm({
-                title: `この${name}を削除してよろしいですか？`,
-                content: `削除した${name}を元に戻すことは出来ません`,
+                title: deleteMessageTitle,
+                content: deleteMessageContent,
                 onOk() {
                   destroy(primaryKey);
                 },
                 onCancel() {},
               });
-            } }><IntlMessages id="rest.delete" /></Button>
+            } }><IntlMessages id="rest.delete"  values={{name: ''}}/></Button>
         </div>
 
         <PageHeader>
-          <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.show" />
+          <IntlMessages id="rest.show" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
 
         <Box>

@@ -7,6 +7,7 @@ import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
 import {message} from "antd/lib/index";
 import IntlMessages from "../../../components/utility/intlMessages";
+import Txt from "./txt";
 
 export default class RestEdit extends Component {
   componentDidMount(){
@@ -29,8 +30,19 @@ export default class RestEdit extends Component {
       history
     } = this.props;
 
+    const successMessage = (
+      <Txt>
+        <IntlMessages
+          id="rest.edit.updated.message"
+          values={{
+            name: <IntlMessages id={`${name}.name`} />
+          }}
+          />
+      </Txt>
+    );
+
     if(updated){
-      message.success(`${name}を更新しました`);
+      message.success(successMessage);
       const primaryKey = entity[this.props.pkName];
       updateCleanup();
       history.push(`${baseUrl}/${primaryKey}`);
@@ -60,11 +72,11 @@ export default class RestEdit extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-        <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.edit" />
+          <IntlMessages id="rest.edit" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
         <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>
-            <IntlMessages id={`${name}.name`} /><IntlMessages id="rest.show" />
+            <IntlMessages id="rest.show" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
           </Button>
         </Link>
         <Box>
