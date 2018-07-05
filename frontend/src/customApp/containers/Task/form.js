@@ -6,9 +6,9 @@ export default class Form extends Component {
     return (
       <RestForm {...this.props}>
         
-        <RestFormInput name="name" />
-        <RestFormInput name="description" />
-        <RestFormSubmit label="保存" />
+        <RestFormInput name="name" id="task.attributes.name" />
+        <RestFormInput name="description" id="task.attributes.description" />
+        <RestFormSubmit />
       </RestForm>
     );
   }

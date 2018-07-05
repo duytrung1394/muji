@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {message, Modal } from 'antd';
 import Button from '../../../components/uielements/button';
 import Table from '../../../components/uielements/table';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
-import { withRouter } from 'react-router-dom'
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const confirm = Modal.confirm;
 
-export default class Index extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,10 +54,10 @@ export default class Index extends Component {
       destroyed,
     } = props;
 
-  if( destroyed ){
+    if( destroyed ){
       destroyCleanup();
       this.fetchRequest(this.props);
-      message.error('削除しました');
+      message.error(this.props.intl.formatMessage({id:"rest.deleted.message"}));
     }
   }
   
@@ -73,9 +74,10 @@ export default class Index extends Component {
 
   render() {
     const page = this.getPage(this.props);
-
     const {
       name,
+      id,
+      title,
       baseUrl,
       columnNames,
       linkColumn,
@@ -93,14 +95,14 @@ export default class Index extends Component {
     } = this.props;
 
     let columns = [];
-    columnNames.forEach(name => {
+    columnNames.forEach(colName => {
       let column = {
-        title: name,
-        dataIndex: name,
-        key: name,
+        title: <IntlMessages id={`${name}.attributes.${colName}`} />,
+        dataIndex: colName,
+        key: colName,
       };
 
-      if( linkColumn === name ){
+      if( linkColumn === colName ){
         column.render = (value, record) => 
         {
           return <Link to={`${baseUrl}/${record[this.props.pkName]}`}>{value}</Link>
@@ -123,7 +125,7 @@ export default class Index extends Component {
       defaultCurrent: page,
       total: total,
       showTotal: (total, range) => {
-        return `${total} 件中 ${range[0]} - ${range[1]}件目 を表示`
+        return <IntlMessages id="rest.index.pagination.show.total" values={{total:total, from:range[0], to:range[1]}}/>
       },
       onChange: page => {
         let url;
@@ -136,15 +138,39 @@ export default class Index extends Component {
       }
     };
 
+    const messages = defineMessages({
+      title: {
+        id: 'rest.index.delete.message.title'
+      },
+      content: {
+        id: 'rest.index.delete.message.content'
+      },
+    });
+        
+    const deleteMessageTitle = this.props.intl.formatMessage(
+      messages.title,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`}),
+        num: this.state.selectedKeys.length
+      }
+    );
+
+    const deleteMessageContent = this.props.intl.formatMessage(
+      messages.content,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
+    );
+
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}一覧
+          <IntlMessages id="rest.index" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
         <div className='isoLayoutContent'>
           <Link to={`${baseUrl}/!new`}>
             <Button type="primary">
-              新規作成
+              <IntlMessages id="rest.new" values={{name: ''}}/>
             </Button>
           </Link>
           <Button
@@ -153,8 +179,8 @@ export default class Index extends Component {
             onClick={ (event)=> {
               const keys = this.state.selectedKeys;
               confirm({
-                title: `選択した${this.state.selectedKeys.length}件のタスクを削除してよろしいですか？`,
-                content: '削除したタスクを元に戻すことは出来ません',
+                title: deleteMessageTitle,
+                content: deleteMessageContent,
                 onOk() {
                   destroyRequest(keys);
                 },
@@ -162,10 +188,10 @@ export default class Index extends Component {
               });
             } }
           >
-            削除
+            <IntlMessages id="rest.delete" values={{name: ''}}/>
           </Button>
           {this.state.selectedKeys.length > 0 &&
-          <span>（{ this.state.selectedKeys.length }件選択中）</span>
+            <span>（<IntlMessages id="rest.index.n.items.selected" values={{num: this.state.selectedKeys.length}}/>）</span>
           }
           { SearchComponent &&
           <SearchComponent
@@ -188,3 +214,7 @@ export default class Index extends Component {
     );
   }
 }
+
+export default injectIntl(Index, {
+  withRef: true,
+});

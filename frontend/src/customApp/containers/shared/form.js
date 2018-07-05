@@ -1,5 +1,6 @@
 import React, {Component, Children} from 'react';
 import {Prompt} from 'react-router-dom';
+import {injectIntl} from 'react-intl';
 import moment from 'moment';
 import 'moment/locale/ja';
 import Input, {Textarea} from '../../../components/uielements/input';
@@ -10,6 +11,7 @@ import Radio, {RadioGroup} from '../../../components/uielements/radio';
 import Button from '../../../components/uielements/button';
 import Form from '../../../components/uielements/form';
 import shallowEqual from 'fbjs/lib/shallowEqual';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const FormItem = Form.Item;
 
@@ -39,8 +41,8 @@ const tailFormItemLayout = {
   },
 };
 
-export default class RestForm extends Component {
-  beforeUnloadMessage = "このまま移動すると変更が保存されません。\nよろしいですか？";
+class RestForm extends Component {
+  beforeUnloadMessage = this.props.intl.formatMessage({id: 'rest.form.before.unload.message'});
 
   static defaultProps = {
     entity: {}
@@ -145,19 +147,26 @@ export default class RestForm extends Component {
   }
 }
 
+export default injectIntl(RestForm, {
+  withRef: true,
+});
+
+
+
 export function RestFormInput(props){
   const {
     name,
     label,
     errorMessage, 
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -175,13 +184,14 @@ export function RestFormTextarea(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -199,13 +209,14 @@ export function RestFormInputNumber(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -224,13 +235,14 @@ export function RestFormSelect(props){
     errorMessage,
     entity,
     options,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -250,13 +262,14 @@ export function RestFormRadioGroup(props){
     errorMessage,
     entity,
     options,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -275,13 +288,14 @@ export function RestFormDatePicker(props){
     label,
     errorMessage,
     entity,
+    id,
   } = props;
   const validateStatus = errorMessage ? 'error' : '';
   // TODO: i18nベースのlabel自動使用
   return (
     <FormItem
       {...formItemLayout}
-      label={ label ? label : name}
+      label={ id ? <IntlMessages id={id} /> : name }
       validateStatus={ validateStatus }
       help={ errorMessage }
     >
@@ -303,7 +317,13 @@ export function RestFormSubmit(props){
           props.submit()
         }}
       >
-        { props.label }
+        {(()=> {
+          if(props.label){
+            return props.label;
+          }else{
+            return (<IntlMessages id="rest.save" />);
+          }
+        })()}
       </Button>
     </FormItem>
   );

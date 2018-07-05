@@ -9,7 +9,7 @@ class NewEntity extends Component {
   render() {
     return (
       <RestNew
-        name="<%= resource_name %>"
+        name="<%= resourceName %>"
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         errors={ this.props.createErrors.<%= resource_name %> }

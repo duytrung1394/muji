@@ -5,6 +5,7 @@ import chineseLang from '../../image/flag/china.svg';
 import spanishLang from '../../image/flag/spain.svg';
 import frenchLang from '../../image/flag/france.svg';
 import italianLang from '../../image/flag/italy.svg';
+import japaneseLang from '../../image/flag/jp.svg';
 
 const config = {
   defaultLanguage: language,
@@ -38,6 +39,12 @@ const config = {
       locale: 'it',
       text: 'Italian',
       icon: italianLang,
+    },
+    {
+      languageId: 'japanese',
+      locale: 'ja',
+      text: 'Japanese',
+      icon: japaneseLang,
     },
   ],
 };

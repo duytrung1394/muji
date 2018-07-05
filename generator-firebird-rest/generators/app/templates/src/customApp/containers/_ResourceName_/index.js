@@ -8,7 +8,7 @@ class Index extends Component {
   render() {
     return (
       <RestIndex
-        name="<%= resource_name %>"
+        name="<%= resourceName %>"
         pkName="<%= pkName %>"
         baseUrl="/dashboard/<%= urlbase %>"
         columnNames={<%- JSON.stringify(listColumns) %>}

@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {message} from 'antd';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
+import IntlMessages from "../../../components/utility/intlMessages";
 
-export default class NewEntity extends Component {
+class NewEntity extends Component {
 
   componentDidUpdate(prevProps, prevState, prevContext){
     const {
@@ -19,8 +21,21 @@ export default class NewEntity extends Component {
       history
     } = this.props;
 
+    const messages = defineMessages({
+      created: {
+        id: 'rest.new.created.message'
+      }
+    });
+    
+    const createdMessage = this.props.intl.formatMessage(
+      messages.created,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
+    );
+
     if(created){
-      message.success(`${name}を新規作成しました`);
+      message.success(createdMessage);
       const primaryKey = entity[this.props.pkName];
       cleanup();
       history.push(`${baseUrl}/${primaryKey}`);
@@ -45,12 +60,12 @@ export default class NewEntity extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}の新規作成
+          <IntlMessages id="rest.new" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
         <Box>
           <Link to={baseUrl}>
             <Button>
-              一覧にもどる
+              <IntlMessages id="rest.new.back.index" values={{name: <IntlMessages id={`${name}.name`}/>}} />
             </Button>
           </Link>
           <Spin spinning={creating}>
@@ -68,3 +83,7 @@ export default class NewEntity extends Component {
     );
   }
 }
+
+export default injectIntl(NewEntity, {
+  withRef: true,
+});

@@ -11,7 +11,7 @@ class Index extends Component {
         name="task"
         pkName="id"
         baseUrl="/dashboard/tasks"
-        columnNames={["id","name"]}
+        columnNames={["id","task_code","name"]}
         linkColumn="name"
         {...this.props}
       />

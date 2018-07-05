@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {Modal, message} from 'antd';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Button from '../../../components/uielements/button';
 import Spin from '../../../components/uielements/spin';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const confirm = Modal.confirm;
 
-export default class ShowEntity extends Component {
+class ShowEntity extends Component {
 
   componentDidMount() {
     this.props.destroyCleanup();
@@ -26,7 +28,7 @@ export default class ShowEntity extends Component {
 
     if( destroyed ){
       destroyCleanup();
-      message.error('削除しました');
+      message.error(this.props.intl.formatMessage({id:"rest.deleted.message"}));
       history.push(baseUrl);
     }
   }
@@ -48,32 +50,54 @@ export default class ShowEntity extends Component {
 
     const primaryKey = match.params.id;
 
+    const messages = defineMessages({
+      title: {
+        id: 'rest.show.delete.message.title'
+      },
+      content: {
+        id: 'rest.show.delete.message.content'
+      }
+    });
+
+    const deleteMessageTitle = this.props.intl.formatMessage(
+      messages.title,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
+    );
+    const deleteMessageContent = this.props.intl.formatMessage(
+      messages.content,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
+    );
+
     // TODO: fetchErrorを表示してUIからfetchしなおせるようにしたい
     return (
       <LayoutWrapper>
         <div>
           <Link to={ baseUrl }>
-            <Button>一覧に戻る</Button>
+            <Button><IntlMessages id="rest.index" values={{name: ''}}/></Button>
           </Link>
           <Link to={`${baseUrl}/${primaryKey}/edit`}>
-            <Button>編集</Button>
+            <Button><IntlMessages id="rest.edit"  values={{name: ''}}/></Button>
           </Link>
           <Button
             type="danger"
             onClick={ ()=> {
               confirm({
-                title: `この${name}を削除してよろしいですか？`,
-                content: `削除した${name}を元に戻すことは出来ません`,
+                title: deleteMessageTitle,
+                content: deleteMessageContent,
                 onOk() {
                   destroy(primaryKey);
                 },
                 onCancel() {},
               });
-            } }>削除</Button>
+            } }><IntlMessages id="rest.delete"  values={{name: ''}}/></Button>
         </div>
 
         <PageHeader>
-          {name}詳細
+          <IntlMessages id="rest.show" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
 
         <Box>
@@ -88,3 +112,7 @@ export default class ShowEntity extends Component {
     );
   }
 }
+
+export default injectIntl(ShowEntity, {
+  withRef: true,
+});

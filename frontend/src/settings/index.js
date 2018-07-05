@@ -14,7 +14,7 @@ const themeConfig = {
   layout: 'themedefault',
   theme: 'themedefault'
 };
-const language = 'english';
+const language = 'japanese';
 const AlgoliaSearchConfig = {
   appId: '',
   apiKey: ''

@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
 import {message} from "antd/lib/index";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-export default class RestEdit extends Component {
+
+class RestEdit extends Component {
   componentDidMount(){
     // showから来たときはデータが既にある。 そうじゃない時はないのでロードが必要。
     const primaryKey = this.props.match.params.id;
@@ -28,8 +31,21 @@ export default class RestEdit extends Component {
       history
     } = this.props;
 
+    const messages = defineMessages({
+      updated: {
+        id: 'rest.edit.updated.message'
+      }
+    });
+    
+    const successMessage = this.props.intl.formatMessage(
+      messages.updated,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
+    );
+
     if(updated){
-      message.success(`${name}を更新しました`);
+      message.success(successMessage);
       const primaryKey = entity[this.props.pkName];
       updateCleanup();
       history.push(`${baseUrl}/${primaryKey}`);
@@ -59,11 +75,11 @@ export default class RestEdit extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          {name}編集
+          <IntlMessages id="rest.edit" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
         </PageHeader>
         <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>
-            {name}詳細にもどる
+            <IntlMessages id="rest.show" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
           </Button>
         </Link>
         <Box>
@@ -83,3 +99,7 @@ export default class RestEdit extends Component {
     );
   }
 }
+
+export default injectIntl(RestEdit, {
+  withRef: true,
+});

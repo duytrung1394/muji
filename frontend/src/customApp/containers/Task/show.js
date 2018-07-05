@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import RestShow from '../shared/show';
 import actions from '../../redux/task/entity/actions';
+import IntlMessages from "../../../components/utility/intlMessages";
 
 class ShowEntity extends Component {
 
@@ -19,8 +20,8 @@ class ShowEntity extends Component {
       >
         <ul>
           
-          <li>Name: {entity.name}</li>
-          <li>Description: {entity.description}</li>
+          <li><IntlMessages id="task.attributes.name" />: {entity.name}</li>
+          <li><IntlMessages id="task.attributes.description" />: {entity.description}</li>
         </ul>
       </RestShow>
     );
