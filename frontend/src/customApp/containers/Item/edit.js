@@ -9,7 +9,7 @@ class EditEntity extends Component {
   render() {
     return (
       <RestEdit
-        name="アイテム"
+        name="item"
         pkName="item_code"
         baseUrl="/dashboard/items"
         errors={ this.props.updateErrors.item }

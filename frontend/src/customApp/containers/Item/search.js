@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {injectIntl} from 'react-intl';
 import { Modal } from 'antd';
 import Button from '../../../components/uielements/button';
 import RestForm, {RestFormInput, RestFormDatePicker, RestFormSelect} from '../shared/form';
@@ -23,7 +24,7 @@ const defaultValues = {
   status    : '',
 }
 
-export default class extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,37 +70,37 @@ export default class extends Component {
 
   render() {
     const statusOptions = [
-      {label: '未選択', value: ''},
-      {label: '公開', value: 'PUBLISHED'},
-      {label: '非公開', value: 'UNPUBLISHED'},
+      {label: this.props.intl.formatMessage({id:'item.form.option.empty'}), value: ''},
+      {label: this.props.intl.formatMessage({id:'item.form.status.option.publish'}), value: 'PUBLISHED'},
+      {label: this.props.intl.formatMessage({id:'item.form.status.option.unpublish'}), value: 'UNPUBLISHED'},
     ];
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>絞り込み</Button>
+        <Button type="primary" onClick={this.showModal}>{this.props.intl.formatMessage({id:'item.search.show'})}</Button>
         <Modal
-          title="絞り込み検索"
+          title={this.props.intl.formatMessage({id:'item.search.title'})}
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          okText="この条件で絞り込む"
-          cancelText="取り消し"
+          okText={this.props.intl.formatMessage({id:'item.search.ok.text'})}
+          cancelText={this.props.intl.formatMessage({id:'item.search.cancel.text'})}
         >
           <Form>
-            <FormItem {...formItemLayout} label='品目名'>
+            <FormItem {...formItemLayout} label={this.props.intl.formatMessage({id:'item.attributes.item_name'})}>
               <Input
                 placeholder='item_name'
                 value={ this.state.filters.item_name }
                 onChange={ event => this.handleChange('item_name', event.target.value) }
               />
             </FormItem>
-            <FormItem {...formItemLayout} label='JANコード'>
+            <FormItem {...formItemLayout} label={this.props.intl.formatMessage({id:'item.attributes.item_code'})}>
               <Input
                 placeholder='item_code'
                 value={ this.state.filters.item_code }
                 onChange={ event => this.handleChange('item_code', event.target.value) }
               />
             </FormItem>
-            <FormItem {...formItemLayout} label='公開状態'>
+            <FormItem {...formItemLayout} label={this.props.intl.formatMessage({id:'item.attributes.status'})}>
               <Select
                 defaultValue={ this.state.filters.status || '' }
                 onChange={ value => this.handleChange('status', value) }
@@ -113,3 +114,7 @@ export default class extends Component {
     );
   }
 }
+
+export default injectIntl(Search, {
+  withRef: true,
+});

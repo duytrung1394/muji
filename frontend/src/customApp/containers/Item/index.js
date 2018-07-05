@@ -9,7 +9,7 @@ class Index extends Component {
   render() {
     return (
       <RestIndex
-        name="アイテム"
+        name="item"
         pkName="item_code"
         baseUrl="/dashboard/items"
         columnNames={["item_code","item_name"]}
