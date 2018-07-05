@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import Box from '../../../components/utility/box';
@@ -7,9 +8,9 @@ import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
 import {message} from "antd/lib/index";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Txt from "./txt";
 
-export default class RestEdit extends Component {
+
+class RestEdit extends Component {
   componentDidMount(){
     // showから来たときはデータが既にある。 そうじゃない時はないのでロードが必要。
     const primaryKey = this.props.match.params.id;
@@ -30,15 +31,17 @@ export default class RestEdit extends Component {
       history
     } = this.props;
 
-    const successMessage = (
-      <Txt>
-        <IntlMessages
-          id="rest.edit.updated.message"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />
-          }}
-          />
-      </Txt>
+    const messages = defineMessages({
+      updated: {
+        id: 'rest.edit.updated.message'
+      }
+    });
+    
+    const successMessage = this.props.intl.formatMessage(
+      messages.updated,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
     );
 
     if(updated){
@@ -96,3 +99,7 @@ export default class RestEdit extends Component {
     );
   }
 }
+
+export default injectIntl(RestEdit, {
+  withRef: true,
+});

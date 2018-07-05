@@ -1,5 +1,6 @@
 import React, {Component, Children} from 'react';
 import {Prompt} from 'react-router-dom';
+import {injectIntl} from 'react-intl';
 import moment from 'moment';
 import 'moment/locale/ja';
 import Input, {Textarea} from '../../../components/uielements/input';
@@ -40,8 +41,8 @@ const tailFormItemLayout = {
   },
 };
 
-export default class RestForm extends Component {
-  beforeUnloadMessage = "このまま移動すると変更が保存されません。\nよろしいですか？";
+class RestForm extends Component {
+  beforeUnloadMessage = this.props.intl.formatMessage({id: 'rest.form.before.unload.message'});
 
   static defaultProps = {
     entity: {}
@@ -145,6 +146,12 @@ export default class RestForm extends Component {
     );
   }
 }
+
+export default injectIntl(RestForm, {
+  withRef: true,
+});
+
+
 
 export function RestFormInput(props){
   const {

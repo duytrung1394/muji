@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {Modal, message} from 'antd';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
@@ -7,11 +8,10 @@ import Box from '../../../components/utility/box';
 import Button from '../../../components/uielements/button';
 import Spin from '../../../components/uielements/spin';
 import IntlMessages from "../../../components/utility/intlMessages";
-import Txt from "./txt";
 
 const confirm = Modal.confirm;
 
-export default class ShowEntity extends Component {
+class ShowEntity extends Component {
 
   componentDidMount() {
     this.props.destroyCleanup();
@@ -28,7 +28,7 @@ export default class ShowEntity extends Component {
 
     if( destroyed ){
       destroyCleanup();
-      message.error(<Txt><IntlMessages id="rest.deleted.message"/></Txt>);
+      message.error(this.props.intl.formatMessage({id:"rest.deleted.message"}));
       history.push(baseUrl);
     }
   }
@@ -50,25 +50,26 @@ export default class ShowEntity extends Component {
 
     const primaryKey = match.params.id;
 
-    const deleteMessageTitle = (
-      <Txt>
-        <IntlMessages
-          id="rest.show.delete.message.title"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />
-          }}
-          />
-      </Txt>
+    const messages = defineMessages({
+      title: {
+        id: 'rest.show.delete.message.title'
+      },
+      content: {
+        id: 'rest.show.delete.message.content'
+      }
+    });
+
+    const deleteMessageTitle = this.props.intl.formatMessage(
+      messages.title,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
     );
-    const deleteMessageContent = (
-      <Txt>
-        <IntlMessages
-          id="rest.show.delete.message.content"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />
-          }}
-          />
-      </Txt>
+    const deleteMessageContent = this.props.intl.formatMessage(
+      messages.content,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
     );
 
     // TODO: fetchErrorを表示してUIからfetchしなおせるようにしたい
@@ -111,3 +112,7 @@ export default class ShowEntity extends Component {
     );
   }
 }
+
+export default injectIntl(ShowEntity, {
+  withRef: true,
+});

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {message} from 'antd';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
@@ -7,9 +8,8 @@ import Box from '../../../components/utility/box';
 import Spin from '../../../components/uielements/spin';
 import Button from '../../../components/uielements/button';
 import IntlMessages from "../../../components/utility/intlMessages";
-import Txt from "./txt";
 
-export default class NewEntity extends Component {
+class NewEntity extends Component {
 
   componentDidUpdate(prevProps, prevState, prevContext){
     const {
@@ -21,15 +21,17 @@ export default class NewEntity extends Component {
       history
     } = this.props;
 
-    const createdMessage = (
-      <Txt>
-        <IntlMessages
-          id="rest.new.created.message"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />
-          }}
-          />
-      </Txt>
+    const messages = defineMessages({
+      created: {
+        id: 'rest.new.created.message'
+      }
+    });
+    
+    const createdMessage = this.props.intl.formatMessage(
+      messages.created,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
     );
 
     if(created){
@@ -81,3 +83,7 @@ export default class NewEntity extends Component {
     );
   }
 }
+
+export default injectIntl(NewEntity, {
+  withRef: true,
+});

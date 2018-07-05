@@ -234,6 +234,7 @@
   "rest.deleted.message": "削除しました",
   "rest.edit": "{name}編集",
   "rest.edit.updated.message": "{name}を更新しました",
+  "rest.form.before.unload.message": "このまま移動すると変更が保存されません。\nよろしいですか？",
   "rest.index": "{name}一覧",
   "rest.index.delete.message.title": "選択した{num}件の{name}を削除してよろしいですか？",
   "rest.index.delete.message.content": "削除した{name}を元に戻すことは出来ません",

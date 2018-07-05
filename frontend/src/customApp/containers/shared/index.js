@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {injectIntl, defineMessages} from 'react-intl';
 import {message, Modal } from 'antd';
 import Button from '../../../components/uielements/button';
 import Table from '../../../components/uielements/table';
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Txt from './txt';
 
 const confirm = Modal.confirm;
 
-export default class Index extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,10 +54,10 @@ export default class Index extends Component {
       destroyed,
     } = props;
 
-  if( destroyed ){
+    if( destroyed ){
       destroyCleanup();
       this.fetchRequest(this.props);
-      message.error(<Txt><IntlMessages id="rest.deleted.message"/></Txt>);
+      message.error(this.props.intl.formatMessage({id:"rest.deleted.message"}));
     }
   }
   
@@ -138,26 +138,28 @@ export default class Index extends Component {
       }
     };
 
-    const deleteMessageTitle = (
-      <Txt>
-        <IntlMessages
-          id="rest.index.delete.message.title"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />,
-            num: this.state.selectedKeys.length
-          }}
-          />
-      </Txt>
+    const messages = defineMessages({
+      title: {
+        id: 'rest.index.delete.message.title'
+      },
+      content: {
+        id: 'rest.index.delete.message.content'
+      },
+    });
+        
+    const deleteMessageTitle = this.props.intl.formatMessage(
+      messages.title,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`}),
+        num: this.state.selectedKeys.length
+      }
     );
-    const deleteMessageContent = (
-      <Txt>
-        <IntlMessages
-          id="rest.index.delete.message.content"
-          values={{
-            name: <IntlMessages id={`${name}.name`} />
-          }}
-          />
-      </Txt>
+
+    const deleteMessageContent = this.props.intl.formatMessage(
+      messages.content,
+      {
+        name: this.props.intl.formatMessage({id: `${name}.name`})
+      }
     );
 
     return (
@@ -212,3 +214,7 @@ export default class Index extends Component {
     );
   }
 }
+
+export default injectIntl(Index, {
+  withRef: true,
+});
