@@ -110,6 +110,9 @@ module.exports = class extends Generator {
     const RESOURCE_NAME = constantCase(rawname);
     const ResourceName = pascalCase(rawname);
     const resourceNameSagas = `${resourceName}Sagas`;
+    const end_point = snakeCase(endpoint);
+    const endPoint = camelCase(endpoint);
+    const EndPoint = pascalCase(endpoint);
     const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
     const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
     const linkColumnName = this.props.linkColumnName;
@@ -130,16 +133,27 @@ module.exports = class extends Generator {
     const containerFiles = ['edit.js','form.js','index.js','new.js','show.js'].map(name =>
       'frontend/src/customApp/containers/_ResourceName_/' + name
     )
+    const backendFiles = [
+      'backend/routes/api/v1/_end_point_.php',
+      'backend/app/Http/Controllers/Api/V1/_EndPoint_Controller.php',
+    ]
     const files = [
       ...entityFiles,
       ...listFiles,
       ...combineFiles,
       ...containerFiles,
+      ...backendFiles,
     ];
 
     for( const i in files ){
       const file = files[i];
-      const dest = "frontend/" + file.replace('_resource_name_', resource_name).replace('_ResourceName_', ResourceName);
+      const filename = file
+        .replace('_resource_name_', resource_name)
+        .replace('_ResourceName_', ResourceName)
+        .replace('_end_point_', end_point)
+        .replace('_EndPoint_', EndPoint);
+
+      const dest = "frontend/" + filename;
       this.fs.copyTpl(
         this.templatePath(file),
         this.destinationPath(dest),
@@ -150,6 +164,9 @@ module.exports = class extends Generator {
           resourceName,
           ResourceName,
           endpoint,
+          end_point,
+          endPoint,
+          EndPoint,
           urlbase,
           listColumns,
           detailColumns,
