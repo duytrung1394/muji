@@ -172,6 +172,7 @@ module.exports = class extends Generator {
           linkColumnName,
           pkName,
           // bind functions...
+          camelCase,
           pascalCase,
           pluralize,
         },

@@ -4,12 +4,12 @@ if (empty($router)) {
     return;
 }
 
-// {{{ /api/v1/<%= end_point %>
+// {{{ /api/v1/<%= endpoint %>
 
 /**
  * 一覧取得
  */
-$router->get('/api/v1/<%= end_point %>', [
+$router->get('/api/v1/<%= endpoint %>', [
     'middleware'    => [],
     'uses'          => 'Api\V1\<%= EndPoint %>Controller@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('/api/v1/<%= end_point %>', [
 /**
  * 詳細取得
  */
-$router->get('/api/v1/<%= end_point %>/{taskCode}', [
+$router->get('/api/v1/<%= endpoint %>/{taskCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\<%= EndPoint %>Controller@show',
 ]);
@@ -25,7 +25,7 @@ $router->get('/api/v1/<%= end_point %>/{taskCode}', [
 /**
  * 登録
  */
-$router->post('/api/v1/<%= end_point %>', [
+$router->post('/api/v1/<%= endpoint %>', [
     'middleware'    => [],
     'uses'          => 'Api\V1\<%= EndPoint %>Controller@store',
 ]);
@@ -33,7 +33,7 @@ $router->post('/api/v1/<%= end_point %>', [
 /**
  * 更新
  */
-$router->put('/api/v1/<%= end_point %>/{taskCode}', [
+$router->put('/api/v1/<%= endpoint %>/{taskCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\<%= EndPoint %>Controller@update',
 ]);
@@ -41,7 +41,7 @@ $router->put('/api/v1/<%= end_point %>/{taskCode}', [
 /**
  * 削除
  */
-$router->delete('/api/v1/<%= end_point %>', [
+$router->delete('/api/v1/<%= endpoint %>', [
     'middleware'    => [],
     'uses'          => 'Api\V1\<%= EndPoint %>Controller@destroy',
 ]);

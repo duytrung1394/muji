@@ -13,31 +13,21 @@ class <%= EndPoint %>Controller extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMockData(),
-            'total' => 10,
+            'data'  => $this->getMultiMockData( (int)$request->input('page') ),
+            'total' => 200,
         ];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  string   $<%= endPoint %>Code
+     * @param  string   $<%= camelCase(pkName) %>
      * @return Response
      */
-    public function show($<%= endPoint %>Code)
+    public function show($<%= camelCase(pkName) %>)
     {
-        foreach ($this->getMockData() as $data) {
-
-            if ($data['<%= end_point %>_code'] ===  $<%= endPoint %>Code) {
-
-                return [
-                    'data' => $data
-                ];
-            }
-        }
-
         return [
-            'data' => [],
+            'item' => $this->getMockdata($<%= camelCase(pkName) %>),
         ];
     }
 
@@ -58,10 +48,10 @@ class <%= EndPoint %>Controller extends Controller
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  string   $<%= endPoint %>Code
+     * @param  string   $camelCase(pkName)
      * @return Response
      */
-    public function update(Request $request, $<%= endPoint %>Code)
+    public function update(Request $request, $<%= camelCase(pkName) %>)
     {
         return [
             'data' => [],
@@ -87,19 +77,27 @@ class <%= EndPoint %>Controller extends Controller
      *
      * @return array
      */
-    private function getMockData()
+    private function getMultiMockData($page = 1)
     {
         $data = [];
+        $start = ((int) $page - 1) * 10;
 
         for ($i = 0; $i < 10; $i++) {
-
-            $data[] = [
-                '<%= end_point %>_code'   => '<%= end_point %>_code_' . $i,
-                'name'        => 'name_' . $i,
-                'description' => 'description_' . $i,
-            ];
+            $data[] = $this->getMockData('<%= pkName %>' . ($i + $start ));
         }
 
         return $data;
+    }
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getMockData($code)
+    {
+        return [
+            '<%= pkName %>'   => $code,
+            'name'        => 'name_' . $code,
+            'description' => 'description_' . $code,
+        ];
     }
 }
