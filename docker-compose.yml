@@ -1,5 +1,12 @@
 version: "3.1"
 services:
+  # 開発用のscaffoldなどのコマンド実行環境
+  develop:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    
   backend:
     build: backend
     command: "php -S 0.0.0.0:8080 -t public"

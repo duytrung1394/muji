@@ -27,6 +27,7 @@
     "esprima": "^4.0.0",
     "generator-firebird-rest": "file:./generator-firebird-rest",
     "pluralize": "^7.0.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "yo": "^2.0.3"
   }
 }

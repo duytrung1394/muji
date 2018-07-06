@@ -39,8 +39,16 @@ git checkout -b admin-work origin/admin-work
 
 ### フロントエンド
 
+パッケージ類のインストール
+
 ```
-yarn lint:fix
+docker-compose run --rm develop yarn
+```
+
+実際のフォーマット
+
+```
+docker-compose run --rm develop yarn lint:fix
 ```
 
 ### バックエンド
@@ -183,6 +191,6 @@ password: 1234
 
 ```
 # プロジェクト直下で
-yarn
-yarn scaffold
+docker-compose run --rm develop yarn
+docker-compose run --rm develop yarn scaffold
 ```
