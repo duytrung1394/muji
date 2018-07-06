@@ -33,6 +33,20 @@ git checkout -b admin-work origin/admin-work
   - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
 5. ブラウザから localhost:3000 にアクセスするとReactの画面が出るので開発できます。
 
+## コミット前のコードフォーマット
+
+多人数開発なので、コミット前にコードフォーマットを走らせるようにお願いします。
+
+### フロントエンド
+
+```
+yarn lint:fix
+```
+
+### バックエンド
+
+PSR2の方向で検討中です。
+
 ### git pull した時
 
 環境更新のために以下を実行して下さい
