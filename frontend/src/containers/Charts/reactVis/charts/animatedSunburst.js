@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Sunburst } from 'react-vis';
-import Button from '../button';
-import ChartWrapper from '../../chart.style';
+import React, { Component } from "react";
+import { Sunburst } from "react-vis";
+import Button from "../button";
+import ChartWrapper from "../../chart.style";
 
 function randomLeaf() {
   return {
@@ -21,13 +21,13 @@ function updateData() {
     leaves.push(leaf);
   }
   return {
-    title: '',
+    title: "",
     color: 1,
     children: leaves
   };
 }
 
-const DIVERGING_COLOR_SCALE = ['#00939C', '#85C4C8', '#EC9370', '#C22E00'];
+const DIVERGING_COLOR_SCALE = ["#00939C", "#85C4C8", "#EC9370", "#C22E00"];
 
 export default class extends Component {
   state = {
@@ -42,15 +42,15 @@ export default class extends Component {
         <div className="isoChartControl">
           <Button
             onClick={() => this.setState({ data: updateData() })}
-            buttonContent={'UPDATE'}
+            buttonContent={"UPDATE"}
           />
         </div>
         <Sunburst
           animation={{ damping: 20, stiffness: 300 }}
           data={data}
-          colorType={'category'}
+          colorType={"category"}
           colorRange={DIVERGING_COLOR_SCALE}
-          style={{ stroke: '#fff' }}
+          style={{ stroke: "#fff" }}
           height={this.props.height}
           width={this.props.width}
         />

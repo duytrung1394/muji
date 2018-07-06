@@ -57,6 +57,9 @@ function mapStateToProps(state) {
   const { selectedChatRoom, openCompose } = state.Chat.toJS();
   return { selectedChatRoom, openCompose };
 }
-export default connect(mapStateToProps, {
-  sendMessage
-})(ComposeMessage);
+export default connect(
+  mapStateToProps,
+  {
+    sendMessage
+  }
+)(ComposeMessage);

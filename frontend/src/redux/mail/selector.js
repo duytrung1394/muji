@@ -1,8 +1,8 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
-const allMailsSelector = state => state.get('allMails');
-const filterAttrSelector = state => state.get('filterAttr');
-const searchStringSelector = state => state.get('searchString');
+const allMailsSelector = state => state.get("allMails");
+const filterAttrSelector = state => state.get("filterAttr");
+const searchStringSelector = state => state.get("searchString");
 
 const filterBucket = (mails, bucket) => {
   const newMails = [];
@@ -29,11 +29,8 @@ const filterMaiil = (allMails, filterAttr, searchString) => {
   }
   if (searchString) {
     const search = searchString.toUpperCase();
-    newMails = newMails.filter(
-      mail =>
-        `${mail.email}${mail.body}${mail.subject}`
-          .toUpperCase()
-          .includes(search),
+    newMails = newMails.filter(mail =>
+      `${mail.email}${mail.body}${mail.subject}`.toUpperCase().includes(search)
     );
   }
   return newMails;
@@ -43,5 +40,5 @@ export default createSelector(
   allMailsSelector,
   filterAttrSelector,
   searchStringSelector,
-  filterMaiil,
+  filterMaiil
 );

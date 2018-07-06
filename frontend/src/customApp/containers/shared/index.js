@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {injectIntl, defineMessages} from 'react-intl';
-import {message, Modal } from 'antd';
-import Button from '../../../components/uielements/button';
-import Table from '../../../components/uielements/table';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { injectIntl, defineMessages } from "react-intl";
+import { message, Modal } from "antd";
+import Button from "../../../components/uielements/button";
+import Table from "../../../components/uielements/table";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -15,7 +15,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeys: [],
+      selectedKeys: []
     };
 
     this.recordsSelected = this.recordsSelected.bind(this);
@@ -39,38 +39,37 @@ class Index extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot){
+  componentDidUpdate(prevProps, prevState, snapshot) {
     const props = this.props;
-    if( this.getPage(prevProps) !== this.getPage(props) ){
+    if (this.getPage(prevProps) !== this.getPage(props)) {
       this.fetchRequest(this.props);
     }
 
-    if( this.state.selectedKeys.length > 0 && props.destroyed ){
-      this.setState({selectedKeys: []});
+    if (this.state.selectedKeys.length > 0 && props.destroyed) {
+      this.setState({ selectedKeys: [] });
     }
 
-    const {
-      destroyCleanup,
-      destroyed,
-    } = props;
+    const { destroyCleanup, destroyed } = props;
 
-    if( destroyed ){
+    if (destroyed) {
       destroyCleanup();
       this.fetchRequest(this.props);
-      message.error(this.props.intl.formatMessage({id:"rest.deleted.message"}));
+      message.error(
+        this.props.intl.formatMessage({ id: "rest.deleted.message" })
+      );
     }
   }
-  
-  recordsSelected(){
-    return this.state.selectedKeys.length > 0
+
+  recordsSelected() {
+    return this.state.selectedKeys.length > 0;
   }
 
-  fetchRequest = (props) => {
+  fetchRequest = props => {
     props.fetchRequest({
-      page    : this.getPage(props),
-      filters : JSON.stringify(props.filters || [])
+      page: this.getPage(props),
+      filters: JSON.stringify(props.filters || [])
     });
-  }
+  };
 
   render() {
     const page = this.getPage(this.props);
@@ -91,7 +90,7 @@ class Index extends Component {
       destroyRequest,
       // react-router
       history,
-      SearchComponent,
+      SearchComponent
     } = this.props;
 
     let columns = [];
@@ -99,37 +98,43 @@ class Index extends Component {
       let column = {
         title: <IntlMessages id={`${name}.attributes.${colName}`} />,
         dataIndex: colName,
-        key: colName,
+        key: colName
       };
 
-      if( linkColumn === colName ){
-        column.render = (value, record) => 
-        {
-          return <Link to={`${baseUrl}/${record[this.props.pkName]}`}>{value}</Link>
-        }
+      if (linkColumn === colName) {
+        column.render = (value, record) => {
+          return (
+            <Link to={`${baseUrl}/${record[this.props.pkName]}`}>{value}</Link>
+          );
+        };
       }
 
       columns.push(column);
-    })
+    });
 
     const rowSelection = {
       onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({selectedKeys: selectedRowKeys});
+        this.setState({ selectedKeys: selectedRowKeys });
       },
       getCheckboxProps: record => ({
-        name: record.name,
-      }),
+        name: record.name
+      })
     };
 
     const pagination = {
       defaultCurrent: page,
       total: total,
       showTotal: (total, range) => {
-        return <IntlMessages id="rest.index.pagination.show.total" values={{total:total, from:range[0], to:range[1]}}/>
+        return (
+          <IntlMessages
+            id="rest.index.pagination.show.total"
+            values={{ total: total, from: range[0], to: range[1] }}
+          />
+        );
       },
       onChange: page => {
         let url;
-        if ( page === 1 ) {
+        if (page === 1) {
           url = baseUrl;
         } else {
           url = `${baseUrl}/page/${page}`;
@@ -140,43 +145,43 @@ class Index extends Component {
 
     const messages = defineMessages({
       title: {
-        id: 'rest.index.delete.message.title'
+        id: "rest.index.delete.message.title"
       },
       content: {
-        id: 'rest.index.delete.message.content'
-      },
-    });
-        
-    const deleteMessageTitle = this.props.intl.formatMessage(
-      messages.title,
-      {
-        name: this.props.intl.formatMessage({id: `${name}.name`}),
-        num: this.state.selectedKeys.length
+        id: "rest.index.delete.message.content"
       }
-    );
+    });
+
+    const deleteMessageTitle = this.props.intl.formatMessage(messages.title, {
+      name: this.props.intl.formatMessage({ id: `${name}.name` }),
+      num: this.state.selectedKeys.length
+    });
 
     const deleteMessageContent = this.props.intl.formatMessage(
       messages.content,
       {
-        name: this.props.intl.formatMessage({id: `${name}.name`})
+        name: this.props.intl.formatMessage({ id: `${name}.name` })
       }
     );
 
     return (
       <LayoutWrapper>
         <PageHeader>
-          <IntlMessages id="rest.index" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
+          <IntlMessages
+            id="rest.index"
+            values={{ name: <IntlMessages id={`${name}.name`} /> }}
+          />
         </PageHeader>
-        <div className='isoLayoutContent'>
+        <div className="isoLayoutContent">
           <Link to={`${baseUrl}/!new`}>
             <Button type="primary">
-              <IntlMessages id="rest.new" values={{name: ''}}/>
+              <IntlMessages id="rest.new" values={{ name: "" }} />
             </Button>
           </Link>
           <Button
             type="danger"
-            disabled={ ! this.recordsSelected() }
-            onClick={ (event)=> {
+            disabled={!this.recordsSelected()}
+            onClick={event => {
               const keys = this.state.selectedKeys;
               confirm({
                 title: deleteMessageTitle,
@@ -184,29 +189,34 @@ class Index extends Component {
                 onOk() {
                   destroyRequest(keys);
                 },
-                onCancel() {},
+                onCancel() {}
               });
-            } }
+            }}
           >
-            <IntlMessages id="rest.delete" values={{name: ''}}/>
+            <IntlMessages id="rest.delete" values={{ name: "" }} />
           </Button>
-          {this.state.selectedKeys.length > 0 &&
-            <span>（<IntlMessages id="rest.index.n.items.selected" values={{num: this.state.selectedKeys.length}}/>）</span>
-          }
-          { SearchComponent &&
-          <SearchComponent
-            filters={this.props.filters}
-            setFilters={this.props.setFilters}
-          />
-          }
+          {this.state.selectedKeys.length > 0 && (
+            <span>
+              （<IntlMessages
+                id="rest.index.n.items.selected"
+                values={{ num: this.state.selectedKeys.length }}
+              />）
+            </span>
+          )}
+          {SearchComponent && (
+            <SearchComponent
+              filters={this.props.filters}
+              setFilters={this.props.setFilters}
+            />
+          )}
           <div key={page}>
             <Table
-              rowKey={ this.props.pkName }
-              dataSource={ entities }
-              columns={ columns }
-              rowSelection={ rowSelection }
-              loading={ fetching || destroying }
-              pagination={ pagination }
+              rowKey={this.props.pkName}
+              dataSource={entities}
+              columns={columns}
+              rowSelection={rowSelection}
+              loading={fetching || destroying}
+              pagination={pagination}
             />
           </div>
         </div>
@@ -216,5 +226,5 @@ class Index extends Component {
 }
 
 export default injectIntl(Index, {
-  withRef: true,
+  withRef: true
 });

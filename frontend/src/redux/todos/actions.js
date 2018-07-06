@@ -1,27 +1,27 @@
 const todoActions = {
-  CHANGE_TODO: 'CHANGE_TODO',
-  ALL_COMPLETED: 'ALL_COMPLETED',
-  DELETE_COMPLETED: 'DELETE_COMPLETED',
+  CHANGE_TODO: "CHANGE_TODO",
+  ALL_COMPLETED: "ALL_COMPLETED",
+  DELETE_COMPLETED: "DELETE_COMPLETED",
 
-  addTodo: (todo) => {
+  addTodo: todo => {
     return (dispatch, getState) => {
       const newTodo = {
         id: new Date(),
         todo: todo,
         createTime: new Date(),
         color: 0,
-        completed: false,
+        completed: false
       };
-      const todos = [newTodo, ...getState().Todos.get('todos')];
+      const todos = [newTodo, ...getState().Todos.get("todos")];
       dispatch({
         type: todoActions.CHANGE_TODO,
-        todos,
+        todos
       });
     };
   },
-  edittodo: (editTodo) => {
+  edittodo: editTodo => {
     return (dispatch, getState) => {
-      const oldTodos = getState().Todos.get('todos');
+      const oldTodos = getState().Todos.get("todos");
       const todos = [];
       oldTodos.forEach(todo => {
         if (todo.id !== editTodo.id) {
@@ -32,13 +32,13 @@ const todoActions = {
       });
       dispatch({
         type: todoActions.CHANGE_TODO,
-        todos,
+        todos
       });
     };
   },
-  deleteTodo: (id) => {
+  deleteTodo: id => {
     return (dispatch, getState) => {
-      const oldTodos = getState().Todos.get('todos');
+      const oldTodos = getState().Todos.get("todos");
       const todos = [];
       oldTodos.forEach(todo => {
         if (todo.id !== id) {
@@ -47,13 +47,13 @@ const todoActions = {
       });
       dispatch({
         type: todoActions.CHANGE_TODO,
-        todos,
+        todos
       });
     };
   },
   allCompleted: () => {
     return (dispatch, getState) => {
-      const oldTodos = getState().Todos.get('todos');
+      const oldTodos = getState().Todos.get("todos");
       const todos = [];
       oldTodos.forEach(todo => {
         todo.completed = true;
@@ -61,13 +61,13 @@ const todoActions = {
       });
       dispatch({
         type: todoActions.CHANGE_TODO,
-        todos,
+        todos
       });
     };
   },
   deleteCompleted: () => {
     return (dispatch, getState) => {
-      const oldTodos = getState().Todos.get('todos');
+      const oldTodos = getState().Todos.get("todos");
       const todos = [];
       oldTodos.forEach(todo => {
         if (!todo.completed) {
@@ -76,9 +76,9 @@ const todoActions = {
       });
       dispatch({
         type: todoActions.CHANGE_TODO,
-        todos,
+        todos
       });
     };
-  },
+  }
 };
 export default todoActions;

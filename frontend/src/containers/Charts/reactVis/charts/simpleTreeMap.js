@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Treemap } from 'react-vis';
-import Button from '../button';
-import ChartWrapper from '../../chart.style';
+import React, { Component } from "react";
+import { Treemap } from "react-vis";
+import Button from "../button";
+import ChartWrapper from "../../chart.style";
 
 const MODE = [
-  'circlePack',
-  'partition',
-  'partition-pivot',
-  'squarify',
-  'resquarify',
-  'slice',
-  'dice',
-  'slicedice',
-  'binary'
+  "circlePack",
+  "partition",
+  "partition-pivot",
+  "squarify",
+  "resquarify",
+  "slice",
+  "dice",
+  "slicedice",
+  "binary"
 ];
 
 export default class extends Component {
@@ -36,9 +36,9 @@ export default class extends Component {
           <span> {MODE[modeIndex]} </span>
           <Button
             onClick={this.updateModeIndex(false)}
-            buttonContent={'PREV'}
+            buttonContent={"PREV"}
           />
-          <Button onClick={this.updateModeIndex(true)} buttonContent={'NEXT'} />
+          <Button onClick={this.updateModeIndex(true)} buttonContent={"NEXT"} />
         </div>
         <Treemap
           animation

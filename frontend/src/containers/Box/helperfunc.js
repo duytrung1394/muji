@@ -11,7 +11,7 @@ const generateLayoutfunc = allBox => {
       y: parseInt(box.size.md.y, 10),
       h: parseInt(box.size.md.h, 10),
       w: parseInt(box.size.md.w, 10),
-      i: box.size.md.i.toString(),
+      i: box.size.md.i.toString()
     });
     lgLayouts.push({
       ...box,
@@ -19,7 +19,7 @@ const generateLayoutfunc = allBox => {
       y: parseInt(box.size.lg.y, 10),
       h: parseInt(box.size.lg.h, 10),
       w: parseInt(box.size.lg.w, 10),
-      i: box.size.lg.i.toString(),
+      i: box.size.lg.i.toString()
     });
     smLayouts.push({
       ...box,
@@ -27,7 +27,7 @@ const generateLayoutfunc = allBox => {
       y: parseInt(box.size.sm.y, 10),
       h: parseInt(box.size.sm.h, 10),
       w: parseInt(box.size.sm.w, 10),
-      i: box.size.sm.i.toString(),
+      i: box.size.sm.i.toString()
     });
     xsLayouts.push({
       ...box,
@@ -35,7 +35,7 @@ const generateLayoutfunc = allBox => {
       y: parseInt(box.size.xs.y, 10),
       h: parseInt(box.size.xs.h, 10),
       w: parseInt(box.size.xs.w, 10),
-      i: box.size.xs.i.toString(),
+      i: box.size.xs.i.toString()
     });
     xxsLayouts.push({
       ...box,
@@ -43,7 +43,7 @@ const generateLayoutfunc = allBox => {
       y: parseInt(box.size.xxs.y, 10),
       h: parseInt(box.size.xxs.h, 10),
       w: parseInt(box.size.xxs.w, 10),
-      i: box.size.xxs.i.toString(),
+      i: box.size.xxs.i.toString()
     });
   });
   return {
@@ -51,7 +51,7 @@ const generateLayoutfunc = allBox => {
     lg: lgLayouts,
     sm: smLayouts,
     xs: xsLayouts,
-    xxs: xxsLayouts,
+    xxs: xxsLayouts
   };
 };
 

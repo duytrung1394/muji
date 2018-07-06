@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import clone from 'clone';
-import notification from '../../components/notification';
-import ModalEvents from './modalEvents';
-import calendarActions from '../../redux/calendar/actions';
-import { CalendarStyleWrapper } from './calendar.style';
-import DnDCalendar from './DnDCalendar';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import clone from "clone";
+import notification from "../../components/notification";
+import ModalEvents from "./modalEvents";
+import calendarActions from "../../redux/calendar/actions";
+import { CalendarStyleWrapper } from "./calendar.style";
+import DnDCalendar from "./DnDCalendar";
 const { changeView, changeEvents } = calendarActions;
 
 const getIndex = (events, selectedEvent) =>
@@ -18,10 +18,10 @@ class FullCalender extends Component {
   };
 
   onSelectEvent = selectedData => {
-    this.setState({ modalVisible: 'update', selectedData });
+    this.setState({ modalVisible: "update", selectedData });
   };
   onSelectSlot = selectedData => {
-    this.setState({ modalVisible: 'new', selectedData });
+    this.setState({ modalVisible: "new", selectedData });
   };
   onView = view => {
     this.props.changeView(view);
@@ -35,8 +35,8 @@ class FullCalender extends Component {
     events[index] = clone(updatedEvent);
     this.props.changeEvents(events);
     notification(
-      'success',
-      'Move event successfully',
+      "success",
+      "Move event successfully",
       `${event.title} was dropped onto ${event.start}`
     );
   };
@@ -44,12 +44,12 @@ class FullCalender extends Component {
     const { changeEvents } = this.props;
     const events = clone(this.props.events);
     const { modalVisible } = this.state;
-    if (type === 'cancel') {
+    if (type === "cancel") {
       this.setState({
         modalVisible: false,
         selectedData: undefined
       });
-    } else if (type === 'delete') {
+    } else if (type === "delete") {
       const index = getIndex(events, selectedData);
       if (index > -1) {
         events.splice(index, 1);
@@ -59,10 +59,10 @@ class FullCalender extends Component {
         modalVisible: false,
         selectedData: undefined
       });
-    } else if (type === 'updateValue') {
+    } else if (type === "updateValue") {
       this.setState({ selectedData });
     } else {
-      if (modalVisible === 'new') {
+      if (modalVisible === "new") {
         events.push(selectedData);
       } else {
         const index = getIndex(events, selectedData);
@@ -107,6 +107,7 @@ function mapStateToProps(state) {
   const { events, view } = state.Calendar.toJS();
   return { events, view };
 }
-export default connect(mapStateToProps, { changeView, changeEvents })(
-  FullCalender
-);
+export default connect(
+  mapStateToProps,
+  { changeView, changeEvents }
+)(FullCalender);

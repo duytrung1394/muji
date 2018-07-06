@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import IntlMessages from '../utility/intlMessages';
-import MailComposeBtnWrapper from './mailComposeBtn.style';
+import React, { Component } from "react";
+import IntlMessages from "../utility/intlMessages";
+import MailComposeBtnWrapper from "./mailComposeBtn.style";
 
 export default class extends Component {
   render() {

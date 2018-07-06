@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
-import AutoComplete from './composeAutoComplete.style';
+import React, { Component } from "react";
+import { WithContext as ReactTags } from "react-tag-input";
+import AutoComplete from "./composeAutoComplete.style";
 
 function createArray(array) {
   if (array && array.length > 0) {
@@ -14,7 +14,7 @@ export default class extends Component {
     super(props);
     this.state = {
       tags: [],
-      suggestions: createArray(props.allMails || []),
+      suggestions: createArray(props.allMails || [])
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
@@ -31,7 +31,7 @@ export default class extends Component {
     let tags = this.state.tags;
     tags.push({
       id: tags.length + 1,
-      text: tag,
+      text: tag
     });
     this.setState({ tags: tags });
   }

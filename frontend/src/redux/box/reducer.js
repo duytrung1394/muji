@@ -1,5 +1,5 @@
-import allBox from '../../containers/Box/demoBox';
-import boxActions from './actions';
+import allBox from "../../containers/Box/demoBox";
+import boxActions from "./actions";
 const generateLayout = () => {
   let y = -2;
   const h = 2;

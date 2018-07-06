@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Input from '../../../components/uielements/input';
-import Select, { SelectOption } from '../../../components/uielements/select';
-import Checkbox from '../../../components/uielements/checkbox';
-import InputBox from './input-box';
-import IntlMessages from '../../../components/utility/intlMessages';
-import { BillingFormWrapper, InputBoxWrapper } from './checkout.style';
+import React, { Component } from "react";
+import Input from "../../../components/uielements/input";
+import Select, { SelectOption } from "../../../components/uielements/select";
+import Checkbox from "../../../components/uielements/checkbox";
+import InputBox from "./input-box";
+import IntlMessages from "../../../components/utility/intlMessages";
+import { BillingFormWrapper, InputBoxWrapper } from "./checkout.style";
 
 const Option = SelectOption;
 
@@ -66,7 +66,7 @@ export default class extends Component {
           <Input
             size="large"
             placeholder="Apartment, suite, unit etc. (optional)"
-            style={{ marginTop: '35px' }}
+            style={{ marginTop: "35px" }}
           />
         </div>
 

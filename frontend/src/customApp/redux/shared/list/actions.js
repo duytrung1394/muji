@@ -1,9 +1,9 @@
-import req from '../requestActions';
+import req from "../requestActions";
 
 const restListActions = {
   FETCH: req,
   DESTROY: req,
-  SET_FILTERS: undefined,
+  SET_FILTERS: undefined
 };
 
 export default restListActions;

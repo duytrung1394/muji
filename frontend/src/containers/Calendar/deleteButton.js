@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Popconfirm from '../../components/feedback/popconfirm';
-import Button from '../../components/uielements/button';
-import { notification } from '../../components/';
+import React, { Component } from "react";
+import Popconfirm from "../../components/feedback/popconfirm";
+import Button from "../../components/uielements/button";
+import { notification } from "../../components/";
 
 export default class extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class extends Component {
         okText="DELETE"
         cancelText="No"
         onConfirm={() => {
-          notification('error', 'Deleted', '');
+          notification("error", "Deleted", "");
           handleDelete();
         }}
       >

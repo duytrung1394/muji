@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import RestShow from '../shared/show';
-import actions from '../../redux/category/entity/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import RestShow from "../shared/show";
+import actions from "../../redux/category/entity/actions";
 
 class ShowEntity extends Component {
-
   render() {
-    const {
-      entity
-    } = this.props;
+    const { entity } = this.props;
 
     return (
       <RestShow
@@ -18,7 +15,6 @@ class ShowEntity extends Component {
         {...this.props}
       >
         <ul>
-          
           <li>Lang: {entity.lang}</li>
           <li>CategoryCode: {entity.category_code}</li>
           <li>Status: {entity.status}</li>
@@ -41,19 +37,18 @@ class ShowEntity extends Component {
   }
 }
 
-const {
-  request,
-  cleanup,
-} = actions.fetch;
+const { request, cleanup } = actions.fetch;
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.Category.Entity.toJS();
 };
 
-export default connect(mapStateToProps, {
-  request,
-  cleanup,
-  destroy: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup,
-})(ShowEntity);
+export default connect(
+  mapStateToProps,
+  {
+    request,
+    cleanup,
+    destroy: actions.destroy.request,
+    destroyCleanup: actions.destroy.cleanup
+  }
+)(ShowEntity);

@@ -161,4 +161,7 @@ function mapStateToProps(state) {
     ...state.Invoices.toJS()
   };
 }
-export default connect(mapStateToProps, invoiceActions)(Invoices);
+export default connect(
+  mapStateToProps,
+  invoiceActions
+)(Invoices);

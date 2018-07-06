@@ -10,7 +10,9 @@ class Mail extends Component {
     const MailView =
       view === "DesktopView"
         ? DesktopView
-        : view === "TabView" ? TabView : MobileView;
+        : view === "TabView"
+          ? TabView
+          : MobileView;
     return (
       <div style={{ height: "100%" }}>
         <MailView height={height} />

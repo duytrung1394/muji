@@ -129,9 +129,12 @@ function mapStateToProps(state) {
     ...state.Cards.toJS()
   };
 }
-export default connect(mapStateToProps, {
-  addCard,
-  editCard,
-  deleteCard,
-  restoreCards
-})(Cards);
+export default connect(
+  mapStateToProps,
+  {
+    addCard,
+    editCard,
+    deleteCard,
+    restoreCards
+  }
+)(Cards);

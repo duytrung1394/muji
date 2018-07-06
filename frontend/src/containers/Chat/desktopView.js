@@ -89,4 +89,7 @@ class DesktopView extends Component {
 function mapStateToProps(state) {
   return state.Chat.toJS();
 }
-export default connect(mapStateToProps, actions)(DesktopView);
+export default connect(
+  mapStateToProps,
+  actions
+)(DesktopView);

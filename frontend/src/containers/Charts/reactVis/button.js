@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import IsoButton from '../../../components/uielements/button';
+import React, { Component } from "react";
+import IsoButton from "../../../components/uielements/button";
 
 export default class extends Component {
   render() {

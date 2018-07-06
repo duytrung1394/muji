@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Row, Col, Icon } from 'antd';
-import notifications from '../../../components/feedback/notification';
-import Button from '../../../components/uielements/button';
-import PageHeader from '../../../components/utility/pageHeader';
-import Box from '../../../components/utility/box';
-import LayoutWrapper from '../../../components/utility/layoutWrapper.js';
-import ContentHolder from '../../../components/utility/contentHolder';
-import basicStyle from '../../../settings/basicStyle';
-import IntlMessages from '../../../components/utility/intlMessages';
-import NotificationContent from './notification.style';
+import React, { Component } from "react";
+import { Row, Col, Icon } from "antd";
+import notifications from "../../../components/feedback/notification";
+import Button from "../../../components/uielements/button";
+import PageHeader from "../../../components/utility/pageHeader";
+import Box from "../../../components/utility/box";
+import LayoutWrapper from "../../../components/utility/layoutWrapper.js";
+import ContentHolder from "../../../components/utility/contentHolder";
+import basicStyle from "../../../settings/basicStyle";
+import IntlMessages from "../../../components/utility/intlMessages";
+import NotificationContent from "./notification.style";
 
 const openNotification = () => {
   const args = {
-    message: 'Notification Title',
+    message: "Notification Title",
     description: (
       <NotificationContent>
         I will close after 2 seconds automatically. I will be close
@@ -25,9 +25,9 @@ const openNotification = () => {
 
 const customDurationNotification = () => {
   const args = {
-    message: 'Notification Title',
+    message: "Notification Title",
     description:
-      'I will never close automatically. Click the close button. I will be close automatically. I will never close automatically.',
+      "I will never close automatically. Click the close button. I will be close automatically. I will never close automatically.",
     duration: 0
   };
   notifications.open(args);
@@ -35,18 +35,18 @@ const customDurationNotification = () => {
 
 const openNotificationWithIcon = type => {
   notifications[type]({
-    message: 'Notification Title',
+    message: "Notification Title",
     description:
-      'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
+      "This is the content of the notification. This is the content of the notification. This is the content of the notification."
   });
 };
 
 const openNotificationCustomIcon = () => {
   notifications.open({
-    message: 'Notification Title',
+    message: "Notification Title",
     description:
-      'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-    icon: <Icon type="smile-circle" style={{ color: '#4482FF' }} />
+      "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
+    icon: <Icon type="smile-circle" style={{ color: "#4482FF" }} />
   });
 };
 
@@ -63,7 +63,7 @@ const openNotificationWithConfirm = () => {
     </Button>
   );
   notifications.open({
-    message: 'Notification Title',
+    message: "Notification Title",
     description:
       'A function will be be called after the notification is closed (automatically after the "duration" time of manually).',
     btn,
@@ -75,7 +75,7 @@ const openNotificationWithConfirm = () => {
 export default class extends Component {
   render() {
     const { rowStyle, colStyle, gutter } = basicStyle;
-    const marginStyle = { marginRight: '5px' };
+    const marginStyle = { marginRight: "5px" };
 
     return (
       <LayoutWrapper>
@@ -133,24 +133,24 @@ export default class extends Component {
             >
               <ContentHolder>
                 <Button
-                  onClick={() => openNotificationWithIcon('success')}
+                  onClick={() => openNotificationWithIcon("success")}
                   style={marginStyle}
                 >
                   {<IntlMessages id="feedback.alert.successTitle" />}
                 </Button>
                 <Button
-                  onClick={() => openNotificationWithIcon('info')}
+                  onClick={() => openNotificationWithIcon("info")}
                   style={marginStyle}
                 >
                   {<IntlMessages id="feedback.alert.infoTitle" />}
                 </Button>
                 <Button
-                  onClick={() => openNotificationWithIcon('warning')}
+                  onClick={() => openNotificationWithIcon("warning")}
                   style={marginStyle}
                 >
                   {<IntlMessages id="feedback.alert.warningTitle" />}
                 </Button>
-                <Button onClick={() => openNotificationWithIcon('error')}>
+                <Button onClick={() => openNotificationWithIcon("error")}>
                   {<IntlMessages id="feedback.alert.errorTitle" />}
                 </Button>
               </ContentHolder>

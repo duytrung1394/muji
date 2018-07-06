@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import 'leaflet';
-import 'leaflet.markercluster';
-import 'leaflet.markercluster/dist/MarkerCluster.css';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import React, { Component } from "react";
+import "leaflet";
+import "leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
-import { mapboxConfig } from '../../../../settings';
-import { markerCluster } from '../config';
-import LeafletMapWrapper from './map.style';
+import { mapboxConfig } from "../../../../settings";
+import { markerCluster } from "../config";
+import LeafletMapWrapper from "./map.style";
 
 export default class extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class extends Component {
       <LeafletMapWrapper className="isoLeafletMap">
         <div
           id="basic-map-marker"
-          style={{ height: '400px', width: '100%' }}
+          style={{ height: "400px", width: "100%" }}
           ref={this.mountMap}
         />
       </LeafletMapWrapper>

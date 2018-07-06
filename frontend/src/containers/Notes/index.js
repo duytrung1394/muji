@@ -93,10 +93,13 @@ function mapStateToProps(state) {
     seectedColor
   };
 }
-export default connect(mapStateToProps, {
-  addNote,
-  editNote,
-  deleteNote,
-  changeNote,
-  changeColor
-})(Notes);
+export default connect(
+  mapStateToProps,
+  {
+    addNote,
+    editNote,
+    deleteNote,
+    changeNote,
+    changeColor
+  }
+)(Notes);

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
-import { Footer, Sidebar } from '../../../components/algolia';
-import Content from './content';
-import EmptyComponent from '../../../components/emptyComponent.js';
-import { AlgoliaSearchConfig } from '../../../settings';
-import { setUrl, getInitData } from '../../../helpers/urlSync';
-import './instantSearch.css';
-import AlgoliaSearchPageWrapper from './algolia.style';
+import React, { Component } from "react";
+import { InstantSearch } from "react-instantsearch/dom";
+import { Footer, Sidebar } from "../../../components/algolia";
+import Content from "./content";
+import EmptyComponent from "../../../components/emptyComponent.js";
+import { AlgoliaSearchConfig } from "../../../settings";
+import { setUrl, getInitData } from "../../../helpers/urlSync";
+import "./instantSearch.css";
+import AlgoliaSearchPageWrapper from "./algolia.style";
 
 export default class extends Component {
   state = {
@@ -15,7 +15,7 @@ export default class extends Component {
   setVoice = query => {
     const searchState = {
       ...this.state.searchState,
-      page: '1',
+      page: "1",
       query
     };
     this.setState({ searchState });
@@ -24,7 +24,7 @@ export default class extends Component {
   render() {
     const searchInfo = {
       ...AlgoliaSearchConfig,
-      indexName: 'default_search',
+      indexName: "default_search",
       searchState: this.state.searchState,
       urlSync: true,
       onSearchStateChange: searchState => {

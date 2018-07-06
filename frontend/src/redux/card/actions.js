@@ -1,9 +1,9 @@
-import { fakedata } from '../../containers/Ecommerce/card/config';
+import { fakedata } from "../../containers/Ecommerce/card/config";
 const cardActions = {
-  CHANGE_CARDS: 'CHANGE_CARDS',
+  CHANGE_CARDS: "CHANGE_CARDS",
   addCard: card => {
     return (dispatch, getState) => {
-      const cards = [card, ...getState().Cards.get('cards')];
+      const cards = [card, ...getState().Cards.get("cards")];
       dispatch({
         type: cardActions.CHANGE_CARDS,
         cards
@@ -12,7 +12,7 @@ const cardActions = {
   },
   editCard: editCard => {
     return (dispatch, getState) => {
-      const oldCards = getState().Cards.get('cards');
+      const oldCards = getState().Cards.get("cards");
       const cards = [];
       oldCards.forEach(card => {
         if (card.id !== editCard.id) {
@@ -29,7 +29,7 @@ const cardActions = {
   },
   deleteCard: deletedCard => {
     return (dispatch, getState) => {
-      const oldCards = getState().Cards.get('cards');
+      const oldCards = getState().Cards.get("cards");
       const cards = [];
       oldCards.forEach(card => {
         if (card.id !== deletedCard.id) {

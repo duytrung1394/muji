@@ -1,8 +1,8 @@
-import React from 'react';
-import { timeDifference } from '../../helpers/utility';
-import { tags, tagColor } from './mailTags.js';
-import MailListWrapper from './mailList.style';
-import { rtl } from '../../settings/withDirection';
+import React from "react";
+import { timeDifference } from "../../helpers/utility";
+import { tags, tagColor } from "./mailTags.js";
+import MailListWrapper from "./mailList.style";
+import { rtl } from "../../settings/withDirection";
 
 export default function mailList(
   mails,
@@ -22,14 +22,14 @@ export default function mailList(
     const signature = {
       splitLet: recpName
         .match(/\b(\w)/g)
-        .join('')
-        .split('', 2)
+        .join("")
+        .split("", 2)
     };
-    const activeClass = isSelected ? 'activeMail' : '';
-    const unreadClass = !mail.read ? 'unreadMail' : '';
+    const activeClass = isSelected ? "activeMail" : "";
+    const unreadClass = !mail.read ? "unreadMail" : "";
     const tagOption = mail.tags
       ? tagColor[tags.findIndex(tags => tags === mail.tags)]
-      : 'transparent';
+      : "transparent";
     return (
       <div
         key={`list${key}`}
@@ -39,11 +39,9 @@ export default function mailList(
         <span
           className="isoLabelIndicator"
           style={
-            rtl === 'rtl' ? (
-              { borderRightColor: tagOption }
-            ) : (
-              { borderTopColor: tagOption }
-            )
+            rtl === "rtl"
+              ? { borderRightColor: tagOption }
+              : { borderTopColor: tagOption }
           }
         />
         <div className="isoRecipentsImg">

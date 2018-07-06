@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { timeDifference } from '../../helpers/utility';
-import { MessageSingle, MessageChatWrapper } from './message.style';
-import actions from '../../redux/chat/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { timeDifference } from "../../helpers/utility";
+import { MessageSingle, MessageChatWrapper } from "./message.style";
+import actions from "../../redux/chat/actions";
 
 class Messages extends Component {
   scrollToBottom = () => {
-    const messageChat = document.getElementById('messageChat');
+    const messageChat = document.getElementById("messageChat");
     messageChat.scrollTop = messageChat.scrollHeight;
   };
   componentDidMount() {
@@ -22,7 +22,7 @@ class Messages extends Component {
       selectedChatRoom,
       messages,
       toggleViewProfile,
-      toggleMobileProfile,
+      toggleMobileProfile
     } = this.props;
     const renderMessage = message => {
       const isUser = userId === message.sender;
@@ -88,7 +88,10 @@ function mapStateToProps(state) {
     user,
     userId,
     selectedChatRoom,
-    messages,
+    messages
   };
 }
-export default connect(mapStateToProps, actions)(Messages);
+export default connect(
+  mapStateToProps,
+  actions
+)(Messages);

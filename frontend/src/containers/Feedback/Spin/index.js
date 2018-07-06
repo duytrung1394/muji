@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import Alert from '../../../components/feedback/alert';
-import Switch from '../../../components/uielements/switch';
-import PageHeader from '../../../components/utility/pageHeader';
-import Box from '../../../components/utility/box';
-import LayoutWrapper from '../../../components/utility/layoutWrapper.js';
-import ContentHolder from '../../../components/utility/contentHolder';
-import basicStyle from '../../../settings/basicStyle';
-import IntlMessages from '../../../components/utility/intlMessages';
-import Spin from './spin.style';
+import React, { Component } from "react";
+import { Row, Col } from "antd";
+import Alert from "../../../components/feedback/alert";
+import Switch from "../../../components/uielements/switch";
+import PageHeader from "../../../components/utility/pageHeader";
+import Box from "../../../components/utility/box";
+import LayoutWrapper from "../../../components/utility/layoutWrapper.js";
+import ContentHolder from "../../../components/utility/contentHolder";
+import basicStyle from "../../../settings/basicStyle";
+import IntlMessages from "../../../components/utility/intlMessages";
+import Spin from "./spin.style";
 
 export default class extends Component {
   state = { loading: false };
@@ -24,9 +24,9 @@ export default class extends Component {
       />
     );
     const style = {
-      textAlign: 'center',
-      background: '#f1f3f6',
-      padding: '30px 50px'
+      textAlign: "center",
+      background: "#f1f3f6",
+      padding: "30px 50px"
     };
 
     const { rowStyle, colStyle, gutter } = basicStyle;
@@ -61,7 +61,7 @@ export default class extends Component {
               }
             >
               <ContentHolder>
-                <div style={{ marginBottom: '20px' }}>
+                <div style={{ marginBottom: "20px" }}>
                   <Spin spinning={this.state.loading}>{container}</Spin>
                 </div>
                 {<IntlMessages id="feedback.alert.spin.loadingState" />}

@@ -1,6 +1,6 @@
-import { all, takeEvery, put, call } from 'redux-saga/effects';
-import actions from './actions';
-import { youtubeSearchApi } from '../../settings';
+import { all, takeEvery, put, call } from "redux-saga/effects";
+import actions from "./actions";
+import { youtubeSearchApi } from "../../settings";
 export const per_page = 10;
 const maxResults = 10;
 const gitSearchApi = `https://www.googleapis.com/youtube/v3/search?maxResults=${maxResults}&type=video&key=${youtubeSearchApi}&part=snippet`;
@@ -17,7 +17,7 @@ function* searchRequest({ payload }) {
     const searchResult = yield call(
       onSearchReqeust,
       searcText,
-      pageToken ? `&pageToken=${pageToken}` : ''
+      pageToken ? `&pageToken=${pageToken}` : ""
     );
     if (searchResult.items) {
       yield put(

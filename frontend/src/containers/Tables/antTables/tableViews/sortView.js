@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import TableWrapper from '../antTable.style';
+import React, { Component } from "react";
+import TableWrapper from "../antTable.style";
 
 export default class extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class extends Component {
   onChange(pagination, filters, sorter) {
     const { dataList } = this.props;
     if (sorter && sorter.columnKey && sorter.order) {
-      if (sorter.order === 'ascend') {
+      if (sorter.order === "ascend") {
         dataList.getSortAsc(sorter.columnKey);
       } else {
         dataList.getSortDesc(sorter.columnKey);

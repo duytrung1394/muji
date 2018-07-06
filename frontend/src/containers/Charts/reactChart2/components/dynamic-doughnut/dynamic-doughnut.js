@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import React, { Component } from "react";
+import { Doughnut } from "react-chartjs-2";
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const getState = () => ({
-  labels: ['Red', 'Blue', 'Yellow'],
+  labels: ["Red", "Blue", "Yellow"],
   datasets: [
     {
       data: [
@@ -14,8 +14,8 @@ const getState = () => ({
         getRandomInt(100, 150),
         getRandomInt(150, 250)
       ],
-      backgroundColor: ['#ff6384', '#48A6F2', '#ffbf00'],
-      hoverBackgroundColor: ['#FF6384', '#48A6F2', '#ffbf00']
+      backgroundColor: ["#ff6384", "#48A6F2", "#ffbf00"],
+      hoverBackgroundColor: ["#FF6384", "#48A6F2", "#ffbf00"]
     }
   ]
 });

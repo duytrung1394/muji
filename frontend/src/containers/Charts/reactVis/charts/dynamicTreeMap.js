@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Treemap } from 'react-vis';
-import Button from '../button';
-import ChartWrapper from '../../chart.style';
+import React, { Component } from "react";
+import { Treemap } from "react-vis";
+import Button from "../button";
+import ChartWrapper from "../../chart.style";
 
 function _getRandomData() {
   const totalLeaves = Math.random() * 20;
@@ -19,7 +19,7 @@ function _getRandomData() {
     });
   }
   return {
-    title: '',
+    title: "",
     color: 1,
     children: leaves
   };
@@ -45,7 +45,7 @@ export default class extends Component {
       onLeafMouseOut: () => this.setState({ hoveredNode: false }),
       onLeafClick: () => this.setState({ treemapData: _getRandomData() }),
       height: height,
-      mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
+      mode: this.state.useCirclePacking ? "circlePack" : "squarify",
       width: width
     };
     return (
@@ -53,8 +53,9 @@ export default class extends Component {
         <div className="isoChartControl">
           <Button
             onClick={() =>
-              this.setState({ useCirclePacking: !useCirclePacking })}
-            buttonContent={'TOGGLE CIRCLE PACK'}
+              this.setState({ useCirclePacking: !useCirclePacking })
+            }
+            buttonContent={"TOGGLE CIRCLE PACK"}
           />
         </div>
         <Treemap {...treeProps} />

@@ -1,11 +1,11 @@
-import { Input } from 'antd';
+import { Input } from "antd";
 import {
   InputWrapper,
   InputGroupWrapper,
   InputSearchWrapper,
-  TextAreaWrapper,
-} from './styles/input.style';
-import WithDirection from '../../settings/withDirection';
+  TextAreaWrapper
+} from "./styles/input.style";
+import WithDirection from "../../settings/withDirection";
 
 const { Search, TextArea, Group } = Input;
 

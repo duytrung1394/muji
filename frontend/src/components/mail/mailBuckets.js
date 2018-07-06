@@ -1,14 +1,14 @@
-import React from 'react';
-import MailBucket from './mailBucket.style';
+import React from "react";
+import MailBucket from "./mailBucket.style";
 
 const buckets = [
-  'Inbox',
-  'Sent',
-  'Drafts',
-  'Trash',
-  'Important',
-  'spam',
-  'Starred',
+  "Inbox",
+  "Sent",
+  "Drafts",
+  "Trash",
+  "Important",
+  "spam",
+  "Starred"
 ];
 
 function getUnread(mails) {
@@ -39,7 +39,7 @@ export default function mailbuckets(
       }
     };
     const selectedBucket = bucket === filterAttr.bucket;
-    const activeClass = selectedBucket ? 'active' : '';
+    const activeClass = selectedBucket ? "active" : "";
     return (
       <li
         key={`bucket${key}`}
@@ -48,7 +48,7 @@ export default function mailbuckets(
       >
         <span>{bucket}</span>
         <span className="isoMailBadge">
-          {unread[bucket] ? unread[bucket] : ''}
+          {unread[bucket] ? unread[bucket] : ""}
         </span>
       </li>
     );

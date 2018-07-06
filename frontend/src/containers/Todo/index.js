@@ -70,10 +70,13 @@ function mapStateToProps(state) {
     colors
   };
 }
-export default connect(mapStateToProps, {
-  addTodo,
-  edittodo,
-  deleteTodo,
-  deleteCompleted,
-  allCompleted
-})(ToDo);
+export default connect(
+  mapStateToProps,
+  {
+    addTodo,
+    edittodo,
+    deleteTodo,
+    deleteCompleted,
+    allCompleted
+  }
+)(ToDo);

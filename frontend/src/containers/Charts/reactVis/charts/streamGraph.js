@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { stack as d3Stack, stackOffsetWiggle } from 'd3-shape';
-import { range, transpose } from 'd3-array';
+import React, { Component } from "react";
+import { stack as d3Stack, stackOffsetWiggle } from "d3-shape";
+import { range, transpose } from "d3-array";
 
-import { XYPlot, makeWidthFlexible, AreaSeries } from 'react-vis';
-import Button from '../../../../components/uielements/button';
+import { XYPlot, makeWidthFlexible, AreaSeries } from "react-vis";
+import Button from "../../../../components/uielements/button";
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
@@ -71,9 +71,9 @@ export default class extends Component {
               <AreaSeries
                 key={index}
                 curve="curveNatural"
-                className={`${index === hoveredIndex
-                  ? 'highlighted-stream'
-                  : ''}`}
+                className={`${
+                  index === hoveredIndex ? "highlighted-stream" : ""
+                }`}
                 onSeriesMouseOver={() => this.setState({ hoveredIndex: index })}
                 data={series}
               />

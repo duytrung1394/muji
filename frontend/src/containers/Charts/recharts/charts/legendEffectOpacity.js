@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   LineChart,
   Line,
@@ -6,9 +6,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-} from 'recharts';
-import ChartWrapper from '../../chart.style';
+  Legend
+} from "recharts";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ export default class extends Component {
     this.state = {
       opacity: {
         uv: 1,
-        pv: 1,
-      },
+        pv: 1
+      }
     };
   }
   handleMouseEnter(o) {
@@ -25,7 +25,7 @@ export default class extends Component {
     const { opacity } = this.state;
 
     this.setState({
-      opacity: { ...opacity, [dataKey]: 0.5 },
+      opacity: { ...opacity, [dataKey]: 0.5 }
     });
   }
   handleMouseLeave(o) {
@@ -33,7 +33,7 @@ export default class extends Component {
     const { opacity } = this.state;
 
     this.setState({
-      opacity: { ...opacity, [dataKey]: 1 },
+      opacity: { ...opacity, [dataKey]: 1 }
     });
   }
   render() {

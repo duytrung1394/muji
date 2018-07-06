@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Table, Cell, Column, ColumnGroup } from 'fixed-data-table-2';
-import Button from '../../../components/uielements/button';
-import { InputSearch } from '../../../components/uielements/input';
-import filterListWrapper from './filterListWrapper';
-import * as helperCells from './helperCells.js';
+import React, { Component } from "react";
+import { Table, Cell, Column, ColumnGroup } from "fixed-data-table-2";
+import Button from "../../../components/uielements/button";
+import { InputSearch } from "../../../components/uielements/input";
+import filterListWrapper from "./filterListWrapper";
+import * as helperCells from "./helperCells.js";
 
-import 'fixed-data-table-2/dist/fixed-data-table.min.css';
+import "fixed-data-table-2/dist/fixed-data-table.min.css";
 
 const SortTypes = {
-  ASC: 'ASC',
-  DESC: 'DESC'
+  ASC: "ASC",
+  DESC: "DESC"
 };
 
 export default class FacebookDataTable extends Component {
@@ -31,7 +31,7 @@ export default class FacebookDataTable extends Component {
       allColumns: tableInfo.cells.map(cell => cell.col),
       columnWidths: {},
       colSortDirs: {},
-      searchText: ''
+      searchText: ""
     };
   }
   createHeader(cellInfo) {
@@ -79,7 +79,7 @@ export default class FacebookDataTable extends Component {
     } else if (header) {
       headerCell = <Cell>{header}</Cell>;
     } else {
-      headerCell = '';
+      headerCell = "";
     }
     return headerCell;
   }
@@ -104,13 +104,13 @@ export default class FacebookDataTable extends Component {
       : cellInfo.width;
     let ComponentCell;
     switch (cellInfo.coulumnType) {
-      case 'data':
+      case "data":
         ComponentCell = helperCells.DateCell;
         break;
-      case 'image':
+      case "image":
         ComponentCell = helperCells.ImageCell;
         break;
-      case 'link':
+      case "link":
         ComponentCell = helperCells.LinkCell;
         break;
       default:
@@ -192,7 +192,7 @@ export default class FacebookDataTable extends Component {
     const value = tableInfo.value;
     const filterdataList = this.filterDataList();
     const columnOrders = this.state.columnOrders;
-    const columnGroupNames = ['Name', 'Address'];
+    const columnGroupNames = ["Name", "Address"];
     return (
       <div>
         {tableInfo.hideColumns ? (
@@ -200,7 +200,7 @@ export default class FacebookDataTable extends Component {
             Reset
           </Button>
         ) : (
-          ''
+          ""
         )}
         {tableInfo.searchText ? (
           <InputSearch
@@ -208,7 +208,7 @@ export default class FacebookDataTable extends Component {
             onChange={this.searchText}
           />
         ) : (
-          ''
+          ""
         )}
         <Table
           rowHeight={50}
@@ -226,15 +226,13 @@ export default class FacebookDataTable extends Component {
           groupHeaderHeight={50}
           renderPage={false}
         >
-          {value === 'columnGroup' ? (
-            columnGroupNames.map((columnGroupName, index) =>
-              this.columnGroup(filterdataList, columnGroupName, index)
-            )
-          ) : (
-            columnOrders.map(columnOrder =>
-              this.cellViews(columnOrder, filterdataList)
-            )
-          )}
+          {value === "columnGroup"
+            ? columnGroupNames.map((columnGroupName, index) =>
+                this.columnGroup(filterdataList, columnGroupName, index)
+              )
+            : columnOrders.map(columnOrder =>
+                this.cellViews(columnOrder, filterdataList)
+              )}
         </Table>
       </div>
     );

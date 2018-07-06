@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Input from '../../components/uielements/input';
-import Checkbox from '../../components/uielements/checkbox';
-import Button from '../../components/uielements/button';
-import authAction from '../../redux/auth/actions';
-import IntlMessages from '../../components/utility/intlMessages';
-import SignInStyleWrapper from './signin.style';
-import Form from '../../components/uielements/form';
+import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import Input from "../../components/uielements/input";
+import Checkbox from "../../components/uielements/checkbox";
+import Button from "../../components/uielements/button";
+import authAction from "../../redux/auth/actions";
+import IntlMessages from "../../components/utility/intlMessages";
+import SignInStyleWrapper from "./signin.style";
+import Form from "../../components/uielements/form";
 const FormItem = Form.Item;
 
-const RememberMeKey = "rememberMe"
+const RememberMeKey = "rememberMe";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     const rememberMe = localStorage.getItem(RememberMeKey) === "true";
     this.state = {
-      redirectToReferrer: (props.isLoggedIn === true),
-      rememberMe: rememberMe,
+      redirectToReferrer: props.isLoggedIn === true,
+      rememberMe: rememberMe
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,9 +26,9 @@ class SignIn extends Component {
   }
 
   handleInputChange(event) {
-    const {target} = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const {name} = target;
+    const { target } = event;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const { name } = target;
     this.setState({
       [name]: value
     });
@@ -37,8 +37,8 @@ class SignIn extends Component {
   toggleRememberMe(event) {
     const checked = event.target.checked;
     this.setState({
-      rememberMe: checked,
-    })
+      rememberMe: checked
+    });
     localStorage.setItem(RememberMeKey, checked);
   }
 
@@ -51,25 +51,24 @@ class SignIn extends Component {
     }
   }
 
-  
-  handleLogin(){
+  handleLogin() {
     const { login } = this.props;
     login(this.state.username, this.state.password, this.state.rememberMe);
-  };
+  }
 
   render() {
-    const from = { pathname: '/dashboard' };
+    const from = { pathname: "/dashboard" };
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
       return <Redirect to={from} />;
     }
 
-    let errorState = this.props.isLoginError === true ? 'error' : '';
-    let errorMessage = '';
+    let errorState = this.props.isLoginError === true ? "error" : "";
+    let errorMessage = "";
 
-    if (errorState === 'error') {
-        errorMessage = 'メールアドレス、または、パスワードが違います。';
+    if (errorState === "error") {
+      errorMessage = "メールアドレス、または、パスワードが違います。";
     }
 
     return (
@@ -83,10 +82,7 @@ class SignIn extends Component {
             </div>
 
             <div className="isoSignInForm">
-              <FormItem
-                hasFeedback
-                validateStatus={errorState}
-              >
+              <FormItem hasFeedback validateStatus={errorState}>
                 <div className="isoInputWrapper">
                   <Input
                     size="large"
@@ -145,8 +141,8 @@ const { login } = authAction;
 
 export default connect(
   state => ({
-    isLoggedIn: state.Auth.get('idToken') !== null,
-    isLoginError: state.Auth.get('isError'),
+    isLoggedIn: state.Auth.get("idToken") !== null,
+    isLoginError: state.Auth.get("isError")
   }),
   { login }
 )(SignIn);

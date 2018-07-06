@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Scrollbars from '../../components/utility/customScrollBar.js';
-import { InputSearch } from '../../components/uielements/input';
-import mailList from '../../components/mail/maiilList';
-import mailBuckets from '../../components/mail/mailBuckets';
-import mailTags from '../../components/mail/mailTags';
-import singleMail from '../../components/mail/singleMail';
-import ComposeBtn from '../../components/mail/mailComposeBtn';
-import ComposeMail from '../../components/mail/composeMail';
-import mailActions from '../../redux/mail/actions';
-import PaginationControl from '../../components/mail/mailPagination';
-import IntlMessages from '../../components/utility/intlMessages';
-import mailSelector from '../../redux/mail/selector';
-import MailBox from './mailBox.style';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Scrollbars from "../../components/utility/customScrollBar.js";
+import { InputSearch } from "../../components/uielements/input";
+import mailList from "../../components/mail/maiilList";
+import mailBuckets from "../../components/mail/mailBuckets";
+import mailTags from "../../components/mail/mailTags";
+import singleMail from "../../components/mail/singleMail";
+import ComposeBtn from "../../components/mail/mailComposeBtn";
+import ComposeMail from "../../components/mail/composeMail";
+import mailActions from "../../redux/mail/actions";
+import PaginationControl from "../../components/mail/mailPagination";
+import IntlMessages from "../../components/utility/intlMessages";
+import mailSelector from "../../redux/mail/selector";
+import MailBox from "./mailBox.style";
 
 const {
   filterAction,
   selectMail,
   changeComposeMail,
   changeReplyMail,
-  changeSearchString,
+  changeSearchString
 } = mailActions;
 
 class DesktopView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: this.props.searchString,
+      search: this.props.searchString
     };
   }
   render() {
@@ -41,7 +41,7 @@ class DesktopView extends Component {
       filterAction,
       changeComposeMail,
       changeReplyMail,
-      changeSearchString,
+      changeSearchString
     } = this.props;
     const { search } = this.state;
     let singleMailComponent = (
@@ -72,7 +72,7 @@ class DesktopView extends Component {
           </div>
         </div>
         {composeMail ? (
-          ''
+          ""
         ) : (
           <div className="isoMiddleWrapper">
             <div className="isoBucketLabel">
@@ -117,7 +117,7 @@ function mapStateToProps(state) {
     filterAttr,
     composeMail,
     replyMail,
-    searchString,
+    searchString
   } = state.Mails.toJS();
   return {
     allMails,
@@ -127,13 +127,16 @@ function mapStateToProps(state) {
     composeMail,
     replyMail,
     searchString,
-    filterMails: mailSelector(state.Mails),
+    filterMails: mailSelector(state.Mails)
   };
 }
-export default connect(mapStateToProps, {
-  filterAction,
-  selectMail,
-  changeComposeMail,
-  changeReplyMail,
-  changeSearchString,
-})(DesktopView);
+export default connect(
+  mapStateToProps,
+  {
+    filterAction,
+    selectMail,
+    changeComposeMail,
+    changeReplyMail,
+    changeSearchString
+  }
+)(DesktopView);

@@ -1,13 +1,13 @@
-import React from 'react';
-import classNames from 'classnames';
-import { Icon } from 'antd';
+import React from "react";
+import classNames from "classnames";
+import { Icon } from "antd";
 
 const Toggle = ({ clickHandler, text, icon, active, large }) => {
   const buttonClass = classNames({
     buttonToggle: true,
     noIcon: !icon,
     active,
-    large,
+    large
   });
   const iconClass = `${icon}`;
 

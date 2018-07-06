@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ReactEcharts from 'echarts-for-react';
-import { updateOption } from '../../../redux/dynamicEchart/reducer';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ReactEcharts from "echarts-for-react";
+import { updateOption } from "../../../redux/dynamicEchart/reducer";
 
 class DynamicChartComponent extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class DynamicChartComponent extends Component {
 
 export default connect(
   state => ({
-    ...state.DynamicChartComponent.toJS(),
+    ...state.DynamicChartComponent.toJS()
   }),
-  { updateOption },
+  { updateOption }
 )(DynamicChartComponent);

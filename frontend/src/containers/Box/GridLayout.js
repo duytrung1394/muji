@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Responsive, WidthProvider } from 'react-grid-layout';
-import { ReactElementResize } from 'react-element-resize';
-import { Icon } from 'antd';
-import boxActions from '../../redux/box/actions';
-import { layoutConfig, gutter } from './config';
-import { generateLayoutfunc, indexOfBoxfunc } from './helperfunc.js';
-import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css';
-import './box.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Responsive, WidthProvider } from "react-grid-layout";
+import { ReactElementResize } from "react-element-resize";
+import { Icon } from "antd";
+import boxActions from "../../redux/box/actions";
+import { layoutConfig, gutter } from "./config";
+import { generateLayoutfunc, indexOfBoxfunc } from "./helperfunc.js";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+import "./box.css";
 
 const { deleteBox, saveBox } = boxActions;
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
@@ -20,7 +20,7 @@ class GridLayout extends Component {
     this.breakPointChange = this.breakPointChange.bind(this);
     this.autoHeight = this.autoHeight.bind(this);
     this.state = {
-      breakpoint: 'lg'
+      breakpoint: "lg"
     };
   }
   componentWillMount() {
@@ -144,7 +144,10 @@ function mapStateToProps(state) {
     reload: state.Box.reload
   };
 }
-export default connect(mapStateToProps, {
-  saveBox,
-  deleteBox
-})(GridLayout);
+export default connect(
+  mapStateToProps,
+  {
+    saveBox,
+    deleteBox
+  }
+)(GridLayout);

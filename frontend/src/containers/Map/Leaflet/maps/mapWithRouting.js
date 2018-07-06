@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import 'leaflet';
-import 'leaflet-routing-machine';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import 'leaflet-routing-machine/dist/leaflet.routing.icons.png';
-import { mapboxConfig } from '../../../../settings';
-import LeafletMapWrapper from './map.style';
+import React, { Component } from "react";
+import "leaflet";
+import "leaflet-routing-machine";
+import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import "leaflet-routing-machine/dist/leaflet.routing.icons.png";
+import { mapboxConfig } from "../../../../settings";
+import LeafletMapWrapper from "./map.style";
 
 export default class extends Component {
   constructor(props) {
@@ -25,15 +25,13 @@ export default class extends Component {
       attribution: osmAttr
     }).addTo(map);
     try {
-      L.Routing
-        .control({
-          waypoints: [
-            L.latLng(40.72143, -74.05729),
-            L.latLng(40.6943, -74.074201)
-          ],
-          routeWhileDragging: true
-        })
-        .addTo(map);
+      L.Routing.control({
+        waypoints: [
+          L.latLng(40.72143, -74.05729),
+          L.latLng(40.6943, -74.074201)
+        ],
+        routeWhileDragging: true
+      }).addTo(map);
     } catch (e) {}
   }
   render() {
@@ -41,7 +39,7 @@ export default class extends Component {
       <LeafletMapWrapper className="isoLeafletMap">
         <div
           id="basic-map-marker"
-          style={{ height: '400px', width: '100%' }}
+          style={{ height: "400px", width: "100%" }}
           ref={this.mountMap}
         />
       </LeafletMapWrapper>

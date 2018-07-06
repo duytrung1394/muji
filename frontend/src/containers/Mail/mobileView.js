@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ReactDrawer from 'react-motion-drawer';
-import Scrollbars from '../../components/utility/customScrollBar.js';
-import { InputSearch } from '../../components/uielements/input';
-import mailList from '../../components/mail/maiilList';
-import mailBuckets from '../../components/mail/mailBuckets';
-import mailTags from '../../components/mail/mailTags';
-import singleMail from '../../components/mail/singleMail';
-import ComposeBtn from '../../components/mail/mailComposeBtn';
-import ComposeMail from '../../components/mail/composeMail';
-import mailActions from '../../redux/mail/actions';
-import PaginationControl from '../../components/mail/mailPagination';
-import IntlMessages from '../../components/utility/intlMessages';
-import mailSelector from '../../redux/mail/selector';
-import MailDrawer from './mailDrawer.style';
-import MailBox from './mailBox.style';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ReactDrawer from "react-motion-drawer";
+import Scrollbars from "../../components/utility/customScrollBar.js";
+import { InputSearch } from "../../components/uielements/input";
+import mailList from "../../components/mail/maiilList";
+import mailBuckets from "../../components/mail/mailBuckets";
+import mailTags from "../../components/mail/mailTags";
+import singleMail from "../../components/mail/singleMail";
+import ComposeBtn from "../../components/mail/mailComposeBtn";
+import ComposeMail from "../../components/mail/composeMail";
+import mailActions from "../../redux/mail/actions";
+import PaginationControl from "../../components/mail/mailPagination";
+import IntlMessages from "../../components/utility/intlMessages";
+import mailSelector from "../../redux/mail/selector";
+import MailDrawer from "./mailDrawer.style";
+import MailBox from "./mailBox.style";
 
 const {
   filterAction,
   selectMail,
   changeComposeMail,
   changeReplyMail,
-  changeSearchString,
+  changeSearchString
 } = mailActions;
 
 class MobileView extends Component {
@@ -30,7 +30,7 @@ class MobileView extends Component {
     this.state = {
       search: this.props.searchString,
       open: false,
-      listVisible: true,
+      listVisible: true
     };
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
@@ -66,7 +66,7 @@ class MobileView extends Component {
       filterAction,
       changeComposeMail,
       changeReplyMail,
-      changeSearchString,
+      changeSearchString
     } = this.props;
     const { search, listVisible } = this.state;
     let singleMailComponent = (
@@ -87,7 +87,7 @@ class MobileView extends Component {
       );
     }
     return (
-      <div style={{ height: '100%' }}>
+      <div style={{ height: "100%" }}>
         <MailBox className="isomorphicMailBox">
           {listVisible ? (
             composeMail ? (
@@ -190,7 +190,7 @@ function mapStateToProps(state) {
     filterAttr,
     composeMail,
     replyMail,
-    searchString,
+    searchString
   } = state.Mails.toJS();
   return {
     allMails,
@@ -200,13 +200,16 @@ function mapStateToProps(state) {
     composeMail,
     replyMail,
     searchString,
-    filterMails: mailSelector(state.Mails),
+    filterMails: mailSelector(state.Mails)
   };
 }
-export default connect(mapStateToProps, {
-  filterAction,
-  selectMail,
-  changeComposeMail,
-  changeReplyMail,
-  changeSearchString,
-})(MobileView);
+export default connect(
+  mapStateToProps,
+  {
+    filterAction,
+    selectMail,
+    changeComposeMail,
+    changeReplyMail,
+    changeSearchString
+  }
+)(MobileView);

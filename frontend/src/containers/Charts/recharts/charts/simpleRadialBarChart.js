@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { RadialBarChart, RadialBar, Legend } from 'recharts';
-import ChartWrapper from '../../chart.style';
+import React, { Component } from "react";
+import { RadialBarChart, RadialBar, Legend } from "recharts";
+import ChartWrapper from "../../chart.style";
 
 const style = {
   top: 0,
   left: 350,
-  lineHeight: '24px',
+  lineHeight: "24px"
 };
 export default class extends Component {
   render() {

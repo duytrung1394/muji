@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import clone from 'clone';
-import TableWrapper from '../antTable.style';
+import React, { Component } from "react";
+import clone from "clone";
+import TableWrapper from "../antTable.style";
 import {
   EditableCell,
   DeleteCell
-} from '../../../../components/tables/helperCells';
+} from "../../../../components/tables/helperCells";
 
 export default class extends Component {
   constructor(props) {
@@ -27,8 +27,8 @@ export default class extends Component {
     );
     columns[0].render = editColumnRender;
     const deleteColumn = {
-      title: 'operation',
-      dataIndex: 'operation',
+      title: "operation",
+      dataIndex: "operation",
       render: (text, record, index) => (
         <DeleteCell index={index} onDeleteCell={this.onDeleteCell} />
       )

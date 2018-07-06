@@ -1,6 +1,6 @@
-import { Steps } from 'antd';
+import { Steps } from "antd";
 
 const Step = Steps.Step;
 
 export default Steps;
-export {Step};
+export { Step };

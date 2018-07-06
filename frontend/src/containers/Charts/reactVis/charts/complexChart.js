@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   XYPlot,
   XAxis,
@@ -9,8 +9,8 @@ import {
   VerticalBarSeries,
   DiscreteColorLegend,
   Crosshair
-} from 'react-vis';
-import Button from '../../../../components/uielements/button';
+} from "react-vis";
+import Button from "../../../../components/uielements/button";
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
@@ -37,12 +37,12 @@ export default class extends Component {
     crosshairValues: [],
     series: [
       {
-        title: 'Apples',
+        title: "Apples",
         disabled: false,
         data: getRandomSeriesData(totalValues)
       },
       {
-        title: 'Bananas',
+        title: "Bananas",
         disabled: false,
         data: getRandomSeriesData(totalValues)
       }
@@ -69,7 +69,7 @@ export default class extends Component {
   };
   _formatCrosshairTitle = values => {
     return {
-      title: 'X',
+      title: "X",
       value: values[0].x
     };
   };
@@ -93,7 +93,7 @@ export default class extends Component {
     const { forFrontPage } = this.props;
     const { series, crosshairValues } = this.state;
     return (
-      <div className={!forFrontPage ? 'example-with-click-me' : ''}>
+      <div className={!forFrontPage ? "example-with-click-me" : ""}>
         {!forFrontPage && (
           <div className="legend">
             <DiscreteColorLegend

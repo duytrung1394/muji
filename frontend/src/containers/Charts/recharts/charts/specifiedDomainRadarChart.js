@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Radar,
   RadarChart,
   PolarGrid,
   Legend,
   PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
-import ChartWrapper from '../../chart.style';
+  PolarRadiusAxis
+} from "recharts";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   render() {
@@ -20,7 +20,7 @@ export default class extends Component {
       domain,
       cx,
       cy,
-      outerRadius,
+      outerRadius
     } = this.props;
     return (
       <ChartWrapper className="isoChartWrapper">

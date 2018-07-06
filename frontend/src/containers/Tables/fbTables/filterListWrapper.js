@@ -9,8 +9,6 @@ export default class filterListWrapper {
   }
 
   getObjectAt(index) {
-    return this._data.getObjectAt(
-      this._indexMap[index],
-    );
+    return this._data.getObjectAt(this._indexMap[index]);
   }
 }

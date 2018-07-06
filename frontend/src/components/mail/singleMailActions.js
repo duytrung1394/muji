@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import Popover from '../uielements/popover';
-import Popconfirm from '../feedback/popconfirm';
-import notification from '../notification';
-import { buckets } from './mailBuckets';
-import { tags } from './mailTags';
+import React, { Component } from "react";
+import Popover from "../uielements/popover";
+import Popconfirm from "../feedback/popconfirm";
+import notification from "../notification";
+import { buckets } from "./mailBuckets";
+import { tags } from "./mailTags";
 import {
   SingleMailActions,
   MailActionsWrapper,
   MailCategoryWrapper,
   MailPaginationWrapper,
   MailActionDropdown
-} from './singleMailActions.style';
-import { rtl } from '../../settings/withDirection';
+} from "./singleMailActions.style";
+import { rtl } from "../../settings/withDirection";
 
 class DeleteButton extends Component {
   render() {
@@ -21,7 +21,7 @@ class DeleteButton extends Component {
         okText="DELETE"
         cancelText="No"
         onConfirm={() => {
-          notification('error', `Deleted selected mail`, '');
+          notification("error", `Deleted selected mail`, "");
         }}
       >
         <button type="button" className="mailDelete">
@@ -37,7 +37,7 @@ class MoveMailButton extends Component {
     const bucketOptions = buckets.map(bucket => (
       <li
         onClick={() => {
-          notification('success', `Massage Moved Successfully`, '');
+          notification("success", `Massage Moved Successfully`, "");
         }}
         key={bucket}
       >
@@ -64,7 +64,7 @@ class SelectTagButton extends Component {
     const tagOptions = tags.map(tag => (
       <li
         onClick={() => {
-          notification('success', `Label Added`, '');
+          notification("success", `Label Added`, "");
         }}
         key={tag}
       >
@@ -102,14 +102,14 @@ export default class extends Component {
             Inbox
           </button>
         ) : (
-          ''
+          ""
         )}
         <MailActionsWrapper className="isoMailActions">
           <button
             type="button"
             className="mailArchive"
             onClick={() => {
-              notification('success', 'this mail archived');
+              notification("success", "this mail archived");
             }}
           >
             <i className="ion-android-archive" />
@@ -119,7 +119,7 @@ export default class extends Component {
             type="button"
             className="mailReport"
             onClick={() => {
-              notification('success', 'Reported as spam');
+              notification("success", "Reported as spam");
             }}
           >
             <i className="ion-android-alert" />
@@ -135,7 +135,7 @@ export default class extends Component {
 
         <MailPaginationWrapper className="isoSingleMailPagination">
           {index === 0 ? (
-            ''
+            ""
           ) : (
             <button
               type="button"
@@ -144,14 +144,14 @@ export default class extends Component {
             >
               <i
                 className={
-                  rtl === 'rtl' ? 'ion-chevron-right' : 'ion-chevron-left'
+                  rtl === "rtl" ? "ion-chevron-right" : "ion-chevron-left"
                 }
               />
             </button>
           )}
 
           {index + 1 === filterMails.length ? (
-            ''
+            ""
           ) : (
             <button
               type="button"
@@ -160,7 +160,7 @@ export default class extends Component {
             >
               <i
                 className={
-                  rtl === 'rtl' ? 'ion-chevron-left' : 'ion-chevron-right'
+                  rtl === "rtl" ? "ion-chevron-left" : "ion-chevron-right"
                 }
               />
             </button>

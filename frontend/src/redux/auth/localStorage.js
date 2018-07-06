@@ -1,18 +1,18 @@
-const key = 'idToken';
+const key = "idToken";
 
-export function saveToken(token){
+export function saveToken(token) {
   localStorage.setItem(key, token);
 }
 
-export function clearToken(){
+export function clearToken() {
   localStorage.removeItem(key);
 }
 
-export function getToken(){
-  const token = localStorage.getItem(key)
-  if(token){
+export function getToken() {
+  const token = localStorage.getItem(key);
+  if (token) {
     return token;
-  }else{
+  } else {
     return null;
   }
 }

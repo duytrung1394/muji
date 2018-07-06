@@ -1,14 +1,14 @@
-import { all, takeEvery, put, call, fork } from 'redux-saga/effects';
-import actions from './actions';
-import FirebaseHelper from '../../helpers/firebase';
+import { all, takeEvery, put, call, fork } from "redux-saga/effects";
+import actions from "./actions";
+import FirebaseHelper from "../../helpers/firebase";
 
 const { database, createBatch, rsfFirestore, createNewRef } = FirebaseHelper;
 const fsProps = {};
 const reverseString = str =>
   str
-    .split('')
+    .split("")
     .reverse()
-    .join('');
+    .join("");
 
 const sortChatrooms = (optionA, optionB) =>
   optionB.lastMessageTime - optionA.lastMessageTime;
@@ -16,14 +16,14 @@ const sortMessages = (optionA, optionB) =>
   optionA.messageTime - optionB.messageTime;
 const initialization = payload => {
   fsProps.userId = payload.userId;
-  fsProps.usersCollections = database.collection('users');
-  fsProps.chatroomCollections = database.collection('chatRooms');
+  fsProps.usersCollections = database.collection("users");
+  fsProps.chatroomCollections = database.collection("chatRooms");
   fsProps.chatroomsUserCollections = fsProps.chatroomCollections.where(
-    'userId',
-    '==',
+    "userId",
+    "==",
     payload.userId
   );
-  fsProps.messagesCollections = database.collection('messages');
+  fsProps.messagesCollections = database.collection("messages");
 };
 
 const readUsers = async () =>
@@ -50,7 +50,7 @@ const readChatrooms = async () =>
   });
 const readMessages = async ({ id }) =>
   await fsProps.messagesCollections
-    .where('chatRoomId', '==', id)
+    .where("chatRoomId", "==", id)
     .get()
     .then(querySnapshot => {
       const messages = [];
@@ -143,9 +143,9 @@ function* sendMessage({ payload }) {
 function* updateChatrooms() {
   const successActionCreator = data => {
     const { type, newIndex } = data.docChanges[0];
-    const dataMoodified = type === 'modified';
+    const dataMoodified = type === "modified";
     if (!dataMoodified) {
-      return { type: 'NO_CHANGE' };
+      return { type: "NO_CHANGE" };
     }
     const chatRoom = data.docs[newIndex].data();
 

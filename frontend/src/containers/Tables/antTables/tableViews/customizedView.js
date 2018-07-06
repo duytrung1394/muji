@@ -1,62 +1,62 @@
-import React, { Component } from 'react';
-import TableWrapper, { CustomizedTableWrapper } from '../antTable.style';
-import Switch from '../../../../components/uielements/switch';
-import Form from '../../../../components/uielements/form';
+import React, { Component } from "react";
+import TableWrapper, { CustomizedTableWrapper } from "../antTable.style";
+import Switch from "../../../../components/uielements/switch";
+import Form from "../../../../components/uielements/form";
 const FormItem = Form.Item;
 
 const expandedRowRender = record => (
   <p>{`${record.firstName} lives in ${record.city}`}</p>
 );
-const title = () => 'Here is title';
+const title = () => "Here is title";
 const showHeader = true;
-const footer = () => 'Here is footer';
+const footer = () => "Here is footer";
 const scroll = { y: 240 };
 
 const toggleOptions = [
   {
     defaultValue: true,
-    title: 'Bordered',
-    key: 'bordered'
+    title: "Bordered",
+    key: "bordered"
   },
   {
     defaultValue: true,
-    title: 'Loading',
-    key: 'loading'
+    title: "Loading",
+    key: "loading"
   },
   {
     defaultValue: true,
-    title: 'Pagination',
-    key: 'pagination'
+    title: "Pagination",
+    key: "pagination"
   },
   {
     defaultValue: title,
-    title: 'Title',
-    key: 'title'
+    title: "Title",
+    key: "title"
   },
   {
     defaultValue: showHeader,
-    title: 'Show Header',
-    key: 'showHeader'
+    title: "Show Header",
+    key: "showHeader"
   },
   {
     defaultValue: footer,
-    title: 'Footer',
-    key: 'footer'
+    title: "Footer",
+    key: "footer"
   },
   {
     defaultValue: expandedRowRender,
-    title: 'Expanded Row Render',
-    key: 'expandedRowRender'
+    title: "Expanded Row Render",
+    key: "expandedRowRender"
   },
   {
     defaultValue: {},
-    title: 'Checkbox',
-    key: 'rowSelection'
+    title: "Checkbox",
+    key: "rowSelection"
   },
   {
     defaultValue: scroll,
-    title: 'Scrollable',
-    key: 'scroll'
+    title: "Scrollable",
+    key: "scroll"
   }
 ];
 export default class extends Component {
@@ -67,7 +67,7 @@ export default class extends Component {
       bordered: undefined,
       loading: undefined,
       pagination: true,
-      size: 'default',
+      size: "default",
       expandedRowRender,
       title,
       showHeader,

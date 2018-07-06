@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines } from 'react-vis';
-import ChartWrapper from '../../chart.style';
+import React, { Component } from "react";
+import { XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines } from "react-vis";
+import ChartWrapper from "../../chart.style";
 
 const margin = {
   top: 10,

@@ -31,8 +31,8 @@ const todoData = JSON.parse(`[{
 }]`);
 
 class fakeData {
-  constructor(size = 10, colorLength = 4){
-    this.size = size ;
+  constructor(size = 10, colorLength = 4) {
+    this.size = size;
     this.datas = [];
     this.colorLength = colorLength;
   }
@@ -47,7 +47,7 @@ class fakeData {
     return todoData[index];
   }
   getObjectAt(index) {
-    if (index < 0 || index > this.size){
+    if (index < 0 || index > this.size) {
       return undefined;
     }
     if (this.datas[index] === undefined) {
@@ -69,4 +69,3 @@ class fakeData {
   }
 }
 export default fakeData;
-

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Affix, Button } from 'antd';
+import React, { Component } from "react";
+import { Affix, Button } from "antd";
 
 export default class extends Component {
   render() {

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { mapboxConfig } from '../../../../settings';
-import 'leaflet';
-import LeafletMapWrapper from './map.style';
+import React, { Component } from "react";
+import { mapboxConfig } from "../../../../settings";
+import "leaflet";
+import LeafletMapWrapper from "./map.style";
 
 export default class extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class extends Component {
       <LeafletMapWrapper className="isoLeafletMap">
         <div
           id="basic-map"
-          style={{ height: '400px', width: '100%' }}
+          style={{ height: "400px", width: "100%" }}
           ref={this.mountMap}
         />
       </LeafletMapWrapper>

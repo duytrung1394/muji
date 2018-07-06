@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Icon } from 'antd';
-import { FilterDropdown } from '../../../../components/tables/helperCells';
-import TableWrapper from '../antTable.style';
+import React, { Component } from "react";
+import { Icon } from "antd";
+import { FilterDropdown } from "../../../../components/tables/helperCells";
+import TableWrapper from "../antTable.style";
 
 export default class extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class extends Component {
     this.state = {
       dataList: this.props.dataList.getAll(),
       filterDropdownVisible: false,
-      searchText: '',
+      searchText: "",
       filtered: false
     };
   }
@@ -20,11 +20,11 @@ export default class extends Component {
     searchText = searchText.toUpperCase();
     const dataList = this.props.dataList
       .getAll()
-      .filter(data => data['firstName'].toUpperCase().includes(searchText));
+      .filter(data => data["firstName"].toUpperCase().includes(searchText));
     this.setState({
       dataList,
       filterDropdownVisible: false,
-      searchText: '',
+      searchText: "",
       filtered: false
     });
   }
@@ -47,13 +47,13 @@ export default class extends Component {
       filterIcon: (
         <Icon
           type="search"
-          style={{ color: this.state.filtered ? '#108ee9' : '#aaa' }}
+          style={{ color: this.state.filtered ? "#108ee9" : "#aaa" }}
         />
       ),
       filterDropdownVisible: this.state.filterDropdownVisible,
       onFilterDropdownVisibleChange: visible =>
         this.setState({ filterDropdownVisible: visible }, () =>
-          document.getElementById('tableFilterInput').focus()
+          document.getElementById("tableFilterInput").focus()
         )
     };
     return (

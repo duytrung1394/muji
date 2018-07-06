@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Menu, Icon, Switch } from 'antd';
+import React, { Component } from "react";
+import { Menu, Icon, Switch } from "antd";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 export default class extends Component {
   state = {
-    current: '1',
+    current: "1",
     openKeys: [],
-    theme: 'dark',
-    mode: 'inline'
+    theme: "dark",
+    mode: "inline"
   };
   handleClick = e => {
     this.setState({
@@ -18,7 +18,7 @@ export default class extends Component {
   };
   changeMode = value => {
     this.setState({
-      mode: value ? 'vertical' : 'inline'
+      mode: value ? "vertical" : "inline"
     });
   };
   onOpenChange = openKeys => {
@@ -41,13 +41,13 @@ export default class extends Component {
   };
   getAncestorKeys = key => {
     const map = {
-      sub3: ['sub2']
+      sub3: ["sub2"]
     };
     return map[key] || [];
   };
   changeTheme = value => {
     this.setState({
-      theme: value ? 'dark' : 'light'
+      theme: value ? "dark" : "light"
     });
   };
 
@@ -104,8 +104,8 @@ export default class extends Component {
           <Menu
             onClick={this.handleClick}
             style={{ width: 240 }}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
             mode="inline"
           >
             <SubMenu
@@ -292,7 +292,7 @@ export default class extends Component {
           <h2>Menu Themes</h2>
           <div>
             <Switch
-              checked={this.state.theme === 'dark'}
+              checked={this.state.theme === "dark"}
               onChange={this.changeTheme}
               checkedChildren="Dark"
               unCheckedChildren="Light"
@@ -303,7 +303,7 @@ export default class extends Component {
               theme={this.state.theme}
               onClick={this.handleClick}
               style={{ width: 240 }}
-              defaultOpenKeys={['sub1']}
+              defaultOpenKeys={["sub1"]}
               selectedKeys={[this.state.current]}
               mode="inline"
             >
@@ -366,7 +366,7 @@ export default class extends Component {
           <br />
           <Menu
             style={{ width: 240 }}
-            defaultOpenKeys={['sub1']}
+            defaultOpenKeys={["sub1"]}
             mode={this.state.mode}
           >
             <SubMenu

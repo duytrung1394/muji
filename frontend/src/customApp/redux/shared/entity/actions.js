@@ -1,13 +1,13 @@
-import req from '../requestActions';
+import req from "../requestActions";
 
 const restEntityActions = {
   FETCH: req,
   CREATE: req,
   UPDATE: {
     ...req,
-    REQUEST: (primaryKey, entity) => ({primaryKey, entity}),
+    REQUEST: (primaryKey, entity) => ({ primaryKey, entity })
   },
-  DESTROY: req,
+  DESTROY: req
 };
 
 export default restEntityActions;

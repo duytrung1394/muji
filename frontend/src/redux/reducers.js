@@ -1,5 +1,5 @@
-import Auth from './auth/reducer';
-import App from './app/reducer';
+import Auth from "./auth/reducer";
+import App from "./app/reducer";
 // import Mails from './mail/reducer';
 // import Calendar from './calendar/reducer';
 // import Box from './box/reducer';
@@ -9,14 +9,14 @@ import App from './app/reducer';
 // import Cards from './card/reducer';
 // import Chat from './chat/reducers';
 // import DynamicChartComponent from './dynamicEchart/reducer';
-import Ecommerce from './ecommerce/reducer';
-import ThemeSwitcher from './themeSwitcher/reducer';
+import Ecommerce from "./ecommerce/reducer";
+import ThemeSwitcher from "./themeSwitcher/reducer";
 // import Invoices from './invoice/reducer';
-import LanguageSwitcher from './languageSwitcher/reducer';
+import LanguageSwitcher from "./languageSwitcher/reducer";
 // import YoutubeSearch from './youtubeSearch/reducers';
-import PasswordRenewals from './passwordRenewals/reducer';
-import PasswordResets from './passwordResets/reducer';
-import DevReducers from '../customApp/redux/reducers';
+import PasswordRenewals from "./passwordRenewals/reducer";
+import PasswordResets from "./passwordResets/reducer";
+import DevReducers from "../customApp/redux/reducers";
 
 export default {
   Auth,

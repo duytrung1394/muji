@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import actions from '../../redux/item/list/actions';
-import RestIndex from '../shared/index';
-import ItemSearch from './search';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import actions from "../../redux/item/list/actions";
+import RestIndex from "../shared/index";
+import ItemSearch from "./search";
 
 class Index extends Component {
   render() {
@@ -12,7 +12,7 @@ class Index extends Component {
         name="item"
         pkName="item_code"
         baseUrl="/dashboard/items"
-        columnNames={["item_code","item_name"]}
+        columnNames={["item_code", "item_name"]}
         linkColumn="item_code"
         SearchComponent={ItemSearch}
         {...this.props}
@@ -21,19 +21,20 @@ class Index extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.Item.List.toJS();
 };
 
-const {
-  fetch,
-  destroy,
-  setFilters
-} = actions;
+const { fetch, destroy, setFilters } = actions;
 
-export default withRouter(connect(mapStateToProps, {
-  setFilters: setFilters,
-  fetchRequest: fetch.request,
-  destroyRequest: destroy.request,
-  destroyCleanup: destroy.cleanup,
-})(Index));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      setFilters: setFilters,
+      fetchRequest: fetch.request,
+      destroyRequest: destroy.request,
+      destroyCleanup: destroy.cleanup
+    }
+  )(Index)
+);

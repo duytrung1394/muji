@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import RestForm, {RestFormInput, RestFormSubmit} from '../shared/form';
+import React, { Component } from "react";
+import RestForm, { RestFormInput, RestFormSubmit } from "../shared/form";
 
 export default class Form extends Component {
   render() {
     return (
       <RestForm {...this.props}>
-        
         <RestFormInput name="lang" />
         <RestFormInput name="category_code" />
         <RestFormInput name="status" />

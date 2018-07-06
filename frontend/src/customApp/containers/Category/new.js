@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import actions from "../../redux/category/entity/actions";
 import Form from "./form";
 import RestNew from "../shared/new";
@@ -12,7 +12,7 @@ class NewEntity extends Component {
         name="category"
         pkName="category_code"
         baseUrl="/dashboard/categories"
-        errors={ this.props.createErrors.category }
+        errors={this.props.createErrors.category}
         {...this.props}
         formComponent={Form}
       />
@@ -20,16 +20,18 @@ class NewEntity extends Component {
   }
 }
 
-const {
-  request,
-  cleanup
-} = actions.create;
+const { request, cleanup } = actions.create;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.Category.Entity.toJS();
 };
 
-export default withRouter(connect(mapStateToProps, {
-  request,
-  cleanup,
-})(NewEntity));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      request,
+      cleanup
+    }
+  )(NewEntity)
+);

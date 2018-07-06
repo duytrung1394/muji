@@ -1,27 +1,26 @@
-import React, {Component} from 'react';
-import {withRouter, Link} from 'react-router-dom';
-import {injectIntl, defineMessages} from 'react-intl';
+import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
+import { injectIntl, defineMessages } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PageHeader from "../../../components/utility/pageHeader";
-import Box from '../../../components/utility/box';
-import Spin from '../../../components/uielements/spin';
-import Button from '../../../components/uielements/button';
-import {message} from "antd/lib/index";
+import Box from "../../../components/utility/box";
+import Spin from "../../../components/uielements/spin";
+import Button from "../../../components/uielements/button";
+import { message } from "antd/lib/index";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-
 class RestEdit extends Component {
-  componentDidMount(){
+  componentDidMount() {
     // showから来たときはデータが既にある。 そうじゃない時はないのでロードが必要。
     const primaryKey = this.props.match.params.id;
-    if( this.props.entity[this.props.pkName] !== (primaryKey) ){
+    if (this.props.entity[this.props.pkName] !== primaryKey) {
       // 読まれてるデータがURLと一致しない時はリロードする
       this.props.fetchCleanup();
       this.props.fetchRequest(primaryKey);
     }
   }
 
-  componentDidUpdate(prevProps, prevState, prevContext){
+  componentDidUpdate(prevProps, prevState, prevContext) {
     const {
       name,
       baseUrl,
@@ -33,18 +32,15 @@ class RestEdit extends Component {
 
     const messages = defineMessages({
       updated: {
-        id: 'rest.edit.updated.message'
+        id: "rest.edit.updated.message"
       }
     });
-    
-    const successMessage = this.props.intl.formatMessage(
-      messages.updated,
-      {
-        name: this.props.intl.formatMessage({id: `${name}.name`})
-      }
-    );
 
-    if(updated){
+    const successMessage = this.props.intl.formatMessage(messages.updated, {
+      name: this.props.intl.formatMessage({ id: `${name}.name` })
+    });
+
+    if (updated) {
       message.success(successMessage);
       const primaryKey = entity[this.props.pkName];
       updateCleanup();
@@ -67,7 +63,7 @@ class RestEdit extends Component {
       updated,
       errors,
       // methods
-      updateRequest,
+      updateRequest
     } = this.props;
 
     const primaryKey = match.params.id;
@@ -75,24 +71,30 @@ class RestEdit extends Component {
     return (
       <LayoutWrapper>
         <PageHeader>
-          <IntlMessages id="rest.edit" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
+          <IntlMessages
+            id="rest.edit"
+            values={{ name: <IntlMessages id={`${name}.name`} /> }}
+          />
         </PageHeader>
         <Link to={`${baseUrl}/${entity[this.props.pkName]}`}>
           <Button>
-            <IntlMessages id="rest.show" values={{name: <IntlMessages id={`${name}.name`}/>}}/>
+            <IntlMessages
+              id="rest.show"
+              values={{ name: <IntlMessages id={`${name}.name`} /> }}
+            />
           </Button>
         </Link>
         <Box>
           <Spin spinning={fetching || updating}>
-            { (() => {
-              if( fetched && !updated ){
-                return React.createElement(formComponent,{
+            {(() => {
+              if (fetched && !updated) {
+                return React.createElement(formComponent, {
                   entity,
                   errors,
-                  onSubmit: entity => updateRequest(primaryKey, entity),
+                  onSubmit: entity => updateRequest(primaryKey, entity)
                 });
               }
-            })() }
+            })()}
           </Spin>
         </Box>
       </LayoutWrapper>
@@ -101,5 +103,5 @@ class RestEdit extends Component {
 }
 
 export default injectIntl(RestEdit, {
-  withRef: true,
+  withRef: true
 });

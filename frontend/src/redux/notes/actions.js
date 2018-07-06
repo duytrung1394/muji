@@ -1,18 +1,18 @@
 const notesAction = {
-  CHANGE_NOTE: 'CHANGE_NOTE',
-  ADD_NOTE: 'ADD_NOTE',
-  EDIT_NOTE: 'EDIT_NOTE',
-  DELETE_NOTE: 'DELETE_NOTE',
-  CHANGE_COLOR: 'CHANGE_COLOR',
- 
-  changeNote: (id) => {
+  CHANGE_NOTE: "CHANGE_NOTE",
+  ADD_NOTE: "ADD_NOTE",
+  EDIT_NOTE: "EDIT_NOTE",
+  DELETE_NOTE: "DELETE_NOTE",
+  CHANGE_COLOR: "CHANGE_COLOR",
+
+  changeNote: id => {
     return (dispatch, getState) => {
-      const notes = getState().Notes.get('notes');
+      const notes = getState().Notes.get("notes");
       const seectedColor = notes[notes.findIndex(note => note.id === id)].color;
       dispatch({
         type: notesAction.CHANGE_NOTE,
         selectedId: id,
-        seectedColor,
+        seectedColor
       });
     };
   },
@@ -20,21 +20,21 @@ const notesAction = {
     return (dispatch, getState) => {
       const newNote = {
         id: new Date(),
-        note: 'New Note',
+        note: "New Note",
         createTime: new Date(),
-        color: getState().Notes.get('seectedColor'),
+        color: getState().Notes.get("seectedColor")
       };
-      const notes = [newNote, ...getState().Notes.get('notes')];
+      const notes = [newNote, ...getState().Notes.get("notes")];
       dispatch({
         type: notesAction.ADD_NOTE,
         selectedId: newNote.id,
-        notes,
+        notes
       });
     };
   },
   editNote: (id, newNote) => {
     return (dispatch, getState) => {
-      const oldNotes = getState().Notes.get('notes');
+      const oldNotes = getState().Notes.get("notes");
       const notes = [];
       oldNotes.forEach(note => {
         if (note.id !== id) {
@@ -46,20 +46,20 @@ const notesAction = {
       });
       dispatch({
         type: notesAction.EDIT_NOTE,
-        notes,
+        notes
       });
     };
   },
-  deleteNote:(id) => {
+  deleteNote: id => {
     return (dispatch, getState) => {
-      const oldNotes = getState().Notes.get('notes');
+      const oldNotes = getState().Notes.get("notes");
       const notes = [];
       oldNotes.forEach(note => {
         if (note.id !== id) {
           notes.push(note);
         }
       });
-      let selectedId = getState().Notes.get('selectedId');
+      let selectedId = getState().Notes.get("selectedId");
       if (selectedId === id) {
         if (notes.length === 0) {
           selectedId = undefined;
@@ -70,14 +70,14 @@ const notesAction = {
       dispatch({
         type: notesAction.DELETE_NOTE,
         notes,
-        selectedId,
+        selectedId
       });
     };
   },
-  changeColor: (seectedColor) => {
+  changeColor: seectedColor => {
     return (dispatch, getState) => {
-      const oldNotes = getState().Notes.get('notes');
-      const selectedId = getState().Notes.get('selectedId');
+      const oldNotes = getState().Notes.get("notes");
+      const selectedId = getState().Notes.get("selectedId");
       const notes = [];
       oldNotes.forEach(note => {
         if (note.id !== selectedId) {
@@ -90,9 +90,9 @@ const notesAction = {
       dispatch({
         type: notesAction.CHANGE_COLOR,
         notes,
-        seectedColor,
+        seectedColor
       });
     };
-  },
+  }
 };
 export default notesAction;

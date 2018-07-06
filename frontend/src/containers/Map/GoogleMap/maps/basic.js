@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { posts } from '../config';
-import { googleConfig } from '../../../../settings';
-import { GoogleApiWrapper } from 'google-maps-react';
-import BasicMapWrapper from './map.style';
+import React, { Component } from "react";
+import { posts } from "../config";
+import { googleConfig } from "../../../../settings";
+import { GoogleApiWrapper } from "google-maps-react";
+import BasicMapWrapper from "./map.style";
 
 class BasicMap extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class BasicMap extends Component {
           <BasicMapWrapper>
             <div
               className="isoGoogleMap"
-              style={{ height: '650px', width: '100%' }}
+              style={{ height: "650px", width: "100%" }}
               ref={this.loadMap}
             />
           </BasicMapWrapper>

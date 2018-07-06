@@ -1,27 +1,27 @@
-import React from 'react';
-import MailTagsList from './mailTags.style';
+import React from "react";
+import MailTagsList from "./mailTags.style";
 const tags = [
-  'Friend',
-  'Family',
-  'Colleague',
-  'Teachers',
-  'Students',
-  'ClassMates',
+  "Friend",
+  "Family",
+  "Colleague",
+  "Teachers",
+  "Students",
+  "ClassMates"
 ];
 const tagColor = [
-  '#CD3131',
-  '#74B49B',
-  '#0962EA',
-  '#141829',
-  '#FFCD38',
-  '#61105E',
+  "#CD3131",
+  "#74B49B",
+  "#0962EA",
+  "#141829",
+  "#FFCD38",
+  "#61105E"
 ];
 
 function gettags(mails, filterAttr) {
   const tags = {};
   mails.forEach(mail => {
     if (mail.tags && mail.bucket === filterAttr.bucket) {
-      mail.tags.split(' ').forEach(tag => (tags[tag] = 1));
+      mail.tags.split(" ").forEach(tag => (tags[tag] = 1));
     }
   });
   return tags;
@@ -42,7 +42,7 @@ export default function mailtags(
       }
     };
     const selectedTag = tag === filterAttr.tag;
-    const activeClass = selectedTag ? 'active' : '';
+    const activeClass = selectedTag ? "active" : "";
     const background = tagColor[tags.findIndex(tags => tags === tag)];
     return (
       <li

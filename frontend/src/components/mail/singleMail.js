@@ -1,15 +1,15 @@
-import React from 'react';
-import ComposeMail from './composeMail';
-import { timeDifference } from '../../helpers/utility';
-import MailAction from './singleMailActions';
-import { tags, tagColor } from './mailTags.js';
+import React from "react";
+import ComposeMail from "./composeMail";
+import { timeDifference } from "../../helpers/utility";
+import MailAction from "./singleMailActions";
+import { tags, tagColor } from "./mailTags.js";
 import {
   SingleMailContents,
   SingleMailHeader,
   SingleMailInfo,
   SingleMailBody,
   SingleMailReply
-} from './singleMail.style';
+} from "./singleMail.style";
 
 export default function singleMail(
   allMail,
@@ -25,13 +25,13 @@ export default function singleMail(
   const signature = {
     splitLet: recpName
       .match(/\b(\w)/g)
-      .join('')
-      .split('', 2)
+      .join("")
+      .split("", 2)
   };
 
   const labelColor = mail.tags
     ? tagColor[tags.findIndex(tags => tags === mail.tags)]
-    : '';
+    : "";
 
   return (
     <SingleMailContents className="isoSingleMailContents">

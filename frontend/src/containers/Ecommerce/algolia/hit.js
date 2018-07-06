@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Highlight, Snippet } from 'react-instantsearch/dom';
-import Rate from '../../../components/uielements/rate';
-import Button from '../../../components/uielements/button';
-import { GridListViewWrapper } from '../../../components/algolia/algoliaComponent.style';
-import ecommerceActions from '../../../redux/ecommerce/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Highlight, Snippet } from "react-instantsearch/dom";
+import Rate from "../../../components/uielements/rate";
+import Button from "../../../components/uielements/button";
+import { GridListViewWrapper } from "../../../components/algolia/algoliaComponent.style";
+import ecommerceActions from "../../../redux/ecommerce/actions";
 
 const { addToCart, changeViewTopbarCart } = ecommerceActions;
 
@@ -18,9 +18,9 @@ class Hit extends Component {
   render() {
     const { hit } = this.props;
     const className =
-      this.props.view === 'gridView'
-        ? 'isoAlgoliaGrid GridView'
-        : 'isoAlgoliaGrid ListView';
+      this.props.view === "gridView"
+        ? "isoAlgoliaGrid GridView"
+        : "isoAlgoliaGrid ListView";
     let addedTocart = false;
     this.props.productQuantity.forEach(product => {
       if (product.objectID === hit.objectID) {
@@ -86,6 +86,7 @@ function mapStateToProps(state) {
     productQuantity
   };
 }
-export default connect(mapStateToProps, { addToCart, changeViewTopbarCart })(
-  Hit
-);
+export default connect(
+  mapStateToProps,
+  { addToCart, changeViewTopbarCart }
+)(Hit);

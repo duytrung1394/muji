@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-} from 'recharts';
-import ChartWrapper from '../../chart.style';
+  Tooltip
+} from "recharts";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   render() {

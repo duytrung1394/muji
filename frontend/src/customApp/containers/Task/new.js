@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import actions from "../../redux/task/entity/actions";
 import Form from "./form";
 import RestNew from "../shared/new";
@@ -12,7 +12,7 @@ class NewEntity extends Component {
         name="task"
         pkName="id"
         baseUrl="/dashboard/tasks"
-        errors={ this.props.createErrors.task }
+        errors={this.props.createErrors.task}
         {...this.props}
         formComponent={Form}
       />
@@ -20,16 +20,18 @@ class NewEntity extends Component {
   }
 }
 
-const {
-  request,
-  cleanup
-} = actions.create;
+const { request, cleanup } = actions.create;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.Task.Entity.toJS();
 };
 
-export default withRouter(connect(mapStateToProps, {
-  request,
-  cleanup,
-})(NewEntity));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      request,
+      cleanup
+    }
+  )(NewEntity)
+);

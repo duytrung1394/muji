@@ -1,14 +1,14 @@
 const actions = {
-  GET_INVOICE: 'GET_INVOICE',
-  UPDATE_INVOICE: 'UPDATE_INVOICE',
-  UPDATE_INVOICE_SAGA: 'UPDATE_INVOICE_SAGA',
-  SELECT_CURRENT_INVOICE: 'SELECT_CURRENT_INVOICE',
-  TOGGLE_VIEW: 'INVOICE_TOGGLE_VIEW',
-  UPDATE_EDIT_INVOICE: 'INVOICE_UPDATE_EDIT_INVOICE',
+  GET_INVOICE: "GET_INVOICE",
+  UPDATE_INVOICE: "UPDATE_INVOICE",
+  UPDATE_INVOICE_SAGA: "UPDATE_INVOICE_SAGA",
+  SELECT_CURRENT_INVOICE: "SELECT_CURRENT_INVOICE",
+  TOGGLE_VIEW: "INVOICE_TOGGLE_VIEW",
+  UPDATE_EDIT_INVOICE: "INVOICE_UPDATE_EDIT_INVOICE",
   initData: () => ({ type: actions.GET_INVOICE }),
   deleteInvoice: selected => {
     return (dispatch, getState) => {
-      const invoices = getState().Invoices.get('invoices');
+      const invoices = getState().Invoices.get("invoices");
       const newInvoices = [];
       invoices.forEach(invoice => {
         const selectedIndex = selected.indexOf(invoice.key);
@@ -24,7 +24,7 @@ const actions = {
   },
   updateInvoice: invoice => {
     return (dispatch, getState) => {
-      const invoices = getState().Invoices.get('invoices');
+      const invoices = getState().Invoices.get("invoices");
       const index = invoices.map(inv => inv.id).indexOf(invoice.id);
       if (index === -1) {
         invoices.push(invoice);

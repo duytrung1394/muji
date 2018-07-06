@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { posts } from '../config';
-import { googleConfig } from '../../../../settings';
-import { GoogleApiWrapper } from 'google-maps-react';
-import { Marker, MarkerInfoWindow } from '../marker';
-import BasicMapWrapper from './map.style';
+import React, { Component } from "react";
+import { posts } from "../config";
+import { googleConfig } from "../../../../settings";
+import { GoogleApiWrapper } from "google-maps-react";
+import { Marker, MarkerInfoWindow } from "../marker";
+import BasicMapWrapper from "./map.style";
 
 class BasicMarkerMap extends Component {
   constructor(props) {
@@ -29,8 +29,8 @@ class BasicMarkerMap extends Component {
         position: google.maps.ControlPosition.TOP_RIGHT
       }
     });
-    const RichMarker = require('js-rich-marker');
-    const InfoBubble = require('js-info-bubble');
+    const RichMarker = require("js-rich-marker");
+    const InfoBubble = require("js-info-bubble");
     posts.map(post => {
       const marker = RichMarker
         ? new RichMarker.RichMarker({
@@ -54,7 +54,7 @@ class BasicMarkerMap extends Component {
         minHeight: 255,
         shadowStyle: 0,
         padding: 0,
-        backgroundColor: '#ffffff',
+        backgroundColor: "#ffffff",
         position: new google.maps.LatLng(post.lat, post.lng),
         borderRadius: 0,
         arrowSize: 10,
@@ -65,7 +65,7 @@ class BasicMarkerMap extends Component {
         arrowStyle: 0,
         content: MarkerInfoWindow(post)
       });
-      marker.addListener('click', function() {
+      marker.addListener("click", function() {
         if (self.infowindow) {
           self.infowindow.close();
         }
@@ -84,7 +84,7 @@ class BasicMarkerMap extends Component {
           <BasicMapWrapper>
             <div
               className="isoGoogleMap"
-              style={{ height: '650px', width: '100%' }}
+              style={{ height: "650px", width: "100%" }}
               ref={this.loadMap}
             />
           </BasicMapWrapper>

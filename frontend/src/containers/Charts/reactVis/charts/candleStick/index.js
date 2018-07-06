@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { XYPlot, XAxis, YAxis, LineSeries, makeWidthFlexible } from 'react-vis';
-import './candlestick.scss';
-import Candlestick from './candlestick';
+import React, { Component } from "react";
+import { XYPlot, XAxis, YAxis, LineSeries, makeWidthFlexible } from "react-vis";
+import "./candlestick.scss";
+import Candlestick from "./candlestick";
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Row, Col } from 'antd';
-import PageHeader from '../../components/utility/pageHeader';
-import Box from '../../components/utility/box';
-import LayoutWrapper from '../../components/utility/layoutWrapper.js';
-import { InputSearch } from '../../components/uielements/input';
-import IntlMessages from '../../components/utility/intlMessages';
-import notification from '../../components/notification';
-import YoutubeResult from '../../components/youtubeSearch/result';
-import basicStyle from '../../settings/basicStyle';
-import actions from '../../redux/youtubeSearch/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Row, Col } from "antd";
+import PageHeader from "../../components/utility/pageHeader";
+import Box from "../../components/utility/box";
+import LayoutWrapper from "../../components/utility/layoutWrapper.js";
+import { InputSearch } from "../../components/uielements/input";
+import IntlMessages from "../../components/utility/intlMessages";
+import notification from "../../components/notification";
+import YoutubeResult from "../../components/youtubeSearch/result";
+import basicStyle from "../../settings/basicStyle";
+import actions from "../../redux/youtubeSearch/actions";
 
 const { youtubeSearch, onPageChange } = actions;
 
@@ -18,7 +18,7 @@ class YoutubeSearch extends Component {
     if (value && value.length > 0) {
       this.props.youtubeSearch(value);
     } else {
-      notification('error', 'Please type something');
+      notification("error", "Please type something");
     }
   };
   componentDidMount() {
@@ -53,6 +53,7 @@ class YoutubeSearch extends Component {
 function mapStateToProps(state) {
   return { YoutubeSearch: state.YoutubeSearch.toJS() };
 }
-export default connect(mapStateToProps, { youtubeSearch, onPageChange })(
-  YoutubeSearch
-);
+export default connect(
+  mapStateToProps,
+  { youtubeSearch, onPageChange }
+)(YoutubeSearch);

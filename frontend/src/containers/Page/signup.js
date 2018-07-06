@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Input from '../../components/uielements/input';
-import Checkbox from '../../components/uielements/checkbox';
-import Button from '../../components/uielements/button';
-import authAction from '../../redux/auth/actions';
-import Auth0 from '../../helpers/auth0/index';
-import Firebase from '../../helpers/firebase';
-import FirebaseLogin from '../../components/firebase';
-import IntlMessages from '../../components/utility/intlMessages';
-import SignUpStyleWrapper from './signup.style';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Input from "../../components/uielements/input";
+import Checkbox from "../../components/uielements/checkbox";
+import Button from "../../components/uielements/button";
+import authAction from "../../redux/auth/actions";
+import Auth0 from "../../helpers/auth0/index";
+import Firebase from "../../helpers/firebase";
+import FirebaseLogin from "../../components/firebase";
+import IntlMessages from "../../components/utility/intlMessages";
+import SignUpStyleWrapper from "./signup.style";
 
 const { login } = authAction;
 
@@ -28,7 +28,7 @@ class SignUp extends Component {
   handleLogin = () => {
     const { login } = this.props;
     login();
-    this.props.history.push('/dashboard');
+    this.props.history.push("/dashboard");
   };
   render() {
     return (
@@ -67,7 +67,7 @@ class SignUp extends Component {
                 />
               </div>
 
-              <div className="isoInputWrapper" style={{ marginBottom: '50px' }}>
+              <div className="isoInputWrapper" style={{ marginBottom: "50px" }}>
                 <Checkbox>
                   <IntlMessages id="page.signUpTermsConditions" />
                 </Checkbox>
@@ -115,7 +115,7 @@ class SignUp extends Component {
 
 export default connect(
   state => ({
-    isLoggedIn: state.Auth.get('idToken') !== null ? true : false
+    isLoggedIn: state.Auth.get("idToken") !== null ? true : false
   }),
   { login }
 )(SignUp);

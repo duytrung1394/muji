@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { CircularGridLines, RadialChart } from 'react-vis';
-import ChartWrapper from '../../chart.style';
+import { CircularGridLines, RadialChart } from "react-vis";
+import ChartWrapper from "../../chart.style";
 
 function mapData(hoveredSection, datas) {
   return datas.map((row, index) => {

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import Async from '../../../helpers/asyncComponent';
-import basicStyle from '../../../settings/basicStyle';
-import ChartWrapper from '../chart.style';
+import React, { Component } from "react";
+import { Row, Col } from "antd";
+import Async from "../../../helpers/asyncComponent";
+import basicStyle from "../../../settings/basicStyle";
+import ChartWrapper from "../chart.style";
 
 const Doughnut = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-Doughnut" */ './components/doughnut/doughnut')}
+      load={import(/* webpackChunkName: "ReactChart2-Doughnut" */ "./components/doughnut/doughnut")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -15,7 +15,7 @@ const Doughnut = props => (
 const DynamicDoughnut = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-dynamic-doughnut" */ './components/dynamic-doughnut/dynamic-doughnut')}
+      load={import(/* webpackChunkName: "ReactChart2-dynamic-doughnut" */ "./components/dynamic-doughnut/dynamic-doughnut")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -23,7 +23,7 @@ const DynamicDoughnut = props => (
 const Pie = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-pie" */ './components/pie/pie')}
+      load={import(/* webpackChunkName: "ReactChart2-pie" */ "./components/pie/pie")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -31,7 +31,7 @@ const Pie = props => (
 const Line = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-line" */ './components/line/line')}
+      load={import(/* webpackChunkName: "ReactChart2-line" */ "./components/line/line")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -39,7 +39,7 @@ const Line = props => (
 const Bar = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-bar" */ './components/bar/bar')}
+      load={import(/* webpackChunkName: "ReactChart2-bar" */ "./components/bar/bar")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -47,7 +47,7 @@ const Bar = props => (
 const HorizontalBar = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-horizontalBar" */ './components/horizontalBar/horizontalBar')}
+      load={import(/* webpackChunkName: "ReactChart2-horizontalBar" */ "./components/horizontalBar/horizontalBar")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -55,7 +55,7 @@ const HorizontalBar = props => (
 const Radar = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-radar" */ './components/radar/radar')}
+      load={import(/* webpackChunkName: "ReactChart2-radar" */ "./components/radar/radar")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -63,7 +63,7 @@ const Radar = props => (
 const Polar = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-polar" */ './components/polar/polar')}
+      load={import(/* webpackChunkName: "ReactChart2-polar" */ "./components/polar/polar")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -71,7 +71,7 @@ const Polar = props => (
 const Bubble = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-bubble" */ './components/bubble/bubble')}
+      load={import(/* webpackChunkName: "ReactChart2-bubble" */ "./components/bubble/bubble")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -79,7 +79,7 @@ const Bubble = props => (
 const MixedData = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-mix" */ './components/mix/mix')}
+      load={import(/* webpackChunkName: "ReactChart2-mix" */ "./components/mix/mix")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -87,21 +87,21 @@ const MixedData = props => (
 const RandomizedDataLine = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-randomizedLine" */ './components/randomizedLine/randomizedLine')}
+      load={import(/* webpackChunkName: "ReactChart2-randomizedLine" */ "./components/randomizedLine/randomizedLine")}
       componentProps={props}
     />
   </ChartWrapper>
 );
 const PageHeader = props => (
   <Async
-    load={import(/* webpackChunkName: "ReactChart2-pageHeader" */ '../../../components/utility/pageHeader')}
+    load={import(/* webpackChunkName: "ReactChart2-pageHeader" */ "../../../components/utility/pageHeader")}
     componentProps={props}
   />
 );
 const Box = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-box" */ '../../../components/utility/box')}
+      load={import(/* webpackChunkName: "ReactChart2-box" */ "../../../components/utility/box")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -109,7 +109,7 @@ const Box = props => (
 const LayoutWrapper = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-layoutWrapper" */ '../../../components/utility/layoutWrapper.js')}
+      load={import(/* webpackChunkName: "ReactChart2-layoutWrapper" */ "../../../components/utility/layoutWrapper.js")}
       componentProps={props}
     />
   </ChartWrapper>
@@ -117,7 +117,7 @@ const LayoutWrapper = props => (
 const ContentHolder = props => (
   <ChartWrapper>
     <Async
-      load={import(/* webpackChunkName: "ReactChart2-contentHolder" */ '../../../components/utility/contentHolder')}
+      load={import(/* webpackChunkName: "ReactChart2-contentHolder" */ "../../../components/utility/contentHolder")}
       componentProps={props}
     />
   </ChartWrapper>

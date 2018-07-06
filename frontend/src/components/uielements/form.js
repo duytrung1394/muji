@@ -1,6 +1,6 @@
-import { Form } from 'antd';
+import { Form } from "antd";
 
 const FormItem = Form.Item;
 
 export default Form;
-export {FormItem};
+export { FormItem };

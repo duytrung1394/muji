@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import YouTube from 'react-youtube';
-import DefaultModal from '../feedback/modal';
-import { YoutubeModal } from './youtubeSearch.style';
+import React, { Component } from "react";
+import YouTube from "react-youtube";
+import DefaultModal from "../feedback/modal";
+import { YoutubeModal } from "./youtubeSearch.style";
 
 const Modal = YoutubeModal(DefaultModal);
 

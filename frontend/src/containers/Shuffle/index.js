@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import FlipMove from 'react-flip-move';
-import shuffle from 'lodash/shuffle';
-import throttle from 'lodash/throttle';
-import articles from './config';
-import Toggle from './Toggle.js';
-import ListItem from './listItem';
-import IntlMessages from '../../components/utility/intlMessages';
-import { SortableCardWrapper } from './shuffle.style';
+import React, { Component } from "react";
+import FlipMove from "react-flip-move";
+import shuffle from "lodash/shuffle";
+import throttle from "lodash/throttle";
+import articles from "./config";
+import Toggle from "./Toggle.js";
+import ListItem from "./listItem";
+import IntlMessages from "../../components/utility/intlMessages";
+import { SortableCardWrapper } from "./shuffle.style";
 
 export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
       removedArticles: [],
-      view: 'grid',
-      order: 'asc',
-      sortingMethod: 'chronological',
-      enterLeaveAnimation: 'accordionVertical',
+      view: "grid",
+      order: "asc",
+      sortingMethod: "chronological",
+      enterLeaveAnimation: "accordionVertical",
       articles
     };
 
@@ -29,15 +29,15 @@ export default class extends Component {
 
   toggleList() {
     this.setState({
-      view: 'list',
-      enterLeaveAnimation: 'accordionVertical'
+      view: "list",
+      enterLeaveAnimation: "accordionVertical"
     });
   }
 
   toggleGrid() {
     this.setState({
-      view: 'grid',
-      enterLeaveAnimation: 'accordionHorizontal'
+      view: "grid",
+      enterLeaveAnimation: "accordionHorizontal"
     });
   }
 
@@ -46,17 +46,17 @@ export default class extends Component {
     const sortDesc = (a, b) => b.timestamp - a.timestamp;
 
     this.setState({
-      order: this.state.order === 'asc' ? 'desc' : 'asc',
-      sortingMethod: 'chronological',
+      order: this.state.order === "asc" ? "desc" : "asc",
+      sortingMethod: "chronological",
       articles: this.state.articles.sort(
-        this.state.order === 'asc' ? sortDesc : sortAsc
+        this.state.order === "asc" ? sortDesc : sortAsc
       )
     });
   }
 
   sortShuffle() {
     this.setState({
-      sortingMethod: 'shuffle',
+      sortingMethod: "shuffle",
       articles: shuffle(this.state.articles)
     });
   }
@@ -87,7 +87,7 @@ export default class extends Component {
     articles.unshift(articles.pop());
 
     this.setState({
-      sortingMethod: 'rotate',
+      sortingMethod: "rotate",
       articles
     });
   }
@@ -100,7 +100,7 @@ export default class extends Component {
           view={this.state.view}
           index={i}
           clickHandler={throttle(
-            () => this.moveArticle('articles', 'removedArticles', article.id),
+            () => this.moveArticle("articles", "removedArticles", article.id),
             800
           )}
           {...article}
@@ -121,13 +121,13 @@ export default class extends Component {
               clickHandler={this.toggleList}
               text={<IntlMessages id="toggle.list" />}
               icon="bars"
-              active={this.state.view === 'list'}
+              active={this.state.view === "list"}
             />
             <Toggle
               clickHandler={this.toggleGrid}
               text={<IntlMessages id="toggle.grid" />}
               icon="appstore"
-              active={this.state.view === 'grid'}
+              active={this.state.view === "grid"}
             />
           </div>
 
@@ -135,26 +135,26 @@ export default class extends Component {
             <Toggle
               clickHandler={this.toggleSort}
               text={
-                this.state.order === 'asc' ? (
+                this.state.order === "asc" ? (
                   <IntlMessages id="toggle.ascending" />
                 ) : (
                   <IntlMessages id="toggle.descending" />
                 )
               }
-              icon={this.state.order === 'asc' ? 'up' : 'down'}
-              active={this.state.sortingMethod === 'chronological'}
+              icon={this.state.order === "asc" ? "up" : "down"}
+              active={this.state.sortingMethod === "chronological"}
             />
             <Toggle
               clickHandler={this.sortShuffle}
               text={<IntlMessages id="toggle.shuffle" />}
               icon="shake"
-              active={this.state.sortingMethod === 'shuffle'}
+              active={this.state.sortingMethod === "shuffle"}
             />
             <Toggle
               clickHandler={this.sortRotate}
               text={<IntlMessages id="toggle.rotate" />}
               icon="reload"
-              active={this.state.sortingMethod === 'rotate'}
+              active={this.state.sortingMethod === "rotate"}
             />
           </div>
         </header>
@@ -173,14 +173,16 @@ export default class extends Component {
               <div className="isoControlBtnGroup">
                 <Toggle
                   clickHandler={() =>
-                    this.moveArticle('removedArticles', 'articles')}
+                    this.moveArticle("removedArticles", "articles")
+                  }
                   text={<IntlMessages id="toggle.addItem" />}
                   icon="plus"
                   active={this.state.removedArticles.length > 0}
                 />
                 <Toggle
                   clickHandler={() =>
-                    this.moveArticle('articles', 'removedArticles')}
+                    this.moveArticle("articles", "removedArticles")
+                  }
                   text={<IntlMessages id="toggle.removeItem" />}
                   icon="close"
                   active={this.state.articles.length > 0}

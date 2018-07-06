@@ -1,7 +1,7 @@
-import firebase from 'firebase';
-import ReduxSagaFirebase from 'redux-saga-firebase';
-import 'firebase/firestore';
-import { firebaseConfig } from '../../settings';
+import firebase from "firebase";
+import ReduxSagaFirebase from "redux-saga-firebase";
+import "firebase/firestore";
+import { firebaseConfig } from "../../settings";
 
 const valid =
   firebaseConfig && firebaseConfig.apiKey && firebaseConfig.projectId;
@@ -11,11 +11,11 @@ const firebaseAuth = firebase.auth;
 
 class FirebaseHelper {
   isValid = valid;
-  EMAIL = 'email';
-  FACEBOOK = 'facebook';
-  GOOGLE = 'google';
-  GITHUB = 'github';
-  TWITTER = 'twitter';
+  EMAIL = "email";
+  FACEBOOK = "facebook";
+  GOOGLE = "google";
+  GITHUB = "github";
+  TWITTER = "twitter";
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Input from '../../../components/uielements/input';
-import Button from '../../../components/uielements/button';
-import ecommerceActions from '../../../redux/ecommerce/actions';
-import SingleCart from '../../../components/cart/singleCart';
-import ProductsTable from './cartTable.style';
-import { rtl } from '../../../settings/withDirection';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Input from "../../../components/uielements/input";
+import Button from "../../../components/uielements/button";
+import ecommerceActions from "../../../redux/ecommerce/actions";
+import SingleCart from "../../../components/cart/singleCart";
+import ProductsTable from "./cartTable.style";
+import { rtl } from "../../../settings/withDirection";
 
 const { changeProductQuantity } = ecommerceActions;
 
@@ -63,7 +63,7 @@ class CartTable extends Component {
   }
   render() {
     const { style } = this.props;
-    const classname = style != null ? style : '';
+    const classname = style != null ? style : "";
     return (
       <ProductsTable className={`isoCartTable ${classname}`}>
         <table>
@@ -94,24 +94,24 @@ class CartTable extends Component {
             <tr>
               <td
                 style={{
-                  width: '100%',
-                  paddingRight: `${rtl === 'rtl' ? '0' : '25px'}`,
-                  paddingLeft: `${rtl === 'rtl' ? '25px' : '0'}`
+                  width: "100%",
+                  paddingRight: `${rtl === "rtl" ? "0" : "25px"}`,
+                  paddingLeft: `${rtl === "rtl" ? "25px" : "0"}`
                 }}
               >
                 <Input size="large" placeholder="Discount Coupon" />
               </td>
               <td
                 style={{
-                  paddingRight: `${rtl === 'rtl' ? '0' : '25px'}`,
-                  paddingLeft: `${rtl === 'rtl' ? '25px' : '0'}`
+                  paddingRight: `${rtl === "rtl" ? "0" : "25px"}`,
+                  paddingLeft: `${rtl === "rtl" ? "25px" : "0"}`
                 }}
               >
                 <Button>Apply</Button>
               </td>
               <td>
                 <Button type="primary">
-                  <Link to={'/dashboard/checkout'}>Checkout</Link>
+                  <Link to={"/dashboard/checkout"}>Checkout</Link>
                 </Button>
               </td>
             </tr>
@@ -125,4 +125,7 @@ function mapStateToProps(state) {
   const { productQuantity, products } = state.Ecommerce.toJS();
   return { productQuantity, products };
 }
-export default connect(mapStateToProps, { changeProductQuantity })(CartTable);
+export default connect(
+  mapStateToProps,
+  { changeProductQuantity }
+)(CartTable);

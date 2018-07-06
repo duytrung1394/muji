@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
-import Box from '../../components/utility/box';
-import { ViewTable } from '../../components/invoice/invoiceTable';
-import Button from '../../components/uielements/button';
-import LayoutWrapper from '../../components/utility/layoutWrapper.js';
-import InvoiceAddress from '../../components/invoice/address';
-import InvoicePageWrapper from './singleInvoice.style';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import Box from "../../components/utility/box";
+import { ViewTable } from "../../components/invoice/invoiceTable";
+import Button from "../../components/uielements/button";
+import LayoutWrapper from "../../components/utility/layoutWrapper.js";
+import InvoiceAddress from "../../components/invoice/address";
+import InvoicePageWrapper from "./singleInvoice.style";
 
 export default class extends Component {
   render() {
@@ -46,7 +46,7 @@ export default class extends Component {
                     <span className="orderDateSpan">Order date: </span>
                     <span className="orderDate">
                       {moment(new Date(currentInvoice.orderDate)).format(
-                        'MMMM Do YYYY'
+                        "MMMM Do YYYY"
                       )}
                     </span>
                   </p>
@@ -74,19 +74,19 @@ export default class extends Component {
                 <ViewTable invoiceList={currentInvoice.invoiceList} />
                 <div className="TotalBill">
                   <p>
-                    Sub-total :{' '}
+                    Sub-total :{" "}
                     <span>{`${currentInvoice.currency}${
                       currentInvoice.subTotal
                     }`}</span>
                   </p>
                   <p>
-                    Vat :{' '}
+                    Vat :{" "}
                     <span>{`${currentInvoice.currency}${
                       currentInvoice.vatPrice
                     }`}</span>
                   </p>
                   <h3>
-                    Grand Total :{' '}
+                    Grand Total :{" "}
                     <span>{`${currentInvoice.currency}${
                       currentInvoice.totalCost
                     }`}</span>

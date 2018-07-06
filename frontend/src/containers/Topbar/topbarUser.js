@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Popover from '../../components/uielements/popover';
-import IntlMessages from '../../components/utility/intlMessages';
-import userpic from '../../image/user1.png';
-import authAction from '../../redux/auth/actions';
-import TopbarDropdownWrapper from './topbarDropdown.style';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Popover from "../../components/uielements/popover";
+import IntlMessages from "../../components/utility/intlMessages";
+import userpic from "../../image/user1.png";
+import authAction from "../../redux/auth/actions";
+import TopbarDropdownWrapper from "./topbarDropdown.style";
 
 const { logout } = authAction;
 
@@ -59,4 +59,7 @@ class TopbarUser extends Component {
     );
   }
 }
-export default connect(null, { logout })(TopbarUser);
+export default connect(
+  null,
+  { logout }
+)(TopbarUser);

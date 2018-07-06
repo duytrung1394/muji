@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import Popconfirms from '../../../components/feedback/popconfirm';
-import message from '../../../components/feedback/message';
-import Button from '../../../components/uielements/button';
-import PageHeader from '../../../components/utility/pageHeader';
-import Box from '../../../components/utility/box';
-import LayoutWrapper from '../../../components/utility/layoutWrapper.js';
-import ContentHolder from '../../../components/utility/contentHolder';
-import basicStyle from '../../../settings/basicStyle';
-import IntlMessages from '../../../components/utility/intlMessages';
-import PopconfirmWrapper from './popconfirm.style';
+import React, { Component } from "react";
+import { Row, Col } from "antd";
+import Popconfirms from "../../../components/feedback/popconfirm";
+import message from "../../../components/feedback/message";
+import Button from "../../../components/uielements/button";
+import PageHeader from "../../../components/utility/pageHeader";
+import Box from "../../../components/utility/box";
+import LayoutWrapper from "../../../components/utility/layoutWrapper.js";
+import ContentHolder from "../../../components/utility/contentHolder";
+import basicStyle from "../../../settings/basicStyle";
+import IntlMessages from "../../../components/utility/intlMessages";
+import PopconfirmWrapper from "./popconfirm.style";
 
 const Popconfirm = props => (
   <PopconfirmWrapper>
     <Popconfirms {...props} />
   </PopconfirmWrapper>
 );
-const text = 'Are you sure delete this task?';
+const text = "Are you sure delete this task?";
 
 function confirm(e) {
-  message.success('Click on Yes');
+  message.success("Click on Yes");
 }
 
 function cancel(e) {
-  message.error('Click on No');
+  message.error("Click on No");
 }
 
 export default class extends Component {

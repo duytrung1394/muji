@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Input from '../../../components/uielements/input';
-import { InputBoxWrapper } from './checkout.style';
+import React, { Component } from "react";
+import Input from "../../../components/uielements/input";
+import { InputBoxWrapper } from "./checkout.style";
 
 export default class extends Component {
   render() {

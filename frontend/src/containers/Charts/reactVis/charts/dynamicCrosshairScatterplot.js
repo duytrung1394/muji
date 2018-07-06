@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { scaleLinear } from 'd3-scale';
+import React, { Component } from "react";
+import { scaleLinear } from "d3-scale";
 
 import {
   Crosshair,
@@ -10,8 +10,8 @@ import {
   XYPlot,
   YAxis,
   Voronoi
-} from 'react-vis';
-import ChartWrapper from '../../chart.style';
+} from "react-vis";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   state = {
@@ -40,12 +40,12 @@ export default class extends Component {
     return (
       <ChartWrapper className="isoChartWrapper">
         <div className="isoChartControl">
-          <label style={{ display: 'block' }}>
+          <label style={{ display: "block" }}>
             <input
               type="checkbox"
               checked={showVoronoi}
               onChange={e => this.setState({ showVoronoi: !showVoronoi })}
-              style={{ marginRight: '5px' }}
+              style={{ marginRight: "5px" }}
             />
             Show Voronoi
           </label>
@@ -61,7 +61,7 @@ export default class extends Component {
             colorType="literal"
             data={data.map((point, index) => ({
               ...point,
-              color: selectedPointId === index ? '#FF9833' : '#12939A'
+              color: selectedPointId === index ? "#FF9833" : "#12939A"
             }))}
             onNearestXY={this._onNearestXY}
             sizeRange={sizeRange}
@@ -70,7 +70,7 @@ export default class extends Component {
           <Voronoi
             extent={extent}
             nodes={data}
-            polygonStyle={{ stroke: showVoronoi ? 'rgba(0, 0, 0, .2)' : null }}
+            polygonStyle={{ stroke: showVoronoi ? "rgba(0, 0, 0, .2)" : null }}
             x={d => x(d.x)}
             y={d => y(d.y)}
           />

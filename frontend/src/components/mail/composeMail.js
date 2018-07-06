@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import Async from '../../helpers/asyncComponent';
-import Button from '../uielements/button';
-import Input from '../uielements/input';
-import ComposeAutoComplete from './composeAutoComplete';
-import notification from '../notification';
-import IntlMessages from '../utility/intlMessages';
-import ComposeForm from './composeMail.style';
+import React, { Component } from "react";
+import Async from "../../helpers/asyncComponent";
+import Button from "../uielements/button";
+import Input from "../uielements/input";
+import ComposeAutoComplete from "./composeAutoComplete";
+import notification from "../notification";
+import IntlMessages from "../utility/intlMessages";
+import ComposeForm from "./composeMail.style";
 
 const Editor = props => (
   <Async
-    load={import(/* webpackChunkName: "compose-mAIL--editor" */ '../uielements/editor')}
+    load={import(/* webpackChunkName: "compose-mAIL--editor" */ "../uielements/editor")}
     componentProps={props}
   />
 );
@@ -17,16 +17,16 @@ const Editor = props => (
 function uploadCallback(file) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://api.imgur.com/3/image');
-    xhr.setRequestHeader('Authorization', 'Client-ID 8d26ccd12712fca');
+    xhr.open("POST", "https://api.imgur.com/3/image");
+    xhr.setRequestHeader("Authorization", "Client-ID 8d26ccd12712fca");
     const data = new FormData();
-    data.append('image', file);
+    data.append("image", file);
     xhr.send(data);
-    xhr.addEventListener('load', () => {
+    xhr.addEventListener("load", () => {
       const response = JSON.parse(xhr.responseText);
       resolve(response);
     });
-    xhr.addEventListener('error', () => {
+    xhr.addEventListener("error", () => {
       const error = JSON.parse(xhr.responseText);
       reject(error);
     });
@@ -48,20 +48,20 @@ export default class ComposeMail extends Component {
     const ComposeAutoCompleteTO = {
       allMails: this.props.allMails,
       updateData: () => {},
-      placeholder: 'To',
+      placeholder: "To",
       autofocus: true
     };
     const ComposeAutoCompleteCC = {
       allMails: this.props.allMails,
       updateData: () => {},
-      placeholder: 'CC'
+      placeholder: "CC"
     };
     const editorOption = {
-      style: { width: '90%', height: '70%' },
+      style: { width: "90%", height: "70%" },
       editorState: this.state.editorState,
-      toolbarClassName: 'home-toolbar',
-      wrapperClassName: 'home-wrapper',
-      editorClassName: 'home-editor',
+      toolbarClassName: "home-toolbar",
+      wrapperClassName: "home-wrapper",
+      editorClassName: "home-editor",
       onEditorStateChange: onEditorStateChange,
       uploadCallback: uploadCallback,
       toolbar: { image: { uploadCallback: uploadCallback } }
@@ -85,12 +85,12 @@ export default class ComposeMail extends Component {
               <IntlMessages id="email.cancel" />
             </Button>
           ) : (
-            ''
+            ""
           )}
 
           <Button
             type="primary"
-            onClick={e => notification('success', `Mail has been sent`, '')}
+            onClick={e => notification("success", `Mail has been sent`, "")}
             className="isoSendMailBtn"
           >
             <IntlMessages id="email.send" />

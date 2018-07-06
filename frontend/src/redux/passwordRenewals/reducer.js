@@ -1,35 +1,35 @@
-import {Map} from 'immutable';
-import actions from './actions';
+import { Map } from "immutable";
+import actions from "./actions";
 
 const initState = new Map({
-    isRenewalling: false,
-    isRenewalError: false,
-    isRenewalDone: false
+  isRenewalling: false,
+  isRenewalError: false,
+  isRenewalDone: false
 });
 
-export default function passwordRenewalsReducer(state = initState.merge({}), action) {
+export default function passwordRenewalsReducer(
+  state = initState.merge({}),
+  action
+) {
+  switch (action.type) {
+    case actions.RENEWAL_REQUEST:
+      return initState.merge({
+        isRenewalling: true
+      });
 
-    switch (action.type) {
+    case actions.RENEWAL_SUCCESS:
+      return initState.merge({
+        isRenewalDone: true
+      });
 
-        case actions.RENEWAL_REQUEST:
-            return initState.merge({
-                'isRenewalling': true
-            });
+    case actions.RENEWAL_ERROR:
+      return initState.merge({
+        isRenewalError: true
+      });
 
-        case actions.RENEWAL_SUCCESS:
-            return initState.merge({
-                'isRenewalDone': true
-            });
-
-        case actions.RENEWAL_ERROR:
-            return initState.merge({
-                'isRenewalError': true,
-            });
-
-        default:
-            return state;
-    }
-
+    default:
+      return state;
+  }
 }
 
 // EOF

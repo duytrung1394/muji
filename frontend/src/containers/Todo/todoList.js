@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import Button from '../../components/uielements/button';
-import Checkbox from '../../components/uielements/checkbox';
-import { RadioButton, RadioGroup } from '../../components/uielements/radio';
-import { timeDifference } from '../../helpers/utility';
+import React, { Component } from "react";
+import Button from "../../components/uielements/button";
+import Checkbox from "../../components/uielements/checkbox";
+import { RadioButton, RadioGroup } from "../../components/uielements/radio";
+import { timeDifference } from "../../helpers/utility";
 import {
   notification,
   ColorChoser,
-  EditableComponent,
-} from '../../components/';
-import { TodoListWrapper } from './todo.style';
+  EditableComponent
+} from "../../components/";
+import { TodoListWrapper } from "./todo.style";
 
 function filterTodos(todos, search) {
   const selectedTodos =
-    search === 'All'
+    search === "All"
       ? todos
-      : todos.filter(todo => todo.completed === (search === 'Completed'));
+      : todos.filter(todo => todo.completed === (search === "Completed"));
   let completed = 0;
   selectedTodos.forEach(todo => {
     if (todo.completed) {
@@ -29,7 +29,7 @@ export default class TodoList extends Component {
     this.singleTodo = this.singleTodo.bind(this);
     this.onChange = this.onChange.bind(this);
     this.state = {
-      search: 'All',
+      search: "All"
     };
   }
   singleTodo(todo) {
@@ -43,13 +43,13 @@ export default class TodoList extends Component {
       <div className="isoTodoList" key={todo.id}>
         <ColorChoser
           colors={colors}
-          changeColor={value => updateTodo('color', value)}
+          changeColor={value => updateTodo("color", value)}
           seectedColor={todo.color}
         />
         <Checkbox
           className="isoTodoCheck"
           checked={todo.completed}
-          onChange={event => updateTodo('completed', !todo.completed)}
+          onChange={event => updateTodo("completed", !todo.completed)}
         />
         <div className="isoTodoContentWrapper">
           <span className="isoTodoDate">{timeDifference(todo.createTime)}</span>
@@ -102,7 +102,7 @@ export default class TodoList extends Component {
             checked={completed === selectedTodos.length}
             disabled={completed === selectedTodos.length}
             onChange={event => {
-              notification('success', 'All Todos are Completed!!!', '');
+              notification("success", "All Todos are Completed!!!", "");
               this.props.allCompleted();
             }}
           >
@@ -114,14 +114,14 @@ export default class TodoList extends Component {
               type="button"
               className="isoDeleteAll"
               onClick={event => {
-                notification('success', 'All Completed Todos are Deleted', '');
+                notification("success", "All Completed Todos are Deleted", "");
                 this.props.deleteCompleted();
               }}
             >
               {`Delete Completed (${completed})`}
             </Button>
           ) : (
-            ''
+            ""
           )}
         </div>
       </TodoListWrapper>

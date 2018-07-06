@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 const PendingPool = {};
 const ReadyPool = {};
@@ -9,21 +9,21 @@ export default class ImageCell extends Component {
     this.loadImage = this.loadImage.bind(this);
     this.onLoadImage = this.onLoadImage.bind(this);
     this.state = {
-      ready: false,
-    }
+      ready: false
+    };
   }
   componentWillMount() {
     this.loadImage(this.props.src);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.src !== this.props.src) {
-      this.setState({src: null});
+      this.setState({ src: null });
       this.loadImage(nextProps.src);
     }
   }
   loadImage(src) {
     if (ReadyPool[src]) {
-      this.setState({src: src});
+      this.setState({ src: src });
       return;
     }
 
@@ -48,17 +48,19 @@ export default class ImageCell extends Component {
     ReadyPool[src] = true;
     if (src === this.props.src) {
       this.setState({
-        src: src,
+        src: src
       });
     }
   }
   render() {
-    const style = this.state.src ? {
-      backgroundImage : `url(${this.state.src})`,
-      width: '80%',
-      height: '80%',
-      backgroundSize: 'cover',
-    } : undefined;
+    const style = this.state.src
+      ? {
+          backgroundImage: `url(${this.state.src})`,
+          width: "80%",
+          height: "80%",
+          backgroundSize: "cover"
+        }
+      : undefined;
     return <div className="exampleImage" style={style} />;
   }
-};
+}

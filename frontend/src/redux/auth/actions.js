@@ -1,17 +1,17 @@
 const actions = {
-  CHECK_AUTHORIZATION: 'CHECK_AUTHORIZATION',
-  LOGIN_REQUEST: 'LOGIN_REQUEST',
-  LOGOUT: 'LOGOUT',
-  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGIN_ERROR: 'LOGIN_ERROR',
-  UNAUTHORIZED: 'UNAUTHORIZED',
+  CHECK_AUTHORIZATION: "CHECK_AUTHORIZATION",
+  LOGIN_REQUEST: "LOGIN_REQUEST",
+  LOGOUT: "LOGOUT",
+  LOGIN_SUCCESS: "LOGIN_SUCCESS",
+  LOGIN_ERROR: "LOGIN_ERROR",
+  UNAUTHORIZED: "UNAUTHORIZED",
   checkAuthorization: () => ({ type: actions.CHECK_AUTHORIZATION }),
   login: (username, password, rememberMe) => ({
     type: actions.LOGIN_REQUEST,
     payload: {
       username,
       password,
-      rememberMe,
+      rememberMe
     }
   }),
   loginSuccess: (token, profile, rememberMe) => ({
@@ -19,19 +19,19 @@ const actions = {
     payload: {
       token: token,
       profile: profile,
-      rememberMe: rememberMe,
+      rememberMe: rememberMe
     }
   }),
-  loginError: (error) => ({
+  loginError: error => ({
     type: actions.LOGIN_ERROR,
-    payload: error,
+    payload: error
   }),
   logout: () => ({
     type: actions.LOGOUT
   }),
-  unauthorized: (error) => ({
+  unauthorized: error => ({
     type: actions.UNAUTHORIZED,
-    payload: error,
-  }),
+    payload: error
+  })
 };
 export default actions;

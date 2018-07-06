@@ -110,4 +110,7 @@ class MobileView extends Component {
 function mapStateToProps(state) {
   return state.Chat.toJS();
 }
-export default connect(mapStateToProps, actions)(MobileView);
+export default connect(
+  mapStateToProps,
+  actions
+)(MobileView);

@@ -1,12 +1,12 @@
 const mailActions = {
-  FILTER_ATTRIBUTE: 'FILTER_ATTRIBUTE',
-  SELECTED_MAIL: 'SELECTED_MAIL',
-  COMPOSE_MAIL: 'COMPOSE_MAIL',
-  REPLY_MAIL: 'REPLY_MAIL',
-  SEARCH_STRING: 'SEARCH_STRING',
-  filterAction: (newFilterAttr) => {
+  FILTER_ATTRIBUTE: "FILTER_ATTRIBUTE",
+  SELECTED_MAIL: "SELECTED_MAIL",
+  COMPOSE_MAIL: "COMPOSE_MAIL",
+  REPLY_MAIL: "REPLY_MAIL",
+  SEARCH_STRING: "SEARCH_STRING",
+  filterAction: newFilterAttr => {
     return (dispatch, getState) => {
-      const filterAttr = getState().Mails.get('filterAttr');
+      const filterAttr = getState().Mails.get("filterAttr");
       if (newFilterAttr) {
         if (newFilterAttr.bucket) {
           filterAttr.bucket = newFilterAttr.bucket;
@@ -17,32 +17,34 @@ const mailActions = {
       }
       dispatch({
         type: mailActions.FILTER_ATTRIBUTE,
-        filterAttr,
+        filterAttr
       });
     };
   },
-  selectMail: (selectedMail) =>{
+  selectMail: selectedMail => {
     return (dispatch, getState) => {
-      const allMails = getState().Mails.get('allMails');
-      allMails[allMails.findIndex(mail => mail.id === selectedMail)].read = true;
+      const allMails = getState().Mails.get("allMails");
+      allMails[
+        allMails.findIndex(mail => mail.id === selectedMail)
+      ].read = true;
       dispatch({
         type: mailActions.SELECTED_MAIL,
         selectedMail,
-        allMails,
+        allMails
       });
     };
   },
-  changeComposeMail: (composeMail) => ({
+  changeComposeMail: composeMail => ({
     type: mailActions.COMPOSE_MAIL,
-    composeMail,
+    composeMail
   }),
-  changeReplyMail: (replyMail) => ({
+  changeReplyMail: replyMail => ({
     type: mailActions.REPLY_MAIL,
-    replyMail,
+    replyMail
   }),
-  changeSearchString: (searchString) => ({
+  changeSearchString: searchString => ({
     type: mailActions.SEARCH_STRING,
-    searchString,
-  }),
+    searchString
+  })
 };
 export default mailActions;

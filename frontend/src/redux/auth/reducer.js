@@ -1,7 +1,7 @@
-import { Map } from 'immutable';
-import actions from './actions';
+import { Map } from "immutable";
+import actions from "./actions";
 
-import { getToken } from './localStorage';
+import { getToken } from "./localStorage";
 
 const initState = new Map({
   idToken: getToken(),
@@ -11,12 +11,12 @@ const initState = new Map({
 export default function authReducer(state = initState, action) {
   switch (action.type) {
     case actions.LOGIN_SUCCESS:
-      return state.set('idToken', action.payload.token);
+      return state.set("idToken", action.payload.token);
     case actions.LOGIN_ERROR:
-      return state.set('isError', true).set('idToken', null);
+      return state.set("isError", true).set("idToken", null);
     case actions.LOGOUT:
     case actions.UNAUTHORIZED:
-      return state.set('idToken', null);
+      return state.set("idToken", null);
     default:
       return state;
   }

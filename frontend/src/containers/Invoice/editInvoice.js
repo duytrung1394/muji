@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
-import { EditTable } from '../../components/invoice/invoiceTable';
-import OrderStatus from '../../components/invoice/orderStatus';
-import notification from '../../components/notification';
-import Button from '../../components/uielements/button';
-import Input, { Textarea } from '../../components/uielements/input';
-import DatePicker from '../../components/uielements/datePicker';
-import Box from '../../components/utility/box';
-import LayoutWrapper from '../../components/utility/layoutWrapper.js';
-import InvoicePageWrapper from './singleInvoice.style';
-import { stringToPosetiveInt } from '../../helpers/utility';
-import { orderStatusOptions } from './config';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import { EditTable } from "../../components/invoice/invoiceTable";
+import OrderStatus from "../../components/invoice/orderStatus";
+import notification from "../../components/notification";
+import Button from "../../components/uielements/button";
+import Input, { Textarea } from "../../components/uielements/input";
+import DatePicker from "../../components/uielements/datePicker";
+import Box from "../../components/utility/box";
+import LayoutWrapper from "../../components/utility/layoutWrapper.js";
+import InvoicePageWrapper from "./singleInvoice.style";
+import { stringToPosetiveInt } from "../../helpers/utility";
+import { orderStatusOptions } from "./config";
 
 const updateValues = invoice => {
   const { invoiceList } = invoice;
@@ -29,20 +29,20 @@ const updateValues = invoice => {
 };
 const checkInvoice = invoice => {
   const emptyKeys = [
-    'number',
-    'billTo',
-    'billToAddress',
-    'billFrom',
-    'billFromAddress',
-    'currency',
+    "number",
+    "billTo",
+    "billToAddress",
+    "billFrom",
+    "billFromAddress",
+    "currency"
   ];
   const emptyKeysErrors = [
-    'Invoice Number',
-    'Bill To',
-    'Bill To Address',
-    'Bill From',
-    'Bill From Address',
-    'Currency',
+    "Invoice Number",
+    "Bill To",
+    "Bill To Address",
+    "Bill From",
+    "Bill From Address",
+    "Currency"
   ];
   for (let i = 0; i < emptyKeys.length; i++) {
     if (!invoice[emptyKeys[i]]) {
@@ -60,7 +60,7 @@ const checkInvoice = invoice => {
       return `quantity of ${i + 1} item should be positive`;
     }
   }
-  return '';
+  return "";
 };
 
 export default class extends Component {
@@ -68,12 +68,12 @@ export default class extends Component {
     const { editableInvoice, isNewInvoice, updateInvoice } = this.props;
     const error = checkInvoice(editableInvoice);
     if (error) {
-      notification('error', error);
+      notification("error", error);
     } else {
       const successMessage = isNewInvoice
-        ? 'A new Invoice added'
-        : 'Invoice Updated';
-      notification('success', successMessage);
+        ? "A new Invoice added"
+        : "Invoice Updated";
+      notification("success", successMessage);
       updateInvoice(editableInvoice);
     }
   };
@@ -83,7 +83,7 @@ export default class extends Component {
       isNewInvoice,
       redirectPath,
       toggleView,
-      editInvoice,
+      editInvoice
     } = this.props;
     return (
       <LayoutWrapper>
@@ -134,7 +134,7 @@ export default class extends Component {
                     />
                   </div>
                   <div className="RightSideDate">
-                    Order date:{' '}
+                    Order date:{" "}
                     <DatePicker
                       allowClear={false}
                       value={moment(new Date(editableInvoice.orderDate))}
@@ -204,10 +204,10 @@ export default class extends Component {
                     onClick={() => {
                       editableInvoice.invoiceList.push({
                         key: editableInvoice.invoiceList.length + 1,
-                        itemName: '',
+                        itemName: "",
                         costs: 0,
                         qty: 0,
-                        price: 0,
+                        price: 0
                       });
                       editInvoice(editableInvoice);
                     }}

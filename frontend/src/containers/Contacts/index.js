@@ -110,10 +110,13 @@ function mapStateToProps(state) {
     editView
   };
 }
-export default connect(mapStateToProps, {
-  changeContact,
-  addContact,
-  editContact,
-  deleteContact,
-  viewChange
-})(Contacts);
+export default connect(
+  mapStateToProps,
+  {
+    changeContact,
+    addContact,
+    editContact,
+    deleteContact,
+    viewChange
+  }
+)(Contacts);

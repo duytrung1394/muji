@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   LineChart,
   Line,
@@ -6,9 +6,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-} from 'recharts';
-import ChartWrapper from '../../chart.style';
+  Legend
+} from "recharts";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   render() {

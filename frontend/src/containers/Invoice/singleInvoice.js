@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import EditInvoice from './editInvoice';
-import ViewInvoice from './viewInvoice';
-import Loader from '../../components/utility/loader';
-import invoiceActions from '../../redux/invoice/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import EditInvoice from "./editInvoice";
+import ViewInvoice from "./viewInvoice";
+import Loader from "../../components/utility/loader";
+import invoiceActions from "../../redux/invoice/actions";
 
 class SingleInvoice extends Component {
   componentDidMount() {
@@ -30,7 +30,7 @@ class SingleInvoice extends Component {
   }
   render() {
     const { match, currentInvoice, enableEditView } = this.props;
-    const redirectPath = match.url.replace(match.params.invoiceId, '');
+    const redirectPath = match.url.replace(match.params.invoiceId, "");
     if (currentInvoice.id !== match.params.invoiceId) {
       return <Loader />;
     } else if (enableEditView) {
@@ -45,4 +45,7 @@ function mapStateToProps(state) {
     ...state.Invoices.toJS()
   };
 }
-export default connect(mapStateToProps, invoiceActions)(SingleInvoice);
+export default connect(
+  mapStateToProps,
+  invoiceActions
+)(SingleInvoice);

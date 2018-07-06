@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import Button, { ButtonGroup } from '../../../components/uielements/button';
-import Progress from '../../../components/uielements/progress';
-import PageHeader from '../../../components/utility/pageHeader';
-import LayoutWrapper from '../../../components/utility/layoutWrapper.js';
-import Box from '../../../components/utility/box';
-import basicStyle from '../../../settings/basicStyle';
+import React, { Component } from "react";
+import { Row, Col } from "antd";
+import Button, { ButtonGroup } from "../../../components/uielements/button";
+import Progress from "../../../components/uielements/progress";
+import PageHeader from "../../../components/utility/pageHeader";
+import LayoutWrapper from "../../../components/utility/layoutWrapper.js";
+import Box from "../../../components/utility/box";
+import basicStyle from "../../../settings/basicStyle";
 
 export default class extends Component {
   state = {
-    percent: 0,
+    percent: 0
   };
   increase = () => {
     let percent = this.state.percent + 10;
@@ -100,7 +100,7 @@ export default class extends Component {
             percent={75}
             format={percent => `${percent} Days`}
           />
-          <Progress type="circle" percent={100} format={() => 'Done'} />
+          <Progress type="circle" percent={100} format={() => "Done"} />
         </Box>
         <Box title="Dashboard" subtitle="A dashboard style of progress.">
           <Progress type="dashboard" percent={75} />

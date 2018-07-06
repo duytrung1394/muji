@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Layout } from 'antd';
-import appActions from '../../redux/app/actions';
-import TopbarNotification from './topbarNotification';
-import TopbarMessage from './topbarMessage';
-import TopbarSearch from './topbarSearch';
-import TopbarUser from './topbarUser';
-import TopbarAddtoCart from './topbarAddtoCart';
-import TopbarWrapper from './topbar.style';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Layout } from "antd";
+import appActions from "../../redux/app/actions";
+import TopbarNotification from "./topbarNotification";
+import TopbarMessage from "./topbarMessage";
+import TopbarSearch from "./topbarSearch";
+import TopbarUser from "./topbarUser";
+import TopbarAddtoCart from "./topbarAddtoCart";
+import TopbarWrapper from "./topbar.style";
 
 const { Header } = Layout;
 const { toggleCollapsed } = appActions;
@@ -18,8 +18,8 @@ class Topbar extends Component {
     const collapsed = this.props.collapsed && !this.props.openDrawer;
     const styling = {
       background: customizedTheme.backgroundColor,
-      position: 'fixed',
-      width: '100%',
+      position: "fixed",
+      width: "100%",
       height: 70
     };
     return (
@@ -27,13 +27,13 @@ class Topbar extends Component {
         <Header
           style={styling}
           className={
-            collapsed ? 'isomorphicTopbar collapsed' : 'isomorphicTopbar'
+            collapsed ? "isomorphicTopbar collapsed" : "isomorphicTopbar"
           }
         >
           <div className="isoLeft">
             <button
               className={
-                collapsed ? 'triggerBtn menuCollapsed' : 'triggerBtn menuOpen'
+                collapsed ? "triggerBtn menuCollapsed" : "triggerBtn menuOpen"
               }
               style={{ color: customizedTheme.textColor }}
               onClick={toggleCollapsed}
@@ -46,27 +46,27 @@ class Topbar extends Component {
             </li>
 
             <li
-              onClick={() => this.setState({ selectedItem: 'notification' })}
+              onClick={() => this.setState({ selectedItem: "notification" })}
               className="isoNotify"
             >
               <TopbarNotification locale={locale} />
             </li>
 
             <li
-              onClick={() => this.setState({ selectedItem: 'message' })}
+              onClick={() => this.setState({ selectedItem: "message" })}
               className="isoMsg"
             >
               <TopbarMessage locale={locale} />
             </li>
             <li
-              onClick={() => this.setState({ selectedItem: 'addToCart' })}
+              onClick={() => this.setState({ selectedItem: "addToCart" })}
               className="isoCart"
             >
               <TopbarAddtoCart url={url} locale={locale} />
             </li>
 
             <li
-              onClick={() => this.setState({ selectedItem: 'user' })}
+              onClick={() => this.setState({ selectedItem: "user" })}
               className="isoUser"
             >
               <TopbarUser locale={locale} />

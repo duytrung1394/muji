@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   XYPlot,
   XAxis,
@@ -8,8 +8,8 @@ import {
   LineSeries,
   MarkSeries,
   Hint
-} from 'react-vis';
-import ChartWrapper from '../../chart.style';
+} from "react-vis";
+import ChartWrapper from "../../chart.style";
 
 const CHART_MARGINS = { left: 50, right: 10, top: 10, bottom: 25 };
 function getAlignStyle(align, x, y) {

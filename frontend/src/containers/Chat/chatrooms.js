@@ -115,4 +115,7 @@ function mapStateToProps(state) {
     openCompose
   };
 }
-export default connect(mapStateToProps, actions)(ChatRooms);
+export default connect(
+  mapStateToProps,
+  actions
+)(ChatRooms);

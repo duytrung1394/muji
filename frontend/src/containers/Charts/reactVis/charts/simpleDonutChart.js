@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { RadialChart, Hint } from 'react-vis';
-import ChartWrapper from '../../chart.style';
+import { RadialChart, Hint } from "react-vis";
+import ChartWrapper from "../../chart.style";
 
 export default class extends Component {
   state = { value: false };
@@ -11,7 +11,7 @@ export default class extends Component {
     return (
       <ChartWrapper className="isoChartWrapper">
         <RadialChart
-          className={'donut-chart-example'}
+          className={"donut-chart-example"}
           innerRadius={innerRadius}
           radius={radius}
           data={datas}
