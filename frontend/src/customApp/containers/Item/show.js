@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {injectIntl} from 'react-intl';
+import IntlMessages from "../../../components/utility/intlMessages";
 import {connect} from 'react-redux';
 import RestShow from '../shared/show';
 import actions from '../../redux/item/entity/actions';
@@ -18,8 +20,6 @@ const Value = styled.span`
 `;
 
 
-
-
 class ShowEntity extends Component {
 
   render() {
@@ -29,41 +29,41 @@ class ShowEntity extends Component {
 
     return (
       <RestShow
-        name="アイテム"
+        name="item"
         pkName="item_code"
         baseUrl="/dashboard/items"
         {...this.props}
       >
         <div>
-          <BoxTitle title="アイテム情報" />
+          <BoxTitle title={<IntlMessages id="item.show.item.title" />} />
           <Box>
             <ul>
-              <li><Label>JANコード:</Label><Value>{entity.item_code}</Value></li>
-              <li><Label>商品番号:</Label><Value>{entity.item_code_alt}</Value></li>
-              <li><Label>公開・非公開:</Label><Value>{entity.status}</Value></li>
-              <li><Label>有効期限(FROM):</Label><Value>{entity.start_timestamp}</Value></li>
-              <li><Label>有効期限(TO):</Label><Value>{entity.end_timestamp}</Value></li>
-              <li><Label>商品名:</Label><Value>{entity.item_name}</Value></li>
-              <li><Label>メモ:</Label><Value>{entity.memo}</Value></li>
-              <li><Label>商品ラベル:</Label><Value>{entity.item_label}</Value></li>
-              <li><Label>概要:</Label><Value>{entity.description}</Value></li>
-              <li><Label>予約フラグ:</Label><Value>{entity.reservation_flag}</Value></li>
-              <li><Label>店頭受取フラグ:</Label><Value>{entity.store_receive_flag}</Value></li>
-              <li><Label>ブランドコード:</Label><Value>{entity.brand_code}</Value></li>
-              <li><Label>ソート順:</Label><Value>{entity.priority}</Value></li>
-              <li><Label>プロモーションステータス:</Label><Value>{entity.promotion_status}</Value></li>
-              <li><Label>仕様情報:</Label><Value>{entity.spec_info}</Value></li>
-              <li><Label>サイズ情報:</Label><Value>{entity.size_info}</Value></li>
-              <li><Label>リンクURL:</Label><Value>{entity.link_urls}</Value></li>
-              <li><Label>商品属性:</Label><Value>{entity.attributes}</Value></li>
-              <li><Label>キーワード:</Label><Value>{entity.keywords}</Value></li>
-              <li><Label>タグ:</Label><Value>{entity.tags}</Value></li>
-              <li><Label>アクセスポリシー:</Label><Value>{entity.access_policy}</Value></li>
-              <li><Label>ブランチ情報:</Label><Value>{entity.branches}</Value></li>
-              <li><Label>バッヂ:</Label><Value>{entity.badges}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.item_code" />:</Label><Value>{entity.item_code}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.item_code_alt" />:</Label><Value>{entity.item_code_alt}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.status" />:</Label><Value>{entity.status}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.start_timestamp" />:</Label><Value>{entity.start_timestamp}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.end_timestamp" />:</Label><Value>{entity.end_timestamp}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.item_name" />:</Label><Value>{entity.item_name}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.memo" />:</Label><Value>{entity.memo}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.item_label" />:</Label><Value>{entity.item_label}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.description" />:</Label><Value>{entity.description}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.reservation_flag" />:</Label><Value>{entity.reservation_flag}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.store_receive_flag" />:</Label><Value>{entity.store_receive_flag}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.brand_code" />:</Label><Value>{entity.brand_code}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.priority" />:</Label><Value>{entity.priority}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.promotion_status" />:</Label><Value>{entity.promotion_status}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.spec_info" />:</Label><Value>{entity.spec_info}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.size_info" />:</Label><Value>{entity.size_info}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.link_urls" />:</Label><Value>{entity.link_urls}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.attributes" />:</Label><Value>{entity.attributes}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.keywords" />:</Label><Value>{entity.keywords}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.tags" />:</Label><Value>{entity.tags}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.access_policy" />:</Label><Value>{entity.access_policy}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.branches" />:</Label><Value>{entity.branches}</Value></li>
+              <li><Label><IntlMessages id="item.attributes.badges" />:</Label><Value>{entity.badges}</Value></li>
             </ul>
           </Box>
-          <BoxTitle title="SKU" />
+          <BoxTitle title={<IntlMessages id="item.show.sku.title" />} />
           {(entity.sku ? entity.sku : []).map(sku => {
             return (
               <Box key={sku.sku_code}>
@@ -83,7 +83,7 @@ class ShowEntity extends Component {
               </Box>
             );
           })}
-          <BoxTitle title="アイテム画像" />
+          <BoxTitle title={<IntlMessages id="item.show.item_image.title" />} />
           {(entity.images ? entity.images : []).map(image => {
             return (
               <Box>
@@ -96,7 +96,7 @@ class ShowEntity extends Component {
               </Box>
             );
           })}
-          <BoxTitle title="付帯商品" />
+          <BoxTitle title={<IntlMessages id="item.show.addon_service.title" />} />
           {(entity.addon_services ? entity.addon_services : []).map(addon_service => {
             return (
               <Box>
@@ -112,7 +112,7 @@ class ShowEntity extends Component {
               </Box>
             );
           })}
-          <BoxTitle title="カテゴリ" />
+          <BoxTitle title={<IntlMessages id="item.show.category.title" />} />
           {(entity.categories ? entity.categories : []).map(category => {
             return (
               <Box>
@@ -130,7 +130,7 @@ class ShowEntity extends Component {
               </Box>
             );
           })}
-          <BoxTitle title="関連商品" />
+          <BoxTitle title={<IntlMessages id="item.show.relation_item.title" />} />
         </div>
       </RestShow>
     );

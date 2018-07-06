@@ -228,6 +228,7 @@ export function RestFormInputNumber(props){
     </FormItem>
   );
 }
+
 export function RestFormSelect(props){
   const {
     name,
@@ -255,6 +256,7 @@ export function RestFormSelect(props){
     </FormItem>
   );
 }
+
 export function RestFormRadioGroup(props){
   const {
     name,
