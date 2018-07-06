@@ -153,10 +153,9 @@ module.exports = class extends Generator {
         .replace('_end_point_', end_point)
         .replace('_EndPoint_', EndPoint);
 
-      const dest = "frontend/" + filename;
       this.fs.copyTpl(
         this.templatePath(file),
-        this.destinationPath(dest),
+        this.destinationPath(filename),
         {
           rawname,
           resource_name,
