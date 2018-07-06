@@ -119,16 +119,16 @@ module.exports = class extends Generator {
 
     // 置換対象ファイルパスを羅列
     const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'src/customApp/redux/_resource_name_/entity/' + name
+      'frontend/src/customApp/redux/_resource_name_/entity/' + name
     );
     const listFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'src/customApp/redux/_resource_name_/list/' + name
+      'frontend/src/customApp/redux/_resource_name_/list/' + name
     );
     const combineFiles = ['reducers.js','sagas.js'].map(name =>
-      'src/customApp/redux/_resource_name_/' + name
+      'frontend/src/customApp/redux/_resource_name_/' + name
     );
     const containerFiles = ['edit.js','form.js','index.js','new.js','show.js'].map(name =>
-      'src/customApp/containers/_ResourceName_/' + name
+      'frontend/src/customApp/containers/_ResourceName_/' + name
     )
     const files = [
       ...entityFiles,
