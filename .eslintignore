@@ -1,0 +1,8 @@
+/node_modules
+/frontend/node_modules
+/backend
+/builder
+/deployer
+/e2e
+/generator-firebird-rest
+

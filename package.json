@@ -7,7 +7,9 @@
     "doc": "doc"
   },
   "scripts": {
-    "scaffold": "yo firebird-rest"
+    "scaffold": "yo firebird-rest",
+    "lint": "eslint . --ext .js --ignore-pattern '*.style.js'",
+    "lint:fix": "eslint . --ext .js --ignore-pattern '*.style.js' --fix"
   },
   "repository": {
     "type": "git",
@@ -16,11 +18,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-eslint": "^8.2.5",
     "change-case": "^3.0.2",
     "escodegen": "^1.10.0",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
     "esprima": "^4.0.0",
     "generator-firebird-rest": "file:./generator-firebird-rest",
     "pluralize": "^7.0.0",
-    "prettier": "^1.13.5"
+    "prettier": "^1.13.7"
   }
 }
