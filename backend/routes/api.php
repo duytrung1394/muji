@@ -23,4 +23,7 @@ require_once 'api/v1/categories.php';
 // /api/v1/items
 require_once 'api/v1/items.php';
 
+// YEOMAN-INSERT-POINT
+// ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
+
 // EOF

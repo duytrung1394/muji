@@ -441,6 +441,27 @@ module.exports = class extends Generator {
         }
       }
     );
+
+    // api.php
+    const api_path = this.destinationPath("backend/routes/api.php");
+    this.fs.copy(
+      api_path,
+      api_path,
+      {
+        process: (content) => {
+          let source = content.toString();
+          const point = "// YEOMAN-INSERT-POINT";
+          const insertion = `
+// /api/v1/${endpoint}
+require_once 'api/v1/${end_point}.php';
+`
+          return source.replace(
+            point,
+            `${insertion}\n${point}`
+          );
+        }
+      }
+    )
   }
 
 };
