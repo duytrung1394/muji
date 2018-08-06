@@ -1,46 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import RestShow from "../shared/show";
 import actions from "../../redux/task/entity/actions";
-import IntlMessages from "../../../components/utility/intlMessages";
+import { injectIntl } from "react-intl";
 
-class ShowEntity extends Component {
+class Show extends Component {
+  componentDidMount() {
+    this.props.request(this.props.match.params.id);
+  }
+
   render() {
     const { entity } = this.props;
 
     return (
-      <RestShow
-        name="task"
-        pkName="id"
-        baseUrl="/dashboard/tasks"
-        {...this.props}
-      >
-        <ul>
-          <li>
-            <IntlMessages id="task.attributes.name" />: {entity.name}
-          </li>
-          <li>
-            <IntlMessages id="task.attributes.description" />:{" "}
-            {entity.description}
-          </li>
-        </ul>
-      </RestShow>
+      <div>
+        <p>{entity.name}</p>
+        <p>{entity.description}</p>
+      </div>
     );
   }
 }
-
-const { request, cleanup } = actions.fetch;
 
 const mapStateToProps = state => {
   return state.Task.Entity.toJS();
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    request,
-    cleanup,
-    destroy: actions.destroy.request,
-    destroyCleanup: actions.destroy.cleanup
-  }
-)(ShowEntity);
+const { request, cleanup } = actions.fetch;
+
+const actionCreators = {
+  request,
+  cleanup,
+  destroy: actions.destroy.request,
+  destroyCleanup: actions.destroy.cleanup
+};
+
+const enhance = (C) => {
+  const connected = connect(mapStateToProps, actionCreators)(C);
+  const injected = injectIntl(connected, {withRef: true})
+  return injected
+}
+
+export default enhance(Show);
