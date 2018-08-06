@@ -130,7 +130,7 @@ module.exports = class extends Generator {
     const combineFiles = ['reducers.js','sagas.js'].map(name =>
       'frontend/src/customApp/redux/_resource_name_/' + name
     );
-    const containerFiles = ['edit.js','form.js','index.js','new.js','show.js'].map(name =>
+    const containerFiles = ['index.js','show.js'].map(name =>
       'frontend/src/customApp/containers/_ResourceName_/' + name
     )
     const backendFiles = [

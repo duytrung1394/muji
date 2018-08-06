@@ -1,46 +1,42 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import RestShow from '../shared/show';
-import actions from '../../redux/<%= resource_name %>/entity/actions';
-import IntlMessages from "../../../components/utility/intlMessages";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import actions from "../../redux/<%= resource_name %>/entity/actions";
+import { injectIntl } from "react-intl";
 
-class ShowEntity extends Component {
+class Show extends Component {
+  componentDidMount() {
+    this.props.request(this.props.match.params.id);
+  }
 
   render() {
-    const {
-      entity
-    } = this.props;
+    const { entity } = this.props;
 
     return (
-      <RestShow
-        name="<%= resourceName %>"
-        pkName="<%= pkName %>"
-        baseUrl="/dashboard/<%= urlbase %>"
-        {...this.props}
-      >
-        <ul>
-          <% detailColumns.forEach((column) => { %>
-          <li><IntlMessages id="<%= resourceName %>.attributes.<%= column %>" />: {entity.<%= column %>}</li><%
-          }); %>
-        </ul>
-      </RestShow>
+      <div>
+        <p>{entity.name}</p>
+        <p>{entity.description}</p>
+      </div>
     );
   }
 }
 
-const {
-  request,
-  cleanup,
-} = actions.fetch;
-
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.<%= ResourceName %>.Entity.toJS();
 };
 
-export default connect(mapStateToProps, {
+const { request, cleanup } = actions.fetch;
+
+const actionCreators = {
   request,
   cleanup,
   destroy: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup,
-})(ShowEntity);
+  destroyCleanup: actions.destroy.cleanup
+};
+
+const enhance = (C) => {
+  const connected = connect(mapStateToProps, actionCreators)(C);
+  const injected = injectIntl(connected, {withRef: true})
+  return injected
+}
+
+export default enhance(Show);
