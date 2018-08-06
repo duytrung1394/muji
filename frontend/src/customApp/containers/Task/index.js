@@ -67,7 +67,7 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = baseUrl;
+          url = '/dashboard/tasks';
         } else {
           url = `/dashboard/tasks/page/${page}`;
         }
