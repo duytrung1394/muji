@@ -64,19 +64,6 @@ module.exports = class extends Generator {
       default: (props) => [props.pkName,'name'].join(','),
     },
     {
-      type: 'list',
-      name: 'linkColumnName',
-      message: 'リストから詳細へリンクするカラムを選んでください',
-      choices: (props) => props.listColumns.split(",").map( s => s.trim() ),
-      default: (props) => props.listColumns.split(",").map( s => s.trim() ).filter( s => s != "id")[0]
-    },
-    {
-      type: 'input',
-      name: 'detailColumns',
-      message: '編集・詳細表示するカラム名をカンマ(,)区切りで入力してください',
-      default: 'name,description',
-    },
-    {
       type: 'input',
       name: 'urlbase',
       message: 'ブラウザからアクセスするURLのベース部を入力してください',
@@ -114,10 +101,7 @@ module.exports = class extends Generator {
     const endPoint = camelCase(endpoint);
     const EndPoint = pascalCase(endpoint);
     const listColumns = this.props.listColumns.split(',').map( s => s.trim() );
-    const detailColumns = this.props.detailColumns.split(',').map( s => s.trim() );
-    const linkColumnName = this.props.linkColumnName;
-    // list,detailのカラムを統合したもの。 Setを使う事でユニークに。
-    const columns = Array.from(new Set(listColumns.concat(detailColumns)))
+    const columns = listColumns;
     const jaColumns = await genTranslatedMap(columns, 'ja');
 
     // 置換対象ファイルパスを羅列
@@ -168,8 +152,6 @@ module.exports = class extends Generator {
           EndPoint,
           urlbase,
           listColumns,
-          detailColumns,
-          linkColumnName,
           pkName,
           // bind functions...
           camelCase,
