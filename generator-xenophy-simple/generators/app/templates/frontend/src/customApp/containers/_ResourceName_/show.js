@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/task/entity/actions";
+import actions from "../../redux/<%= resource_name %>/entity/actions";
 import { injectIntl } from "react-intl";
 
 class Show extends Component {
@@ -21,7 +21,7 @@ class Show extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Task.Entity.toJS();
+  return state.<%= ResourceName %>.Entity.toJS();
 };
 
 const { request, cleanup } = actions.fetch;

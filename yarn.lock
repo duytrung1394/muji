@@ -1338,7 +1338,7 @@ gauge@~1.2.5:
     lodash.padend "^4.1.0"
     lodash.padstart "^4.1.0"
 
-"generator-firebird-rest@file:./generator-firebird-rest":
+"generator-xenophy-simple@file:./generator-xenophy-simple":
   version "0.9.0"
   dependencies:
     chalk "^2.1.0"

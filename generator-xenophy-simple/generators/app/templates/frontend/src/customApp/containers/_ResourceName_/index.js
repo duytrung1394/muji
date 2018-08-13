@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/task/list/actions";
+import actions from "../../redux/<%= resource_name %>/list/actions";
 import { injectIntl } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import Table from "../../../components/uielements/table";
@@ -67,9 +67,9 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = '/dashboard/tasks';
+          url = '/dashboard/<%= urlbase %>';
         } else {
-          url = `/dashboard/tasks/page/${page}`;
+          url = `/dashboard/<%= urlbase %>/page/${page}`;
         }
         history.push(url);
       }
@@ -93,7 +93,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Task.List.toJS();
+  return state.<%= ResourceName %>.List.toJS();
 };
 
 const actionCreators = {
@@ -101,8 +101,6 @@ const actionCreators = {
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
-
-
 
 const enhance = (C) => {
   const connected = connect(mapStateToProps, actionCreators)(C);
