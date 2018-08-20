@@ -1,7 +1,7 @@
 {
-  "name": "prismatix-admin",
+  "name": "muji-ec",
   "version": "1.0.0",
-  "description": "``` origin: git@xenophy.info:xenophy/muji.git",
+  "description": "",
   "main": "no",
   "directories": {
     "doc": "doc"
