@@ -17,6 +17,12 @@
         "baseDir": "/static",
         "baseUri": "http://your.cdn.address"
       }
+    ],
+    [
+      "transform-runtime", {
+        "polyfill": false,
+        "regenerator": true
+      }
     ]
   ]
 }
