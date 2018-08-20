@@ -10,7 +10,7 @@ ReactDOM.render(<DashApp />, document.getElementById("root"));
 if (module.hot) {
   module.hot.accept("./dashApp.js", () => {
     const NextApp = require("./dashApp").default;
-    ReactDOM.render(<NextApp />, document.getElementById("root"));
+    ReactDOM.hydrate(<NextApp />, document.getElementById("root"));
   });
 }
 registerServiceWorker();

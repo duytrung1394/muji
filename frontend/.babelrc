@@ -1,0 +1,22 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"],
+        "node": "current"
+      }
+    }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "css-modules-transform",
+    [
+      "import-static-files", 
+      {
+        "baseDir": "/static",
+        "baseUri": "http://your.cdn.address"
+      }
+    ]
+  ]
+}
