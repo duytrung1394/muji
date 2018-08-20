@@ -74,7 +74,9 @@ const Routes = () => {
   (<Route
     exact
     path={"/"}
-    component={asyncComponent(() => require("./containers/Page/signin"))}
+    //component={asyncComponent(() => require("./containers/Page/signin"))}
+    //component={ require("./containers/Page/500") }
+    component={ require("./containers/Page/500") }
   />);
 }
 

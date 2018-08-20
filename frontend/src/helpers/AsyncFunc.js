@@ -12,17 +12,25 @@ export default function asyncComponent(importComponent) {
         component: null
       };
     }
+    
     componentWillMount() {
-      Nprogress.start();
+      if(typeof(window) === "undefined"){
+        // SSR, render synchronously
+        const Component = importComponent().default;
+        this.setState({
+          component: <Component {...this.props} />
+        });
+      }else{
+        // Browser
+        Nprogress.start();
+      }
     }
-    componentWillUnmount() {
-      this.mounted = false;
-    }
+
     async componentDidMount() {
-      this.mounted = true;
-      const { default: Component } = await importComponent();
-      Nprogress.done();
-      if (this.mounted) {
+      if(typeof(document) !== "undefined"){
+        // Browser, render asynchronously
+        const {imported: Component} = await importComponent();
+        Nprogress.done();
         this.setState({
           component: <Component {...this.props} />
         });
