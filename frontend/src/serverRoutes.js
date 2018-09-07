@@ -3,43 +3,34 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import { Route, StaticRouter } from 'react-router-dom';
-import asyncComponent from "./helpers/AsyncFunc";
+import { StaticRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
-//import routes from './router';
+import routes from './routes';
+
+const Routes = () => renderRoutes(routes)
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  let context = {};
-
+const ssr = (req, res) => {
   ReactDOMServer.renderToNodeStream(
     <Layout>
-      <StaticRouter location={req.url} context={context}>
-        <Route
-          exact
-          path={"/"}
-          component={asyncComponent(() => require("./home.js") )}
-        />
+      <StaticRouter location={req.url}>
+        <Routes />
       </StaticRouter>
     </Layout>
   ).pipe(res);
-});
+};
 
-router.get('/about', (req, res) => {
-  let context = {};
-
-  ReactDOMServer.renderToNodeStream(
-    <Layout>
-      <StaticRouter location={req.url} context={context}>
-        <Route
-          exact
-          path={"/about"}
-          component={asyncComponent(() => require("./about.js") )}
-        />
-      </StaticRouter>
-    </Layout>
-  ).pipe(res);
+// TODO: ここのroutesループお行儀よくないので改善したい
+routes.forEach( (route) => {
+  let {path} = route;
+  if(route.exact !== true){
+    // exact じゃない場合は前方一致する
+    // 例: '/about' -> '/about*'
+    path = `${path}*`
+  }
+  router.get(path, ssr);
 });
 
 const Layout = (props) => {

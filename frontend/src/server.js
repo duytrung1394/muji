@@ -5,6 +5,8 @@ import path from 'path';
 const app = express();
 const router = require('./serverRoutes');
 
+app.use(router);
+
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -23,7 +25,5 @@ if (process.env.NODE_ENV !== 'production') {
     debug: true,
   }));
 }
-
-app.use(router);
 
 app.listen(3000);
