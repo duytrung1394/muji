@@ -14,7 +14,7 @@ router.get('*', (req, res) => {
   let context = {};
 
   ReactDOMServer.renderToNodeStream(
-    <HTML>
+    <Layout>
       <StaticRouter location={req.url} context={context}>
         <Route
           exact
@@ -22,11 +22,11 @@ router.get('*', (req, res) => {
           component={asyncComponent(() => require("./sample.js") )}
         />
       </StaticRouter>
-    </HTML>
+    </Layout>
   ).pipe(res);
 });
 
-const HTML = (props) => {
+const Layout = (props) => {
   return (
     <html lang='ja'>
       <head>
