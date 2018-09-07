@@ -1,7 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from 'react-router-dom';
 import { store, history } from "./redux/store";
-import PublicRoutes from "./router";
+import Routes from "./routes";
 import { ThemeProvider } from "styled-components";
 import { LocaleProvider } from "antd";
 import { IntlProvider } from "react-intl";
@@ -26,7 +27,9 @@ const DashApp = () => (
       <ThemeProvider theme={themes[themeConfig.theme]}>
         <DashAppHolder>
           <Provider store={store}>
-            <PublicRoutes history={history} />
+            <BrowserRouter>
+              <Routes history={history} />
+            </BrowserRouter>
           </Provider>
         </DashAppHolder>
       </ThemeProvider>
