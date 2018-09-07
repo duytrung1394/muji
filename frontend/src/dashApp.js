@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config'
 import { history } from "./redux/store";
-import Routes from "./routes";
+import routes from "./routes";
 import AppLocale from "./languageProvider";
 import Boot from "./redux/boot";
+const Routes = () => renderRoutes(routes)
 
 import Hoc from './hoc';
 
 const DashApp = () => (
   <Hoc>
     <BrowserRouter>
-      <Routes history={history} />
+      <Routes />
     </BrowserRouter>
   </Hoc>
 );
