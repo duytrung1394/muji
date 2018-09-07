@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
     prepend: path.join(__dirname, '../build'),
     reqPathFind: /^(\/?)/,
     reqPathReplace: '',
-    debug: true,
+    debug: false,
   }));
 }
 
