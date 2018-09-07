@@ -30,5 +30,8 @@
     "pluralize": "^7.0.0",
     "prettier": "^1.13.7",
     "yo": "^2.0.3"
+  },
+  "devDependencies": {
+    "webpack-dev-middleware": "^3.2.0"
   }
 }
