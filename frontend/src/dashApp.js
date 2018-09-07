@@ -5,9 +5,10 @@ import { history } from "./redux/store";
 import routes from "./routes";
 import AppLocale from "./languageProvider";
 import Boot from "./redux/boot";
+import Hoc from './hoc';
+
 const Routes = () => renderRoutes(routes)
 
-import Hoc from './hoc';
 
 const DashApp = () => (
   <Hoc>
