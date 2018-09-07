@@ -29,7 +29,7 @@ export default function asyncComponent(importComponent) {
     async componentDidMount() {
       if(typeof(document) !== "undefined"){
         // Browser, render asynchronously
-        const {imported: Component} = await importComponent();
+        const {default: Component} = await importComponent();
         Nprogress.done();
         this.setState({
           component: <Component {...this.props} />
@@ -40,7 +40,7 @@ export default function asyncComponent(importComponent) {
     render() {
       const Component = this.state.component || <div />;
       return (
-        <ReactPlaceholder type="text" rows={7} ready={Component !== null}>
+        <ReactPlaceholder type="text" rows={7} ready={this.state.component !== null}>
           {Component}
         </ReactPlaceholder>
       );
