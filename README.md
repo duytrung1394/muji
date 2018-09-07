@@ -1,19 +1,18 @@
-# MUJI 管理画面ブランチ
+# MUJI EC
 
-```
-origin: git@xenophy.info:xenophy/muji.git
+## フロントエンドとサーバーサイドレンダリング
 
-admin : 管理画面
-admin-work : 管理画面開発用、個々人のブランチをココにマージ
-```
+`frontend` 以下にフロントエンド関係のファイルが存在します。
 
-## クローン
+- `yarn start`
+  - Reactを普通に開発する時向けです。最も軽く動作するので、普通に画面を開発するときはこのコマンドをを使用します。
+- `yarn dev`
+  - Express.JSによるサーバーサイドレンダリングを含む動作をします。コード書き換えのたびに全ての再コンパイルが走るので重いです。
+  - SSRをデバッグしたい場合などに用います。
+- `yarn build`, `yarn serve`
+  - 基本的に本番環境用もしくは本番環境に即したデバッグ用です。
+  - `yarn build` で `./build` ディレクトリ以下にファイルが計れるのでそれを `yarn serve` で配信します。
 
-```
-git clone git@xenophy.info:xenophy/muji.git muji-admin
-cd muji-admin
-git checkout -b admin-work origin/admin-work
-```
 
 ## 開発向けの動作方法
 
