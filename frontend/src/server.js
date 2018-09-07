@@ -9,23 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   
-  const compiler = webpack({
-    entry: [
-      './src/index.js',
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          use: [
-            {
-              loader: 'babel-loader',
-            }
-          ]
-        }
-      ]
-    },
-  });
+  const compiler = webpack(require('./webpack.config.express.js').default);
 
   app.use(webpackDevMiddleware(compiler, {
     // options

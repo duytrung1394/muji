@@ -10,7 +10,7 @@ import asyncComponent from "./helpers/AsyncFunc";
 
 const router = express.Router();
 
-router.get('*', (req, res) => {
+router.get('/', (req, res) => {
   let context = {};
 
   ReactDOMServer.renderToNodeStream(
@@ -19,7 +19,23 @@ router.get('*', (req, res) => {
         <Route
           exact
           path={"/"}
-          component={asyncComponent(() => require("./sample.js") )}
+          component={asyncComponent(() => require("./home.js") )}
+        />
+      </StaticRouter>
+    </Layout>
+  ).pipe(res);
+});
+
+router.get('/about', (req, res) => {
+  let context = {};
+
+  ReactDOMServer.renderToNodeStream(
+    <Layout>
+      <StaticRouter location={req.url} context={context}>
+        <Route
+          exact
+          path={"/about"}
+          component={asyncComponent(() => require("./about.js") )}
         />
       </StaticRouter>
     </Layout>
