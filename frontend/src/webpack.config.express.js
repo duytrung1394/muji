@@ -1,18 +1,12 @@
-export default {
-  entry: [
-    './src/index.js',
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-          }
-        ]
-      }
-    ]
-  },
+const defaultConfig = require('react-scripts/config/webpack.config.dev');
+
+const config = {
+  ...defaultConfig,
+  output: {
+    ...defaultConfig.output,
+    // yarn build 時とパスを揃えています
+    filename: 'main.js',
+  }
 };
+
+export default config;

@@ -50,16 +50,12 @@ const Layout = (props) => {
         <meta charSet="utf-8" />
         <title>Muji EC</title>
         <style>{props.style}</style>
+        <link rel="stylesheet" href="/main.css" />
       </head>
       <body>
         <div id='root'>{props.children}</div>
-        <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script>
-        {
-          props.bundles ?
-            props.bundles.map(bundle => <script key={bundle} type='text/javascript' src={bundle}></script>)
-            :
-            <script type='text/javascript' src='/main.js'></script>
-        }
+        {/* <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script> */}
+        <script type='text/javascript' src='/main.js'></script>
       </body>
     </html>
   )
