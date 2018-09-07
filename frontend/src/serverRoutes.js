@@ -42,7 +42,7 @@ const HTML = (props) => {
           props.bundles ?
             props.bundles.map(bundle => <script key={bundle} type='text/javascript' src={bundle}></script>)
             :
-            <script type='text/javascript' src='/bundle.js'></script>
+            <script type='text/javascript' src='/main.js'></script>
         }
       </body>
     </html>

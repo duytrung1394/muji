@@ -1,87 +1,12 @@
-// import React from "react";
-// import { Route, Redirect } from "react-router-dom";
-// import { ConnectedRouter } from "react-router-redux";
-// import { connect } from "react-redux";
-
-// //import App from "./containers/App/App";
-// import asyncComponent from "./helpers/AsyncFunc";
-// //import Auth0 from "./helpers/auth0";
-
-// // import Html from '../Container/Html';
-// // import App from '../Container/App';
-// // import About from '../Container/About';
-
-// // const Routes = [
-// //     {
-// //         component: Html,
-// //         routes: [
-// //             {
-// //                 path: '/',
-// //                 exact: true,
-// //                 component: App,
-// //             },
-// //             {
-// //                 path: '/about',
-// //                 exact: true,
-// //                 component: About,
-// //             },
-// //         ],
-// //     },
-// // ];
-
-// // export default Routes;
-
-// const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={props =>
-//       isLoggedIn ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect
-//           to={{
-//             pathname: "/signin",
-//             state: { from: props.location }
-//           }}
-//         />
-//       )
-//     }
-//   />
-// );
-// const PublicRoutes = ({ history, isLoggedIn }) => {
-//   return (
-//     <ConnectedRouter history={history}>
-//       <Route
-//         exact
-//         path={"/"}
-//         component={asyncComponent(() => require("./containers/Page/signin"))}
-//       />
-//       <Route
-//         exact
-//         path={"/404"}
-//         component={asyncComponent(() => require("./containers/Page/404"))}
-//       />
-//       <Route
-//         exact
-//         path={"/500"}
-//         component={asyncComponent(() => require("./containers/Page/500"))}
-//       />
-//     </ConnectedRouter>
-//   );
-// };
+import React from "react";
+import { Route } from "react-router-dom";
 
 const Routes = () => {
   (<Route
     exact
     path={"/"}
-    //component={asyncComponent(() => require("./containers/Page/signin"))}
-    //component={ require("./containers/Page/500") }
     component={ require("./containers/Page/500") }
   />);
 }
 
 export default Routes;
-
-// export default connect(state => ({
-//   isLoggedIn: state.Auth.get("idToken") !== null
-// }))(PublicRoutes);

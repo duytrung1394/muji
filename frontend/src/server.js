@@ -1,9 +1,19 @@
 import express from 'express';
+import manifest from 'express-manifest';
+import path from 'path';
 
 const app = express();
 const router = require('./serverRoutes');
 
-app.use(express.static('public'));
+app.use(manifest({
+  manifest: path.join(__dirname, '../build/asset-manifest.json'),
+  prepend: path.join(__dirname, '../build'),
+  reqPathFind: /^(\/?)/,
+  reqPathReplace: '',
+  debug: true,
+}));
+
+// app.use(express.static(path.join(__dirname, '../build')));
 
 app.use(router);
 //app.use('/about', router);
