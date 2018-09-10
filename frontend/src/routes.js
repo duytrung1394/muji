@@ -11,6 +11,11 @@ const routes = [
     exact: true,
     component: asyncComponent(() => require("./about.js") )
   },
+  {
+    path: '/signin',
+    exact: true,
+    component: asyncComponent(() => require("./containers/Page/signin") )
+  },
 ]
 
 export default routes;
