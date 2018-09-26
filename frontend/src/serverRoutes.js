@@ -7,7 +7,7 @@ import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import routes from './routes';
-import Hoc from './hoc';
+//import Hoc from './hoc';
 
 const Routes = () => renderRoutes(routes)
 
@@ -16,11 +16,9 @@ const router = express.Router();
 const ssr = (req, res) => {
   ReactDOMServer.renderToNodeStream(
     <Layout>
-      <Hoc>
-        <StaticRouter location={req.url}>
-          <Routes />
-        </StaticRouter>
-      </Hoc>
+      <StaticRouter location={req.url}>
+        <Routes />
+      </StaticRouter>
     </Layout>
   ).pipe(res);
 };
