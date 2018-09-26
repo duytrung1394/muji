@@ -7,7 +7,6 @@ import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import routes from './routes';
-//import Hoc from './hoc';
 
 const Routes = () => renderRoutes(routes)
 
@@ -34,6 +33,7 @@ routes.forEach( (route) => {
   router.get(path, ssr);
 });
 
+//TODO: 実ファイルの index.html と二重定義になってるのを解消したい
 const Layout = (props) => {
   return (
     <html lang='ja'>
