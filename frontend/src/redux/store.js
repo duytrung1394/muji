@@ -6,10 +6,21 @@ import createSagaMiddleware from "redux-saga";
 import reducers from "../redux/reducers";
 import rootSaga from "../redux/sagas";
 
-const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
-const routeMiddleware = routerMiddleware(history);
-const middlewares = [thunk, sagaMiddleware, routeMiddleware];
+
+let history;
+let routeMiddleware;
+let middlewares;
+
+if( typeof(window) === "undefined" ){
+  // SSR
+  middlewares = [thunk, sagaMiddleware];
+}else{
+  // Browser
+  history = createHistory();
+  routeMiddleware = routerMiddleware(history);
+  middlewares = [thunk, sagaMiddleware, routeMiddleware];
+}
 
 const store = createStore(
   combineReducers({
