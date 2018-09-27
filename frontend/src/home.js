@@ -18,7 +18,10 @@ class Home extends Component {
           { JSON.stringify(this.props.entities) }
         </p>
         <p>
-          fetching: { this.props.fetching }
+          fetching: { this.props.fetching ? 'true' : 'false' }
+        </p>
+        <p>
+          total: { this.props.total }
         </p>
 
         This Page is Home Page!! <br />
