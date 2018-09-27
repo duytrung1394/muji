@@ -27,7 +27,7 @@ export default function asyncComponent(importComponent) {
     }
 
     async componentDidMount() {
-      if(typeof(document) !== "undefined"){
+      if(typeof(window) !== "undefined"){
         // Browser, render asynchronously
         const {default: Component} = await importComponent();
         Nprogress.done();
