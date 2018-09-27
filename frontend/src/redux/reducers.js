@@ -9,10 +9,10 @@ import App from "./app/reducer";
 // import Cards from './card/reducer';
 // import Chat from './chat/reducers';
 // import DynamicChartComponent from './dynamicEchart/reducer';
-import Ecommerce from "./ecommerce/reducer";
+// import Ecommerce from "./ecommerce/reducer";
 import ThemeSwitcher from "./themeSwitcher/reducer";
 // import Invoices from './invoice/reducer';
-import LanguageSwitcher from "./languageSwitcher/reducer";
+// import LanguageSwitcher from "./languageSwitcher/reducer";
 // import YoutubeSearch from './youtubeSearch/reducers';
 import PasswordRenewals from "./passwordRenewals/reducer";
 import PasswordResets from "./passwordResets/reducer";
@@ -22,7 +22,8 @@ export default {
   Auth,
   App,
   ThemeSwitcher,
-  LanguageSwitcher,
+  // TODO: SSRで謎の問題が起きるので一端コメントアウト。
+  // LanguageSwitcher,
   // Mails,
   // Calendar,
   // Box,
@@ -32,7 +33,7 @@ export default {
   // Cards,
   // Chat,
   // DynamicChartComponent,
-  Ecommerce,
+  // Ecommerce,
   // Invoices,
   // YoutubeSearch,
   PasswordRenewals,

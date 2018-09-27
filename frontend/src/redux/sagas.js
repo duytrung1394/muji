@@ -5,7 +5,7 @@ import authSagas from "./auth/saga";
 // import mailSagas from './mail/saga';
 // import notesSagas from './notes/saga';
 // import todosSagas from './todos/saga';
-import ecommerceSaga from "./ecommerce/saga";
+// import ecommerceSaga from "./ecommerce/saga";
 // import cardsSagas from './card/saga';
 // import chatSagas from './chat/sagas';
 // import youtubeSearchSagas from './youtubeSearch/sagas';
@@ -21,7 +21,7 @@ export default function* rootSaga() {
     // mailSagas(),
     // notesSagas(),
     // todosSagas(),
-    ecommerceSaga(),
+    // ecommerceSaga(),
     // cardsSagas(),
     // invoicesSagas(),
     // chatSagas(),
