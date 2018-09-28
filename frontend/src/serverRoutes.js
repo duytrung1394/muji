@@ -1,25 +1,40 @@
 import express from 'express';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 
 import { StaticRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 
 import routes from './routes';
 
 import Hoc from './serverHoc';
 
-const Routes = () => renderRoutes(routes)
-
 const router = express.Router();
 
-const ssr = (req, res) => {
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const ssr = async (req, res) => {
+  const matchRoutes = matchRoutes(routes, req.url);
+  if( matchedRoutes.length > 1 ){
+    console.warn(`the url(${req.url}) matches multiple routes.`);
+  }
+  const matched = matchedRoutes[0].route;
+  let extraProps = {};
+  if( typeof(matched.component.getInitialProps) == 'function' ){
+    extraProps = await matched.component.getInitialProps();
+  }else{
+    console.warn(`matched Component(${matched.component}) should implements getInitialProps static function.`);
+  }
+  
   ReactDOMServer.renderToNodeStream(
     <Layout>
       <Hoc>
         <StaticRouter location={req.url}>
-          <Routes />
+          { renderRoutes(routes, extraProps ) }
         </StaticRouter>
       </Hoc>
     </Layout>
