@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
 import { connect } from "react-redux";
-import RestShow from "../shared/show";
 import actions from "../../redux/item/entity/actions";
-
-import Box from "../../../components/utility/box";
-import BoxTitle from "../../../components/utility/boxTitle";
+import LayoutWrapper from "../../../components/utility/layoutWrapper";
+import PageHeader from "../../../components/utility/pageHeader";
+import { Row, Col, Button, Icon, Breadcrumb, Table, Divider} from "antd";
 
 import styled from "styled-components";
 
@@ -24,325 +21,54 @@ class ShowEntity extends Component {
     const { entity } = this.props;
 
     return (
-      <RestShow
-        name="item"
-        pkName="item_code"
-        baseUrl="/dashboard/items"
-        {...this.props}
-      >
-        <div>
-          <BoxTitle title={<IntlMessages id="item.show.item.title" />} />
-          <Box>
-            <ul>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.item_code" />:
-                </Label>
-                <Value>{entity.item_code}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.item_code_alt" />:
-                </Label>
-                <Value>{entity.item_code_alt}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.status" />:
-                </Label>
-                <Value>{entity.status}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.start_timestamp" />:
-                </Label>
-                <Value>{entity.start_timestamp}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.end_timestamp" />:
-                </Label>
-                <Value>{entity.end_timestamp}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.item_name" />:
-                </Label>
-                <Value>{entity.item_name}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.memo" />:
-                </Label>
-                <Value>{entity.memo}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.item_label" />:
-                </Label>
-                <Value>{entity.item_label}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.description" />:
-                </Label>
-                <Value>{entity.description}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.reservation_flag" />:
-                </Label>
-                <Value>{entity.reservation_flag}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.store_receive_flag" />:
-                </Label>
-                <Value>{entity.store_receive_flag}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.brand_code" />:
-                </Label>
-                <Value>{entity.brand_code}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.priority" />:
-                </Label>
-                <Value>{entity.priority}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.promotion_status" />:
-                </Label>
-                <Value>{entity.promotion_status}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.spec_info" />:
-                </Label>
-                <Value>{entity.spec_info}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.size_info" />:
-                </Label>
-                <Value>{entity.size_info}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.link_urls" />:
-                </Label>
-                <Value>{entity.link_urls}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.attributes" />:
-                </Label>
-                <Value>{entity.attributes}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.keywords" />:
-                </Label>
-                <Value>{entity.keywords}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.tags" />:
-                </Label>
-                <Value>{entity.tags}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.access_policy" />:
-                </Label>
-                <Value>{entity.access_policy}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.branches" />:
-                </Label>
-                <Value>{entity.branches}</Value>
-              </li>
-              <li>
-                <Label>
-                  <IntlMessages id="item.attributes.badges" />:
-                </Label>
-                <Value>{entity.badges}</Value>
-              </li>
-            </ul>
-          </Box>
-          <BoxTitle title={<IntlMessages id="item.show.sku.title" />} />
-          {(entity.sku ? entity.sku : []).map(sku => {
-            return (
-              <Box key={sku.sku_code}>
-                <ul>
-                  <li>
-                    <Label>sku_code:</Label>
-                    <Value>{sku.sku_code}</Value>
-                  </li>
-                  <li>
-                    <Label>sales_start_timestamp:</Label>
-                    <Value>{sku.sales_start_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>sales_end_timestamp:</Label>
-                    <Value>{sku.sales_end_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>status:</Label>
-                    <Value>{sku.status}</Value>
-                  </li>
-                  <li>
-                    <Label>start_timestamp:</Label>
-                    <Value>{sku.start_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>end_timestamp:</Label>
-                    <Value>{sku.end_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>item_code:</Label>
-                    <Value>{sku.item_code}</Value>
-                  </li>
-                  <li>
-                    <Label>sku_name:</Label>
-                    <Value>{sku.sku_name}</Value>
-                  </li>
-                  <li>
-                    <Label>delivery_type:</Label>
-                    <Value>{sku.delivery_type}</Value>
-                  </li>
-                  <li>
-                    <Label>msrp:</Label>
-                    <Value>{sku.msrp}</Value>
-                  </li>
-                  <li>
-                    <Label>currency_code:</Label>
-                    <Value>{sku.currency_code}</Value>
-                  </li>
-                </ul>
-              </Box>
-            );
-          })}
-          <BoxTitle title={<IntlMessages id="item.show.item_image.title" />} />
-          {(entity.images ? entity.images : []).map(image => {
-            return (
-              <Box>
-                <ul>
-                  <li>
-                    <Label>item_image_code:</Label>
-                    <Value>{image.item_image_code}</Value>
-                  </li>
-                  <li>
-                    <Label>item_code:</Label>
-                    <Value>{image.item_code}</Value>
-                  </li>
-                  <li>
-                    <Label>image_size:</Label>
-                    <Value>{image.image_size}</Value>
-                  </li>
-                  <li>
-                    <Label>image_url:</Label>
-                    <Value>{image.image_url}</Value>
-                  </li>
-                </ul>
-              </Box>
-            );
-          })}
-          <BoxTitle
-            title={<IntlMessages id="item.show.addon_service.title" />}
-          />
-          {(entity.addon_services ? entity.addon_services : []).map(
-            addon_service => {
-              return (
-                <Box>
-                  <ul>
-                    <li>
-                      <Label>addon_service_code:</Label>
-                      <Value>{addon_service.addon_service_code}</Value>
-                    </li>
-                    <li>
-                      <Label>addon_service_name:</Label>
-                      <Value>{addon_service.addon_service_name}</Value>
-                    </li>
-                    <li>
-                      <Label>price_ex_vat:</Label>
-                      <Value>{addon_service.price_ex_vat}</Value>
-                    </li>
-                    <li>
-                      <Label>price_in_vat:</Label>
-                      <Value>{addon_service.price_in_vat}</Value>
-                    </li>
-                    <li>
-                      <Label>description:</Label>
-                      <Value>{addon_service.description}</Value>
-                    </li>
-                    <li>
-                      <Label>currency_code:</Label>
-                      <Value>{addon_service.currency_code}</Value>
-                    </li>
-                    <li>
-                      <Label>memo:</Label>
-                      <Value>{addon_service.memo}</Value>
-                    </li>
-                  </ul>
-                </Box>
-              );
-            }
-          )}
-          <BoxTitle title={<IntlMessages id="item.show.category.title" />} />
-          {(entity.categories ? entity.categories : []).map(category => {
-            return (
-              <Box>
-                <ul>
-                  <li>
-                    <Label>status:</Label>
-                    <Value>{category.status}</Value>
-                  </li>
-                  <li>
-                    <Label>category_code:</Label>
-                    <Value>{category.category_code}</Value>
-                  </li>
-                  <li>
-                    <Label>category_name:</Label>
-                    <Value>{category.category_name}</Value>
-                  </li>
-                  <li>
-                    <Label>category_path:</Label>
-                    <Value>{category.category_path}</Value>
-                  </li>
-                  <li>
-                    <Label>category_key:</Label>
-                    <Value>{category.category_key}</Value>
-                  </li>
-                  <li>
-                    <Label>start_timestamp:</Label>
-                    <Value>{category.start_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>end_timestamp:</Label>
-                    <Value>{category.end_timestamp}</Value>
-                  </li>
-                  <li>
-                    <Label>description:</Label>
-                    <Value>{category.description}</Value>
-                  </li>
-                  <li>
-                    <Label>memo:</Label>
-                    <Value>{category.memo}</Value>
-                  </li>
-                </ul>
-              </Box>
-            );
-          })}
-          <BoxTitle
-            title={<IntlMessages id="item.show.relation_item.title" />}
-          />
+      <LayoutWrapper>
+        <PageHeader>Item Detail</PageHeader>
+        <div className="isoLayoutContent">
+          <Row>
+            <Col span={12}>
+              <Breadcrumb>
+                <Breadcrumb.Item>TOP</Breadcrumb.Item>
+                <Breadcrumb.Item><a href="">ベッド</a></Breadcrumb.Item>
+                <Breadcrumb.Item><a href="">収納ベッド</a></Breadcrumb.Item>
+              </Breadcrumb>
+              <img src="https://dummyimage.com/630" />
+            </Col>
+            <Col span={12}>
+              <Row>
+              <h2>{BED.name}</h2>
+              </Row>
+              <Row>
+                <p>
+                  収納スペースがたっぷりあるベッドです。限られた空間を有効に使えます。オプションの収納ベッド追加台を使えば長さ２１０ｃｍの布団でもご使用いただけます。※寝装品カバーは、ＳＳサイズの物をご使用ください。
+                  ※収納ベッド本体とヘッドボードを同時購入し、組立てをご希望される場合、本体の組立（税込3,240円）とヘッドボードの組立（税込1,080円）と２つの組立て作業のお申込みが必要となります。
+                </p>
+                <div><p>税込 {BED.price} 円</p><p>商品番号 {BED.item_number}</p></div>
+                <div><p>付帯作業</p></div>
+                <div>
+                <Button type="primary"> カートに追加 </Button>
+                  <Icon style={{ fontSize: '16px', color: '#eb2f96' }} type="heart" theme="filled" />
+                </div>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={12}>
+              <h3><Divider/>レビュー<Divider/></h3>
+              <p>
+                  <Icon style={{ fontSize: '16px', color: '#EBD751' }} type="star" theme="filled" />
+                  <Icon style={{ fontSize: '16px', color: '#EBD751' }} type="star" theme="filled" />
+                  <Icon style={{ fontSize: '16px', color: '#EBD751' }} type="star" theme="filled" />
+                  <Icon style={{ fontSize: '16px', color: '#6B6D6C' }} type="star" theme="filled" />
+                  <Icon style={{ fontSize: '16px', color: '#6B6D6C' }} type="star" theme="filled" />
+                  <Divider/>
+              </p>
+              <Button>レビューを投稿する</Button>
+            </Col>
+            <Col span={12}>
+            </Col>
+          </Row>
         </div>
-      </RestShow>
+      </LayoutWrapper>
     );
   }
 }
@@ -362,3 +88,9 @@ export default connect(
     destroyCleanup: actions.destroy.cleanup
   }
 )(ShowEntity);
+
+const BED = {
+  name: "収納ベッド・スモール・ウォールナット材　幅８８．５×奥行２０１×高さ２７ｃｍ",
+  price: "90,000",
+  item_number: "9999999"
+}
