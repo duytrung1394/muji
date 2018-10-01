@@ -27,6 +27,10 @@ require_once 'api/v1/items.php';
 // /api/v1/fruits
 require_once 'api/v1/fruits.php';
 
+
+// /api/v1/httpbins
+require_once 'api/v1/httpbins.php';
+
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
 
