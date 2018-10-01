@@ -16,7 +16,6 @@ import ThemeSwitcher from "./themeSwitcher/reducer";
 // import YoutubeSearch from './youtubeSearch/reducers';
 import PasswordRenewals from "./passwordRenewals/reducer";
 import PasswordResets from "./passwordResets/reducer";
-import DevReducers from "../customApp/redux/reducers";
 
 export default {
   Auth,
@@ -37,6 +36,5 @@ export default {
   // Invoices,
   // YoutubeSearch,
   PasswordRenewals,
-  PasswordResets,
-  ...DevReducers
+  PasswordResets
 };

@@ -12,7 +12,6 @@ import authSagas from "./auth/saga";
 import passwordResetSagas from "./passwordResets/saga";
 import passwordRenewalSagas from "./passwordRenewals/saga";
 
-import devSagas from "../customApp/redux/sagas";
 
 export default function* rootSaga() {
   yield all([
@@ -28,6 +27,5 @@ export default function* rootSaga() {
     // youtubeSearchSagas(),
     passwordResetSagas(),
     passwordRenewalSagas(),
-    devSagas()
   ]);
 }
