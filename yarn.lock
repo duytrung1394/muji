@@ -1500,7 +1500,7 @@ gauge@~1.2.5:
     lodash.padstart "^4.1.0"
 
 "generator-xenophy-simple@file:./generator-xenophy-simple":
-  version "0.9.3"
+  version "0.9.4"
   dependencies:
     chalk "^2.1.0"
     json-beautify "^1.0.1"

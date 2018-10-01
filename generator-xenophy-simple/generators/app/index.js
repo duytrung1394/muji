@@ -270,45 +270,45 @@ module.exports = class extends Generator {
       }
     );
 
-    // TODO: router.js
-    // const router_path = this.destinationPath("frontend/src/router.js");
-    // this.fs.copy(
-    //   router_path,
-    //   router_path,
-    //   {
-    //     process: (content) => {
-    //       const script = content.toString();
-    //       const ast = esprima.parseModule(script, { sourceType: 'module'});
-    //       const len = ast.body.length;
-    //       const routesAst = ast.body[len-2];
+    const router_path = this.destinationPath("frontend/src/routes.js");
+    this.fs.copy(
+      router_path,
+      router_path,
+      {
+        process: (content) => {
+          const script = content.toString();
+          const ast = esprima.parseModule(script, { sourceType: 'module'});
+          const len = ast.body.length;
+          const routesAst = ast.body[len-2];
 
-    //       const elements = routesAst.declarations[0].init.elements;
-    //       elements.push({
-    //         "type": "SpreadElement",
-    //         "argument": {
-    //           "type": "CallExpression",
-    //           "callee": {
-    //             "type": "Identifier",
-    //             "name": "restRoutes"
-    //           },
-    //           "arguments": [{
-    //             "type": "Literal",
-    //             "value": urlbase,
-    //           }, {
-    //             "type": "Literal",
-    //             "value": ResourceName,
-    //           }]
-    //         }
-    //       })
-    //       const code = ast.body.map((ast_node)=>{
-    //         return escodegen.generate(ast_node, escodegenOption)
-    //       }).join("\n")
+          const elements = routesAst.declarations[0].init.elements;
 
-    //       return prettier.format(`${comment}\n${code}`);
-    //     }
-    //   }
-    // );
+          const newRoutes = `[
+            {
+              path: "/${urlbase}",
+              exact: true,
+              component: asyncComponent(() => require("./containers/${ResourceName}/index"))
+            },
+            {
+              path: "/${urlbase}/:id",
+              exact: true,
+              component: asyncComponent(() => require("./containers/${ResourceName}/show"))
+            }
+          ]`;
+          const newRoutesAst = esprima.parseModule(newRoutes, { sourceType: 'module'});
+          newRoutesAst.body[0].expression.elements.map((newElement) => {
+            elements.push(newElement);
+          });
 
+          const code = ast.body.map((ast_node)=>{
+            return escodegen.generate(ast_node, escodegenOption)
+          }).join("\n")
+
+          return prettier.format(`${comment}\n${code}`);
+        }
+      }
+    );
+    
     // en_US.json
     const en_US_path = this.destinationPath("frontend/src/languageProvider/locales/en_US.json");
     this.fs.copy(
