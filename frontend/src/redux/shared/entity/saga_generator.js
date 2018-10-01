@@ -1,5 +1,5 @@
 import { call, put, all, takeEvery } from "redux-saga/effects";
-import authActions from "../../../../redux/auth/actions";
+import authActions from "../../../redux/auth/actions";
 
 export function restSagaFunctions(name, api, actions) {
   return {
