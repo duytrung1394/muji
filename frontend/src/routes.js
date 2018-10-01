@@ -1,31 +1,30 @@
+// 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import asyncComponent from "./helpers/AsyncFunc";
-
 const routes = [
   {
-    path: '/',
+    path: "/",
     exact: true,
-    component: asyncComponent(() => require("./home.js") )
+    component: asyncComponent(() => require("./home.js"))
   },
   {
-    path: '/about',
+    path: "/about",
     exact: true,
-    component: asyncComponent(() => require("./about.js") )
+    component: asyncComponent(() => require("./about.js"))
   },
   {
-    path: '/signin',
+    path: "/signin",
     exact: true,
-    component: asyncComponent(() => require("./containers/Page/signin") )
+    component: asyncComponent(() => require("./containers/Page/signin"))
   },
   {
-    path: '/fruits',
+    path: "/fruits",
     exact: true,
-    component: asyncComponent(() => require("./containers/Fruit/index") )
+    component: asyncComponent(() => require("./containers/Fruit/index"))
   },
   {
-    path: '/fruits/:id',
+    path: "/fruits/:id",
     exact: true,
-    component: asyncComponent(() => require("./containers/Fruit/show") )
-  },
-]
-
+    component: asyncComponent(() => require("./containers/Fruit/show"))
+  }
+];
 export default routes;
