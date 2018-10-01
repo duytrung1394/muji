@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/fruit/list/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import LayoutWrapper from "../../components/utility/layoutWrapper";
+import Table from "../../components/uielements/table";
 
 class Index extends Component {
   constructor(props) {
