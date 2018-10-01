@@ -1,19 +1,35 @@
-# MUJI 管理画面ブランチ
+# MUJI EC
 
-```
-origin: git@xenophy.info:xenophy/muji.git
+## 開発にあたって
 
-admin : 管理画面
-admin-work : 管理画面開発用、個々人のブランチをココにマージ
-```
+当座の開発にあたり、frontend以下のこれらのファイルとその役割を把握しておいてください。
 
-## クローン
+- routes.js : ルーティングを定義します。
+  - 記法について詳しくは react-router-config のREADMEを参照してください https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 
-```
-git clone git@xenophy.info:xenophy/muji.git muji-admin
-cd muji-admin
-git checkout -b admin-work origin/admin-work
-```
+### ジェネレータの責任範囲の変更について
+
+ジェネレータの責任範囲がAdminよりも小さく、redux系のモジュールのみを生成するようになりました。
+ECでは画面の枠組みを共通化することが極めて困難だからです。
+逆に、全体のレイアウトやコンポーネントは使い回せるようにしていく可能性が高いです。
+モジュラリティの意識が以前よりも重要になってきます。
+
+必要に応じてコンポーネントを切り出すことを恐れずに進めてください。
+
+## フロントエンドとサーバーサイドレンダリング
+
+`frontend` 以下にフロントエンド関係のファイルが存在します。
+
+- `yarn start`
+  - Reactを普通に開発する時向けです。最も軽く動作するので、普通に画面を開発するときはこのコマンドをを使用します。
+- `yarn dev`
+  - Express.JSによるサーバーサイドレンダリングを含む動作をします。コード書き換えのたびに全ての再コンパイルが走るので重いです。
+  - SSRをデバッグしたい場合などに用います。
+- `yarn build`, `yarn serve`
+  - 基本的に本番環境用もしくは本番環境に即したデバッグ用です。
+  - `yarn build` で `./build` ディレクトリ以下にファイルが計れるのでそれを `yarn serve` で配信します。
+
+Docker 環境から立ち上げている場合、 `docker-compose.yml` 内で frontend 以下にある `yarn start` をそれぞれ手元で書き換えて利用してください。
 
 ## 開発向けの動作方法
 

@@ -1,7 +1,7 @@
 {
-  "name": "prismatix-admin",
+  "name": "muji-ec",
   "version": "1.0.0",
-  "description": "``` origin: git@xenophy.info:xenophy/muji.git",
+  "description": "",
   "main": "no",
   "directories": {
     "doc": "doc"
@@ -25,9 +25,13 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "esprima": "^4.0.0",
+    "express-manifest": "^0.1.1",
     "generator-xenophy-simple": "file:./generator-xenophy-simple",
     "pluralize": "^7.0.0",
     "prettier": "^1.13.7",
     "yo": "^2.0.3"
+  },
+  "devDependencies": {
+    "webpack-dev-middleware": "^3.2.0"
   }
 }
