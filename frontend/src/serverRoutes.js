@@ -1,7 +1,6 @@
 import express from 'express';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 
 import { StaticRouter } from 'react-router-dom';
@@ -18,16 +17,16 @@ function timeout(ms) {
 }
 
 const ssr = async (req, res) => {
-  const matchRoutes = matchRoutes(routes, req.url);
+  const matchedRoutes = matchRoutes(routes, req.url);
   if( matchedRoutes.length > 1 ){
     console.warn(`the url(${req.url}) matches multiple routes.`);
   }
-  const matched = matchedRoutes[0].route;
+  const route = matchedRoutes[0].route;
   let extraProps = {};
-  if( typeof(matched.component.getInitialProps) == 'function' ){
-    extraProps = await matched.component.getInitialProps();
+  if( typeof(route.component.getInitialProps) == 'function' ){
+    extraProps = await route.component.getInitialProps();
   }else{
-    console.warn(`matched Component(${matched.component}) should implements getInitialProps static function.`);
+    console.warn(`matched Component(${route.component}) should implements getInitialProps static function.`);
   }
   
   ReactDOMServer.renderToNodeStream(
