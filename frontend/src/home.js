@@ -24,8 +24,10 @@ class Home extends Component {
           total: { this.props.total }
         </p>
 
-        This Page is Home Page!! <br />
-        <Link to={'/about'}>about</Link>
+        <p>This Page is Home Page!!</p>
+        <p><Link to={'/about'}>about</Link></p>
+        <p><Link to={'/fruits'}>fruits</Link></p>
+        <p><Link to={'/httpbin'}>httpbin</Link></p>
       </div>
     );
   }
