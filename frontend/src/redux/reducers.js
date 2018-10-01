@@ -5,11 +5,13 @@ import App from "./app/reducer";
 import ThemeSwitcher from "./themeSwitcher/reducer";
 import PasswordRenewals from "./passwordRenewals/reducer";
 import PasswordResets from "./passwordResets/reducer";
+import CustomApp from "../customApp/redux/reducers";
 export default {
   Auth,
   App,
   ThemeSwitcher,
   PasswordRenewals,
   PasswordResets,
-  Fruit
+  Fruit,
+  ...CustomApp
 };

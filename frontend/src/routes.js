@@ -19,12 +19,12 @@ const routes = [
   {
     path: "/fruits",
     exact: true,
-    component: asyncComponent(() => require("./containers/Fruit/index"))
+    component: asyncComponent(() => require("./customApp/containers/Fruit/index"))
   },
   {
     path: "/fruits/:fruit_code",
     exact: true,
-    component: asyncComponent(() => require("./containers/Fruit/show"))
+    component: asyncComponent(() => require("./customApp/containers/Fruit/show"))
   }
 ];
 export default routes;
