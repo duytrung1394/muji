@@ -106,16 +106,16 @@ module.exports = class extends Generator {
 
     // 置換対象ファイルパスを羅列
     const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'frontend/src/customApp/redux/_resource_name_/entity/' + name
+      'frontend/src/redux/_resource_name_/entity/' + name
     );
     const listFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'frontend/src/customApp/redux/_resource_name_/list/' + name
+      'frontend/src/redux/_resource_name_/list/' + name
     );
     const combineFiles = ['reducers.js','sagas.js'].map(name =>
-      'frontend/src/customApp/redux/_resource_name_/' + name
+      'frontend/src/redux/_resource_name_/' + name
     );
     const containerFiles = ['index.js','show.js'].map(name =>
-      'frontend/src/customApp/containers/_ResourceName_/' + name
+      'frontend/src/containers/_ResourceName_/' + name
     )
     const backendFiles = [
       'backend/routes/api/v1/_end_point_.php',
@@ -170,7 +170,7 @@ module.exports = class extends Generator {
     // 既存ファイルの変更
     this.log(chalk.red('生成した各モジュールを本体コードから読み込むため、以降の質問にはyと答えてください'));
     // reducers.js
-    const reducers_path = this.destinationPath("frontend/src/customApp/redux/reducers.js");
+    const reducers_path = this.destinationPath("frontend/src/redux/reducers.js");
     this.fs.copy(
       reducers_path,
       reducers_path,
@@ -220,7 +220,7 @@ module.exports = class extends Generator {
       }
     );
     // sagas.js
-    const sagas_path = this.destinationPath("frontend/src/customApp/redux/sagas.js");
+    const sagas_path = this.destinationPath("frontend/src/redux/sagas.js");
     this.fs.copy(
       sagas_path,
       sagas_path,
@@ -270,111 +270,44 @@ module.exports = class extends Generator {
       }
     );
 
-    // router.js
-    const router_path = this.destinationPath("frontend/src/customApp/router.js");
-    this.fs.copy(
-      router_path,
-      router_path,
-      {
-        process: (content) => {
-          const script = content.toString();
-          const ast = esprima.parseModule(script, { sourceType: 'module'});
-          const len = ast.body.length;
-          const routesAst = ast.body[len-2];
+    // TODO: router.js
+    // const router_path = this.destinationPath("frontend/src/router.js");
+    // this.fs.copy(
+    //   router_path,
+    //   router_path,
+    //   {
+    //     process: (content) => {
+    //       const script = content.toString();
+    //       const ast = esprima.parseModule(script, { sourceType: 'module'});
+    //       const len = ast.body.length;
+    //       const routesAst = ast.body[len-2];
 
-          const elements = routesAst.declarations[0].init.elements;
-          elements.push({
-            "type": "SpreadElement",
-            "argument": {
-              "type": "CallExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "restRoutes"
-              },
-              "arguments": [{
-                "type": "Literal",
-                "value": urlbase,
-              }, {
-                "type": "Literal",
-                "value": ResourceName,
-              }]
-            }
-          })
-          const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node, escodegenOption)
-          }).join("\n")
+    //       const elements = routesAst.declarations[0].init.elements;
+    //       elements.push({
+    //         "type": "SpreadElement",
+    //         "argument": {
+    //           "type": "CallExpression",
+    //           "callee": {
+    //             "type": "Identifier",
+    //             "name": "restRoutes"
+    //           },
+    //           "arguments": [{
+    //             "type": "Literal",
+    //             "value": urlbase,
+    //           }, {
+    //             "type": "Literal",
+    //             "value": ResourceName,
+    //           }]
+    //         }
+    //       })
+    //       const code = ast.body.map((ast_node)=>{
+    //         return escodegen.generate(ast_node, escodegenOption)
+    //       }).join("\n")
 
-          return prettier.format(`${comment}\n${code}`);
-        }
-      }
-    );
-
-    // sidebar.js
-    const sidebar_path = this.destinationPath("frontend/src/customApp/sidebar.js");
-    this.fs.copy(
-      sidebar_path,
-      sidebar_path,
-      {
-        process: (content) => {
-          const script = content.toString();
-          const ast = esprima.parseModule(script, { sourceType: 'module'});
-          const optionsAst = ast.body[0];
-          const elements = optionsAst.declarations[0].init.elements;
-          elements.push({
-            "type": "ObjectExpression",
-            "properties": [{
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "key"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": urlbase,
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }, {
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "label"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": `${resourceName}.sidebar`,
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }, {
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "leftIcon"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": "ion-android-checkbox-outline",
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }]
-          })
-          const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node, escodegenOption)
-          }).join("\n")
-
-          return prettier.format(`${comment}\n${code}`);
-        }
-      }
-    );
-
+    //       return prettier.format(`${comment}\n${code}`);
+    //     }
+    //   }
+    // );
 
     // en_US.json
     const en_US_path = this.destinationPath("frontend/src/languageProvider/locales/en_US.json");

@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "scaffold": "yo firebird-rest",
+    "scaffold": "yo xenophy-simple",
     "lint": "eslint . --ext .js --ignore-pattern '*.style.js'",
     "lint:fix": "eslint . --ext .js --ignore-pattern '*.style.js' --fix"
   },
