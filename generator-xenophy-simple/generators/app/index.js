@@ -106,16 +106,16 @@ module.exports = class extends Generator {
 
     // 置換対象ファイルパスを羅列
     const entityFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'frontend/src/redux/_resource_name_/entity/' + name
+      'frontend/src/customApp/redux/_resource_name_/entity/' + name
     );
     const listFiles = ['actions.js','reducer.js','saga.js'].map(name =>
-      'frontend/src/redux/_resource_name_/list/' + name
+      'frontend/src/customApp/redux/_resource_name_/list/' + name
     );
     const combineFiles = ['reducers.js','sagas.js'].map(name =>
-      'frontend/src/redux/_resource_name_/' + name
+      'frontend/src/customApp/redux/_resource_name_/' + name
     );
     const containerFiles = ['index.js','show.js'].map(name =>
-      'frontend/src/containers/_ResourceName_/' + name
+      'frontend/src/customApp/containers/_ResourceName_/' + name
     )
     const backendFiles = [
       'backend/routes/api/v1/_end_point_.php',
@@ -128,6 +128,7 @@ module.exports = class extends Generator {
       ...containerFiles,
       ...backendFiles,
     ];
+    console.log(files);
 
     for( const i in files ){
       const file = files[i];
@@ -170,7 +171,7 @@ module.exports = class extends Generator {
     // 既存ファイルの変更
     this.log(chalk.red('生成した各モジュールを本体コードから読み込むため、以降の質問にはyと答えてください'));
     // reducers.js
-    const reducers_path = this.destinationPath("frontend/src/redux/reducers.js");
+    const reducers_path = this.destinationPath("frontend/src/customApp/redux/reducers.js");
     this.fs.copy(
       reducers_path,
       reducers_path,
@@ -220,7 +221,7 @@ module.exports = class extends Generator {
       }
     );
     // sagas.js
-    const sagas_path = this.destinationPath("frontend/src/redux/sagas.js");
+    const sagas_path = this.destinationPath("frontend/src/customApp/redux/sagas.js");
     this.fs.copy(
       sagas_path,
       sagas_path,
@@ -287,12 +288,12 @@ module.exports = class extends Generator {
             {
               path: "/${urlbase}",
               exact: true,
-              component: asyncComponent(() => require("./containers/${ResourceName}/index"))
+              component: asyncComponent(() => require("./customApp/containers/${ResourceName}/index"))
             },
             {
               path: "/${urlbase}/:${pkName}",
               exact: true,
-              component: asyncComponent(() => require("./containers/${ResourceName}/show"))
+              component: asyncComponent(() => require("./customApp/containers/${ResourceName}/show"))
             }
           ]`;
           const newRoutesAst = esprima.parseModule(newRoutes, { sourceType: 'module'});
