@@ -6,12 +6,12 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    
+
   backend:
     build: backend
     command: "php -S 0.0.0.0:8080 -t public"
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       - mariadb
     volumes:
@@ -23,7 +23,7 @@ services:
     build: frontend
     command: "yarn start"
     ports:
-      - "3000:3000"
+      - "4000:3000"
     volumes:
       - ./frontend:/usr/src/app
       - backend_cache:/usr/local/share/.cache
@@ -34,7 +34,7 @@ services:
       MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - "13306:3306"
+      - "23306:3306"
   deployer:
     restart: 'no'
     build: deployer

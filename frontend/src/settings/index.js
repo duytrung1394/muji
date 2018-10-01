@@ -1,5 +1,5 @@
 export default {
-  apiUrl: "http://localhost:8080",
+  apiUrl: "http://localhost:8081",
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
 const siteConfig = {
@@ -30,7 +30,7 @@ const Auth0Config = {
     auth: {
       autoParseHash: true,
       redirect: true,
-      redirectUrl: "http://localhost:3000/auth0loginCallback"
+      redirectUrl: "http://localhost:4000/auth0loginCallback"
     },
     languageDictionary: {
       title: "Isomorphic",
