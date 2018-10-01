@@ -22,7 +22,7 @@ const routes = [
     component: asyncComponent(() => require("./containers/Fruit/index"))
   },
   {
-    path: "/fruits/:id",
+    path: "/fruits/:fruit_code",
     exact: true,
     component: asyncComponent(() => require("./containers/Fruit/show"))
   }

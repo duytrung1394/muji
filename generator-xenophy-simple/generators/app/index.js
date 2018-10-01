@@ -290,7 +290,7 @@ module.exports = class extends Generator {
               component: asyncComponent(() => require("./containers/${ResourceName}/index"))
             },
             {
-              path: "/${urlbase}/:id",
+              path: "/${urlbase}/:${pkName}",
               exact: true,
               component: asyncComponent(() => require("./containers/${ResourceName}/show"))
             }
@@ -308,7 +308,7 @@ module.exports = class extends Generator {
         }
       }
     );
-    
+
     // en_US.json
     const en_US_path = this.destinationPath("frontend/src/languageProvider/locales/en_US.json");
     this.fs.copy(
