@@ -31,17 +31,10 @@ const routes = [
     )
   },
   {
-    path: "/httpbins",
+    path: "/httpbin",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Httpbin/index")
-    )
-  },
-  {
-    path: "/httpbins/:httpbin_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Httpbin/show")
     )
   }
 ];
