@@ -16,6 +16,16 @@ const routes = [
     exact: true,
     component: asyncComponent(() => require("./containers/Page/signin") )
   },
+  {
+    path: '/fruits',
+    exact: true,
+    component: asyncComponent(() => require("./containers/Fruit/index") )
+  },
+  {
+    path: '/fruits/:id',
+    exact: true,
+    component: asyncComponent(() => require("./containers/Fruit/show") )
+  },
 ]
 
 export default routes;
