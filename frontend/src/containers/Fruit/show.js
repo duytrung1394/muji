@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 
 class Show extends Component {
   componentDidMount() {
-    this.props.request(this.props.match.params.id);
+    this.props.request(this.props.match.params.fruit_code);
   }
 
   render() {

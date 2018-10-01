@@ -67,9 +67,9 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = '/dashboard/fruits';
+          url = '/fruits';
         } else {
-          url = `/dashboard/fruits/page/${page}`;
+          url = `/fruits/page/${page}`;
         }
         history.push(url);
       }
