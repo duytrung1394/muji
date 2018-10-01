@@ -1,6 +1,6 @@
 {
   "name": "generator-xenophy-simple",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "FirebirdプロジェクトのREST関連ファイルを定義します",
   "homepage": "",
   "author": {
