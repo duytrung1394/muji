@@ -79,12 +79,16 @@ class ItemsController extends Controller
     public function show($id)
     {
 
-        $response = \Prismatix::resource('item.Item')->showDocument([
-            'item_code' => $id,
-        ]);
+//        $response = \Prismatix::resource('item.Item')->showDocument([
+//            'item_code' => $id,
+//        ]);
 
         return [
-            'item'  => $response->data,
+            // 'item'  => $response->data,
+            'item' => [
+                'id' => $id,
+                'name' => "NNNNベッドNNNN"
+            ]
         ];
     }
 

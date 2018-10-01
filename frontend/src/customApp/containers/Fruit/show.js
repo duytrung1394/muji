@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/<%= resource_name %>/entity/actions";
+import actions from "../../redux/fruit/entity/actions";
 import { injectIntl } from "react-intl";
 
 class Show extends Component {
   componentDidMount() {
-    this.props.request(this.props.match.params.<%= pkName %>);
+    this.props.request(this.props.match.params.fruit_code);
   }
 
   render() {
@@ -21,7 +21,7 @@ class Show extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.<%= ResourceName %>.Entity.toJS();
+  return state.Fruit.Entity.toJS();
 };
 
 const { request, cleanup } = actions.fetch;

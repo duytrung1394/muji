@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/<%= resource_name %>/list/actions";
+import actions from "../../redux/fruit/list/actions";
 import { injectIntl } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import Table from "../../../components/uielements/table";
+
+import styled from 'styled-components';
+
+const IndexWrapper = styled.div`
+  width: 100%;
+  td {
+    color: #990000;
+  }
+  .ant-pagination {
+    font-weight: bold;
+    font-size: 20pt;
+  }
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -67,9 +80,9 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = '/<%= urlbase %>';
+          url = '/fruits';
         } else {
-          url = `/<%= urlbase %>/page/${page}`;
+          url = `/fruits/page/${page}`;
         }
         history.push(url);
       }
@@ -77,7 +90,7 @@ class Index extends Component {
 
     return (
       <LayoutWrapper>
-        <div className="isoLayoutContent">
+        <IndexWrapper className="isoLayoutContent">
           <Table
             rowKey="id"
             dataSource={entities}
@@ -86,14 +99,14 @@ class Index extends Component {
             loading={fetching || destroying}
             pagination={pagination}
           />
-        </div>
+        </IndexWrapper>
       </LayoutWrapper>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return state.<%= ResourceName %>.List.toJS();
+  return state.Fruit.List.toJS();
 };
 
 const actionCreators = {

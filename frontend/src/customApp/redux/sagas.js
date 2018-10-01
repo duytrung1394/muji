@@ -1,9 +1,8 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
-import itemSagas from "./item/sagas";
-import categorySagas from "./category/sagas";
-import userSagas from "./user/sagas";
+import httpbinSagas from "./httpbin/sagas";
+import fruitSagas from "./fruit/sagas";
 export default function* devSaga() {
-  yield all([taskSagas(), userSagas(), categorySagas(), itemSagas()]);
+  yield all([taskSagas(), fruitSagas(), httpbinSagas()]);
 }

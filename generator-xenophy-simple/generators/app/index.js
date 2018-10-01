@@ -270,8 +270,7 @@ module.exports = class extends Generator {
       }
     );
 
-    // router.js
-    const router_path = this.destinationPath("frontend/src/customApp/router.js");
+    const router_path = this.destinationPath("frontend/src/routes.js");
     this.fs.copy(
       router_path,
       router_path,
@@ -283,23 +282,24 @@ module.exports = class extends Generator {
           const routesAst = ast.body[len-2];
 
           const elements = routesAst.declarations[0].init.elements;
-          elements.push({
-            "type": "SpreadElement",
-            "argument": {
-              "type": "CallExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "restRoutes"
-              },
-              "arguments": [{
-                "type": "Literal",
-                "value": urlbase,
-              }, {
-                "type": "Literal",
-                "value": ResourceName,
-              }]
+
+          const newRoutes = `[
+            {
+              path: "/${urlbase}",
+              exact: true,
+              component: asyncComponent(() => require("./customApp/containers/${ResourceName}/index"))
+            },
+            {
+              path: "/${urlbase}/:${pkName}",
+              exact: true,
+              component: asyncComponent(() => require("./customApp/containers/${ResourceName}/show"))
             }
-          })
+          ]`;
+          const newRoutesAst = esprima.parseModule(newRoutes, { sourceType: 'module'});
+          newRoutesAst.body[0].expression.elements.map((newElement) => {
+            elements.push(newElement);
+          });
+
           const code = ast.body.map((ast_node)=>{
             return escodegen.generate(ast_node, escodegenOption)
           }).join("\n")
@@ -308,73 +308,6 @@ module.exports = class extends Generator {
         }
       }
     );
-
-    // sidebar.js
-    const sidebar_path = this.destinationPath("frontend/src/customApp/sidebar.js");
-    this.fs.copy(
-      sidebar_path,
-      sidebar_path,
-      {
-        process: (content) => {
-          const script = content.toString();
-          const ast = esprima.parseModule(script, { sourceType: 'module'});
-          const optionsAst = ast.body[0];
-          const elements = optionsAst.declarations[0].init.elements;
-          elements.push({
-            "type": "ObjectExpression",
-            "properties": [{
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "key"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": urlbase,
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }, {
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "label"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": `${resourceName}.sidebar`,
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }, {
-              "type": "Property",
-              "key": {
-                "type": "Identifier",
-                "name": "leftIcon"
-              },
-              "computed": false,
-              "value": {
-                "type": "Literal",
-                "value": "ion-android-checkbox-outline",
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false
-            }]
-          })
-          const code = ast.body.map((ast_node)=>{
-            return escodegen.generate(ast_node, escodegenOption)
-          }).join("\n")
-
-          return prettier.format(`${comment}\n${code}`);
-        }
-      }
-    );
-
 
     // en_US.json
     const en_US_path = this.destinationPath("frontend/src/languageProvider/locales/en_US.json");
