@@ -128,7 +128,6 @@ module.exports = class extends Generator {
       ...containerFiles,
       ...backendFiles,
     ];
-    console.log(files);
 
     for( const i in files ){
       const file = files[i];
