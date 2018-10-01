@@ -1,5 +1,5 @@
 import axios from "axios";
-import { call, put, all } from "redux-saga/effects";
+import { call, put, all, takeEvery } from "redux-saga/effects";
 import actions from './actions';
 import authActions from "../../../redux/auth/actions";
 
@@ -19,6 +19,6 @@ function* fetchIpSaga(){
 
 export default function* saga() {
   yield all([
-    fetchIpSaga(),
-  ]);
+    takeEvery(actions.ip.fetch.request.toString(), fetchIpSaga)
+  ])
 }
