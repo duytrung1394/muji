@@ -4,7 +4,7 @@ import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import TopWrapper from "./top.style";
-import Notice from "./notice";
+import Notice from "../../components/notice/notice";
 import EcPanel from "../../components/panel/ecPanel";
 
 class Index extends Component {
@@ -18,14 +18,16 @@ class Index extends Component {
     const items = entity.features ? entity.features : [];
     return (
       <TopWrapper>
-        <Spin spinning={fetching}/>
+        <Spin spinning={fetching} size="large"/>
         <div className="topContent">
           <Notice notices={entity.notices} />
         </div>
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image"/>
         </div>
-        <EcPanel title="特集" items={items}/>
+        <div className="topContent">
+          <EcPanel title="特集" items={items}/>
+        </div>
       </TopWrapper>
     );
   }
