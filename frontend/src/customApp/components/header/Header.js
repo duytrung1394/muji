@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Layout, Form, Input, Select, Icon } from "antd";
 import HeaderWrapper from "./header.style";
 
@@ -29,7 +30,9 @@ class Header extends Component {
              </p>
            </div>
            <div id="logo-search-icons">
-             <img src="https://img.muji.net/img/common/logo-muji.svg" width="128" height="20" alt="無印良品" id="logo"/>
+             <Link to="/store">
+               <img src="https://img.muji.net/img/common/logo-muji.svg" width="128" height="20" alt="無印良品" id="logo"/>
+             </Link>
              <Form id="search">
                <Input addonBefore={prefixSelector} style={{ width: '50%' }} />
              </Form>
@@ -53,7 +56,6 @@ class Header extends Component {
 }
 
 const WrappedRegistrationForm = Form.create()(Header);
-
 
 export default WrappedRegistrationForm;
 

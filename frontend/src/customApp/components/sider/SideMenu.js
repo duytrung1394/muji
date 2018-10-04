@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import SiderWrapper from "./sider.style";
 
 const { Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-
 
 class SideMenu extends Component {
   render() {

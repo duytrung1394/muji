@@ -17,18 +17,18 @@ const Routes = () => renderRoutes(routes)
 
 const DashApp = () => (
   <Hoc>
-    <Layout>
-      <Header />
+    <BrowserRouter>
       <Layout>
-        <SideMenu />
-        <Content>
-          <BrowserRouter>
+        <Header />
+        <Layout>
+          <SideMenu />
+          <Content>
             <Routes />
-          </BrowserRouter>
-          <Footer />
-        </Content>
+            <Footer />
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </BrowserRouter>
   </Hoc>
 );
 

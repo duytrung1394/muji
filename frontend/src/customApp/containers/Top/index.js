@@ -7,18 +7,6 @@ import TopWrapper from "./top.style";
 import Notice from "./notice";
 import EcPanel from "../../components/panel/ecPanel";
 
-
-// const items = [
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-//   {img_src: "https://www.muji.com/jp/img/store/panel/181003_ginza_640.png"},
-// ];
-
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest("");
@@ -37,7 +25,7 @@ class Index extends Component {
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image"/>
         </div>
-        <EcPanel title="特集" link="" items={items}/>
+        <EcPanel title="特集" items={items}/>
       </TopWrapper>
     );
   }

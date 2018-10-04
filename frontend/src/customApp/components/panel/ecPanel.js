@@ -2,7 +2,7 @@ import React from "react";
 import EcPanelWrapper from "./ecPanel.style";
 
 const EcPanel = props => {
-  const { title, link, items } = props;
+  const { title, items } = props;
   return (
     <EcPanelWrapper>
       <section>
