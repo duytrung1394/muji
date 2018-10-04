@@ -5,5 +5,6 @@ const SidebarWrapper = styled.div`
     background: #fff;
     border-right: solid 1px #f9f9f9;
   }
+  background: #fff;
 `
 export default SidebarWrapper;

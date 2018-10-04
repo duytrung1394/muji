@@ -28,6 +28,20 @@ class TopsController extends Controller
                 ['url' => '/store', 'title' => 'お知らせ2'],
                 ['url' => '/store', 'title' => 'お知らせ3'],
             ],
+            'feature_image' => 'https://www.muji.com/jp/img/panel/main/ryohinweek_pc.png',
+            'features' => [
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/181003_ginza_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/flannel2018_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/c18083101_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/181003_ginza_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/flannel2018_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/c18083101_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/181003_ginza_640.png'],
+                ['img_src' => 'https://www.muji.com/jp/img/store/panel/flannel2018_640.png'],
+            ],
         ];
     }
 }
+
+
+
