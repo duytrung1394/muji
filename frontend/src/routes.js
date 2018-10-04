@@ -4,12 +4,12 @@ const routes = [
   {
     path: "/",
     exact: true,
-    component: asyncComponent(() => require("./customApp/containers/Top/show"))
+    component: asyncComponent(() => require("./customApp/containers/Top/index"))
   },
   {
     path: "/store",
     exact: true,
-    component: asyncComponent(() => require("./customApp/containers/Top/show"))
+    component: asyncComponent(() => require("./customApp/containers/Top/index"))
   },
   {
     path: "/about",

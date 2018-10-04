@@ -11,5 +11,5 @@ if (empty($router)) {
  */
 $router->get('/api/v1/tops', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\TopsController@show',
+    'uses'          => 'Api\V1\TopsController@index',
 ]);

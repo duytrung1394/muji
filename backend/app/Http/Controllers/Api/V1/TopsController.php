@@ -10,7 +10,7 @@ class TopsController extends Controller
      *
      * @return Response
      */
-    public function show(Request $request)
+    public function index(Request $request)
     {
         return [
             'item' => $this->getMockdata(),

@@ -6,9 +6,9 @@ import { Spin } from "antd";
 import TopWrapper from "./top.style";
 import Notice from "./notice";
 
-class Show extends Component {
+class Index extends Component {
   componentDidMount() {
-    this.props.request("");
+    this.props.fetchRequest("");
   }
 
   render() {
@@ -29,11 +29,8 @@ const mapStateToProps = state => {
   return state.Top.Entity.toJS();
 };
 
-const { request, cleanup } = actions.fetch;
-
 const actionCreators = {
-  request,
-  cleanup
+  fetchRequest: actions.fetch.request
 };
 
 const enhance = (C) => {
@@ -42,4 +39,4 @@ const enhance = (C) => {
   return injected
 }
 
-export default enhance(Show);
+export default enhance(Index);

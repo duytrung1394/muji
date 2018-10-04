@@ -25,9 +25,9 @@ const DashApp = () => (
           <BrowserRouter>
             <Routes />
           </BrowserRouter>
+          <Footer />
         </Content>
       </Layout>
-      <Footer />
     </Layout>
   </Hoc>
 );
