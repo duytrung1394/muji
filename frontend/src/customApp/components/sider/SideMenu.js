@@ -11,7 +11,9 @@ class SideMenu extends Component {
   render() {
     return (
       <SiderWrapper>
-        <Sider breakpoint="lg" collapsedWidth="0">
+        <Sider breakpoint="lg" collapsedWidth="0"
+          style={{ overflow: 'scroll', position: 'left', left: 0, background: '#f7f7f7'}
+      }>
           <Menu>
             <MenuItemGroup title="特集" key="g1">
               <Menu.Item key="10">特集</Menu.Item>
