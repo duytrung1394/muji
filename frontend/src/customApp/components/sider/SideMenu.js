@@ -27,6 +27,15 @@ class SideMenu extends Component {
               <Menu.Item key="34">SALE</Menu.Item>
               <Menu.Item key="35">アウトレット</Menu.Item>
             </MenuItemGroup>
+            <MenuItemGroup title="衣料品" key="g4">
+              <Menu.Item key="41"><Link to="/store/cmdty/section/T10000">婦人ウェア</Link></Menu.Item>
+            </MenuItemGroup>
+            <MenuItemGroup title="子供・マタニティ" key="g5">
+              <Menu.Item key="51"><Link to="/store/cmdty/section/T10007">ベピー (80 - 100cm)</Link></Menu.Item>
+            </MenuItemGroup>
+            <MenuItemGroup title="産地直送" key="g11">
+              <Menu.Item key="111"><Link to="/store/pc/user/shokoku/">諸国良品</Link></Menu.Item>
+            </MenuItemGroup>
           </Menu>
         </Sider>
       </SiderWrapper>
