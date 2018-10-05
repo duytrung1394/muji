@@ -4,8 +4,9 @@ import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import TopWrapper from "./top.style";
-import Notice from "../../components/notice/notice";
+import Notice from "../../containers/Top/notice";
 import EcPanel from "../../components/panel/ecPanel";
+
 
 class Index extends Component {
   componentDidMount() {
@@ -20,10 +21,12 @@ class Index extends Component {
       <TopWrapper>
         <Spin spinning={fetching} size="large"/>
         <div className="topContent">
-          <Notice notices={entity.notices} />
+          <Notice notices={entity.notices}/>
         </div>
         <div className="topContent">
+        <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
           <img src={featureImage} alt="" id="feature-image"/>
+          </a>
         </div>
         <div className="topContent">
           <EcPanel title="特集" items={items}/>
