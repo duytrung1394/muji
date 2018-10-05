@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const EcPanelWrapper = styled.div`
+const FeatureWrapper = styled.div`
   li {
     list-style-type: none;
     display: inline;
@@ -9,4 +9,4 @@ const EcPanelWrapper = styled.div`
     }
   }
 `
-export default EcPanelWrapper;
+export default FeatureWrapper;

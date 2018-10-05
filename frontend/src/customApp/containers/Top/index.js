@@ -5,7 +5,9 @@ import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import TopWrapper from "./top.style";
 import Notice from "../../components/notice/notice";
-import EcPanel from "../../components/panel/ecPanel";
+import Feature from "../../components/top/feature";
+import Shop from "../../components/top/shop";
+import Info from "../../components/top/info";
 
 class Index extends Component {
   componentDidMount() {
@@ -16,6 +18,7 @@ class Index extends Component {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     const items = entity.features ? entity.features : [];
+    const infos = entity.infos ? entity.infos : [];
     return (
       <TopWrapper>
         <Spin spinning={fetching} size="large"/>
@@ -25,9 +28,9 @@ class Index extends Component {
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image"/>
         </div>
-        <div className="topContent">
-          <EcPanel title="特集" items={items}/>
-        </div>
+        <Feature features={items}/>
+        <Shop />
+        <Info infos={infos}/>
       </TopWrapper>
     );
   }
