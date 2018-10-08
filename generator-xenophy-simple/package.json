@@ -1,6 +1,6 @@
 {
   "name": "generator-xenophy-simple",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "FirebirdプロジェクトのREST関連ファイルを定義します",
   "homepage": "",
   "author": {
@@ -8,32 +8,27 @@
     "email": "akn@s-satoshi.net",
     "url": ""
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "",
-    "yeoman-generator"
-  ],
+  "keywords": ["", "yeoman-generator"],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "nsp": "^2.8.0",
     "eslint": "^4.19.1",
-    "prettier": "^1.11.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.1.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "eslint-config-xo": "^0.20.1",
-    "jest": "^22.0.6"
+    "husky": "^0.14.3",
+    "jest": "^22.0.6",
+    "lint-staged": "^6.1.1",
+    "nsp": "^2.8.0",
+    "prettier": "^1.11.1",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
   },
   "dependencies": {
     "chalk": "^2.1.0",
+    "eslint-config-xo": "^0.25.0",
     "json-beautify": "^1.0.1",
     "translate": "^1.0.2",
     "yeoman-generator": "^2.0.1",
@@ -49,20 +44,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -76,9 +62,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "git@xenophy.info:xenophy/prismatix-admin.git",
   "license": "unlicense"
