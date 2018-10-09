@@ -5,10 +5,9 @@ import IntlMessages from "../../../components/utility/intlMessages";
 const notice = props => {
   const { notices } = props;
   return (
-    <div>
-      <p style={{marginLeft:'500px', marginRight:'600px'}}>
-      <div  style={{border:'1px solid #dcdfe5', padding:'10px 50px'}}>
-      <IntlMessages id="top.attributes.notices"/>
+
+      <div  style={{border:'1px solid #dcdfe5', padding:'10px 10px',width:'40%',marginLeft:'25%',borderRadius:"8px"}}>
+      <IntlMessages id="top.attributes.notices" />
         <ul>
           {
             notices && notices.map(notice => {
@@ -18,8 +17,7 @@ const notice = props => {
           }
         </ul>
         </div>
-      </p>
-    </div>
+      
   );
 }
 
