@@ -39,6 +39,20 @@ class TopsController extends Controller
                 ['img_src' => 'https://www.muji.com/jp/img/store/panel/181003_ginza_640.png'],
                 ['img_src' => 'https://www.muji.com/jp/img/store/panel/flannel2018_640.png'],
             ],
+            'new_items' => [
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10901_640_180928.jpg',
+                    'title' => '衣料品 新商品一覧'
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10909_640_181005.jpg',
+                    'title' => '生活雑貨 新商品一覧'
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10905_640_181005.jpg',
+                    'title' => '食品 新商品一覧'
+                ],
+            ]
         ];
     }
 }

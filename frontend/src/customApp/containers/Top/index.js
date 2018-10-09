@@ -6,6 +6,7 @@ import { Spin } from "antd";
 import TopWrapper from "./top.style";
 import Notice from "../../components/notice/notice";
 import Feature from "../../components/top/feature";
+import NewItem from "../../components/top/newItem";
 
 class Index extends Component {
   componentDidMount() {
@@ -24,7 +25,8 @@ class Index extends Component {
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image" />
         </div>
-        <Feature features={entity.features}/>
+        <Feature features={entity.features} />
+        <NewItem newItems={entity.new_items} />
       </TopWrapper>
     );
   }
