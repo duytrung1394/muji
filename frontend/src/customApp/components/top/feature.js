@@ -4,6 +4,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import Panel from "../panel/panel";
 import ItemImageList from "../panel/itemImageList";
 import FeatureWrapper from "./feature.style";
+
 const Feature = props => {
   return (
     <FeatureWrapper>
