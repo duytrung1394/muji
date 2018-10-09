@@ -19,17 +19,18 @@ const ItemImageListWrapper = styled.div`
 const ItemImageList = props => {
   return (
     <ItemImageListWrapper>
-      {props.items && props.items.map(item => {
-        return (
-          <Grid>
-            {item.title && <h3>{item.title}</h3>}
-            <Link to="">
-              <img src={item.img_src} alt=""/>
-            </Link>
-            {item.description && <p>{item.description}</p>}
-          </Grid>
-        );
-      })}
+      {props.items &&
+        props.items.map(item => {
+          return (
+            <Grid>
+              {item.title && <h3>{item.title}</h3>}
+              <Link to="">
+                <img src={item.img_src} alt="" />
+              </Link>
+              {item.description && <p>{item.description}</p>}
+            </Grid>
+          );
+        })}
     </ItemImageListWrapper>
   );
 };

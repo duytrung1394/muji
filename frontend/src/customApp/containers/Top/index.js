@@ -24,7 +24,7 @@ class Index extends Component {
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image" />
         </div>
-        <Feature features={entity.features}/>
+        <Feature features={entity.features} />
       </TopWrapper>
     );
   }

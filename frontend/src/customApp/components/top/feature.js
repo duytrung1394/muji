@@ -9,14 +9,14 @@ const Feature = props => {
   return (
     <FeatureWrapper>
       <Panel
-        title={<IntlMessages id="top.feature.title"/>}
-        link_title={<IntlMessages id="top.feature.link_title"/>}
+        title={<IntlMessages id="top.feature.title" />}
+        link_title={<IntlMessages id="top.feature.link_title" />}
         link_path="/store"
       >
-        <ItemImageList items={props.features}/>
+        <ItemImageList items={props.features} />
       </Panel>
     </FeatureWrapper>
   );
-}
+};
 
 export default Feature;
