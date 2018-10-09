@@ -10,34 +10,45 @@ import routes from './routes';
 
 import Hoc from './serverHoc';
 
+import { store } from './redux/store';
+import rootSaga from './redux/sagas'
+
 const router = express.Router();
 
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//TODO: initialStateの取り扱いを追加してサーバーサイドで実行済みのAPIリクエストを二重にやる必要がないようにしたい
+
 const ssr = async (req, res) => {
+  const rootComp = (
+    <Hoc>
+      <StaticRouter location={req.url} context={{}}>
+        { renderRoutes(routes ) }
+      </StaticRouter>
+    </Hoc>
+  );
+
   const matchedRoutes = matchRoutes(routes, req.url);
   if( matchedRoutes.length > 1 ){
     console.warn(`the url(${req.url}) matches multiple routes.`);
   }
-  const route = matchedRoutes[0].route;
-  let extraProps = {};
-  if( typeof(route.component.getInitialProps) == 'function' ){
-    extraProps = await route.component.getInitialProps();
-  }else{
-    console.warn(`matched Component(${route.component}) should implements getInitialProps static function.`);
-  }
   
-  ReactDOMServer.renderToNodeStream(
-    <Layout>
-      <Hoc>
-        <StaticRouter location={req.url}>
-          { renderRoutes(routes, extraProps ) }
-        </StaticRouter>
-      </Hoc>
-    </Layout>
-  ).pipe(res);
+  store.runSaga(rootSaga).done.then(() => {
+    const stream = ReactDOMServer.renderToNodeStream(
+      <HTML>
+        {rootComp}
+      </HTML>
+      );
+    stream.pipe(res);
+  }).catch((e) => {
+    console.warn(e.message)
+    res.status(500).send(e.message)
+  });
+  
+  ReactDOMServer.renderToStaticMarkup(rootComp);
+  store.close();
 };
 
 // TODO: ここのroutesループお行儀よくないので改善したい
@@ -52,7 +63,7 @@ routes.forEach( (route) => {
 });
 
 //TODO: 実ファイルの index.html と二重定義になってるのを解消したい
-const Layout = (props) => {
+const HTML = (props) => {
   return (
     <html lang='ja'>
       <head>

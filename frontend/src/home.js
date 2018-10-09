@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import actions from "./customApp/redux/task/list/actions";
 
 class Home extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRequest({page: 0, filters: '[]'});
   }
 
