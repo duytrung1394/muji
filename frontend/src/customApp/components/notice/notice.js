@@ -6,7 +6,7 @@ const notice = props => {
   const { notices } = props;
   return (
     <NoticeWrapper>
-      <p><IntlMessages id="notice.notice.title"/>
+      <IntlMessages id="notice.notice.title"/>
         <ul>
           {
             notices && notices.map(notice => {
@@ -14,7 +14,6 @@ const notice = props => {
             })
           }
         </ul>
-      </p>
     </NoticeWrapper>
   );
 }

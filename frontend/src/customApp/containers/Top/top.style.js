@@ -3,10 +3,16 @@ import styled from "styled-components";
 const TopWrapper = styled.div`
   .topContent {
     padding: 1rem;
+    color:black;
+    font-weight: bold;
+    
   }
   #feature-image {
     width: 100%;
     max-width: 1440px;
   }
+  
+  
+  
 `
 export default TopWrapper;
