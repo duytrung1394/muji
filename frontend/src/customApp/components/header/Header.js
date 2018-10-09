@@ -33,21 +33,18 @@ class Header extends Component {
              <Link to="/store">
                <img src="https://img.muji.net/img/common/logo-muji.svg" width="128" height="20" alt="無印良品" id="logo"/>
              </Link>
-             <Form id="search">
-               <Input addonBefore={prefixSelector} style={{ width: '50%' }} />
+             <Form id="search" style={{paddingLeft:"20px"}}>
+               <Input addonBefore={prefixSelector} style={{width:"70%"}}/>
              </Form>
-             <span>
+             <a id="cart">
                <Icon type="shopping-cart" style={{fontSize: 32}} />
-               <span>カート</span>
-             </span>
-             <span>
+             </a>
+             <a id="login">
                <Icon type="user"          style={{fontSize: 32}} />
-               <span>ログイン</span>
-             </span>
-             <span>
+             </a>
+             <a id="support">
                <Icon type="info-circle"   style={{fontSize: 32}} />
-               <span>サポート</span>
-             </span>
+             </a>
           </div>
         </AntdHeader>
       </HeaderWrapper>

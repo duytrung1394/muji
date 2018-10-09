@@ -15,11 +15,46 @@ const HeaderWrapper = styled.div`
   }
   #logo-search-icons {
     #search {
-      padding: 0 2rem 0 2rem;
+      padding: 0 1rem 0 0;
+      margin:0;
     }
     img, form {
       display: inline;
     }
+
+    a{
+      color:#333;
+      opacity:0.7;
+      font-size:6px;
+      font-weight:lighter;
+    }
+
+   #cart:after{
+     content:"カート";
+      position:relative;
+      top:20px;
+      right:31px;
+      font-weight:lighter;
+      font-size:12px;
+    }
+
+    #login:after{
+      content:"ログイン";
+       position:relative;
+       top:20px;
+       right:38px;
+       font-weight:lighter;
+       font-size:12px;
+     }
+
+     #support:after{
+      content:"サポート";
+       position:relative;
+       top:20px;
+       right:38px;
+       font-weight:lighter;
+       font-size:12px;
+     }
   }
 `
 export default HeaderWrapper;
