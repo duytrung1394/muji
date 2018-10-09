@@ -3,6 +3,8 @@ import styled from "styled-components";
 const FooterWrapper = styled.div`
   overflow:hidden;
   background: #f7f7f7;
+  padding-bottom:40px;
+  font-weight:lighter;
   
   ul{
     list-style-type:none;
@@ -10,17 +12,16 @@ const FooterWrapper = styled.div`
   }
 
   li{
-    margin-bottom:10px;
-    margin-right:20px;
+    margin-bottom:12px;
   }
 
   a{
-    color:#333;
+    color:rgba(0,0,0,0.65);
     cursor:pointer;
   }
 
   a:hover{
-    color:#333;
+    color:rgba(0,0,0,0.65);
   }
 
   li > ul{
@@ -33,12 +34,14 @@ const FooterWrapper = styled.div`
   }
 
   .social-buttons{
+    margin-top:30px;
     margin-bottom:30px;
   }
 
   .social-buttons > ul > li{
     display:table-cell;
     padding-right:6px;
+    opacity:0.3;
   }
 `
 export default FooterWrapper;
