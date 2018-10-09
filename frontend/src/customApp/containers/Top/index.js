@@ -7,6 +7,7 @@ import TopWrapper from "./top.style";
 import Notice from "../../components/notice/notice";
 import Feature from "../../components/top/feature";
 import NewItem from "../../components/top/newItem";
+import LimitedItem from "../../components/top/limitedItem";
 
 class Index extends Component {
   componentDidMount() {
@@ -27,6 +28,7 @@ class Index extends Component {
         </div>
         <Feature features={entity.features} />
         <NewItem newItems={entity.new_items} />
+        <LimitedItem limitedItems={entity.limited_items} />
       </TopWrapper>
     );
   }

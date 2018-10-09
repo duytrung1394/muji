@@ -42,17 +42,34 @@ class TopsController extends Controller
             'new_items' => [
                 [
                     'img_src' => 'https://www.muji.com/jp/img/store/panel/s10901_640_180928.jpg',
-                    'title' => '衣料品 新商品一覧'
+                    'title' => '衣料品 新商品一覧',
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/img/store/panel/s10909_640_181005.jpg',
-                    'title' => '生活雑貨 新商品一覧'
+                    'title' => '生活雑貨 新商品一覧',
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/img/store/panel/s10905_640_181005.jpg',
-                    'title' => '食品 新商品一覧'
+                    'title' => '食品 新商品一覧',
                 ],
-            ]
+            ],
+            'limited_items' => [
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s000051065_640.jpg',
+                    'title' => '衣料品 期間限定価格一覧',
+                    'description' => '婦人綿混撥水トレンチ・ステンカラーコート／デニムジャケット最大2,000円OFF など',
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/ogcsTowel2_640.jpg',
+                    'title' => '生活雑貨 期間限定価格一覧',
+                    'description' => '対象のタオル2点以上で15％OFF など',
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s3005103_640.jpg',
+                    'title' => '食品 期間限定価格一覧',
+                    'description' => 'レトルトカレー3点以上で15％OFF など',
+                ],
+            ],
         ];
     }
 }

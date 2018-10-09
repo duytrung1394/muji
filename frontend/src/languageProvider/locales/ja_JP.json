@@ -416,6 +416,8 @@
   "toggle.shuffle": "Shuffle",
   "top.feature.link_title": "すべての特集",
   "top.feature.title": "特集",
+  "top.limitedItem.link_title": "すべての期間限定価格",
+  "top.limitedItem.title": "期間限定価格",
   "top.newItem.link_title": "すべての新商品",
   "top.newItem.title": "新商品",
   "topbar.help": "Help",
