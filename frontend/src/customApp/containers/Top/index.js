@@ -7,7 +7,7 @@ import TopWrapper from "./top.style";
 import Notice from "../../components/notice/notice";
 import Feature from "../../components/top/feature";
 import Shop from "../../components/top/shop";
-import Info from "../../components/top/info";
+import ImportantNotice from "../../components/top/importantNotice";
 
 class Index extends Component {
   componentDidMount() {
@@ -17,8 +17,6 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
-    const items = entity.features ? entity.features : [];
-    const infos = entity.infos ? entity.infos : [];
     return (
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
@@ -28,9 +26,9 @@ class Index extends Component {
         <div className="topContent">
           <img src={featureImage} alt="" id="feature-image" />
         </div>
-        <Feature features={items}/>
+        <Feature features={entity.features} />
         <Shop />
-        <Info infos={infos}/>
+        <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
     );
   }

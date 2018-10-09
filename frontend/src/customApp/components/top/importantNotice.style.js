@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const InfoWrapper = styled.div`
+const ImportantNoticeWrapper = styled.div`
   ul {
     list-style-type: none;
   }
@@ -11,4 +11,4 @@ const InfoWrapper = styled.div`
     }
   }
 `
-export default InfoWrapper;
+export default ImportantNoticeWrapper;

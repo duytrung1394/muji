@@ -8,7 +8,7 @@ const SelectPrefecture = props => {
     <Select
       defaultValue={props.defaultValue ? props.defaultValue : "00"}
       onChange={props.onChange}
-      >
+    >
       <Option value="00">都道府県から店舗を探す</Option>
       <Option value="北海道">北海道</Option>
       <Option value="青森県">青森県</Option>
