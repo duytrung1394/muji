@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
-// import actions from "./customApp/redux/task/list/actions";
+import actions from "./customApp/redux/task/list/actions";
 
 class Home extends Component {
   componentDidMount() {
-    // this.props.fetchRequest({page: 0, filters: '[]'});
+    this.props.fetchRequest({page: 0, filters: '[]'});
   }
 
   render() {
@@ -33,20 +33,20 @@ class Home extends Component {
   }
 }
 
-export default Home;
+// export default Home;
 
-// const mapStateToProps = state => {
-//   return state.Task.List.toJS();
-// };
+const mapStateToProps = state => {
+  return state.Task.List.toJS();
+};
 
-// const { fetch } = actions;
+const { fetch } = actions;
 
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     {
-//       fetchRequest: fetch.request,
-//     }
-//   )(Home)
-// );
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      fetchRequest: fetch.request,
+    }
+  )(Home)
+);
 
