@@ -7,12 +7,18 @@ const HeaderWrapper = styled.div`
     height: 10rem;
   }
 
+  .search{
+    padding:0 20px;
+    width:70%;
+  }
+
   #banner {
     text-align: center;
     b {
       padding-left: 1rem;
     }
   }
+
   #logo-search-icons {
     #search {
       padding: 0 1rem 0 0;

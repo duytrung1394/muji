@@ -9,7 +9,7 @@ class Footer extends Component {
   render() {
     return (
       <FooterWrapper>
-        <AntdFooter style={{backgroundColor:"#f7f7f7",paddingTop:"20px"}}>
+        <AntdFooter className="antd">
           <Row>
             <Col span={6}>
               <ul>
@@ -79,7 +79,7 @@ class Footer extends Component {
                 <Col span={1}><li><a>日本</a></li></Col>
                 <Col span={3}><li><a>個人情報の取り扱い</a></li></Col>
                 <Col span={3}><li><a>サイトマップ</a></li></Col>
-                <Col span={5} style={{float:"right"}}><li><a>Copyright ©Ryohin Keikaku Co., Ltd.</a></li></Col>
+                <Col span={5} id="copyRight"><li><a>Copyright ©Ryohin Keikaku Co., Ltd.</a></li></Col>
               </ul>
               </Col>
            </Row>

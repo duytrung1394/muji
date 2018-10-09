@@ -33,7 +33,7 @@ class Header extends Component {
              <Link to="/store">
                <img src="https://img.muji.net/img/common/logo-muji.svg" width="128" height="20" alt="無印良品" id="logo"/>
              </Link>
-             <Form id="search" style={{paddingLeft:"20px"}}>
+             <Form className="search">
                <Input addonBefore={prefixSelector} style={{width:"70%"}}/>
              </Form>
              <a id="cart">

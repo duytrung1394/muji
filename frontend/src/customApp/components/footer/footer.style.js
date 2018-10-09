@@ -5,6 +5,11 @@ const FooterWrapper = styled.div`
   background: #f7f7f7;
   padding-bottom:40px;
   font-weight:lighter;
+
+  .antd{
+    background-color:#f7f7f7;
+    padding-top:20px;
+  }
   
   ul{
     list-style-type:none;
@@ -42,6 +47,10 @@ const FooterWrapper = styled.div`
     display:table-cell;
     padding-right:6px;
     opacity:0.3;
+  }
+
+  #copyRight{
+    float:right;
   }
 `
 export default FooterWrapper;
