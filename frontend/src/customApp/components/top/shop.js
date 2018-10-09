@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import { Select } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Panel from "../panel/panel";
+import ContentPanel from "../panel/contentPanel";
 import SelectPrefecture from "../form/selectPrefecture";
 
 const containerStyle = { position: "relative", width: "100%", height: "250px" };
@@ -20,14 +20,14 @@ export class Shop extends Component {
 
   render() {
     return (
-      <Panel
+      <ContentPanel
         title={<IntlMessages id="top.shop.title" />}
         link_title={<IntlMessages id="top.shop.link_title" />}
         link_path="/store"
         tool={<SelectPrefecture onChange={this.handleChange} />}
       >
         <Map google={this.props.google} containerStyle={containerStyle} />
-      </Panel>
+      </ContentPanel>
     );
   }
 }
