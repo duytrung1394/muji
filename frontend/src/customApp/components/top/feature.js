@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import ItemImageList from "../panel/itemImageList";
-import FeatureWrapper from "./feature.style";
 
 const Feature = props => {
   return (
