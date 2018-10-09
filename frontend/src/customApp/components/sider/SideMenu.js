@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Icon } from "antd";
+import MenuIcon from "../icon/menulcon";
 import SiderWrapper from "./sider.style";
 
 const { Sider } = Layout;
@@ -16,7 +17,7 @@ class SideMenu extends Component {
       }>
           <Menu>
             <MenuItemGroup title="特集" key="g1">
-              <Menu.Item key="10">特集</Menu.Item>
+              <Menu.Item key="10" style={{ 'font-size': '8px' }}>特集</Menu.Item>
               <Menu.Item key="11">新商品</Menu.Item>
             </MenuItemGroup>
             <MenuItemGroup title="毎日の無印良品" key="g2">
@@ -29,7 +30,7 @@ class SideMenu extends Component {
               <Menu.Item key="34">SALE</Menu.Item>
               <Menu.Item key="35">アウトレット</Menu.Item>
             </MenuItemGroup>
-            <MenuItemGroup title="衣料品" key="g4">
+            <MenuItemGroup key="g4" title={<p><MenuIcon sysytem_type='' size='13px' icon_id='g4icon' img_src='https://img.muji.net/img/common/icon-search.svg' /><span>衣料品</span></p>}>
               <Menu.Item key="4_01"><Link to="/store/cmdty/section/T10000">婦人ウェア</Link></Menu.Item>
               <Menu.Item key="4_02"><Link to="/store/cmdty/section/T10001">婦人インナーウェア</Link></Menu.Item>
               <Menu.Item key="4_03"><Link to="/store/cmdty/section/T10002">紳士ウェア</Link></Menu.Item>
