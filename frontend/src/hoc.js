@@ -15,7 +15,7 @@ import DashAppHolder from "./dashAppStyle";
 const currentAppLocale =
   AppLocale[getCurrentLanguage(config.defaultLanguage || "english").locale];
 
-const Hoc = (props) => (
+const Hoc = props => (
   <LocaleProvider locale={currentAppLocale.antd}>
     <IntlProvider
       locale={currentAppLocale.locale}
@@ -23,14 +23,11 @@ const Hoc = (props) => (
     >
       <ThemeProvider theme={themes[themeConfig.theme]}>
         <DashAppHolder>
-          <Provider store={store}>
-            {props.children}
-          </Provider>
+          <Provider store={store}>{props.children}</Provider>
         </DashAppHolder>
       </ThemeProvider>
     </IntlProvider>
   </LocaleProvider>
-
 );
 
 export default Hoc;

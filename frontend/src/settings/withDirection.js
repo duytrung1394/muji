@@ -1,7 +1,7 @@
 import React from "react";
 
 let rtl = undefined;
-if( typeof(document) !== 'undefined' ){
+if (typeof document !== "undefined") {
   rtl = document.getElementsByTagName("html")[0].getAttribute("dir");
 }
 const withDirection = Component => props => {
@@ -9,4 +9,4 @@ const withDirection = Component => props => {
 };
 
 export default withDirection;
-export { rtl };    
+export { rtl };
