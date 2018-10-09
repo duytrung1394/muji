@@ -1,13 +1,12 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import NoticeWrapper from "./notice.style";
 
 const notice = props => {
   const { notices } = props;
   return (
-    <NoticeWrapper>
+    <div>
       <p>
-        <IntlMessages id="notice.notice.title" />
+        <IntlMessages id="top.attributes.notices" />
         <ul>
           {notices &&
             notices.map(notice => {
@@ -15,7 +14,7 @@ const notice = props => {
             })}
         </ul>
       </p>
-    </NoticeWrapper>
+    </div>
   );
 };
 
