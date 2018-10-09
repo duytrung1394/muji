@@ -18,15 +18,15 @@ class Index extends Component {
     const items = entity.features ? entity.features : [];
     return (
       <TopWrapper>
-        <Spin spinning={fetching} size="large"/>
+        <Spin spinning={fetching} size="large" />
         <div className="topContent">
           <Notice notices={entity.notices} />
         </div>
         <div className="topContent">
-          <img src={featureImage} alt="" id="feature-image"/>
+          <img src={featureImage} alt="" id="feature-image" />
         </div>
         <div className="topContent">
-          <EcPanel title="特集" items={items}/>
+          <EcPanel title="特集" items={items} />
         </div>
       </TopWrapper>
     );
@@ -41,10 +41,13 @@ const actionCreators = {
   fetchRequest: actions.fetch.request
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);

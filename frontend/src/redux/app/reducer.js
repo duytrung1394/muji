@@ -4,9 +4,10 @@ import actions, { getView } from "./actions";
 
 const preKeys = getDefaultPath();
 
-const collapsed = ( (typeof(window) !== "undefined") && window.innerWidth > 1220) ? false : true
-const innerWidth = (typeof(window) !== "undefined") ? window.innerWidth : 1280 ;
-const innerHeight = (typeof(window) !== "undefined") ? window.innerHeight : 720 ;
+const collapsed =
+  typeof window !== "undefined" && window.innerWidth > 1220 ? false : true;
+const innerWidth = typeof window !== "undefined" ? window.innerWidth : 1280;
+const innerHeight = typeof window !== "undefined" ? window.innerHeight : 720;
 
 const initState = new Map({
   collapsed,

@@ -13,13 +13,15 @@ const EcPanel = props => {
         <ul>
           {items.map(item => {
             return (
-              <li><img src={item.img_src} alt=""/></li>
+              <li>
+                <img src={item.img_src} alt="" />
+              </li>
             );
           })}
         </ul>
       </section>
     </EcPanelWrapper>
   );
-}
+};
 
 export default EcPanel;
