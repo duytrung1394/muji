@@ -6,15 +6,15 @@ import LimitedItemWrapper from "./limitedItem.style";
 
 const LimitedItem = props => {
   return (
-    <LimitedItemWrapper>
-      <ContentPanel
-        title={<IntlMessages id="top.limitedItem.title" />}
-        link_title={<IntlMessages id="top.limitedItem.link_title" />}
-        link_path="/store"
-      >
+    <ContentPanel
+      title={<IntlMessages id="top.limitedItem.title" />}
+      link_title={<IntlMessages id="top.limitedItem.link_title" />}
+      link_path="/store"
+    >
+      <LimitedItemWrapper>
         <ItemImageList items={props.limitedItems} />
-      </ContentPanel>
-    </LimitedItemWrapper>
+      </LimitedItemWrapper>
+    </ContentPanel>
   );
 };
 

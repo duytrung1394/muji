@@ -6,15 +6,15 @@ import NewItemWrapper from "./newItem.style";
 
 const NewItem = props => {
   return (
-    <NewItemWrapper>
-      <ContentPanel
-        title={<IntlMessages id="top.newItem.title" />}
-        link_title={<IntlMessages id="top.newItem.link_title" />}
-        link_path="/store"
-      >
+    <ContentPanel
+      title={<IntlMessages id="top.newItem.title" />}
+      link_title={<IntlMessages id="top.newItem.link_title" />}
+      link_path="/store"
+    >
+      <NewItemWrapper>
         <ItemImageList items={props.newItems} />
-      </ContentPanel>
-    </NewItemWrapper>
+      </NewItemWrapper>
+    </ContentPanel>
   );
 };
 
