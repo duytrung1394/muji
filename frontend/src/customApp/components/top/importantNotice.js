@@ -15,9 +15,9 @@ const ImportantNotice = props => {
       <ImportantNoticeWrapper>
         <ul>
           {importantNotices &&
-            importantNotices.map(notice => {
+            importantNotices.map((notice, index) => {
               return (
-                <li>
+                <li key={index}>
                   <time>{notice.date}</time>
                   <span>
                     <a href={notice.url}>{notice.message}</a>

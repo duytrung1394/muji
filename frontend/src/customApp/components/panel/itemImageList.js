@@ -20,9 +20,9 @@ const ItemImageList = props => {
   return (
     <ItemImageListWrapper>
       {props.items &&
-        props.items.map(item => {
+        props.items.map((item, index) => {
           return (
-            <Grid>
+            <Grid key={index}>
               {item.title && <h3>{item.title}</h3>}
               <Link to="">
                 <img src={item.img_src} alt="" />
