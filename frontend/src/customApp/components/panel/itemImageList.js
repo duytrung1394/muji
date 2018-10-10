@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import styled from "styled-components";
+
 const Grid = Card.Grid;
+
 const ItemImageListWrapper = styled.div`
   .ant-card-grid {
     padding: 2px;
@@ -13,6 +15,7 @@ const ItemImageListWrapper = styled.div`
     }
   }
 `;
+
 const ItemImageList = props => {
   return (
     <ItemImageListWrapper>
@@ -31,4 +34,5 @@ const ItemImageList = props => {
     </ItemImageListWrapper>
   );
 };
+
 export default ItemImageList;
