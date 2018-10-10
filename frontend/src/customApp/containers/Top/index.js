@@ -8,6 +8,8 @@ import Notice from "../../components/notice/notice";
 import Feature from "../../components/top/feature";
 import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
+import Shop from "../../components/top/shop";
+import ImportantNotice from "../../components/top/importantNotice";
 
 class Index extends Component {
   componentDidMount() {
@@ -29,6 +31,8 @@ class Index extends Component {
         <Feature features={entity.features} />
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
+        <Shop />
+        <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
     );
   }

@@ -70,9 +70,11 @@ class TopsController extends Controller
                     'description' => 'レトルトカレー3点以上で15％OFF など',
                 ],
             ],
+            'important_notices' => [
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ1........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ2........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ3........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+            ],
         ];
     }
 }
-
-
-
