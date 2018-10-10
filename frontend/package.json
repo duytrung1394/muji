@@ -38,6 +38,7 @@
     "prop-types": "^15.5.10",
     "react": "^16.4.2",
     "react-addons-shallow-compare": "^15.5.2",
+    "react-app-rewire-define-plugin": "^1.0.0",
     "react-big-calendar": "^0.17.0",
     "react-chartjs-2": "^2.5.7",
     "react-codemirror": "^1.0.0",
