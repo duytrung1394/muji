@@ -39,9 +39,11 @@ class TopsController extends Controller
                 ['img_src' => 'https://www.muji.com/jp/img/store/panel/181003_ginza_640.png'],
                 ['img_src' => 'https://www.muji.com/jp/img/store/panel/flannel2018_640.png'],
             ],
+            'important_notices' => [
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ1........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ2........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+                ['date' => '2018.09.14', 'message' => '重要なお知らせ3........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
+            ],
         ];
     }
 }
-
-
-

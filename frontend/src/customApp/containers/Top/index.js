@@ -6,6 +6,8 @@ import { Spin } from "antd";
 import TopWrapper from "./top.style";
 import Notice from "../../components/notice/notice";
 import Feature from "../../components/top/feature";
+import Shop from "../../components/top/shop";
+import ImportantNotice from "../../components/top/importantNotice";
 
 class Index extends Component {
   componentDidMount() {
@@ -25,6 +27,8 @@ class Index extends Component {
           <img src={featureImage} alt="" id="feature-image" />
         </div>
         <Feature features={entity.features} />
+        <Shop />
+        <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
     );
   }

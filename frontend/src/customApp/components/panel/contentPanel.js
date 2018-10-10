@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 import styled from "styled-components";
 
-const PanelWrapper = styled.div`
+const ContentPanelWrapper = styled.div`
   .ant-card-wider-padding {
     .ant-card-head {
       padding: 0 0;
@@ -15,7 +15,7 @@ const PanelWrapper = styled.div`
   }
 `;
 
-const Panel = props => {
+const ContentPanel = props => {
   const bordered = props.bordered !== undefined ? props.bordered : false;
   const extra = props.extra ? (
     props.extra
@@ -27,7 +27,7 @@ const Panel = props => {
     ""
   );
   return (
-    <PanelWrapper bordered={bordered}>
+    <ContentPanelWrapper bordered={bordered}>
       <Card
         {...props}
         bordered={bordered}
@@ -36,8 +36,8 @@ const Panel = props => {
       >
         {props.children}
       </Card>
-    </PanelWrapper>
+    </ContentPanelWrapper>
   );
 };
 
-export default Panel;
+export default ContentPanel;
