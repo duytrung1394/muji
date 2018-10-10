@@ -24,9 +24,11 @@ class Index extends Component {
           <Notice notices={entity.notices}/>
         </div>
         <div className="topContent">
+        <div className="top_img">
         <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
-          <img src={featureImage} alt="" id="feature-image"/>
+          <img src={featureImage} alt="" id="feature-image" />
           </a>
+          </div>
         </div>
         <div className="topContent">
           <EcPanel title="特集" items={items}/>

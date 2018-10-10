@@ -1,25 +1,25 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
+import NoticeWrapper from "./notice.style"
 
 
 const notice = props => {
   const { notices } = props;
   return (
-
-      <div  style={{border:'1px solid #dcdfe5',width:'50%', margin:'0 auto',display:"flex",padding:'1% 3%', borderRadius:'8px'}}>
-    
-      <IntlMessages id="top.attributes.notices"/>
-        <ul>
+     <NoticeWrapper> 
+       <div className="noticeContents">
+      <dl><dt><IntlMessages id="top.attributes.notices"/></dt>
+        
           {
             notices && notices.map(notice => {
-              return <u><a href="https://www.muji.net/store/cmdty/donation/0299671000000" style={{color:'grey', fontWeight:'normal'}}
-              ><li>{notice.title}</li></a></u>
+              return <a href="https://www.muji.net/store/cmdty/donation/0299671000000"  className="noticeContents-a"
+              ><dd>{notice.title}</dd></a>
             })
           }
-        </ul>
         
+        </dl>
         </div>
-      
+        </NoticeWrapper>
   );
 }
 

@@ -2,17 +2,22 @@ import styled from "styled-components";
 
 const TopWrapper = styled.div`
   .topContent {
-    padding: 1rem;
+    padding-bottom:0;
     color:black;
     font-weight: bold;
+    margin-bottom:0;
+  }
+  .top_img {
+    text-align: center;
+  }
+
+  #feature-image {
+    
+    width: 90%;
+    max-width: 1680px;
     
   }
-  #feature-image {
-    width: 100%;
-    max-width: 1440px;
-  }
-  
-  
-  
+   
 `
+
 export default TopWrapper;
