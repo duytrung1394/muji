@@ -6,6 +6,7 @@ import NoticeWrapper from "./notice.style"
 const notice = props => {
   const { notices } = props;
   return (
+
      <NoticeWrapper> 
        <div className="noticeContents">
       <dl><dt><IntlMessages id="top.attributes.notices"/></dt>
@@ -20,7 +21,8 @@ const notice = props => {
         </dl>
         </div>
         </NoticeWrapper>
+
   );
-}
+};
 
 export default notice;

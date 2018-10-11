@@ -8,9 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <FooterWrapper>
-        <AntdFooter>
-          フッター
-        </AntdFooter>
+        <AntdFooter>フッター</AntdFooter>
       </FooterWrapper>
     );
   }

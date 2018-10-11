@@ -5,7 +5,10 @@ import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import TopWrapper from "./top.style";
 import Notice from "../../containers/Top/notice";
-import EcPanel from "../../components/panel/ecPanel";
+import Feature from "../../components/top/feature";
+import Shop from "../../components/top/shop";
+import ImportantNotice from "../../components/top/importantNotice";
+
 
 
 class Index extends Component {
@@ -16,10 +19,9 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
-    const items = entity.features ? entity.features : [];
     return (
       <TopWrapper>
-        <Spin spinning={fetching} size="large"/>
+        <Spin spinning={fetching} size="large" />
         <div className="topContent">
           <Notice notices={entity.notices}/>
         </div>
@@ -30,9 +32,9 @@ class Index extends Component {
           </a>
           </div>
         </div>
-        <div className="topContent">
-          <EcPanel title="特集" items={items}/>
-        </div>
+        <Feature features={entity.features} />
+        <Shop />
+        <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
     );
   }
@@ -46,10 +48,13 @@ const actionCreators = {
   fetchRequest: actions.fetch.request
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);
