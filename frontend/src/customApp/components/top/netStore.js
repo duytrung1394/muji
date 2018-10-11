@@ -1,14 +1,14 @@
 import React from "react";
-import ProfileWrapper from "./profile.style";
+import NetStoreWrapper from "./netStore.style";
 
-const Profile = props => {
+const NetStore = props => {
   const { title, items, caption } = props;
   return (
-    <ProfileWrapper>
-      <div className="profile-frame">
+    <NetStoreWrapper>
+      <div className="netStore-frame">
         <a href="//www.muji.com">
           <h2>{title}</h2>
-          <ul className="profile-image-group">
+          <ul className="netStore-image-group">
             {items.map((item, i) => {
               return (
                 <li key={i}>
@@ -23,7 +23,7 @@ const Profile = props => {
           </ul>
         </a>
       </div>
-    </ProfileWrapper>
+    </NetStoreWrapper>
   );
 };
-export default Profile;
+export default NetStore;

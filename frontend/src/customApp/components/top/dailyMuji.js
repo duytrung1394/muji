@@ -1,15 +1,15 @@
 import React from "react";
-import GalleryWrapper from "./gallery.style";
+import DailyMujiWrapper from "./dailyMuji.style";
 
-const Gallery = props => {
+const DailyMuji = props => {
   const { title, items, caption } = props;
   return (
-    <GalleryWrapper>
-      <div className="gallery-frame">
-        <div className="gallery-content-frame">
+    <DailyMujiWrapper>
+      <div className="dailyMuji-frame">
+        <div className="dailyMuji-content-frame">
           <a href="">
             <h2>{title}</h2>
-            <div className="gallery-item-group">
+            <div className="dailyMuji-item-group">
               <ul>
                 {items.map((item, i) => {
                   return (
@@ -20,13 +20,13 @@ const Gallery = props => {
                 })}
               </ul>
             </div>
-            <span className="gallery-frame-caption">
+            <span className="dailyMuji-frame-caption">
               ネットストア限定 対象商品配送料無料
             </span>
           </a>
         </div>
       </div>
-    </GalleryWrapper>
+    </DailyMujiWrapper>
   );
 };
-export default Gallery;
+export default DailyMuji;

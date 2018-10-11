@@ -10,8 +10,8 @@ import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
-import Gallery from "../../components/gallery/gallery";
-import Profile from "../../components/profile/profile";
+import DailyMuji from "../../components/top/dailyMuji";
+import NetStore from "../../components/top/netStore";
 
 class Index extends Component {
   componentDidMount() {
@@ -36,14 +36,14 @@ class Index extends Component {
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
         <div className="topContent">
-          <Gallery
+          <DailyMuji
             title="毎日の無印良品"
             items={dailyMuji}
             caption="ネットストア限定対象商品配送料無料"
           />
         </div>
         <div className="topContent">
-          <Profile title="ネットストアの便利なサービス" items={netStore} />
+          <NetStore title="ネットストアの便利なサービス" items={netStore} />
         </div>
         <Shop />
         <ImportantNotice importantNotices={entity.important_notices} />
