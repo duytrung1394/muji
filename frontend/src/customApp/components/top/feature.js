@@ -15,4 +15,5 @@ const Feature = props => {
     </ContentPanel>
   );
 };
+
 export default Feature;
