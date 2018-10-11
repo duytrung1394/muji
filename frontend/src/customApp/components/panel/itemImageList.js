@@ -10,6 +10,7 @@ const ItemImageListWrapper = styled.div`
     width: 25%;
     img {
       width: 100%;
+      transition: filter 0.2s ease;
       filter: brightness(0.85);
     }
     img:hover {
