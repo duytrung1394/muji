@@ -6,7 +6,7 @@ const FooterWrapper = styled.div`
   padding-bottom:40px;
   font-weight:lighter;
 
-  .antd{
+  .antd-footer{
     background-color:#f7f7f7;
     padding-top:20px;
   }

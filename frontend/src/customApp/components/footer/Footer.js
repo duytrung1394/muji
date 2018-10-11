@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Layout, Row, Col } from "antd";
 import FooterWrapper from "./footer.style";
 
-const Antd_footer = Layout.Footer;
+const AntdFooter = Layout.Footer;
 
 class Footer extends Component {
   render() {
     return (
       <FooterWrapper>
-        <Antd_footer className="antd">
+        <AntdFooter className="antd-footer">
           <Row>
             <Col span={6}>
               <ul>
@@ -148,7 +148,7 @@ class Footer extends Component {
               </ul>
             </Col>
           </Row>
-        </Antd_footer>
+        </AntdFooter>
       </FooterWrapper>
     );
   }
