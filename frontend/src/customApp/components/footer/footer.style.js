@@ -34,7 +34,7 @@ const FooterWrapper = styled.div`
     padding:0;
   }
 
-  #footer-logo{
+  .footer-logo{
     padding-bottom:100px;
   }
 
@@ -49,7 +49,12 @@ const FooterWrapper = styled.div`
     opacity:0.3;
   }
 
-  #copyRight{
+  .footer-navi > li{
+    display:inline;
+    margin-right:15px;
+  }
+
+  .copyRight{
     float:right;
   }
 `

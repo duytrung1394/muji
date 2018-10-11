@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import { Layout,Row,Col } from "antd";
 import FooterWrapper from "./footer.style";
 
-const AntdFooter = Layout.Footer;
+const Antd_footer = Layout.Footer;
 
 class Footer extends Component {
   
   render() {
     return (
       <FooterWrapper>
-        <AntdFooter className="antd">
+        <Antd_footer className="antd">
           <Row>
             <Col span={6}>
               <ul>
-                <li id="footer-logo"><a><img src="https://img.muji.net/img/common/logo-muji.svg"></img></a></li>
+                <li class="footer-logo"><a><img src="https://img.muji.net/img/common/logo-muji.svg"></img></a></li>
                 <li class="social-buttons">
                   <ul>
                       <li>
@@ -75,15 +75,15 @@ class Footer extends Component {
 
           <Row>
             <Col span={24}>
-              <ul>
-                <Col span={1}><li><a>日本</a></li></Col>
-                <Col span={3}><li><a>個人情報の取り扱い</a></li></Col>
-                <Col span={3}><li><a>サイトマップ</a></li></Col>
-                <Col span={5} id="copyRight"><li><a>Copyright ©Ryohin Keikaku Co., Ltd.</a></li></Col>
+              <ul class="footer-navi">
+                <li><a>日本</a></li>
+                <li><a>個人情報の取り扱い</a></li>
+                <li><a>サイトマップ</a></li>
+                <li className="copyRight"><a>Copyright ©Ryohin Keikaku Co., Ltd.</a></li>
               </ul>
               </Col>
            </Row>
-        </AntdFooter>
+        </Antd_footer>
       </FooterWrapper>
     );
   }
