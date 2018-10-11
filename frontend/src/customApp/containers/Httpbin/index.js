@@ -26,17 +26,16 @@ class Index extends Component {
           {(() => {
             if (fetching) {
               return <p>ロード中</p>;
-            }else{
+            } else {
               return <p>ロード完了</p>;
             }
           })()}
-          <p>あなたのIP: { ip }</p>
+          <p>あなたのIP: {ip}</p>
         </div>
       </LayoutWrapper>
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return state.Httpbin.toJS();
@@ -44,13 +43,16 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.ip.fetch.request,
-  fetchCleanup: actions.ip.fetch.cleanup,
+  fetchCleanup: actions.ip.fetch.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);

@@ -14,12 +14,16 @@ class Header extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
 
-    const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: 'item',
+    const prefixSelector = getFieldDecorator("prefix", {
+      initialValue: "item"
     })(
       <Select style={{ width: 90 }}>
-        <Option value="item"><Icon type="search" theme="outlined" /> 商品</Option>
-        <Option value="shop"><Icon type="search" theme="outlined" /> 店舗</Option>
+        <Option value="item">
+          <Icon type="search" theme="outlined" /> 商品
+        </Option>
+        <Option value="shop">
+          <Icon type="search" theme="outlined" /> 店舗
+        </Option>
       </Select>
     );
 
@@ -94,5 +98,3 @@ class Header extends Component {
 const WrappedRegistrationForm = Form.create()(Header);
 
 export default WrappedRegistrationForm;
-
-
