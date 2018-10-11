@@ -9,8 +9,6 @@ import Feature from "../../components/top/feature";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
 
-
-
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest("");
@@ -23,13 +21,13 @@ class Index extends Component {
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
         <div className="topContent">
-          <Notice notices={entity.notices}/>
+          <Notice notices={entity.notices} />
         </div>
         <div className="topContent">
-        <div className="top_img">
-        <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
-          <img src={featureImage} alt="" id="feature-image" />
-          </a>
+          <div className="top_img">
+            <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
+              <img src={featureImage} alt="" id="feature-image" />
+            </a>
           </div>
         </div>
         <Feature features={entity.features} />
