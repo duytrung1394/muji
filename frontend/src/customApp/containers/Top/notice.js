@@ -8,7 +8,7 @@ const notice = props => {
     <NoticeWrapper>
       <div className="notice-contents">
         <dl>
-          <dt　className="notice-title" style={{paddingRight:"10px"}}>
+          <dt　className="notice-title">
             <IntlMessages id="top.attributes.notices" />
           </dt>
 
