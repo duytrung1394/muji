@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Form, Input, Select, Icon} from "antd";
+import { Layout, Form, Input, Select, Icon } from "antd";
 import HeaderWrapper from "./header.style";
 
 const AntdHeader = Layout.Header;
@@ -10,7 +10,6 @@ const Option = Select.Option;
 const bannerFlag = false;
 
 class Header extends Component {
-
   render() {
     const { getFieldDecorator } = this.props.form;
 
@@ -31,32 +30,45 @@ class Header extends Component {
       <HeaderWrapper>
         <AntdHeader>
           <div className="banner">
-                 {(bannerFlag == true)?<p>
-                   <img src="https://img.muji.net/img/store/common/banner_ryohinweek.png" alt="無印良品週間 メンバー限定10％OFF"/>
-                   <b>9/29(土) – 10/8(月)<span> ネットは10/9(火)午前10時まで</span></b>
-                 </p>: null}
-               </div>
-          <bannerFlagMng/>
-           <div className="logo-search-icons">
-             <Link to="/store">
-               <img src="https://img.muji.net/img/common/logo-muji.svg" width="128" height="20" alt="無印良品" id="logo"/>
-             </Link>
-             <Form className="search">
-               <Input addonBefore={prefixSelector}/>
-             </Form>
-             <ul>
+            {bannerFlag == true ? (
+              <p>
+                <img
+                  src="https://img.muji.net/img/store/common/banner_ryohinweek.png"
+                  alt="無印良品週間 メンバー限定10％OFF"
+                />
+                <b>
+                  9/29(土) – 10/8(月)<span> ネットは10/9(火)午前10時まで</span>
+                </b>
+              </p>
+            ) : null}
+          </div>
+          <bannerFlagMng />
+          <div className="logo-search-icons">
+            <Link to="/store">
+              <img
+                src="https://img.muji.net/img/common/logo-muji.svg"
+                width="128"
+                height="20"
+                alt="無印良品"
+                id="logo"
+              />
+            </Link>
+            <Form className="search">
+              <Input addonBefore={prefixSelector} />
+            </Form>
+            <ul>
               <li>
                 <a class="cart">
-                <Icon type="shopping-cart" style={{fontSize: 32}} />
-                <p>カート</p>
+                  <Icon type="shopping-cart" style={{ fontSize: 32 }} />
+                  <p>カート</p>
                 </a>
               </li>
               <li class="login">
                 <a>
-                 <Icon type="user"          style={{fontSize: 32}} />
-                 <p>ログイン</p>
+                  <Icon type="user" style={{ fontSize: 32 }} />
+                  <p>ログイン</p>
                 </a>
-                <ul　class="login-menu">
+                <ul class="login-menu">
                   <li>
                     <a>ログイン</a>
                   </li>
@@ -67,8 +79,8 @@ class Header extends Component {
               </li>
               <li class="support">
                 <a>
-                 <Icon type="info-circle"   style={{fontSize: 32}} />
-                 <p>サポート</p>
+                  <Icon type="info-circle" style={{ fontSize: 32 }} />
+                  <p>サポート</p>
                 </a>
                 <ul class="support-menu">
                   <li>
@@ -85,9 +97,8 @@ class Header extends Component {
                   </li>
                 </ul>
               </li>
-              <li>
-              </li>
-             </ul>
+              <li />
+            </ul>
           </div>
         </AntdHeader>
       </HeaderWrapper>
