@@ -10,6 +10,8 @@ import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
+import Gallery from "../../components/gallery/gallery";
+import Profile from "../../components/profile/profile";
 
 class Index extends Component {
   componentDidMount() {
@@ -19,6 +21,8 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
+    const dailyMuji = entity.dailychoices ? entity.dailychoices : [];
+    const netStore = entity.netservices ? entity.netservices : [];
     return (
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
@@ -31,6 +35,16 @@ class Index extends Component {
         <Feature features={entity.features} />
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
+        <div className="topContent">
+          <Gallery
+            title="毎日の無印良品"
+            items={dailyMuji}
+            caption="ネットストア限定対象商品配送料無料"
+          />
+        </div>
+        <div className="topContent">
+          <Profile title="ネットストアの便利なサービス" items={netStore} />
+        </div>
         <Shop />
         <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
