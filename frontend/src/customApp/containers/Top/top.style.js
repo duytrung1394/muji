@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 const TopWrapper = styled.div`
-  .topContent {
+  .top-content {
     padding-bottom:0;
     color:black;
     font-weight: bold;
     margin-bottom:0;
   }
-  .top_img {
+  
+  .top-img {
     text-align: center;
   }
 
-  #feature-image {
+  .feature-image {
     
     width: 90%;
     max-width: 1680px;

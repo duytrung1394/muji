@@ -6,20 +6,17 @@ const notice = props => {
   const { notices } = props;
   return (
     <NoticeWrapper>
-      <div className="noticeContents">
+      <div className="notice-contents">
         <dl>
-          <dt>
+          <dt　className="notice-title" style={{paddingRight:"10px"}}>
             <IntlMessages id="top.attributes.notices" />
           </dt>
 
           {notices &&
             notices.map(notice => {
               return (
-                <a
-                  href="https://www.muji.net/store/cmdty/donation/0299671000000"
-                  className="noticeContents-a"
-                >
-                  <dd>{notice.title}</dd>
+                <a href="https://www.muji.net/store/cmdty/donation/0299671000000">
+                  <dd className="notice-list">{notice.title}</dd>
                 </a>
               );
             })}

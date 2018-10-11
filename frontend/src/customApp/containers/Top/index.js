@@ -20,13 +20,13 @@ class Index extends Component {
     return (
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
-        <div className="topContent">
+        <div className="top-content">
           <Notice notices={entity.notices} />
         </div>
-        <div className="topContent">
-          <div className="top_img">
+        <div className="top-content">
+          <div className="top-img">
             <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
-              <img src={featureImage} alt="" id="feature-image" />
+              <img src={featureImage} alt="" id="feature-image" className="feature-image"/>
             </a>
           </div>
         </div>

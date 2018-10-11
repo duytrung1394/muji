@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NoticeWrapper = styled.div`
 
-.noticeContents {
+.notice-contents {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,19 +16,20 @@ const NoticeWrapper = styled.div`
     padding: 10px 15px;
     position: relative;
 }
-.noticeContents > dl {
+
+.notice-contents > dl {
     max-width: 1440px;
     margin: 0 auto;
     display: table;
 }
-.noticeContents > dl > dt {
+
+.notice-contents > dl > dt {
     font-size: 13px;
     font-weight: 600;
     display: table-cell;
 }
             
-
-.noticeContents > dl > a {
+.notice-contents > dl > a {
     color: #777;
     line-height: 1.7;
     display: block;
@@ -38,16 +39,20 @@ const NoticeWrapper = styled.div`
     -webkit-transition: ease 0.2s;
     transition: ease 0.2s;
     font-weight:normal;
+    margin:0;
 }
-.noticeContents > dl >  a:hover {
+
+.notice-contents > dl >  a:hover {
     color: #555;
 }
 
+.notice-title{
+    padding-right:10px;
+}
 
-
-
-
-
+.notice-list{
+    margin-bottom:0;
+}
 
 `
 export default NoticeWrapper;
