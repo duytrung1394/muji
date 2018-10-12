@@ -12,7 +12,7 @@ import ImportantNotice from "../../components/top/importantNotice";
 import styled from "styled-components";
 
 const TopWrapper = styled.div`
-  max-width: 1440;
+  max-width: 1440px;
   margin: auto;
 `;
 
