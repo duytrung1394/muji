@@ -11,15 +11,15 @@ const notice = props => {
           <dt　className="notice-title">
             <IntlMessages id="top.attributes.notices" />
           </dt>
-
           {notices &&
             notices.map(notice => {
-              return (
-                <a href="https://www.muji.net/store/cmdty/donation/0299671000000">
-                  <dd className="notice-list">{notice.title}</dd>
-                </a>
-              );
-            })}
+               return (
+                 <dd className="notice-list">
+                   <a href="https://www.muji.net/store/cmdty/donation/0299671000000">{notice.title}</a>
+                 </dd>
+               );
+            })
+          }
         </dl>
       </div>
     </NoticeWrapper>

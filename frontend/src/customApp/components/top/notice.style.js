@@ -29,10 +29,9 @@ const NoticeWrapper = styled.div`
     display: table-cell;
 }
             
-.notice-contents > dl > a {
+.notice-contents > dl > dd > a {
     color: #777;
-    line-height: 1.7;
-    display: block;
+    line-height: 1.7; 
     text-decoration: underline;
     -moz-transition: ease 0.2s;
     -o-transition: ease 0.2s;
@@ -42,7 +41,7 @@ const NoticeWrapper = styled.div`
     margin:0;
 }
 
-.notice-contents > dl >  a:hover {
+.notice-contents > dl > dd > a:hover {
     color: #555;
 }
 
