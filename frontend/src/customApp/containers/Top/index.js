@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import TopWrapper from "../../components/top/top.style";
 import Notice from "../../components/top/notice";
 import Feature from "../../components/top/feature";
 import NewItem from "../../components/top/newItem";
@@ -12,14 +11,18 @@ import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
 import styled from "styled-components";
 
+const TopWrapper = styled.div`
+  max-width: 1440px;
+  margin: auto;
+`;
+
 const FeatureWrapper = styled.div`
   text-align: center;
 
   img {
     width: 90%;
-    max-width: 1680px;   
   }
-`
+`;
 
 class Index extends Component {
   componentDidMount() {
