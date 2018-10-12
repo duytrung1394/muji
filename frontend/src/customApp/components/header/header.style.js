@@ -10,7 +10,7 @@ const HeaderWrapper = styled.div`
 
   .search{
     padding:0 20px 0 100px;
-    width:80%;
+    width:82%;
   }
 
   .banner {
@@ -23,13 +23,16 @@ const HeaderWrapper = styled.div`
   .logo-search-icons {
     display:flex;
     ul{
+      width:250px;
       padding:0;
+      text-align:right;
     }
     li{
       margin:0 10px;
       display:inline-block;
       list-style:none;
       ul{
+        display:inline-block;
         box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
         background-color:#fff;
         z-index: 3000;
