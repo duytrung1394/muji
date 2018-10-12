@@ -21,8 +21,6 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
-    const dailyMuji = entity.dailychoices ? entity.dailychoices : [];
-    const netStore = entity.netservices ? entity.netservices : [];
     return (
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
@@ -36,14 +34,10 @@ class Index extends Component {
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
         <div className="topContent">
-          <DailyMuji
-            title="毎日の無印良品"
-            items={dailyMuji}
-            caption="ネットストア限定対象商品配送料無料"
-          />
+          <DailyMuji dailyMujis={entity.daily_choices}/>
         </div>
         <div className="topContent">
-          <NetStore title="ネットストアの便利なサービス" items={netStore} />
+          <NetStore netStores={entity.net_services}/>
         </div>
         <Shop />
         <ImportantNotice importantNotices={entity.important_notices} />

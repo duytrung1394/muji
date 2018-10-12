@@ -1,17 +1,18 @@
 import React from "react";
 import DailyMujiWrapper from "./dailyMuji.style";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const DailyMuji = props => {
-  const { title, items, caption } = props;
+  const { dailyMujis } = props;
   return (
     <DailyMujiWrapper>
-      <div className="dailyMuji-frame">
-        <div className="dailyMuji-content-frame">
+      <div className="dailymuji-frame">
+        <div className="dailymuji-content-frame">
           <a href="">
-            <h2>{title}</h2>
-            <div className="dailyMuji-item-group">
+            <h2><IntlMessages id="top.dailyMuji.title" /></h2>
+            <div className="dailymuji-item-group">
               <ul>
-                {items.map((item, i) => {
+                {dailyMujis && dailyMujis.map((item, i) => {
                   return (
                     <li key={i}>
                       <img src={item.img_src} alt="imges" key={i} />
@@ -20,8 +21,8 @@ const DailyMuji = props => {
                 })}
               </ul>
             </div>
-            <span className="dailyMuji-frame-caption">
-              ネットストア限定 対象商品配送料無料
+            <span className="dailyMuji-frame-subtitle">
+              <IntlMessages id="top.dailyMuji.subtitle" />
             </span>
           </a>
         </div>
