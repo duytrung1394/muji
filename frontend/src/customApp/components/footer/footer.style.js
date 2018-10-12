@@ -54,7 +54,7 @@ const FooterWrapper = styled.div`
     margin-right:15px;
   }
 
-  .copyRight{
+  .copy-right{
     float:right;
   }
 `

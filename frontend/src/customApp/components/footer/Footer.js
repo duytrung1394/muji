@@ -4,8 +4,7 @@ import FooterWrapper from "./footer.style";
 
 const AntdFooter = Layout.Footer;
 
-class Footer extends Component {
-  render() {
+const Footer = () => {
     return (
       <FooterWrapper>
         <AntdFooter className="antd-footer">
@@ -142,7 +141,7 @@ class Footer extends Component {
                 <li>
                   <a>サイトマップ</a>
                 </li>
-                <li className="copyRight">
+                <li className="copy-right">
                   <a>Copyright ©Ryohin Keikaku Co., Ltd.</a>
                 </li>
               </ul>
@@ -151,7 +150,6 @@ class Footer extends Component {
         </AntdFooter>
       </FooterWrapper>
     );
-  }
 }
 
 export default Footer;

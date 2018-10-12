@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
+
   .ant-layout-header {
     background: #fff;
     border-bottom: solid 1px #f9f9f9;
     height: 5rem;
-    padding:30px 0 0 15px;
+    padding:30px 0 60px 15px;
   }
 
   .search{
-    padding:0 20px 0 100px;
-    width:82%;
+    padding:0 0 0 100px;
+    width:81%;
   }
 
   .banner {

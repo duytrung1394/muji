@@ -30,7 +30,7 @@ class Header extends Component {
       <HeaderWrapper>
         <AntdHeader>
           <div className="banner">
-            {bannerFlag == true ? (
+            {bannerFlag === true ? (
               <p>
                 <img
                   src="https://img.muji.net/img/store/common/banner_ryohinweek.png"
