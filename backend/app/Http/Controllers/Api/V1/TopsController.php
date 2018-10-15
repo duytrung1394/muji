@@ -53,6 +53,62 @@ class TopsController extends Controller
                     'title' => '食品 新商品一覧',
                 ],
             ],
+            'category_list' => [
+                [
+                    'category_title' => '衣料品',
+                    'img_src' => 'https://img.muji.net/img/item/4550002061869_95.jpg',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002674335_01_95.jpg',
+                            'title' => '婦人ウェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738822431_01_95.jpg',
+                            'title' => '婦人インナーウェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002277819_01_95.jpg',
+                            'title' => '紳士ウェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002612801_95.jpg',
+                            'title' => '紳士インナーウェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738463351_95.jpg',
+                            'title' => '靴下',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738777656_95.jpg',
+                            'title' => '靴',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738175360_95.jpg',
+                            'title' => 'バッグ',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002626457_01_95.jpg',
+                            'title' => '服飾雑貨',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002378257_01_95.jpg',
+                            'title' => 'MUJI Labo婦人',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002061869_95.jpg',
+                            'title' => 'MUJI Labo紳士',
+                        ],
+                    ]
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10909_640_181005.jpg',
+                    'title' => '生活雑貨 新商品一覧',
+                ],
+                [
+                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10905_640_181005.jpg',
+                    'title' => '食品 新商品一覧',
+                ],
+            ],
             'limited_items' => [
                 [
                     'img_src' => 'https://www.muji.com/jp/img/store/panel/s000051065_640.jpg',
