@@ -16,8 +16,8 @@ const NetStore = props => {
                   <figure>
                     <img src={item.img_src} alt="" />
                   </figure>
-                  <h3 className="subtitle">{item.img_sub.split("\n").map( (newline, i) => <div key={i}>{newline}</div>)}</h3>
-                  <div className="note">{item.img_note.split("\n").map( (newline, j) => <div className="lines" key={j}>{newline}</div>)}</div>
+                  <div className={`subtitle` + i}>{item.img_sub.split("\n").map( (newline, j) => <div className={`subtitle-lines` + j} key={j}>{newline}</div>)}</div>
+                  <div className={`note` + i}>{item.img_note.split("\n").map( (newline, j) => <p className={`note-lines` + j} key={j}>{newline}</p>)}</div>
                 </li>
               );
             })}
