@@ -6,6 +6,8 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 
+import transit from 'transit-immutable-js';
+
 import routes from './routes';
 
 import Hoc from './serverHoc';
@@ -37,7 +39,7 @@ const ssr = async (req, res) => {
   
   store.runSaga(rootSaga).done.then(() => {
     const stream = ReactDOMServer.renderToNodeStream(
-      <HTML>
+      <HTML initialData={ transit.toJSON(store.getState()) }>
         {rootComp}
       </HTML>
       );
@@ -75,7 +77,7 @@ const HTML = (props) => {
       </head>
       <body>
         <div id='root'>{props.children}</div>
-        <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script>
+        <script id='initial-data' type='text/plain' data-json={props.initialData}></script>
         <script type='text/javascript' src='/main.js'></script>
       </body>
     </html>
