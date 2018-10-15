@@ -30,7 +30,7 @@ const SideMenu = () => {
 
     return (
       <SiderWrapper>
-        <Sider breakpoint="lg" collapsedWidth="0" width="222"
+        <Sider breakpoint="lg" collapsedWidth="0" width="230"
           style={{ overflow: 'scroll', position: 'left', left: 0, background: '#f7f7f7'}
       }>
           <Menu>
