@@ -8,6 +8,8 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 
 import transit from 'transit-immutable-js';
 
+import { ServerStyleSheet } from 'styled-components';
+
 import routes from './routes';
 
 import Hoc from './serverHoc';
@@ -36,10 +38,15 @@ const ssr = async (req, res) => {
   if( matchedRoutes.length > 1 ){
     console.warn(`the url(${req.url}) matches multiple routes.`);
   }
+
+  const sheet = new ServerStyleSheet();
   
   store.runSaga(rootSaga).done.then(() => {
     const stream = ReactDOMServer.renderToNodeStream(
-      <HTML initialData={ transit.toJSON(store.getState()) }>
+      <HTML 
+        initialData={ transit.toJSON(store.getState()) }
+        styleTags={ sheet.getStyleTags() }
+      >
         {rootComp}
       </HTML>
       );
@@ -74,6 +81,7 @@ const HTML = (props) => {
         <title>Muji EC</title>
         <style>{props.style}</style>
         <link rel="stylesheet" href="/main.css" />
+        {props.styleTags}
       </head>
       <body>
         <div id='root'>{props.children}</div>
