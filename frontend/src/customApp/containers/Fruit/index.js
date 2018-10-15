@@ -28,7 +28,7 @@ class Index extends Component {
   }
 
   // React methods
-  componentDidMount() {
+  componentWillMount() {
     this.fetchRequest(this.props);
   }
 
@@ -117,8 +117,10 @@ const actionCreators = {
 
 const enhance = (C) => {
   const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
+  return connected;
+  // TODO: injected のSSR対応
+  // const injected = injectIntl(connected, {withRef: true})
+  // return injected
 }
 
 export default enhance(Index);
