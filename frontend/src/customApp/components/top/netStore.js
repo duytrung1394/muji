@@ -6,12 +6,12 @@ const NetStore = props => {
   const { netStores } = props;
   return (
     <NetStoreWrapper>
-      <div className="netstore-frame">
+      <div className="net-store-frame">
         <a href="//www.muji.com">
           <h2>
-            <IntlMessages id="top.netStore.title" />
+            <IntlMessages id="top.net-store.title" />
           </h2>
-          <ul className="netstore-image-group">
+          <ul className="net-store-image-group">
             {netStores &&
               netStores.map((item, i) => {
                 return (

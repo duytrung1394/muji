@@ -88,26 +88,31 @@ class TopsController extends Controller
               'net_services' => [
                 [
                   'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan.png',
-                  'img_sub' => '一定額以上の'."\n".'お買い上げで'."\n".'配送料無料','img_note' => '小型商品は税込5,000円以'."\n".'上、大型家具・家電は税込'."\n".'　150,000以上で、配送'."\n".'料無料'
+                  'img_sub' => "一定額以上の\nお買い上げで\n配送料無料",
+                  'img_note' => '小型商品は税込5,000円以上、大型家具・家電は税込150,000以上で、配送料無料'
                 ],
                 [
                   'img_src' => 'https://www.muji.com/jp/store/service/img/service_storage.png',
-                  'img_sub' => 'ポリプロピレン'."\n".'衣装ケースなど'."\n".'配送料無料','img_note' => '対象商品が配送料無料にな'."\n".'りました'
+                  'img_sub' => "ポリプロピレン\n衣装ケースなど\n配送料無料",
+                  'img_note' => '対象商品が配送料無料になりました'
                 ],
                 [ 'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan02.png',
-                  'img_sub' => '小型商品の'."\n".'配送料４９０円','img_note' => '配送料区分Aの商品の配送'."\n".'料が490円になりました'
+                  'img_sub' => "小型商品の\n配送料４９０円",
+                  'img_note' => '配送料区分Aの商品の配送料が490円になりました'
                 ],
                 [
                   'img_src' => 'https://www.muji.com/jp/store/service/img/service_box.png',
-                  'img_sub' => 'えらべる'."\n".'受取方法','img_note' => 'ご自宅への配送以外にも、'."\n".'店舗受取や、コンビニ受取をご'."\n".'利用いただけます'
+                  'img_sub' => "えらべる\n受取方法",
+                  'img_note' => 'ご自宅への配送以外にも、店舗受取や、コンビニ受取をご利用いただけます'
                 ],
                 [
                   'img_src' => 'https://www.muji.com/jp/store/service/img/service_shirt_s.png',
-                  'img_sub' => 'XS・XXL'."\n".'サイズ','img_note' => '店舗からのお取り寄せや、店'."\n".'舗受取も可能です'
+                  'img_sub' => "XS・XXL\nサイズ",
+                  'img_note' => '店舗からのお取り寄せや、店舗受取も可能です'
                 ],
                 [
                   'img_src' => 'https://www.muji.com/jp/store/service/img/service_hanger_s.png',
-                  'img_sub' => 'まとめ買い','img_note' => 'ケースでお届けするから'."\n".'5%お得'
+                  'img_sub' => 'まとめ買い','img_note' => 'ケースでお届けするから5%お得'
                 ],
             ],
         ];

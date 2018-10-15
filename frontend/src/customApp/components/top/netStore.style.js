@@ -2,49 +2,53 @@ import styled from "styled-components";
 
 const NetStoreWrapper = styled.div`
 
-.netstore-frame
+.net-store-frame:hover
 {
-  margin: 0;
+  filter: brightness(0.85);
+},
+.net-store-frame
+{
+  margin: 0px auto;
   width: 100%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #ddd;
-  overflow: hidden;
+  transition: filter 0.2s ease;
+  background: white;
+  filter: brightness(1);
 },
-.netstore-frame a
+.net-store-frame a
 {
   text-decoration: none;
-  padding: 20px 0;
   display: block;
   color: #333;
-  background-color: #fff;
 },
-.netstore-frame h2
+.net-store-frame h2
 {
   font-size: 30px;
+  margin-top 20px;
   margin-bottom 60px;
 },
-.netstore-frame ul
+.net-store-frame ul
 {
   display: flex;
   justify-content: center;
   list-style: none;
 },
-
-.netstore-image-group li
+.net-store-image-group li
 {
   width: 15%; margin: 0 15px;
 },
-.netstore-image-group img
+.net-store-image-group img
 {
-  maxz-width: 100%;
+   max-width: 100%;
    max-height:100px;
    margin:0;
  },
-.netstore-image-group figure
+.net-store-image-group figure
 {
   width: 100%;
-  max-height:50%;
+  max-height:100%;
 },
 .note-lines0
 {
