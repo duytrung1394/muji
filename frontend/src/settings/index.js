@@ -1,5 +1,11 @@
+const apiUrl = {
+  release: "https://muji-ec-release.xenophy.info",
+  preview: "https://muji-ec.xenophy.info",
+  development: "http://localhost:8081"
+};
+
 export default {
-  apiUrl: "http://localhost:8081",
+  apiUrl: apiUrl[process.env.REACT_APP_ENV],
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
 const siteConfig = {
