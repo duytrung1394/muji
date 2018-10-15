@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Layout, Menu, Icon, Select } from "antd";
+import { Layout, Menu, Icon, Select} from "antd";
 import MenuIcon from "../icon/menulcon";
 import SiderWrapper from "./sider.style";
 import NavLink from "./NavLink";
+import { Link } from 'react-router-dom';
 import sidebarIcon2 from "./sider_icons/sidebarIcon2.png";
 import sidebarIcon3 from "./sider_icons/sidebarIcon3.png";
 import sidebarIcon4 from "./sider_icons/sidebarIcon4.png";
@@ -23,7 +24,9 @@ const { Sider } = Layout;
 const MenuItemGroup = Menu.ItemGroup;
 
 
+
 const SideMenu = () => {
+
 
     return (
       <SiderWrapper>
@@ -35,8 +38,13 @@ const SideMenu = () => {
               <Menu.Item key="10">特集</Menu.Item>
               <Menu.Item key="11">新商品</Menu.Item>
             </MenuItemGroup>
-            <MenuItemGroup className="sider-everyday" title={<span>毎日の無印良品<p className="sider-everyday-p">ネット限定 対象商品配送料無料</p></span>} key="g2">
-              {/* <Menu.Item key="20"></Menu.Item> */}
+            <MenuItemGroup key="g2">
+            <Menu.Item key="20" ></Menu.Item>
+            <Link to="/store/cmdty/section/T001011" key="g2">
+            <div className="sider-everyday" >
+            <span>毎日の無印良品<p className="sider-everyday-p">ネット限定 対象商品配送料無料</p></span>
+            </div>
+            </Link>
             </MenuItemGroup>
             <MenuItemGroup title={<span><img className="sider-icon"/><span>お買い得</span></span>} key="g3">
               <Menu.Item key="31">期間限定価格</Menu.Item>
@@ -46,7 +54,7 @@ const SideMenu = () => {
               <Menu.Item key="35">アウトレット</Menu.Item>
             </MenuItemGroup>
             <MenuItemGroup key="g4" title={<span><img className="sider-icon"　src={sidebarIcon2}/><span>衣料品</span></span>}>
-              <Menu.Item key="4_01"><NavLink to="/store/cmdty/section/T10000">婦人ウェア</NavLink></Menu.Item>
+              <Menu.Item className="ant-menu-item" key="4_01"><NavLink  to="/store/cmdty/section/T10000">婦人ウェア</NavLink></Menu.Item>
               <Menu.Item key="4_02"><NavLink to="/store/cmdty/section/T10001">婦人インナーウェア</NavLink></Menu.Item>
               <Menu.Item key="4_03"><NavLink to="/store/cmdty/section/T10002">紳士ウェア</NavLink></Menu.Item>
               <Menu.Item key="4_04"><NavLink to="/store/cmdty/section/T10003">紳士インナーウェア</NavLink></Menu.Item>

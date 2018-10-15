@@ -6,6 +6,11 @@ const Div = styled.div`
 .navlink{
     color:black;
     display:block;
+    position:absolute;
+    width:220px;
+    top:0px;
+    left:10px;
+    line-height:28px;
 }
 .navlink:hover{
  color:white;}

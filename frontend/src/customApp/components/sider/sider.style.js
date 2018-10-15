@@ -68,6 +68,7 @@ const SidebarWrapper = styled.div`
 
   .sider-everyday {
     margin-bottom:0;
+    
   }
 
   .sider-everyday-p {
@@ -79,6 +80,24 @@ const SidebarWrapper = styled.div`
     color:white;
     cursor:pointer;
   }
+
+.sider-everyday {
+  height:70px;
+  marginTop:0;
+
+  padding-top:10px;
+  padding-left:15px;
+ text-align:left;
+ vertical-align:middle;
+ 
+  position:absolute;
+    width:220px;
+    top:125px;
+    left:0px;
+    line-height:28px;
+    color:black;
+    font-weight:bold;
+}
 
   
 `
