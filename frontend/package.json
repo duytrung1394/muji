@@ -93,6 +93,8 @@
     "smooth-scrollbar": "^8.2.5",
     "styled-components": "^2.2.1",
     "styled-theme": "^0.3.3",
+    "transit-immutable-js": "^0.7.0",
+    "transit-js": "^0.8.861",
     "uppy": "0.18.0"
   },
   "devDependencies": {
