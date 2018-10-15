@@ -3,9 +3,9 @@ import manifest from 'express-manifest';
 import path from 'path';
 
 const app = express();
-const router = require('./serverRoutes');
+const renderer = require('./serverRenderer');
 
-app.use(router);
+app.use(renderer);
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');

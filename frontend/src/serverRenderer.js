@@ -75,7 +75,7 @@ const HTML = (props) => {
       </head>
       <body>
         <div id='root'>{props.children}</div>
-        {/* <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script> */}
+        <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script>
         <script type='text/javascript' src='/main.js'></script>
       </body>
     </html>
