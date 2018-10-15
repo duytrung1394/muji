@@ -34,10 +34,10 @@ class Index extends Component {
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
         <div className="topContent">
-          <DailyMuji dailyMujis={entity.daily_choices}/>
+          <DailyMuji dailyMujis={entity.daily_choices} />
         </div>
         <div className="topContent">
-          <NetStore netStores={entity.net_services}/>
+          <NetStore netStores={entity.net_services} />
         </div>
         <Shop />
         <ImportantNotice importantNotices={entity.important_notices} />
