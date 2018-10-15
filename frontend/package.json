@@ -112,7 +112,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "dev": "NODE_ENV=development babel-watch src/server.js",
+    "dev": "NODE_ENV=development REACT_APP_ENV=development babel-watch src/server.js",
     "build": "react-app-rewired --max_old_space_size=8192 build",
     "build-preview": "REACT_APP_ENV=preview react-app-rewired --max_old_space_size=8192 build",
     "build-release": "REACT_APP_ENV=release react-app-rewired --max_old_space_size=8192 build",
