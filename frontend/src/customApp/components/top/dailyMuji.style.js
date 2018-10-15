@@ -1,13 +1,25 @@
 import styled from "styled-components";
 
 const DailyMujiWrapper = styled.div`
-.dailymuji-frame
+
+.dailymuji-content-frame
 {
-  margin: 0; width: 100%;
+  width: 100%;
   text-align: center;
-  border-radius: 5px; border:
-  1px solid #ddd;
-  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  background: white;
+  transition: filter 0.2s ease;
+},
+.dailymuji-content-frame a
+{
+  padding: 20px;
+},
+.dailymuji-content-frame:hover
+{
+  width: 100%;
+  filter: brightness(0.85);
 },
 .dailymuji-frame-subtitle
 {
@@ -22,14 +34,10 @@ const DailyMujiWrapper = styled.div`
   font-weight: bold;
   margin-bottom: 20px;
 },
-.dailymuji-content-frame
-{
-  width: 100%;
-},
 .dailymuji-item-group
 {
   width: 100%;
-  padding: 0;
+  filter: brightness(1);
 },
 .dailymuji-item-group li
 {
@@ -48,5 +56,7 @@ const DailyMujiWrapper = styled.div`
   list-style: none;
   padding: 0;
 },
+
+
 `
 export default DailyMujiWrapper;
