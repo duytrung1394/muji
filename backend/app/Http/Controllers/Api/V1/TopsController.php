@@ -56,7 +56,6 @@ class TopsController extends Controller
             'category_list' => [
                 [
                     'category_title' => '衣料品',
-                    'img_src' => 'https://img.muji.net/img/item/4550002061869_95.jpg',
                     'items' => [
                         [
                             'img_src' => 'https://img.muji.net/img/item/4550002674335_01_95.jpg',
@@ -98,16 +97,227 @@ class TopsController extends Controller
                             'img_src' => 'https://img.muji.net/img/item/4550002061869_95.jpg',
                             'title' => 'MUJI Labo紳士',
                         ],
-                    ]
+                    ],
                 ],
                 [
-                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10909_640_181005.jpg',
-                    'title' => '生活雑貨 新商品一覧',
+                    'category_title' => '子供・マタニティ',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002012793_95.jpg',
+                            'title' => 'ベビー（80-100cm）',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002205980_95.jpg',
+                            'title' => 'キッズ（110-150cm）',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002571702_01_95.jpg',
+                            'title' => 'マタニティ・新生児',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4934761364056_95.jpg',
+                            'title' => '子供用品・家具・三輪車',
+                        ],
+                    ],
                 ],
                 [
-                    'img_src' => 'https://www.muji.com/jp/img/store/panel/s10905_640_181005.jpg',
-                    'title' => '食品 新商品一覧',
+                    'category_title' => '家具・インテリア・家電',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315874859_95.jpg',
+                            'title' => '収納家具',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4934761179391_95.jpg',
+                            'title' => 'ユニットシェルフ',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315253586_95.jpg',
+                            'title' => '収納用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738996446_95.jpg',
+                            'title' => '小物収納用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315901982_95.jpg',
+                            'title' => 'テーブル・チェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549337035393_95.jpg',
+                            'title' => 'デスク・チェア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548718013180_95.jpg',
+                            'title' => 'THONET',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548076606383_95.jpg',
+                            'title' => 'REAL FURNITURE',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315256440_95.jpg',
+                            'title' => 'ベッド',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549337288317_95.jpg',
+                            'title' => '布団・寝具',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549337408135_95.jpg',
+                            'title' => 'ソファ',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002422646_95.jpg',
+                            'title' => 'ラグ・クッション・スリッパ',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738923169_95.jpg',
+                            'title' => 'カーテン・ブラインド',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002405120_95.jpg',
+                            'title' => 'インテリア用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315236657_95.jpg',
+                            'title' => '家電・照明',
+                        ],                        
+                    ],
                 ],
+                [
+                    'category_title' => 'ヘルス＆ビューティー',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548076448334_95.jpg',
+                            'title' => 'スキンケア用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002124960_02_95.jpg',
+                            'title' => 'メイクアップ用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738970286_95.jpg',
+                            'title' => 'ヘアケア',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738380078_95.jpg',
+                            'title' => 'ボディケア・入浴剤',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315294237_95.jpg',
+                            'title' => 'エッセンシャルオイル・アロマポット',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738304425_95.jpg',
+                            'title' => 'ポーチ・小分け容器',
+                        ],                        
+                    ],
+                ],
+                [
+                    'category_title' => '雑貨・日用品',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549337083264_95.jpg',
+                            'title' => '食器',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548718428342_95.jpg',
+                            'title' => 'キッチン用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738979517_95.jpg',
+                            'title' => 'タオル・バス・トイレ用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315915620_95.jpg',
+                            'title' => 'ランドリー・掃除用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315095087_95.jpg',
+                            'title' => '文房具',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548718782666_95.jpg',
+                            'title' => 'アルバム',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4945247467604_95.jpg',
+                            'title' => '本・BGM',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4548076281856_95.jpg',
+                            'title' => '自転車',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549337668669_95.jpg',
+                            'title' => 'トラベル用品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315892365_95.jpg',
+                            'title' => 'Found MUJI',
+                        ],
+                    ],
+                ],
+                [
+                    'category_title' => '食品',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738359494_95.jpg',
+                            'title' => 'レトルト・調味料',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550182028126_95.jpg',
+                            'title' => '冷凍食品',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4547315554799_95.jpg',
+                            'title' => '製菓材料',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002873851_95.jpg',
+                            'title' => '菓子',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4549738968450_95.jpg',
+                            'title' => '飲料',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/4550002787677_95.jpg',
+                            'title' => '食の基本',
+                        ],
+                    ],
+                ],
+                [
+                    'category_title' => 'その他',
+                    'items' => [
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/0280001008597_95.jpg',
+                            'title' => '花・グリーン',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/item/0280001003843_95.jpg',
+                            'title' => '産地直送',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/store/camp/norikura_400.jpg',
+                            'title' => 'キャンプ場',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/store/mujisupport/support_400.jpg',
+                            'title' => 'MUJI SUPPORT',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/store/housevision/housevision_400.jpg',
+                            'title' => 'MUJI HOUSE VISION',
+                        ],
+                        [
+                            'img_src' => 'https://img.muji.net/img/store/ie/kinoie_400.jpg',
+                            'title' => '家',
+                        ],
+                    ],
+                ],
+                
             ],
             'limited_items' => [
                 [
