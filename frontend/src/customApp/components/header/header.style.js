@@ -27,7 +27,7 @@ const HeaderWrapper = styled.div`
     }
 
     .header-btns {
-
+      font-size:6px;
       .header-btn {
         padding: 0 5px;
         text-align: center;
@@ -35,9 +35,95 @@ const HeaderWrapper = styled.div`
         .header-btn-anchor {
           display: block;
           text-align: center;
+          padding:0 5px;
+          color: rgba(0, 0, 0, 0.65);
         }
       }
     }
   }
+
+  .header-login-btn{
+    padding:0 5px;
+    text-align:center;
+  }
+
+  .header-support-btn{
+    padding:0 5px;
+    text-align:center;
+  }
+
+  .header-login-btn:hover .header-login-list{
+    display:block;
+  }
+
+  .header-support-btn:hover .header-support-list{
+    display:block;
+  }
+
+  .list-item{
+    height:45px;
+    border-bottom:1px solid rgba(0 0 0 0.6);
+  }
+
+  .header-login-list{
+    background-color:#fff;
+    width:100px;
+    font-size:12px;
+    z-index:3000;
+    position:absolute;
+    right:55px;
+    display:none;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    border:none;
+  }
+
+
+  .login-list-value{
+    color:gray;
+    display:block;
+    width:100px;
+    position:relative;
+    padding:12px 0;
+    right:24px;
+    border:none;
+  }
+
+  .login-list-value:hover{
+    color:#fff;
+    background-color:gray;
+  }
+
+
+  .header-support-list{
+    background-color:#fff;
+    width:170px;
+    font-size:12px;
+    z-index:3000;
+    position:absolute;
+    right:5px;
+    display:block;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    border:none;
+  }
+
+  .support-list-value{
+    color:gray;
+    display:block;
+    width:170px;
+    line-height:20px;
+    position:relative;
+    padding:12px 0;
+    right:24px;
+  }
+
+  .support-list-value:hover{
+    color:#fff;
+    background-color:gray;
+  }
+
+  .support-list-value:first-child{
+    border-radius:3px 3px 3px 3px;
+  }
+
 `
 export default HeaderWrapper;

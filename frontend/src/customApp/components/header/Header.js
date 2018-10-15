@@ -3,6 +3,20 @@ import { Link } from "react-router-dom";
 import { Layout, Form, Input, Select, Icon, Row, Col } from "antd";
 import HeaderWrapper from "./header.style";
 
+import { List } from 'antd';
+
+const loginData = [
+  'ログイン',
+  '新規登録'
+];
+
+const supportData = [
+  'お問い合わせ',
+  'ご利用ガイド',
+  '重要なお知らせ',
+  'サイトからのお知らせ'
+];
+
 const AntdHeader = Layout.Header;
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -63,17 +77,29 @@ class Header extends Component {
               <Row type="flex" justify="space-between">
                 <Col className="header-btn">
                   <a class="header-btn-anchor">
-                    <Icon type="shopping-cart" style={{ fontSize: 32 }} />
+                    <Icon type="shopping-cart" style={{ fontSize: 28 }} />
                     <div>カート</div>
                   </a>
                 </Col>
-                <Col className="header-btn">
-                  <Icon type="user" style={{ fontSize: 32 }} />
+                <Col className="header-login-btn">
+                  <Icon type="user" style={{ fontSize: 28 }} />
                   <div>ログイン</div>
+                  <List className="header-login-list"
+                      bordered
+                      dataSource={loginData}
+                      renderItem={item => (<List.Item className="list-item"><Link to="/store" className="login-list-value">{item}</Link></List.Item>)}
+                    />
                 </Col>
-                <Col className="header-btn">
-                  <Icon type="info-circle" style={{ fontSize: 32 }} />
+                <Col className="header-support-btn">
+                  <Icon type="info-circle" style={{ fontSize: 28 }} />
                   <div>サポート</div>
+                  <Row>
+                  <List className="header-support-list"
+                      bordered
+                      dataSource={supportData}
+                      renderItem={item => (<List.Item className="list-item"><Link to="/store" className="support-list-value">{item}</Link></List.Item>)}
+                    />
+                  </Row>
                 </Col>
               </Row>
             </Col>
