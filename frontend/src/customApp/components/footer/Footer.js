@@ -5,151 +5,151 @@ import FooterWrapper from "./footer.style";
 const AntdFooter = Layout.Footer;
 
 const Footer = () => {
-    return (
-      <FooterWrapper>
-        <AntdFooter className="antd-footer">
-          <Row>
-            <Col span={6}>
-              <ul>
-                <li class="footer-logo">
-                  <a>
-                    <img src="https://img.muji.net/img/common/logo-muji.svg" />
-                  </a>
-                </li>
-                <li class="social-buttons">
-                  <ul>
-                    <li>
-                      <a>
-                        <img src="https://img.muji.net/img/common/twitter-with-circle.svg" />
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <img src="https://img.muji.net/img/common/facebook-with-circle.svg" />
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <img src="https://img.muji.net/img/common/youtube-with-circle.svg" />
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <img src="https://img.muji.net/img/common/instagram-with-circle.svg" />
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </Col>
-            <Col span={4}>
-              <ul>
-                <li>
-                  <a>店舗情報</a>
-                </li>
-                <li>
-                  <a>イベント</a>
-                </li>
-                <li>
-                  <a>くらしの研究所</a>
-                </li>
-                <li>
-                  <a>MUJI SUPPORT</a>
-                </li>
-                <li>
-                  <a>MUJI HOUSE VISION</a>
-                </li>
-                <li>
-                  <a>お問い合わせ</a>
-                </li>
-              </ul>
-            </Col>
-            <Col span={4}>
-              <ul>
-                <li>
-                  <a>無印良品の家</a>
-                </li>
-                <li>
-                  <a>Cafe＆Meal MUJI</a>
-                </li>
-                <li>
-                  <a>キャンプ場</a>
-                </li>
-                <li>
-                  <a>Found MUJI</a>
-                </li>
-                <li>
-                  <a>MUJI BOOKS</a>
-                </li>
-                <li>
-                  <a>MUJI HOTEL</a>
-                </li>
-              </ul>
-            </Col>
-            <Col span={4}>
-              <ul>
-                <li>
-                  <a>MUJI passport</a>
-                </li>
-                <li>
-                  <a>カタログ</a>
-                </li>
-                <li>
-                  <a>MUJI Card</a>
-                </li>
-                <li>
-                  <a>MUJI GIFT CARD</a>
-                </li>
-                <li>
-                  <a>法人のお客様へ</a>
-                </li>
-                <li>
-                  <a>Tax-free Services</a>
-                </li>
-              </ul>
-            </Col>
-            <Col span={4}>
-              <ul>
-                <li>
-                  <a>ニュースリリース</a>
-                </li>
-                <li>
-                  <a>採用情報</a>
-                </li>
-                <li>
-                  <a>無印良品のメッセージ</a>
-                </li>
-                <li>
-                  <a>無印良品について</a>
-                </li>
-                <li>
-                  <a>株式会社　良品計画</a>
-                </li>
-              </ul>
-            </Col>
-          </Row>
+  return (
+    <FooterWrapper>
+      <AntdFooter className="antd-footer">
+        <Row>
+          <Col span={6}>
+            <ul>
+              <li class="footer-logo">
+                <a>
+                  <img src="https://img.muji.net/img/common/logo-muji.svg" />
+                </a>
+              </li>
+              <li class="social-buttons">
+                <ul>
+                  <li>
+                    <a>
+                      <img src="https://img.muji.net/img/common/twitter-with-circle.svg" />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <img src="https://img.muji.net/img/common/facebook-with-circle.svg" />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <img src="https://img.muji.net/img/common/youtube-with-circle.svg" />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <img src="https://img.muji.net/img/common/instagram-with-circle.svg" />
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </Col>
+          <Col span={4}>
+            <ul>
+              <li>
+                <a>店舗情報</a>
+              </li>
+              <li>
+                <a>イベント</a>
+              </li>
+              <li>
+                <a>くらしの研究所</a>
+              </li>
+              <li>
+                <a>MUJI SUPPORT</a>
+              </li>
+              <li>
+                <a>MUJI HOUSE VISION</a>
+              </li>
+              <li>
+                <a>お問い合わせ</a>
+              </li>
+            </ul>
+          </Col>
+          <Col span={4}>
+            <ul>
+              <li>
+                <a>無印良品の家</a>
+              </li>
+              <li>
+                <a>Cafe＆Meal MUJI</a>
+              </li>
+              <li>
+                <a>キャンプ場</a>
+              </li>
+              <li>
+                <a>Found MUJI</a>
+              </li>
+              <li>
+                <a>MUJI BOOKS</a>
+              </li>
+              <li>
+                <a>MUJI HOTEL</a>
+              </li>
+            </ul>
+          </Col>
+          <Col span={4}>
+            <ul>
+              <li>
+                <a>MUJI passport</a>
+              </li>
+              <li>
+                <a>カタログ</a>
+              </li>
+              <li>
+                <a>MUJI Card</a>
+              </li>
+              <li>
+                <a>MUJI GIFT CARD</a>
+              </li>
+              <li>
+                <a>法人のお客様へ</a>
+              </li>
+              <li>
+                <a>Tax-free Services</a>
+              </li>
+            </ul>
+          </Col>
+          <Col span={4}>
+            <ul>
+              <li>
+                <a>ニュースリリース</a>
+              </li>
+              <li>
+                <a>採用情報</a>
+              </li>
+              <li>
+                <a>無印良品のメッセージ</a>
+              </li>
+              <li>
+                <a>無印良品について</a>
+              </li>
+              <li>
+                <a>株式会社　良品計画</a>
+              </li>
+            </ul>
+          </Col>
+        </Row>
 
-          <Row>
-            <Col span={24}>
-              <ul class="footer-navi">
-                <li>
-                  <a>日本</a>
-                </li>
-                <li>
-                  <a>個人情報の取り扱い</a>
-                </li>
-                <li>
-                  <a>サイトマップ</a>
-                </li>
-                <li className="copy-right">
-                  <a>Copyright ©Ryohin Keikaku Co., Ltd.</a>
-                </li>
-              </ul>
-            </Col>
-          </Row>
-        </AntdFooter>
-      </FooterWrapper>
-    );
-}
+        <Row>
+          <Col span={24}>
+            <ul class="footer-navi">
+              <li>
+                <a>日本</a>
+              </li>
+              <li>
+                <a>個人情報の取り扱い</a>
+              </li>
+              <li>
+                <a>サイトマップ</a>
+              </li>
+              <li className="copy-right">
+                <a>Copyright ©Ryohin Keikaku Co., Ltd.</a>
+              </li>
+            </ul>
+          </Col>
+        </Row>
+      </AntdFooter>
+    </FooterWrapper>
+  );
+};
 
 export default Footer;
