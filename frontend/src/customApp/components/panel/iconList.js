@@ -10,7 +10,7 @@ const IconList = props => {
       {props.items &&
         props.items.map((item, index) => {
           return (
-            <Grid bordered={false} key={index} className={props.className}>
+            <Grid key={index} className={props.className}>
               <Link to="" className={props.childClassName}>
                 <div className="box-left">
                   <img

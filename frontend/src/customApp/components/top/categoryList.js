@@ -16,12 +16,11 @@ const categoryList = props => {
     <ContentPanel
       title={<IntlMessages id="top.categoryList.title" />}
       link_path="/store"
-      bordered={false}
     >
       {categorys &&
         categorys.map((category, index) => {
           return (
-            <Row>
+            <Row key={index}>
               <Col span={24} style={contentPanelStyle}>
                 <h2
                   style={{
@@ -36,8 +35,7 @@ const categoryList = props => {
                   className="icon-list"
                   childClassName="list-icon"
                   items={category.items}
-                  iconSize={60}
-                  key={index}
+                  iconSize={60}                  
                   wrapper={categoryListWrapper}
                 />
               </Col>
