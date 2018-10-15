@@ -45,7 +45,7 @@ const ssr = async (req, res) => {
     const stream = ReactDOMServer.renderToNodeStream(
       <HTML 
         initialData={ transit.toJSON(store.getState()) }
-        styleTags={ sheet.getStyleTags() }
+        styleElement={ sheet.getStyleElement() }
       >
         {rootComp}
       </HTML>
@@ -81,7 +81,7 @@ const HTML = (props) => {
         <title>Muji EC</title>
         <style>{props.style}</style>
         <link rel="stylesheet" href="/main.css" />
-        {props.styleTags}
+        {props.styleElement}
       </head>
       <body>
         <div id='root'>{props.children}</div>
