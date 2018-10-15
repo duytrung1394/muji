@@ -20,13 +20,17 @@ if (process.env.NODE_ENV !== 'production') {
 
   // main.css系の処置
   // 注: yarn build であらかじめプロダクション用のbuildディレクトリを生成している必要がある
-  const fs = require('fs');
-  const assetManifest = JSON.parse( fs.readFileSync('build/asset-manifest.json') ); 
-  const mainCSS = fs.readFileSync('build/' + assetManifest['main.css']);
-  app.get('/main.css', function(req, res) {
-    res.setHeader('Content-type' , 'text/css');
-    res.send(mainCSS);
-  });
+  try{
+    const fs = require('fs');
+    const assetManifest = JSON.parse( fs.readFileSync('build/asset-manifest.json') ); 
+    const mainCSS = fs.readFileSync('build/' + assetManifest['main.css']);
+    app.get('/main.css', function(req, res) {
+      res.setHeader('Content-type' , 'text/css');
+      res.send(mainCSS);
+    });
+  }catch(err){
+    console.error('Please run `yarn build` before `yarn dev` to create main.css.');
+  }
 }else{
   app.use(manifest({
     manifest: path.join(__dirname, '../build/asset-manifest.json'),
