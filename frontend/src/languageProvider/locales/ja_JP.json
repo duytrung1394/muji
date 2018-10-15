@@ -430,6 +430,7 @@
   "topbar.totalPrice": "Total Price",
   "topbar.viewAll": "View All",
   "topbar.viewCart": "View Cart",
+  "top.attributes.notices":"お知らせ",
   "uiElements.badge.badge": "Badge",
   "uiElements.badge.basicExample": "Basic Example",
   "uiElements.badge.basicExampleSubTitle": "Simplest Usage. Badge will be hidden when count is 0   but we can use showZero to show it.",

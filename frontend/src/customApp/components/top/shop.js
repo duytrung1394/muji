@@ -1,39 +1,56 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 import { Map, GoogleApiWrapper } from "google-maps-react";
-import { Select } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import SelectPrefecture from "../form/selectPrefecture";
 
-const containerStyle = { position: "relative", width: "100%", height: "250px" };
+const mapStyle = { position: "relative", width: "100%", height: "250px" };
 
-const Option = Select.Option;
+const ContentPanelWrapper = styled.div`
+  .ant-card-extra {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .top-shop-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+`;
+
+const shopUrl = "https://www.muji.com/jp/shop";
+
+const Aux = props => props.children;
 
 export class Shop extends Component {
   handleChange = prefecture => {
-    this.props.history.push({
-      pathname: "/store",
-      search: `?prefecture=${prefecture}`
-    });
+    window.location.href = `${shopUrl}/search?q=${prefecture}`;
   };
 
   render() {
     return (
-      <ContentPanel
-        title={<IntlMessages id="top.shop.title" />}
-        link_title={<IntlMessages id="top.shop.link_title" />}
-        link_path="/store"
-        tool={<SelectPrefecture onChange={this.handleChange} />}
-      >
-        <Map google={this.props.google} containerStyle={containerStyle} />
-      </ContentPanel>
+      <ContentPanelWrapper>
+        <ContentPanel
+          extra={
+            <Aux>
+              <span className="top-shop-title">
+                <IntlMessages id="top.shop.title" />
+              </span>
+              <SelectPrefecture onChange={this.handleChange} />
+              <a href={`${shopUrl}/?area=main`}>
+                <IntlMessages id="top.shop.link_title" />
+              </a>
+            </Aux>
+          }
+        >
+          <Map google={this.props.google} containerStyle={mapStyle} />
+        </ContentPanel>
+      </ContentPanelWrapper>
     );
   }
 }
 
-export default withRouter(
-  GoogleApiWrapper({
-    // apiKey: "xxxxxx"
-  })(Shop)
-);
+export default GoogleApiWrapper({
+  // apiKey: "xxxxxx"
+})(Shop);
