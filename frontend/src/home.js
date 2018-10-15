@@ -18,7 +18,10 @@ class Home extends Component {
           { JSON.stringify(this.props.entities) }
         </p>
         <p>
-          fetching: { this.props.fetching ? 'true' : 'false' }
+          fetching: { this.props.fetching ? 'T' : 'F' }
+        </p>
+        <p>
+          error: { this.props.fetchError ? 'T' : 'F' }
         </p>
         <p>
           total: { this.props.total }
