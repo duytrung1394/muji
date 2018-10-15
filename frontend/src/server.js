@@ -13,9 +13,20 @@ if (process.env.NODE_ENV !== 'production') {
   
   const compiler = webpack(require('./webpack.config.express.js').default);
 
-  app.use(webpackDevMiddleware(compiler, {
+  const wdm = webpackDevMiddleware(compiler, {
     // options
-  }));
+  });
+  app.use(wdm);
+
+  // main.css系の処置
+  // 注: yarn build であらかじめプロダクション用のbuildディレクトリを生成している必要がある
+  const fs = require('fs');
+  const assetManifest = JSON.parse( fs.readFileSync('build/asset-manifest.json') ); 
+  const mainCSS = fs.readFileSync('build/' + assetManifest['main.css']);
+  app.get('/main.css', function(req, res) {
+    res.setHeader('Content-type' , 'text/css');
+    res.send(mainCSS);
+  });
 }else{
   app.use(manifest({
     manifest: path.join(__dirname, '../build/asset-manifest.json'),
