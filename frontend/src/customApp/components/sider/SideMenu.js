@@ -18,34 +18,27 @@ import sidebarIcon11 from "./sider_icons/sidebarIcon11.png";
 import sidebarIcon12 from "./sider_icons/sidebarIcon12.png";
 
 
-
-
 const { Sider } = Layout;
 const MenuItemGroup = Menu.ItemGroup;
 
-
-
 const SideMenu = () => {
-
 
     return (
       <SiderWrapper>
-        <Sider breakpoint="lg" collapsedWidth="0" width="230"
-          style={{ overflow: 'scroll', position: 'left', left: 0, background: '#f7f7f7'}
-      }>
+        <Sider breakpoint="lg" collapsedWidth="0" width="230">
           <Menu>
             <MenuItemGroup title={<span><img className="sider-icon"/><span>特集</span></span>} key="g1">
               <Menu.Item key="10">特集</Menu.Item>
               <Menu.Item key="11">新商品</Menu.Item>
             </MenuItemGroup>
-            <MenuItemGroup key="g2">
-            <Menu.Item key="20" ></Menu.Item>
-            <Link to="/store/cmdty/section/T001011" key="g2">
-            <div className="sider-everyday" >
-            <span>毎日の無印良品<p className="sider-everyday-p">ネット限定 対象商品配送料無料</p></span>
-            </div>
-            </Link>
+
+
+            <MenuItemGroup title="" key="g2">
+            <Menu.Item key="20"><NavLink to="/store/cmdty/section/T001011">毎日の無印良品
+            <p className="sider-everyday-p">ネット限定 対象商品配送料無料</p></NavLink></Menu.Item>
             </MenuItemGroup>
+
+
             <MenuItemGroup title={<span><img className="sider-icon"/><span>お買い得</span></span>} key="g3">
               <Menu.Item key="31">期間限定価格</Menu.Item>
               <Menu.Item key="32">まとめ買い</Menu.Item>

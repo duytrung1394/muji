@@ -5,6 +5,10 @@ const SidebarWrapper = styled.div`
     background: #fff;
     border-right: solid 1px #f9f9f9;   
     height:2000px;
+    overflow:scroll;
+    position:left;
+    left: 0; 
+    background:#f7f7f7;
     
   }
   
@@ -21,9 +25,7 @@ const SidebarWrapper = styled.div`
     color:black;
   }
 
-  .ant-menu-item > a:hover{
-    color:white;
-  }
+  
 
   .ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child) 
   {
@@ -38,7 +40,6 @@ const SidebarWrapper = styled.div`
     font-weight: bold;
     font-family: Hiragino Kaku Gothic ProN;
     padding:5px 10px;
-    vertical-align:middle;
     line-height:20px;
 
   }
@@ -51,6 +52,7 @@ const SidebarWrapper = styled.div`
   .ant-menu-item-group
   {
     margin-bottom: 20px;
+
   }
   background: #fff;  
 
@@ -66,39 +68,33 @@ const SidebarWrapper = styled.div`
     padding-bottom: 2px;
   }
 
-  .sider-everyday {
-    margin-bottom:0;
-    
-  }
 
   .sider-everyday-p {
     margin-bottom:0;
     font-size:8px;
   }
-  .sider-everyday:hover {
-    background-color:grey;
-    color:white;
-    cursor:pointer;
-  }
+  
 
 .sider-everyday {
-  height:70px;
+  height:100px;
   marginTop:0;
-
-  padding-top:10px;
+  margin-bottom:0;
+  padding-bottom:30px;
   padding-left:15px;
- text-align:left;
- vertical-align:middle;
- 
+  text-align:left;
   position:absolute;
-    width:220px;
-    top:125px;
-    left:0px;
-    line-height:28px;
-    color:black;
-    font-weight:bold;
+  width:230px;
+  left:0px;
+  line-height:28px;
+  color:black;
+  font-weight:bold;
+ 
+
 }
 
   
+
+
 `
 export default SidebarWrapper;
+
