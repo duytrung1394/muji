@@ -41,6 +41,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Httpbin/index")
     )
+  },
+  {
+    path: "/productCategoryTops",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductCategoryTop/index")
+    )
+  },
+  {
+    path: "/productCategoryTops/:product_category_top_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductCategoryTop/show")
+    )
   }
 ];
 export default routes;
