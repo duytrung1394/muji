@@ -7,13 +7,17 @@ const Div = styled.div`
     color:black;
     display:block;
     position:absolute;
-    width:220px;
+    width:230px;
     top:0px;
-    left:10px;
-    line-height:28px;
+    left:0px;
+    padding-left:10px;
+    line-height:30px;
+    
 }
 .navlink:hover{
- color:white;}
+ color:white;
+
+}
 `
 class NavLink extends React.Component {
 

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const SidebarWrapper = styled.div`
+
+
+
   .ant-layout-sider {
     background: #fff;
     border-right: solid 1px #f9f9f9;   
@@ -9,6 +12,7 @@ const SidebarWrapper = styled.div`
     position:left;
     left: 0; 
     background:#f7f7f7;
+ 
     
   }
   
@@ -36,7 +40,7 @@ const SidebarWrapper = styled.div`
   .ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title
   {
     height: 28px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     font-family: Hiragino Kaku Gothic ProN;
     padding:5px 10px;
@@ -54,11 +58,9 @@ const SidebarWrapper = styled.div`
     margin-bottom: 20px;
 
   }
-  background: #fff;  
+  
 
-  .active{
-    background-color:red;
-  }
+  
 
   .sider-icon{
     width:8%;
@@ -69,28 +71,38 @@ const SidebarWrapper = styled.div`
   }
 
 
-  .sider-everyday-p {
-    margin-bottom:0;
-    font-size:8px;
-  }
+  
   
 
-.sider-everyday {
-  height:100px;
-  marginTop:0;
-  margin-bottom:0;
-  padding-bottom:30px;
-  padding-left:15px;
-  text-align:left;
-  position:absolute;
-  width:230px;
-  left:0px;
-  line-height:28px;
+.sider-everyday  {
   color:black;
-  font-weight:bold;
+  height:77px;
+  border-top:1px solid #ccc;
+  
+}
+
+.sider-everyday a:hover{
+  color:white;
  
+}
+
+.sider-everyday p{
+  font-size:8px;
+}
+
+.sider-everyday a{
+  font-size:13px;
+  padding-top:10px;
+  padding-bottom:20px;
+  padding-left:20px;
+  line-height:28px;
+}
+
+.sider-everyday span{
+font-size:14px;
 
 }
+
 
   
 

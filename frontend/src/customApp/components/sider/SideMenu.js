@@ -25,20 +25,18 @@ const SideMenu = () => {
 
     return (
       <SiderWrapper>
-        <Sider breakpoint="lg" collapsedWidth="0" width="230">
+        <Sider breakpoint="lg" collapsedWidth="0" width="230" >
           <Menu>
             <MenuItemGroup title={<span><img className="sider-icon"/><span>特集</span></span>} key="g1">
               <Menu.Item key="10">特集</Menu.Item>
               <Menu.Item key="11">新商品</Menu.Item>
             </MenuItemGroup>
-
-
-            <MenuItemGroup title="" key="g2">
-            <Menu.Item key="20"><NavLink to="/store/cmdty/section/T001011">毎日の無印良品
-            <p className="sider-everyday-p">ネット限定 対象商品配送料無料</p></NavLink></Menu.Item>
-            </MenuItemGroup>
-
-
+             <Menu.Item  key="20" className="sider-everyday" style={{height:"70px",padding:"0"}}>
+              <Link to="/store/cmdty/section/T001011" >
+              <span> 毎日の無印良品</span>
+                <p>ネット限定 対象商品配送料無料</p>
+              </Link>
+             </Menu.Item>
             <MenuItemGroup title={<span><img className="sider-icon"/><span>お買い得</span></span>} key="g3">
               <Menu.Item key="31">期間限定価格</Menu.Item>
               <Menu.Item key="32">まとめ買い</Menu.Item>
