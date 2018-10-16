@@ -8,7 +8,8 @@ const NetStoreWrapper = styled.div`
 },
 .net-store-frame
 {
-  margin: 0px auto;
+  margin-left: -10px;
+  margin-right: -10px;
   width: 100%;
   text-align: center;
   border-radius: 5px;
@@ -37,7 +38,7 @@ const NetStoreWrapper = styled.div`
 },
 .net-store-image-group li
 {
-  width: 15%; margin: 0 15px;
+  width: 20%; margin: 0 20px;
 },
 .net-store-image-group img
 {
@@ -140,55 +141,66 @@ const NetStoreWrapper = styled.div`
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle1 .subtitle-lines2
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle2 .subtitle-lines0
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle2 .subtitle-lines1{
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle2 .subtitle-lines1
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle3 .subtitle-lines0
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle3 .subtitle-lines1
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle4 .subtitle-lines0
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle4 .subtitle-lines1
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle5 .subtitle-lines0
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 .subtitle5 .subtitle-lines1
 {
   font-size: 30px;
   margin 10;
+  border:none;
 },
 `
 export default NetStoreWrapper;
