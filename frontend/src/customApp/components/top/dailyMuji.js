@@ -2,41 +2,42 @@ import React from "react";
 import DailyMujiWrapper from "./dailyMuji.style";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
+import { Row, Col } from "antd";
 
-const DailyMuji = props => {
-  const { dailyMujis } = props;
+const srcs = [
+  'https://www.muji.com/jp/img/store/top/basicitems_02.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_03.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_04.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_05aw.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_06.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_07.jpg',
+  'https://www.muji.com/jp/img/store/top/basicitems_08.jpg',
+];
+
+
+const DailyMuji = () => {
   return (
     <DailyMujiWrapper>
-      <div className="dailymuji-content-frame">
-        <a
-          href="https://www.muji.net/store/cmdty/section/T001011"
-          className="dailymuji-content-a"
-        >
-          <h2>
-            <IntlMessages id="top.dailyMuji.title" />
-          </h2>
-          <div className="dailymuji-item-group">
-            <ul>
-              {dailyMujis &&
-                dailyMujis.map((item, i) => {
-                  return (
-                    <li key={i}>
-                      <img
-                        src={item.img_src}
-                        alt="imges"
-                        key={i}
-                        className="img"
-                      />
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
-          <span className="dailyMuji-frame-subtitle">
-            <IntlMessages id="top.dailyMuji.subtitle" />
-          </span>
-        </a>
-      </div>
+      <a href="https://www.muji.net/store/cmdty/section/T001011">
+        <h2>
+          <IntlMessages id="top.dailyMuji.title" />
+        </h2>
+        <Row type="flex" justify="center" align="middle" className="dailymuji-item-group">
+          {srcs.map((src, index) => {
+            return (
+              <Col key={index} className="dailymuji-item">
+                <img
+                  src={src}
+                  alt="imges"
+                />
+              </Col>
+            );
+          })}
+        </Row>
+        <div className="dailyMuji-frame-subtitle">
+          <IntlMessages id="top.dailyMuji.subtitle" />
+        </div>
+      </a>
     </DailyMujiWrapper>
   );
 };
