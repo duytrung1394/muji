@@ -1,35 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Card } from "antd";
+import ItemIcon from "./itemIcon";
+import styled from "styled-components";
 
-const Grid = Card.Grid;
+const ItemIconWrapper = styled.div`
+  .ant-card-grid.icon-list {
+    width: 16.6%;
+    height : 75px;
+    padding: 5 5 10 5;
+    box-shadow: none;
+`;
 
 const IconList = props => {
   return (
-    <props.wrapper>
+    <ItemIconWrapper>
       {props.items &&
         props.items.map((item, index) => {
-          return (
-            <Grid key={index} className={props.className}>
-              <Link to="" className={props.childClassName}>
-                <div className="box-left">
-                  <img
-                    src={item.img_src}
-                    alt=""
-                    className={props.childClassName}
-                  />
-                </div>
-                <div className="box-right">
-                  {item.title && (
-                    <span className={props.childClassName}>{item.title}</span>
-                  )}
-                </div>
-              </Link>
-              {item.description && <p>{item.description}</p>}
-            </Grid>
-          );
+          return <ItemIcon key={index} className="list-icon" item={item} />;
         })}
-    </props.wrapper>
+    </ItemIconWrapper>
   );
 };
 

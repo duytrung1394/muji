@@ -2,46 +2,34 @@ import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import IconList from "../panel/iconList";
-import categoryListWrapper from "./categoryList.style";
+import CategoryListWrapper from "./categoryList.style";
 import { Row, Col } from "antd";
-
-const contentPanelStyle = {
-  borderBottom: "1px solid #eee",
-  marginBottom: "15px"
-};
 
 const categoryList = props => {
   const categorys = props.categoryList;
+  const categoryListClassname = "icon-list";
+
   return (
     <ContentPanel
       title={<IntlMessages id="top.categoryList.title" />}
       link_path="/store"
     >
-      {categorys &&
-        categorys.map((category, index) => {
-          return (
-            <Row key={index}>
-              <Col span={24} style={contentPanelStyle}>
-                <h2
-                  style={{
-                    padding: "0 0 6px",
-                    fontWeight: "600",
-                    color: "#555"
-                  }}
-                >
-                  {category.category_title}
-                </h2>
-                <IconList
-                  className="icon-list"
-                  childClassName="list-icon"
-                  items={category.items}
-                  iconSize={60}                  
-                  wrapper={categoryListWrapper}
-                />
-              </Col>
-            </Row>
-          );
-        })}
+      <CategoryListWrapper>
+        {categorys &&
+          categorys.map((category, index) => {
+            return (
+              <Row key={index}>
+                <Col span={24} className={categoryListClassname}>
+                  <h2>{category.category_title}</h2>
+                  <IconList
+                    className={categoryListClassname}
+                    items={category.items}
+                  />
+                </Col>
+              </Row>
+            );
+          })}
+      </CategoryListWrapper>
     </ContentPanel>
   );
 };
