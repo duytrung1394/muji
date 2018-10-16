@@ -7,8 +7,7 @@ import styled from "styled-components";
 import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
 
 const ProductCategoryTopWrapper = styled.div`
-  max-width: 1440px;
-  margin: auto;
+  margin: 0 10px;
 `;
 
 class Index extends Component {

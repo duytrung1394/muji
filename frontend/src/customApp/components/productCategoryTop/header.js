@@ -5,7 +5,6 @@ import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const HeaderWrapper = styled.div`
-  margin: 0 15px;
   .ant-breadcrumb {
     margin-bottom: 15px;
   }
