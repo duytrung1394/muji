@@ -83,7 +83,7 @@ const HeaderWrapper = styled.div`
     display:block;
     width:100px;
     position:relative;
-    padding:12px 0;
+    padding:13px 0;
     right:24px;
     border:none;
   }
@@ -91,8 +91,8 @@ const HeaderWrapper = styled.div`
   .login-list-value:hover{
     color:#fff;
     background-color:gray;
+    border-radius:2px;
   }
-
 
   .header-support-list{
     background-color:#fff;
@@ -101,7 +101,7 @@ const HeaderWrapper = styled.div`
     z-index:3000;
     position:absolute;
     right:5px;
-    display:block;
+    display:none;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
     border:none;
   }
@@ -122,7 +122,7 @@ const HeaderWrapper = styled.div`
   }
 
   .support-list-value:first-child{
-    border-radius:3px 3px 3px 3px;
+    border-radius:2px;
   }
 
 `
