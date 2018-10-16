@@ -43,17 +43,10 @@ const routes = [
     )
   },
   {
-    path: "/productCategoryTops",
+    path: "/store/cmdty/section/:category_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")
-    )
-  },
-  {
-    path: "/productCategoryTops/:product_category_top_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/ProductCategoryTop/show")
     )
   }
 ];

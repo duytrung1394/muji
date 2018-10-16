@@ -1,104 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/product_category_top/list/actions";
+import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import { Spin } from "antd";
+import styled from "styled-components";
+import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
+
+const ProductCategoryTopWrapper = styled.div`
+  max-width: 1440px;
+  margin: auto;
+`;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
-
-  // React methods
   componentDidMount() {
-    this.fetchRequest(this.props);
+    this.props.fetchRequest(this.props.match.params.category_code);
   }
 
-  fetchRequest = props => {
-    // ページングもケースバイケースなのでコンポーネント毎に実装する
-    props.fetchRequest({
-      page: 1,
-      filters: JSON.stringify(props.filters || [])
-    });
-  };
-
-  // React.render
   render() {
     const {
       // types
-      total,
-      entities,
-      fetching,
-      destroying,
-      // react-router
-      history
+      entity,
+      fetching
     } = this.props;
 
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
-      }
-    ];
-
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
-    };
-
-    const pagination = {
-      defaultCurrent: 1,
-      total: total,
-      onChange: page => {
-        let url;
-        if (page === 1) {
-          url = "/productCategoryTops";
-        } else {
-          url = `/productCategoryTops/page/${page}`;
-        }
-        history.push(url);
-      }
-    };
-
     return (
-      <LayoutWrapper>
-        <div className="isoLayoutContent">
-          <Table
-            rowKey="id"
-            dataSource={entities}
-            columns={columns}
-            rowSelection={rowSelection}
-            loading={fetching || destroying}
-            pagination={pagination}
-          />
-        </div>
-      </LayoutWrapper>
+      <ProductCategoryTopWrapper>
+        <Spin spinning={fetching} size="large" />
+        <ProductCategoryTopHeader title={entity.category_title} />
+      </ProductCategoryTopWrapper>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return state.ProductCategoryTop.List.toJS();
+  return state.ProductCategoryTop.Entity.toJS();
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
-  destroyRequest: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup
+  fetchRequest: actions.fetch.request
 };
 
 const enhance = C => {
