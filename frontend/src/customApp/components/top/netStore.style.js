@@ -38,12 +38,12 @@ const NetStoreWrapper = styled.div`
 },
 .net-store-image-group li
 {
-  width: 20%; margin: 0 20px;
+  width: 15%; margin: 10px;
 },
 .net-store-image-group img
 {
    max-width: 100%;
-   max-height:100px;
+   max-height:70px;
    margin:0;
  },
 .net-store-image-group figure
@@ -139,66 +139,66 @@ const NetStoreWrapper = styled.div`
 
 .subtitle0 .subtitle-lines2
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle1 .subtitle-lines2
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle2 .subtitle-lines0
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle2 .subtitle-lines1{
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle2 .subtitle-lines1
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle3 .subtitle-lines0
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle3 .subtitle-lines1
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle4 .subtitle-lines0
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle4 .subtitle-lines1
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle5 .subtitle-lines0
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
 .subtitle5 .subtitle-lines1
 {
-  font-size: 30px;
+  font-size: 25px;
   margin 10;
   border:none;
 },
