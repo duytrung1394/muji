@@ -12,10 +12,10 @@ let history;
 let routeMiddleware;
 let middlewares;
 
-if( typeof(window) === "undefined" ){
+if (typeof window === "undefined") {
   // SSR
   middlewares = [thunk, sagaMiddleware];
-}else{
+} else {
   // Browser
   history = createHistory();
   routeMiddleware = routerMiddleware(history);

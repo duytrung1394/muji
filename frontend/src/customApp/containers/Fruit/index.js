@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import Table from "../../../components/uielements/table";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const IndexWrapper = styled.div`
   width: 100%;
@@ -24,7 +24,6 @@ class Index extends Component {
     this.state = {
       selectedKeys: []
     };
-
   }
 
   // React methods
@@ -62,7 +61,7 @@ class Index extends Component {
         title: "Name",
         dataIndex: "name",
         key: "name"
-      },
+      }
     ];
 
     const rowSelection = {
@@ -80,7 +79,7 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = '/fruits';
+          url = "/fruits";
         } else {
           url = `/fruits/page/${page}`;
         }
@@ -115,10 +114,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);
