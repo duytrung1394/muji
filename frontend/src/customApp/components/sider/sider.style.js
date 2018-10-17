@@ -29,6 +29,10 @@ const SidebarWrapper = styled.div`
     color:black;
   }
 
+  .ant-menu-item a:hover{
+    color:white;
+
+  }
   
 
   .ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child) 
