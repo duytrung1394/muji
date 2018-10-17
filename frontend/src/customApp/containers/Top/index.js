@@ -3,9 +3,26 @@ import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import TopWrapper from "./top.style";
-import Notice from "../../components/notice/notice";
-import EcPanel from "../../components/panel/ecPanel";
+import Notice from "../../components/top/notice";
+import Feature from "../../components/top/feature";
+import NewItem from "../../components/top/newItem";
+import LimitedItem from "../../components/top/limitedItem";
+import Shop from "../../components/top/shop";
+import ImportantNotice from "../../components/top/importantNotice";
+import styled from "styled-components";
+
+const TopWrapper = styled.div`
+  max-width: 1440px;
+  margin: auto;
+`;
+
+const FeatureWrapper = styled.div`
+  text-align: center;
+
+  img {
+    width: 90%;
+  }
+`;
 
 class Index extends Component {
   componentDidMount() {
@@ -15,19 +32,22 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
-    const items = entity.features ? entity.features : [];
     return (
       <TopWrapper>
-        <Spin spinning={fetching} size="large"/>
-        <div className="topContent">
-          <Notice notices={entity.notices} />
-        </div>
-        <div className="topContent">
-          <img src={featureImage} alt="" id="feature-image"/>
-        </div>
-        <div className="topContent">
-          <EcPanel title="特集" items={items}/>
-        </div>
+        <Spin spinning={fetching} size="large" />
+        <Notice notices={entity.notices} />
+
+        <FeatureWrapper>
+          <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
+            <img src={featureImage} alt="" />
+          </a>
+        </FeatureWrapper>
+
+        <Feature features={entity.features} />
+        <NewItem newItems={entity.new_items} />
+        <LimitedItem limitedItems={entity.limited_items} />
+        <Shop />
+        <ImportantNotice importantNotices={entity.important_notices} />
       </TopWrapper>
     );
   }
@@ -41,10 +61,13 @@ const actionCreators = {
   fetchRequest: actions.fetch.request
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);

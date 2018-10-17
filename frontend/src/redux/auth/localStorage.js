@@ -1,7 +1,7 @@
 const key = "idToken";
 
 export function saveToken(token) {
-  if(typeof(localStorage) === 'undefined'){
+  if (typeof localStorage === "undefined") {
     return null;
   }
 
@@ -9,7 +9,7 @@ export function saveToken(token) {
 }
 
 export function clearToken() {
-  if(typeof(localStorage) === 'undefined'){
+  if (typeof localStorage === "undefined") {
     return null;
   }
 
@@ -17,7 +17,7 @@ export function clearToken() {
 }
 
 export function getToken() {
-  if(typeof(localStorage) === 'undefined'){
+  if (typeof localStorage === "undefined") {
     return null;
   }
   const token = localStorage.getItem(key);
