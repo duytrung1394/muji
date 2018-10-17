@@ -12,24 +12,24 @@ export default function asyncComponent(importComponent) {
         component: null
       };
     }
-    
+
     componentWillMount() {
-      if(typeof(window) === "undefined"){
+      if (typeof window === "undefined") {
         // SSR, render synchronously
         const Component = importComponent().default;
         this.setState({
           component: <Component {...this.props} />
         });
-      }else{
+      } else {
         // Browser
         Nprogress.start();
       }
     }
 
     async componentDidMount() {
-      if(typeof(window) !== "undefined"){
+      if (typeof window !== "undefined") {
         // Browser, render asynchronously
-        const {default: Component} = await importComponent();
+        const { default: Component } = await importComponent();
         Nprogress.done();
         this.setState({
           component: <Component {...this.props} />
@@ -40,7 +40,11 @@ export default function asyncComponent(importComponent) {
     render() {
       const Component = this.state.component || <div />;
       return (
-        <ReactPlaceholder type="text" rows={7} ready={this.state.component !== null}>
+        <ReactPlaceholder
+          type="text"
+          rows={7}
+          ready={this.state.component !== null}
+        >
           {Component}
         </ReactPlaceholder>
       );

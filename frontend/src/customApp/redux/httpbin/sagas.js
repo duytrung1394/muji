@@ -1,12 +1,12 @@
 import axios from "axios";
 import { call, put, all, takeEvery } from "redux-saga/effects";
-import actions from './actions';
+import actions from "./actions";
 import authActions from "../../../redux/auth/actions";
 
-function* fetchIpSaga(){
+function* fetchIpSaga() {
   try {
     const fetchIp = () => axios.get("https://httpbin.org/ip");
-    const response = yield call( fetchIp );
+    const response = yield call(fetchIp);
     yield put(actions.ip.fetch.success(response.data));
   } catch (error) {
     if (error.response.status == 401) {
@@ -18,7 +18,5 @@ function* fetchIpSaga(){
 }
 
 export default function* saga() {
-  yield all([
-    takeEvery(actions.ip.fetch.request.toString(), fetchIpSaga)
-  ])
+  yield all([takeEvery(actions.ip.fetch.request.toString(), fetchIpSaga)]);
 }

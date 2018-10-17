@@ -2,7 +2,7 @@ import qs from "qs";
 import options from "../containers/Sidebar/options";
 
 export function getInitData() {
-  if(typeof(window) === "undefined"){
+  if (typeof window === "undefined") {
     // SSR
     return {};
     // TODO: SSR対応ちゃんとやる
@@ -14,7 +14,7 @@ export function getInitData() {
   return initData;
 }
 export function setUrl(searchState) {
-  if(typeof(window) === "undefined"){
+  if (typeof window === "undefined") {
     // SSR
     return;
     // TODO: SSR対応ちゃんとやる
@@ -41,7 +41,7 @@ export function getDefaultPath() {
     });
     return parent;
   };
-  if (typeof(window) !== "undefined" && window.location.pathname) {
+  if (typeof window !== "undefined" && window.location.pathname) {
     const routes = window.location.pathname.split("/");
     if (routes.length > 1) {
       const lastRoute = routes[routes.length - 1];
