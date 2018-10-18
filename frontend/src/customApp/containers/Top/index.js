@@ -34,20 +34,19 @@ class Index extends Component {
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
       <TopWrapper>
-        <Spin spinning={fetching} size="large" />
-        <Notice notices={entity.notices} />
-
-        <FeatureWrapper>
-          <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
-            <img src={featureImage} alt="" />
-          </a>
-        </FeatureWrapper>
-
-        <Feature features={entity.features} />
-        <NewItem newItems={entity.new_items} />
-        <LimitedItem limitedItems={entity.limited_items} />
-        <Shop />
-        <ImportantNotice importantNotices={entity.important_notices} />
+        <Spin spinning={fetching} size="large">
+          <Notice notices={entity.notices} />
+          <FeatureWrapper>
+            <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
+              <img src={featureImage} alt="" />
+            </a>
+          </FeatureWrapper>
+          <Feature features={entity.features} />
+          <NewItem newItems={entity.new_items} />
+          <LimitedItem limitedItems={entity.limited_items} />
+          <Shop />
+          <ImportantNotice importantNotices={entity.important_notices} />
+        </Spin>
       </TopWrapper>
     );
   }
