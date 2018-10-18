@@ -2,18 +2,14 @@ import styled from "styled-components";
 
 const SidebarWrapper = styled.div`
 
-
-
   .ant-layout-sider {
     background: #fff;
-    border-right: solid 1px #f9f9f9;   
+    border-right: solid 1px #f9f9f9;
     height:3000px;
     overflow:scroll;
     position:left;
     left: 0; 
     background:#f7f7f7;
- 
-    
   }
   
   .ant-menu-item{
@@ -31,9 +27,7 @@ const SidebarWrapper = styled.div`
 
   .ant-menu-item a:hover{
     color:white;
-
   }
-  
 
   .ant-menu-vertical, 
   .ant-menu-vertical-left, 
@@ -42,27 +36,16 @@ const SidebarWrapper = styled.div`
   {
     &.ant-menu-item:not(:last-child)
     {
-     margin-bottom: 0px;
-   
-    }    
-  }
-
-  .ant-menu-vertical .ant-menu-item, 
-  .ant-menu-vertical-left .ant-menu-item, 
-  .ant-menu-vertical-right .ant-menu-item, 
-  .ant-menu-inline .ant-menu-item, 
-  .ant-menu-vertical .ant-menu-submenu-title, 
-  .ant-menu-vertical-left .ant-menu-submenu-title, 
-  .ant-menu-vertical-right .ant-menu-submenu-title, 
-  .ant-menu-inline .ant-menu-submenu-title
-  {
-    height: 28px;
-    font-size: 13px;
-    font-weight: bold;
-    font-family: Hiragino Kaku Gothic ProN;
-    padding:5px 10px;
-    line-height:20px;
-
+      margin-bottom: 0px;
+    }
+    .ant-menu-item, .ant-menu-submenu-title {
+      height: 28px;
+      font-size: 13px;
+      font-weight: bold;
+      font-family: Hiragino Kaku Gothic ProN;
+      padding:5px 10px;
+      line-height:20px;
+    }
   }
 
   .ant-menu-item-group-title
@@ -75,11 +58,7 @@ const SidebarWrapper = styled.div`
   .ant-menu-item-group
   {
     margin-bottom: 20px;
-
   }
-  
-
-  
 
   .sider-icon{
     width:8%;
@@ -89,20 +68,14 @@ const SidebarWrapper = styled.div`
     padding-bottom: 2px;
   }
 
-
-  
-  
-
   .sider-everyday  {
     color:black;
     height:77px;
     border-top:1px solid #ccc;
-  
   }
 
   .sider-everyday a:hover{
     color:white;
-  
   }
 
   .sider-everyday p{
@@ -121,11 +94,6 @@ const SidebarWrapper = styled.div`
    font-size:14px;
 
   }
-
-
-  
-
-
 `
 export default SidebarWrapper;
 
