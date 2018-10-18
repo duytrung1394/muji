@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Div = styled.div`
+const styles = styled(Link)`
   .navlink {
     color: black;
     display: block;
@@ -12,17 +12,18 @@ const Div = styled.div`
     left: 0px;
     padding-left: 10px;
     line-height: 30px;
+    
   }
   .navlink:hover {
-    color: white;
+    color: ;
   }
 `;
-class NavLink extends React.Component {
+class NavLink extends Link {
   render() {
     return (
-      <Div>
-        <Link {...this.props} className="navlink" />
-      </Div>
+      
+        <Link {...this.props} className={styles} />
+      
     );
   }
 }

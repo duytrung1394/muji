@@ -35,13 +35,26 @@ const SidebarWrapper = styled.div`
   }
   
 
-  .ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child) 
+  .ant-menu-vertical, 
+  .ant-menu-vertical-left, 
+  .ant-menu-vertical-right, 
+  .ant-menu-inline 
   {
-    margin-bottom: 0px;
+    &.ant-menu-item:not(:last-child)
+    {
+     margin-bottom: 0px;
    
-    
+    }    
   }
-  .ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title
+
+  .ant-menu-vertical .ant-menu-item, 
+  .ant-menu-vertical-left .ant-menu-item, 
+  .ant-menu-vertical-right .ant-menu-item, 
+  .ant-menu-inline .ant-menu-item, 
+  .ant-menu-vertical .ant-menu-submenu-title, 
+  .ant-menu-vertical-left .ant-menu-submenu-title, 
+  .ant-menu-vertical-right .ant-menu-submenu-title, 
+  .ant-menu-inline .ant-menu-submenu-title
   {
     height: 28px;
     font-size: 13px;
@@ -51,12 +64,14 @@ const SidebarWrapper = styled.div`
     line-height:20px;
 
   }
+
   .ant-menu-item-group-title
   {
     border-top: 1px solid #ccc;
     color:black;
     font-size:16px;
   }
+
   .ant-menu-item-group
   {
     margin-bottom: 20px;
@@ -78,34 +93,34 @@ const SidebarWrapper = styled.div`
   
   
 
-.sider-everyday  {
-  color:black;
-  height:77px;
-  border-top:1px solid #ccc;
+  .sider-everyday  {
+    color:black;
+    height:77px;
+    border-top:1px solid #ccc;
   
-}
+  }
 
-.sider-everyday a:hover{
-  color:white;
- 
-}
+  .sider-everyday a:hover{
+    color:white;
+  
+  }
 
-.sider-everyday p{
-  font-size:8px;
-}
+  .sider-everyday p{
+    font-size:8px;
+  }
 
-.sider-everyday a{
-  font-size:13px;
-  padding-top:10px;
-  padding-bottom:20px;
-  padding-left:20px;
-  line-height:28px;
-}
+  .sider-everyday a{
+    font-size:13px;
+    padding-top:10px;
+    padding-bottom:20px;
+    padding-left:20px;
+    line-height:28px;
+  }
 
-.sider-everyday span{
-font-size:14px;
+  .sider-everyday span{
+   font-size:14px;
 
-}
+  }
 
 
   
