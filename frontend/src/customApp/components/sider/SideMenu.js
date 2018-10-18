@@ -30,7 +30,7 @@ const SideMenu = () => {
               <Menu.Item key="10">特集</Menu.Item>
               <Menu.Item key="11">新商品</Menu.Item>
             </MenuItemGroup>
-             <Menu.Item  key="20" className="sider-everyday" style={{height:"70px",padding:"0"}}>
+             <Menu.Item  key="20" className="sider-everyday" style={{height:"70px",padding:"0", margin:"0"}}>
               <Link to="/store/cmdty/section/T001011" >
               <span> 毎日の無印良品</span>
                 <p>ネット限定 対象商品配送料無料</p>

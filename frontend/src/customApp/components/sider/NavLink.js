@@ -14,9 +14,6 @@ const styles = styled(Link)`
     line-height: 30px;
     
   }
-  .navlink:hover {
-    color: ;
-  }
 `;
 class NavLink extends Link {
   render() {
