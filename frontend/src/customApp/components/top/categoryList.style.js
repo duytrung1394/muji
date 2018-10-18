@@ -11,8 +11,6 @@ const categoryListmWrapper = styled.div`
       color: #555;
     }
   }
-    
 `
-
 
 export default categoryListmWrapper;

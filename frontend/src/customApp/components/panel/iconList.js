@@ -2,7 +2,7 @@ import React from "react";
 import ItemIcon from "./itemIcon";
 import styled from "styled-components";
 
-const ItemIconWrapper = styled.div`
+const IconListWrapper = styled.div`
   .ant-card-grid.icon-list {
     width: 16.6%;
     height : 75px;
@@ -12,12 +12,12 @@ const ItemIconWrapper = styled.div`
 
 const IconList = props => {
   return (
-    <ItemIconWrapper>
+    <IconListWrapper>
       {props.items &&
         props.items.map((item, index) => {
           return <ItemIcon key={index} className="list-icon" item={item} />;
         })}
-    </ItemIconWrapper>
+    </IconListWrapper>
   );
 };
 

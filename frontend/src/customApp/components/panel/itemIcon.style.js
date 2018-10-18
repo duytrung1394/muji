@@ -1,38 +1,27 @@
 import styled from "styled-components";
 
 const categoryListmWrapper = styled.div`
-    .list-icon {
-        height: 60px;
-        span {
-          padding: 0px 0px 0px 10px;
-          display:table-cell;
-          vertical-align:middle;
-          font-size: 13px;
-          text-overflow: hidden;
-        }
+  .item-icon {
+      height: 60px;
+      width: 100%;
+      span {
+        padding: 0px 0px 0px 10px;
+        vertical-align: middle;
+        width: calc(100% - 60px);
+        font-size: 13px;
+        display: inline-block;
+        word-wrap:break-word;
+      }
+      img {
+        height : 40px;
+        width : 40px;
+        margin : 10px;
+      }
     }
-    a.list-icon {
+    a.item-icon {
       color: #333;
-      display: block;
     }
-    .box-left img {
-      height : 50px;
-      width : 50px;
-      margin : 10px;
-    }
-  }
-
-  .box-left {
-    float: left;
-    width: 35%;
-    padding: 8 ８ 8 8;
-  }
-  .box-right {
-    display:table;
-    float: left;
-    width: 65%;
   }
 `
-
 
 export default categoryListmWrapper;

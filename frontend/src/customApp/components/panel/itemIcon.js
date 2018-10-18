@@ -1,27 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
-import ListIconWrapper from "./itemIcon.style";
+import { Card, Row, Col } from "antd";
+import ItemIconWrapper from "./itemIcon.style";
 
-const Grid = Card.Grid;
-
-const listIcon = props => {
+const itemIcon = props => {
   return (
-    <ListIconWrapper>
-      <Grid className="icon-list">
-        <Link to="" className="list-icon">
-          <div className="box-left">
-            <img src={props.item.img_src} alt="" className="list-icon" />
-          </div>
-          <div className="box-right">
-            {props.item.title && (
-              <span className="list-icon">{props.item.title}</span>
-            )}
-          </div>
-        </Link>
-      </Grid>
-    </ListIconWrapper>
+    <ItemIconWrapper>
+      <Row>
+        <Col xl={{ span: 4 }} md={{ span: 6 }} xs={{ span: 12 }}>
+          <Link to="" className="item-icon">
+            <img src={props.item.img_src} alt="" />
+            {props.item.title && <span>{props.item.title}</span>}
+          </Link>
+        </Col>
+      </Row>
+    </ItemIconWrapper>
   );
 };
 
-export default listIcon;
+export default itemIcon;
