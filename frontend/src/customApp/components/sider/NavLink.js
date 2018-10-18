@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,16 +12,11 @@ const styles = styled(Link)`
     left: 0px;
     padding-left: 10px;
     line-height: 30px;
-    
   }
 `;
 class NavLink extends Link {
   render() {
-    return (
-      
-        <Link {...this.props} className={styles} />
-      
-    );
+    return <Link {...this.props} className={styles} />;
   }
 }
 
