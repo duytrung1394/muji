@@ -51,6 +51,10 @@ const DashAppHolder = styled.div`
     justify-content: center;
     width: 100%;
   }
+
+  .ant-layout-content {
+    background: #fff;
+  }
 `;
 
 export default DashAppHolder;
