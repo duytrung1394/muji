@@ -350,7 +350,7 @@ const SideMenu = () => {
             title={
               <span>
                 <img className="sider-icon" src={sidebarIcon11} />
-                <span>MUJI HOUSE VISION</span>
+                <span>MUJI HOUSE VISION</span>
               </span>
             }
             key="g50"
