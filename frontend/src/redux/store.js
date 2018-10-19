@@ -2,8 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import createHistory from "history/createBrowserHistory";
 import { routerReducer, routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
-import createSagaMiddleware, {END} from "redux-saga";
-import transit from 'transit-immutable-js';
+import createSagaMiddleware, { END } from "redux-saga";
+import transit from "transit-immutable-js";
 import reducers from "../redux/reducers";
 import rootSaga from "../redux/sagas";
 
@@ -14,16 +14,18 @@ let routeMiddleware;
 let middlewares;
 let initialData = {};
 
-if( typeof(window) === "undefined" ){
+if (typeof window === "undefined") {
   // SSR
   middlewares = [thunk, sagaMiddleware];
-}else{
+} else {
   // Browser
   history = createHistory();
   routeMiddleware = routerMiddleware(history);
   middlewares = [thunk, sagaMiddleware, routeMiddleware];
-  if( document && document.getElementById('initial-data') ){
-    initialData = transit.fromJSON(document.getElementById('initial-data').getAttribute('data-json'));
+  if (document && document.getElementById("initial-data")) {
+    initialData = transit.fromJSON(
+      document.getElementById("initial-data").getAttribute("data-json")
+    );
   }
 }
 

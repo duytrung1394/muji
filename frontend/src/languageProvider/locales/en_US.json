@@ -206,6 +206,7 @@
   "languageSwitcher.label": "Change Language",
   "notes.ChoseColor": "Choose a color for your note",
   "notes.addNote": "Add New Note",
+  "notice.notice.title": "Notice",
   "page.forgetPassDescription": "Enter your email and we send you a reset link.",
   "page.forgetPassSubTitle": "Forgot Password?",
   "page.forgetPassTitle": "Isomorphic",
