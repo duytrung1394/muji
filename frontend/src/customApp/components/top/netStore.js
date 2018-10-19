@@ -1,6 +1,10 @@
 import React from "react";
 import NetStoreWrapper from "./netStore.style";
 import IntlMessages from "../../../components/utility/intlMessages";
+import { Card } from "antd";
+import { Row, Col } from "antd";
+
+const { Meta } = Card;
 
 const NetStore = props => {
   const { netStores } = props;
@@ -11,32 +15,37 @@ const NetStore = props => {
           <h2>
             <IntlMessages id="top.net-store.title" />
           </h2>
-          <ul className="net-store-image-group">
+          <div style={{ padding: '30px'}}>
+          <Row gutter={16} type="flex" justify="center" align="small" className="dailymuji-item-group">
             {netStores &&
-              netStores.map((item, i) => {
+              netStores.map((item, index) => {
                 return (
-                  <li key={i}>
-                    <figure>
-                      <img src={item.img_src} alt="" />
-                    </figure>
-                    <div className={`subtitle` + i}>
-                      {item.img_sub.split("\n").map((newline, j) => (
-                        <div className={`subtitle-lines` + j} key={j}>
-                          {newline}
-                        </div>
-                      ))}
-                    </div>
-                    <div className={`note` + i}>
-                      {item.img_note.split("\n").map((newline, j) => (
-                        <p className={`note-lines` + j} key={j}>
-                          {newline}
-                        </p>
-                      ))}
-                    </div>
-                  </li>
+                  <Col key={index} className="dailymuji-item" span={4}>
+                    <Card
+                      hoverable
+                      cover={<img alt="example" src={item.img_src}  />}
+                      className="cards"
+                      style={{ border: 'none'}}
+                    >
+                      <Meta
+                        title={item.img_sub0}
+                        className="cards-meta0"
+                      />
+                      <Meta
+                        title={item.img_sub1}
+                        className="cards-meta1"
+                      />
+                      <Meta
+                        title={item.img_sub2}
+                        description={item.img_note}
+                        className="cards-meta2"
+                      />
+                    </Card>
+                  </Col>
                 );
               })}
-          </ul>
+          </Row>
+          </div>
         </a>
       </div>
     </NetStoreWrapper>
