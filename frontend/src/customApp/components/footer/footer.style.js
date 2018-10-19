@@ -9,6 +9,17 @@ const FooterWrapper = styled.div`
   .antd-footer{
     background-color:#f7f7f7;
     padding-top:20px;
+    .footer-common-row {
+      div {
+        margin-bottom:12px;
+      }
+    }
+    .footer-navi {
+      .copy-right > a {
+        float:right;
+        text-arign:right;
+      }
+    }
   }
   
   ul{
@@ -34,7 +45,7 @@ const FooterWrapper = styled.div`
     padding:0;
   }
 
-  .footer-logo{
+  .footer-logo {
     padding-bottom:100px;
   }
 
@@ -47,15 +58,6 @@ const FooterWrapper = styled.div`
     display:table-cell;
     padding-right:6px;
     opacity:0.3;
-  }
-
-  .footer-navi > li{
-    display:inline;
-    margin-right:15px;
-  }
-
-  .copy-right{
-    float:right;
   }
 `
 export default FooterWrapper;
