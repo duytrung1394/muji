@@ -2,6 +2,83 @@ import styled from "styled-components";
 
 const NetStoreWrapper = styled.div`
 
+
+@media screen and (min-width: 1025px) /* PC */ {
+  .ant-card-cover > *
+  {
+    width: PC;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (max-width: 1024px) /* Mobile */ {
+  .ant-card-cover > *
+  {
+    width: 64%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  /*
+  .ant-card-cover > *
+  {
+    width: 64%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  */
+}
+.ant-card-meta-title
+{
+  font-weight: bold;
+},
+.cards-meta3 {
+  padding-bottom: 5px;
+},
+.ant-col-4 {
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 12.666667%;
+    margin-left: 5x;
+    margin-right: 4%;
+}
+@media screen and (max-width: 1200px) /* Mobile */ {
+  .ant-col-4
+  {
+    margin-right: 13%;
+    margin-left: 7%;
+  }
+}
+.ant-card-meta {
+    margin: 0px;
+},
+.ant-row
+{
+  line-height: 1.3 !important;
+},
+.ant-card-body
+{
+  padding-top: 10px !important;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+},
+.cards-meta2 ant-card-meta-title
+{
+  font-size: 18px !important;
+},
+.ant-card-meta-description
+{
+  font-size: 10px !important;
+
+},
+.net-store-frame h2 span
+{
+  font-weight: 900;
+},
+//
 .net-store-frame:hover
 {
   filter: brightness(0.85);
@@ -26,9 +103,9 @@ const NetStoreWrapper = styled.div`
 },
 .net-store-frame h2
 {
-  font-size: 30px;
+  font-size: 20px;
   margin-top 20px;
-  margin-bottom 60px;
+  // margin-bottom 60px;
 },
 .net-store-frame ul
 {

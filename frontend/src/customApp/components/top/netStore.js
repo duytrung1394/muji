@@ -27,18 +27,20 @@ const NetStore = props => {
                       className="cards"
                       style={{ border: 'none'}}
                     >
-                      <Meta
-                        title={item.img_sub0}
-                        className="cards-meta0"
-                      />
-                      <Meta
-                        title={item.img_sub1}
-                        className="cards-meta1"
-                      />
+                      <Row>
+                        {item.img_sub0}
+                      </Row>
+                      <Row>
+                        {item.img_sub1}
+                      </Row>
                       <Meta
                         title={item.img_sub2}
-                        description={item.img_note}
                         className="cards-meta2"
+                      />
+                      <Meta
+                        title={item.img_sub3}
+                        className="cards-meta3"
+                        description={item.img_note}
                       />
                     </Card>
                   </Col>

@@ -92,30 +92,33 @@ class TopsController extends Controller
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan02.png',
-                    'img_sub0' => "小型商品の",
-                    'img_sub1' => "配送料４９０円",
-                    'img_sub2' => '',
+                    'img_sub0' => "",
+                    'img_sub1' => "",
+                    'img_sub2' => '小型商品の',
+                    'img_sub3' => '配送料４９０円',
                     'img_note' => '配送料区分Aの商品の配送料が490円になりました'
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_box.png',
-                    'img_sub0' => "えらべる",
-                    'img_sub1' => "受取方法",
-                    'img_sub2' => '',
+                    'img_sub0' => "",
+                    'img_sub1' => "",
+                    'img_sub2' => 'えらべる',
+                    'img_sub3' => '受取方法',
                     'img_note' => 'ご自宅への配送以外にも、店舗受取や、コンビニ受取をご利用いただけます'
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_shirt_s.png',
-                    'img_sub0' => "XS・XXL",
-                    'img_sub1' => "サイズ",
-                    'img_sub2' => '',
+                    'img_sub0' => "",
+                    'img_sub1' => "",
+                    'img_sub2' => 'XS・XXL',
+                    'img_sub3' => 'サイズ',
                     'img_note' => '店舗からのお取り寄せや、店舗受取も可能です'
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_hanger_s.png',
-                    'img_sub0' => 'まとめ買い',
+                    'img_sub0' => '',
                     'img_sub1' => '',
-                    'img_sub2' => '',
+                    'img_sub2' => 'まとめ買い',
                     'img_note' => 'ケースでお届けするから5%お得'
                 ],
             ],
