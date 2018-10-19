@@ -5,8 +5,6 @@ const SidebarWrapper = styled.div`
   .ant-layout-sider {
     background: #fff;
     border-right: solid 1px #f9f9f9;
-    height:3000px;
-    overflow:scroll;
     position:left;
     left: 0; 
     background:#f7f7f7;
