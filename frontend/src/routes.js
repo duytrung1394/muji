@@ -41,6 +41,11 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Httpbin/index")
     )
+  },
+  {
+    path: "/home_debug",
+    exact: true,
+    component: asyncComponent(() => require("./home"))
   }
 ];
 export default routes;
