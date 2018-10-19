@@ -13,7 +13,6 @@ const HeaderWrapper = styled.div`
 
   .antd-header-row {
     height: 100%;
-
     .header-logo {
       width: 200px;
       max-width: 200px;
@@ -27,31 +26,39 @@ const HeaderWrapper = styled.div`
     }
 
     .header-btns {
-      font-size:6px;
-      .header-btn {
+      .header-cart-btn {
         padding: 0 5px;
         text-align: center;
-
+        font-size : 28px;
         .header-btn-anchor {
           display: block;
           text-align: center;
           padding:0 5px;
           color: rgba(0, 0, 0, 0.65);
         }
+        div {
+          font-size : 13px;
+        }
+      }
+      .header-login-btn {
+        padding:0 5px;
+        text-align:center;
+        font-size : 28px;
+        div {
+          font-size : 13px;
+        }
+      }
+      .header-support-btn {
+        padding:0 5px;
+        text-align:center;
+        font-size : 28px;
+        div {
+          font-size : 13px;
+        }
       }
     }
   }
-
-  .header-login-btn{
-    padding:0 5px;
-    text-align:center;
-  }
-
-  .header-support-btn{
-    padding:0 5px;
-    text-align:center;
-  }
-
+  
   .header-login-btn:hover .header-login-list{
     display:block;
   }
@@ -76,7 +83,6 @@ const HeaderWrapper = styled.div`
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
     border:none;
   }
-
 
   .login-list-value{
     color:gray;

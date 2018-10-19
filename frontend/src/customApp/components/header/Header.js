@@ -77,14 +77,14 @@ class Header extends Component {
             </Col>
             <Col className="header-btns">
               <Row type="flex" justify="space-between">
-                <Col className="header-btn">
+                <Col className="header-cart-btn">
                   <a class="header-btn-anchor">
-                    <Icon type="shopping-cart" style={{ fontSize: 28 }} />
+                    <Icon type="shopping-cart" />
                     <div>カート</div>
                   </a>
                 </Col>
                 <Col className="header-login-btn">
-                  <Icon type="user" style={{ fontSize: 28 }} />
+                  <Icon type="user" />
                   <div>ログイン</div>
                   <List
                     className="header-login-list"
@@ -100,7 +100,7 @@ class Header extends Component {
                   />
                 </Col>
                 <Col className="header-support-btn">
-                  <Icon type="info-circle" style={{ fontSize: 28 }} />
+                  <Icon type="info-circle" />
                   <div>サポート</div>
                   <Row>
                     <List
