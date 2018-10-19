@@ -25,6 +25,8 @@
   "checkout.billingform.mobile": "Mobile No",
   "contactlist.addNewContact": "Add New Contact",
   "contactlist.searchContacts": "Search Contacts",
+  "ec.form.largeButton.nameWithItemCount": "{name} {count} アイテム",
+  "ec.form.largeButton.seeMore": "もっと見る",
   "email.cancel": "CANCEL",
   "email.compose": "COMPOSE",
   "email.noMessage": "Please select a mail to read",
