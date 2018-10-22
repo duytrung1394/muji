@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Card } from "antd";
+import { Col } from "antd";
 
-const CardGrid = styled(Card.Grid)`
-  width: 25% !important;
-  box-shadow: none !important;
+const Item = styled(Col)`
+  padding: 10px;
   img {
     width: 100%;
   }
 `;
 
 const Title = styled.div`
+  padding: 10px;
   color: #333;
   font-size: 12px;
   text-align: center;
@@ -43,7 +43,7 @@ const ItemView = props => {
   const { swatches, title, price, new_price } = props;
   const image = `https://img.muji.net/img/item/${swatches[0].jancode}_400.jpg`;
   return (
-    <CardGrid>
+    <Item xs={12} sm={12} md={8} lg={8} xl={6}>
       <div>
         <img src={image} alt="" />
       </div>
@@ -61,7 +61,7 @@ const ItemView = props => {
           </NewPriceValue>
         )}
       </Price>
-    </CardGrid>
+    </Item>
   );
 };
 

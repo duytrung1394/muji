@@ -33,7 +33,7 @@ const GroupName = styled.h1`
 const StyledNameWithItemCountButton = styled(NameWithItemCountButton)`
   clear: both;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 const ItemListPanel = props => {
