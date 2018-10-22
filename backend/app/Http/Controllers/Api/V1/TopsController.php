@@ -80,14 +80,16 @@ class TopsController extends Controller
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan.png',
                     'img_sub0' => "一定額以上の",
                     'img_sub1' => "お買い上げで",
-                    'img_sub2' => "配送料無料",
+                    'img_sub2' => "",
+                    'img_sub3' => '配送料無料',
                     'img_note' => '小型商品は税込5,000円以上、大型家具・家電は税込150,000以上で、配送料無料'
                 ],
                 [
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_storage.png',
                     'img_sub0' => "ポリプロピレン",
                     'img_sub1' => "衣装ケースなど",
-                    'img_sub2' => "配送料無料",
+                    'img_sub2' => "",
+                    'img_sub3' => '配送料無料',
                     'img_note' => '対象商品が配送料無料になりました'
                 ],
                 [
@@ -118,7 +120,8 @@ class TopsController extends Controller
                     'img_src' => 'https://www.muji.com/jp/store/service/img/service_hanger_s.png',
                     'img_sub0' => '',
                     'img_sub1' => '',
-                    'img_sub2' => 'まとめ買い',
+                    'img_sub2' => '',
+                    'img_sub3' => 'まとめ買い',
                     'img_note' => 'ケースでお届けするから5%お得'
                 ],
             ],

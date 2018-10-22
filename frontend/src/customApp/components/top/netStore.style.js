@@ -6,9 +6,11 @@ const NetStoreWrapper = styled.div`
 @media screen and (min-width: 1025px) /* PC */ {
   .ant-card-cover > *
   {
-    width: PC;
+    width: auto !important;
+    height: 7.5%;
     margin-left: auto;
     margin-right: auto;
+    max-height: 79x;
   }
 }
 @media screen and (max-width: 1024px) /* Mobile */ {
@@ -18,16 +20,6 @@ const NetStoreWrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
-}
-@media screen and (max-width: 1200px) {
-  /*
-  .ant-card-cover > *
-  {
-    width: 64%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  */
 }
 .ant-card-meta-title
 {
@@ -50,13 +42,23 @@ const NetStoreWrapper = styled.div`
     margin-right: 13%;
     margin-left: 7%;
   }
+
 }
 .ant-card-meta {
     margin: 0px;
 },
+.ant-row-flex
+{
+  margin-left: 20px !important;
+}
 .ant-row
 {
   line-height: 1.3 !important;
+},
+.ant-card
+{
+  line-height: 1.2 !important;
+  padding-left: 5px;
 },
 .ant-card-body
 {
