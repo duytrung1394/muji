@@ -10,6 +10,7 @@ import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
 import styled from "styled-components";
+import FromMuji from "../../components/top/fromMuji";
 
 const TopWrapper = styled.div`
   max-width: 1440px;
@@ -44,6 +45,7 @@ class Index extends Component {
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
+          <FromMuji fromMujis={entity.from_mujis} />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
