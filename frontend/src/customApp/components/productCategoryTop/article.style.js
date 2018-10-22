@@ -2,11 +2,27 @@ import styled from "styled-components";
 
 const ArticleWrapper = styled.div`
 
+margin-bottom:30px;
+
+.ant-breadcrumb{
+    margin:0 10px 20px;
+}
+
+.breadcrumb{
+    font-size:12px;
+}
+
+.breadcrumb:hover{
+    color:rgba(0, 0, 0, 0.45);
+}
+
 .content-wrapper{
-    height:100%;
     font-size: 14px;
     background: linear-gradient(#fafafa, #f6f6f6);
-    background: #f5fbfb;
+    width: 100%;
+    max-width: 1540px;
+    margin: 0 auto 0px;
+    overflow:hidden;
 }
 
 .category-title{
@@ -15,8 +31,8 @@ const ArticleWrapper = styled.div`
     margin: 0 10px 20px;
 }
 
-.ant-col-14{
-    padding: 40px 30px;
+.ant-col-xl-14{
+    padding: 30px 80px 0 30px;
 }
 .category-name{
     font-size: 36px;
@@ -71,12 +87,19 @@ const ArticleWrapper = styled.div`
     color: rgba(0, 0, 0, 0.5);
 }
 
+.promotion-figure{
+    margin:0;
+}
+
 .promotion-img{
-    display:block;
     width:100%;
-    height:36vw;
+    height:auto;
     min-height: 100%;
     max-width: 1440px;
+}
+
+@media screen and (max-width:1300px){
+    
 }
 `;
 
