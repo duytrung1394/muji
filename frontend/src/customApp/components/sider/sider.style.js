@@ -9,24 +9,16 @@ const SidebarWrapper = styled.div`
     left: 0; 
     background:#f7f7f7;
   }
-  
-  .ant-menu-item{
-    color:black;
-  }
 
   .ant-menu-item:hover{
     color:white;
     background-color:grey;
+    a:hover{
+      display: block;
+      color:white;
+    }
   }
- 
-  .ant-menu-item > a{
-    color:black;
-  }
-
-  .ant-menu-item a:hover{
-    color:white;
-  }
-
+  
   .ant-menu-vertical, 
   .ant-menu-vertical-left, 
   .ant-menu-vertical-right, 
@@ -34,23 +26,36 @@ const SidebarWrapper = styled.div`
   {
     &.ant-menu-item:not(:last-child)
     {
-      margin-bottom: 0px;
     }
-    .ant-menu-item, .ant-menu-submenu-title {
+    .ant-menu-item:not(.sider-everyday), .ant-menu-submenu-title {
       height: 28px;
+      color: #333;
       font-size: 13px;
-      font-weight: bold;
+      font-weight: 700;
       font-family: Hiragino Kaku Gothic ProN;
-      padding:5px 10px;
+      padding:0px 10px;
       line-height:20px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    .ant-menu-item.sider-everyday {
+      height: 70px;
+      color: #333;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: Hiragino Kaku Gothic ProN;
+      padding: "0";
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
   }
 
   .ant-menu-item-group-title
   {
     border-top: 1px solid #ccc;
-    color:black;
     font-size:16px;
+    color: #333;
+    font-weight: 400;
   }
 
   .ant-menu-item-group
@@ -67,31 +72,22 @@ const SidebarWrapper = styled.div`
   }
 
   .sider-everyday  {
-    color:black;
-    height:77px;
     border-top:1px solid #ccc;
-  }
-
-  .sider-everyday a:hover{
-    color:white;
-  }
-
-  .sider-everyday p{
-    font-size:8px;
-  }
-
-  .sider-everyday a{
-    font-size:13px;
-    padding-top:10px;
-    padding-bottom:20px;
-    padding-left:20px;
-    line-height:28px;
-  }
-
-  .sider-everyday span{
-   font-size:14px;
-
+    a:hover{
+      color:white;
+    }
+    p{
+      font-size:8px;
+    }
+    a{
+      font-size:13px;
+      padding-top:10px;
+      padding-bottom:20px;
+      line-height:28px;
+    }
+    span{
+     font-size:14px;
+    }
   }
 `
 export default SidebarWrapper;
-

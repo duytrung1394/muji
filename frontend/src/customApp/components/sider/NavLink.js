@@ -2,21 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const styles = styled(Link)`
-  .navlink {
-    color: black;
-    display: block;
-    position: absolute;
-    width: 230px;
-    top: 0px;
-    left: 0px;
-    padding-left: 10px;
-    line-height: 30px;
-  }
+const ExLink = styled(Link)`
+  position: absolute;
+  width: 230px;
+  top: 0px;
+  left: 0px;
+  padding-left: 10px;
+  line-height: 28px;
 `;
-class NavLink extends Link {
+
+class NavLink extends Component {
   render() {
-    return <Link {...this.props} className={styles} />;
+    return <ExLink {...this.props} className="navlink" />;
   }
 }
 

@@ -1,0 +1,544 @@
+{
+  "menus": [
+    {
+      "groupMenu": {
+        "title": "特集",
+        "key": "g1",
+        "img": {
+          "className": "sider-icon",
+          "src": ""
+        }
+      },
+      "items": [
+        {
+          "key": "10",
+          "title": "特集",
+          "className" : "sider-everyday",
+          "url": ""
+        },
+        {
+          "key": "11",
+          "title": "新商品",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "linkMenu": {
+        "key": "20",
+        "title": "毎日の無印良品",
+        "subtitle": "ネット限定 対象商品配送料無料",
+        "className": "sider-everyday",
+        "url": "/store/cmdty/section/T001011"
+      }
+    },
+    {
+      "groupMenu": {
+        "title": "お買い得",
+        "key": "g3",
+        "img": {
+          "className": "sider-icon",
+          "src": ""
+        }
+      },
+      "items": [
+        {
+          "key": "31",
+          "title": "期間限定価格",
+          "url": ""
+        },
+        {
+          "key": "32",
+          "title": "まとめ買い",
+          "url": ""
+        },
+        {
+          "key": "33",
+          "title": "切れ端、不揃い、大容量",
+          "url": ""
+        },
+        {
+          "key": "34",
+          "title": "SALE",
+          "url": ""
+        },
+        {
+          "key": "35",
+          "title": "アウトレット",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "衣料品",
+        "key": "g4",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon2"
+        }
+      },
+      "items": [
+        {
+          "key": "4_01",
+          "title": "婦人ウェア",
+          "url": "/store/cmdty/section/T10000"
+        },
+        {
+          "key": "4_02",
+          "title": "婦人インナーウェア",
+          "url": ""
+        },
+        {
+          "key": "4_03",
+          "title": "紳士ウェア",
+          "url": ""
+        },
+        {
+          "key": "4_04",
+          "title": "紳士インナーウェア",
+          "url": ""
+        },
+        {
+          "key": "4_05",
+          "title": "靴下",
+          "url": ""
+        },
+        {
+          "key": "4_06",
+          "title": "靴",
+          "url": ""
+        },
+        {
+          "key": "4_07",
+          "title": "バッグ",
+          "url": ""
+        },
+        {
+          "key": "4_08",
+          "title": "服飾雑貨",
+          "url": ""
+        },
+        {
+          "key": "4_09",
+          "title": "MUJI Labo 婦人",
+          "url": ""
+        },
+        {
+          "key": "4_10",
+          "title": "MUJI Labo 紳士",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "子供・マタニティ",
+        "key": "g5",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon3"
+        }
+      },
+      "items": [
+        {
+          "key": "5_01",
+          "title": "ベピー (80 - 100cm)",
+          "url": ""
+        },
+        {
+          "key": "5_02",
+          "title": "キッズ (110 - 150cm)",
+          "url": ""
+        },
+        {
+          "key": "5_03",
+          "title": "マタニティ・新生児",
+          "url": ""
+        },
+        {
+          "key": "5_04",
+          "title": "子供用品・家具・三輪車",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "家具・インテリア・家電",
+        "key": "g6",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon4"
+        }
+      },
+      "items": [
+        {
+          "key": "6_01",
+          "title": "ユニットシェルフ",
+          "url": ""
+        },
+        {
+          "key": "6_02",
+          "title": "収納用品",
+          "url": ""
+        },
+        {
+          "key": "6_03",
+          "title": "小物収納用品",
+          "url": ""
+        },{
+          "key": "6_04",
+          "title": "テーブル・チェア",
+          "url": ""
+        },{
+          "key": "6_05",
+          "title": "デスク・チェア",
+          "url": ""
+        },
+        {
+          "key": "6_06",
+          "title": "ベッド",
+          "url": ""
+        },{
+          "key": "6_07",
+          "title": "布団・寝具",
+          "url": ""
+        },
+        {
+          "key": "6_08",
+          "title": "ソファ",
+          "url": ""
+        },
+        {
+          "key": "6_09",
+          "title": "ラグ・クッション・スリッパ",
+          "url": ""
+        },
+        {
+          "key": "6_10",
+          "title": "カーテン・ブラインド",
+          "url": ""
+        },
+        {
+          "key": "6_11",
+          "title": "インテリア用品",
+          "url": ""
+        },
+        {
+          "key": "6_12",
+          "title": "家電・照明",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "ヘルス＆ビューティー",
+        "key": "g7",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon5"
+        }
+      },
+      "items": [
+        {
+          "key": "7_01",
+          "title": "スキンケア用品",
+          "url": ""
+        },
+        {
+          "key": "7_02",
+          "title": "メイクアップ用品",
+          "url": ""
+        },
+        {
+          "key": "7_03",
+          "title": "ヘアケア・オーラルケア",
+          "url": ""
+        },
+        {
+          "key": "7_04",
+          "title": "ボディケア・入浴剤",
+          "url": ""
+        },
+        {
+          "key": "7_05",
+          "title": "アロマ・フレグランス",
+          "url": ""
+        },
+        {
+          "key": "7_06",
+          "title": "ポーチ・小分け容器",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "雑貨・日用品",
+        "key": "g8",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon6"
+        }
+      },
+      "items": [
+        {
+          "key": "8_01",
+          "title": "食器",
+          "url": ""
+        },
+        {
+          "key": "8_02",
+          "title": "キッチン用品",
+          "url": ""
+        },
+        {
+          "key": "8_03",
+          "title": "タオル・バス・トイレ用品",
+          "url": ""
+        },
+        {
+          "key": "8_04",
+          "title": "掃除・洗濯用品・ハンガー",
+          "url": ""
+        },
+        {
+          "key": "8_05",
+          "title": "文房具",
+          "url": ""
+        },
+        {
+          "key": "8_06",
+          "title": "アルバム",
+          "url": ""
+        },
+        {
+          "key": "8_07",
+          "title": "本・BGM",
+          "url": ""
+        },
+        {
+          "key": "8_08",
+          "title": "自転車",
+          "url": ""
+        },
+        {
+          "key": "8_09",
+          "title": "トラベル用品",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "食品",
+        "key": "g9",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon7"
+        }
+      },
+      "items": [
+        {
+        	"key": "9_01",
+        	"title": "レトルト・調味料",
+          "url": ""
+        },
+        {
+        	"key": "9_02",
+        	"title": "冷凍食品",
+          "url": ""
+        },
+        {
+        	"key": "9_03",
+        	"title": "製菓材料",
+          "url": ""
+        },
+        {
+        	"key": "9_04",
+        	"title": "菓子",
+          "url": ""
+        },
+        {
+        	"key": "9_05",
+        	"title": "飲料",
+          "url": ""
+        },
+        {
+        	"key": "9_06",
+        	"title": "食の基本",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "花・グリーン",
+        "key": "g10",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon8"
+        }
+      },
+      "items": [
+        {
+        	"key": "10_01",
+        	"title": "インテリアグリーン",
+          "url": ""
+        },
+        {
+        	"key": "10_02",
+        	"title": "花",
+          "url": ""
+        },
+        {
+        	"key": "10_03",
+        	"title": "ハーブ・栽培セット",
+          "url": ""
+        },
+        {
+        	"key": "10_04",
+        	"title": "ガーデンファニチャー・雑貨",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "産地直送",
+        "key": "g11",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon9"
+        }
+      },
+      "items": [
+        {
+        	"key": "111",
+        	"title": "諸国良品",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "キャンプ場",
+        "key": "g30",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon10"
+        }
+      },
+      "items": [
+        {
+        	"key": "30_01",
+        	"title": "無印良品キャンプ場",
+          "externalLink": true,
+          "url": "https://www.muji.net/camp/"
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "MUJI SUPPORT",
+        "key": "g40",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon11"
+        }
+      },
+      "items": [
+        {
+        	"key": "40_01",
+        	"title": "くらしの収納相談",
+        	"externalLink": true,
+        	"url": "https://www.muji.com/jp/mujisupport/#storage"
+        },{
+        	"key": "40_02",
+        	"title": "部屋づくり相談",
+        	"externalLink": true,
+        	"url": "https://www.muji.com/jp/mujisupport/#roommaking"
+        },{
+        	"key": "40_03",
+        	"title": "サイズオーダーサービス",
+        	"externalLink": true,
+        	"url": "https://www.muji.com/jp/mujisupport/#sizeorder"
+        },{
+        	"key": "40_04",
+        	"title": "各種取り付けサービス",
+        	"externalLink": true,
+        	"url": "https://www.muji.com/jp/mujisupport/#installation"
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "MUJI HOUSE VISION",
+        "key": "g50",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon11"
+        }
+      },
+      "items": [
+        {
+        	"key": "50_01",
+        	"title": "無印良品の家",
+        	"externalLink": true,
+        	"url": "https://www.muji.net/ie/"
+        },
+        {
+        	"key": "50_02",
+        	"title": "無印良品のリノベーション",
+        	"externalLink": true,
+        	"url": "https://www.muji.net/renovation/"
+        },
+        {
+        	"key": "50_03",
+        	"title": "団地リノベーション",
+        	"externalLink": true,
+        	"url": "https://www.muji.net/ie/mujiur/"
+        },
+        {
+        	"key": "50_04",
+        	"title": "MUJI Renovation Club",
+        	"externalLink": true,
+        	"url": "https://housevision.muji.com/renovation/"
+        },
+        {
+        	"key": "50_05",
+        	"title": "くらしのパーツ相談",
+        	"externalLink": true,
+        	"url": "https://housevision.muji.com/infillplus/"
+        },
+        {
+        	"key": "50_06",
+        	"title": "法人サービス",
+        	"externalLink": true,
+        	"url": "https://www.muji.net/hojin/"
+        }
+      ]
+    },
+    {
+      "groupMenu": {
+        "title": "募金",
+        "key": "g70",
+        "img": {
+          "className": "sider-icon",
+          "src": "sidebarIcon12"
+        }
+      },
+      "items": [
+        {
+          "key": "90_01",
+          "title": "募金券",
+          "url": "/store/cmdty/donation/"
+        }
+      ]
+    }
+  ],
+  "title": "MUJI 無印良品",
+  "version": "1.0.0"
+}
