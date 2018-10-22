@@ -46,6 +46,13 @@ const routes = [
     path: "/home_debug",
     exact: true,
     component: asyncComponent(() => require("./home"))
+  },
+  {
+    path: "/store/cmdty/section/:category_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductCategoryTop/index")
+    )
   }
 ];
 export default routes;

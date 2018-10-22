@@ -31,6 +31,10 @@ require_once 'api/v1/fruits.php';
 // /api/v1/tops
 require_once 'api/v1/tops.php';
 
+
+// /api/v1/product-category-tops
+require_once 'api/v1/product_category_tops.php';
+
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
 
