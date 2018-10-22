@@ -1,13 +1,13 @@
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import ItemImageList from "../panel/itemImageList";
-import { Card,Button } from 'antd';
+import { Card,Button } from "antd";
 import FromMujiWrapper from "./fromMuji.style";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
-import { Row, Col } from 'antd';
+import { Row, Col } from "antd";
 
 const { Meta } = Card;
 
@@ -16,16 +16,14 @@ class FromMuji extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: 10,
+      visible: 10
     };
-
     this.loadMore = this.loadMore.bind(this);
   }
 
-  loadMore()
-  {
+  loadMore() {
     this.setState((prev) => {
-      return {visible: prev.visible + 10};
+      return { visible: prev.visible + 10 };
     });
   }
 
@@ -55,11 +53,9 @@ class FromMuji extends Component {
                 );
              })}
         </Row>
-
         {this.state.visible < 45 &&
-            <p onClick={this.loadMore} type="button" className="see-more"><IntlMessages id="top.fromMuji.load_more" /></p>
-         }
-
+          <p onClick={this.loadMore} type="button" className="load-more"><IntlMessages id="top.fromMuji.load_more" /></p>
+        }
       </FromMujiWrapper>
     );
   }

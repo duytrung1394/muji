@@ -3,6 +3,7 @@ import styled from "styled-components";
 const FromMujiWrapper = styled.div`
  background-color:#f4f4f4;
   padding-bottom:60px;
+
  .from-muji-title{
    font-size:24px;
    padding: 70px 0 20px 50px;
@@ -15,8 +16,6 @@ const FromMujiWrapper = styled.div`
     margin-bottom:50px;
     padding-left:0px;
     justify-content: space-around;
-
-
   }
 
   .cards{
@@ -45,7 +44,7 @@ const FromMujiWrapper = styled.div`
     white-space: normal;
   }
 
-  .see-more{
+  .load-more{
     border: 1px solid #CCCCCC;
     border-radius: 2px;
     width: 100%;
@@ -60,28 +59,11 @@ const FromMujiWrapper = styled.div`
     background-color:#f4f4f4;
     user-select:none;
   }
-  .see-more:hover{
+
+  .load-more:hover{
     background-color:#f4f4f4;
     color: #585858;
     border: 1px solid #CCCCCC;
   }
-
-  @media screen and (max-width:1152px){
-    .cards{
-      width:30%;
-    }
-
-    @media screen and (max-width:768px){
-
-      .card-container{
-        padding-left:0px;
-      }
-
-      .cards{
-        width:45%;
-        margin:auto 0px;
-      }
-  }
-
 `
 export default FromMujiWrapper;
