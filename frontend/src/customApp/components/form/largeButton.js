@@ -17,7 +17,7 @@ export default LargeButton;
 
 export const SeeMoreButton = props => (
   <LargeButton {...props}>
-    <IntlMessages id="ec.form.largeButton.seeMore"/>
+    <IntlMessages id="ec.form.largeButton.seeMore" />
   </LargeButton>
 );
 
@@ -29,7 +29,7 @@ export const NameWithItemCountButton = props => (
   <LargeButton {...props}>
     <IntlMessages
       id="ec.form.largeButton.nameWithItemCount"
-      values={{name: <ItemName>{props.name}</ItemName>, count: props.count}}
+      values={{ name: <ItemName>{props.name}</ItemName>, count: props.count }}
     />
   </LargeButton>
 );

@@ -19,6 +19,10 @@ const Title = styled.div`
 const Price = styled.div`
   font-size: 11px;
   text-align: center;
+`;
+
+const PriceValue = styled.span`
+  color: ${props => (props.isOldPrice ? "#999" : "#333")};
   span {
     font-size: 15px;
     font-weight: bold;
@@ -27,20 +31,38 @@ const Price = styled.div`
   }
 `;
 
+const NewPriceValue = styled(PriceValue)`
+  color: #7f0019;
+  .arrow {
+    color: #999;
+    margin-left: 0 3px;
+  }
+`;
+
 const ItemView = props => {
-  const { image, title, price } = props;
+  const { swatches, title, price, new_price } = props;
+  const image = `https://img.muji.net/img/item/${swatches[0].jancode}_400.jpg`;
   return (
     <CardGrid>
       <div>
-        <img src={image} alt=""/>
+        <img src={image} alt="" />
       </div>
       <Title>{title}</Title>
       <Price>
-        {price.tax}{" "}<span>{price.num}</span> {price.currency}
+        <PriceValue isOldPrice={new_price}>
+          {price.tax} <span>{price.num}</span>
+          {price.currency}
+        </PriceValue>
+        {new_price && (
+          <NewPriceValue>
+            <span className="arrow">→</span>
+            {new_price.tax} <span>{new_price.num}</span>
+            {new_price.currency}
+          </NewPriceValue>
+        )}
       </Price>
     </CardGrid>
   );
 };
 
 export default ItemView;
-

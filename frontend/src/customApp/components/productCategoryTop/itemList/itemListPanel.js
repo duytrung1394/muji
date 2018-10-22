@@ -34,7 +34,7 @@ const StyledNameWithItemCountButton = styled(NameWithItemCountButton)`
   clear: both;
   text-align: center;
   margin-bottom: 20px;
-`
+`;
 
 const ItemListPanel = props => {
   const { item } = props;
@@ -43,25 +43,23 @@ const ItemListPanel = props => {
       extra={<ItemListHeader />}
       actions={[<SeeMoreButton />]}
     >
-      {
-        item && item.groups.map((group, index) => {
+      {item &&
+        item.groups.map((group, index) => {
           return (
             <div key={index}>
               <GroupName>{group.group_name}</GroupName>
-              {
-                group.items.map((item, index) => {
-                  return (
-                    <ItemView {...item} key={index}/>
-                  );
-                })
-              }
-              <StyledNameWithItemCountButton name={group.group_name} count={group.total_number} />
+              {group.items.map((item, index) => {
+                return <ItemView {...item} key={index} />;
+              })}
+              <StyledNameWithItemCountButton
+                name={group.group_name}
+                count={group.total_number}
+              />
             </div>
           );
-        })
-      }
+        })}
     </ContentPanelWrapper>
   );
-}
+};
 
 export default ItemListPanel;
