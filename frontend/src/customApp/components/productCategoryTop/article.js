@@ -9,13 +9,19 @@ return(
       <Breadcrumb>
         <Breadcrumb.Item className="breadcrumb"><a href="">{props.article.category_breadcrumb}</a></Breadcrumb.Item>
      </Breadcrumb>
-      <h1 className="category-title">{props.article.category_title}</h1>
+     <h1 className="category-title">{props.article.category_title}</h1>
         <div className="content-wrapper">
-         <Col xl={{span:14}}>
+        <Col span={10} className="figure-wrapper">
+            <figure className="promotion-figure">
+                <img className="promotion-img" src={props.article.category_img} />
+            </figure>
+         </Col>
+         <Col md={{span:14}} xl={{span:14}}>
          <h2 className="category-name">{props.article.category_name}</h2>
+         </Col>
+         <Col xl={{span:14}} className="category-discription-wrapper">
             <p className="category-discription">{props.article.category_description}</p>
                 <List
-                    className="coategory-list"
                     itemLayout="horizontal"
                     dataSource={props.article.category_list}
                     renderItem={item => (
@@ -31,11 +37,6 @@ return(
                     )}
                 />
           </Col>
-          <Col span={10}>
-            <figure className="promotion-figure">
-                <img className="promotion-img" src={props.article.category_img} />
-            </figure>
-         </Col>
         </div>
   </ArticleWrapper>
  );
