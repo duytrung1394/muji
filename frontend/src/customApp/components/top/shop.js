@@ -4,6 +4,7 @@ import { Map, GoogleApiWrapper } from "google-maps-react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import SelectPrefecture from "../form/selectPrefecture";
+import { isServer, BrowserOnly } from "../../../helpers/ssr";
 
 const mapStyle = { position: "relative", width: "100%", height: "250px" };
 
@@ -44,13 +45,23 @@ export class Shop extends Component {
             </Aux>
           }
         >
-          <Map google={this.props.google} containerStyle={mapStyle} />
+          <BrowserOnly>
+            <Map google={this.props.google} containerStyle={mapStyle} />
+          </BrowserOnly>
         </ContentPanel>
       </ContentPanelWrapper>
     );
   }
 }
 
-export default GoogleApiWrapper({
+const SafeGoogleApiWrapper = (options) => {
+  if( isServer() ){
+    return (component) => component;
+  }else{
+    return (component) => (GoogleApiWrapper(options)(component) );
+  }
+}
+
+export default SafeGoogleApiWrapper({
   // apiKey: "xxxxxx"
 })(Shop);
