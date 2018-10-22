@@ -157,7 +157,7 @@ margin-bottom:30px;
 
     .category-name{
         font-size:22px;
-        top:27vh;
+        top:25vh;
     }
 
     .ant-list-item-meta-title{
