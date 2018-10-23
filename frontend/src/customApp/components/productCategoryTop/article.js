@@ -1,6 +1,16 @@
 import React from "react";
-import { List, Avatar, Col, Breadcrumb } from "antd";
-import ArticleWrapper from "./article.style";
+import { Avatar, Col, Breadcrumb, List } from "antd";
+import {
+  ArticleWrapper,
+  CategoryTitle,
+  CategoryList,
+  CategoryListItemMeta,
+  CategoryName,
+  ContentWrapper,
+  CategoryDiscription,
+  CategoryDiscriptionWrapper,
+  FigureWrapper
+} from "./article.style";
 
 const Article = props => {
   return (
@@ -10,27 +20,27 @@ const Article = props => {
           <a href="">{props.article.category_breadcrumb}</a>
         </Breadcrumb.Item>
       </Breadcrumb>
-      <h1 className="category-title">{props.article.category_title}</h1>
-      <div className="content-wrapper">
-        <Col span={10} className="figure-wrapper">
+      <CategoryTitle>{props.article.category_title}</CategoryTitle>
+      <ContentWrapper>
+        <FigureWrapper span={10}>
           <figure className="promotion-figure">
             <img className="promotion-img" src={props.article.category_img} />
           </figure>
-        </Col>
+        </FigureWrapper>
         <Col md={{ span: 14 }} xl={{ span: 14 }}>
-          <h2 className="category-name">{props.article.category_name}</h2>
+          <CategoryName>{props.article.category_name}</CategoryName>
         </Col>
-        <Col xl={{ span: 14 }} className="category-discription-wrapper">
-          <p className="category-discription">
+        <CategoryDiscriptionWrapper xl={{ span: 14 }}>
+          <CategoryDiscription>
             {props.article.category_description}
-          </p>
-          <List
+          </CategoryDiscription>
+          <CategoryList
             itemLayout="horizontal"
             dataSource={props.article.category_list}
             renderItem={item => (
               <List.Item>
                 <a href="">
-                  <List.Item.Meta
+                  <CategoryListItemMeta
                     avatar={<Avatar src={item.img} />}
                     title={item.title}
                     description={item.price}
@@ -39,8 +49,8 @@ const Article = props => {
               </List.Item>
             )}
           />
-        </Col>
-      </div>
+        </CategoryDiscriptionWrapper>
+      </ContentWrapper>
     </ArticleWrapper>
   );
 };
