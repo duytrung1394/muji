@@ -1,16 +1,20 @@
 import styled from "styled-components";
+import { Row,Card } from "antd";
 
-const FromMujiWrapper = styled.div`
- background-color:#f4f4f4;
-  padding-bottom:60px;
+export const StyledRow = styled(Row)`
+  padding: 0px;
+  margin: 0px;
+`
 
- .from-muji-title{
-   font-size:24px;
-   padding: 70px 0 20px 50px;
-   font-weight: normal;
- }
+export const StyledCard = styled(Card)`
+  font-size:12px;
 
-  .card-container{
+
+
+  margin: 30px;
+  width: 258px;
+
+  .ant-card-cover{
     display:flex;
     flex-flow: row wrap;
     margin-bottom:50px;
@@ -18,14 +22,25 @@ const FromMujiWrapper = styled.div`
     justify-content: space-around;
   }
 
-  .cards{
-    font-size:12px;
-    margin:auto 5px;
-    width:17%;
-    max-height:max-content;
+  .ant-card-meta-title{
+    text-overflow: visible;
+    overflow: visible;
+    white-space: normal;
   }
+`
 
-  .cards-new{
+export const FromMujiSection= styled.div`
+  background-color:#f4f4f4;
+  padding-bottom:60px;`
+
+export const FromMujiTitle = styled.h1`
+  font-size:24px;
+  padding: 70px 0 20px 50px;
+  font-weight: normal;
+`
+
+
+export const NewCard= styled.span`
     font-size: 11px;
     display:block;
     position:absolute;
@@ -36,15 +51,9 @@ const FromMujiWrapper = styled.div`
     padding:1.5px 4px;
     border-radius:0 4px 0 4px;
     color:white;
-  }
+`
 
-  .ant-card-meta-title{
-    text-overflow: visible;
-    overflow: visible;
-    white-space: normal;
-  }
-
-  .load-more{
+export const LoadMore = styled.p`
     border: 1px solid #CCCCCC;
     border-radius: 2px;
     width: 100%;
@@ -58,12 +67,4 @@ const FromMujiWrapper = styled.div`
     cursor: pointer;
     background-color:#f4f4f4;
     user-select:none;
-  }
-
-  .load-more:hover{
-    background-color:#f4f4f4;
-    color: #585858;
-    border: 1px solid #CCCCCC;
-  }
 `
-export default FromMujiWrapper;

@@ -2,12 +2,13 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import ItemImageList from "../panel/itemImageList";
 import { Card, Button } from "antd";
-import FromMujiWrapper from "./fromMuji.style";
+import {FromMujiSection,FromMujiTitle,StyledCard,StyledRow,NewCard,LoadMore} from "./fromMuji.style";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Row, Col } from "antd";
+
 
 const { Meta } = Card;
 
@@ -31,43 +32,40 @@ class FromMuji extends Component {
 
     if (fromMujis) {
       return (
-        <FromMujiWrapper>
-          <h1 className="from-muji-title">from MUJI</h1>
-          <Row
+        <FromMujiSection>
+          <FromMujiTitle>from MUJI</FromMujiTitle>
+          <StyledRow
             type="flex"
             justify="center"
             align="top"
-            style={{ padding: 0, margin: 0 }}
           >
             {fromMujis &&
               fromMujis.slice(0, this.state.visible).map((item, index) => {
                 return (
-                  <Card
+                  <StyledCard
                     hoverable
                     cover={<img alt="example" src={item.img_src} />}
-                    className="cards"
                     key={index}
-                    style={{ margin: 30, width: 258 }}
                   >
-                    {index < 15 ? <span className="cards-new">NEW</span> : null}
+                    {index < 15 ? <NewCard>NEW</NewCard> : null}
                     <Meta
                       title={item.title}
                       description={item.date}
                       className="cards-meta"
                     />
-                  </Card>
+                  </StyledCard>
                 );
               })}
-          </Row>
+          </StyledRow>
           {this.state.visible < Object.keys(fromMujis).length && (
-            <p onClick={this.loadMore} type="button" className="load-more">
+            <LoadMore onClick={this.loadMore} type="button">
               <IntlMessages id="top.fromMuji.load_more" />
-            </p>
+            </LoadMore>
           )}
-        </FromMujiWrapper>
+        </FromMujiSection>
       );
     } else {
-      return <FromMujiWrapper />;
+      return <div/>;
     }
   }
 }
