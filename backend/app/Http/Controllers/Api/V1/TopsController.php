@@ -275,34 +275,8 @@ class TopsController extends Controller
                     'img_src' => '//img.muji.net/passport/img/app/news/9930_20181002194057_8dc1ab34864fd21d3ee6fcf1a946b64b_D.jpg',
                     'title' => '【無印良品の理由】足なり直角 口ゴムなしドット柄ショートソックス',
                     'date' => '2018年10月04日'
-                ],
-
-                [
-                    'img_src' => '//img.muji.net/passport/img/app/news/9949_20181003180325_aa95f4edc672843058600d8d6a771bf3_D.jpg',
-                    'title' => '【愛知】無印良品 MUJI com エスカ オープン',
-                    'date' => '2018年10月05日'
-                ],
-                [
-                    'img_src' => '//img.muji.net/passport/img/app/news/9948_20181003180152_6ac40cc758666c5a97ffc47865f946fc_D.jpg',
-                    'title' => '【無印良品の理由】ウェルダーレインコート・フリーカット',
-                    'date' => '2018年10月04日'
-                ],
-                [
-                    'img_src' => '//img.muji.net/passport/img/app/news/9947_20181003175947_b2dcfbb2329404a20d39ead81bb3a5da_D.jpg',
-                    'title' => '【新商品】くるくるたためるネックピロー',
-                    'date' => '2018年10月04日'
-                ],
-                [
-                    'img_src' => '//img.muji.net/passport/img/app/news/9946_20181003175359_f78b099e4a77643696e827ce533e7bd3_D.jpg',
-                    'title' => '【無印良品の理由】スーパーストレッチアンクル丈レギンスパンツ',
-                    'date' => '2018年10月04日'
-                ],
-                [
-                    'img_src' => '//img.muji.net/passport/img/app/news/9930_20181002194057_8dc1ab34864fd21d3ee6fcf1a946b64b_D.jpg',
-                    'title' => '【無印良品の理由】足なり直角 口ゴムなしドット柄ショートソックス',
-                    'date' => '2018年10月04日'
-                ],
-            ],
+                ]
+            ]
         ];
     }
 }

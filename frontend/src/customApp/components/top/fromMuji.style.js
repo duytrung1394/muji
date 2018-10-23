@@ -1,5 +1,22 @@
 import styled from "styled-components";
-import { Row,Card } from "antd";
+import { Row,Card,Col } from "antd";
+
+const { Meta } = Card;
+
+export const FromMujiSection= styled.div`
+  background-color:#f4f4f4;
+  padding-bottom:40px;
+  
+  .ant-card{
+    margin:0px 0.8vw;
+  }
+
+  @media screen and (max-width:1152px){
+    .ant-card{
+      margin:0.8vw;
+    }
+  }
+`
 
 export const StyledRow = styled(Row)`
   padding: 0px;
@@ -7,32 +24,33 @@ export const StyledRow = styled(Row)`
 `
 
 export const StyledCard = styled(Card)`
-  font-size:12px;
+  width: 17%;
 
-
-
-  margin: 30px;
-  width: 258px;
-
-  .ant-card-cover{
-    display:flex;
-    flex-flow: row wrap;
-    margin-bottom:50px;
-    padding-left:0px;
-    justify-content: space-around;
+  .ant-card-body{
+    padding:15px;
   }
 
-  .ant-card-meta-title{
-    text-overflow: visible;
-    overflow: visible;
-    white-space: normal;
+  @media screen and (max-width:1152px){
+    width:30%;
+  }
+
+  @media screen and (max-width:768px){
+    width:47%;
   }
 `
 
-export const FromMujiSection= styled.div`
-  background-color:#f4f4f4;
-  padding-bottom:60px;`
+export const StyleCardMeta = styled(Meta)`
 
+.ant-card-meta-title{
+  white-space: normal;
+  font-size:1rem;
+}
+
+.ant-card-meta-description{
+  font-size:12px;
+  color:#999;
+}
+`
 export const FromMujiTitle = styled.h1`
   font-size:24px;
   padding: 70px 0 20px 50px;
@@ -58,13 +76,11 @@ export const LoadMore = styled.p`
     border-radius: 2px;
     width: 100%;
     color: #585858;
-    display: block;
+    font-size:18px;
     text-align: center;
     padding: 18px 0;
-    font-size: 18px;
-    margin: 0 auto;
+    margin: 30px auto 0;
     max-width: 500px;
     cursor: pointer;
-    background-color:#f4f4f4;
     user-select:none;
 `

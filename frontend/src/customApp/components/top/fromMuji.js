@@ -1,16 +1,20 @@
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../panel/contentPanel";
 import ItemImageList from "../panel/itemImageList";
-import { Card, Button } from "antd";
-import {FromMujiSection,FromMujiTitle,StyledCard,StyledRow,NewCard,LoadMore} from "./fromMuji.style";
+import { Card, Button, Row, Col } from "antd";
+import {
+  FromMujiSection,
+  FromMujiTitle,
+  StyledCard,
+  StyledRow,
+  NewCard,
+  LoadMore,
+  StyleCardMeta
+} from "./fromMuji.style";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
-import { Row, Col } from "antd";
-
-
-const { Meta } = Card;
 
 class FromMuji extends Component {
   constructor(props) {
@@ -34,11 +38,7 @@ class FromMuji extends Component {
       return (
         <FromMujiSection>
           <FromMujiTitle>from MUJI</FromMujiTitle>
-          <StyledRow
-            type="flex"
-            justify="center"
-            align="top"
-          >
+          <StyledRow type="flex" justify="center" align="top">
             {fromMujis &&
               fromMujis.slice(0, this.state.visible).map((item, index) => {
                 return (
@@ -48,7 +48,7 @@ class FromMuji extends Component {
                     key={index}
                   >
                     {index < 15 ? <NewCard>NEW</NewCard> : null}
-                    <Meta
+                    <StyleCardMeta
                       title={item.title}
                       description={item.date}
                       className="cards-meta"
@@ -58,14 +58,14 @@ class FromMuji extends Component {
               })}
           </StyledRow>
           {this.state.visible < Object.keys(fromMujis).length && (
-            <LoadMore onClick={this.loadMore} type="button">
+            <LoadMore onClick={this.loadMore}>
               <IntlMessages id="top.fromMuji.load_more" />
             </LoadMore>
           )}
         </FromMujiSection>
       );
     } else {
-      return <div/>;
+      return <div />;
     }
   }
 }
