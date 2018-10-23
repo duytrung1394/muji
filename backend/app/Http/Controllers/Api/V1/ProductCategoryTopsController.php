@@ -25,6 +25,13 @@ class ProductCategoryTopsController extends Controller
         return [
             'category_code'   => $categoryCode,
             'category_title'  => "婦人ウェア",
-        ];
+            'category_ranking' => [
+                ['title' => 'ウールシルク洗えるVネックセーター','img' => '//img.muji.net/img/item/4550002561062_1260.jpg'],
+                ['title' => 'ウールシルク洗えるクールネックセーター','img' => '//img.muji.net/img/item/4550002557867_1260.jpg'],
+                ['title' => '首のチクチクをおさえた・洗えるタートルネックセーター','img' => '//img.muji.net/img/item/4550002687540_1260.jpg'],
+                ['title' => 'ヤクウールVネックセーター','img' => '//img.muji.net/img/item/4550002691622_1260.jpg'],
+                ['title' => 'ウールシルク洗えるワイドリブボトルネックセーター','img' => '//img.muji.net/img/item/4550002558239_1260.jpg']
+            ]
+            ];
     }
 }
