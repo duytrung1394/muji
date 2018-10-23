@@ -20,18 +20,14 @@ export const SiderWrapper = styled(Layout.Sider)`
   }
 `
 export const MenuItemGroup = styled(Menu.ItemGroup)`
+  margin-bottom: 20px;
   .ant-menu-item-group-title
   {
     border-top: 1px solid #ccc;
     font-size:16px;
     color: #333;
     font-weight: 400;
-  }
-
-  .ant-menu-item-group
-  {
-    margin-bottom: 20px;
-  }
+  }  
 `;
 
 export const GroupMenuIcon = styled.img`

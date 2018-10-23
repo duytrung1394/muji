@@ -90,7 +90,7 @@ const SideMenuContents = ({ menus }) => {
               );
             case "linkMenu":
               return (
-                <LinkMenuItem key={menu.key} className="linkMenu">
+                <LinkMenuItem key={menu.key}>
                   <Link to={menu.url}>
                     <span> {menu.title}</span>
                     <p>{menu.subtitle}</p>
