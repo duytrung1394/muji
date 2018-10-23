@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Col } from "antd";
+import ItemSwatch from "./itemSwatch";
+import ItemTag from "./itemTag";
 
 const Item = styled(Col)`
   padding: 10px;
@@ -39,30 +41,52 @@ const NewPriceValue = styled(PriceValue)`
   }
 `;
 
-const ItemView = props => {
-  const { swatches, title, price, new_price } = props;
-  const image = `https://img.muji.net/img/item/${swatches[0].jancode}_400.jpg`;
-  return (
-    <Item xs={12} sm={12} md={8} lg={8} xl={6}>
-      <div>
-        <img src={image} alt="" />
-      </div>
-      <Title>{title}</Title>
-      <Price>
-        <PriceValue isOldPrice={new_price}>
-          {price.tax} <span>{price.num}</span>
-          {price.currency}
-        </PriceValue>
-        {new_price && (
-          <NewPriceValue>
-            <span className="arrow">→</span>
-            {new_price.tax} <span>{new_price.num}</span>
-            {new_price.currency}
-          </NewPriceValue>
-        )}
-      </Price>
-    </Item>
-  );
-};
+class ItemView extends Component {
+  state = {
+    currentJancode: this.props.swatches[0].jancode,
+    nostock: this.props.swatches[0].nostock
+  };
+
+  changeSwatch = (jancode, nostock) => {
+    this.setState({
+      currentJancode: jancode,
+      nostock: nostock
+    });
+  };
+
+  render() {
+    const { swatches, title, price, new_price, tags } = this.props;
+    const image = `https://img.muji.net/img/item/${
+      this.state.currentJancode
+    }_400.jpg`;
+    return (
+      <Item xs={12} sm={12} md={8} lg={8} xl={6}>
+        <div>
+          <img src={image} alt="" />
+        </div>
+        <Title>{title}</Title>
+        <Price>
+          <PriceValue isOldPrice={new_price}>
+            {price.tax} <span>{price.num}</span>
+            {price.currency}
+          </PriceValue>
+          {new_price && (
+            <NewPriceValue>
+              <span className="arrow">→</span>
+              {new_price.tax} <span>{new_price.num}</span>
+              {new_price.currency}
+            </NewPriceValue>
+          )}
+        </Price>
+        <ItemSwatch
+          swatches={swatches}
+          currentJancode={this.state.currentJancode}
+          changeSwatch={this.changeSwatch}
+        />
+        <ItemTag tags={tags} nostock={this.state.nostock} />
+      </Item>
+    );
+  }
+}
 
 export default ItemView;

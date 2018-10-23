@@ -23,20 +23,76 @@ class ProductCategoryTopsController extends Controller
     private function getMockSwatches($swatchNumber)
     {
         $swatches = [
-            ['jancode' => '4549738163794', 'color_title' => 'モカブラウン'         ],
-            ['jancode' => '4549738164098', 'color_title' => 'スモーキーブルー'     ],
-            ['jancode' => '4549738164142', 'color_title' => 'チャコールグレー'     ],
-            ['jancode' => '4549738164241', 'color_title' => 'スモーキーグリーン'   ],
-            ['jancode' => '4550002031824', 'color_title' => 'オフ白'               ],
-            ['jancode' => '4550002031886', 'color_title' => 'オートミール'         ],
-            ['jancode' => '4550002031947', 'color_title' => 'グレー'               ],
-            ['jancode' => '4550002032005', 'color_title' => 'ネイビー'             ],
-            ['jancode' => '4550002032067', 'color_title' => '黒'                   ],
-            ['jancode' => '4550002032128', 'color_title' => 'オートミール×ボーダー'],
-            ['jancode' => '4550002032180', 'color_title' => '黒×ボーダー'          ],
-            ['jancode' => '4550002032241', 'color_title' => 'ピンク'               ],
-            ['jancode' => '4550002032302', 'color_title' => 'ブルー'               ],
-            ['jancode' => '4550002032364', 'color_title' => 'バーガンディ'         ],
+            [
+                'jancode' => '4549738163794',
+                'color_title' => 'モカブラウン',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4549738164098',
+                'color_title' => 'スモーキーブルー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4549738164142',
+                'color_title' => 'チャコールグレー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4549738164241',
+                'color_title' => 'スモーキーグリーン',
+                'nostock' => true
+            ],
+            [
+                'jancode' => '4550002031824',
+                'color_title' => 'オフ白',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002031886',
+                'color_title' => 'オートミール',
+                'nostock' => true
+            ],
+            [
+                'jancode' => '4550002031947',
+                'color_title' => 'グレー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032005',
+                'color_title' => 'ネイビー',
+                'nostock' => true
+            ],
+            [
+                'jancode' => '4550002032067',
+                'color_title' => '黒',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032128',
+                'color_title' => 'オートミール×ボーダー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032180',
+                'color_title' => '黒×ボーダー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032241',
+                'color_title' => 'ピンク',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032302',
+                'color_title' => 'ブルー',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002032364',
+                'color_title' => 'バーガンディ',
+                'nostock' => false
+            ],
         ];
 
         return array_splice($swatches, 0, $swatchNumber);
