@@ -23,15 +23,13 @@ class Index extends Component {
       fetching
     } = this.props;
 
- 
-
     return (
       <ProductCategoryTopWrapper>
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
         </Spin>
 
-        <PopularityRanking popularityRanking={entity.category_ranking}/>
+        <PopularityRanking popularityRanking={entity.category_ranking} />
       </ProductCategoryTopWrapper>
     );
   }
