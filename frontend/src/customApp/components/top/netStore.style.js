@@ -3,12 +3,13 @@ import styled from "styled-components";
 const NetStoreWrapper = styled.div`
 
 .ant-card-cover > *
-  {
-    width: auto !important;
-    height: 7.5%;
+{
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
-    max-height: 79x;
+    max-width: 90px;
+    transition: height 2s ease-in-out ;
+    transform-origin: top;
 },
 .ant-card-meta-title
 {
@@ -21,46 +22,27 @@ const NetStoreWrapper = styled.div`
     display: block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 12.666667%;
     margin-left: 5x;
-}
-@media screen and (max-width: 1200px) /* Mobile */ {
-  .ant-col-4
-  {
-    margin-left: 0%; 
-    width: 29.5% !important;
-  }
-}
-@media screen and (min-width: 1200px) /* PC */ {
-  .ant-col-4
-  {
-    width: 16.6%;
-  },
-  .ant-card-meta
-  {
-    margin-bottom: 4px;
-  }
-}
+    width: 13.25%;
+    margin-right: 2%;
+    margin-left: 1%;
+},
 .ant-card-meta {
     margin: 0px;
 },
-.ant-row-flex
-{
-  margin-left: 20px !important;
-}
 .ant-row
 {
   line-height: 1.3 !important;
-  white-space: nowrap;
-  font-size: small;
+  font-size: 90%;
   font-weight: bold;
   color: #7f0019;
-  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  text-overflow: ellipsis;
 },
 .ant-card
 {
   line-height: 1.2 !important;
   padding-left: 5px;
+  font-family: none !important;
 },
 .ant-card-body
 {
@@ -74,13 +56,22 @@ const NetStoreWrapper = styled.div`
   font-size: large !important;
   font-weight: bold;
   color: #7f0019 !important;
-  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-
 },
 .ant-card-meta-description
 {
   font-size: 10px !important;
-
+  color: #333 !important;
+  font-weight: 10;
+  display: block;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  white-space: normal;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 },
 .net-store-frame h2 span
 {

@@ -21,13 +21,13 @@ const NetStore = props => {
               netStores.map((item, index) => {
                 return (
                   <Col key={index} className="dailymuji-item" span={4}>
-                    <Card
-                      hoverable
-                      cover={<img alt="example" src={item.img_src}  />}
-                      className="cards"
-                      style={{ border: 'none'}}
-                    >
-                      <Row>
+                      <Card
+                        hoverable
+                        cover={<img alt="example" src={item.img_src}  />}
+                        className="cards"
+                        style={{ border: 'none'}}
+                      >
+                      <Row style= {{ overflow: 'hidden' }}>
                         {item.img_sub0}
                       </Row>
                       <Row>
