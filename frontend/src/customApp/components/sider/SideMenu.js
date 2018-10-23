@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Layout, Menu } from "antd";
-import SiderWrapper from "./sider.style";
+import { Menu } from "antd";
+import {
+  SiderWrapper,
+  MenuItemGroup,
+  GroupMenuIcon,
+  MenuItem,
+  LinkMenuItem
+} from "./sider.style";
 import NavLink from "./NavLink";
 import { Link } from "react-router-dom";
 
@@ -18,12 +24,10 @@ import sidebarIcon11 from "./sider_icons/sidebarIcon11.png";
 import sidebarIcon12 from "./sider_icons/sidebarIcon12.png";
 import menuJson from "./sidemenu.json";
 
-const { Sider } = Layout;
-const MenuItemGroup = Menu.ItemGroup;
 const menuData = menuJson.menus;
 
-const getSidebarIcon = src => {
-  switch (src) {
+const getSidebarIcon = img => {
+  switch (img) {
     case "sidebarIcon2":
       return sidebarIcon2;
     case "sidebarIcon3":
@@ -56,47 +60,45 @@ const SideMenuContents = ({ menus }) => {
     <Menu>
       {menus &&
         menus.map(menu => {
-          const group = menu.groupMenu;
-          if (group) {
-            return (
-              <MenuItemGroup
-                title={
-                  <span>
-                    {group.img && (
-                      <img
-                        className={group.img.className}
-                        src={getSidebarIcon(group.img.src)}
-                      />
-                    )}
-                    <span>{group.title}</span>
-                  </span>
-                }
-                key={group.key}
-              >
-                {menu.items &&
-                  menu.items.map(item => {
-                    return (
-                      <Menu.Item key={item.key}>
-                        {item.externalLink && item.externalLink ? (
-                          <a href={item.url}>{item.title}</a>
-                        ) : (
-                          <NavLink to={item.url}>{item.title}</NavLink>
-                        )}
-                      </Menu.Item>
-                    );
-                  })}
-              </MenuItemGroup>
-            );
-          } else if (menu.linkMenu) {
-            const linkMenu = menu.linkMenu;
-            return (
-              <Menu.Item key={linkMenu.key} className={linkMenu.className}>
-                <Link to={linkMenu.url}>
-                  <span> {linkMenu.title}</span>
-                  <p>{linkMenu.subtitle}</p>
-                </Link>
-              </Menu.Item>
-            );
+          switch (menu.type) {
+            case "groupMenu":
+              return (
+                <MenuItemGroup
+                  title={
+                    <span>
+                      {menu.img && (
+                        <GroupMenuIcon src={getSidebarIcon(menu.img)} />
+                      )}
+                      <span>{menu.title}</span>
+                    </span>
+                  }
+                  key={menu.key}
+                >
+                  {menu.items &&
+                    menu.items.map(item => {
+                      return (
+                        <MenuItem key={item.key}>
+                          {item.externalLink && item.externalLink ? (
+                            <a href={item.url}>{item.title}</a>
+                          ) : (
+                            <NavLink to={item.url}>{item.title}</NavLink>
+                          )}
+                        </MenuItem>
+                      );
+                    })}
+                </MenuItemGroup>
+              );
+            case "linkMenu":
+              return (
+                <LinkMenuItem key={menu.key} className="linkMenu">
+                  <Link to={menu.url}>
+                    <span> {menu.title}</span>
+                    <p>{menu.subtitle}</p>
+                  </Link>
+                </LinkMenuItem>
+              );
+            default:
+              return null;
           }
         })}
     </Menu>
@@ -105,10 +107,8 @@ const SideMenuContents = ({ menus }) => {
 
 const SideMenu = () => {
   return (
-    <SiderWrapper>
-      <Sider breakpoint="lg" collapsedWidth="0" width="230">
-        <SideMenuContents menus={menuData} />
-      </Sider>
+    <SiderWrapper breakpoint="lg" collapsedWidth="0" width="230">
+      <SideMenuContents menus={menuData} />
     </SiderWrapper>
   );
 };

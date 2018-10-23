@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Layout, Menu } from "antd";
 
-const SidebarWrapper = styled.div`
-
+export const SiderWrapper = styled(Layout.Sider)`
   .ant-layout-sider {
     background: #fff;
     border-right: solid 1px #f9f9f9;
@@ -9,7 +9,7 @@ const SidebarWrapper = styled.div`
     left: 0; 
     background:#f7f7f7;
   }
-
+  
   .ant-menu-item:hover{
     color:white;
     background-color:grey;
@@ -18,38 +18,8 @@ const SidebarWrapper = styled.div`
       color:white;
     }
   }
-  
-  .ant-menu-vertical, 
-  .ant-menu-vertical-left, 
-  .ant-menu-vertical-right, 
-  .ant-menu-inline 
-  {
-    &.ant-menu-item:not(:last-child)
-    {
-    }
-    .ant-menu-item:not(.sider-everyday), .ant-menu-submenu-title {
-      height: 28px;
-      color: #333;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: Hiragino Kaku Gothic ProN;
-      padding:0px 10px;
-      line-height:20px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-    }
-    .ant-menu-item.sider-everyday {
-      height: 70px;
-      color: #333;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: Hiragino Kaku Gothic ProN;
-      padding: "0";
-      margin-top: 4px;
-      margin-bottom: 4px;
-    }
-  }
-
+`
+export const MenuItemGroup = styled(Menu.ItemGroup)`
   .ant-menu-item-group-title
   {
     border-top: 1px solid #ccc;
@@ -62,32 +32,37 @@ const SidebarWrapper = styled.div`
   {
     margin-bottom: 20px;
   }
+`;
 
-  .sider-icon{
-    width:8%;
-    height:15px;
-    display:inline;
-    margin-right:5px;
-    padding-bottom: 2px;
-  }
+export const GroupMenuIcon = styled.img`
+  width:8%;
+  height:15px;
+  display:inline;
+  margin-right:5px;
+  padding-bottom: 2px;
+`;
 
-  .sider-everyday  {
-    border-top:1px solid #ccc;
-    a:hover{
-      color:white;
-    }
-    p{
-      font-size:8px;
-    }
-    a{
-      font-size:13px;
-      padding-top:10px;
-      padding-bottom:20px;
-      line-height:28px;
-    }
-    span{
-     font-size:14px;
-    }
+export const MenuItem = styled(Menu.Item)`
+  height: 28px !important;
+  color: #333;
+  font-weight: 700;
+  font-family: Hiragino Kaku Gothic ProN;
+`;
+
+export const LinkMenuItem = styled(Menu.Item)`
+  height: 70px !important;
+  font-weight: 700;
+  font-family: Hiragino Kaku Gothic ProN;
+  padding: "0";
+  border-top:1px solid #ccc;
+  p {
+    font-size:8px;
   }
-`
-export default SidebarWrapper;
+  a {
+    padding-top:10px;
+    line-height:28px;
+  }
+  span {
+    font-size:14px;
+  }
+`;

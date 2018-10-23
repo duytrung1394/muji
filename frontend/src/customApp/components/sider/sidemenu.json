@@ -1,14 +1,10 @@
 {
   "menus": [
     {
-      "groupMenu": {
-        "title": "特集",
-        "key": "g1",
-        "img": {
-          "className": "sider-icon",
-          "src": ""
-        }
-      },
+      "type": "groupMenu",
+      "title": "特集",
+      "key": "g1",
+      "img": "commonIcon",
       "items": [
         {
           "key": "10",
@@ -24,23 +20,18 @@
       ]
     },
     {
-      "linkMenu": {
-        "key": "20",
-        "title": "毎日の無印良品",
-        "subtitle": "ネット限定 対象商品配送料無料",
-        "className": "sider-everyday",
-        "url": "/store/cmdty/section/T001011"
-      }
+      "type": "linkMenu",
+      "key": "20",
+      "title": "毎日の無印良品",
+      "subtitle": "ネット限定 対象商品配送料無料",
+      "className": "sider-everyday",
+      "url": "/store/cmdty/section/T001011"
     },
     {
-      "groupMenu": {
-        "title": "お買い得",
-        "key": "g3",
-        "img": {
-          "className": "sider-icon",
-          "src": ""
-        }
-      },
+      "type": "groupMenu",
+      "title": "お買い得",
+      "key": "g3",
+      "img": "commonIcon",
       "items": [
         {
           "key": "31",
@@ -70,14 +61,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "衣料品",
-        "key": "g4",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon2"
-        }
-      },
+      "type": "groupMenu",
+      "title": "衣料品",
+      "key": "g4",
+      "img": "sidebarIcon2",
       "items": [
         {
           "key": "4_01",
@@ -132,14 +119,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "子供・マタニティ",
-        "key": "g5",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon3"
-        }
-      },
+      "type": "groupMenu",
+      "title": "子供・マタニティ",
+      "key": "g5",
+      "img": "sidebarIcon3",
       "items": [
         {
           "key": "5_01",
@@ -164,14 +147,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "家具・インテリア・家電",
-        "key": "g6",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon4"
-        }
-      },
+      "type": "groupMenu",
+      "title": "家具・インテリア・家電",
+      "key": "g6",
+      "img": "sidebarIcon4",
       "items": [
         {
           "key": "6_01",
@@ -233,14 +212,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "ヘルス＆ビューティー",
-        "key": "g7",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon5"
-        }
-      },
+      "type": "groupMenu",
+      "title": "ヘルス＆ビューティー",
+      "key": "g7",
+      "img": "sidebarIcon5",
       "items": [
         {
           "key": "7_01",
@@ -275,14 +250,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "雑貨・日用品",
-        "key": "g8",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon6"
-        }
-      },
+      "type": "groupMenu",
+      "title": "雑貨・日用品",
+      "key": "g8",
+      "img": "sidebarIcon6",
       "items": [
         {
           "key": "8_01",
@@ -332,14 +303,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "食品",
-        "key": "g9",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon7"
-        }
-      },
+      "type": "groupMenu",
+      "title": "食品",
+      "key": "g9",
+      "img": "sidebarIcon7",
       "items": [
         {
         	"key": "9_01",
@@ -374,14 +341,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "花・グリーン",
-        "key": "g10",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon8"
-        }
-      },
+      "type": "groupMenu",
+      "title": "花・グリーン",
+      "key": "g10",
+      "img": "sidebarIcon8",
       "items": [
         {
         	"key": "10_01",
@@ -406,14 +369,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "産地直送",
-        "key": "g11",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon9"
-        }
-      },
+      "type": "groupMenu",
+      "title": "産地直送",
+      "key": "g11",
+      "img": "sidebarIcon9",
       "items": [
         {
         	"key": "111",
@@ -423,14 +382,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "キャンプ場",
-        "key": "g30",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon10"
-        }
-      },
+      "type": "groupMenu",
+      "title": "キャンプ場",
+      "key": "g30",
+      "img": "sidebarIcon10",
       "items": [
         {
         	"key": "30_01",
@@ -441,14 +396,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "MUJI SUPPORT",
-        "key": "g40",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon11"
-        }
-      },
+      "type": "groupMenu",
+      "title": "MUJI SUPPORT",
+      "key": "g40",
+      "img": "sidebarIcon11",
       "items": [
         {
         	"key": "40_01",
@@ -474,14 +425,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "MUJI HOUSE VISION",
-        "key": "g50",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon11"
-        }
-      },
+      "type": "groupMenu",
+      "title": "MUJI HOUSE VISION",
+      "key": "g50",
+      "img": "sidebarIcon12",
       "items": [
         {
         	"key": "50_01",
@@ -522,14 +469,10 @@
       ]
     },
     {
-      "groupMenu": {
-        "title": "募金",
-        "key": "g70",
-        "img": {
-          "className": "sider-icon",
-          "src": "sidebarIcon12"
-        }
-      },
+      "type": "groupMenu",
+      "title": "募金",
+      "key": "g70",
+      "img": "sidebarIcon12",
       "items": [
         {
           "key": "90_01",
