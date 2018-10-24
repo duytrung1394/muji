@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Col } from "antd";
 import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const Item = styled(Col)`
   padding: 10px;
@@ -25,7 +26,7 @@ const Price = styled.div`
 
 const PriceValue = styled.span`
   color: ${props => (props.isOldPrice ? "#999" : "#333")};
-  span {
+  span.price {
     font-size: 15px;
     font-weight: bold;
     margin: 0 3px;
@@ -40,6 +41,11 @@ const NewPriceValue = styled(PriceValue)`
     margin-left: 0 3px;
   }
 `;
+
+const priceTaxLabel = <IntlMessages id="productCategoryTop.label.priceTax" />;
+const priceCurrencyLabel = (
+  <IntlMessages id="productCategoryTop.label.priceCurrency" />
+);
 
 class ItemView extends Component {
   state = {
@@ -67,14 +73,14 @@ class ItemView extends Component {
         <Title>{title}</Title>
         <Price>
           <PriceValue isOldPrice={new_price}>
-            {price.tax} <span>{price.num}</span>
-            {price.currency}
+            {priceTaxLabel} <span className="price">{price}</span>
+            {priceCurrencyLabel}
           </PriceValue>
           {new_price && (
             <NewPriceValue>
               <span className="arrow">→</span>
-              {new_price.tax} <span>{new_price.num}</span>
-              {new_price.currency}
+              {priceTaxLabel} <span className="price">{new_price}</span>
+              {priceCurrencyLabel}
             </NewPriceValue>
           )}
         </Price>

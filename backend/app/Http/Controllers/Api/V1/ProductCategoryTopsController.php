@@ -18,6 +18,95 @@ class ProductCategoryTopsController extends Controller
     }
 
     /**
+     * モックデータを生成して取得
+     */
+    private function getMockData($categoryCode)
+    {
+        return [
+            'category_code'  => $categoryCode,
+            'category_title' => "婦人ウェア",
+            'sort_type'      => 'group',
+            'total'          => 550,
+            'groups' => [
+                [
+                    'group_name' => 'セーター',
+                    'total'      => 321,
+                    'items'      => [
+                        $this->getMockItemData(3),
+                        $this->getMockItemData(4, ['new']),
+                        $this->getMockItemData(5, ['new', 'freeDelivery']),
+                        $this->getMockItemData(6, ['new', 'freeDelivery', 'campaign']),
+                        $this->getMockItemData(7, ['new', 'freeDelivery', 'discount']),
+                        $this->getMockItemData(8),
+                        $this->getMockItemData(9),
+                        $this->getMockItemData(10),
+                        $this->getMockItemData(11),
+                        $this->getMockItemData(12),
+                        $this->getMockItemData(13),
+                        $this->getMockItemData(14),
+                    ],
+                ],
+                [
+                    'group_name' => 'セーター2',
+                    'total'      => 123,
+                    'items'      => [
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                    ],
+                ],
+                [
+                    'group_name' => 'セーター3',
+                    'total'      => 123,
+                    'items'      => [
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                        $this->getMockItemData(4),
+                    ],
+                ],
+            ],
+            'items' => [],
+        ];
+    }
+
+    /**
+     * モックデータ: アイテム.
+     */
+    private function getMockItemData($swatchNumber, $tags=[])
+    {
+        $item = [
+            'title' => '首のチクチクをおさえた洗えるタートルネックセーター',
+            'price' => 4900,
+            'swatches' => $this->getMockSwatches($swatchNumber),
+            'tags' => $tags,
+        ];
+
+        if (in_array("campaign", $tags) || in_array("discount", $tags)) {
+            $item['new_price'] = 1900;
+        }
+
+        return $item;
+    }
+
+    /**
      * モックデータ: アイテムの見本部分.
      */
     private function getMockSwatches($swatchNumber)
@@ -96,102 +185,5 @@ class ProductCategoryTopsController extends Controller
         ];
 
         return array_splice($swatches, 0, $swatchNumber);
-    }
-
-    /**
-     * モックデータ: アイテム.
-     */
-    private function getMockItemData($swatchNumber, $tags=[])
-    {
-        $item = [
-            'title' => '首のチクチクをおさえた洗えるタートルネックセーター',
-            'price' => [
-                'tax' => '税込',
-                'num' => 4900,
-                'currency' => '円',
-            ],
-            'swatches' => $this->getMockSwatches($swatchNumber),
-            'tags' => $tags,
-        ];
-
-        if (in_array("campaign", $tags) || in_array("discount", $tags)) {
-            $item['new_price'] = [
-                'tax' => '税込',
-                'num' => 1900,
-                'currency' => '円',
-            ];
-        }
-
-        return $item;
-    }
-
-    /**
-     * モックデータを生成して取得
-     */
-    private function getMockData($categoryCode)
-    {
-        return [
-            'category_code'   => $categoryCode,
-            'category_title'  => "婦人ウェア",
-            'item' => [
-                'sort_type' => 'DEFAULT',
-                'groups' => [
-                    [
-                        'group_name' => 'セーター',
-                        'total_number' => 321,
-                        'items' => [
-                            $this->getMockItemData(3),
-                            $this->getMockItemData(4, ['new']),
-                            $this->getMockItemData(5, ['new', 'freeDelivery']),
-                            $this->getMockItemData(6, ['new', 'freeDelivery', 'campaign']),
-                            $this->getMockItemData(7, ['new', 'freeDelivery', 'discount']),
-                            $this->getMockItemData(8),
-                            $this->getMockItemData(9),
-                            $this->getMockItemData(10),
-                            $this->getMockItemData(11),
-                            $this->getMockItemData(12),
-                            $this->getMockItemData(13),
-                            $this->getMockItemData(14),
-                        ],
-                    ],
-                    [
-                        'group_name' => 'セーター2',
-                        'total_number' => 123,
-                        'items' => [
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                        ],
-                    ],
-                    [
-                        'group_name' => 'セーター3',
-                        'total_number' => 123,
-                        'items' => [
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                            $this->getMockItemData(4),
-                        ],
-                    ],
-                ],
-            ],
-        ];
     }
 }

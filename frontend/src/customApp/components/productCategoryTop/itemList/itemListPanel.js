@@ -56,14 +56,15 @@ const NameWithItemCountButton = props => (
 );
 
 const ItemListPanel = props => {
-  const { item } = props;
+  const { groups } = props;
+
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader />}
       actions={[<SeeMoreButton />]}
     >
-      {item &&
-        item.groups.map((group, index) => {
+      {groups &&
+        groups.map((group, index) => {
           return (
             <div key={index}>
               <GroupName>{group.group_name}</GroupName>
@@ -73,7 +74,7 @@ const ItemListPanel = props => {
               <NameWithItemCountButtonWrapper>
                 <NameWithItemCountButton
                   name={<ItemName>{group.group_name}</ItemName>}
-                  count={group.total_number}
+                  count={group.total}
                 />
               </NameWithItemCountButtonWrapper>
             </div>

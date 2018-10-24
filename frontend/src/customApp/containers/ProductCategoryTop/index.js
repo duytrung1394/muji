@@ -27,7 +27,7 @@ class Index extends Component {
       <ProductCategoryTopWrapper>
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
-          <ItemListPanel item={entity.item} />
+          <ItemListPanel {...entity} />
         </Spin>
       </ProductCategoryTopWrapper>
     );
