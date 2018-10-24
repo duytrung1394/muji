@@ -1,53 +1,10 @@
 import styled from "styled-components";
-import { List,Col } from "antd";
+import { Col } from "antd";
 
 export const CategoryTitle = styled.h1`
   font-size: 25px;
   font-weight: bold;
   margin: 0 10px 20px;
-`;
-
-export const CategoryList = styled(List)`
-  .ant-list {
-    margin: 3% 0;
-  }
-  .ant-avatar {
-    border-radius:0px;
-    width: 50px;
-    height: 50px;
-  }
-`;
-
-export const CategoryListItemMeta = styled(List.Item.Meta)`
-  .ant-list-item-meta-title {
-    color: rgba(0, 0, 0, 0.55);
-  }
-  .ant-list-item-meta-title:hover {
-    color: rgba(0, 0, 0, 0.55);
-  }
-  .ant-list-item-meta-description {
-    font-weight: bold;
-    color:#333;
-  }
-  .ant-list-item-meta-description:before {
-    content:"税込 ";
-    font-size:10px;
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .ant-list-item-meta-description:after {
-    content:" 円";
-    font-size:10px;
-    color: rgba(0, 0, 0, 0.5);
-  }
-
-  @media only screen and (max-width: 768px) {
-    .ant-list-item-meta-title {
-      font-size:12px;
-      line-height:1.5;
-      font-weight:400;
-      color: rgba(0, 0, 0, 0.7);
-    }
-  }
 `;
 
 export const CategoryName = styled.h2`
@@ -65,13 +22,10 @@ export const CategoryName = styled.h2`
     left:2vh;
   }
 
-  @media only screen and (max-width: 1024px) {
-    font-size:4vw;  
-  }
   @media only screen and (max-width: 768px) {
-    font-size:22px;
-    top:25vh;
-  }
+    font-size:22px;  
+    top:20vh;
+}
 
   @media only screen and (max-width: 475px) {
     position:static;
@@ -81,16 +35,13 @@ export const CategoryName = styled.h2`
 `;
 
 export const ContentWrapper = styled.div`
-  font-size: 14px;
-  background: linear-gradient(#fafafa, #f6f6f6);
-  width: 100%;
-  max-width: 1540px;
-  margin: 0 auto 0px;
-  overflow:hidden;
 
-  @media screen and (max-width:1300px) {
-    padding-bottom:30px;
-  }
+    font-size: 14px;
+    background: linear-gradient(#fafafa, #f6f6f6);
+    width: 100%;
+    max-width: 1540px;
+    margin: 0 auto 0px;
+    overflow:hidden;
 `;
 
 export const CategoryDiscription = styled.p`
@@ -120,19 +71,7 @@ export const FigureWrapper = styled(Col)`
 export const ArticleWrapper = styled.div`
   margin-bottom:30px;
 
-  .ant-breadcrumb {
-    margin:0 10px 15px;
-  }
-
-  .breadcrumb {
-    font-size:12px;
-  }
-
-  .breadcrumb:hover {
-    color:rgba(0, 0, 0, 0.45);
-  }
-
-  .ant-col-xl-14 {
+.ant-col-xl-14{
     padding: 30px 80px 0 30px;
   }
 

@@ -1,10 +1,9 @@
 import React from "react";
-import { Avatar, Col, Breadcrumb, List } from "antd";
+import { Col } from "antd";
+import CategoryListItem from "./categoryItemList";
 import {
   ArticleWrapper,
   CategoryTitle,
-  CategoryList,
-  CategoryListItemMeta,
   CategoryName,
   ContentWrapper,
   CategoryDiscription,
@@ -15,11 +14,6 @@ import {
 const Article = props => {
   return (
     <ArticleWrapper>
-      <Breadcrumb>
-        <Breadcrumb.Item className="breadcrumb">
-          <a href="">{props.article.category_breadcrumb}</a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
       <CategoryTitle>{props.article.category_title}</CategoryTitle>
       <ContentWrapper>
         <FigureWrapper span={10}>
@@ -34,21 +28,7 @@ const Article = props => {
           <CategoryDiscription>
             {props.article.category_description}
           </CategoryDiscription>
-          <CategoryList
-            itemLayout="horizontal"
-            dataSource={props.article.category_list}
-            renderItem={item => (
-              <List.Item>
-                <a href="">
-                  <CategoryListItemMeta
-                    avatar={<Avatar src={item.img} />}
-                    title={item.title}
-                    description={item.price}
-                  />
-                </a>
-              </List.Item>
-            )}
-          />
+          <CategoryListItem list={props.article.category_list} />
         </CategoryDiscriptionWrapper>
       </ContentWrapper>
     </ArticleWrapper>
