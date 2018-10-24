@@ -21,7 +21,7 @@ const badgeColor = index => {
 
 const badgeNumberColor = index => {
   if (index === 1 || index === 2 || index === 3) {
-    return "#fff";
+    return "white";
   }
 };
 
@@ -36,7 +36,12 @@ const PopularityRanking = props => {
         {popularityRanking &&
           popularityRanking.map((ranking, index) => {
             return (
-              <Col key={index} span={4}>
+              <Col
+                key={index}
+                xl={{ span: 4 }}
+                md={{ span: 3 }}
+                xs={{ span: 8 }}
+              >
                 <Link to="">
                   <Card cover={<img src={ranking.img} />}>
                     <Badge

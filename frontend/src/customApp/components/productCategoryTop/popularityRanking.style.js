@@ -6,18 +6,18 @@ export const PopularityRankingWrapper = styled.div`
   margin:auto 30px;
 
   .ant-row-flex{
-      width:100%;
-      height:100%;
-      text-align:left;
+    width:100%;
+    height:100%;
+    text-align:left;
   }
 
   .ant-row-flex-center{
-      justify-content:normal;
+    justify-content:normal;
   }
 
   .ant-col-4{
-      padding:5px 10px;
-      width:18%;
+    padding:5px 10px;
+    width:18%;
   }   
 `;
 
