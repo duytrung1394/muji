@@ -8,13 +8,7 @@ export const FromMujiSection= styled.div`
   padding-bottom:40px;
   
   .ant-card{
-    margin:0px 0.8vw;
-  }
-
-  @media screen and (max-width:1152px){
-    .ant-card{
-      margin:0.8vw;
-    }
+    margin:0.8vw;
   }
 `
 
