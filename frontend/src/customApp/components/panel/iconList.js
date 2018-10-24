@@ -1,8 +1,7 @@
 import React from "react";
 import ItemIcon from "./itemIcon";
 
-const IconList = props => {
-  const { items } = props;
+const IconList = ({ items }) => {
   return (
     <div>
       {items &&
