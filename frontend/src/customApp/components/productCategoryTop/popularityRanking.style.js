@@ -7,8 +7,11 @@ export const PopularityRankingWrapper = styled.div`
 
   .ant-row-flex{
     width:100%;
-    height:100%;
     text-align:left;
+  }
+
+  .ant-card-bordered{
+    border:none;
   }
 
   .ant-row-flex-center{
@@ -18,7 +21,15 @@ export const PopularityRankingWrapper = styled.div`
   .ant-col-4{
     padding:5px 10px;
     width:18%;
+  }
+
+  .ant-col-xs-8{
+    padding:5px 10px;
   }   
+
+  .ant-card-body{
+    padding:10px 0; 
+  }
 `;
 
 export const PopularityRankingTitle = styled.h1`

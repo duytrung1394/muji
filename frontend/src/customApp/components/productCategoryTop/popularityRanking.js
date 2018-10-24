@@ -39,7 +39,7 @@ const PopularityRanking = props => {
               <Col
                 key={index}
                 xl={{ span: 4 }}
-                md={{ span: 3 }}
+                md={{ span: 4 }}
                 xs={{ span: 8 }}
               >
                 <Link to="">
