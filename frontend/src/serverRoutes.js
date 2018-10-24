@@ -61,7 +61,7 @@ const Layout = props => {
     <html lang="ja">
       <head>
         {/* ここでmetaタグの切り替えやAMP用のhtml出力の切り替えを行う、今回は具体例は省略 */}
-        <meta charSet="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charSet="utf-8" />
         <title>Muji EC</title>
         <style>{props.style}</style>
         <link rel="stylesheet" href="/main.css" />

@@ -26,7 +26,6 @@ const FeatureWrapper = styled.div`
   }
 `;
 
-
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest("");
@@ -39,13 +38,11 @@ class Index extends Component {
       <TopWrapper>
         <Spin spinning={fetching} size="large" />
         <Notice notices={entity.notices} />
-
         <FeatureWrapper>
           <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
             <img src={featureImage} alt="" />
           </a>
         </FeatureWrapper>
-
         <Feature features={entity.features} />
         <NewItem newItems={entity.new_items} />
         <LimitedItem limitedItems={entity.limited_items} />
