@@ -55,7 +55,7 @@ const NameWithItemCountButton = props => (
   </LargeButton>
 );
 
-const ItemListPanel = props => {
+const ItemList = props => {
   const { groups } = props;
 
   return (
@@ -84,4 +84,4 @@ const ItemListPanel = props => {
   );
 };
 
-export default ItemListPanel;
+export default ItemList;
