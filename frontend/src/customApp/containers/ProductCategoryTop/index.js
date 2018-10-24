@@ -6,10 +6,7 @@ import { Spin } from "antd";
 import styled from "styled-components";
 import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
-
-const ProductCategoryTopWrapper = styled.div`
-  margin: 0 10px;
-`;
+import ContentLayout from "../../components/panel/contentLayout"
 
 class Index extends Component {
   componentDidMount() {
@@ -24,12 +21,14 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <ProductCategoryTopWrapper>
-        <Spin spinning={fetching} size="large">
-          <ProductCategoryTopHeader title={entity.category_title} />
-          <ItemList {...entity} />
-        </Spin>
-      </ProductCategoryTopWrapper>
+      <div>
+        <ProductCategoryTopHeader title={entity.category_title} />
+        <ContentLayout>
+          <Spin spinning={fetching} size="large">
+            <ItemList {...entity} />
+          </Spin>
+        </ContentLayout>
+      </div>
     );
   }
 }
