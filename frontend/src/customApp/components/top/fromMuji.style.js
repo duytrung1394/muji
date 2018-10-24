@@ -6,7 +6,7 @@ const { Meta } = Card;
 export const FromMujiSection= styled.div`
   background-color:#f4f4f4;
   padding-bottom:40px;
-  
+
   .ant-card{
     margin:0.8vw;
   }
@@ -45,12 +45,12 @@ export const StyleCardMeta = styled(Meta)`
   color:#999;
 }
 `
+
 export const FromMujiTitle = styled.h1`
   font-size:24px;
   padding: 70px 0 20px 50px;
   font-weight: normal;
 `
-
 
 export const NewCard= styled.span`
   font-size: 11px;
@@ -65,16 +65,10 @@ export const NewCard= styled.span`
   color:white;
 `
 
-export const LoadMore = styled.p`
-  border: 1px solid #CCCCCC;
-  border-radius: 2px;
-  width: 100%;
-  color: #585858;
-  font-size:18px;
+export const CenterAlign = styled.div`
   text-align: center;
-  padding: 18px 0;
-  margin: 30px auto 0;
-  max-width: 500px;
-  cursor: pointer;
-  user-select:none;
+  .TouchUp
+  {
+    background-color:#f4f4f4;
+  }
 `

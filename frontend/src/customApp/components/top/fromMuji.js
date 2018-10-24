@@ -5,13 +5,14 @@ import {
   StyledCard,
   StyledRow,
   NewCard,
-  LoadMore,
+  CenterAlign,
   StyleCardMeta
 } from "./fromMuji.style";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
+import LargeButton from "../form/largeButton";
 
 class FromMuji extends Component {
   constructor(props) {
@@ -19,18 +20,17 @@ class FromMuji extends Component {
     this.state = {
       visible: 10
     };
-    this.loadMore = this.loadMore.bind(this);
+    this.seeMore = this.seeMore.bind(this);
   }
 
-  loadMore() {
+  seeMore() {
     this.setState(prev => {
       return { visible: prev.visible + 10 };
     });
   }
 
   render() {
-    const { fromMujis } = this.props;
-
+  const { fromMujis } = this.props;
     if (fromMujis) {
       return (
         <FromMujiSection>
@@ -44,19 +44,18 @@ class FromMuji extends Component {
                     cover={<img alt="example" src={item.img_src} />}
                     key={index}
                   >
-                    {index < 15 ? <NewCard>NEW</NewCard> : null}
-                    <StyleCardMeta
-                      title={item.title}
-                      description={item.date}
-                    />
+                    {item.is_new === "true" ? <NewCard>NEW</NewCard> : null}
+                    <StyleCardMeta title={item.title} description={item.date} />
                   </StyledCard>
                 );
               })}
           </StyledRow>
           {this.state.visible < Object.keys(fromMujis).length && (
-            <LoadMore onClick={this.loadMore}>
-              <IntlMessages id="top.fromMuji.load_more" />
-            </LoadMore>
+            <CenterAlign>
+              <LargeButton onClick={this.seeMore} className="TouchUp">
+                <IntlMessages id="top.fromMuji.button.seeMore" />
+              </LargeButton>
+            </CenterAlign>
           )}
         </FromMujiSection>
       );
