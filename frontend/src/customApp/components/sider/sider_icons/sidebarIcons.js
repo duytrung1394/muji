@@ -21,7 +21,7 @@ const sidebarIcons = {
   sidebarIcon9: sidebarIcon9,
   sidebarIcon10: sidebarIcon10,
   sidebarIcon11: sidebarIcon11,
-  sidebarIcon12: sidebarIcon12,
+  sidebarIcon12: sidebarIcon12
 };
 
 export default sidebarIcons;
