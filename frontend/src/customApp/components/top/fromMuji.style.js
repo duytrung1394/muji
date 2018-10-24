@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row,Card,Col } from "antd";
+import { Row, Card } from "antd";
 
 const { Meta } = Card;
 
@@ -59,28 +59,28 @@ export const FromMujiTitle = styled.h1`
 
 
 export const NewCard= styled.span`
-    font-size: 11px;
-    display:block;
-    position:absolute;
-    top:0px;
-    right:0px;
-    font-weight:bold;
-    background-color:rgba(120, 0, 0, 0.4);
-    padding:1.5px 4px;
-    border-radius:0 4px 0 4px;
-    color:white;
+  font-size: 11px;
+  display:block;
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-weight:bold;
+  background-color:rgba(120, 0, 0, 0.4);
+  padding:1.5px 4px;
+  border-radius:0 4px 0 4px;
+  color:white;
 `
 
 export const LoadMore = styled.p`
-    border: 1px solid #CCCCCC;
-    border-radius: 2px;
-    width: 100%;
-    color: #585858;
-    font-size:18px;
-    text-align: center;
-    padding: 18px 0;
-    margin: 30px auto 0;
-    max-width: 500px;
-    cursor: pointer;
-    user-select:none;
+  border: 1px solid #CCCCCC;
+  border-radius: 2px;
+  width: 100%;
+  color: #585858;
+  font-size:18px;
+  text-align: center;
+  padding: 18px 0;
+  margin: 30px auto 0;
+  max-width: 500px;
+  cursor: pointer;
+  user-select:none;
 `

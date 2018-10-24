@@ -1,7 +1,4 @@
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
-import ItemImageList from "../panel/itemImageList";
-import { Card, Button, Row, Col } from "antd";
 import {
   FromMujiSection,
   FromMujiTitle,
@@ -51,7 +48,6 @@ class FromMuji extends Component {
                     <StyleCardMeta
                       title={item.title}
                       description={item.date}
-                      className="cards-meta"
                     />
                   </StyledCard>
                 );
