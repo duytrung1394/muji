@@ -46,6 +46,7 @@ class Index extends Component {
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
+          <DailyMuji />
           <NetStore netStores={entity.net_services} />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />

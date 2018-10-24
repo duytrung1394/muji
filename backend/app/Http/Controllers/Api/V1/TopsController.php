@@ -75,56 +75,6 @@ class TopsController extends Controller
                 ['date' => '2018.09.14', 'message' => '重要なお知らせ2........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
                 ['date' => '2018.09.14', 'message' => '重要なお知らせ3........', 'url' => 'https://ryohin-keikaku.jp/news/2018_0914.html'],
             ],
-            'net_services' => [
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan.png',
-                    'img_sub0' => "一定額以上の",
-                    'img_sub1' => "お買い上げで",
-                    'img_sub2' => '',
-                    'img_sub3' => '配送料無料',
-                    'img_note' => '小型商品は税込5,000円以上、大型家具・家電は税込150,000以上で、配送料無料'
-                ],
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_storage.png',
-                    'img_sub0' => "ポリプロピレン",
-                    'img_sub1' => "衣装ケースなど",
-                    'img_sub2' => '',
-                    'img_sub3' => '配送料無料',
-                    'img_note' => '対象商品が配送料無料になりました'
-                ],
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_deliveryvan02.png',
-                    'img_sub0' => "",
-                    'img_sub1' => "",
-                    'img_sub2' => '小型商品の',
-                    'img_sub3' => '配送料４９０円',
-                    'img_note' => '配送料区分Aの商品の配送料が490円になりました'
-                ],
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_box.png',
-                    'img_sub0' => "",
-                    'img_sub1' => "",
-                    'img_sub2' => 'えらべる',
-                    'img_sub3' => '受取方法',
-                    'img_note' => 'ご自宅への配送以外にも、店舗受取や、コンビニ受取をご利用いただけます'
-                ],
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_shirt_s.png',
-                    'img_sub0' => "",
-                    'img_sub1' => "",
-                    'img_sub2' => 'XS・XXL',
-                    'img_sub3' => 'サイズ',
-                    'img_note' => '店舗からのお取り寄せや、店舗受取も可能です'
-                ],
-                [
-                    'img_src' => 'https://www.muji.com/jp/store/service/img/service_hanger_s.png',
-                    'img_sub0' => '',
-                    'img_sub1' => '',
-                    'img_sub2' => '',
-                    'img_sub3' => 'まとめ買い',
-                    'img_note' => 'ケースでお届けするから5%お得'
-                ],
-            ],
         ];
     }
 }
