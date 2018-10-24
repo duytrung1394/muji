@@ -24,7 +24,7 @@ export const PopularityRankingWrapper = styled.div`
 export const PopularityRankingTitle = styled.h1`
   font-size:14px;
   font-weight:bold;
-
+  padding:10px 10px 0;
 `;
 
 const {Meta} = Card;
@@ -48,15 +48,17 @@ export const PopularityRankingMeta = styled(Meta)`
 export const  Badge = styled.span`
   position: absolute;
   display:block;
-  left: 18px;
-  top:12px;
+  left: 8px;
+  top:8px;
   color:${(props)=>props.color};
   background-color:${(props)=>props.backgroundColor};
   border-radius:50%;
   font-size: 12px;
-  min-width: 10px;
+  min-width: 16px;
+  min-height:12px;
   padding:8px;
   font-weight:bold;
   text-align:center;
   line-height:0.8;
+  font-family: sans-serif;
 `;

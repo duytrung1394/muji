@@ -7,6 +7,7 @@ import {
   Badge,
   PopularityRankingMeta
 } from "./popularityRanking.style";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const badgeColor = index => {
   if (index === 1) {
@@ -28,7 +29,9 @@ const PopularityRanking = props => {
   const { popularityRanking } = props;
   return popularityRanking ? (
     <PopularityRankingWrapper>
-      <PopularityRankingTitle>人気ランキング</PopularityRankingTitle>
+      <PopularityRankingTitle>
+        <IntlMessages id="productCategoryTop.popularityRanking.title" />
+      </PopularityRankingTitle>
       <Row type="flex" justify="center" align="top">
         {popularityRanking &&
           popularityRanking.map((ranking, index) => {
