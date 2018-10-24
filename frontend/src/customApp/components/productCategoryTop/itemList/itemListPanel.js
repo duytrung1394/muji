@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import ContentPanel from "../../panel/contentPanel";
-import { SeeMoreButton, NameWithItemCountButton } from "../../form/largeButton";
+import LargeButton from "../../form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -30,11 +31,29 @@ const GroupName = styled.h1`
   margin: 0 auto 40px;
 `;
 
-const StyledNameWithItemCountButton = styled(NameWithItemCountButton)`
-  clear: both;
+const ItemName = styled.span`
+  padding: 0 10px;
+`;
+
+const SeeMoreButton = props => (
+  <LargeButton>
+    <IntlMessages id="productCategoryTop.button.seeMore" />
+  </LargeButton>
+);
+
+const NameWithItemCountButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 40px;
 `;
+
+const NameWithItemCountButton = props => (
+  <LargeButton {...props}>
+    <IntlMessages
+      id="productCategoryTop.button.nameWithItemCount"
+      values={{ name: <ItemName>{props.name}</ItemName>, count: props.count }}
+    />
+  </LargeButton>
+);
 
 const ItemListPanel = props => {
   const { item } = props;
@@ -51,10 +70,12 @@ const ItemListPanel = props => {
               {group.items.map((item, index) => {
                 return <ItemView {...item} key={index} />;
               })}
-              <StyledNameWithItemCountButton
-                name={group.group_name}
-                count={group.total_number}
-              />
+              <NameWithItemCountButtonWrapper>
+                <NameWithItemCountButton
+                  name={<ItemName>{group.group_name}</ItemName>}
+                  count={group.total_number}
+                />
+              </NameWithItemCountButtonWrapper>
             </div>
           );
         })}
