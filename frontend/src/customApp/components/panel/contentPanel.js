@@ -4,14 +4,12 @@ import { Card } from "antd";
 import styled from "styled-components";
 
 const ContentPanelWrapper = styled.div`
-  .ant-card-wider-padding {
-    .ant-card-head {
-      padding: 0 0;
-      ${props => (!props.bordered ? "border-bottom: none" : "")};
-    }
-    .ant-card-body {
-      padding: 0 0;
-    }
+  .ant-card-head {
+    padding: 0 0;
+    ${props => (!props.bordered ? "border-bottom: none" : "")};
+  }
+  .ant-card-body {
+    padding: 0 0;
   }
 `;
 
