@@ -10,12 +10,12 @@ import transit from "transit-immutable-js";
 
 import { ServerStyleSheet } from "styled-components";
 
-import routes from "./routes";
+import routes from "../routes";
 
-import Hoc from "./serverHoc";
+import {SimpleHoc as Hoc} from "../hoc";
 
-import { store } from "./redux/store";
-import rootSaga from "./redux/sagas";
+import { store } from "../redux/store";
+import rootSaga from "../redux/sagas";
 
 const router = express.Router();
 

@@ -30,5 +30,16 @@ const Hoc = props => (
   </LocaleProvider>
 );
 
+const SimpleHoc = props => (
+  <Provider store={store}>
+    <IntlProvider
+      locale={currentAppLocale.locale}
+      messages={currentAppLocale.messages}
+    >
+      {props.children}
+    </IntlProvider>
+  </Provider>
+);
+
 export default Hoc;
-export { AppLocale };
+export { AppLocale, SimpleHoc };
