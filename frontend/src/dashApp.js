@@ -15,19 +15,26 @@ const { Content } = Layout;
 
 const Routes = () => renderRoutes(routes);
 
+export const DashAppLayout = (props) => (
+  <Layout style={{ height: '100%' }}>
+    <Header />
+    <Layout>
+      <Sider />
+      <Content>
+        { props.children }
+        <Footer />
+      </Content>
+    </Layout>
+  </Layout>
+);
+
+
 const DashApp = () => (
   <Hoc>
     <BrowserRouter>
-      <Layout style={{ height: '100%' }}>
-        <Header />
-        <Layout>
-          <Sider />
-          <Content>
-            <Routes />
-            <Footer />
-          </Content>
-        </Layout>
-      </Layout>
+      <DashAppLayout>
+        <Routes />
+      </DashAppLayout>
     </BrowserRouter>
   </Hoc>
 );
