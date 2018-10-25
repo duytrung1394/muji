@@ -25,7 +25,7 @@ class ProductCategoryTopsController extends Controller
         return [
             'category_code'  => $categoryCode,
             'category_title' => "婦人ウェア",
-            'category_ranking' => [
+            'rankings' => [
                 [
                     'title' => 'ウールシルク洗えるVネックセーター',
                     'img' => '//img.muji.net/img/item/4550002561062_1260.jpg'

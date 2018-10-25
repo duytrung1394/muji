@@ -2,28 +2,11 @@ import styled from 'styled-components';
 import {Card} from 'antd';
 
 export const PopularityRankingWrapper = styled.div`
-  width: calc(100% - 60px):
-
-  .ant-row-flex{
-    width:100%;
-    text-align:left;
-  }
-
-  .ant-card-bordered{
-    border:none;
-  }
-
-  .ant-row-flex-center{
-    justify-content:normal;
-  }
-
+  width: calc(100% - 60px);
+  
   .ant-col-xs-8{
     padding:5px 10px;
   }   
-
-  .ant-card-body{
-    padding:10px 0; 
-  }
 `;
 
 export const PopularityRankingTitle = styled.h1`
@@ -32,13 +15,10 @@ export const PopularityRankingTitle = styled.h1`
   padding:10px 10px 0;
 `;
 
-const {Meta} = Card;
-
-export const PopularityRankingMeta = styled(Meta)`
-  .ant-card-meta{
-    width:100%;
+export const PopularityRankingCard = styled(Card)`
+  .ant-card-body{
+    padding:10px 0; 
   }
-
   .ant-card-meta-title{
     font-size:14px;
     font-weight:normal;

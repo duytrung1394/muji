@@ -5,7 +5,7 @@ import {
   PopularityRankingWrapper,
   PopularityRankingTitle,
   Badge,
-  PopularityRankingMeta
+  PopularityRankingCard
 } from "./popularityRanking.style";
 import IntlMessages from "../../../components/utility/intlMessages";
 
@@ -29,6 +29,8 @@ const badgeNumberColor = index => {
   }
 };
 
+const { Meta } = Card;
+
 const PopularityRanking = props => {
   const { popularityRanking } = props;
 
@@ -41,20 +43,23 @@ const PopularityRanking = props => {
       <PopularityRankingTitle>
         <IntlMessages id="productCategoryTop.popularityRanking.title" />
       </PopularityRankingTitle>
-      <Row type="flex" justify="center" align="top">
+      <Row type="flex" justify="start" align="top">
         {popularityRanking.map((ranking, index) => {
           return (
             <Col key={index} xl={{ span: 4 }} md={{ span: 4 }} xs={{ span: 8 }}>
               <Link to="">
-                <Card cover={<img src={ranking.img} />}>
+                <PopularityRankingCard
+                  cover={<img src={ranking.img} />}
+                  bordered={false}
+                >
                   <Badge
                     backgroundColor={badgeColor(index)}
                     color={badgeNumberColor(index)}
                   >
                     {index + 1}
                   </Badge>
-                  <PopularityRankingMeta title={ranking.title} />
-                </Card>
+                  <Meta title={ranking.title} />
+                </PopularityRankingCard>
               </Link>
             </Col>
           );
