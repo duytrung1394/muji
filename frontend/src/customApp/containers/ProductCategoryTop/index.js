@@ -28,7 +28,7 @@ class Index extends Component {
       <ProductCategoryTopWrapper>
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
-          <PopularityRanking popularityRanking={entity.rankings} />
+          <PopularityRanking rankings={entity.rankings} />
           <ItemList {...entity} />
         </Spin>
       </ProductCategoryTopWrapper>
