@@ -12,6 +12,12 @@ export const FromMujiSection= styled.div`
   }
 `
 
+export const FromMujiTitle = styled.h1`
+  font-size:24px;
+  padding: 70px 0 20px 50px;
+  font-weight: normal;
+`
+
 export const StyledRow = styled(Row)`
   padding: 0px;
   margin: 0px;
@@ -44,12 +50,6 @@ export const StyleCardMeta = styled(Meta)`
   font-size:12px;
   color:#999;
 }
-`
-
-export const FromMujiTitle = styled.h1`
-  font-size:24px;
-  padding: 70px 0 20px 50px;
-  font-weight: normal;
 `
 
 export const NewCard= styled.span`

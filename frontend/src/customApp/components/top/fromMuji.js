@@ -2,11 +2,11 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import {
   FromMujiSection,
   FromMujiTitle,
-  StyledCard,
   StyledRow,
+  StyledCard,
+  StyleCardMeta,
   NewCard,
-  CenterAlign,
-  StyleCardMeta
+  CenterAlign
 } from "./fromMuji.style";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -20,17 +20,16 @@ class FromMuji extends Component {
     this.state = {
       visible: 10
     };
-    this.seeMore = this.seeMore.bind(this);
   }
 
-  seeMore() {
+  seeMore = () => {
     this.setState(prev => {
       return { visible: prev.visible + 10 };
     });
-  }
+  };
 
   render() {
-  const { fromMujis } = this.props;
+    const { fromMujis } = this.props;
     if (fromMujis) {
       return (
         <FromMujiSection>
@@ -44,7 +43,7 @@ class FromMuji extends Component {
                     cover={<img alt="example" src={item.img_src} />}
                     key={index}
                   >
-                    {item.is_new === "true" ? <NewCard>NEW</NewCard> : null}
+                    {item.is_new === true ? <NewCard>NEW</NewCard> : null}
                     <StyleCardMeta title={item.title} description={item.date} />
                   </StyledCard>
                 );
@@ -60,7 +59,7 @@ class FromMuji extends Component {
         </FromMujiSection>
       );
     } else {
-      return <div />;
+      return null;
     }
   }
 }
