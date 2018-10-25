@@ -67,7 +67,7 @@ export const NewCard= styled.span`
 
 export const CenterAlign = styled.div`
   text-align: center;
-  .TouchUp
+  & > button
   {
     background-color:#f4f4f4;
   }

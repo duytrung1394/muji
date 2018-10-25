@@ -34,7 +34,7 @@ class FromMuji extends Component {
       return (
         <FromMujiSection>
           <FromMujiTitle>from MUJI</FromMujiTitle>
-          <StyledRow type="flex" justify="center" align="top">
+          <StyledRow type="flex" justify="start" align="top">
             {fromMujis &&
               fromMujis.slice(0, this.state.visible).map((item, index) => {
                 return (
@@ -51,7 +51,7 @@ class FromMuji extends Component {
           </StyledRow>
           {this.state.visible < Object.keys(fromMujis).length && (
             <CenterAlign>
-              <LargeButton onClick={this.seeMore} className="TouchUp">
+              <LargeButton onClick={this.seeMore}>
                 <IntlMessages id="top.fromMuji.button.seeMore" />
               </LargeButton>
             </CenterAlign>
