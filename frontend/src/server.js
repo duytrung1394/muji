@@ -32,8 +32,9 @@ if (process.env.NODE_ENV !== "production") {
     });
   } catch (err) {
     console.error(
-      "Please run `yarn build` before `yarn dev` to create main.css."
+      "開発環境では main.css を生成するため一度 `yarn build` を実行してください。(Ctrl+C で終了できます)"
     );
+    process.exit(1);
   }
 } else {
   app.use(
