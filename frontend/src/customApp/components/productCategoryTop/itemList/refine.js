@@ -22,7 +22,7 @@ const RefineWrapper = styled.span`
 const SearchDetailModal = styled.div`
   display: ${props => (props.visible ? "block" : "none")};
   position: absolute;
-  margin-top: 20px;
+  padding: 20px;
   z-index: 1;
   left: 0;
   width: 100%;
