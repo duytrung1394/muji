@@ -9,6 +9,7 @@ import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
+import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
 import FromMuji from "../../components/top/fromMuji";
 
@@ -46,6 +47,7 @@ class Index extends Component {
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
           <FromMuji fromMujis={entity.from_mujis} />
+          <CategoryList categoryList={entity.category_list} />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
