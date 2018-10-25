@@ -11,26 +11,25 @@ import {
   FigureWrapper
 } from "./article.style";
 
-const Article = props => {
+const Article = ({ article }) => {
   return (
     <ArticleWrapper>
-      <CategoryTitle>{props.article.category_title}</CategoryTitle>
-      <ContentWrapper>
-        <FigureWrapper span={10}>
-          <figure className="promotion-figure">
-            <img className="promotion-img" src={props.article.category_img} />
-          </figure>
-        </FigureWrapper>
-        <Col md={{ span: 14 }} xl={{ span: 14 }}>
-          <CategoryName>{props.article.category_name}</CategoryName>
-        </Col>
-        <CategoryDiscriptionWrapper xl={{ span: 14 }}>
-          <CategoryDiscription>
-            {props.article.category_description}
-          </CategoryDiscription>
-          <CategoryListItem list={props.article.category_list} />
-        </CategoryDiscriptionWrapper>
-      </ContentWrapper>
+      {article && (
+        <ContentWrapper>
+          <FigureWrapper span={10}>
+            <figure className="promotion-figure">
+              <img className="promotion-img" src={article.back_ground_image} />
+            </figure>
+          </FigureWrapper>
+          <Col md={{ span: 14 }} xl={{ span: 14 }}>
+            <CategoryName>{article.title}</CategoryName>
+          </Col>
+          <CategoryDiscriptionWrapper xl={{ span: 14 }}>
+            <CategoryDiscription>{article.description}</CategoryDiscription>
+            <CategoryListItem list={article.items} />
+          </CategoryDiscriptionWrapper>
+        </ContentWrapper>
+      )}
     </ArticleWrapper>
   );
 };

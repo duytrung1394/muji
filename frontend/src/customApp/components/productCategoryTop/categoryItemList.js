@@ -67,7 +67,7 @@ const CategoryItemList = props => {
           <a href="">
             <CategoryListItemMeta
               avatar={<Avatar src={item.img} />}
-              title={item.title}
+              title={item.name}
               description={item.price}
             />
           </a>
