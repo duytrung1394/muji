@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Layout, Form, Input, Select, Icon, Row, Col } from "antd";
-import HeaderWrapper from "./header.style";
+import { HeaderWrapper, HeaderBtnsCol } from "./header.style";
+import { Dropdown as HoverMenu } from "../dropdown/dropdown";
 
-import { List } from "antd";
+const AntdHeader = Layout.Header;
+const Option = Select.Option;
+const bannerFlag = false;
 
-const loginData = ["ログイン", "新規登録"];
+const loginMenus = ["ログイン", "新規登録"];
 
-const supportData = [
+const supportMenus = [
   "お問い合わせ",
   "ご利用ガイド",
   "重要なお知らせ",
   "サイトからのお知らせ"
 ];
-
-const AntdHeader = Layout.Header;
-const FormItem = Form.Item;
-const Option = Select.Option;
-
-const bannerFlag = false;
 
 class Header extends Component {
   render() {
@@ -75,50 +72,26 @@ class Header extends Component {
                 <Input addonBefore={prefixSelector} />
               </Form>
             </Col>
-            <Col className="header-btns">
+            <HeaderBtnsCol>
               <Row type="flex" justify="space-between">
-                <Col className="header-cart-btn">
-                  <a class="header-btn-anchor">
+                <Col className="header-btn">
+                  <a href="">
                     <Icon type="shopping-cart" />
-                    <div>カート</div>
+                    <div className="header-btn-text">カート</div>
                   </a>
                 </Col>
-                <Col className="header-login-btn">
+                <Col className="header-btn">
                   <Icon type="user" />
-                  <div>ログイン</div>
-                  <List
-                    className="header-login-list"
-                    bordered
-                    dataSource={loginData}
-                    renderItem={item => (
-                      <List.Item className="list-item">
-                        <Link to="/store" className="login-list-value">
-                          {item}
-                        </Link>
-                      </List.Item>
-                    )}
-                  />
+                  <div className="header-btn-text">ログイン</div>
+                  <HoverMenu menus={loginMenus} />
                 </Col>
-                <Col className="header-support-btn">
+                <Col className="header-btn">
                   <Icon type="info-circle" />
-                  <div>サポート</div>
-                  <Row>
-                    <List
-                      className="header-support-list"
-                      bordered
-                      dataSource={supportData}
-                      renderItem={item => (
-                        <List.Item className="list-item">
-                          <Link to="/store" className="support-list-value">
-                            {item}
-                          </Link>
-                        </List.Item>
-                      )}
-                    />
-                  </Row>
+                  <div className="header-btn-text">サポート</div>
+                  <HoverMenu menus={supportMenus} />
                 </Col>
               </Row>
-            </Col>
+            </HeaderBtnsCol>
           </Row>
         </AntdHeader>
       </HeaderWrapper>
