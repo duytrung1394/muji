@@ -17,6 +17,8 @@ import {SimpleHoc as Hoc} from "../hoc";
 import { store } from "../redux/store";
 import rootSaga from "../redux/sagas";
 
+import { DashAppLayout } from "../dashApp";
+
 const router = express.Router();
 
 function timeout(ms) {
@@ -29,7 +31,9 @@ const ssr = async (req, res) => {
   const rootComp = (
     <Hoc>
       <StaticRouter location={req.url} context={{}}>
-        {renderRoutes(routes)}
+        <DashAppLayout>
+          {renderRoutes(routes)}
+        </DashAppLayout>
       </StaticRouter>
     </Hoc>
   );

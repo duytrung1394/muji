@@ -18,7 +18,8 @@ const Routes = () => renderRoutes(routes);
 export const DashAppLayout = (props) => (
   <Layout style={{ height: '100%' }}>
     <Header />
-    <Layout>
+    {/* 注: Siderを子要素に持つ場合 hasSider オプションをつけないとSSRの時にサイドバーのレイアウトが崩れてしまう */}
+    <Layout hasSider>
       <Sider />
       <Content>
         { props.children }
