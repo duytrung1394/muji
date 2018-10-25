@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import {Card} from 'antd';
 
 export const PopularityRankingWrapper = styled.div`
-  width:100%;
-  margin:auto 30px;
+  width: calc(100% - 60px):
 
   .ant-row-flex{
     width:100%;
@@ -16,11 +15,6 @@ export const PopularityRankingWrapper = styled.div`
 
   .ant-row-flex-center{
     justify-content:normal;
-  }
-
-  .ant-col-4{
-    padding:5px 10px;
-    width:18%;
   }
 
   .ant-col-xs-8{
