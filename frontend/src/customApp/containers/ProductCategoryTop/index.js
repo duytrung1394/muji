@@ -6,6 +6,7 @@ import { Spin } from "antd";
 import styled from "styled-components";
 import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
+import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
 
 const ProductCategoryTopWrapper = styled.div`
   margin: 0 10px;
@@ -28,6 +29,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
           <ItemList {...entity} />
+          <CategoryList innerCategory={entity.innerCategory} />
         </Spin>
       </ProductCategoryTopWrapper>
     );

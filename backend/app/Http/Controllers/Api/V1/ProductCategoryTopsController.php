@@ -27,6 +27,70 @@ class ProductCategoryTopsController extends Controller
             'category_title' => "婦人ウェア",
             'sort_type'      => 'group',
             'total'          => 550,
+            'innerCategory' => [
+                'items' => [
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002677299_01_180.jpg',
+                        'title' => 'ジャケット・コート',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002691226_01_180.jpg',
+                        'title' => 'セーター',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002560522_01_180.jpg',
+                        'title' => 'カーディガン',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002683931_01_180.jpg',
+                        'title' => 'カットソー',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002659820_01_180.jpg',
+                        'title' => 'シャツ・ブラウス',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002757267_01_180.jpg',
+                        'title' => 'ワンピース・チュニック',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002320768_01_180.jpg',
+                        'title' => 'トレーナー・パーカー',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002802882_01_180.jpg',
+                        'title' => 'パンツ',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002773137_01_180.jpg',
+                        'title' => 'スカート',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002679583_01_180.jpg',
+                        'title' => 'MUJI WALKER',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002757168_01_180.jpg',
+                        'title' => 'ONE-ALL',
+                    ],
+                    [
+                        'img_src' => 'https://www.muji.net/img/store/section/icon_xs_xxl.png',
+                        'title' => 'ネット限定サイズ',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002326555_01_180.jpg',
+                        'title' => '雨の日アイテム｜婦人',
+                    ],
+                    [
+                        'img_src' => 'https://img.muji.net/img/item/4550002832100_01_180.jpg',
+                        'title' => '伝統から学んだ、暮らしの服。｜婦人',
+                    ],
+                    [
+                        'img_src' => '//img.muji.net/img/item/4550002653026_01_180.jpg',
+                        'title' => '【ネットストア限定 配送料無料】先行予約（秋冬）',
+                    ]
+                ],
+            ],
             'groups' => [
                 [
                     'group_name' => 'セーター',
