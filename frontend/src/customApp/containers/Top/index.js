@@ -13,6 +13,7 @@ import DailyMuji from "../../components/top/dailyMuji";
 import NetStore from "../../components/top/netStore";
 import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
+import FromMuji from "../../components/top/fromMuji";
 
 const TopWrapper = styled.div`
   max-width: 1440px;
@@ -50,6 +51,7 @@ class Index extends Component {
           <DailyMuji />
           <NetStore netStores={entity.net_services} />
           <CategoryList categoryList={entity.category_list} />
+          <FromMuji fromMujis={entity.from_mujis} />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
