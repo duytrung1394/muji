@@ -42,7 +42,7 @@ const PopularityRanking = ({ rankings }) => {
       <PopularityRankingTitle>
         <IntlMessages id="productCategoryTop.popularityRanking.title" />
       </PopularityRankingTitle>
-      <Row type="flex" justify="center" align="top">
+      <Row type="flex" justify="space-around" align="top">
         {rankings.map((ranking, index) => {
           return (
             <Col key={index} xl={{ span: 4 }} md={{ span: 4 }} xs={{ span: 8 }}>
