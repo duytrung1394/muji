@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Form, Col, Button, Select } from "antd";
+import { Form, Row, Col, Button, Select } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const SearchDetailForm = styled(Form)`
@@ -18,29 +18,35 @@ const searchLayout = {
 };
 
 const SelectFormItem = styled(Form.Item)`
-  display: flex !important;
-  justify-content: space-between !important;
-  border-bottom: 1px solid #bebebe;
-  .ant-form-item-label label:after {
-    content: "";
-  }
-  .ant-select-selection {
-    border: none;
+  && {
+    display: flex;
+    border-bottom: 1px solid #bebebe;
+    justify-content: space-between;
+    .ant-select-selection {
+      border: none;
+    }
+    &.ant-row {
+      :before,
+      :after {
+        content: none;
+      }
+    }
   }
 `;
 
 const SearchButton = styled(Button)`
-  border-radius: 50px !important;
-  color: white !important;
-  background: #383838 !important;
-  font-size: 13px !important;
-  margin: 20px;
+  && {
+    border-radius: 50px;
+    color: white;
+    background: #383838;
+    font-size: 13px;
+  }
 `;
 
 const SubmitWrapper = styled.div`
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const defaultState = {
@@ -64,50 +70,54 @@ class SearchDetail extends Component {
   render() {
     return (
       <SearchDetailForm onSubmit={this.handleSearch}>
-        <Col {...searchLayout}>
-          <SelectFormItem
-            label={<IntlMessages id="productCategoryTop.attributes.stock" />}
-          >
-            <Select
-              value={this.state.stock}
-              onChange={value => this.handleChange("stock", value)}
+        <Row gutter={16}>
+          <Col {...searchLayout}>
+            <SelectFormItem
+              colon={false}
+              label={<IntlMessages id="productCategoryTop.attributes.stock" />}
             >
-              <Select.Option value={1}>
-                <IntlMessages id="productCategoryTop.attributes.stock.option.1" />
-              </Select.Option>
-              <Select.Option value={2}>
-                <IntlMessages id="productCategoryTop.attributes.stock.option.2" />
-              </Select.Option>
-            </Select>
-          </SelectFormItem>
-          <SelectFormItem
-            label={
-              <IntlMessages id="productCategoryTop.attributes.colorDetail" />
-            }
-          >
-            <Select
-              value={this.state.colorDetail}
-              onChange={value => this.handleChange("colorDetail", value)}
+              <Select
+                value={this.state.stock}
+                onChange={value => this.handleChange("stock", value)}
+              >
+                <Select.Option value={1}>
+                  <IntlMessages id="productCategoryTop.attributes.stock.option.1" />
+                </Select.Option>
+                <Select.Option value={2}>
+                  <IntlMessages id="productCategoryTop.attributes.stock.option.2" />
+                </Select.Option>
+              </Select>
+            </SelectFormItem>
+            <SelectFormItem
+              colon={false}
+              label={
+                <IntlMessages id="productCategoryTop.attributes.colorDetail" />
+              }
             >
-              <Select.Option value={1}>
-                <IntlMessages id="productCategoryTop.attributes.colorDetail.option.1" />
-              </Select.Option>
-              <Select.Option value={2}>
-                <IntlMessages id="productCategoryTop.attributes.colorDetail.option.2" />
-              </Select.Option>
-            </Select>
-          </SelectFormItem>
-        </Col>
-        <Col {...searchLayout}>
-          <SubmitWrapper>
-            <a onClick={this.handleReset}>
-              <IntlMessages id="productCategoryTop.searchForm.clear" />
-            </a>
-            <SearchButton htmlType="submit">
-              <IntlMessages id="productCategoryTop.searchForm.submit" />
-            </SearchButton>
-          </SubmitWrapper>
-        </Col>
+              <Select
+                value={this.state.colorDetail}
+                onChange={value => this.handleChange("colorDetail", value)}
+              >
+                <Select.Option value={1}>
+                  <IntlMessages id="productCategoryTop.attributes.colorDetail.option.1" />
+                </Select.Option>
+                <Select.Option value={2}>
+                  <IntlMessages id="productCategoryTop.attributes.colorDetail.option.2" />
+                </Select.Option>
+              </Select>
+            </SelectFormItem>
+          </Col>
+          <Col {...searchLayout}>
+            <SubmitWrapper>
+              <a onClick={this.handleReset}>
+                <IntlMessages id="productCategoryTop.searchForm.clear" />
+              </a>
+              <SearchButton htmlType="submit">
+                <IntlMessages id="productCategoryTop.searchForm.submit" />
+              </SearchButton>
+            </SubmitWrapper>
+          </Col>
+        </Row>
       </SearchDetailForm>
     );
   }
