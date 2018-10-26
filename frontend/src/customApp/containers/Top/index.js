@@ -9,12 +9,15 @@ import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
+import DailyMuji from "../../components/top/dailyMuji";
+import NetStore from "../../components/top/netStore";
 import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
+import FromMuji from "../../components/top/fromMuji";
 
 const FeatureWrapper = styled(BaseContentLayout)`
   text-align: center;
@@ -44,7 +47,10 @@ class Index extends Component {
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
+          <DailyMuji />
+          <NetStore netStores={entity.net_services} />
           <CategoryList categoryList={entity.category_list} />
+          <FromMuji fromMujis={entity.from_mujis} />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>

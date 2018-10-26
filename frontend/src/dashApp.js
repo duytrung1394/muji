@@ -18,7 +18,7 @@ const Routes = () => renderRoutes(routes);
 const DashApp = () => (
   <Hoc>
     <BrowserRouter>
-      <Layout style={{ height: '100%' }}>
+      <Layout style={{ height: "100%" }}>
         <Header />
         <Layout>
           <Sider />
