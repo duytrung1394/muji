@@ -1,63 +1,76 @@
 import styled from "styled-components";
+import { Layout, Row, Col ,List } from "antd";
 
-const FooterWrapper = styled.div`
-  overflow:hidden;
+export const FooterWrapper = styled.div`
   background: #f7f7f7;
-  padding-bottom:40px;
-  font-weight:lighter;
 
-  .antd-footer{
-    background-color:#f7f7f7;
-    padding-top:20px;
-    .footer-common-row {
-      div {
-        margin-bottom:12px;
-      }
-    }
-    .footer-navi {
-      .copy-right > a {
-        float:right;
-        text-arign:right;
-      }
-    }
-  }
-  
-  ul{
-    list-style-type:none;
-    font-size:12px;
+  .ant-list-bordered{
+    border:none;
   }
 
-  li{
-    margin-bottom:12px;
-  }
-
-  a{
-    color:rgba(0,0,0,0.65);
-    cursor:pointer;
-  }
-
-  a:hover{
-    color:rgba(0,0,0,0.65);
-  }
-
-  li > ul{
-    margin:0;
+  .ant-list-bordered .ant-list-item{
+    border:none;
     padding:0;
   }
+`;
 
-  .footer-logo {
-    padding-bottom:100px;
-  }
+export const FooterContainer = styled(Row)`
+    padding:20px;
+    overflow:hidden;
+`;
 
-  .social-buttons{
-    margin-top:30px;
-    margin-bottom:30px;
-  }
+export const FooterIconsWrapper = styled.ul`
 
-  .social-buttons > ul > li{
-    display:table-cell;
-    padding-right:6px;
+`;
+
+export const FooterLogo = styled.img`
+
+`;
+
+export const FooterIconsList = styled.ul`
+    padding:0;
+    margin:0;
+    display:flex;
+    position:relative;
+    top:110px;
+`;
+
+export const FooterIconsListItem = styled.li`
+    list-style:none;
+    margin-right:6px;
     opacity:0.3;
-  }
-`
-export default FooterWrapper;
+`;
+
+export const ItemLink = styled.a`
+
+`;
+
+export const FooterIcon = styled.img`
+
+`;
+
+export const FooterListWrapper = styled(Col)`
+    .ant-list-sm .ant-list-item{
+      padding:0;
+      margin-bottom:10px;
+    }
+`;
+
+export const FooterList = styled(List)`
+  
+`;
+
+export const FooterListItem = styled(List.Item)`
+    .ant-list-item-content-single{
+      font-size:12px;
+    }
+`;
+
+export const FooterListItemLink= styled.a`
+    color:#333;
+    position:relative;
+    left:6vw;
+    &:hover{
+      color:#333;
+    }
+`;
