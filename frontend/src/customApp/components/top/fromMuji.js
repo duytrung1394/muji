@@ -15,16 +15,10 @@ import { injectIntl } from "react-intl";
 import LargeButton from "../form/largeButton";
 
 class FromMuji extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: 10
-    };
-  }
-
   seeMore = () => {
-    this.setState(prev => {
-      return { visible: prev.visible + 10 };
+    this.props.getFromMujisRequest({
+      offset: this.props.fromMujis.length,
+      length: 10
     });
   };
 
@@ -36,7 +30,7 @@ class FromMuji extends Component {
           <FromMujiTitle>from MUJI</FromMujiTitle>
           <StyledRow type="flex" justify="start" align="top">
             {fromMujis &&
-              fromMujis.slice(0, this.state.visible).map((item, index) => {
+              fromMujis.map((item, index) => {
                 return (
                   <StyledCard
                     hoverable
@@ -49,13 +43,11 @@ class FromMuji extends Component {
                 );
               })}
           </StyledRow>
-          {this.state.visible < Object.keys(fromMujis).length && (
-            <CenterAlign>
-              <LargeButton onClick={this.seeMore}>
-                <IntlMessages id="top.fromMuji.button.seeMore" />
-              </LargeButton>
-            </CenterAlign>
-          )}
+          <CenterAlign>
+            <LargeButton onClick={this.seeMore}>
+              <IntlMessages id="top.fromMuji.button.seeMore" />
+            </LargeButton>
+          </CenterAlign>
         </FromMujiSection>
       );
     } else {

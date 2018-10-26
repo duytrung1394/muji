@@ -34,7 +34,7 @@ class Index extends Component {
   }
 
   render() {
-    const { entity, fetching } = this.props;
+    const { entity, fetching, getFromMujisRequest } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
       <TopWrapper>
@@ -51,7 +51,10 @@ class Index extends Component {
           <DailyMuji />
           <NetStore netStores={entity.net_services} />
           <CategoryList categoryList={entity.category_list} />
-          <FromMuji fromMujis={entity.from_mujis} />
+          <FromMuji
+            fromMujis={entity.from_mujis}
+            getFromMujisRequest={getFromMujisRequest}
+          />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
@@ -65,7 +68,8 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request
+  fetchRequest: actions.fetch.request,
+  getFromMujisRequest: actions.getFromMujis.request
 };
 
 const enhance = C => {
