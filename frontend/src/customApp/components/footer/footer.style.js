@@ -19,15 +19,12 @@ export const FooterContainer = styled(Row)`
     overflow:hidden;
 `;
 
-export const FooterIconsWrapper = styled.ul`
+
+export const Logo = styled.img`
 
 `;
 
-export const FooterLogo = styled.img`
-
-`;
-
-export const FooterIconsList = styled.ul`
+export const IconsList = styled.ul`
     padding:0;
     margin:0;
     display:flex;
@@ -35,7 +32,7 @@ export const FooterIconsList = styled.ul`
     top:110px;
 `;
 
-export const FooterIconsListItem = styled.li`
+export const IconsListItem = styled.li`
     list-style:none;
     margin-right:6px;
     opacity:0.3;
@@ -45,32 +42,55 @@ export const ItemLink = styled.a`
 
 `;
 
-export const FooterIcon = styled.img`
+export const Icon = styled.img`
 
 `;
 
-export const FooterListWrapper = styled(Col)`
+export const ListWrapper = styled(Col)`
     .ant-list-sm .ant-list-item{
       padding:0;
       margin-bottom:10px;
     }
 `;
 
-export const FooterList = styled(List)`
+export const StyledList = styled(List)`
   
 `;
 
-export const FooterListItem = styled(List.Item)`
+export const ListItem = styled(List.Item)`
     .ant-list-item-content-single{
       font-size:12px;
     }
 `;
 
-export const FooterListItemLink= styled.a`
+export const ListItemLink= styled.a`
     color:#333;
     position:relative;
     left:6vw;
     &:hover{
       color:#333;
     }
+`;
+
+export const Nav = styled.ul`
+    clear:both;
+    overflow:hidden;
+    padding-top:20px;
+`;
+
+export const NavItem = styled.li`
+    list-style:none;
+    padding-right:20px;
+    float:left;
+`;
+
+export const NavItemLink = styled.a`
+    font-size:12px;
+    color:#333;
+`;
+
+export const CopyWrite = styled.span`
+    float:right;
+    color: #555555;
+    font-size: 12px;
 `;
