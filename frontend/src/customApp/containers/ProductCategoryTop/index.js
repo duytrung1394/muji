@@ -5,6 +5,7 @@ import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import styled from "styled-components";
 import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
+import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 
 const ProductCategoryTopWrapper = styled.div`
@@ -27,6 +28,7 @@ class Index extends Component {
       <ProductCategoryTopWrapper>
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
+          <PopularityRanking rankings={entity.rankings} />
           <ItemList {...entity} />
         </Spin>
       </ProductCategoryTopWrapper>
