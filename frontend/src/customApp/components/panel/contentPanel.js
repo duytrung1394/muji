@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import styled from "styled-components";
+import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-const ContentPanelWrapper = styled.div`
+const ContentPanelWrapper = styled(BaseContentLayout)`
   .ant-card-head {
     padding: 0 0;
     ${props => (!props.bordered ? "border-bottom: none" : "")};

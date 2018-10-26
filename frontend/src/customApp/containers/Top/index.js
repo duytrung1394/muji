@@ -11,9 +11,12 @@ import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
 import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
-import ContentLayout from "../../components/panel/contentLayout"
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
 
-const FeatureWrapper = styled.div`
+const FeatureWrapper = styled(BaseContentLayout)`
   text-align: center;
 
   img {
@@ -30,7 +33,7 @@ class Index extends Component {
     const { entity, fetching } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
-      <ContentLayout>
+      <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <Notice notices={entity.notices} />
           <FeatureWrapper>
@@ -45,7 +48,7 @@ class Index extends Component {
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
-      </ContentLayout>
+      </ContentAreaLayout>
     );
   }
 }

@@ -4,9 +4,17 @@ import styled from "styled-components";
 /**
  * コンテンツ描画エリアのレイアウト
  */
-const ContentLayout = styled.div`
+export const ContentAreaLayout = styled.div`
   max-width: 1440px;
   margin: auto;
 `;
 
-export default ContentLayout;
+/**
+ * コンテンツ基底レイアウト
+ */
+export const BaseContentLayout = styled.div`
+  width: 100%;
+  margin: 15px auto;
+`;
+
+export default ContentAreaLayout;
