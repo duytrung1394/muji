@@ -7,9 +7,14 @@ const StyledLargeButton = styled.button`
   max-width: 500px;
   margin: 0 auto;
   padding: 18px 0;
-  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
+  cursor: pointer;
   font-size: 16px;
-  color: ${props => (props.disabled ? "#c1c1c1" : "#585858")};
+  color: #585858;
+  transition: 0.2s;
+  :hover {
+    color: #0b0b0b;
+    border-color: #808080;
+  }
 `;
 
 const LargeButton = props => (
