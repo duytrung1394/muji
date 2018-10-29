@@ -1,29 +1,23 @@
 import React, { Component } from "react";
+import { Col } from "antd";
+import { StyledAntdFooter, NavRow, SiteMapRow, NavLink } from "./footer.style";
 
-import {
-  FooterWrapper,
-  FooterContainer,
-  ListWrapper,
-  Logo,
-  StyledList,
-  ListItem,
-  IconsList,
-  Icon,
-  ListItemLink,
-  IconsListItem,
-  ItemLink,
-  Nav,
-  NavItem,
-  NavItemLink,
-  CopyWrite
-} from "./footer.style";
+import { IconList } from "./IconList";
+import { SiteMapList } from "./SiteMapList";
 
-const listsData = [
+const imgsData = [
+  "https://img.muji.net/img/common/twitter-with-circle.svg",
+  "https://img.muji.net/img/common/facebook-with-circle.svg",
+  "https://img.muji.net/img/common/youtube-with-circle.svg",
+  "https://img.muji.net/img/common/instagram-with-circle.svg"
+];
+
+const siteMapData = [
   [
     "店舗情報",
     "イベント",
-    "暮らしの良品研究所",
-    "MUJI SUPPORT",
+    "くらしの良品研究所",
+    "NUJI SUPPORT",
     "MUJI HOUSE VISION",
     "お問い合わせ"
   ],
@@ -52,64 +46,36 @@ const listsData = [
   ]
 ];
 
-const imgsData = [
-  "https://img.muji.net/img/common/twitter-with-circle.svg",
-  "https://img.muji.net/img/common/facebook-with-circle.svg",
-  "https://img.muji.net/img/common/youtube-with-circle.svg",
-  "https://img.muji.net/img/common/instagram-with-circle.svg"
-];
-
-const navItemsData = ["日本", "個人情報の取り扱い", "サイトマップ"];
-
 const Footer = () => {
   return (
-    <FooterWrapper>
-      <FooterContainer>
-        <ListWrapper span={4}>
-          <Logo src="https://img.muji.net/img/common/logo-muji.svg" />
-          <IconsList>
-            {imgsData &&
-              imgsData.map((imgData, index) => {
-                return (
-                  <IconsListItem key={index}>
-                    <ItemLink>
-                      <Icon src={imgData} />
-                    </ItemLink>
-                  </IconsListItem>
-                );
-              })}
-          </IconsList>
-        </ListWrapper>
-        {listsData &&
-          listsData.map((listData, index) => {
+    <StyledAntdFooter>
+      <SiteMapRow>
+        <Col span={8}>
+          <img src="https://img.muji.net/img/common/logo-muji.svg" />
+          <IconList imgsData={imgsData} />
+        </Col>
+        {siteMapData &&
+          siteMapData.map((Data, index) => {
             return (
-              <ListWrapper key={index} span={5}>
-                <StyledList
-                  size="small"
-                  bordered
-                  dataSource={listData}
-                  renderItem={item => (
-                    <ListItem>
-                      <ListItemLink>{item}</ListItemLink>
-                    </ListItem>
-                  )}
-                />
-              </ListWrapper>
+              <Col span={4} key={index}>
+                <SiteMapList Data={Data} />
+              </Col>
             );
           })}
-        <Nav>
-          {navItemsData &&
-            navItemsData.map((navItemData, index) => {
-              return (
-                <NavItem key={index}>
-                  <NavItemLink>{navItemData}</NavItemLink>
-                </NavItem>
-              );
-            })}
-          <CopyWrite>Copyright ©Ryohin Keikaku Co., Ltd.</CopyWrite>
-        </Nav>
-      </FooterContainer>
-    </FooterWrapper>
+      </SiteMapRow>
+      <NavRow>
+        <Col span={2}>
+          <NavLink>日本</NavLink>
+        </Col>
+        <Col span={7}>
+          <NavLink>個人情報の取り扱い</NavLink>
+        </Col>
+        <Col span={5}>
+          <NavLink>サイトマップ</NavLink>
+        </Col>
+        <Col span={9}>Copyright ©Ryohin Keikaku Co., Ltd.</Col>
+      </NavRow>
+    </StyledAntdFooter>
   );
 };
 
