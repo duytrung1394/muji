@@ -64,12 +64,12 @@ const StyledMeta = styled(List.Item.Meta)`
 `;
 
 const CategoryItems = props => {
-  const { list } = props;
+  const { items } = props;
 
   return (
     <StyledList
       itemLayout="horizontal"
-      dataSource={list}
+      dataSource={items}
       renderItem={item => (
         <List.Item>
           <a href="">

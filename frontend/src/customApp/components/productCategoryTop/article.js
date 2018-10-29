@@ -24,7 +24,7 @@ const Article = ({ article }) => {
           </Col>
           <Col className="article-list" xl={{ span: 14 }}>
             <CategoryDiscription>{article.description}</CategoryDiscription>
-            <CategoryItems list={article.items} />
+            <CategoryItems items={article.items} />
           </Col>
         </StyledRow>
       )}
