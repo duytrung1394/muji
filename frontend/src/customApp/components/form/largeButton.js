@@ -15,6 +15,9 @@ const StyledLargeButton = styled.button`
     color: #0b0b0b;
     border-color: #808080;
   }
+  :focus {
+    outline: 0;
+  }
 `;
 
 const LargeButton = props => (
