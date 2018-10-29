@@ -2,7 +2,9 @@ import React from "react";
 import { Avatar, List } from "antd";
 import styled from "styled-components";
 
-const CategoryList = styled(List)`
+const StyledList = styled(List)`
+  padding-left: 34px;
+
   .ant-list {
     margin: 3% 0;
   }
@@ -18,9 +20,15 @@ const CategoryList = styled(List)`
       padding-bottom: 30px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .ant-spin-nested-loading {
+      padding: 0 20px 30px;
+    }
+  }
 `;
 
-const CategoryListItemMeta = styled(List.Item.Meta)`
+const StyledMeta = styled(List.Item.Meta)`
   .ant-list-item-meta-title {
     color: rgba(0, 0, 0, 0.55);
   }
@@ -55,17 +63,17 @@ const CategoryListItemMeta = styled(List.Item.Meta)`
   }
 `;
 
-const CategoryItemList = props => {
+const CategoryItems = props => {
   const { list } = props;
 
   return (
-    <CategoryList
+    <StyledList
       itemLayout="horizontal"
       dataSource={list}
       renderItem={item => (
         <List.Item>
           <a href="">
-            <CategoryListItemMeta
+            <StyledMeta
               avatar={<Avatar src={item.img} />}
               title={item.name}
               description={item.price}
@@ -77,4 +85,4 @@ const CategoryItemList = props => {
   );
 };
 
-export default CategoryItemList;
+export default CategoryItems;

@@ -1,41 +1,36 @@
 import styled from "styled-components";
-import { Col } from "antd";
+import { Col,Row } from "antd";
 
-export const CategoryTitle = styled.h1`
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 10px 20px;
-`;
-
-export const CategoryName = styled.h2`
+export const CategoryName = styled.h1`
   font-size: 36px;
   margin-bottom:4%;
   font-family: serif;
   font-weight:normal;
   color: rgba(0, 0, 0, 0.8);
+  padding:30px 0 0 0;
   z-index:2;
 
   @media screen and (max-width:1300px) {
     font-size:32px;
     position:absolute;
+    padding-left:0;
     top:-26vh;
     left:2vh;
   }
 
   @media only screen and (max-width: 768px) {
-    font-size:22px;  
-    top:20vh;
+    font-size:22px;
+    top:50;
 }
 
   @media only screen and (max-width: 475px) {
     position:static;
     margin:0;
-    padding:10px 0;
+    padding:10px 20px;
   }
 `;
 
-export const ContentWrapper = styled.div`
-
+export const StyledRow = styled(Row)`
     font-size: 14px;
     background: linear-gradient(#fafafa, #f6f6f6);
     width: 100%;
@@ -50,30 +45,38 @@ export const CategoryDiscription = styled.p`
   line-height: 2.1;
   color: rgba(0, 0, 0, 0.6);
 
+  @media only screen and (max-width: 768px) {
+    padding:0 20px;
+  }
+
   @media only screen and (max-width: 475px) {
     font-size:14px;
     line:height:1.5;
   }
 `;
 
-export const CategoryDiscriptionWrapper = styled(Col)`
-  @media screen and (max-width:1300px) {
-    clear:both;
-  }
-`;
+export const FigureCol = styled(Col)` 
 
-export const FigureWrapper = styled(Col)` 
+  & figure {
+    margin:0;
+  }
+
+  & img {
+    width:100%;
+    height:auto;
+    min-height: 100%;
+    max-width: 1440px;
+    z-index:1;
+  }
+  
   @media only screen and (max-width: 475px) {
     margin-bottom:15px;
   }
 `;
 
 export const ArticleWrapper = styled.div`
-  margin-bottom:30px;
-
-.ant-col-xl-14{
-    padding: 30px 80px 0 30px;
-  }
+  margin:0 0 30px;
+  
 
   .ant-col-10 {
     float:right;
@@ -83,22 +86,21 @@ export const ArticleWrapper = styled.div`
     border:none;
   }
 
-  .promotion-figure {
-    margin:0;
-  }
-
-  .promotion-img {
-    width:100%;
-    height:auto;
-    min-height: 100%;
-    max-width: 1440px;
-    z-index:1;
+  .ant-row > div{
+    padding-left:34px;
   }
 
   @media screen and (max-width:1300px) {
     .ant-col-xl-14 {
-      padding: 10px 80px 0 30px;
       width:100%;
+    }
+
+    .article-list{
+        clear:both;
+    }
+
+    .ant-row > div{
+      padding-left:20px;
     }
   }
 
@@ -106,6 +108,7 @@ export const ArticleWrapper = styled.div`
     .ant-col-10 {
       width:60%;
     }
+
     .promotion-img {
       position: visible;
       top: 0;
@@ -125,6 +128,9 @@ export const ArticleWrapper = styled.div`
       font-weight:400;
       color: rgba(0, 0, 0, 0.7);
     }
+    .ant-row > div{
+      padding-left:0px;
+    }
   }
 
   @media only screen and (max-width: 475px) {
@@ -133,9 +139,7 @@ export const ArticleWrapper = styled.div`
     }
     .ant-col-10 {
       width:100%;
-    }
-    .ant-col-xl-14 {
-      padding:0 14px;
+      padding:0;
     }
   }
 `;

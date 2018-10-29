@@ -1,34 +1,32 @@
 import React from "react";
 import { Col } from "antd";
-import CategoryListItem from "./categoryItemList";
+import CategoryItems from "./categoryItemList";
 import {
   ArticleWrapper,
-  CategoryTitle,
   CategoryName,
-  ContentWrapper,
+  StyledRow,
   CategoryDiscription,
-  CategoryDiscriptionWrapper,
-  FigureWrapper
+  FigureCol
 } from "./article.style";
 
 const Article = ({ article }) => {
   return (
     <ArticleWrapper>
       {article && (
-        <ContentWrapper>
-          <FigureWrapper span={10}>
-            <figure className="promotion-figure">
-              <img className="promotion-img" src={article.back_ground_image} />
+        <StyledRow>
+          <FigureCol span={10}>
+            <figure>
+              <img src={article.back_ground_image} />
             </figure>
-          </FigureWrapper>
+          </FigureCol>
           <Col md={{ span: 14 }} xl={{ span: 14 }}>
             <CategoryName>{article.title}</CategoryName>
           </Col>
-          <CategoryDiscriptionWrapper xl={{ span: 14 }}>
+          <Col className="article-list" xl={{ span: 14 }}>
             <CategoryDiscription>{article.description}</CategoryDiscription>
-            <CategoryListItem list={article.items} />
-          </CategoryDiscriptionWrapper>
-        </ContentWrapper>
+            <CategoryItems list={article.items} />
+          </Col>
+        </StyledRow>
       )}
     </ArticleWrapper>
   );
