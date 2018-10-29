@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Card} from 'antd';
 import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-export const PopularityRankingWrapper = styled(BaseContentLayout)`  
+export const ContentLayout = styled(BaseContentLayout)`
   .ant-col-xs-8 {
     padding: 5px;
   }

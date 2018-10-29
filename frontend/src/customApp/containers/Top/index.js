@@ -19,7 +19,7 @@ import {
 } from "../../components/panel/contentLayout";
 import FromMuji from "../../components/top/fromMuji";
 
-const FeatureWrapper = styled(BaseContentLayout)`
+const ContentLayout = styled(BaseContentLayout)`
   text-align: center;
 
   img {
@@ -39,11 +39,11 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <Notice notices={entity.notices} />
-          <FeatureWrapper>
+          <ContentLayout>
             <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
               <img src={featureImage} alt="" />
             </a>
-          </FeatureWrapper>
+          </ContentLayout>
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />

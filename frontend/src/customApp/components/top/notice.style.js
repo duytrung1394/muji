@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BaseContentLayout} from "../../components/panel/contentLayout"
 
-const NoticeWrapper = styled(BaseContentLayout)`
+const ContentLayout = styled(BaseContentLayout)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -47,4 +47,4 @@ const NoticeWrapper = styled(BaseContentLayout)`
   }
 
 `
-export default NoticeWrapper;
+export default ContentLayout;
