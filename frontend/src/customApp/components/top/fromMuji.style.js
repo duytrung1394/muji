@@ -67,8 +67,4 @@ export const NewCard= styled.span`
 
 export const CenterAlign = styled.div`
   text-align: center;
-  & > button
-  {
-    background-color:#f4f4f4;
-  }
 `
