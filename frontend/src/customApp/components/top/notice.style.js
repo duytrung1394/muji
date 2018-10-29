@@ -1,17 +1,15 @@
 import styled from "styled-components";
+import { BaseContentLayout} from "../../components/panel/contentLayout"
 
-const NoticeWrapper = styled.div`
+const NoticeWrapper = styled(BaseContentLayout)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 1px solid #DEDEDE;
   border-radius: 6px;
-  width: auto;
   max-width: 680px;
-  margin: 15px auto;
-  padding: 10px 15px;
-
+  
   dl {
     max-width: 1440px;
     margin: 0 auto;

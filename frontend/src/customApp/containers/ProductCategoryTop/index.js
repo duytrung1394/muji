@@ -3,14 +3,11 @@ import { connect } from "react-redux";
 import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import styled from "styled-components";
 import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
+import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
-
-const ProductCategoryTopWrapper = styled.div`
-  margin: 0 10px;
-`;
+import ContentAreaLayout from "../../components/panel/contentLayout";
 
 class Index extends Component {
   componentDidMount() {
@@ -25,13 +22,16 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <ProductCategoryTopWrapper>
-        <Spin spinning={fetching} size="large">
-          <ProductCategoryTopHeader title={entity.category_title} />
-          <ItemList {...entity} />
-          <CategoryList innerCategory={entity.innerCategory} />
-        </Spin>
-      </ProductCategoryTopWrapper>
+      <div>
+        <ContentAreaLayout>
+          <Spin spinning={fetching} size="large">
+            <ProductCategoryTopHeader title={entity.category_title} />
+            <PopularityRanking rankings={entity.rankings} />
+            <CategoryList innerCategory={entity.innerCategory} />
+            <ItemList {...entity} />
+          </Spin>
+        </ContentAreaLayout>
+      </div>
     );
   }
 }
