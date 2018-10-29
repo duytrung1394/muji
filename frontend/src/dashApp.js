@@ -22,10 +22,12 @@ const DashApp = () => (
         <Header />
         <Layout>
           <Sider />
-          <Content>
-            <Routes />
+          <Layout>
+            <Content>
+              <Routes />
+            </Content>
             <Footer />
-          </Content>
+          </Layout>
         </Layout>
       </Layout>
     </BrowserRouter>
