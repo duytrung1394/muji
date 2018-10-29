@@ -4,21 +4,10 @@ import { Layout, Row } from "antd";
 const { Footer } = Layout;
 
 export const StyledAntdFooter = styled(Footer)`
-  display:block;
   overflow:hidden;
-
-  .ant-col-4{
-    display:
-    overflow:hidden;
-  }
 
   .ant-list-split .ant-list-item {
     border-bottom: none;
-  }
-
-  .ant-col-9{
-    color:#555555;
-    font-size:12px;
   }
 `;
 
@@ -31,9 +20,9 @@ export const NavRow = styled(Row)`
   text-arign: left;
   .copy-right > p {
     float:right;
-    text-arign:right;
-  }    
+  }
 `;
+
 export const NavLink = styled.a`
   font-size: 12px;
   color: #333;
