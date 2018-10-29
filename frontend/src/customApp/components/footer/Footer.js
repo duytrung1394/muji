@@ -67,13 +67,15 @@ const Footer = () => {
         <Col span={2}>
           <NavLink>日本</NavLink>
         </Col>
-        <Col span={7}>
+        <Col span={6}>
           <NavLink>個人情報の取り扱い</NavLink>
         </Col>
-        <Col span={5}>
+        <Col span={4}>
           <NavLink>サイトマップ</NavLink>
         </Col>
-        <Col span={9}>Copyright ©Ryohin Keikaku Co., Ltd.</Col>
+        <Col span={10} className="copy-right">
+          <p>Copyright ©Ryohin Keikaku Co., Ltd.</p>
+        </Col>
       </NavRow>
     </StyledAntdFooter>
   );
