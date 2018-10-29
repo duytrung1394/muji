@@ -7,9 +7,10 @@ const iconImageSize = 60;
 const iconImageMargin = 10;
 const iconTitleMaxHeight = 55;
 
-export const CategoryBoxCol = styled(Col)`
-  border-bottom: 1px solid #eee;
-  margin-bottom: 15px;
+export const ListBoxRow = styled(Row)`
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
 `;
 
 export const StyledCol = styled(Col)`
@@ -37,37 +38,43 @@ export const IconImg = styled.img`
   margin: ${iconImageMargin}px;
 `;
 
+export const PopularityRankingTitle = styled.h1`
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+`;
+
 const categoryList = ({ innerCategory }) => {
   if (!innerCategory) {
     return null;
   }
   const items = innerCategory.items;
   return (
-    items &&
-    items.map((item, index) => {
-      return <ItemIcon key={index} item={item} />;
-    })
+    <ListBoxRow type="flex" justify="center" align="top">
+      {items &&
+        items.map((item, index) => {
+          return <ItemIcon key={index} item={item} />;
+        })}
+    </ListBoxRow>
   );
 };
 
 const ItemIcon = props => {
   const { item } = props;
   const colLayout = {
-    xs: 12,
-    sm: 12,
-    md: 6,
+    xs: 10,
+    sm: 7,
+    md: 5,
     lg: 4,
     xl: 3
   };
   return (
-    <Row>
-      <StyledCol {...colLayout}>
-        <LinkIcon to="" className="item-icon">
-          <IconImg src={item.img_src} alt="" />
-          {item.title && <p>{item.title}</p>}
-        </LinkIcon>
-      </StyledCol>
-    </Row>
+    <StyledCol {...colLayout}>
+      <LinkIcon to="" className="item-icon">
+        <IconImg src={item.img_src} alt="" />
+        {item.title && <p>{item.title}</p>}
+      </LinkIcon>
+    </StyledCol>
   );
 };
 
