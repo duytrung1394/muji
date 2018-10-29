@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import LargeButton from "../form/largeButton";
+import { Spin } from "antd";
 
 class FromMuji extends Component {
   seeMore = () => {
@@ -23,7 +24,7 @@ class FromMuji extends Component {
   };
 
   render() {
-    const { fromMujis } = this.props;
+    const { fromMujis, gettingFromMujis } = this.props;
     if (fromMujis) {
       return (
         <FromMujiSection>
@@ -43,11 +44,13 @@ class FromMuji extends Component {
                 );
               })}
           </StyledRow>
-          <CenterAlign>
-            <LargeButton onClick={this.seeMore}>
-              <IntlMessages id="top.fromMuji.button.seeMore" />
-            </LargeButton>
-          </CenterAlign>
+          <Spin spinning={gettingFromMujis} size="large">
+            <CenterAlign>
+              <LargeButton onClick={this.seeMore} disabled={gettingFromMujis}>
+                <IntlMessages id="top.fromMuji.button.seeMore" />
+              </LargeButton>
+            </CenterAlign>
+          </Spin>
         </FromMujiSection>
       );
     } else {

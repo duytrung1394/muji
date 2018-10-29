@@ -34,7 +34,12 @@ class Index extends Component {
   }
 
   render() {
-    const { entity, fetching, getFromMujisRequest } = this.props;
+    const {
+      entity,
+      fetching,
+      getFromMujisRequest,
+      gettingFromMujis
+    } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
       <TopWrapper>
@@ -54,6 +59,7 @@ class Index extends Component {
           <FromMuji
             fromMujis={entity.from_mujis}
             getFromMujisRequest={getFromMujisRequest}
+            gettingFromMujis={gettingFromMujis}
           />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
