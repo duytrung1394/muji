@@ -17,7 +17,7 @@ export const SiteMapRow = styled(Row)`
 `;
 
 export const NavRow = styled(Row)`
-  text-arign: left;
+  text-align: left;
   .copy-right > p {
     float:right;
   }
