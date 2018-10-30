@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Form, Input, Select, Icon } from "antd";
-import HeaderWrapper from "./header.style";
+import { Layout, Form, Input, Select, Icon, Row, Col } from "antd";
+import { HeaderWrapper, HeaderBtnsCol } from "./header.style";
+import { Dropdown as HoverMenu } from "../dropdown/dropdown";
 
 const AntdHeader = Layout.Header;
-const FormItem = Form.Item;
 const Option = Select.Option;
+const bannerFlag = false;
+
+const loginMenus = ["ログイン", "新規登録"];
+
+const supportMenus = [
+  "お問い合わせ",
+  "ご利用ガイド",
+  "重要なお知らせ",
+  "サイトからのお知らせ"
+];
 
 class Header extends Component {
   render() {
@@ -26,8 +36,8 @@ class Header extends Component {
 
     return (
       <HeaderWrapper>
-        <AntdHeader>
-          <div id="banner">
+        {bannerFlag === true ? (
+          <div className="banner">
             <p>
               <img
                 src="https://img.muji.net/img/store/common/banner_ryohinweek.png"
@@ -38,32 +48,51 @@ class Header extends Component {
               </b>
             </p>
           </div>
-          <div id="logo-search-icons">
-            <Link to="/store">
-              <img
-                src="https://img.muji.net/img/common/logo-muji.svg"
-                width="128"
-                height="20"
-                alt="無印良品"
-                id="logo"
-              />
-            </Link>
-            <Form id="search">
-              <Input addonBefore={prefixSelector} style={{ width: "50%" }} />
-            </Form>
-            <span>
-              <Icon type="shopping-cart" style={{ fontSize: 32 }} />
-              <span>カート</span>
-            </span>
-            <span>
-              <Icon type="user" style={{ fontSize: 32 }} />
-              <span>ログイン</span>
-            </span>
-            <span>
-              <Icon type="info-circle" style={{ fontSize: 32 }} />
-              <span>サポート</span>
-            </span>
-          </div>
+        ) : null}
+        <AntdHeader>
+          <Row
+            type="flex"
+            align="middle"
+            justify="space-between"
+            className="antd-header-row"
+          >
+            <Col className="header-logo">
+              <Link to="/store">
+                <img
+                  src="https://img.muji.net/img/common/logo-muji.svg"
+                  width="128"
+                  height="20"
+                  alt="無印良品"
+                  id="logo"
+                />
+              </Link>
+            </Col>
+            <Col className="header-search">
+              <Form className="search">
+                <Input addonBefore={prefixSelector} />
+              </Form>
+            </Col>
+            <HeaderBtnsCol>
+              <Row type="flex" justify="space-between">
+                <Col className="header-btn">
+                  <a href="">
+                    <Icon type="shopping-cart" />
+                    <div className="header-btn-text">カート</div>
+                  </a>
+                </Col>
+                <Col className="header-btn">
+                  <Icon type="user" />
+                  <div className="header-btn-text">ログイン</div>
+                  <HoverMenu menus={loginMenus} />
+                </Col>
+                <Col className="header-btn">
+                  <Icon type="info-circle" />
+                  <div className="header-btn-text">サポート</div>
+                  <HoverMenu menus={supportMenus} />
+                </Col>
+              </Row>
+            </HeaderBtnsCol>
+          </Row>
         </AntdHeader>
       </HeaderWrapper>
     );

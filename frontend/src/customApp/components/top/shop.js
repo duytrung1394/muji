@@ -7,7 +7,7 @@ import SelectPrefecture from "../form/selectPrefecture";
 
 const mapStyle = { position: "relative", width: "100%", height: "250px" };
 
-const ContentPanelWrapper = styled.div`
+const ContentMapPanel = styled(ContentPanel)`
   .ant-card-extra {
     display: flex;
     width: 100%;
@@ -30,23 +30,21 @@ export class Shop extends Component {
 
   render() {
     return (
-      <ContentPanelWrapper>
-        <ContentPanel
-          extra={
-            <Aux>
-              <span className="top-shop-title">
-                <IntlMessages id="top.shop.title" />
-              </span>
-              <SelectPrefecture onChange={this.handleChange} />
-              <a href={`${shopUrl}/?area=main`}>
-                <IntlMessages id="top.shop.link_title" />
-              </a>
-            </Aux>
-          }
-        >
-          <Map google={this.props.google} containerStyle={mapStyle} />
-        </ContentPanel>
-      </ContentPanelWrapper>
+      <ContentMapPanel
+        extra={
+          <Aux>
+            <span className="top-shop-title">
+              <IntlMessages id="top.shop.title" />
+            </span>
+            <SelectPrefecture onChange={this.handleChange} />
+            <a href={`${shopUrl}/?area=main`}>
+              <IntlMessages id="top.shop.link_title" />
+            </a>
+          </Aux>
+        }
+      >
+        <Map google={this.props.google} containerStyle={mapStyle} />
+      </ContentMapPanel>
     );
   }
 }

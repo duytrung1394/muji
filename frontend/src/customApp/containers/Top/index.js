@@ -9,15 +9,17 @@ import NewItem from "../../components/top/newItem";
 import LimitedItem from "../../components/top/limitedItem";
 import Shop from "../../components/top/shop";
 import ImportantNotice from "../../components/top/importantNotice";
+import DailyMuji from "../../components/top/dailyMuji";
+import NetStore from "../../components/top/netStore";
 import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
+import FromMuji from "../../components/top/fromMuji";
 
-const TopWrapper = styled.div`
-  max-width: 1440px;
-  margin: auto;
-`;
-
-const FeatureWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   text-align: center;
 
   img {
@@ -31,25 +33,37 @@ class Index extends Component {
   }
 
   render() {
-    const { entity, fetching } = this.props;
+    const {
+      entity,
+      fetching,
+      getFromMujisRequest,
+      gettingFromMujis
+    } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
-      <TopWrapper>
+      <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <Notice notices={entity.notices} />
-          <FeatureWrapper>
+          <ContentLayout>
             <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
               <img src={featureImage} alt="" />
             </a>
-          </FeatureWrapper>
+          </ContentLayout>
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
+          <DailyMuji />
+          <NetStore netStores={entity.net_services} />
           <CategoryList categoryList={entity.category_list} />
+          <FromMuji
+            fromMujis={entity.from_mujis}
+            getFromMujisRequest={getFromMujisRequest}
+            gettingFromMujis={gettingFromMujis}
+          />
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
-      </TopWrapper>
+      </ContentAreaLayout>
     );
   }
 }
@@ -59,7 +73,8 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request
+  fetchRequest: actions.fetch.request,
+  getFromMujisRequest: actions.getFromMujis.request
 };
 
 const enhance = C => {
