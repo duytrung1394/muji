@@ -7,6 +7,7 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 
 const Item = styled(Col)`
   padding: 10px;
+  text-align:center;
   img {
     width: 100%;
   }
