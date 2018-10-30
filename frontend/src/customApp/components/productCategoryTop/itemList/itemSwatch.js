@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card } from "antd";
+import { Card, Icon } from "antd";
 import { Link } from 'react-router-dom';
-import { Icon } from 'antd';
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const Swatch = styled(Card.Grid)`
-  width: 40px !important;
-  box-shadow: none !important;
-  padding: 0 !important;
   font-size: 9pt;
   cursor:pointer;
+  margin-right:4px;
+  display:inline-block;
+
+  &&& {
+    width: 40px;
+    box-shadow: none;
+    padding: 0;
+    float:none;
+  }  
   .anticon{
     display:block;
   }
 `;
 
 const ImageWrapper = styled.div`
-  cursor: pointer;
   width: 40px;
   height: 40px;
-  overflow:hidden;
   border-radius:50%;
- 
   :hover{
     border:2px solid grey;
   }
-
   img{
     border-radius:50%;
     padding:1px;
@@ -35,18 +36,12 @@ const ImageWrapper = styled.div`
 `;
 
 const SwatchWrapper = styled.div`
-  overflow:hidden;
-  display:inline-block;
+  text-align:center;
 `;
 
-
-
-
 class ItemSwatch extends Component {
-  
   state = {
     expanded: false
-    
   };
 
   SwatchItem = () =>{
@@ -74,7 +69,7 @@ class ItemSwatch extends Component {
         </Swatch> 
       );
     }
-    return <div>{items}</div>
+    return items;
   }
 
 
