@@ -32,7 +32,7 @@ const ContentPanel = props => {
         {...props}
         bordered={bordered}
         extra={extra}
-        style={{ margin: "1rem", ...props.style }}
+        style={{ ...props.style }}
       >
         {props.children}
       </Card>
