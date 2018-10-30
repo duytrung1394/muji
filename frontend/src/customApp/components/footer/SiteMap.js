@@ -38,8 +38,8 @@ const siteMaps = [
 ];
 
 const StyledRow = styled(Row)`
-  overflow:hidden;
-  margin-bottom:30px;
+  overflow: hidden;
+  margin-bottom: 30px;
 `;
 
 const StyledList = styled(List)`
@@ -49,7 +49,8 @@ const StyledList = styled(List)`
     margin-bottom: 10px;
     border-bottom: none;
 
-    & a, & a:hover {
+    & a,
+    & a:hover {
       color: #616161;
     }
   }
