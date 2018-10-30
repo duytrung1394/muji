@@ -5,13 +5,15 @@ import styled from "styled-components";
 import { BaseContentLayout } from "../../components/panel/contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
-  .ant-card-head {
-    padding: 0 0;
-    ${props => (!props.bordered ? "border-bottom: none" : "")};
-  }
+  && {
+    .ant-card-head {
+      padding: 0 0;
+      ${props => (!props.bordered ? "border-bottom: none" : "")};
+    }
 
-  .ant-card-body {
-    padding: 0 0;
+    .ant-card-body {
+      padding: 0 0;
+    }
   }
 `;
 
