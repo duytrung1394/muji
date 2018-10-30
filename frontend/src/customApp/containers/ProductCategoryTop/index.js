@@ -21,15 +21,13 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <div>
-        <ContentAreaLayout>
-          <Spin spinning={fetching} size="large">
-            <ProductCategoryTopHeader title={entity.category_title} />
-            <PopularityRanking rankings={entity.rankings} />
-            <ItemList {...entity} />
-          </Spin>
-        </ContentAreaLayout>
-      </div>
+      <ContentAreaLayout>
+        <Spin spinning={fetching} size="large">
+          <ProductCategoryTopHeader title={entity.category_title} />
+          <PopularityRanking rankings={entity.rankings} />
+          <ItemList {...entity} />
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
