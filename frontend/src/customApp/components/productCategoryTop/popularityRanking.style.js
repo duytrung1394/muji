@@ -1,23 +1,22 @@
 import styled from 'styled-components';
 import {Card} from 'antd';
+import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-export const PopularityRankingWrapper = styled.div`
-  width: 100%;
-  
+export const ContentLayout = styled(BaseContentLayout)`
   .ant-col-xs-8 {
-    padding: 5px 10px;
-  }   
+    padding: 5px;
+  }
 `;
 
 export const PopularityRankingTitle = styled.h1`
   font-size: 14px;
   font-weight: bold;
-  padding: 10px 10px 0;
+  padding: 10px;
 `;
 
 export const PopularityRankingCard = styled(Card)`
   .ant-card-body {
-    padding: 10px 0; 
+    padding: 10px; 
   }
 
   .ant-card-meta-title {

@@ -12,7 +12,7 @@ const StyledUl = styled.ul`
 
     & > a {
       opacity: 0.3;
-    }    
+    }
   }
 `;
 

@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 const NavLink = styled.a`
   font-size: 12px;
-  margin:20px 10px;
+  margin: 20px 10px;
 
-  &, &:hover{
+  &,
+  &:hover {
     color: #333;
   }
 `;

@@ -13,14 +13,13 @@ import DailyMuji from "../../components/top/dailyMuji";
 import NetStore from "../../components/top/netStore";
 import CategoryList from "../../components/top/categoryList";
 import styled from "styled-components";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
 import FromMuji from "../../components/top/fromMuji";
 
-const TopWrapper = styled.div`
-  max-width: 1440px;
-  margin: auto;
-`;
-
-const FeatureWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   text-align: center;
 
   img {
@@ -42,14 +41,14 @@ class Index extends Component {
     } = this.props;
     const featureImage = entity.feature_image ? entity.feature_image : "";
     return (
-      <TopWrapper>
+      <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <Notice notices={entity.notices} />
-          <FeatureWrapper>
+          <ContentLayout>
             <a href="https://www.muji.com/jp/feature/mujiweek/180929/index.html">
               <img src={featureImage} alt="" />
             </a>
-          </FeatureWrapper>
+          </ContentLayout>
           <Feature features={entity.features} />
           <NewItem newItems={entity.new_items} />
           <LimitedItem limitedItems={entity.limited_items} />
@@ -64,7 +63,7 @@ class Index extends Component {
           <Shop />
           <ImportantNotice importantNotices={entity.important_notices} />
         </Spin>
-      </TopWrapper>
+      </ContentAreaLayout>
     );
   }
 }
