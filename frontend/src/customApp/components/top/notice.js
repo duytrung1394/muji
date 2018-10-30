@@ -1,11 +1,10 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import NoticeWrapper from "./notice.style";
+import ContentLayout from "./notice.style";
 
-const notice = props => {
-  const { notices } = props;
+const notice = ({ notices }) => {
   return (
-    <NoticeWrapper>
+    <ContentLayout>
       <dl>
         <dt className="notice-title">
           <IntlMessages id="top.attributes.notices" />
@@ -21,7 +20,7 @@ const notice = props => {
             );
           })}
       </dl>
-    </NoticeWrapper>
+    </ContentLayout>
   );
 };
 

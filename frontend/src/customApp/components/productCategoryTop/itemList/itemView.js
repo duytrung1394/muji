@@ -11,7 +11,7 @@ const Item = styled(Col)`
   img {
     width: 100%;
   }
-  position:relative;
+  position: relative;
 `;
 
 const Title = styled.div`
