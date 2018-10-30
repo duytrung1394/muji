@@ -1,28 +1,29 @@
 import styled from "styled-components";
+import { BaseContentLayout} from "../../components/panel/contentLayout"
 
-const NoticeWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 1px solid #DEDEDE;
   border-radius: 6px;
-  width: auto;
   max-width: 680px;
-  margin: 15px auto;
   padding: 10px 15px;
 
   dl {
-    max-width: 1440px;
     margin: 0 auto;
     display: table;
 
     & > dt {
+      width: 70px;
+      max-width: 70px;
+      min-width: 70px;
       font-size: 13px;
       font-weight: 600;
       display: table-cell;
     }
-                
+
     & > dd > a {
       color: #777;
       line-height: 1.7; 
@@ -49,4 +50,4 @@ const NoticeWrapper = styled.div`
   }
 
 `
-export default NoticeWrapper;
+export default ContentLayout;
