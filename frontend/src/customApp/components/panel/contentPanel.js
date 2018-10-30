@@ -4,13 +4,16 @@ import { Card } from "antd";
 import styled from "styled-components";
 import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-const ContentPanelWrapper = styled(BaseContentLayout)`
-  .ant-card-head {
-    padding: 0 0;
-    ${props => (!props.bordered ? "border-bottom: none" : "")};
-  }
-  .ant-card-body {
-    padding: 0 0;
+const ContentLayout = styled(BaseContentLayout)`
+  && {
+    .ant-card-head {
+      padding: 0 0;
+      ${props => (!props.bordered ? "border-bottom: none" : "")};
+    }
+
+    .ant-card-body {
+      padding: 0 0;
+    }
   }
 `;
 
@@ -26,16 +29,16 @@ const ContentPanel = props => {
     ""
   );
   return (
-    <ContentPanelWrapper bordered={bordered}>
+    <ContentLayout bordered={bordered}>
       <Card
         {...props}
         bordered={bordered}
         extra={extra}
-        style={{ margin: "1rem", ...props.style }}
+        style={{ ...props.style }}
       >
         {props.children}
       </Card>
-    </ContentPanelWrapper>
+    </ContentLayout>
   );
 };
 

@@ -3,7 +3,7 @@ import { Card, Col, Row } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import {
-  PopularityRankingWrapper,
+  ContentLayout,
   PopularityRankingTitle,
   Badge,
   PopularityRankingCard
@@ -38,7 +38,7 @@ const PopularityRanking = ({ rankings }) => {
   }
 
   return (
-    <PopularityRankingWrapper>
+    <ContentLayout>
       <PopularityRankingTitle>
         <IntlMessages id="productCategoryTop.popularityRanking.title" />
       </PopularityRankingTitle>
@@ -64,7 +64,7 @@ const PopularityRanking = ({ rankings }) => {
           );
         })}
       </Row>
-    </PopularityRankingWrapper>
+    </ContentLayout>
   );
 };
 
