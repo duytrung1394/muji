@@ -2,8 +2,7 @@ import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentLayout from "./notice.style";
 
-const notice = props => {
-  const { notices } = props;
+const notice = ({ notices }) => {
   return (
     <ContentLayout>
       <dl>
