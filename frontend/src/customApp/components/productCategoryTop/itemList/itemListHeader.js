@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Refine from "./refine";
+import Filter from "./filter";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ItemListHeaderWrapper = styled.div`
@@ -21,9 +21,7 @@ const ItemListHeader = props => (
       <span className="total">{props.total}</span>
     </div>
     <div>商品グループ順</div>
-    <div>
-      <Refine />
-    </div>
+    <Filter />
   </ItemListHeaderWrapper>
 );
 
