@@ -17,6 +17,10 @@ export const StyledCol = styled(Col)`
   text-align: center;
   margin: 10px;
   max-height: 125px;
+  position:relative;
+  box-sizing:border-box;
+  margin:0;
+  padding-bottom:10px;
 
   background-color: #333;
   background: transparent;
@@ -25,27 +29,10 @@ export const StyledCol = styled(Col)`
     opacity:0.9;
   }
 
-  
-`;
-
-export const LinkIcon = styled(Link)`
-  color:black;
-  color: #333;
-  display:block;
-  height:auto;
-  background-color: #333;
-  position:relative;
-  z-index:2000;
-
-  &:hover{
-    background-color: #333;
-  }
-
   img {
     height: ${iconImageSize}px;
     width: ${iconImageSize}px;
     margin: ${iconImageMargin}px;
-    position:relative;
   }
 
   span {
@@ -56,6 +43,22 @@ export const LinkIcon = styled(Link)`
     overflow: hidden;
     max-height: ${iconTitleMaxHeight}px;
   }
+
+  
+`;
+
+export const LinkIcon = styled(Link)`
+  color: #333;
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  &:hover{
+    background-color: rgba(0,0,0,0.1);
+  }
 `;
 
 const CategoryList = ({ innerCategories }) => {
@@ -63,7 +66,7 @@ const CategoryList = ({ innerCategories }) => {
     return null;
   }
   return (
-    <ListBoxRow type="flex" justify="center" align="top">
+    <ListBoxRow type="flex" justify="normal" align="top">
       {innerCategories &&
         innerCategories.map((item, index) => {
           return <ItemIcon key={index} item={item} />;
@@ -75,18 +78,16 @@ const CategoryList = ({ innerCategories }) => {
 const ItemIcon = props => {
   const { item } = props;
   const colLayout = {
-    xs: 10,
-    sm: 7,
-    md: 5,
-    lg: 4,
-    xl: 3
+    xs: 12,
+    sm: 8,
+    md: 6,
+    xl: 4
   };
   return (
     <StyledCol {...colLayout}>
-      <LinkIcon to="" className="item-icon">
+      <LinkIcon to=""/>
         <img src={item.img_src} alt="" />
         {item.title && <span>{item.title}</span>}
-      </LinkIcon>
     </StyledCol>
   );
 };
