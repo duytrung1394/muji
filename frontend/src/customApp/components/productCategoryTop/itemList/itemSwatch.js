@@ -44,7 +44,7 @@ class ItemSwatch extends Component {
     expanded: false
   };
 
-  SwatchItem = () => {
+  GetSwatches = () => {
     const { swatches, changeSwatch } = this.props;
     const swatchLength = this.state.expanded
       ? swatches.length
@@ -53,11 +53,12 @@ class ItemSwatch extends Component {
         : 4;
     let items = [];
 
-    for (let i = 0; i < swatchLength; i++) {
-      let jancode = swatches[i].jancode;
-      let nostock = swatches[i].nostock;
+    swatches.slice(0, swatchLength).map((color, index) => {
+      let jancode = color.jancode;
+      let nostock = color.nostock;
+
       items.push(
-        <Swatch key={i} onMouseOver={() => changeSwatch(jancode, nostock)}>
+        <Swatch key={index} onMouseOver={() => changeSwatch(jancode, nostock)}>
           <ImageWrapper>
             <Link to={``}>
               <img
@@ -68,37 +69,53 @@ class ItemSwatch extends Component {
           </ImageWrapper>
         </Swatch>
       );
-    }
+    });
+
     return items;
   };
 
-  render() {
-    const { swatches } = this.props;
+  SwatchToggle = props => {
+    const { expanded, values } = props;
     return (
-      <SwatchWrapper>
-        <this.SwatchItem />
-        {!this.state.expanded &&
-          swatches.length > 4 && (
-            <Swatch
-              onClick={() => {
-                this.setState({ expanded: true });
-              }}
-            >
-              <IntlMessages id="productCategoryTop.itemSwatch.other" />
-              {swatches.length - 4}
-              <IntlMessages id="productCategoryTop.itemSwatch.color" />
-              <Icon type="down" theme="outlined" />
-            </Swatch>
-          )}
-        {this.state.expanded && (
-          <Swatch
+      <Swatch>
+        {!expanded && (
+          <span
+            onClick={() => {
+              this.setState({ expanded: true });
+            }}
+          >
+            <IntlMessages
+              id="productCategoryTop.itemSwatch.otherColors"
+              values={{ num: values }}
+            />
+            <Icon type="down" theme="outlined" />
+          </span>
+        )}
+        {expanded && (
+          <span
             onClick={() => {
               this.setState({ expanded: false });
             }}
           >
             <Icon type="up" theme="outlined" />
             <IntlMessages id="productCategoryTop.itemSwatch.close" />
-          </Swatch>
+          </span>
+        )}
+      </Swatch>
+    );
+  };
+
+  render() {
+    const { swatches } = this.props;
+
+    return (
+      <SwatchWrapper>
+        <this.GetSwatches />
+        {swatches.length > 4 && (
+          <this.SwatchToggle
+            expanded={this.state.expanded}
+            values={swatches.length - 4}
+          />
         )}
       </SwatchWrapper>
     );
