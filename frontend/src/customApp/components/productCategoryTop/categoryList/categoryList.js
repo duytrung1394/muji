@@ -15,18 +15,17 @@ export const ListBoxRow = styled(Row)`
 
 export const StyledCol = styled(Col)`
   text-align: center;
-  margin: 10px;
   max-height: 125px;
-  position:relative;
-  box-sizing:border-box;
-  margin:0;
-  padding-bottom:10px;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding-bottom: 10px;
 
   background-color: #333;
   background: transparent;
 
-  &:hover{
-    opacity:0.9;
+  &:hover {
+    opacity: 0.9;
   }
 
   img {
@@ -43,21 +42,17 @@ export const StyledCol = styled(Col)`
     overflow: hidden;
     max-height: ${iconTitleMaxHeight}px;
   }
-
-  
 `;
 
 export const LinkIcon = styled(Link)`
   color: #333;
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
-  &:hover{
-    background-color: rgba(0,0,0,0.1);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -85,9 +80,9 @@ const ItemIcon = props => {
   };
   return (
     <StyledCol {...colLayout}>
-      <LinkIcon to=""/>
-        <img src={item.img_src} alt="" />
-        {item.title && <span>{item.title}</span>}
+      <LinkIcon to="" />
+      <img src={item.img_src} alt="" />
+      {item.title && <span>{item.title}</span>}
     </StyledCol>
   );
 };
