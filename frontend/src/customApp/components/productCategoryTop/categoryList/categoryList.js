@@ -20,14 +20,7 @@ export const StyledCol = styled(Col)`
   box-sizing: border-box;
   margin: 0;
   padding-bottom: 10px;
-
-  background-color: #333;
-  background: transparent;
-
-  &:hover {
-    opacity: 0.9;
-  }
-
+  
   img {
     height: ${iconImageSize}px;
     width: ${iconImageSize}px;
@@ -45,7 +38,6 @@ export const StyledCol = styled(Col)`
 `;
 
 export const LinkIcon = styled(Link)`
-  color: #333;
   display: block;
   position: absolute;
   width: 100%;
