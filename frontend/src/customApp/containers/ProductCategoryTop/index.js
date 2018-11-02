@@ -26,7 +26,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ProductCategoryTopHeader title={entity.category_title} />
           <PopularityRanking rankings={entity.rankings} />
-          <CategoryList innerCategory={entity.innerCategory} />
+          <CategoryList innerCategories={entity.innerCategories} />
           <ItemList {...entity} />
         </Spin>
       </ContentAreaLayout>
