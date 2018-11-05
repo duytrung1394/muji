@@ -36,7 +36,9 @@ const SimpleHoc = props => (
       locale={currentAppLocale.locale}
       messages={currentAppLocale.messages}
     >
-      {props.children}
+      <DashAppHolder>
+        {props.children}
+      </DashAppHolder>
     </IntlProvider>
   </Provider>
 );
