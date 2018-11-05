@@ -36,6 +36,9 @@ if (process.env.NODE_ENV !== "production") {
     );
     process.exit(1);
   }
+  // /static 以下を配信
+  app.use('/static', express.static('static'));
+
 } else {
   app.use(
     manifest({

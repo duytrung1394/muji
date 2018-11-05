@@ -15,7 +15,7 @@
       "import-static-files", 
       {
         "baseDir": "/static",
-        "baseUri": "http://your.cdn.address"
+        "baseUri": "http://localhost:3000"
       }
     ],
     [
