@@ -21,10 +21,12 @@ export const DashAppLayout = (props) => (
     {/* 注: Siderを子要素に持つ場合 hasSider オプションをつけないとSSRの時にサイドバーのレイアウトが崩れてしまう */}
     <Layout hasSider>
       <Sider />
-      <Content>
-        { props.children }
+      <Layout>
+        <Content>
+          { props.children }
+        </Content>
         <Footer />
-      </Content>
+      </Layout>
     </Layout>
   </Layout>
 );

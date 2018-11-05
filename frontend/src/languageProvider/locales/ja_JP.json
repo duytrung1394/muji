@@ -288,6 +288,7 @@
   "productCategoryTop.label.priceTax": "税込",
   "productCategoryTop.label.priceCurrency": "円",
   "productCategoryTop.nav.top": "無印良品トップ",
+  "productCategoryTop.popularityRanking.title":"人気ランキング",
   "rest.delete": "{name}削除",
   "rest.deleted.message": "削除しました",
   "rest.edit": "{name}編集",

@@ -10,7 +10,7 @@ import {
 } from "./sider.style";
 import NavLink from "./NavLink";
 import { Link } from "react-router-dom";
-import sidebarIcons from "./sider_icons/sidebarIcons"
+import sidebarIcons from "./sider_icons/sidebarIcons";
 import menuJson from "./sidemenu.json";
 
 const SiderContents = () => {

@@ -13,30 +13,25 @@ import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
 import LargeButton from "../form/largeButton";
+import { Spin } from "antd";
 
 class FromMuji extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: 10
-    };
-  }
-
   seeMore = () => {
-    this.setState(prev => {
-      return { visible: prev.visible + 10 };
+    this.props.getFromMujisRequest({
+      offset: this.props.fromMujis.length,
+      length: 10
     });
   };
 
   render() {
-    const { fromMujis } = this.props;
+    const { fromMujis, gettingFromMujis } = this.props;
     if (fromMujis) {
       return (
         <FromMujiSection>
           <FromMujiTitle>from MUJI</FromMujiTitle>
           <StyledRow type="flex" justify="start" align="top">
             {fromMujis &&
-              fromMujis.slice(0, this.state.visible).map((item, index) => {
+              fromMujis.map((item, index) => {
                 return (
                   <StyledCard
                     hoverable
@@ -49,13 +44,13 @@ class FromMuji extends Component {
                 );
               })}
           </StyledRow>
-          {this.state.visible < Object.keys(fromMujis).length && (
+          <Spin spinning={gettingFromMujis} size="large">
             <CenterAlign>
-              <LargeButton onClick={this.seeMore}>
+              <LargeButton onClick={this.seeMore} disabled={gettingFromMujis}>
                 <IntlMessages id="top.fromMuji.button.seeMore" />
               </LargeButton>
             </CenterAlign>
-          )}
+          </Spin>
         </FromMujiSection>
       );
     } else {
