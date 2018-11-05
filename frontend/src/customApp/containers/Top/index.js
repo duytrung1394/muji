@@ -28,7 +28,7 @@ const ContentLayout = styled(BaseContentLayout)`
 `;
 
 class Index extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRequest("");
   }
 
