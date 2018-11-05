@@ -10,19 +10,61 @@
     "react"
   ],
   "plugins": [
-    "css-modules-transform",
-    [
-      "import-static-files", 
-      {
-        "baseDir": "/static",
-        "baseUri": "http://localhost:3000"
-      }
-    ],
     [
       "transform-runtime", {
         "polyfill": false,
         "regenerator": true
       }
     ]
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "css-modules-transform",
+        [
+          "import-static-files", 
+          {
+            "baseDir": "/static",
+            "baseUri": "http://localhost:3000"
+          }
+        ]
+      ]
+    },
+    "preview": {
+      "plugins": [
+        "css-modules-transform",
+        [
+          "import-static-files", 
+          {
+            "baseDir": "/static",
+            "baseUri": "https://changeit.preview.muji.example.com"
+          }
+        ]
+      ]
+    },
+    "release": {
+      "plugins": [
+        "css-modules-transform",
+        [
+          "import-static-files", 
+          {
+            "baseDir": "/static",
+            "baseUri": "https://changeit.release.muji.example.com"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "css-modules-transform",
+        [
+          "import-static-files", 
+          {
+            "baseDir": "/static",
+            "baseUri": "https://changeit.production.muji.example.com"
+          }
+        ]
+      ]
+    }
+  }
 }
