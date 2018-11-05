@@ -43,6 +43,7 @@ class Filter extends Component {
         content={<FilterDetail />}
         trigger="click"
         overlayStyle={filterOverlayStyle}
+        getPopupContainer={() => document.getElementById("content")}
       >
         <FilterWrapper onClick={this.onClick}>
           {this.state.visible ? (
