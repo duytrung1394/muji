@@ -6,6 +6,10 @@ import SearchButton from "./forms/searchButton";
 import { stockOptions, colorDetailOptions } from "./filterDetailOptions";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
+const StyledForm = styled(Form)`
+  display: grid;
+`;
+
 const filterLayout = {
   xs: 24,
   sm: 24,
@@ -42,7 +46,7 @@ class FilterDetail extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSearch}>
+      <StyledForm onSubmit={this.handleSearch}>
         <Row gutter={16}>
           <Col {...filterLayout}>
             <SelectFormItem
@@ -71,7 +75,7 @@ class FilterDetail extends Component {
             </CenterAlign>
           </Col>
         </Row>
-      </Form>
+      </StyledForm>
     );
   }
 }

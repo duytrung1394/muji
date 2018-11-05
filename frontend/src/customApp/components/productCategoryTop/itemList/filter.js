@@ -21,8 +21,9 @@ const FilterWrapper = styled.span`
 `;
 
 const filterOverlayStyle = {
-  width: "90%",
-  maxWidth: "1200px"
+  width: "100%",
+  padding: "10px",
+  opacity: "0.96"
 };
 
 class Filter extends Component {
