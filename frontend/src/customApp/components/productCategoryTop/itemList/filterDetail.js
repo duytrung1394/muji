@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Form, Row, Col } from "antd";
 import styled from "styled-components";
 import SelectFormItem from "./forms/selectFormItem";
-import SearchButton from "./forms/searchButton";
+import { SearchButton, ResetButton } from "./forms/button";
 import { stockOptions, colorDetailOptions } from "./filterDetailOptions";
-import IntlMessages from "../../../../components/utility/intlMessages";
 
 const StyledForm = styled(Form)`
   display: grid;
@@ -18,12 +17,12 @@ const filterLayout = {
   xl: 12
 };
 
-const CenterAlign = styled(Row)`
-  text-align: center;
-`;
-
-const ResetFormLink = styled.a`
-  line-height: 40px;
+const RightAlign = styled(Row)`
+  text-align: right;
+  button {
+    margin: 15px;
+  }
+}
 `;
 
 const defaultState = {
@@ -62,19 +61,12 @@ class FilterDetail extends Component {
               options={colorDetailOptions}
             />
           </Col>
-          <Col {...filterLayout}>
-            <CenterAlign>
-              <Col {...filterLayout}>
-                <ResetFormLink onClick={this.handleReset}>
-                  <IntlMessages id="productCategoryTop.filterForm.clear" />
-                </ResetFormLink>
-              </Col>
-              <Col {...filterLayout}>
-                <SearchButton onClick={this.handleSearch} />
-              </Col>
-            </CenterAlign>
-          </Col>
+          <Col {...filterLayout} />
         </Row>
+        <RightAlign>
+          <ResetButton onClick={this.handleReset} />
+          <SearchButton onClick={this.handleSearch} />
+        </RightAlign>
       </StyledForm>
     );
   }
