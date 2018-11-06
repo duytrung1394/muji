@@ -56,11 +56,11 @@ const NameWithItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { groups } = props;
+  const { total, groups } = props;
 
   return (
     <ContentPanelWrapper
-      extra={<ItemListHeader />}
+      extra={<ItemListHeader total={total} />}
       actions={[<SeeMoreButton />]}
     >
       {groups &&

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Filter from "./filter";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ItemListHeaderWrapper = styled.div`
   justify-content: space-between;
@@ -7,18 +9,19 @@ const ItemListHeaderWrapper = styled.div`
   width: 100%;
   border-bottom: 1px solid #ebebeb;
   padding: 15 10;
-  .item-number {
+  .total {
     font-size: 18px;
   }
 `;
 
 const ItemListHeader = props => (
   <ItemListHeaderWrapper>
-    <span>
-      アイテム <span className="item-number">567</span>
-    </span>
-    <span>商品グループ順</span>
-    <span>絞り込み</span>
+    <div>
+      <IntlMessages id="productCategoryTop.label.item" />{" "}
+      <span className="total">{props.total}</span>
+    </div>
+    <div>商品グループ順</div>
+    <Filter />
   </ItemListHeaderWrapper>
 );
 

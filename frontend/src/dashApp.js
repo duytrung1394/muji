@@ -23,7 +23,7 @@ const DashApp = () => (
         <Layout>
           <Sider />
           <Layout>
-            <Content>
+            <Content id="content" style={{ position: "relative" }}>
               <Routes />
             </Content>
             <Footer />
