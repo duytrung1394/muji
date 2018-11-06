@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const iconImageSize = 60;
 const iconImageMargin = 10;
-const iconTitleMaxHeight = 55;
 
 export const ListBoxRow = styled(Row)`
   border: 1px solid #ccc;
