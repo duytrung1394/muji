@@ -44,16 +44,20 @@ class ItemSwatch extends Component {
     expanded: false
   };
 
-  GetSwatches = () => {
-    const { swatches, changeSwatch } = this.props;
+  getSwatchLength = swatches => {
     const swatchLength = this.state.expanded
       ? swatches.length
       : swatches.length < 4
         ? swatches.length
         : 4;
+    return swatchLength;
+  };
+
+  getSwatches = () => {
+    const { swatches, changeSwatch } = this.props;
     let items = [];
 
-    swatches.slice(0, swatchLength).map((color, index) => {
+    swatches.slice(0, this.getSwatchLength(swatches)).map((color, index) => {
       let jancode = color.jancode;
       let nostock = color.nostock;
 
@@ -70,37 +74,32 @@ class ItemSwatch extends Component {
         </Swatch>
       );
     });
-
     return items;
   };
 
-  SwatchToggle = props => {
-    const { expanded, values } = props;
+  SwatchToggle = ({ expanded, values }) => {
     return (
       <Swatch>
-        {!expanded && (
-          <span
-            onClick={() => {
-              this.setState({ expanded: true });
-            }}
-          >
-            <IntlMessages
-              id="productCategoryTop.itemSwatch.otherColors"
-              values={{ num: values }}
-            />
-            <Icon type="down" theme="outlined" />
-          </span>
-        )}
-        {expanded && (
-          <span
-            onClick={() => {
-              this.setState({ expanded: false });
-            }}
-          >
-            <Icon type="up" theme="outlined" />
-            <IntlMessages id="productCategoryTop.itemSwatch.close" />
-          </span>
-        )}
+        <span
+          onClick={() => {
+            this.setState({ expanded: !expanded });
+          }}
+        >
+          {!expanded ? (
+            <div>
+              <IntlMessages
+                id="productCategoryTop.itemSwatch.otherColors"
+                values={{ num: values }}
+              />
+              <Icon type="down" theme="outlined" />
+            </div>
+          ) : (
+            <div>
+              <Icon type="up" theme="outlined" />
+              <IntlMessages id="productCategoryTop.itemSwatch.close" />
+            </div>
+          )}
+        </span>
       </Swatch>
     );
   };
@@ -110,7 +109,7 @@ class ItemSwatch extends Component {
 
     return (
       <SwatchWrapper>
-        <this.GetSwatches />
+        <this.getSwatches />
         {swatches.length > 4 && (
           <this.SwatchToggle
             expanded={this.state.expanded}

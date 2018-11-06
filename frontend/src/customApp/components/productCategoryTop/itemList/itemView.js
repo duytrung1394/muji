@@ -12,6 +12,13 @@ const Item = styled(Col)`
     width: 100%;
   }
   position: relative;
+}
+ &&{
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+  
 `;
 
 const Title = styled.div`
