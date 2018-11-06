@@ -77,7 +77,7 @@ class ItemSwatch extends Component {
     return items;
   };
 
-  SwatchToggle = ({ expanded, values }) => {
+  swatchToggle = ({ expanded, values }) => {
     return (
       <Swatch>
         <span
@@ -111,7 +111,7 @@ class ItemSwatch extends Component {
       <SwatchWrapper>
         <this.getSwatches />
         {swatches.length > 4 && (
-          <this.SwatchToggle
+          <this.swatchToggle
             expanded={this.state.expanded}
             values={swatches.length - 4}
           />
