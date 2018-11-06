@@ -7,6 +7,7 @@ import ProductCategoryTopHeader from "../../components/productCategoryTop/header
 import Article from "../../components/productCategoryTop/article";
 import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
+import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 
 class Index extends Component {
@@ -27,6 +28,7 @@ class Index extends Component {
           <ProductCategoryTopHeader title={entity.category_title} />
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
+          <CategoryList innerCategories={entity.innerCategories} />
           <ItemList {...entity} />
         </Spin>
       </ContentAreaLayout>
