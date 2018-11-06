@@ -15,12 +15,11 @@ export const ListBoxRow = styled(Row)`
 
 export const StyledCol = styled(Col)`
   text-align: center;
-  max-height: 125px;
   position: relative;
   box-sizing: border-box;
   margin: 0;
   padding-bottom: 10px;
-  
+
   img {
     height: ${iconImageSize}px;
     width: ${iconImageSize}px;
@@ -32,8 +31,7 @@ export const StyledCol = styled(Col)`
     vertical-align: middle;
     font-size: 13px;
     word-wrap: break-word;
-    overflow: hidden;
-    max-height: ${iconTitleMaxHeight}px;
+    padding: 10px;
   }
 `;
 

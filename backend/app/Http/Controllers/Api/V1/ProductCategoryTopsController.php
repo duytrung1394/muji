@@ -110,7 +110,7 @@ class ProductCategoryTopsController extends Controller
                 ]
             ],
             'sort_type'      => 'group',
-            'total'          => 550,            
+            'total'          => 550,
             'groups' => [
                 [
                     'group_name' => 'セーター',
