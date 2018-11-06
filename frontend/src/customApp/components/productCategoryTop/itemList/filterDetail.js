@@ -17,7 +17,7 @@ const filterLayout = {
   xl: 12
 };
 
-const RightAlign = styled(Row)`
+const RightAlign = styled.div`
   text-align: right;
   button {
     margin: 15px;

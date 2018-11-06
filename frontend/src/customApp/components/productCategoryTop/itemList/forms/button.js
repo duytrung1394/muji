@@ -3,17 +3,16 @@ import { Button } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 
-const StyledButton = styled(Button)`
-  && {
-    height: 40px;
-    padding: 0 40px;
-    border-radius: 50px;
-    font-size: 13px;
-  }
-`;
+const commonButtonStyle = {
+  height: "40px",
+  padding: "0 40px",
+  borderRadius: "50px",
+  fontSize: "13px"
+};
 
-const StyledSearchButton = styled(StyledButton)`
+const StyledSearchButton = styled(Button)`
   && {
+    ${commonButtonStyle};
     color: white;
     background: #383838;
     border-color: #383838;
@@ -31,8 +30,9 @@ export const SearchButton = props => (
   </StyledSearchButton>
 );
 
-const StyledResetButton = styled(StyledButton)`
+const StyledResetButton = styled(Button)`
   && {
+    ${commonButtonStyle};
     color: #383838;
     background: white;
     border-color: #383838;
