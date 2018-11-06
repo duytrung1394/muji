@@ -9,7 +9,7 @@ export function restSagaFunctions(name, api, actions) {
         const response = yield call(api.GET, payload);
         yield put(actions.fetch.success(response.data));
       } catch (error) {
-        if (error.response.status == 401) {
+        if (error.response && error.response.status == 401) {
           yield put(authActions.unauthorized(error));
         } else {
           yield put(actions.fetch.failure(error));
