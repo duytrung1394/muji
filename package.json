@@ -27,11 +27,8 @@
     "esprima": "^4.0.0",
     "express-manifest": "^0.1.1",
     "generator-xenophy-simple": "file:./generator-xenophy-simple",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
     "pluralize": "^7.0.0",
     "prettier": "^1.13.7",
-    "style-loader": "^0.23.1",
     "yo": "^2.0.3"
   },
   "devDependencies": {
