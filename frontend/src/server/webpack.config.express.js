@@ -9,4 +9,7 @@ const config = {
   }
 };
 
+// babelrc読んでくれないとbuild時と食い違ってしまうので
+config.module.rules[1].oneOf[1].options.babelrc = true;
+
 export default config;
