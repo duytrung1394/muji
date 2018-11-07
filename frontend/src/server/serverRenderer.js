@@ -21,12 +21,6 @@ import { DashAppLayout } from "../dashApp";
 
 const router = express.Router();
 
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-//TODO: initialStateの取り扱いを追加してサーバーサイドで実行済みのAPIリクエストを二重にやる必要がないようにしたい
-
 const ssr = async (req, res) => {
   const rootComp = (
     <Hoc>
