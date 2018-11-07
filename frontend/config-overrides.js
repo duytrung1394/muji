@@ -7,8 +7,10 @@ module.exports = function override(config, env) {
     ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
     config,
   );
-  config = rewireLess(config, env);
-
+  config = rewireLess.withLoaderOptions({
+    javascriptEnabled: true,
+  })(config, env);
+  
   if (env === "production") {
     config.devtool = false;
   }
@@ -19,5 +21,5 @@ module.exports = function override(config, env) {
     }
   });
 
-  return rewires(config,env);
+  return config;
 };

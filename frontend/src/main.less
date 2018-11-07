@@ -1,11 +1,7 @@
 @import "~antd/lib/style/themes/default";
 
-// TODO: 正しい定義に変える
-@font-family: "Source-Han-Sans","Hiragino-Kaku-Gothic";
+// antdのfont-family変数を上書き
+@font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+// 情報元: https://sole-color-blog.com/blog/1380/
 
-// TEST
-* {
-    font-family: @font-family;
-}
-
-@import "~antd/lib/style/themes/core";
+@import "~antd/lib/style/core/index";
