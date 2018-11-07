@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import DashApp from "./dashApp";
 import registerServiceWorker from "./registerServiceWorker";
-import "./main.css";
+import "./main.less";
 
 ReactDOM.hydrate(<DashApp />, document.getElementById("root"));
 
