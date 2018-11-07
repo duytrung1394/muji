@@ -148,58 +148,6 @@ docker-compose run --rm frontend yarn install
 docker-compose exec backend /bin/bash
 ```
 
-## プレビューサーバーURL
-
-[https://muji-admin.xenophy.info](https://muji-admin.xenophy.info)
-
-DNSサーバーにて設定されているので、どこからでもアクセスできます。
-開発用のVagrant VMの中からデプロイすることで、プレビューサーバ−に自動デプロイできます。
-（※デプロイの方法は、別途整備中です）
-
-### 認証情報
-
-```
-user: xenophy
-password: xenomaster
-```
-
-### プレビューへのデプロイ方法
-
-1. Reactの変更内容を反映するために以下のコマンドを打つ
-
-```
-./build.sh
-```
-
-2. 内容をadmin-workに反映し、originにpushする
-
-```
-git branch
-# ブランチが admin-workであるか？
-git commit -a
-git push 
-```
-
-3. 最新の `admin-work` ブランチをプレビューサーバーに反映する
-
-```
-./deploy.sh
-```
-
-## Lumen用データベース
-
-```
-データベース名: muji_admin
-```
-
-
-## 初期ログインユーザー
-
-```
-user: kotsutsumi@xenophy.com
-password: 1234
-```
-
 ## コードジェネレータの使い方
 
 ※まだDocker化していないです。
@@ -210,3 +158,37 @@ password: 1234
 docker-compose run --rm develop yarn
 docker-compose run --rm develop yarn scaffold
 ```
+
+## productionでの動作
+
+### ホスト名の変更
+
+babelでのJSトランスパイルにホスト名が必要です。
+
+環境毎に `build` (localhostでの開発) `build-preview` (プレビューサーバー) `build-release` (リリースサーバー) が用意されています。
+
+これらに対応するホスト名の定義が `frontend/.babelrc` に存在します。
+
+本番環境もこれと同様の設定をすることになるかと思います。
+
+### リリースサーバーでの動作
+
+※ここではpreviewサーバーへの動作を想定します。
+
+まず、以下のコマンドでビルドを行います。
+※releaseサーバー上での実行を推奨
+
+```
+yarn build-preview
+```
+
+次に、以下のコマンドでexpressサーバーを立ち上げます。
+
+```
+PORT=80 yarn server
+```
+
+リバースプロキシ等の都合がある場合は別なポート番号を使用してください。
+
+また、 /static 以下は単にディレクトリ内を配信しているだけなので、
+フロントにnginx等を置く場合は直接配信することも可能です。
