@@ -2,8 +2,9 @@ import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { List } from "antd";
 import styled from "styled-components";
+import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-const NoticeWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   text-align: center;
 `;
 
@@ -53,7 +54,7 @@ const notice = ({ notices }) => {
     });
 
   return (
-    <NoticeWrapper>
+    <ContentLayout>
       <StyledList
         header={<IntlMessages id="top.attributes.notices" />}
         dataSource={data}
@@ -62,7 +63,7 @@ const notice = ({ notices }) => {
         split={false}
         itemLayout="horizontal"
       />
-    </NoticeWrapper>
+    </ContentLayout>
   );
 };
 
