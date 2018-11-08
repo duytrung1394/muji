@@ -1,18 +1,36 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card } from "antd";
+import { Icon } from "antd";
+import { Link } from "react-router-dom";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import { Row, Col } from "antd";
 
-const Swatch = styled(Card.Grid)`
-  width: 20% !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  font-size: 9pt;
+const Swatch = styled(Col)`
+  &&& {
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0 2px;
+  }
+
+  .anticon {
+    display: block;
+  }
 `;
 
 const ImageWrapper = styled.div`
-  cursor: pointer;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+
+  :hover {
+    border: 2px solid grey;
+  }
+
+  img {
+    border-radius: 50%;
+    padding: 1px;
+    border: 1px solid white;
+  }
 `;
 
 class ItemSwatch extends Component {
@@ -20,34 +38,84 @@ class ItemSwatch extends Component {
     expanded: false
   };
 
-  render() {
-    const { swatches, changeSwatch } = this.props;
-    const swatchLength = this.state.expanded
-      ? swatches.length
-      : swatches.length < 4
-        ? swatches.length
+  getSwatchLength = () => {
+    const swatchMaxLength = this.props.swatches
+      ? this.props.swatches.length
+      : 0;
+
+    return this.state.expanded
+      ? swatchMaxLength
+      : swatchMaxLength < 4
+        ? swatchMaxLength
         : 4;
+  };
+
+  Swatches = () => {
+    const { swatches, changeSwatch } = this.props;
     let items = [];
-    for (let i = 0; i < swatchLength; i++) {
-      let jancode = swatches[i].jancode;
-      let nostock = swatches[i].nostock;
+
+    swatches.slice(0, this.getSwatchLength()).map((swatch, index) => {
       items.push(
-        <Swatch key={i} onMouseOver={() => changeSwatch(jancode, nostock)}>
+        <Swatch
+          key={index}
+          onMouseOver={() => changeSwatch(swatch.jancode, swatch.nostock)}
+        >
           <ImageWrapper>
-            <img
-              src={`https://img.muji.net/img/item/${jancode}_99_95.jpg`}
-              alt=""
-            />
+            <Link to={``}>
+              <img
+                src={`https://img.muji.net/img/item/${
+                  swatch.jancode
+                }_99_95.jpg`}
+                alt=""
+              />
+            </Link>
           </ImageWrapper>
         </Swatch>
       );
+    });
+    return items;
+  };
+
+  SwatchToggle = () => {
+    const { swatches } = this.props;
+    const { expanded } = this.state;
+
+    if (swatches.length <= 4) {
+      return null;
     }
 
     return (
-      <div>
-        {items}
-        {!this.state.expanded && swatches.length > 4 && <Swatch>他10色</Swatch>}
-      </div>
+      <Swatch>
+        <span
+          onClick={() => {
+            this.setState({ expanded: !expanded });
+          }}
+        >
+          {expanded ? (
+            <div>
+              <Icon type="up" theme="outlined" />
+              <IntlMessages id="productCategoryTop.itemSwatch.close" />
+            </div>
+          ) : (
+            <div>
+              <IntlMessages
+                id="productCategoryTop.itemSwatch.otherColors"
+                values={{ num: swatches.length - 4 }}
+              />
+              <Icon type="down" theme="outlined" />
+            </div>
+          )}
+        </span>
+      </Swatch>
+    );
+  };
+
+  render() {
+    return (
+      <Row type="flex" align="middle" justify="center">
+        <this.Swatches />
+        <this.SwatchToggle />
+      </Row>
     );
   }
 }
