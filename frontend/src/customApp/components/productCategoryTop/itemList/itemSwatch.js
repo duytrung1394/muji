@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card, Icon } from "antd";
+import { Icon } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { Row, Col } from "antd";
 
-const Swatch = styled(Card.Grid)`
-  font-size: 9pt;
-  cursor: pointer;
-  margin-right: 4px;
-  display: inline-block;
-
+const Swatch = styled(Col)`
   &&& {
-    width: 40px;
-    box-shadow: none;
-    padding: 0;
-    float: none;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 0 2px;
   }
+
   .anticon {
     display: block;
   }
@@ -25,9 +21,11 @@ const ImageWrapper = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+
   :hover {
     border: 2px solid grey;
   }
+
   img {
     border-radius: 50%;
     padding: 1px;
@@ -35,38 +33,39 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const SwatchWrapper = styled.div`
-  text-align: center;
-`;
-
 class ItemSwatch extends Component {
   state = {
     expanded: false
   };
 
-  getSwatchLength = swatches => {
-    const swatchLength = this.state.expanded
-      ? swatches.length
-      : swatches.length < 4
-        ? swatches.length
+  getSwatchLength = () => {
+    const swatchMaxLength = this.props.swatches
+      ? this.props.swatches.length
+      : 0;
+
+    return this.state.expanded
+      ? swatchMaxLength
+      : swatchMaxLength < 4
+        ? swatchMaxLength
         : 4;
-    return swatchLength;
   };
 
-  getSwatches = () => {
+  Swatches = () => {
     const { swatches, changeSwatch } = this.props;
     let items = [];
 
-    swatches.slice(0, this.getSwatchLength(swatches)).map((color, index) => {
-      let jancode = color.jancode;
-      let nostock = color.nostock;
-
+    swatches.slice(0, this.getSwatchLength()).map((swatch, index) => {
       items.push(
-        <Swatch key={index} onMouseOver={() => changeSwatch(jancode, nostock)}>
+        <Swatch
+          key={index}
+          onMouseOver={() => changeSwatch(swatch.jancode, swatch.nostock)}
+        >
           <ImageWrapper>
             <Link to={``}>
               <img
-                src={`https://img.muji.net/img/item/${jancode}_99_95.jpg`}
+                src={`https://img.muji.net/img/item/${
+                  swatch.jancode
+                }_99_95.jpg`}
                 alt=""
               />
             </Link>
@@ -77,7 +76,14 @@ class ItemSwatch extends Component {
     return items;
   };
 
-  swatchToggle = ({ expanded, values }) => {
+  SwatchToggle = () => {
+    const { swatches } = this.props;
+    const { expanded } = this.state;
+
+    if (swatches.length <= 4) {
+      return null;
+    }
+
     return (
       <Swatch>
         <span
@@ -85,18 +91,18 @@ class ItemSwatch extends Component {
             this.setState({ expanded: !expanded });
           }}
         >
-          {!expanded ? (
-            <div>
-              <IntlMessages
-                id="productCategoryTop.itemSwatch.otherColors"
-                values={{ num: values }}
-              />
-              <Icon type="down" theme="outlined" />
-            </div>
-          ) : (
+          {expanded ? (
             <div>
               <Icon type="up" theme="outlined" />
               <IntlMessages id="productCategoryTop.itemSwatch.close" />
+            </div>
+          ) : (
+            <div>
+              <IntlMessages
+                id="productCategoryTop.itemSwatch.otherColors"
+                values={{ num: swatches.length - 4 }}
+              />
+              <Icon type="down" theme="outlined" />
             </div>
           )}
         </span>
@@ -105,18 +111,11 @@ class ItemSwatch extends Component {
   };
 
   render() {
-    const { swatches } = this.props;
-
     return (
-      <SwatchWrapper>
-        <this.getSwatches />
-        {swatches.length > 4 && (
-          <this.swatchToggle
-            expanded={this.state.expanded}
-            values={swatches.length - 4}
-          />
-        )}
-      </SwatchWrapper>
+      <Row type="flex" align="middle" justify="center">
+        <this.Swatches />
+        <this.SwatchToggle />
+      </Row>
     );
   }
 }
