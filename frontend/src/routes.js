@@ -48,6 +48,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")
     )
+  },
+  {
+    path: "/store/cmdty/detail/:jan_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductDetail/index")
+    )
   }
 ];
 export default routes;
