@@ -19,14 +19,15 @@ const HeaderWrapper = styled.div`
 
 const ContentHeader = ({ title, navigationList }) => (
   <HeaderWrapper>
-    <Breadcrumb>
-      {navigationList &&
-        navigationList.map((nav, index) => (
+    {navigationList && (
+      <Breadcrumb>
+        {navigationList.map((nav, index) => (
           <Breadcrumb.Item key={index}>
             <Link to={nav.path}>{nav.title}</Link>
           </Breadcrumb.Item>
         ))}
-    </Breadcrumb>
+      </Breadcrumb>
+    )}
     <h1>{title}</h1>
   </HeaderWrapper>
 );
