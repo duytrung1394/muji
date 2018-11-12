@@ -2,7 +2,6 @@ import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
 
 const HeaderWrapper = styled.div`
   .ant-breadcrumb {
@@ -18,17 +17,18 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const Header = props => (
+const ContentHeader = ({ title, navigationList }) => (
   <HeaderWrapper>
     <Breadcrumb>
-      <Breadcrumb.Item>
-        <Link to="/store">
-          <IntlMessages id="productCategoryTop.nav.top" />
-        </Link>
-      </Breadcrumb.Item>
+      {navigationList &&
+        navigationList.map((nav, index) => (
+          <Breadcrumb.Item key={index}>
+            <Link to={nav.path}>{nav.title}</Link>
+          </Breadcrumb.Item>
+        ))}
     </Breadcrumb>
-    <h1>{props.title}</h1>
+    <h1>{title}</h1>
   </HeaderWrapper>
 );
 
-export default Header;
+export default ContentHeader;
