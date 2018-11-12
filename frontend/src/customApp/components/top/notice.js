@@ -8,29 +8,32 @@ const ContentLayout = styled(BaseContentLayout)`
   text-align: center;
 `;
 
-const StyledList = styled(List)`
-  width: auto;
+const NoticeWrapper = styled.div`
   max-width: 680px;
+  width: auto;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  margin: 0 auto;
+  padding: 10px 20px;
   font-weight: bold;
-  text-align: center;
+`;
 
-  &.ant-list-bordered {
-    border-radius: 6px;
-    margin: 0 auto;
-    padding: 10px 20px;
-    display: inline-block;
+const NoticeTitle = styled.div`
+  padding-right: 15px;
+  min-width: 80px;
+  display: inline-block;
+  vertical-align: top;
+`;
 
-    .ant-list-header {
-      padding: 0;
-    }
+const StyledList = styled(List)`
+  display: inline-block;
 
-    .ant-list-item {
-      padding: 0;
-      border-bottom: 0px solid #e8e8e8;
-      text-align: left;
-    }
+  .ant-list-item {
+    padding: 0;
+    text-align: left;
   }
 `;
+
 const StyledAnchor = styled.a`
   color: #888;
   font-weight: normal;
@@ -55,14 +58,17 @@ const notice = ({ notices }) => {
 
   return (
     <ContentLayout>
-      <StyledList
-        header={<IntlMessages id="top.attributes.notices" />}
-        dataSource={data}
-        renderItem={item => <List.Item>{item}</List.Item>}
-        bordered={true}
-        split={false}
-        itemLayout="horizontal"
-      />
+      <NoticeWrapper>
+        <NoticeTitle>
+          <IntlMessages id="top.attributes.notices" />
+        </NoticeTitle>
+        <StyledList
+          dataSource={data}
+          renderItem={item => <List.Item>{item}</List.Item>}
+          split={false}
+          itemLayout="horizontal"
+        />
+      </NoticeWrapper>
     </ContentLayout>
   );
 };
