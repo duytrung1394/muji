@@ -23,10 +23,10 @@ class ProductCategoryTopsController extends Controller
     private function getMockData($categoryCode)
     {
         return [
-            'navigation_list' => [
+            'links' => [
                 [
                     'path' => '/store',
-                    'title' => '無印良品トップ',
+                    'name' => '無印良品トップ',
                 ],
             ],
             'category_code'  => $categoryCode,

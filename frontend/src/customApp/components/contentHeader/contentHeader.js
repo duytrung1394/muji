@@ -2,34 +2,39 @@ import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { BaseContentLayout } from "../../components/panel/contentLayout";
 
-const HeaderWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
+  margin-top: 0;
+
   .ant-breadcrumb {
     margin-bottom: 15px;
+
+    .ant-breadcrumb-link {
+      font-size: 11px;
+    }
   }
-  .ant-breadcrumb-link {
-    font-size: 11px;
-  }
+
   h1 {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 0;
   }
 `;
 
-const ContentHeader = ({ title, navigationList }) => (
-  <HeaderWrapper>
-    {navigationList && (
+const ContentHeader = ({ title, links }) => (
+  <ContentLayout>
+    {links && (
       <Breadcrumb>
-        {navigationList.map((nav, index) => (
+        {links.map((link, index) => (
           <Breadcrumb.Item key={index}>
-            <Link to={nav.path}>{nav.title}</Link>
+            <Link to={link.path}>{link.name}</Link>
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>
     )}
     <h1>{title}</h1>
-  </HeaderWrapper>
+  </ContentLayout>
 );
 
 export default ContentHeader;

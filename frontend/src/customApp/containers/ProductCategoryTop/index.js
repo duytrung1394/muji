@@ -27,7 +27,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ContentHeader
             title={entity.category_title}
-            navigationList={entity.navigation_list}
+            links={entity.links}
           />
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
