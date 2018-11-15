@@ -16,6 +16,19 @@ export function restSagaFunctions(name, api, actions) {
         }
       }
     },
+    // USAGE: init.request()
+    init: function*() {
+      try {
+        const response = yield call(api.INIT);
+        yield put(actions.init.success(response.data));
+      } catch (error) {
+        if (error.response.status == 401) {
+          yield put(authActions.unauthorized(error));
+        } else {
+          yield put(actions.init.failure(error));
+        }
+      }
+    },
     // USAGE: create.request(entity)
     create: function*({ payload }) {
       try {
@@ -62,7 +75,7 @@ export function restSagaFunctions(name, api, actions) {
 export default function restEntityAllSaga(name, api, actions) {
   const f = restSagaFunctions(name, api, actions);
   return all(
-    ["fetch", "create", "update", "destroy"].map(m =>
+    ["fetch", "init", "create", "update", "destroy"].map(m =>
       takeEvery(actions[m].request.toString(), f[m])
     )
   );

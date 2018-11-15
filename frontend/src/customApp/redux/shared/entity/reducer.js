@@ -7,6 +7,10 @@ export const restInitState = new Map({
   fetched: false,
   fetchError: false,
   // resources/new 向け
+  initializing: false,
+  initialized: false,
+  initializeError: false,
+  // resources/new 向け
   creating: false,
   created: false,
   createError: false,
@@ -47,6 +51,32 @@ export const fetchCleanup = (state, action) =>
     .set("fetching", false)
     .set("fetched", false)
     .set("fetchError", false);
+
+// GET
+export const initRequest = (state, action) =>
+  state
+    .set("initializing", true)
+    .set("initialized", false)
+    .set("initializeError", false);
+
+export const initSuccess = (state, action) =>
+  state
+    .set("entity", action.payload.data)
+    .set("initializing", false)
+    .set("initialized", true);
+
+export const initFailure = (state, action) =>
+  state
+    .set("entity", {})
+    .set("initializing", false)
+    .set("initializeError", true);
+
+export const initCleanup = (state, action) =>
+  state
+    .set("entity", {})
+    .set("initializing", false)
+    .set("initialized", false)
+    .set("initializeError", false);
 
 // POST
 export const createRequest = (state, action) =>
@@ -126,6 +156,12 @@ const restReducer = {
     SUCCESS: fetchSuccess,
     FAILURE: fetchFailure,
     CLEANUP: fetchCleanup
+  },
+  INIT: {
+    REQUEST: initRequest,
+    SUCCESS: initSuccess,
+    FAILURE: initFailure,
+    CLEANUP: initCleanup
   },
   CREATE: {
     REQUEST: createRequest,

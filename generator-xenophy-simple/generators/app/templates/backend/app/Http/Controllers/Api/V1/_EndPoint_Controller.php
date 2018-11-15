@@ -19,6 +19,18 @@ class <%= EndPoint %>Controller extends Controller
     }
 
     /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function create()
+     {
+         return [
+             'data' => new \stdClass,
+         ];
+     }
+
+   /**
      * Display the specified resource.
      *
      * @param  string   $<%= camelCase(pkName) %>
