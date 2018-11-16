@@ -33,7 +33,7 @@ class NewEntity extends Component {
       <div>
         <h1>新規作成画面</h1>
         <Spin spinning={initializing || creating}>
-          <Form onSubmit={this.handleSubmit}>
+          <Form>
             <Form.Item label="name">
               <Input
                 placeholder="name"
@@ -49,7 +49,12 @@ class NewEntity extends Component {
               />
             </Form.Item>
             <Form.Item>
-              <Button htmlType="submit">作成</Button>
+              <Button
+                htmlType="submit"
+                onClick={() => {
+                  this.handleSubmit();
+                }}
+              >作成</Button>
             </Form.Item>
           </Form>
         </Spin>
