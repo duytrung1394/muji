@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Spin, Form, Input, Button } from "antd";
 import actions from "../../redux/fruit/entity/actions";
 import { injectIntl } from "react-intl";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
 
 class NewEntity extends Component {
   state = {
@@ -12,6 +13,16 @@ class NewEntity extends Component {
   componentDidMount() {
     this.props.initCleanup();
     this.props.initRequest();
+  }
+
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    const { created, entity, createCleanup, history } = this.props;
+
+    if (created) {
+      const primaryKey = entity["fruit_code"];
+      createCleanup();
+      history.push(`/fruits/${primaryKey}`);
+    }
   }
 
   handleSubmit = () => {
@@ -30,7 +41,7 @@ class NewEntity extends Component {
     const { initializing, initialized, creating, created } = this.props;
 
     return (
-      <div>
+      <ContentAreaLayout>
         <h1>新規作成画面</h1>
         <Spin spinning={initializing || creating}>
           <Form>
@@ -54,11 +65,13 @@ class NewEntity extends Component {
                 onClick={() => {
                   this.handleSubmit();
                 }}
-              >作成</Button>
+              >
+                作成
+              </Button>
             </Form.Item>
           </Form>
         </Spin>
-      </div>
+      </ContentAreaLayout>
     );
   }
 }
