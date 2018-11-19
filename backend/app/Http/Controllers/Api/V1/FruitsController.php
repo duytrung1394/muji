@@ -52,7 +52,7 @@ class FruitsController extends Controller
     public function store(Request $request)
     {
         return [
-            'item' => [
+            'data' => [
                 'fruit_code'   => 'fruit_code' . rand(0, 199),
             ],
         ];
