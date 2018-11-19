@@ -6,7 +6,11 @@ import styled from "styled-components";
 import actions from "../../redux/customer_address/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import { List } from "antd";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
 import { Button } from "../../components/customerAddress/forms/button";
 import Pagination from "../../components/customerAddress/list/pagination";
 import AddressItem from "../../components/customerAddress/list/addressItem";
@@ -23,6 +27,18 @@ const AddressAddButtonLayout = styled.div`
 const BackLinkLayout = styled.div`
   margin: 15px 0;
 `;
+
+const ContentLayout = styled(BaseContentLayout)``;
+
+const AddressListHeader = styled.div`
+  h1 {
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 28px;
+    font-weight: bold;
+  }
+`;
+
+const AddressList = styled(List)``;
 
 class Index extends Component {
   componentDidMount() {
@@ -70,51 +86,70 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching || destroying} size="large">
-          <h1>
-            <IntlMessages id="customerAddress.list.title" />
-          </h1>
-          <p>
-            <IntlMessages id="customerAddress.list.description" />
-          </p>
+          <ContentLayout>
+            <AddressListHeader>
+              <h1>
+                <IntlMessages id="customerAddress.list.title" />
+              </h1>
+              <p>
+                <IntlMessages id="customerAddress.list.description" />
+              </p>
+            </AddressListHeader>
+            {total < MAX_NUMBER_OF_ADDRESS ? (
+              <AddressAddButtonLayout>
+                <Link to={`${BASE_URL}/create`}>
+                  <Button icon="add">
+                    <IntlMessages id="customerAddress.list.link.add" />
+                  </Button>
+                </Link>
+              </AddressAddButtonLayout>
+            ) : null}
 
-          {total < MAX_NUMBER_OF_ADDRESS ? (
-            <AddressAddButtonLayout>
-              <Link to={`${BASE_URL}/create`}>
-                <Button icon="add">
-                  <IntlMessages id="customerAddress.list.link.add" />
-                </Button>
+            <Pagination
+              size="small"
+              total={total}
+              current={currentPage}
+              changeHandler={this.onChange}
+            />
+
+            <AddressList
+              className="address-list"
+              itemLayout="horizontal"
+              dataSource={entities}
+              renderItem={(entity, index) => (
+                //<List.Item>
+                <AddressItem
+                  entity={entity}
+                  key={index}
+                  destroyRequest={destroyRequest}
+                />
+                //</List.Item>
+              )}
+            />
+
+            {/*
+            {entities &&
+              entities.map((entity, index) => (
+                <AddressItem
+                  entity={entity}
+                  key={index}
+                  destroyRequest={destroyRequest}
+                />
+            ))} */}
+
+            <Pagination
+              size="small"
+              total={total}
+              current={currentPage}
+              changeHandler={this.onChange}
+            />
+
+            <BackLinkLayout>
+              <Link to="">
+                <IntlMessages id="customerAddress.list.link.backLink" />
               </Link>
-            </AddressAddButtonLayout>
-          ) : null}
-
-          <Pagination
-            size="small"
-            total={total}
-            current={currentPage}
-            changeHandler={this.onChange}
-          />
-
-          {entities &&
-            entities.map((entity, index) => (
-              <AddressItem
-                entity={entity}
-                key={index}
-                destroyRequest={destroyRequest}
-              />
-            ))}
-
-          <Pagination
-            size="small"
-            total={total}
-            current={currentPage}
-            changeHandler={this.onChange}
-          />
-
-          <BackLinkLayout>
-            <Link to="">
-              <IntlMessages id="customerAddress.list.link.backLink" />
-            </Link>
-          </BackLinkLayout>
+            </BackLinkLayout>
+          </ContentLayout>
         </Spin>
       </ContentAreaLayout>
     );

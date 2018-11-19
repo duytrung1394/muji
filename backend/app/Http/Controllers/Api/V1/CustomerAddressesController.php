@@ -101,7 +101,7 @@ class CustomerAddressesController extends Controller
             'address1' => "東京都",
             'address2' => "豊島区",
             'address3' => "東池袋４ー２６ー３",
-            'address4' => $index === 0 ? "無印良品ビル" : "無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル",
+            'address4' => $index === 0 ? "無印良品ビル" : "無印良品ビル無印良品ビル無印良品ビル１０",
             'telNo' => "03-3989-4191",
         ];
     }
