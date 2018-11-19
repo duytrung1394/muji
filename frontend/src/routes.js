@@ -29,6 +29,11 @@ const routes = [
     )
   },
   {
+    path: "/fruits/!new",
+    exact: true,
+    component: asyncComponent(() => require("./customApp/containers/Fruit/new"))
+  },
+  {
     path: "/fruits/:fruit_code",
     exact: true,
     component: asyncComponent(() =>

@@ -5,6 +5,7 @@ export function RESTEntityApi(endpoint, keyName = "codes") {
   endpoint = `/api/v1/${endpoint}`;
 
   const GET = primary_key => api.get(`${endpoint}/${primary_key}`);
+  const INIT = () => api.get(`${endpoint}/create`);
   const POST = body => api.post(endpoint, body);
   const PUT = (primary_key, body) =>
     api.put(`${endpoint}/${primary_key}`, body);
@@ -18,6 +19,7 @@ export function RESTEntityApi(endpoint, keyName = "codes") {
 
   return {
     GET,
+    INIT,
     POST,
     PUT,
     DELETE
