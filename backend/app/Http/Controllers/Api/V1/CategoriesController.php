@@ -49,7 +49,7 @@ class CategoriesController extends Controller
         $responce = $this->category->show($id);
 
         return [
-            'item'  => $responce->data,
+            'data'  => $responce->data,
         ];
     }
 
@@ -64,7 +64,7 @@ class CategoriesController extends Controller
         $responce = $this->category->store($request);
 
         return [
-            'item'  => $responce->data,
+            'data'  => $responce->data,
         ];
     }
 
@@ -81,7 +81,7 @@ class CategoriesController extends Controller
         $responce = $this->category->update($request, $id);
 
         return [
-            'item'  => $responce->data,
+            'data'  => $responce->data,
         ];
     }
 

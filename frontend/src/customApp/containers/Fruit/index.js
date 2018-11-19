@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
 import actions from "../../redux/fruit/list/actions";
 import { injectIntl } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
@@ -89,6 +91,9 @@ class Index extends Component {
 
     return (
       <LayoutWrapper>
+        <Link to="/fruits/!new">
+          <Button>新規作成</Button>
+        </Link>
         <IndexWrapper className="isoLayoutContent">
           <Table
             rowKey="id"
