@@ -25,7 +25,7 @@ class TasksController extends Controller
     public function show($id)
     {
         return [
-            'item' => Task::find($id),
+            'data' => Task::find($id),
         ];
     }
 
@@ -52,7 +52,7 @@ class TasksController extends Controller
         ]);
 
         return [
-            'item' => $task,
+            'data' => $task,
         ];
     }
 
@@ -84,7 +84,7 @@ class TasksController extends Controller
             ->save();
 
         return [
-            'item' => $task,
+            'data' => $task,
         ];
     }
 

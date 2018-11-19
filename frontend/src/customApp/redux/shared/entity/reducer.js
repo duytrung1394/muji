@@ -35,7 +35,7 @@ export const fetchRequest = (state, action) =>
 
 export const fetchSuccess = (state, action) =>
   state
-    .set("entity", action.payload.item)
+    .set("entity", action.payload.data)
     .set("fetching", false)
     .set("fetched", true);
 
@@ -89,7 +89,7 @@ export const createRequest = (state, action) =>
 export const createSuccess = (state, action) =>
   state
     .set("creating", false)
-    .set("entity", action.payload.item)
+    .set("entity", action.payload.data)
     .set("created", true);
 
 export const createFailure = (state, action) =>

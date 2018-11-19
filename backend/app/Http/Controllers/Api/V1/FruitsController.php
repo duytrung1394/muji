@@ -39,7 +39,7 @@ class FruitsController extends Controller
     public function show($fruitCode)
     {
         return [
-            'item' => $this->getMockdata($fruitCode),
+            'data' => $this->getMockdata($fruitCode),
         ];
     }
 

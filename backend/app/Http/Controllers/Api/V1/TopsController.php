@@ -13,7 +13,7 @@ class TopsController extends Controller
     public function index(Request $request)
     {
         return [
-            'item' => $this->getMockdata(),
+            'data' => $this->getMockdata(),
         ];
     }
 

@@ -39,7 +39,7 @@ class <%= EndPoint %>Controller extends Controller
     public function show($<%= camelCase(pkName) %>)
     {
         return [
-            'item' => $this->getMockdata($<%= camelCase(pkName) %>),
+            'data' => $this->getMockdata($<%= camelCase(pkName) %>),
         ];
     }
 

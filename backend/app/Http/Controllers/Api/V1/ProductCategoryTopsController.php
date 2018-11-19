@@ -13,7 +13,7 @@ class ProductCategoryTopsController extends Controller
     public function index(string $categoryCode)
     {
         return [
-            'item' => $this->getMockdata($categoryCode),
+            'data' => $this->getMockdata($categoryCode),
         ];
     }
 
