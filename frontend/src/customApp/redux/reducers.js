@@ -1,5 +1,6 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
+import CustomerReview from "./customer_review/reducers";
 import ProductCategoryTop from "./product_category_top/reducers";
 import Top from "./top/reducers";
 import Httpbin from "./httpbin/reducers";
@@ -9,5 +10,6 @@ export default {
   Fruit,
   Httpbin,
   Top,
-  ProductCategoryTop
+  ProductCategoryTop,
+  CustomerReview
 };

@@ -53,6 +53,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")
     )
+  },
+  {
+    path: "/store/cust/review/history",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/index")
+    )
+  },
+  {
+    path: "/store/cust/review/history/page/:page(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/index")
+    )
   }
 ];
 export default routes;
