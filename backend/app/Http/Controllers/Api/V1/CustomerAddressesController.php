@@ -97,6 +97,7 @@ class CustomerAddressesController extends Controller
         return [
             'addressBookNo' => $index,
             'name' => $index === 0 ? "無印　良太" : "良品　計子",
+            'addressChange' => $index === 0 ? "本人の住所を変更される場合は、会員情報に反映されます。" : null,
             'zipCode' => "170-8424",
             'address1' => "東京都",
             'address2' => "豊島区",
