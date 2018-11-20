@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import IntlMessages from "../../../components/utility/intlMessages";
+import { Spin } from "antd";
+import styled from "styled-components";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
+import ReviewItem from "../../components/customerReview/list/reviewItem";
+
+const ContentLayout = styled(BaseContentLayout)``;
+
+const ListHeader = styled.div`
+  h1 {
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 28px;
+    font-weight: bold;
+  }
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -13,30 +29,20 @@ class Index extends Component {
     };
   }
 
-  // React methods
   componentDidMount() {
     this.fetchRequest(this.props);
   }
 
   fetchRequest = props => {
-    // ページングもケースバイケースなのでコンポーネント毎に実装する
     props.fetchRequest({
-      page: 1,
+      offset: 0,
+      length: 5,
       filters: JSON.stringify(props.filters || [])
     });
   };
 
-  // React.render
   render() {
-    const {
-      // types
-      total,
-      entities,
-      fetching,
-      destroying,
-      // react-router
-      history
-    } = this.props;
+    const { total, entities, fetching, destroying, history } = this.props;
 
     const columns = [
       {
@@ -75,18 +81,30 @@ class Index extends Component {
     };
 
     return (
-      <LayoutWrapper>
-        <div className="isoLayoutContent">
-          <Table
-            rowKey="id"
-            dataSource={entities}
-            columns={columns}
-            rowSelection={rowSelection}
-            loading={fetching || destroying}
-            pagination={pagination}
-          />
-        </div>
-      </LayoutWrapper>
+      <ContentAreaLayout>
+        <Spin spinning={fetching || destroying} size="large">
+          <ContentLayout>
+            <ListHeader>
+              <h1>
+                <IntlMessages id="customerReview.list.title" />
+              </h1>
+              <div>
+                <ul>
+                  <li>
+                    <IntlMessages id="customerReview.name" />
+                    <span>6</span>
+                  </li>
+                </ul>
+                <div>投稿日の新しい順</div>
+              </div>
+            </ListHeader>
+            {entities &&
+              entities.map((entity, index) => (
+                <ReviewItem entity={entity} key={index} />
+              ))}
+          </ContentLayout>
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
