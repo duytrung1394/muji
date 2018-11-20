@@ -19,15 +19,27 @@ class CustomerAddressesController extends Controller
     }
 
     /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function create()
+     {
+         return [
+             'data' => ['brandNew' => true],
+         ];
+     }
+
+    /**
      * Display the specified resource.
      *
      * @param  string   $customerAddressCode
      * @return Response
      */
-    public function show($customerAddressCode)
+    public function show($addressBookNo)
     {
         return [
-            'item' => $this->getMockdata($customerAddressCode),
+            'data' => $this->getMockdata($addressBookNo),
         ];
     }
 
@@ -39,8 +51,9 @@ class CustomerAddressesController extends Controller
      */
     public function store(Request $request)
     {
+        $isNew = true;
         return [
-            'data' => [],
+            'data' => $this->getMockDataByRequest($request, $isNew),
         ];
     }
 
@@ -51,10 +64,10 @@ class CustomerAddressesController extends Controller
      * @param  string   $camelCase(pkName)
      * @return Response
      */
-    public function update(Request $request, $customerAddressCode)
+    public function update(Request $request, $addressBookNo)
     {
         return [
-            'data' => [],
+            'data' => $this->getMockDataByRequest($request),
         ];
     }
 
@@ -92,17 +105,45 @@ class CustomerAddressesController extends Controller
     /**
      * モックデータを生成して取得
      */
-    private function getMockData($index)
+    private function getMockData($addressBookNo)
     {
         return [
-            'addressBookNo' => $index,
-            'name' => $index === 0 ? "無印　良太" : "良品　計子",
+            'addressBookNo' => $addressBookNo,
+            'name' => $addressBookNo === 0 ? "無印　良太" : "良品　計子",
+            'nameKana' => $addressBookNo === 0 ? "ムジルシ　リョウタ" : "リョウヒン　ケイコ",
             'zipCode' => "170-8424",
             'address1' => "東京都",
             'address2' => "豊島区",
             'address3' => "東池袋４ー２６ー３",
-            'address4' => $index === 0 ? "無印良品ビル" : "無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル",
+            'address4' => $addressBookNo === 0 ? "無印良品ビル" : "無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル無印良品ビル",
             'telNo' => "03-3989-4191",
+        ];
+    }
+
+    /**
+     * お届け先の確認用データ
+     */
+    private function getMockDataByRequest(Request $request, bool $isNew = false)
+    {
+        $name = $request->input("customer_address.name", "");
+        if ($isNew) {
+            $name = $request->input("customer_address.familyName", "")."　".$request->input("customer_address.firstName", "");
+        }
+        $nameKana = $request->input("customer_address.nameKana", "");
+        if ($isNew) {
+            $nameKana = $request->input("customer_address.familyNameKana", "")."　".$request->input("customer_address.firstNameKana", "");
+        }
+        return [
+            'addressBookNo' => $request->input("customer_address.addressBookNo", 199),
+            'name' => $name,
+            'nameKana' => $nameKana,
+            'zipCode' => $request->input("customer_address.zipCode", ""),
+            'address1' => $request->input("customer_address.address1", ""),
+            'address2' => $request->input("customer_address.address2", ""),
+            'address3' => $request->input("customer_address.address3", ""),
+            'address4' => $request->input("customer_address.address4", ""),
+            'telNo' => $request->input("customer_address.telNo", ""),
+            'brandNew' => $request->input("customer_address.brandNew", false),
         ];
     }
 }
