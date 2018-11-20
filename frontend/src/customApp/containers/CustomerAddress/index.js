@@ -43,7 +43,7 @@ const AddressListHeader = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 880px;
+  width: 700px;
   margin: 0 auto;
   padding: 0 15px;
 `;

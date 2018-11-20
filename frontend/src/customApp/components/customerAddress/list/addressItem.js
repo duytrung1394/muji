@@ -51,6 +51,10 @@ const AddressItem = ({ entity, destroyRequest }) => (
         {entity.address3}
         {entity.address4}
       </dd>
+      <dd>
+        {entity.care}
+        <IntlMessages id="customerAddress.attributes.care" />
+      </dd>
       <dd>{entity.telNo}</dd>
       <DdLink>
         <EditDeleteLink

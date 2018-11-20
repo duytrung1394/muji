@@ -29,6 +29,7 @@
   "customerAddress.attributes.nameKana": "フリガナ",
   "customerAddress.attributes.telNo": "電話番号",
   "customerAddress.attributes.zipCode": "郵便番号",
+  "customerAddress.attributes.care":"様方",
   "customerAddress.attributes.esq":" 様",
   "customerAddress.list.delete.confirm": "{name} 様の住所を削除してもよろしいですか?",
   "customerAddress.list.description": "登録されているお届け先の一覧です。このページでお届け先の追加、編集、削除が行えます。",
