@@ -3,6 +3,22 @@ import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import styled from "styled-components";
+
+const StyledDd = styled.dd`
+  float: right;
+  font-size: 12px;
+  &&& {
+    margin-top: -20px;
+  }
+  a {
+    color: #333333;
+    text-decoration: underline;
+    :hover {
+      color: #7f0019;
+    }
+  }
+`;
 
 class EditDeleteLink extends Component {
   deleteAddress = (addressBookNo, name, destroyRequest) => {
@@ -24,7 +40,7 @@ class EditDeleteLink extends Component {
   render() {
     const { addressBookNo, name, destroyRequest } = this.props;
     return (
-      <div>
+      <StyledDd>
         <Link to={`/store/cust/address/edit/${addressBookNo}`}>
           <IntlMessages id="customerAddress.list.link.edit" />
         </Link>
@@ -39,7 +55,7 @@ class EditDeleteLink extends Component {
             <IntlMessages id="customerAddress.list.link.delete" />
           </a>
         ]}
-      </div>
+      </StyledDd>
     );
   }
 }

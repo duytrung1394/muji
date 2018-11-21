@@ -8,42 +8,27 @@ const StyledAddressItem = styled.div`
   margin: 15px;
   padding: 15px 15px 0;
   border-top: 1px solid #666;
+  dt {
+    font-weight: bold;
+  }
   dd {
     margin: 0;
   }
-`;
-
-const Dt = styled.dt`
-  font-weight: bold;
-`;
-
-const Dd = styled.dd`
-  float: right;
-`;
-
-const DdLink = styled.dd`
-  float: right;
-  font-size: 12px;
-  &&& {
-    margin-top: -20px;
-  }
-  a {
-    color: #333333;
-    text-decoration: underline;
-    :hover {
-      color: #7f0019;
-    }
+  .right {
+    float: right;
   }
 `;
 
 const AddressItem = ({ entity, destroyRequest }) => (
   <StyledAddressItem>
     <dl>
-      <Dt>
+      <dt>
         {entity.name}
         <IntlMessages id="customerAddress.attributes.esq" />
-      </Dt>
-      <Dd>{entity.addressChange}</Dd>
+      </dt>
+      <dd className="right">
+        {entity.addressBookNo === 0 ? entity.addressChange : null}
+      </dd>
       <dd>{entity.zipCode}</dd>
       <dd>
         {entity.address1}
@@ -56,13 +41,11 @@ const AddressItem = ({ entity, destroyRequest }) => (
         <IntlMessages id="customerAddress.attributes.care" />
       </dd>
       <dd>{entity.telNo}</dd>
-      <DdLink>
-        <EditDeleteLink
-          addressBookNo={entity.addressBookNo}
-          name={entity.name}
-          destroyRequest={destroyRequest}
-        />
-      </DdLink>
+      <EditDeleteLink
+        addressBookNo={entity.addressBookNo}
+        name={entity.name}
+        destroyRequest={destroyRequest}
+      />
     </dl>
   </StyledAddressItem>
 );

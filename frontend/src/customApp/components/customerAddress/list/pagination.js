@@ -10,6 +10,9 @@ const StyledPagination = styled(AntdPagination)`
     padding-left: 15px;
     font-size: 14px;
   }
+  &.ant-pagination {
+    margin-top: 15px;
+  }
 `;
 
 const ItemRenderA = styled.a`

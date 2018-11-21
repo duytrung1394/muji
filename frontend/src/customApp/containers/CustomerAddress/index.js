@@ -11,7 +11,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import { Button } from "../../components/customerAddress/forms/button";
+import { AddButton } from "../../components/customerAddress/forms/button";
 import Pagination from "../../components/customerAddress/list/pagination";
 import AddressItem from "../../components/customerAddress/list/addressItem";
 
@@ -21,7 +21,6 @@ const MAX_NUMBER_OF_ADDRESS = 100;
 
 const AddressAddButtonLayout = styled.div`
   text-align: right;
-  margin-bottom: 15px;
 `;
 
 const BackLinkLayout = styled.div`
@@ -134,9 +133,9 @@ class Index extends Component {
               {total < MAX_NUMBER_OF_ADDRESS ? (
                 <AddressAddButtonLayout>
                   <Link to={`${BASE_URL}/create`}>
-                    <Button icon="add">
+                    <AddButton>
                       <IntlMessages id="customerAddress.list.link.add" />
-                    </Button>
+                    </AddButton>
                   </Link>
                 </AddressAddButtonLayout>
               ) : null}
