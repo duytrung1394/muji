@@ -15,6 +15,14 @@ $router->get('/api/v1/fruits', [
 ]);
 
 /**
+  * 作成
+  */
+ $router->get('/api/v1/fruits/create', [
+     'middleware'    => [],
+     'uses'          => 'Api\V1\FruitsController@create',
+ ]);
+
+/**
  * 詳細取得
  */
 $router->get('/api/v1/fruits/{taskCode}', [
