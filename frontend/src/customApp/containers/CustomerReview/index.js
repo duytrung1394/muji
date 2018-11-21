@@ -10,15 +10,24 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
+import SubList from "./subList";
+import ReviewButton from "./reviewButton";
 
-const ContentLayout = styled(BaseContentLayout)``;
+const ContentLayout = styled(BaseContentLayout)`
+  max-width: 748px;
+  margin: 20px 0 0;
+`;
 
 const ListHeader = styled.div`
   h1 {
-    border-bottom: 1px solid #e6e6e6;
     font-size: 28px;
     font-weight: bold;
   }
+`;
+
+const ItemsList = styled.ul`
+  list-style: none;
+  padding: 0;
 `;
 
 class Index extends Component {
@@ -42,43 +51,7 @@ class Index extends Component {
   };
 
   render() {
-    const { total, entities, fetching, destroying, history } = this.props;
-
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
-      }
-    ];
-
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
-    };
-
-    const pagination = {
-      defaultCurrent: 1,
-      total: total,
-      onChange: page => {
-        let url;
-        if (page === 1) {
-          url = "/customerReviews";
-        } else {
-          url = `/customerReviews/page/${page}`;
-        }
-        history.push(url);
-      }
-    };
+    const { total, entities, fetching, destroying } = this.props;
 
     return (
       <ContentAreaLayout>
@@ -88,20 +61,15 @@ class Index extends Component {
               <h1>
                 <IntlMessages id="customerReview.list.title" />
               </h1>
-              <div>
-                <ul>
-                  <li>
-                    <IntlMessages id="customerReview.name" />
-                    <span>6</span>
-                  </li>
-                </ul>
-                <div>投稿日の新しい順</div>
-              </div>
+              <SubList />
             </ListHeader>
-            {entities &&
-              entities.map((entity, index) => (
-                <ReviewItem entity={entity} key={index} />
-              ))}
+            <ItemsList>
+              {entities &&
+                entities.map((entity, index) => (
+                  <ReviewItem entity={entity} key={index} />
+                ))}
+              <ReviewButton />
+            </ItemsList>
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>

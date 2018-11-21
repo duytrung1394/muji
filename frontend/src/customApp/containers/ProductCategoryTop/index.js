@@ -25,10 +25,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <ContentHeader
-            title={entity.category_title}
-            links={entity.links}
-          />
+          <ContentHeader title={entity.category_title} links={entity.links} />
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
           <CategoryList innerCategories={entity.innerCategories} />
