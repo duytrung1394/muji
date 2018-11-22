@@ -31,6 +31,7 @@
   "customerAddress.attributes.zipCode": "郵便番号",
   "customerAddress.attributes.care":"様方",
   "customerAddress.attributes.esq":" 様",
+  "customerAddress.attributes.addressChange":"本人の住所を変更される場合は、会員情報に反映されます。",
   "customerAddress.list.delete.confirm": "{name} 様の住所を削除してもよろしいですか?",
   "customerAddress.list.description": "登録されているお届け先の一覧です。このページでお届け先の追加、編集、削除が行えます。",
   "customerAddress.list.link.add": "お届け先の追加",

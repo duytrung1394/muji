@@ -27,7 +27,9 @@ const AddressItem = ({ entity, destroyRequest }) => (
         <IntlMessages id="customerAddress.attributes.esq" />
       </dt>
       <dd className="right">
-        {entity.addressBookNo === 0 ? entity.addressChange : null}
+        {entity.addressBookNo === 0 ? (
+          <IntlMessages id="customerAddress.attributes.addressChange" />
+        ) : null}
       </dd>
       <dd>{entity.zipCode}</dd>
       <dd>

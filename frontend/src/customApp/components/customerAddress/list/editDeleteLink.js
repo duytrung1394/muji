@@ -5,7 +5,7 @@ import { Modal } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 
-const StyledDd = styled.dd`
+const Div = styled.div`
   float: right;
   font-size: 12px;
   &&& {
@@ -40,7 +40,7 @@ class EditDeleteLink extends Component {
   render() {
     const { addressBookNo, name, destroyRequest } = this.props;
     return (
-      <StyledDd>
+      <Div>
         <Link to={`/store/cust/address/edit/${addressBookNo}`}>
           <IntlMessages id="customerAddress.list.link.edit" />
         </Link>
@@ -55,7 +55,7 @@ class EditDeleteLink extends Component {
             <IntlMessages id="customerAddress.list.link.delete" />
           </a>
         ]}
-      </StyledDd>
+      </Div>
     );
   }
 }
