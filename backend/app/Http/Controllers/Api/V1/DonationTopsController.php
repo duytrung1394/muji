@@ -23,6 +23,12 @@ class DonationTopsController extends Controller
     private function getMockData()
     {
         return [
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ / 募金券',
+                ],
+            ],
             'title' => '募金',
             'article' => [
                 'title' =>"タイトル",

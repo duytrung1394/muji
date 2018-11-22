@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/donation_top/list/actions";
+import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
+import ContentHeader from "../../components/header/contentHeader";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import Article from "../../components/productCategoryTop/article";
+import DonationList from "../../components/donationTop/donationList";
 
 class Index extends Component {
   componentDidMount() {
@@ -12,15 +15,15 @@ class Index extends Component {
 
   render() {
     const { entity, fetching } = this.props;
-
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
+          <ContentHeader title={entity.category_title} links={entity.links} />
           <div>
             <span>・{entity.title}</span>
           </div>
-          <div>募金記事</div>
-          <div>募金リスト</div>
+          <Article article={entity.article} />
+          <DonationList donations={entity.donations} />
           <div>「過去の募金実績」ボタン、「募金券で作れる未来」ボタン</div>
         </Spin>
       </ContentAreaLayout>
