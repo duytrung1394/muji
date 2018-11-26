@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import { Spin, Button } from "antd";
 import ContentHeader from "../../components/header/contentHeader";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
-import Article from "../../components/productCategoryTop/article";
+import Article from "../../components/donationTop/article";
 import DonationList from "../../components/donationTop/donationList";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
