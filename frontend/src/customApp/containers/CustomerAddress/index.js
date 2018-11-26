@@ -133,7 +133,7 @@ class Index extends Component {
               {total < MAX_NUMBER_OF_ADDRESS ? (
                 <AddressAddButtonLayout>
                   <Link to={`${BASE_URL}/create`}>
-                    <AddButton>
+                    <AddButton type="primary" size="small" icon="plus">
                       <IntlMessages id="customerAddress.list.link.add" />
                     </AddButton>
                   </Link>

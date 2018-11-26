@@ -10,6 +10,7 @@ const StyledButton = styled(Button)`
       margin: 0;
     }
   }
+
   &.ant-btn-primary {
     background-color: #333;
     border: none;
@@ -17,10 +18,13 @@ const StyledButton = styled(Button)`
       background-color: #7f0019;
     }
   }
+
+  .anticon {
+    padding-right: 5px;
+    font-weight: bold;
+  }
 `;
 
-export const AddButton = () => (
-  <StyledButton type="primary" size="small" icon="plus">
-    <IntlMessages id="customerAddress.list.link.add" />
-  </StyledButton>
+export const AddButton = props => (
+  <StyledButton {...props}>{props.children}</StyledButton>
 );

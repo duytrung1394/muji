@@ -16,7 +16,7 @@ const StyledPagination = styled(AntdPagination)`
 `;
 
 const ItemRenderA = styled.a`
-  padding-right: 15px;
+  padding: 0 10px;
 `;
 
 const NumSpan = styled.span`
