@@ -15,7 +15,7 @@ $router->get('/api/v1/donation-tops', [
 ]);
 
 /**
- * 詳細(edit)取得
+ * 詳細(detail)取得
  */
 $router->get('/api/v1/donation-tops/{donationCode}', [
     'middleware'    => [],

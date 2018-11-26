@@ -8,7 +8,6 @@ import Form from "../../components/donationTop/forms/form";
 
 class Edit extends Component {
   componentDidMount() {
-    //this.props.request(this.props.match.params.donationCode);
     this.props.fetchRequest(this.props.match.params.donationCode);
   }
 
@@ -23,19 +22,14 @@ class Edit extends Component {
 
   render() {
     const donationCode = this.props.match.params.donationCode;
-    const { fetched, updated } = this.props;
+    const { fetched, updated, entity } = this.props;
     return (
       <ContentAreaLayout>
-        <h1>
-          <IntlMessages id="donationTop.edit.title" />
-        </h1>
-        <p>
-          <IntlMessages id="donationTop.edit.description" />
-        </p>
-        {fetched && !updated && (
+        {fetched &&
+          !updated && (
             <Form
               actionType="edit"
-              entity={this.props.entity}
+              entity={entity}
               requestHandler={entity =>
                 this.props.updateRequest(donationCode, entity)
               }
@@ -50,7 +44,7 @@ const mapStateToProps = state => {
   return state.DonationTop.Entity.toJS();
 };
 
-//const { request, cleanup } = actions.update;
+const { request, cleanup } = actions.update;
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
