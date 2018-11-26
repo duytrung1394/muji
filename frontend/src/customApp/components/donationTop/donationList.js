@@ -1,7 +1,7 @@
 import IntlMessages from "../../../components/utility/intlMessages";
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/top/entity/actions";
+import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 import { Row, Card } from "antd";
@@ -74,7 +74,7 @@ class DonationList extends Component {
                   <StyledRow justify="start" align="top">
                     {donation.items.map((item, index) => {
                       return (
-                        <Link to="">
+                        <Link to={"/store/cmdty/donation/" + item.donationCode}>
                           <StyledCard
                             hoverable
                             cover={<img alt="example" src={item.img} />}
