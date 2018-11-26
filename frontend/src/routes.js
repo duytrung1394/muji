@@ -60,6 +60,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/index")
     )
+  },
+  {
+    path: "/store/cmdty/donation/:donation_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/detail")
+    )
   }
 ];
 export default routes;
