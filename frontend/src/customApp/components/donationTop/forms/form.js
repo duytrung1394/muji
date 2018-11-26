@@ -35,6 +35,7 @@ class Form extends Component {
     return (
       <div>
         <h1>募金詳細</h1>
+        <h2>{entity.title}</h2>
         <AntdForm>
           <AntdForm.Item label="種類" colon={false} {...formItemLayout}>
             <div>一口ボタン10円・一口ボタン100円</div>

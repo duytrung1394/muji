@@ -25,6 +25,7 @@ class DonationTopsController extends Controller
      */
     public function detail($donationCode)
     {
+        
         return [
             'data' => $this->getMockdata($donationCode),
         ];

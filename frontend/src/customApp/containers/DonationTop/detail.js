@@ -6,9 +6,9 @@ import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Form from "../../components/donationTop/forms/form";
 
-class Edit extends Component {
+class Detail extends Component {
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.donationCode);
+    this.props.fetchRequest(this.props.match.params.donation_code);
   }
 
   //　TODO: 更新時処理
@@ -62,4 +62,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Edit);
+export default enhance(Detail);
