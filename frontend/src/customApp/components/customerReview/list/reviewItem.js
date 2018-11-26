@@ -88,6 +88,7 @@ const PopIcon = styled.li`
   bottom: 5px;
   color: #333;
   font-size: 20px;
+  cursor:pointer;
 `;
 
 const PopoverButton = styled.span`
@@ -131,16 +132,19 @@ const ReviewItem = ({ entity }) => (
       </Link>
     </div>
     <InfoList>
-      <Link to={`store/review/detail/${entity.jancode}`}>
         <li>
           <CommentIcon type="message" />
+          <Link to={`store/review/detail/${entity.jancode}`}>
           <span>{entity.evaluations_comment_count}</span>件のコメント
-        </li>
+          </Link>
+        </li>   
         <li>
           <CommentIcon type="like" />
+          <Link to={`store/review/detail/${entity.jancode}`}>
           <span>
             {entity.evaluations_useful_count}
           </span>人が役に立ったと考えています
+          </Link>
         </li>
         <PopIcon>
           <Popover
@@ -151,7 +155,6 @@ const ReviewItem = ({ entity }) => (
             <PopoverButton>...</PopoverButton>
           </Popover>
         </PopIcon>
-      </Link>
     </InfoList>
   </StyledItem>
 );

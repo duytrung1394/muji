@@ -25,14 +25,17 @@ const StyledIcon = styled(Icon)`
   padding-left: 5px;
 `;
 
-const onClick = () => {
-  console.log("hi");
-};
-
 const ReviewButton = props => {
+  const seeMore = () => {
+    props.getCustomerReviewRequest({
+      offset: props.customerReviews.length,
+      length: 5
+    })
+  };
+
   return (
     <ButtonWrapper>
-      <SeeMoreButton onClick={onClick}>
+      <SeeMoreButton onClick={seeMore}>
         もっと見る
         <StyledIcon type="down" />
       </SeeMoreButton>

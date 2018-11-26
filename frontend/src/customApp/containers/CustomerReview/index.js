@@ -39,19 +39,16 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.fetchRequest(this.props);
+    this.props.fetchRequest("");
   }
 
-  fetchRequest = props => {
-    props.fetchRequest({
-      offset: 0,
-      length: 5,
-      filters: JSON.stringify(props.filters || [])
-    });
-  };
-
   render() {
-    const { total, entities, fetching, destroying } = this.props;
+    const { 
+      entity,
+      fetching,
+      destroying,
+      getCustomerReviewRequest,
+     } = this.props;
 
     return (
       <ContentAreaLayout>
@@ -64,11 +61,13 @@ class Index extends Component {
               <SubList />
             </ListHeader>
             <ItemsList>
-              {entities &&
-                entities.map((entity, index) => (
-                  <ReviewItem entity={entity} key={index} />
+              {entity.customer_reviews &&
+                entity.customer_reviews.map((item, index) => (
+                  <ReviewItem entity={item} key={index} />
                 ))}
-              <ReviewButton />
+              <ReviewButton
+              customerReviews={entity.customer_reviews}
+              getCustomerReviewRequest={getCustomerReviewRequest} />
             </ItemsList>
           </ContentLayout>
         </Spin>
@@ -78,11 +77,12 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.CustomerReview.List.toJS();
+  return state.CustomerReview.Entity.toJS();
 };
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
+  getCustomerReviewRequest: actions.getCustomerReview.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
