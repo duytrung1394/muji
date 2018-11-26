@@ -23,9 +23,8 @@ class DonationTopsController extends Controller
      * @param  string   $donationCode
      * @return Response
      */
-    public function detail($donationCode)
+    public function show($donationCode)
     {
-        
         return [
             'data' => $this->getMockdata($donationCode),
         ];

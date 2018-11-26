@@ -72,7 +72,7 @@ const routes = [
     path: "/store/cmdty/donation/:donation_code",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/detail")
+      require("./customApp/containers/DonationTop/show")
     )
   },
   {
