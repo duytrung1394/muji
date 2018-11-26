@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
-import { Spin } from "antd";
+import { Spin, Button } from "antd";
 import ContentHeader from "../../components/header/contentHeader";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
 import Article from "../../components/productCategoryTop/article";
 import DonationList from "../../components/donationTop/donationList";
+import { Link } from "react-router-dom";
+import IntlMessages from "../../../components/utility/intlMessages";
+import DonationButton from "../../components/donationTop/button";
 
 class Index extends Component {
   componentDidMount() {
@@ -24,7 +27,7 @@ class Index extends Component {
           </div>
           <Article article={entity.article} />
           <DonationList donations={entity.donations} />
-          <div>「過去の募金実績」ボタン、「募金券で作れる未来」ボタン</div>
+          <DonationButton />
         </Spin>
       </ContentAreaLayout>
     );
