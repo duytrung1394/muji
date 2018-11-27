@@ -3,6 +3,11 @@ import { Row, Col, Input, Form as AntdForm } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
+import Organization from "./organization";
+import Activity from "./card";
+import Message from "./message";
+import OtherDonation from "./otherDonation";
+import Guide from "./guide";
 
 const formItemLayout = {
   labelCol: {
@@ -40,6 +45,11 @@ class Form extends Component {
           <AntdForm.Item label="種類" colon={false} {...formItemLayout}>
             <div>一口ボタン10円・一口ボタン100円</div>
           </AntdForm.Item>
+          <Organization/>
+          <Activity/>
+          <Message/>
+          <OtherDonation/>
+          <Guide/>
           <Row>
             <Col span={12}>
               <Link to="/store/cmdty/donation">前のページに戻る</Link>
