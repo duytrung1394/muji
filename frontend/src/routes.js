@@ -67,6 +67,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerReview/new")
     )
+  },
+  {
+    path: "/store/cust/address/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cust/address/list/page/:page(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
   }
 ];
 export default routes;
