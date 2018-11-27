@@ -6,7 +6,7 @@ import { Button } from "antd";
 
 const Div = styled.div`
   text-align: right;
-  margin-top: 15px;
+  margin: 15px 0;
   button {
     color: #191919;
     font-weight: bold;
