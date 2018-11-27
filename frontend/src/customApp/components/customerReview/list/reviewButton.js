@@ -1,5 +1,5 @@
 import React from "react";
-import LargeButton from "../../components/form/largeButton";
+import LargeButton from "../../form/largeButton";
 import styled from "styled-components";
 import { Icon } from "antd";
 
@@ -30,7 +30,7 @@ const ReviewButton = props => {
     props.getCustomerReviewRequest({
       offset: props.customerReviews.length,
       length: 5
-    })
+    });
   };
 
   return (

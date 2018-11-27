@@ -10,8 +10,8 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
-import SubList from "./subList";
-import ReviewButton from "./reviewButton";
+import SubList from "../../components/customerReview/list/subList";
+import ReviewButton from "../../components/customerReview/list/reviewButton";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -43,12 +43,12 @@ class Index extends Component {
   }
 
   render() {
-    const { 
+    const {
       entity,
       fetching,
       destroying,
-      getCustomerReviewRequest,
-     } = this.props;
+      getCustomerReviewRequest
+    } = this.props;
 
     return (
       <ContentAreaLayout>
@@ -66,8 +66,9 @@ class Index extends Component {
                   <ReviewItem entity={item} key={index} />
                 ))}
               <ReviewButton
-              customerReviews={entity.customer_reviews}
-              getCustomerReviewRequest={getCustomerReviewRequest} />
+                customerReviews={entity.customer_reviews}
+                getCustomerReviewRequest={getCustomerReviewRequest}
+              />
             </ItemsList>
           </ContentLayout>
         </Spin>

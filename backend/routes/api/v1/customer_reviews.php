@@ -15,6 +15,14 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+  * 作成
+  */
+ $router->get('/api/v1/customer-reviews/create', [
+     'middleware'    => [],
+     'uses'          => 'Api\V1\CustomerReviewsController@create',
+ ]);
+ 
+/**
  * 更新
  */
 $router->put('/api/v1/customer-reviews/{taskCode}', [

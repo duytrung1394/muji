@@ -55,17 +55,17 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/review/history",
+    path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerReview/index")
     )
   },
   {
-    path: "/store/cust/review/history/page/:page(\\d+)",
+    path: "/store/review/item/:item_code/post",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/index")
+      require("./customApp/containers/CustomerReview/new")
     )
   }
 ];

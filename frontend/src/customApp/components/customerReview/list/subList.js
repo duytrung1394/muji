@@ -1,7 +1,7 @@
 import React from "react";
 import { Select } from "antd";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const List = styled.ul`
   list-style: none;

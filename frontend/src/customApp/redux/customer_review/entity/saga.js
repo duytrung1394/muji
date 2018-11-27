@@ -1,7 +1,7 @@
 import actions from "./actions";
 import { RESTEntityApi, RESTListApi } from "../../../../restApi";
 import restAllSaga from "../../shared/entity/saga_generator";
-import {takeEvery,put,call} from "redux-saga/effects";
+import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
 const api = RESTEntityApi("customer_reviews");
@@ -12,9 +12,9 @@ const getCustomerReviewApiGET = payload => listApi.GET(payload);
 const getCustomerReviewFunction = function*({ payload }) {
   try {
     const response = yield call(getCustomerReviewApiGET, payload);
-    console.log("ここまでは来ます")
+    console.log("ここまでは来ます");
     yield put(actions.getCustomerReview.success(response.data));
-    console.log("ここで来ませんが、バックエンドのどこが原因か分かりません。")
+    console.log("ここで来ませんが、バックエンドのどこが原因か分かりません。");
   } catch (error) {
     if (error.response.status == 401) {
       yield put(authActions.unauthorized(error));
