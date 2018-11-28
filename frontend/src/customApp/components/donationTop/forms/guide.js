@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { List, Card,Popover } from "antd";
+import { List, Card,Popover, Row, Col } from "antd";
 
 const GuideWrapper = styled.div`
     border:1px solid grey;
@@ -26,17 +26,24 @@ const data = [
 const Guide = ()=>{
     return (
         <GuideWrapper>
+					<div style={{margin:"10px 30px auto"}}>
             <h2>ご利用ガイド</h2>
-        <List
-        grid={{ gutter: 16, column: 3 }}
-        dataSource={data}
-        renderItem={item => (
-            <List.Item>
-                <Card title={item.title}>{item.content}</Card>
-            </List.Item>
-            )}
-        />
+       
+            <Row type="flex" justify="center" >
+         
+                <Col style={{width:"33%",padding:"10px 20px"}}>
+                	<Card title={'お支払い方法'}>{'クレジットカード、MUJIショッピングポイント、MUJI GIFT CARDでのお支払いが可能です。'}</Card>
+                </Col>
+								<Col style={{width:"33%",padding:"10px 20px"}}>
+                	<Card title={'変更・キャンセル'}>{'寄付のキャンセル／寄付先の変更はできません。'}</Card>
+                </Col>
+								<Col style={{width:"33%",padding:"10px 20px"}}>
+                	<Card title={'税金控除'}>{'税金控除の証明書はお出しできません。ご了承ください。'}</Card>
+                </Col>
+            </Row>
+            
         <a>ご利用ガイド「募金券について」</a>
+				</div>
         </GuideWrapper>
         )
 }

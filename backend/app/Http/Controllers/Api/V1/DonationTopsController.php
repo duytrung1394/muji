@@ -84,7 +84,10 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/j-platform_05_640.png',
                     'title' => '北海道地震被災者支援',
                     'description' => '9月6日に北海道胆振地方中東部で発生した自身により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の講座を開設しました。',
-                    'organization' => 'ジャパン・プラットホーム'
+                    'organization' => 'ジャパン・プラットホーム',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '788,820',
+                    'total_people' => '2,339',
                 ];
                 break;
             case '0299629000000':
@@ -93,7 +96,63 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/j-platform_02_640.jpg',
                     'title' => '緊急災害復興支援',
                     'description' => 'ジャパン・プラットフォームは、国内外の災害被災地などに、1秒でも速く支援を届けます。',
-                    'organization' => 'ジャパン・プラットホーム'
+                    'organization' => 'ジャパン・プラットホーム',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '352,340',
+                    'total_people' => '4,003',
+                    'organizations'=>[
+                       [ 'title' => 'ジャパン・プラットフォームについて',
+                        'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img01.jpg',
+                        'description' =>  'ジャパン・プラットフォームは、国内外の災害被災地などに、1秒でも速く支援を届けます。',
+                        ],
+                        [ 'title' => 'ジャパン・プラットフォームについて',
+                        'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img01.jpg',
+                        'description' =>  'ジャパン・プラットフォームは、国内外の災害被災地などに、1秒でも速く支援を届けます。',
+                        ],
+                    ],
+                    'activities' =>[
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                        [
+                            'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img02.jpg',
+                            'title' => '想いを現地に伝えるために',
+                            'description' => '緊急災害時、多くの人が抱える「助けたい」「何かしたい」という想いを世界各地に届けます。支援のプロであるNGOが、スピーディに支援を行います。',
+                        ],
+                    ],
+                    'messages' =>[
+                        [
+                        'organization' => 'NPO法人　ジャパン・プラットフォーム',
+                        'position' => '緊急対応部 部長',
+                        'name' => '柴田裕子（しばたゆうこ）さん',
+                        'img' => 'https://img.muji.net/img/store/donation/j-platform_02/activity_img08.jpg',
+                        'description' => '世界でも日本国内でも、NGOによる支援を必要とする災害が後を絶ちません。いつ起きるか予測できない災害に対してできるだけ迅速に、
+                        かつ質の高い最適な支援を行うためには、日頃からの備えが必要不可欠です。ジャパン・プラットフォームでは、支援を必要としている方々と支援してくださる方々の架け橋として、
+                        この募金を大切に活用し、1秒でも速く1人でも多くの人へ、現地のニーズにもとづく支援を行ってまいります。'
+                        ]
+                    ]
                 ];
                 break;
             case '0299507000000':
@@ -102,7 +161,14 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/j-platform_01_640.jpg',
                     'title' => '東日本大震災復興支援',
                     'description' => 'ジャパン・プラットフォームは、災害、紛争時の緊急・復興支援を支えています。',
-                    'organization' => 'ジャパン・プラットホーム'
+                    'organization' => 'ジャパン・プラットホーム',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '12,056,800',
+                    'total_people' => '28,790',
+                    'fundraising_description' => '上記金額のうち、2014年8月末日までにお預かりした寄付金10,799,590円は、2012年2月（第一次）、9月（第二次）、
+                                                    2013年4月（第三次）、10月（第四次）、2014年4月（第五次）、10月（第六次）に、ジャパン・プラットフォームへお渡ししました。
+                                                    多くのご協力ありがとうございました。この募金券は引き続き、受け付けてまいります。',
+                    
                 ];
                 break;
             case '0299529000000':
@@ -111,7 +177,14 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/momokaki_640.png',
                     'title' => '東日本大震災復興支援',
                     'description' => '被災地で力強く生きようとする孤児や遺児を共に支える育英会。',
-                    'organization' => '桃・柿育英会'
+                    'organization' => '桃・柿育英会',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '3,939,320',
+                    'total_people' => '8,198',
+                    'fundraising_description' => '上記金額のうち、2014年8月末日までにお預かりした寄付金2,613,930円は、2012年2月（第一次）、9月（第二次）、
+                                                    2013年4月（第三次）、10月（第四次）、2014年4月（第五次）、10月（第六次）に、もも・かき育英会へお渡ししました。
+                                                    多くのご協力ありがとうございました。この募金券は引き続き、受け付けてまいります。',
+                   
                 ];
                 break;
             case '0299661000000':
@@ -120,7 +193,10 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/pinkribbon_640.png',
                     'title' => '乳がん啓発活動（ピンクリボン運動）支援',
                     'description' => '乳がんで悲しむ方をなくすため、ピンクリボン関連イベントやピンクリボンアドバイザー制度などを通じた啓発活動、がん検診などを実施しています。',
-                    'organization' => '日本対がん協会・乳房健康研究会'
+                    'organization' => '日本対がん協会・乳房健康研究会',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '788,820',
+                    'total_people' => '2,339'
                 ];
                 break;
             case '0299663000000':
@@ -129,7 +205,10 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/iucn-j_640.jpg',
                     'title' => '絶滅の恐れがある生きものの保護活動支援',
                     'description' => '世界と日本の自然の「今」を伝え、人と自然が共生する社会をつくるための仕組みづくりや、仲間づくりを行っています。',
-                    'organization' => 'IUCN-J（国際自然保護連合日本委員会）'
+                    'organization' => 'IUCN-J（国際自然保護連合日本委員会）',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '352,340',
+                    'total_people' => '4,003'
                 ];
                 break;
             case '0299665000000':
@@ -138,7 +217,10 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/kidsearthfund_640.jpg',
                     'title' => '絵画を通じた子ども支援',
                     'description' => '戦争や災害などで心に傷を負った世界中の子どもたちと絵を描くワークショップを行い、子どもたちが生きる力を取り戻す機会をつくっています。',
-                    'organization' => '子供地球基金'
+                    'organization' => '子供地球基金',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '12,056,800',
+                    'total_people' => '28,790'
                 ];
                 break;
             case '0299667000000':
@@ -147,7 +229,10 @@ class DonationTopsController extends Controller
                     'img' => '//www.muji.com/jp/donation/img/tft_640.jpg',
                     'title' => '開発途上国の給食支援',
                     'description' => '先進国に住む私たちがヘルシーな食事をとると、飢餓で苦しむ開発途上国の子どもたちに給食をプレゼントできる仕組みで、双方の健康改善をめざしています。',
-                    'organization' => 'TABLE FOR TWO'
+                    'organization' => 'TABLE FOR TWO',
+                    'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',
+                    'total' => '3,939,320',
+                    'total_people' => '8,198'
                 ];
                 break;
             default :
