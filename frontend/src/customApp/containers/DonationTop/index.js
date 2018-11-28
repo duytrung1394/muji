@@ -9,7 +9,10 @@ import Article from "../../components/donationTop/article";
 import DonationList from "../../components/donationTop/donationList";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
-import DonationButton from "../../components/donationTop/button";
+import {
+  PerformanceButton,
+  FutureButton
+} from "../../components/donationTop/button";
 
 class Index extends Component {
   componentDidMount() {
@@ -24,7 +27,8 @@ class Index extends Component {
           <ContentHeader links={entity.links} />
           <Article article={entity.article} />
           <DonationList donations={entity.donations} />
-          <DonationButton />
+          <PerformanceButton />
+          <FutureButton />
         </Spin>
       </ContentAreaLayout>
     );
