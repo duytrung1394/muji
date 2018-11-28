@@ -28,7 +28,7 @@ const ContentHeader = ({ title, links }) => (
       <Breadcrumb>
         {links.map((link, index) => (
           <Breadcrumb.Item key={index}>
-            <Link to={link.path}>{link.name}</Link>
+            {link.path ? <Link to={link.path}>{link.name}</Link> : link.name}
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>

@@ -53,6 +53,34 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")
     )
+  },
+  {
+    path: "/store/cmdty/donation",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/index")
+    )
+  },
+  {
+    path: "/store/cust/address/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cmdty/donation/:donation_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/show")
+    )
+  },
+  {
+    path: "/store/cust/address/list/page/:page(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
   }
 ];
 export default routes;
