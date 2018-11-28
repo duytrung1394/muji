@@ -1,33 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "antd";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
-const StyledButton = styled.button`
-  margin: 0 auto;
-  padding: 2px 5px;
-  ${props => (props["icon"] ? "padding-left: 18px;" : "")} border: 0;
-  border-radius: 2px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-  background: ${props =>
-    props["icon"] === "add"
-      ? "url(https://www.muji.net/img/store/common/icon_add_fff.png) no-repeat 5px center #333"
-      : "#333"};
-  cursor: pointer;
-  transition: 0.2s;
-
-  :hover {
-    background: ${props =>
-      props["icon"] === "add"
-        ? "url(https://www.muji.net/img/store/common/icon_add_fff.png) no-repeat 5px center #7f0019"
-        : "#7f0019"};
+const StyledButton = styled(Button)`
+  &&& {
+    font-size: 12px;
+    span {
+      margin: 0;
+    }
   }
 
-  :focus {
-    outline: 0;
+  &.ant-btn-primary {
+    background-color: #333;
+    border: none;
+    :hover {
+      background-color: #7f0019;
+    }
+  }
+
+  .anticon {
+    padding-right: 5px;
+    font-weight: bold;
   }
 `;
 
-export const Button = props => (
+export const AddButton = props => (
   <StyledButton {...props}>{props.children}</StyledButton>
 );

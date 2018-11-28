@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Input, Form as AntdForm } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { Button } from "./button";
+import { AddButton } from "./button";
 import styled from "styled-components";
 
 const formItemLayout = {
@@ -14,7 +14,7 @@ const formItemLayout = {
   }
 };
 
-const NextButton = styled(Button)`
+const NextButton = styled(AddButton)`
   width: 160px;
   padding: 5px;
 `;

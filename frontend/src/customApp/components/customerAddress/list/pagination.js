@@ -7,22 +7,46 @@ const StyledPagination = styled(AntdPagination)`
   text-align: right;
   .ant-pagination-total-text {
     float: left;
+    padding-left: 15px;
+    font-size: 14px;
+  }
+  &.ant-pagination {
+    margin-top: 15px;
+  }
+`;
+
+const ItemRenderA = styled.a`
+  padding: 0 10px;
+`;
+
+const NumSpan = styled.span`
+  font-size: 14px;
+  font-weight: bold;
+  span {
+    margin-right: 5px;
+  }
+`;
+
+const MatterSpan = styled.span`
+  font-size: 11px;
+  span {
+    margin-right: 5px;
   }
 `;
 
 const itemRender = (current, type, originalElement) => {
   if (type === "prev") {
     return (
-      <a>
+      <ItemRenderA>
         <IntlMessages id="customerAddress.list.pagination.prev" />
-      </a>
+      </ItemRenderA>
     );
   }
   if (type === "next") {
     return (
-      <a>
+      <ItemRenderA>
         <IntlMessages id="customerAddress.list.pagination.next" />
-      </a>
+      </ItemRenderA>
     );
   }
   return originalElement;
@@ -34,10 +58,26 @@ const Pagination = ({ total, current, changeHandler }) => (
     total={total}
     current={current}
     showTotal={(total, range) => (
-      <IntlMessages
-        id="customerAddress.list.pagination.showTotal"
-        values={{ total: total, from: range[0], to: range[1] }}
-      />
+      <span>
+        <NumSpan>
+          <IntlMessages
+            id="customerAddress.list.pagination.showTotal"
+            values={{ total: total }}
+          />
+        </NumSpan>
+        <MatterSpan>
+          <IntlMessages id="customerAddress.list.pagination.showOf" />
+        </MatterSpan>
+        <NumSpan>
+          <IntlMessages
+            id="customerAddress.list.pagination.showFrom"
+            values={{ from: range[0], to: range[1] }}
+          />
+        </NumSpan>
+        <MatterSpan>
+          <IntlMessages id="customerAddress.list.pagination.showMatter" />
+        </MatterSpan>
+      </span>
     )}
     itemRender={itemRender}
     onChange={changeHandler}
