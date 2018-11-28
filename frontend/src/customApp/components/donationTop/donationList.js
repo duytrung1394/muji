@@ -69,16 +69,18 @@ class DonationList extends Component {
           {donations &&
             donations.map((donation, index) => {
               return (
-                <Fragment>
+                <Fragment key={index}>
                   <DonationListTitle>{donation.title}</DonationListTitle>
                   <StyledRow justify="start" align="top">
                     {donation.items.map((item, index) => {
                       return (
-                        <Link to={"/store/cmdty/donation/" + item.donationCode}>
+                        <Link
+                          to={"/store/cmdty/donation/" + item.donationCode}
+                          key={index}
+                        >
                           <StyledCard
                             hoverable
                             cover={<img alt="example" src={item.img} />}
-                            key={index}
                           >
                             {item.title === "北海道地震被災者支援" ? (
                               <EmeagencyCard>
