@@ -15,8 +15,10 @@ const formItemLayout = {
 };
 
 const NextButton = styled(AddButton)`
-  width: 160px;
-  padding: 5px;
+  &&& {
+    width: 160px;
+    padding: 5px;
+  }
 `;
 
 class Form extends Component {
@@ -117,7 +119,9 @@ class Form extends Component {
               <Link to="/store/cust/address/list">前のページに戻る</Link>
             </Col>
             <Col span={12}>
-              <NextButton onClick={this.submit}>次へ進む</NextButton>
+              <NextButton onClick={this.submit} type="primary">
+                次へ進む
+              </NextButton>
             </Col>
           </Row>
         </AntdForm>
