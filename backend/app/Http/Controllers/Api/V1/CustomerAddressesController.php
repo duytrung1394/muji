@@ -26,7 +26,7 @@ class CustomerAddressesController extends Controller
      public function create()
      {
          return [
-             'data' => ['brandNew' => true],
+             'data' => new \stdClass,
          ];
      }
 
@@ -39,7 +39,7 @@ class CustomerAddressesController extends Controller
     public function show($addressBookNo)
     {
         return [
-            'data' => $this->getMockdata($addressBookNo),
+            'data' => $this->getMockdata((int)$addressBookNo),
         ];
     }
 

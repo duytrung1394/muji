@@ -9,16 +9,8 @@ import Form from "../../components/customerAddress/forms/form";
 
 class Edit extends Component {
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.addressBookNo);
-  }
-
-  componentDidUpdate(prevProps, prevState, prevContext) {
-    const { updated, updateCleanup, history, entity } = this.props;
-
-    if (updated) {
-      const addressBookNo = entity["addressBookNo"];
-      updateCleanup();
-      history.push("/store/cust/address/confirm");
+    if (!this.props.confirmingEntity) {
+      this.props.fetchRequest(this.props.match.params.addressBookNo);
     }
   }
 
@@ -39,9 +31,10 @@ class Edit extends Component {
             <Form
               actionType="edit"
               entity={this.props.entity}
-              requestHandler={entity =>
-                this.props.updateRequest(addressBookNo, entity)
-              }
+              requestHandler={entity => {
+                this.props.confirmEntity(entity);
+                this.props.history.push("/store/cust/address/confirmedit");
+              }}
             />
           )}
       </ContentAreaLayout>
@@ -58,8 +51,7 @@ const { request, cleanup } = actions.update;
 const actionCreators = {
   fetchRequest: actions.fetch.request,
   fetchCleanup: actions.fetch.cleanup,
-  updateRequest: actions.update.request,
-  updateCleanup: actions.update.cleanup
+  confirmEntity: actions.confirmEntity
 };
 
 const enhance = C => {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Input, Form as AntdForm } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { AddButton } from "./button";
+import { Button } from "./button";
 import styled from "styled-components";
 
 const formItemLayout = {
@@ -14,7 +14,7 @@ const formItemLayout = {
   }
 };
 
-const NextButton = styled(AddButton)`
+const NextButton = styled(Button)`
   &&& {
     width: 160px;
     padding: 5px;
@@ -116,11 +116,13 @@ class Form extends Component {
           </AntdForm.Item>
           <Row>
             <Col span={12}>
-              <Link to="/store/cust/address/list">前のページに戻る</Link>
+              <Link to="/store/cust/address/list">
+                <IntlMessages id="customerAddress.link.back"/>
+              </Link>
             </Col>
             <Col span={12}>
               <NextButton onClick={this.submit} type="primary">
-                次へ進む
+                <IntlMessages id="customerAddress.button.next"/>
               </NextButton>
             </Col>
           </Row>

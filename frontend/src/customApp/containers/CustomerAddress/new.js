@@ -9,16 +9,9 @@ import Form from "../../components/customerAddress/forms/form";
 
 class New extends Component {
   componentDidMount() {
-    this.props.initCleanup();
-    this.props.initRequest();
-  }
-
-  componentDidUpdate(prevProps, prevState, prevContext) {
-    const { created, createCleanup, history } = this.props;
-
-    if (created) {
-      this.props.createCleanup();
-      history.push("/store/cust/address/confirm");
+    if (!this.props.confirmingEntity) {
+      this.props.initCleanup();
+      this.props.initRequest();
     }
   }
 
@@ -37,7 +30,10 @@ class New extends Component {
           <Form
             actionType="new"
             entity={this.props.entity}
-            requestHandler={entity => this.props.createRequest(entity)}
+            requestHandler={entity => {
+              this.props.confirmEntity(entity);
+              this.props.history.push("/store/cust/address/confirmnew");
+            }}
           />
         )}
       </ContentAreaLayout>
@@ -54,8 +50,7 @@ const { init, create } = actions;
 const actionCreators = {
   initRequest: init.request,
   initCleanup: init.cleanup,
-  createRequest: create.request,
-  createCleanup: create.cleanup
+  confirmEntity: actions.confirmEntity
 };
 
 const enhance = C => {

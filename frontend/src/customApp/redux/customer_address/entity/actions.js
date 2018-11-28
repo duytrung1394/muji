@@ -3,7 +3,11 @@ import restActions from "../../shared/entity/actions";
 
 const actions = createActions({
   CUSTOMER_ADDRESS: {
-    ENTITY: restActions
+    ENTITY: {
+      ...restActions,
+      CONFIRM_ENTITY: undefined,
+      CONFIRM_CLEANUP: undefined
+    }
   }
 });
 

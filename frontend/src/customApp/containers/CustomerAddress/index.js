@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { Spin } from "antd";
 import styled from "styled-components";
 import actions from "../../redux/customer_address/list/actions";
+import entityActions from "../../redux/customer_address/entity/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { List, Popover } from "antd";
@@ -11,7 +12,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import { AddButton } from "../../components/customerAddress/forms/button";
+import { Button } from "../../components/customerAddress/forms/button";
 import Pagination from "../../components/customerAddress/list/pagination";
 import AddressItem from "../../components/customerAddress/list/addressItem";
 
@@ -63,10 +64,12 @@ const Div = styled.div`
 
 class Index extends Component {
   componentDidMount() {
+    this.props.confirmCleanup();
     this.props.fetchRequest({ page: this.getPage(this.props) });
   }
 
   componentDidUpdate(prevProps, prevState) {
+    this.props.confirmCleanup();
     const props = this.props;
 
     if (this.getPage(prevProps) !== this.getPage(props)) {
@@ -133,9 +136,9 @@ class Index extends Component {
               {total < MAX_NUMBER_OF_ADDRESS ? (
                 <AddressAddButtonLayout>
                   <Link to={`${BASE_URL}/create`}>
-                    <AddButton type="primary" size="small" icon="plus">
+                    <Button type="primary" size="small" icon="plus">
                       <IntlMessages id="customerAddress.list.link.add" />
-                    </AddButton>
+                    </Button>
                   </Link>
                 </AddressAddButtonLayout>
               ) : null}
@@ -183,7 +186,8 @@ const mapStateToProps = state => {
 const actionCreators = {
   fetchRequest: actions.fetch.request,
   destroyRequest: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup
+  destroyCleanup: actions.destroy.cleanup,
+  confirmCleanup: entityActions.confirmCleanup
 };
 
 const enhance = C => {

@@ -3,22 +3,21 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import actions from "../../redux/customer_address/entity/actions";
 import { injectIntl } from "react-intl";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-class Confirm extends Component {
+class ConfirmNew extends Component {
   render() {
     const { entity } = this.props;
     return (
       <div>
-        <p>{entity.name}</p>
-        <p>{entity.nameKana}</p>
-        <Link
-          to={
-            entity.brandNew
-              ? "/store/cust/address/create"
-              : "/store/cust/address/edit/0"
-          }
-        >
-          前のページに戻る
+        <p>
+          {entity.familyName} {entity.firstName}
+        </p>
+        <p>
+          {entity.familyNameKana} {entity.firstNameKana}
+        </p>
+        <Link to="/store/cust/address/create">
+          <IntlMessages id="customerAddress.link.back"/>
         </Link>
       </div>
     );
@@ -45,4 +44,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Confirm);
+export default enhance(ConfirmNew);

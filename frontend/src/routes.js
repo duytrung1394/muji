@@ -97,10 +97,17 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/address/confirm",
+    path: "/store/cust/address/confirmedit",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/confirm")
+      require("./customApp/containers/CustomerAddress/confirmEdit")
+    )
+  },
+  {
+    path: "/store/cust/address/confirmnew",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmNew")
     )
   }
 ];
