@@ -39,10 +39,12 @@ class DonationTopsController extends Controller
             'links' => [
                 [
                     'path' => '/store',
-                    'name' => '無印良品トップ / 募金券',
+                    'name' => '無印良品トップ',
+                ],
+                [
+                    'name' => '募金券',
                 ],
             ],
-            'title' => '募金',
             'article' => [
                 'title' => "無印良品の募金券",
                 'description' => "日ごろ気にかかること。",

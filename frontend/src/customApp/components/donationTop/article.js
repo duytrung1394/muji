@@ -4,19 +4,21 @@ import { Col, Row } from "antd";
 
 const ArticleWrapper = styled.div`
   padding: 100px 15px;
-  .ant-col-xl-14 {
-    width: 50%;
-    margin: 0 5% 0 0;
-  }
 `;
 
 const StyledRow = styled(Row)`
-  font-size: 14px;
+  &&& {
+    font-size: 14px;
+
+    @media only screen and (min-width: 1280px) {
+      flex-wrap: nowrap;
+    }
+  }
 `;
 
 const FigureCol = styled(Col)`
   max-width: 400px;
-  margin: 0 5% 0 0;
+  margin: 0 3vw;
   & img {
     width: 100%;
     height: auto;
@@ -25,7 +27,12 @@ const FigureCol = styled(Col)`
 
 const DiscriptionCol = styled(Col)`
   &&& {
-    width: 40%;
+    margin: 0 3vw;
+    width: 70%;
+
+    @media only screen and (min-width: 1280px) {
+      max-width: 50%;
+    }
   }
 `;
 

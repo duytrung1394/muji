@@ -21,10 +21,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <ContentHeader title={entity.category_title} links={entity.links} />
-          <div>
-            <span>・{entity.title}</span>
-          </div>
+          <ContentHeader links={entity.links} />
           <Article article={entity.article} />
           <DonationList donations={entity.donations} />
           <DonationButton />

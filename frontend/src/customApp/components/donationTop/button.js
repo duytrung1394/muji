@@ -11,10 +11,11 @@ const Div = styled.div`
     color: #191919;
     font-weight: bold;
     border-radius: 0;
-  }
-  button:hover {
-    border: 1px solid #7f0019;
-    color: #191919;
+
+    :hover {
+      border: 1px solid #7f0019;
+      color: #191919;
+    }
   }
 `;
 
