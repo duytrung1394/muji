@@ -4,11 +4,24 @@ import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
+import styled from "styled-components"
+import ReviewTop from "./reviewTop";
+import PostReview from "./postReview";
+import ConfirmReview from "./confirmReview";
+
+const ReviewLayout = styled(ContentAreaLayout)`
+  width:880px;
+`;
+
+const ReviewFormWrapper = styled.div`
+  padding:30px 50px;
+  text-align:center;
+  margin-bottom:70px;
+`;
 
 class New extends Component {
   componentDidMount() {
-    this.props.initCleanup();
-    this.props.initRequest();
+    this.props.fetchRequest("");
   }
 
   componentDidUpdate(prevProps, prevState, prevContext) {
@@ -20,11 +33,30 @@ class New extends Component {
   }
 
   render() {
-    const { initialized } = this.props;
+    const { 
+      initialized,
+      entity
+     } = this.props;
+
+     let imageUrl;
+
+     entity.customer_reviews ?
+     imageUrl = entity.customer_reviews[0].jancode
+     :
+     null;
+
     return (
-      <ContentAreaLayout>
-        <h1>レビューを投稿する</h1>
-      </ContentAreaLayout>
+      <ReviewLayout>
+        <ReviewTop imageUrl={imageUrl} />
+        <ReviewFormWrapper style={{backgroundColor:"#f7f7f7"}}>
+
+          {/* ここがレビュー画面です。 */}
+          <PostReview/>
+
+          {/* これが確認画面のです。 */}
+          {/* <ConfirmReview/> */}
+        </ReviewFormWrapper>
+      </ReviewLayout>
     );
   }
 }
@@ -33,13 +65,8 @@ const mapStateToProps = state => {
   return state.CustomerReview.Entity.toJS();
 };
 
-const { init, create } = actions;
-
 const actionCreators = {
-  initRequest: init.request,
-  initCleanup: init.cleanup,
-  createRequest: create.request,
-  createCleanup: create.cleanup
+  fetchRequest: actions.fetch.request
 };
 
 const enhance = C => {
