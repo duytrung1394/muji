@@ -7,21 +7,32 @@ const StyledRow = styled(Row)`
 `
 
 const StyledCol = styled(Col)`
-	width:25%;
-	padding:0 20px;
-	margin-bottom:20px;
+	width:15%;
+	padding:0 10px 20px 10px;
 `
 
-const OtherDonation = ()=>{
-	
+const { Meta } = Card;
+
+const OtherDonation = ({otherDonations})=>{
     return (
-			<StyledRow justify="start" align="top">
-			
-				<StyledCol>
-					<Card title="otherDonation"/>
-				
-				</StyledCol>
-			</StyledRow>
+			<div>
+				<h2>その他の募金券</h2>
+					<StyledRow type="flex" justify="start" align="top">
+						{otherDonations && otherDonations.map((otherDonation,index)=>{
+							return(
+							<StyledCol key={index}>
+								<Card 
+								cover={<img src={otherDonation.img}/>}
+								/>
+								<Meta
+								title={otherDonation.title}
+								description={otherDonation.organization}
+								/>
+							</StyledCol>
+							);
+						})}
+					</StyledRow>
+			</div>
 		)
 }
 

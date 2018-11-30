@@ -152,7 +152,41 @@ class DonationTopsController extends Controller
                         かつ質の高い最適な支援を行うためには、日頃からの備えが必要不可欠です。ジャパン・プラットフォームでは、支援を必要としている方々と支援してくださる方々の架け橋として、
                         この募金を大切に活用し、1秒でも速く1人でも多くの人へ、現地のニーズにもとづく支援を行ってまいります。'
                         ]
+                    ],
+                    'other_donations' =>[
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/j-platform_01_640.jpg',
+                            'title' => '東日本大震災復興支援',
+                            'organization' => 'ジャパン・プラットホーム',
+                        ],
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/momokaki_640.png',
+                            'title' => '東日本大震災復興支援',
+                            'organization' => '桃・柿育英会',
+                        ],
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/pinkribbon_640.png',
+                            'title' => '乳がん啓発活動（ピンクリボン運動）支援',
+                            'organization' => '日本対がん協会・乳房健康研究会',
+                        ],
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/iucn-j_640.jpg',
+                            'title' => '絶滅の恐れがある生きものの保護活動支援',
+                            'organization' => 'IUCN-J（国際自然保護連合日本委員会）',
+                        ],
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/kidsearthfund_640.jpg',
+                            'title' => '絵画を通じた子ども支援',
+                            'organization' => '子供地球基金',
+                        ],
+                        [
+                            'img' => '//www.muji.com/jp/donation/img/tft_640.jpg',
+                            'title' => '開発途上国の給食支援',
+                            'organization' => 'TABLE FOR TWO',
+
+                        ]
                     ]
+
                 ];
                 break;
             case '0299507000000':

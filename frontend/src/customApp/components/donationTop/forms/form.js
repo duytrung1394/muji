@@ -151,7 +151,7 @@ class Form extends Component {
           messages={entity.messages}
           />
           <OtherDonation
-          
+          otherDonations={entity.other_donations}
           />
           <Guide/>
           <Row>

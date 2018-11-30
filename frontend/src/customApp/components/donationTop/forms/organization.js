@@ -38,21 +38,6 @@ const StyledCol = styled(Col)`
 
 const { Meta } = Card;
 
-// const Div = styled.div`
-// 	text-align: right;
-
-// 	button {
-// 		font-size: 12px;
-// 		color: #191919;
-// 		font-weight: bold;
-// 		border-radius: 0;
-// 	}
-
-// 	button:hover {
-// 		border: 1px solid #7f0019;
-// 		color: #191919;
-// 	}
-// `;
 
 const Organization = ({organizations,title})=>{
 		if(organizations){
@@ -69,13 +54,6 @@ const Organization = ({organizations,title})=>{
 						title={title}
 						description={organization.description}
 						/>
-						{/* <Div>
-							<a href= "https://ryohin-keikaku.jp/csr/donation/dialog_052-01.html">
-								<Button icon= "caret-right">
-									<IntlMessages id= "donationTop.employeeTalk" />
-								</Button>
-							</a>
-      			</Div> */}
 					</StyledCol>
 				);
 			})}
