@@ -33,21 +33,20 @@ const MessageWrapper = styled.div`
 		line-height: 22px;
 		color: #333;
 	}
-`
+`;
 
 const StyledList = styled(List)`
-
-`
+`;
 
 const ListItem = styled(List.Item)`
 	& .ant-list-item-content{
 		display: block;
 	}
-`
+`;
 
 const StyledDiv = styled.div`
 	margin-bottom: 15px;
-`
+`;
 
 const Div = styled.div`
 	text-align: right;

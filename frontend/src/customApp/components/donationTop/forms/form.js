@@ -14,33 +14,63 @@ const Option = Select.Option;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
-const formItemLayout = {
-  labelCol: {
-    span: 12
-  },
-  wrapperCol: {
-    span: 12
-  }
-};
 
 const ImgCol = styled(Col)`
+  margin: 0 40px 20px 0;
+`;
 
-`
 const FormCol = styled(Col)`
-  width:45%;
-`
+  h2 {
+    font-size: 19px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  p {
+    line-height: 1.6;
+    color: #666;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  div {
+    font-size: 11px;
+    color: #555;
+    margin-top: 10px;
+  }
+
+  styledDiv {
+    font-size: 11px;
+  }
+
+  tenDiv {
+    font-size: 23px;
+  }
+  
+  .ant-form-item-label label {
+    font-size: 12px;
+  }
+
+  ddiv {
+    font-size: 12px;
+    color: #67affd;
+    font-weight: bold; 
+  }
+` ;
+
 const SNSUl = styled.ul`
   list-style:none;
   display:flex;
   justify-content: flex-end;
-`
+`;
 
 const TotalDonationWrapper = styled.div`
   border-top:1px solid #ccc;
   border-bottom:1px solid #ccc;
   text-align:center;
   margin-bottom:30px;
-`
+`;
 
 class Form extends Component {
   state = {
@@ -67,48 +97,57 @@ class Form extends Component {
       <div>
         <AntdForm>
           <Row type="flex" >
-            <ImgCol>
-            <img src={entity.img}/>
+            <ImgCol span={12}>
+              <img src={entity.img}/>
             </ImgCol>
-            <FormCol>
-              <h2>{entity.title}<br/>{entity.organization}</h2>
+            <FormCol span={11}>
+              <h2>{entity.title}<br/>{entity.ten_bill}<br/>{entity.one_hundred_bill}<br/>{entity.organization}</h2>
               <p>{entity.reason}</p>
               <div>
                 <IntlMessages id="donationShow.note1"/><br/>
                 <IntlMessages id="donationShow.note2"/><br/>
                 <IntlMessages id="donationShow.note3"/>
               </div>
-              <IntlMessages id="donationShow.unit"/>
-              10
-              <IntlMessages id="donationShow.yen"/>
-              <AntdForm.Item label="種類" colon={false} {...formItemLayout}>
+              <styledDiv>
+                <IntlMessages id="donationShow.unit"/>
+              </styledDiv>
+              <tenDiv>
+                10
+              </tenDiv>
+              <styledDiv>              
+                <IntlMessages id="donationShow.yen"/>
+              </styledDiv>
+              <AntdForm.Item label="種類" colon={false}>
                 <RadioGroup>
-                  <RadioButton value="a">
-                    <IntlMessages id="donationShow.unit"/>
-                    10
-                    <IntlMessages id="donationShow.yen"/>
-                  </RadioButton>
+                    <RadioButton value="a">
+                      <IntlMessages id="donationShow.unit"/>
+                      10
+                      <IntlMessages id="donationShow.yen"/>
+                    </RadioButton>
                   <RadioButton value="b">
                     <IntlMessages id="donationShow.unit"/>
                     100
                     <IntlMessages id="donationShow.yen"/>
                   </RadioButton>
                 </RadioGroup>
+                <IntlMessages id="donationShow.unitCount"/>
                 <InputGroup compact>
-                  <IntlMessages id="donationShow.unitCount"/>
                   <Select defaultValue={1}>
                     <Option value={1}>1</Option>
+                    <Option value={1}>2</Option>
                   </Select>
                 </InputGroup>
                 <Button type="primary">
                   <IntlMessages id="donationShow.donate"/>
                 </Button>
               </AntdForm.Item>
-              <Popover trigger="click">
+              <div>
+                <Popover trigger="click">
                 <a>
                   <IntlMessages id="donationShow.userGuide"/>
                 </a>
-              </Popover>
+                </Popover>
+              </div>
               <Link to="/store/cmdty/donation/" key="01">
                 <Button>
                   <IntlMessages id="donationShow.ticket"/>
@@ -136,9 +175,9 @@ class Form extends Component {
             <span>{entity.total_people}</span>
             <IntlMessages id="donationShow.people"/>
             <IntlMessages id="donationShow.current" values={{time : 16}} />
-            <div>
+            <ddiv>
               {entity.fundraising_description}
-            </div>
+            </ddiv>
           </TotalDonationWrapper>
           <Organization
            title={entity.organization}
@@ -150,9 +189,7 @@ class Form extends Component {
           <Message
           messages={entity.messages}
           />
-          <OtherDonation
-          
-          />
+          <OtherDonation/>
           <Guide/>
           <Row>
             <Col span={12}>

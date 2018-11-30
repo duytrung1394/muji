@@ -94,7 +94,9 @@ class DonationTopsController extends Controller
                 $data =
                 [
                     'img' => '//www.muji.com/jp/donation/img/j-platform_02_640.jpg',
-                    'title' => '緊急災害復興支援',
+                    'title' => '募金券「緊急災害復興支援」',
+                    'ten_bill' => '10円券',
+                    'one_hundred_bill' => '100円券',              
                     'description' => 'ジャパン・プラットフォームは、国内外の災害被災地などに、1秒でも速く支援を届けます。',
                     'organization' => 'ジャパン・プラットホーム',
                     'reason' => '9月6日に北海道胆振地方中東部で発生した地震により多大な被害が出ています。本災害による被災者支援の活動資金として募金券の口座を開設しました',

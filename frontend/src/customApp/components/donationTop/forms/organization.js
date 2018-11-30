@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Row,Col,Card,Button } from "antd";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const StyledRow = styled(Row)`
 	margin-bottom: 55px;
@@ -38,21 +39,22 @@ const StyledCol = styled(Col)`
 
 const { Meta } = Card;
 
-// const Div = styled.div`
-// 	text-align: right;
+const Div = styled.div`
+	text-align: right;
+	margin-top: 15px;
 
-// 	button {
-// 		font-size: 12px;
-// 		color: #191919;
-// 		font-weight: bold;
-// 		border-radius: 0;
-// 	}
+	button {
+		font-size: 12px;
+		color: #191919;
+		font-weight: bold;
+		border-radius: 0;
+	}
 
-// 	button:hover {
-// 		border: 1px solid #7f0019;
-// 		color: #191919;
-// 	}
-// `;
+	button:hover {
+		border: 1px solid #7f0019;
+		color: #191919;
+	}
+`;
 
 const Organization = ({organizations,title})=>{
 		if(organizations){
@@ -69,13 +71,13 @@ const Organization = ({organizations,title})=>{
 						title={title}
 						description={organization.description}
 						/>
-						{/* <Div>
+						<Div>
 							<a href= "https://ryohin-keikaku.jp/csr/donation/dialog_052-01.html">
 								<Button icon= "caret-right">
 									<IntlMessages id= "donationTop.employeeTalk" />
 								</Button>
 							</a>
-      			</Div> */}
+      			</Div>
 					</StyledCol>
 				);
 			})}
