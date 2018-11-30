@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "../../components/form/link";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Button } from "antd";
+import { Button as AntButton } from "antd";
 
 const Div = styled.div`
   text-align: right;
@@ -19,25 +19,27 @@ const Div = styled.div`
   }
 `;
 
-const DonationButton = () => {
+const Button = ({ to, messagesId }) => {
   return (
-    <div>
-      <Div>
-        <Link to="">
-          <Button icon="caret-right">
-            <IntlMessages id="donationTop.performance" />
-          </Button>
-        </Link>
-      </Div>
-      <Div>
-        <a href="https://www.muji.net/store/pc/user/donation/results.html">
-          <Button icon="caret-right">
-            <IntlMessages id="donationTop.future" />
-          </Button>
-        </a>
-      </Div>
-    </div>
+    <Div>
+      <Link to={to}>
+        <AntButton icon="caret-right">
+          <IntlMessages id={`donationTop.${messagesId}`} />
+        </AntButton>
+      </Link>
+    </Div>
   );
 };
 
-export default DonationButton;
+export const PerformanceButton = () => {
+  return <Button to="" messagesId="performance" />;
+};
+
+export const FutureButton = () => {
+  return (
+    <Button
+      to="https://www.muji.net/store/pc/user/donation/results.html"
+      messagesId="future"
+    />
+  );
+};
