@@ -11,58 +11,62 @@ import Guide from "./guide";
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
+const MainImage = styled.img`
+  width:100%;
+  height:auto;
+  max-width:720px;
+  ma-height:720px;
+`;
 
 const ImgCol = styled(Col)`
-  margin: 0 40px 20px 0;
 `;
 
 const FormCol = styled(Col)`
-  h2 {
-    font-size: 19px;
-    font-weight: normal;
-    line-height: 1.4;
-    margin-bottom: 20px;
-  }
-
-  p {
-    line-height: 1.6;
-    color: #666;
-    font-size: 13px;
-    margin: 0;
-  }
-
-  div {
-    font-size: 11px;
-    color: #555;
-    margin-top: 10px;
-  }
-
-  styledDiv {
-    font-size: 11px;
-  }
-
-  tenDiv {
-    font-size: 23px;
-  }
-  
-  .ant-form-item-label label {
-    font-size: 12px;
-  }
-
-  ddiv {
-    font-size: 12px;
-    color: #67affd;
-    font-weight: bold; 
+  && {
+    padding: 0 40px;
   }
 ` ;
 
-const SNSUl = styled.ul`
+const StyledSelect = styled(Select)`
+  display:
+`
+
+const Quantity = styled.div`
+  display:inline-block;
+`;
+
+const RadioGroup = styled(Radio.Group)`
+  width:100%;
+`;
+
+const RadioButton = styled(Radio.Button)`
+  height:50px;
+  width:100%;
+  max-width:180px;
+  text-align:center;
+  span{
+    height:10px;
+  }
+`;
+
+const RadioRow = styled(Row)`
+  
+`
+
+const RadioCol = styled(Col)`
+& {
+  margin:0;
+}
+  & .ant-radio-button-wrapper{
+    padding:0
+  };
+`
+
+const SnsButtons = styled.ul`
   list-style:none;
   display:flex;
-  justify-content: flex-end;
+  padding:0;
 `;
 
 const TotalDonationWrapper = styled.div`
@@ -72,10 +76,11 @@ const TotalDonationWrapper = styled.div`
   margin-bottom:30px;
 `;
 
+
+
 class Form extends Component {
   state = {
     entity: this.props.entity,
-
   };
 
   updateEntity = (keyName, value) => {
@@ -97,50 +102,67 @@ class Form extends Component {
       <div>
         <AntdForm>
           <Row type="flex" >
-            <ImgCol span={12}>
-              <img src={entity.img}/>
+
+            <ImgCol span={13}>
+              <MainImage src={entity.img}/>
             </ImgCol>
+
             <FormCol span={11}>
-              <h2>{entity.title}<br/>{entity.ten_bill}<br/>{entity.one_hundred_bill}<br/>{entity.organization}</h2>
-              <p>{entity.reason}</p>
+
+              <h2>
+                {entity.title}
+                <br/>
+                <span>{entity.ten_bill}</span>
+                <br/>
+                <span>{entity.organization}</span>
+              </h2>
+                
               <div>
+                <span>{entity.sub_description}</span><br/>
                 <IntlMessages id="donationShow.note1"/><br/>
                 <IntlMessages id="donationShow.note2"/><br/>
                 <IntlMessages id="donationShow.note3"/>
               </div>
-              <styledDiv>
-                <IntlMessages id="donationShow.unit"/>
-              </styledDiv>
-              <tenDiv>
-                10
-              </tenDiv>
-              <styledDiv>              
-                <IntlMessages id="donationShow.yen"/>
-              </styledDiv>
+
+              <span>{entity.price}</span>
+              
               <AntdForm.Item label="種類" colon={false}>
-                <RadioGroup>
+
+              <RadioGroup>
+                <RadioRow>
+                  <RadioCol span={11}>
                     <RadioButton value="a">
                       <IntlMessages id="donationShow.unit"/>
-                      10
-                      <IntlMessages id="donationShow.yen"/>
+                      <br/>
+                      <IntlMessages id="donationShow.ten"/>
                     </RadioButton>
-                  <RadioButton value="b">
-                    <IntlMessages id="donationShow.unit"/>
-                    100
-                    <IntlMessages id="donationShow.yen"/>
-                  </RadioButton>
-                </RadioGroup>
-                <IntlMessages id="donationShow.unitCount"/>
-                <InputGroup compact>
-                  <Select defaultValue={1}>
-                    <Option value={1}>1</Option>
-                    <Option value={1}>2</Option>
-                  </Select>
-                </InputGroup>
-                <Button type="primary">
-                  <IntlMessages id="donationShow.donate"/>
-                </Button>
+                  </RadioCol>
+
+                  <RadioCol span={11} offset={2}>
+                    <RadioButton value="b">
+                      <IntlMessages id="donationShow.unit"/>
+                      <br/>
+                      <IntlMessages id="donationShow.hundred"/>
+                    </RadioButton>
+                  </RadioCol>
+                </RadioRow>
+              </RadioGroup>
+
+                <div>
+                  <Quantity>
+                    <IntlMessages id="donationShow.unitCount"/>
+                    <StyledSelect defaultValue="1">
+                      <Option value="1">1</Option>
+                    </StyledSelect>
+                  </Quantity>
+                  <Button type="primary">
+                    <IntlMessages id="donationShow.donate"/>
+                  </Button>
+                </div>
+                
+
               </AntdForm.Item>
+
               <div>
                 <Popover trigger="click">
                 <a>
@@ -148,37 +170,41 @@ class Form extends Component {
                 </a>
                 </Popover>
               </div>
+
               <Link to="/store/cmdty/donation/" key="01">
                 <Button>
                   <IntlMessages id="donationShow.ticket"/>
                 </Button>
               </Link>
+
+              <SnsButtons>
+                <li>
+                  <Button type="primary" size="small" icon="twitter">
+                    <IntlMessages id="donationShow.twitter"/>
+                  </Button>
+                </li>
+                <li>
+                  <Button type="primary" size="small" icon="like">
+                    <IntlMessages id="donationShow.fb"/>
+                  </Button>
+                </li>
+              </SnsButtons>
+
               </FormCol>
           </Row>
-          <SNSUl>
-            <li>
-              <Button type="primary" size="small" icon="twitter">
-                <IntlMessages id="donationShow.twitter"/>
-              </Button>
-            </li>
-            <li>
-              <Button type="primary" size="small" icon="like">
-                <IntlMessages id="donationShow.fb"/>
-              </Button>
-            </li>
-          </SNSUl>
+
+
           <TotalDonationWrapper>
             <IntlMessages id="donationShow.total"/>
             <span>{entity.total}</span>
             <IntlMessages id="donationShow.yen"/>
+            {" "}
             <IntlMessages id="donationShow.donationPeople"/>
             <span>{entity.total_people}</span>
             <IntlMessages id="donationShow.people"/>
             <IntlMessages id="donationShow.current" values={{time : 16}} />
-            <ddiv>
-              {entity.fundraising_description}
-            </ddiv>
           </TotalDonationWrapper>
+
           <Organization
            title={entity.organization}
            organizations={entity.organizations}
