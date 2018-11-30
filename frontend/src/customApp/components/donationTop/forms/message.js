@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from "react";
 import styled from "styled-components";
-import { List, Avatar } from "antd";
+import { List, Avatar,Button } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const MessageWrapper = styled.div`
@@ -49,6 +49,22 @@ const StyledDiv = styled.div`
 	margin-bottom: 15px;
 `
 
+const Div = styled.div`
+	text-align: right;
+
+	button {
+		font-size: 12px;
+		color: #191919;
+		font-weight: bold;
+		border-radius: 0;
+	}
+
+	button:hover {
+		border: 1px solid #7f0019;
+		color: #191919;
+	}
+`;
+
 const Message = ({messages})=>{
 	if(messages){
 	const data = 
@@ -80,6 +96,13 @@ const Message = ({messages})=>{
 			renderItem=
 			{item => <ListItem>{item}</ListItem>}
 			/>
+			<Div>
+        <a href= "https://www.japanplatform.org/">
+          <Button icon= "caret-right">
+            <IntlMessages id= "donationTop.webSite" />
+          </Button>
+        </a>
+      </Div>
 		</MessageWrapper>
 	)}
 		else return null;
