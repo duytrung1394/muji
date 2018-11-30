@@ -2,17 +2,17 @@ import React,{Fragment} from "react";
 import styled from "styled-components";
 import { Rate } from 'antd';
 import PostForm from "./postForm";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-const StarWrapper = styled.div`
-
+const ReviewTitleArea = styled.div`
+    text-align:left;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 20px 0;
 `;
 
-const ReviewTitle = styled.h2`
-    text-align:left;
-    color: #191919;
-    font-weight: 600;
-    padding-bottom: 20px;
-    font-size: 18px;
+const StarWrapper = styled.div`
+    
 `;
 
 const Star = styled(Rate)`
@@ -22,14 +22,17 @@ const Star = styled(Rate)`
     }
 `;
 
-const PostReview =()=>{
+const PostReview =(props)=>{
+    const { changeView } = props
     return(
         <Fragment>
-            <ReviewTitle>レビューを入力</ReviewTitle>
+            <ReviewTitleArea>
+                <IntlMessages id="reviewPost.inputReview" />
+            </ReviewTitleArea>
             <StarWrapper>
                 <Star />
             </StarWrapper>
-            <PostForm/>
+            <PostForm changeView={changeView}/>
         </Fragment>
     );
 }

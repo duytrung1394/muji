@@ -1,6 +1,7 @@
 import React from "react";
 import LargeButton from "../../components/form/largeButton.js";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
   padding-top: 10px;
@@ -29,10 +30,13 @@ const ConfirmButton = styled(LargeButton)`
   }
 `;
 
-const InputConfButtton =()=> {
+const InputConfButtton =(props)=> {
+
+  const {changeView} = props;
+
   return (
     <ButtonWrapper>
-      <ConfirmButton>入力内容を確認する</ConfirmButton>
+      <ConfirmButton onClick={changeView}><IntlMessages id="reviewPost.confirmButton"/></ConfirmButton>
     </ButtonWrapper>
   );
 };

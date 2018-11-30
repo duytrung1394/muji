@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LargeButton from "../../components/form/largeButton.js";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
   padding-top: 10px;
@@ -54,8 +55,12 @@ const PostButton = styled(LargeButton)`
 const ConfirmReviewButttons =()=> {
   return (
     <ButtonWrapper>
-      <ChangeReviewButton>入力内容を変更する</ChangeReviewButton>
-      <PostButton>投稿する</PostButton>
+      <ChangeReviewButton>
+        <IntlMessages id="reviewPost.changeButton"/>
+      </ChangeReviewButton>
+      <PostButton>
+        <IntlMessages id="reviewPost.postButton"/>
+      </PostButton>
     </ButtonWrapper>
   );
 };

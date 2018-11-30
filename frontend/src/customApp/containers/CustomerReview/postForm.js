@@ -3,6 +3,7 @@ import { Upload, message, Button, Icon } from 'antd';
 import InputConfButton from "./inputConfButton";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const FormLabel = styled.label`
   display:block;
@@ -71,30 +72,58 @@ const props = {
   },
 };
 
-const PostForm =()=>{
+const PostForm =(props)=>{
+  const {changeView} = props
+
   return(
     <div>
       <form style={{width:"700px"}}>
-      <FormLabel>タイトルを入力</FormLabel>
-      <Input type="text" name="title" style={{width:"700px"}} placeholder={"タイトルを入力　(100文字以内)"}/>
-      <FormLabel>レビューを入力</FormLabel>
-      <Textarea type="text" style={{width:"700px",height:"100px"}} placeholder={"レビューを入力　(30文字以上、1000文字以内)"}></Textarea>
+      <FormLabel>
+        <IntlMessages id="reviewPost.inputFormLabel" />
+      </FormLabel>
+      <Input 
+        type="text"
+        name="title"
+        style={{width:"700px"}}
+        placeholder={
+          "タイトルを入力 (100文字いない)"
+        }/>
+      <FormLabel>
+        <IntlMessages id="reviewPost.textAreaFormLabel" />
+      </FormLabel>
+      <Textarea
+      type="text" 
+      style={{width:"700px",height:"100px"}}
+      placeholder={
+        "レビューを入力　(30文字以上、10000文字以内)"
+      }/>
       </form>
-      <FormLabel>写真</FormLabel>
+      <FormLabel>
+        <IntlMessages id="reviewPost.image" />
+      </FormLabel>
       <UploadArea>
       <Upload {...props}>
         <UploadButton >
-          <UploadIcon type="camera" /> 写真を追加
+          <UploadIcon type="camera" />
+          <IntlMessages id="reviewPost.addImage" />
         </UploadButton>
       </Upload>
       </UploadArea>
-      <InputConfButton/>
+        <InputConfButton changeView={changeView}/>
       <Notices>
-      <Notice>※お客様はレビューの投稿をされることにより、<Link to={"/"}>利用規約</Link>に同意されたものとみなされます</Notice>
+      <Notice>
+        <IntlMessages id="reviewPost.notice1Front" />
+          <Link to={"/"}><IntlMessages id="reviewPost.noticeLink"/></Link>
+        <IntlMessages id="reviewPost.notice1Back" />
+      </Notice>
       <br/>
-      <Notice>※個人を特定できるような投稿にはご注意ください</Notice>
+      <Notice>
+        <IntlMessages id="reviewPost.notice2" />
+      </Notice>
       <br/>
-      <Notice>※レビュー投稿でMUJIマイルは付与されません</Notice>
+      <Notice>
+        <IntlMessages id="reviewPost.notice3" />
+      </Notice>
       </Notices>
     </div>    
   )

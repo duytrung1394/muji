@@ -93,7 +93,11 @@ class CustomerReviewsController extends Controller
     private function getMockData()
     {
         return [
-            'customer_reviews' => $this->getMockCustomerReviews(0,5)
+            'customer_reviews' => $this->getMockCustomerReviews(0,5),
+            'user' => $user = [
+                'user_image' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
+                'user_name' => 'user name'
+            ]
         ];
      }
 

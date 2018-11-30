@@ -2,11 +2,14 @@ import { handleActions } from "redux-actions";
 import { Map } from "immutable";
 import restReducer, { restInitState } from "../../shared/entity/reducer";
 
+
+
 const customRestInitState = restInitState.merge(
   Map({
     gettingCustomerReview: false,
     gotCustomerReview: false,
-    getCustomerReviewError: false
+    getCustomerReviewError: false,
+    isChangeView: false
   })
 );
 
@@ -17,7 +20,6 @@ const getCustomerReviewRequest = state =>
     .set("getCustomerReviewError", false);
 
 const getCustomerReviewSuccess = (state, action) => {
-  console.log("サクセスしてまーす");
   const entity = state.get("entity");
   const newEntity = {
     ...entity,
@@ -35,6 +37,11 @@ const getCustomerReviewFailure = state =>
     .set("gotCustomerReview", false)
     .set("getCustomerReviewError", true);
 
+const changeView = (state) =>{
+  state
+    .set("isChangeView", true);
+}
+
 const reducer = handleActions(
   {
     CUSTOMER_REVIEW: {
@@ -43,8 +50,9 @@ const reducer = handleActions(
         GET_CUSTOMER_REVIEW: {
           REQUEST: getCustomerReviewRequest,
           SUCCESS: getCustomerReviewSuccess,
-          FAILURE: getCustomerReviewFailure
-        }
+          FAILURE: getCustomerReviewFailure,
+          CHANGE: changeView
+        },
       }
     }
   },

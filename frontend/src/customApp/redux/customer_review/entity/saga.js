@@ -12,9 +12,7 @@ const getCustomerReviewApiGET = payload => listApi.GET(payload);
 const getCustomerReviewFunction = function*({ payload }) {
   try {
     const response = yield call(getCustomerReviewApiGET, payload);
-    console.log("ここまでは来ます");
     yield put(actions.getCustomerReview.success(response.data));
-    console.log("ここで来ませんが、バックエンドのどこが原因か分かりません。");
   } catch (error) {
     if (error.response.status == 401) {
       yield put(authActions.unauthorized(error));
@@ -24,10 +22,19 @@ const getCustomerReviewFunction = function*({ payload }) {
   }
 };
 
+const changePostReviewViewfunction = function*({payload}){
+  console.log("来ました");
+  yield put(actions.getCustomerReview.change({payload}));
+}
+
 export default function* saga() {
   yield restAllSaga("customer_review", api, actions);
   yield takeEvery(
     actions.getCustomerReview.request.toString(),
     getCustomerReviewFunction
+  );
+  yield takeEvery(
+    actions.getCustomerReview.change.toString(),
+    changePostReviewViewfunction
   );
 }

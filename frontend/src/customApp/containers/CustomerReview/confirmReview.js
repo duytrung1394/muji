@@ -3,6 +3,7 @@ import { Rate, message, Button, Icon } from 'antd';
 import ConfirmReviewButtons from "./confirmReviewButtons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ReviewList = styled.ul`
   list-style:none;
@@ -42,7 +43,9 @@ const ConfirmTitle = styled.h2`
 const ConfirmReview=()=>{
   return(
     <div>
-      <ConfirmTitle>レビュー内容を確認</ConfirmTitle>
+      <ConfirmTitle>
+        <IntlMessages id="reviewPost.confirmTitle" />
+      </ConfirmTitle>
       <ReviewList>
         <ReviewListStar>
           <Star disabled defaultValue={2} />

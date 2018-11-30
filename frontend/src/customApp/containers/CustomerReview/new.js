@@ -35,26 +35,24 @@ class New extends Component {
   render() {
     const { 
       initialized,
-      entity
+      entity,
+      changeView,
+      isChangeView
      } = this.props;
 
-     let imageUrl;
-
-     entity.customer_reviews ?
-     imageUrl = entity.customer_reviews[0].jancode
-     :
-     null;
+     console.log(this.props.isChangeView)
 
     return (
       <ReviewLayout>
-        <ReviewTop imageUrl={imageUrl} />
+        <ReviewTop
+          entity={entity}
+         />
         <ReviewFormWrapper style={{backgroundColor:"#f7f7f7"}}>
-
-          {/* ここがレビュー画面です。 */}
-          <PostReview/>
-
-          {/* これが確認画面のです。 */}
-          {/* <ConfirmReview/> */}
+        { isChangeView ?
+          <ConfirmReview/>
+          :
+          <PostReview changeView={changeView}/>
+          }
         </ReviewFormWrapper>
       </ReviewLayout>
     );
@@ -66,7 +64,8 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request
+  fetchRequest: actions.fetch.request,
+  changeView: actions.change
 };
 
 const enhance = C => {
