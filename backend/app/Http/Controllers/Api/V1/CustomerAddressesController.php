@@ -110,14 +110,14 @@ class CustomerAddressesController extends Controller
         return [
             'addressBookNo' => $addressBookNo,
             'name' => $addressBookNo === 0 ? "無印　良太" : "良品　計子",
-            'nameKana' => $addressBookNo === 0 ? "ムジルシ　リョウタ" : "リョウヒン　ケイコ",
-            'zipCode' => "170-8424",
+            'name_memo' => $addressBookNo === 0 ? "ムジルシ　リョウタ" : "リョウヒン　ケイコ",
+            'zip_code' => "170-8424",
             'address1' => "東京都",
             'address2' => "豊島区",
             'address3' => "東池袋４ー２６ー３",
-            'care' => $addressBookNo === 0 ? "無印　良太" : "良品　計子",
             'address4' => $addressBookNo === 0 ? "無印良品ビル" : "無印良品ビル無印良品ビル無印良品ビル１０",
-            'telNo' => "03-3989-4191",
+            'care' => $addressBookNo === 0 ? "無印　良太" : "良品　計子",
+            'tel' => "03-3989-4191",
         ];
     }
 
@@ -130,21 +130,21 @@ class CustomerAddressesController extends Controller
         if ($isNew) {
             $name = $request->input("customer_address.familyName", "")."　".$request->input("customer_address.firstName", "");
         }
-        $nameKana = $request->input("customer_address.nameKana", "");
+        $name_memo = $request->input("customer_address.name_memo", "");
         if ($isNew) {
             $nameKana = $request->input("customer_address.familyNameKana", "")."　".$request->input("customer_address.firstNameKana", "");
         }
         return [
             'addressBookNo' => $request->input("customer_address.addressBookNo", 199),
             'name' => $name,
-            'nameKana' => $nameKana,
-            'zipCode' => $request->input("customer_address.zipCode", ""),
+            'name_memo' => $name_memo,
+            'zip_code' => $request->input("customer_address.zip_code", ""),
             'address1' => $request->input("customer_address.address1", ""),
             'address2' => $request->input("customer_address.address2", ""),
             'address3' => $request->input("customer_address.address3", ""),
             'address4' => $request->input("customer_address.address4", ""),
-            'telNo' => $request->input("customer_address.telNo", ""),
-            'brandNew' => $request->input("customer_address.brandNew", false),
+            'care' => $request->input("customer_address.care", ""),
+            'tel' => $request->input("customer_address.tel", ""),
         ];
     }
 }

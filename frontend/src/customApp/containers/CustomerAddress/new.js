@@ -1,41 +1,72 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import { Spin } from "antd";
 import actions from "../../redux/customer_address/entity/actions";
 import { injectIntl } from "react-intl";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import PlatformDependentDescription from "../../components/customerAddress/platformDependentDescription";
 import Form from "../../components/customerAddress/forms/form";
 
+const Wrapper = styled.div`
+  width: 700px;
+  margin: 0 auto;
+  padding: 0 15px;
+`;
+
 class New extends Component {
   componentDidMount() {
-    if (!this.props.confirmingEntity) {
+    if (!this.fromConfirm()) {
       this.props.initCleanup();
       this.props.initRequest();
     }
   }
 
+  fromConfirm = () => {
+    if (Object.keys(this.props.entity).length === 0) {
+      return false;
+    }
+    if (this.props.history.action === "POP") {
+      // browswer back button , reload
+      return true;
+    }
+    if (this.props.location.state && this.props.location.state.fromConfirm) {
+      return true;
+    }
+    return false;
+  };
+
   render() {
-    const { initialized } = this.props;
+    const { initialized, initializing } = this.props;
     return (
       <ContentAreaLayout>
-        <h1>
-          <IntlMessages id="customerAddress.create.title" />
-        </h1>
-        <p>
-          <IntlMessages id="customerAddress.create.description" />
-        </p>
-        <PlatformDependentDescription />
-        {initialized && (
-          <Form
-            actionType="new"
-            entity={this.props.entity}
-            requestHandler={entity => {
-              this.props.confirmEntity(entity);
-              this.props.history.push("/store/cust/address/confirmnew");
-            }}
-          />
-        )}
+        <Spin spinning={initializing} size="large">
+          <BaseContentLayout>
+            <Wrapper>
+              <h1>
+                <IntlMessages id="customerAddress.create.title" />
+              </h1>
+              <p>
+                <IntlMessages id="customerAddress.create.description" />
+              </p>
+              <PlatformDependentDescription />
+              {initialized && (
+                <Form
+                  actionType="new"
+                  entity={this.props.entity}
+                  requestHandler={entity => {
+                    this.props.confirmEntity(entity);
+                    this.props.history.push("/store/cust/address/confirmnew");
+                  }}
+                />
+              )}
+            </Wrapper>
+          </BaseContentLayout>
+        </Spin>
       </ContentAreaLayout>
     );
   }

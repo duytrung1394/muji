@@ -52,7 +52,7 @@ class AddressItem extends Component {
               <IntlMessages id="customerAddress.attributes.addressChange" />
             ) : null}
           </dd>
-          <dd>{entity.zipCode}</dd>
+          <dd>{entity.zip_code}</dd>
           <dd>
             {entity.address1}
             {entity.address2}
@@ -63,7 +63,7 @@ class AddressItem extends Component {
             {entity.care}
             <IntlMessages id="customerAddress.attributes.care" />
           </dd>
-          <dd>{entity.telNo}</dd>
+          <dd>{entity.tel}</dd>
           <EditDeleteLink
             to={`/store/cust/address/edit/${entity.addressBookNo}`}
             deleteAddress={

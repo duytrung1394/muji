@@ -97,7 +97,7 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/address/confirmedit",
+    path: "/store/cust/address/confirmedit/:addressBookNo(\\d+)",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/confirmEdit")
@@ -108,6 +108,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/confirmNew")
+    )
+  },
+  {
+    path: "/store/cust/address/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/complete")
     )
   }
 ];

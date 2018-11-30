@@ -5,8 +5,7 @@ const actions = createActions({
   CUSTOMER_ADDRESS: {
     ENTITY: {
       ...restActions,
-      CONFIRM_ENTITY: undefined,
-      CONFIRM_CLEANUP: undefined
+      CONFIRM_ENTITY: undefined
     }
   }
 });

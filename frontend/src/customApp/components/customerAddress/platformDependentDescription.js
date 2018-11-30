@@ -6,6 +6,20 @@ import IntlMessages from "../../../components/utility/intlMessages";
 const platformDependentSrc =
   "http://www.muji.net/mt/contact/detail_list/014341.html";
 
+const Div = styled.div`
+  font-size: 11px;
+  p {
+    margin: 0;
+  }
+  a {
+    color: #333333;
+    text-decoration: underline;
+    :hover {
+      color: #7f0019;
+    }
+  }
+`;
+
 const StyledModal = styled(Modal)`
   .ant-modal-body {
     padding: 10px 0 0 0;
@@ -39,10 +53,17 @@ class PlatformDependentDescription extends Component {
 
   render() {
     return (
-      <div>
+      <Div>
+        <IntlMessages id="customerAddress.createEdit.platformDependentDescription" />
+        <br />
         <IntlMessages
-          id="customerAddress.createEdit.platformDependentDescription"
-          values={{ link: this.platformDependentLink }}
+          id="customerAddress.createEdit.platformDependentDescriptionLink"
+          values={{
+            link: this.platformDependentLink,
+            icon: (
+              <img src="https://www.muji.net/cache/img/common/imageview.gif" />
+            )
+          }}
         />
         <StyledModal
           visible={this.state.visible}
@@ -51,7 +72,7 @@ class PlatformDependentDescription extends Component {
         >
           <iframe src={platformDependentSrc} width="100%" height="50%" />
         </StyledModal>
-      </div>
+      </Div>
     );
   }
 }
