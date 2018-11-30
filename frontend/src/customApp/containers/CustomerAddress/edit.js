@@ -12,6 +12,14 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import PlatformDependentDescription from "../../components/customerAddress/platformDependentDescription";
 import Form from "../../components/customerAddress/forms/form";
 
+const AddressHeader = styled.div`
+  h1 {
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 28px;
+    font-weight: bold;
+  }
+`;
+
 const Wrapper = styled.div`
   width: 700px;
   margin: 0 auto;
@@ -47,13 +55,15 @@ class Edit extends Component {
         <Spin spinning={fetching} size="large">
           <BaseContentLayout>
             <Wrapper>
-              <h1>
-                <IntlMessages id="customerAddress.edit.title" />
-              </h1>
-              <p>
-                <IntlMessages id="customerAddress.edit.description" />
-              </p>
-              <PlatformDependentDescription />
+              <AddressHeader>
+                <h1>
+                  <IntlMessages id="customerAddress.edit.title" />
+                </h1>
+                <p>
+                  <IntlMessages id="customerAddress.edit.description" />
+                </p>
+                <PlatformDependentDescription />
+              </AddressHeader>
               {fetched && (
                 <Form
                   actionType="edit"
