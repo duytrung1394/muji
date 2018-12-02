@@ -42,12 +42,20 @@ class Index extends Component {
     this.props.fetchRequest("");
   }
 
+  seeMore = () => {
+    this.props.getCustomerReviewRequest({
+      offset: this.props.entities.customer_reviews.length,
+      length: 5
+    });
+  };
+
   render() {
     const {
-      entity,
+      entities,
       fetching,
       destroying,
-      getCustomerReviewRequest
+      getCustomerReviewRequest,
+      gettingCustomerReview
     } = this.props;
 
     return (
@@ -61,15 +69,16 @@ class Index extends Component {
               <SubList />
             </ListHeader>
             <ItemsList>
-              {entity.customer_reviews &&
-                entity.customer_reviews.map((item, index) => (
+              {entities.customer_reviews &&
+                entities.customer_reviews.map((item, index) => (
                   <ReviewItem entity={item} key={index} />
                 ))}
-              <ReviewButton
-                customerReviews={entity.customer_reviews}
-                getCustomerReviewRequest={getCustomerReviewRequest}
-              />
             </ItemsList>
+            <Spin spinning={gettingCustomerReview} size="large">
+              {entities.isShowSeeMore && (
+                <ReviewButton seeMore={this.seeMore} />
+              )}
+            </Spin>
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>
@@ -78,7 +87,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.CustomerReview.Entity.toJS();
+  return state.CustomerReview.List.toJS();
 };
 
 const actionCreators = {

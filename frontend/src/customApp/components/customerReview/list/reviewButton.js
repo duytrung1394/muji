@@ -3,8 +3,8 @@ import LargeButton from "../../form/largeButton";
 import styled from "styled-components";
 import { Icon } from "antd";
 
-const ButtonWrapper = styled.li`
-  padding-top: 10px;
+const ButtonWrapper = styled.div`
+  padding: 10px;
   text-align: center;
 `;
 
@@ -26,13 +26,7 @@ const StyledIcon = styled(Icon)`
 `;
 
 const ReviewButton = props => {
-  const seeMore = () => {
-    props.getCustomerReviewRequest({
-      offset: props.customerReviews.length,
-      length: 5
-    });
-  };
-
+  const { seeMore } = props;
   return (
     <ButtonWrapper>
       <SeeMoreButton onClick={seeMore}>

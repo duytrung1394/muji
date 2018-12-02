@@ -121,7 +121,7 @@ const ReviewItem = ({ entity }) => (
       <SubData>
         <li>
           <StarWrapper>
-            <Star disabled defaultValue={3} />
+            <Star disabled defaultValue={entity.star} />
           </StarWrapper>
         </li>
         <SubDataDate>{entity.upload_date}</SubDataDate>

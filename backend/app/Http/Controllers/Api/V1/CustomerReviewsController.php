@@ -12,8 +12,9 @@ class CustomerReviewsController extends Controller
      */
     public function index(Request $request)
     {
+        $data = $this->getMultiMockData(0, 5);
         return [
-            'data' => $this->getMockData()
+            'data'  => $data
         ];
     }
 
@@ -50,172 +51,111 @@ class CustomerReviewsController extends Controller
      */
     public function getCustomerReviewsSeeMore(Request $request)
     {
+        $data = $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+        );
+        \Log::info( print_r($data,true));
         return [
-            'data' => $this->getMockData()
+            'data'  => $data
         ];
-        // return [
-        //     'data'  => $this->getCustomerReviews(
-        //         (int)$request->input('offset'),
-        //         (int)$request->input('length')
-        //     )
-        // ];
     }
 
     /**
-     * モックデータ: 商品一覧「もっと見る」のデータ.
+     * モックデータ取得用．
      *
      * @return array
      */
-    private function getCustomerReviews($offset, $length)
+    private function getMultiMockData($offset, $length)
     {
         $reviews = [];
-        $reviewTotal = 10;
-        $isAllDataDisp = ($offset + $length) >= $reviewTotal;
+        $reviewTotal = 23;
+        $isAllDataDisp = ($offset + $length) > $reviewTotal;
         $end = $isAllDataDisp ? $reviewTotal : ($offset + $length);
 
         for ($i = $offset; $i < $end; $i++) {
-            $reviews[] = $this->getMockCustomerReviews($offset, $length);
+            $reviews[] = $this->getMockData($i);
         }
 
-        $customerReviewObj = [
-            'customerReviews' => $reviews,
+        $data = [
+            'customer_reviews' => $reviews,
             'total' => $reviewTotal,
-            'seeMoreButton' => !$isAllDataDisp,
+            'isShowSeeMore' => !$isAllDataDisp,
             'sortFlg' => false
         ];
 
-        return $customerReviewObj;
+        return $data;
     }
 
     /**
      * モックデータを生成して取得
      */
-    private function getMockData()
+    private function getMockData($index)
     {
-        return [
-            'customer_reviews' => $this->getMockCustomerReviews(0,5)
-        ];
-     }
-
-    /**
-     * モックデータ: Customer Reviews 「もっと見る」のデータ.
-     */
-    private function getMockCustomerReviews($offset, $length)
-    {
-        $customerReviews = [
-        [
-            'customer_review_code' => 1,
-            'product' => 'ベーコンとチーズのキッシュ',
-            'jancode' => '4550182028072',
-            'title' => 'キッシュ美味しい',
-            'star' => 2,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 2,
-            'product' => 'チキンとほうれん草のキッシュ',
-            'jancode' => '4550182028065',
-            'title' => '気軽に解凍キッシュ',
-            'star' => 4,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 3,
-            'product' => 'オレンジピールクランチチョコ',
-            'jancode' => '4550002873684',
-            'title' => 'オレンジピールクランチチョコ、Goodです！',
-            'star' => 3,
-            'upload_date' => '2時間前',
-            'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 4,
-            'product' => 'ポケットコイルスプリングマットレス・シングル',
-            'jancode' => '4548718094844',
-            'title' => '使ってます',
-            'star' => 2,
-            'upload_date' => '2時間前',
-            'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 5,
-            'product' => '無選別　おこげせんべい',
-            'jancode' => '4547315318926',
-            'title' => 'かみごたえ満点',
-            'star' => 5,
-            'upload_date' => '2018/11/13',
-            'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
-            'evaluations_comment_count' => 1,
-            'evaluations_useful_count' => 100,
-        ],
-        [
-            'customer_review_code' => 6,
-            'product' => 'ベーコンとチーズのキッシュ',
-            'jancode' => '4550182028072',
-            'title' => 'キッシュ美味しい',
-            'star' => 3,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 7,
-            'product' => 'チキンとほうれん草のキッシュ',
-            'jancode' => '4550182028065',
-            'title' => '気軽に解凍キッシュ',
-            'star' => 1,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 8,
-            'product' => 'オレンジピールクランチチョコ',
-            'jancode' => '4550002873684',
-            'title' => 'オレンジピールクランチチョコ、Goodです！',
-            'star' => 2,
-            'upload_date' => '2時間前',
-            'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 9,
-            'product' => 'ポケットコイルスプリングマットレス・シングル',
-            'jancode' => '4548718094844',
-            'title' => '使ってます',
-            'star' => 3,
-            'upload_date' => '2時間前',
-            'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 10,
-            'product' => '無選別　おこげせんべい',
-            'jancode' => '4547315318926',
-            'title' => 'かみごたえ満点',
-            'star' => 5,
-            'upload_date' => '2018/11/13',
-            'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
-            'evaluations_comment_count' => 1,
-            'evaluations_useful_count' => 100,
-        ]
-    ];
-
-     return array_splice($customerReviews, $offset, $length);
+        switch ($index % 5){
+        case 0:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'ベーコンとチーズのキッシュ',
+                'jancode' => '4550182028072',
+                'title' => 'キッシュ美味しい',
+                'star' => 3,
+                'upload_date' => '1時間前',
+                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+            ];
+        case 1:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'チキンとほうれん草のキッシュ',
+                'jancode' => '4550182028065',
+                'title' => '気軽に解凍キッシュ',
+                'star' => 3,
+                'upload_date' => '1時間前',
+                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+            ];
+        case 2:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'オレンジピールクランチチョコ',
+                'jancode' => '4550002873684',
+                'title' => 'オレンジピールクランチチョコ、Goodです！',
+                'star' => 4,
+                'upload_date' => '2時間前',
+                'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+            ];
+        case 3:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'ポケットコイルスプリングマットレス・シングル',
+                'jancode' => '4548718094844',
+                'title' => '使ってます',
+                'star' => 4,
+                'upload_date' => '2時間前',
+                'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+            ];
+        case 4:
+            return [
+                'customer_review_code' => $index,
+                'product' => '無選別　おこげせんべい',
+                'jancode' => '4547315318926',
+                'title' => 'かみごたえ満点',
+                'star' => 5,
+                'upload_date' => '2018/11/13',
+                'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
+                'evaluations_comment_count' => 1,
+                'evaluations_useful_count' => 100,
+            ];
+        default:
+            return [];
+        }
     }
 }
 
