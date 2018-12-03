@@ -155,35 +155,40 @@ class DonationTopsController extends Controller
                     ],
                     'other_donations' =>[
                         [
-                            'img' => '//www.muji.com/jp/donation/img/j-platform_01_640.jpg',
+                            'donationCode' => '0299629000000',
+                            'img' => 'https://img.muji.net/img/item/0299507000000_400.jpg',
                             'title' => '東日本大震災復興支援',
-                            'organization' => 'ジャパン・プラットホーム',
+                            'description' => 'ジャパン・プラットホーム',
                         ],
                         [
-                            'img' => '//www.muji.com/jp/donation/img/momokaki_640.png',
+                            'donationCode' => '0299529000000',
+                            'img' => 'https://img.muji.net/img/item/0299529000000_400.jpg',
                             'title' => '東日本大震災復興支援',
-                            'organization' => '桃・柿育英会',
+                            'description' => '桃・柿育英会',
                         ],
                         [
-                            'img' => '//www.muji.com/jp/donation/img/pinkribbon_640.png',
+                            'donationCode' => '0299661000000',
+                            'img' => 'https://img.muji.net/img/item/0299661000000_400.jpg',
                             'title' => '乳がん啓発活動（ピンクリボン運動）支援',
-                            'organization' => '日本対がん協会・乳房健康研究会',
+                            'description' => '日本対がん協会・乳房健康研究会',
                         ],
                         [
-                            'img' => '//www.muji.com/jp/donation/img/iucn-j_640.jpg',
+                            'donationCode' => '0299663000000',
+                            'img' => 'https://img.muji.net/img/item/0299663000000_400.jpg',
                             'title' => '絶滅の恐れがある生きものの保護活動支援',
-                            'organization' => 'IUCN-J（国際自然保護連合日本委員会）',
+                            'description' => 'IUCN-J（国際自然保護連合日本委員会）',
                         ],
                         [
-                            'img' => '//www.muji.com/jp/donation/img/kidsearthfund_640.jpg',
+                            'donationCode' => '0299665000000',
+                            'img' => 'https://img.muji.net/img/item/0299507000000_400.jpg',
                             'title' => '絵画を通じた子ども支援',
-                            'organization' => '子供地球基金',
+                            'description' => '子供地球基金',
                         ],
                         [
-                            'img' => '//www.muji.com/jp/donation/img/tft_640.jpg',
+                            'donationCode' => '0299667000000',
+                            'img' => 'https://img.muji.net/img/item/0299667000000_400.jpg',
                             'title' => '開発途上国の給食支援',
-                            'organization' => 'TABLE FOR TWO',
-
+                            'description' => 'TABLE FOR TWO',
                         ]
                     ]
 
