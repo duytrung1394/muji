@@ -30,13 +30,14 @@ const ConfirmButton = styled(LargeButton)`
   }
 `;
 
-const InputConfButtton =(props)=> {
-
-  const {changeView} = props;
+const InputConfButtton = props => {
+  const { changeView } = props;
 
   return (
     <ButtonWrapper>
-      <ConfirmButton onClick={changeView}><IntlMessages id="reviewPost.confirmButton"/></ConfirmButton>
+      <ConfirmButton onClick={changeView}>
+        <IntlMessages id="reviewPost.confirmButton" />
+      </ConfirmButton>
     </ButtonWrapper>
   );
 };

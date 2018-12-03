@@ -22,10 +22,10 @@ const getCustomerReviewFunction = function*({ payload }) {
   }
 };
 
-const changePostReviewViewfunction = function*({payload}){
+const changePostReviewViewfunction = function*({ payload }) {
   console.log("来ました");
-  yield put(actions.getCustomerReview.change({payload}));
-}
+  yield put(actions.getCustomerReview.change({ payload }));
+};
 
 export default function* saga() {
   yield restAllSaga("customer_review", api, actions);

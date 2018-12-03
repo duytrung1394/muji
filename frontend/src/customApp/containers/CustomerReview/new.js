@@ -3,20 +3,20 @@ import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
-import styled from "styled-components"
+import styled from "styled-components";
 import ReviewTop from "./reviewTop";
 import PostReview from "./postReview";
 import ConfirmReview from "./confirmReview";
 
 const ReviewLayout = styled(ContentAreaLayout)`
-  width:880px;
+  width: 880px;
 `;
 
 const ReviewFormWrapper = styled.div`
-  padding:30px 50px;
-  text-align:center;
-  margin-bottom:70px;
-  background-color:#f7f7f7;
+  padding: 30px 50px;
+  text-align: center;
+  margin-bottom: 70px;
+  background-color: #f7f7f7;
 `;
 
 class New extends Component {
@@ -33,26 +33,19 @@ class New extends Component {
   }
 
   render() {
-    const { 
-      initialized,
-      entity,
-      changeView,
-      isChangeView
-     } = this.props;
+    const { initialized, entity, changeView, isChangeView } = this.props;
 
-     console.log(this.props.isChangeView)
+    console.log(this.props.isChangeView);
 
     return (
       <ReviewLayout>
-        <ReviewTop
-          entity={entity}
-         />
+        <ReviewTop entity={entity} />
         <ReviewFormWrapper>
-        { isChangeView ?
-          <ConfirmReview/>
-          :
-          <PostReview changeView={changeView}/>
-          }
+          {isChangeView ? (
+            <ConfirmReview />
+          ) : (
+            <PostReview changeView={changeView} />
+          )}
         </ReviewFormWrapper>
       </ReviewLayout>
     );

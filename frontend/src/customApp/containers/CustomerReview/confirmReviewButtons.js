@@ -52,14 +52,14 @@ const PostButton = styled(LargeButton)`
   }
 `;
 
-const ConfirmReviewButttons =()=> {
+const ConfirmReviewButttons = () => {
   return (
     <ButtonWrapper>
       <ChangeReviewButton>
-        <IntlMessages id="reviewPost.changeButton"/>
+        <IntlMessages id="reviewPost.changeButton" />
       </ChangeReviewButton>
       <PostButton>
-        <IntlMessages id="reviewPost.postButton"/>
+        <IntlMessages id="reviewPost.postButton" />
       </PostButton>
     </ButtonWrapper>
   );

@@ -2,8 +2,6 @@ import { handleActions } from "redux-actions";
 import { Map } from "immutable";
 import restReducer, { restInitState } from "../../shared/entity/reducer";
 
-
-
 const customRestInitState = restInitState.merge(
   Map({
     gettingCustomerReview: false,
@@ -37,10 +35,9 @@ const getCustomerReviewFailure = state =>
     .set("gotCustomerReview", false)
     .set("getCustomerReviewError", true);
 
-const changeView = (state) =>{
-  state
-    .set("isChangeView", true);
-}
+const changeView = state => {
+  state.set("isChangeView", true);
+};
 
 const reducer = handleActions(
   {
@@ -52,7 +49,7 @@ const reducer = handleActions(
           SUCCESS: getCustomerReviewSuccess,
           FAILURE: getCustomerReviewFailure,
           CHANGE: changeView
-        },
+        }
       }
     }
   },
