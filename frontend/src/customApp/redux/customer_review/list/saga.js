@@ -11,7 +11,6 @@ const getCustomerReviewApiGET = payload => listApi.GET(payload);
 
 const getCustomerReviewFunction = function*({ payload }) {
   try {
-    console.log("list sag getCustomerReviewFunctionに来ました");
     const response = yield call(getCustomerReviewApiGET, payload);
     yield put(actions.getCustomerReview.success(response.data));
   } catch (error) {

@@ -13,6 +13,8 @@ import ReviewItem from "../../components/customerReview/list/reviewItem";
 import SubList from "../../components/customerReview/list/subList";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 
+const BASE_URL = "/store/review/history";
+
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
   margin: 20px 0 0;
@@ -39,16 +41,28 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest({ page: this.getPage(this.props) });
   }
 
-  seeMore = () => {
-    this.props.getCustomerReviewRequest({
-      offset: this.props.entities.customer_reviews.length,
-      length: 5
-    });
+  getPage = props => {
+    return parseInt(props.match.params.page, 10) || 1;
   };
 
+  seeMore = page => {
+    // this.props.getCustomerReviewRequest({
+    //   offset: this.props.entities.customer_reviews.length,
+    //   length: 5
+    // });
+    let url;
+
+    if (page === 1) {
+      url = `${BASE_URL}`;
+    } else {
+      url = `${BASE_URL}/page/${page}`;
+    }
+    this.props.history.push(url);
+  };
+  
   render() {
     const {
       entities,
@@ -75,9 +89,9 @@ class Index extends Component {
                 ))}
             </ItemsList>
             <Spin spinning={gettingCustomerReview} size="large">
-              {entities.isShowSeeMore && (
-                <ReviewButton seeMore={this.seeMore} />
-              )}
+              {entities.isShowSeeMore && 
+                <ReviewButton seeMore={this.seeMore(this.getPage(this.props))} />
+              }
             </Spin>
           </ContentLayout>
         </Spin>
