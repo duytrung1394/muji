@@ -11,14 +11,7 @@ import {
 import IntlMessages from "../../../components/utility/intlMessages";
 import PlatformDependentDescription from "../../components/customerAddress/platformDependentDescription";
 import Form from "../../components/customerAddress/forms/form";
-
-const AddressHeader = styled.div`
-  h1 {
-    border-bottom: 1px solid #e6e6e6;
-    font-size: 28px;
-    font-weight: bold;
-  }
-`;
+import AddressHeader from "../../components/customerAddress/addressHeader";
 
 const Wrapper = styled.div`
   width: 700px;
@@ -87,8 +80,6 @@ class Edit extends Component {
 const mapStateToProps = state => {
   return state.CustomerAddress.Entity.toJS();
 };
-
-const { request, cleanup } = actions.update;
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,

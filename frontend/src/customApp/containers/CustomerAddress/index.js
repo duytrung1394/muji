@@ -14,6 +14,7 @@ import {
 import { Button } from "../../components/customerAddress/forms/button";
 import Pagination from "../../components/customerAddress/list/pagination";
 import AddressItem from "../../components/customerAddress/list/addressItem";
+import AddressHeader from "../../components/customerAddress/addressHeader";
 
 const BASE_URL = "/store/cust/address";
 
@@ -31,14 +32,6 @@ const BackLinkLayout = styled.div`
     :hover{
       color:#7f0019;
     }
-`;
-
-const AddressListHeader = styled.div`
-  h1 {
-    border-bottom: 1px solid #e6e6e6;
-    font-size: 28px;
-    font-weight: bold;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -108,7 +101,7 @@ class Index extends Component {
         <Spin spinning={fetching || destroying} size="large">
           <BaseContentLayout>
             <Wrapper>
-              <AddressListHeader>
+              <AddressHeader>
                 <h1>
                   <IntlMessages id="customerAddress.list.title" />
                 </h1>
@@ -122,13 +115,16 @@ class Index extends Component {
                   <p>
                     <Popover trigger="click">
                       <a>
-                        <img src="https://www.muji.net/cache/img/common/imageview.gif" />
+                        <img
+                          src="https://www.muji.net/cache/img/common/imageview.gif"
+                          alt=""
+                        />
                         <IntlMessages id="customerAddress.list.cancel" />
                       </a>
                     </Popover>
                   </p>
                 </Div>
-              </AddressListHeader>
+              </AddressHeader>
               {total < MAX_NUMBER_OF_ADDRESS ? (
                 <AddressAddButtonLayout>
                   <Link to={`${BASE_URL}/create`}>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Spin } from "antd";
 import styled from "styled-components";
 import actions from "../../redux/customer_address/entity/actions";
 import { injectIntl } from "react-intl";
@@ -10,6 +10,7 @@ import {
 } from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Confirm from "../../components/customerAddress/forms/confirm";
+import AddressHeader from "../../components/customerAddress/addressHeader";
 
 const Wrapper = styled.div`
   width: 700px;
@@ -35,29 +36,33 @@ class ConfirmNew extends Component {
   }
 
   render() {
-    const { entity } = this.props;
+    const { entity, request, creating } = this.props;
     return (
       <ContentAreaLayout>
-        <BaseContentLayout>
-          <Wrapper>
-            <h1>
-              <IntlMessages id="customerAddress.confirm.title" />
-            </h1>
-            <p>
-              <IntlMessages id="customerAddress.confirm.description1" />
-              <br />
-              <IntlMessages id="customerAddress.confirm.description2" />
-            </p>
-            <Confirm
-              actionType="new"
-              entity={this.props.entity}
-              returnPathname="/store/cust/address/create"
-              requestHandler={() => {
-                this.props.request(this.props.entity);
-              }}
-            />
-          </Wrapper>
-        </BaseContentLayout>
+        <Spin spinning={creating} size="large">
+          <BaseContentLayout>
+            <Wrapper>
+              <AddressHeader>
+                <h1>
+                  <IntlMessages id="customerAddress.confirm.title" />
+                </h1>
+                <p>
+                  <IntlMessages id="customerAddress.confirm.description1" />
+                  <br />
+                  <IntlMessages id="customerAddress.confirm.description2" />
+                </p>
+              </AddressHeader>
+              <Confirm
+                actionType="new"
+                entity={entity}
+                returnPathname="/store/cust/address/create"
+                requestHandler={() => {
+                  request(entity);
+                }}
+              />
+            </Wrapper>
+          </BaseContentLayout>
+        </Spin>
       </ContentAreaLayout>
     );
   }

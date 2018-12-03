@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Button as AntdButton } from "antd";
-import IntlMessages from "../../../../components/utility/intlMessages";
 
 const StyledButton = styled(AntdButton)`
   &&& {

@@ -1,28 +1,30 @@
 import React, { Component } from "react";
 import { Row, Col, Input, Form as AntdForm, Select } from "antd";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Button } from "./button";
-import styled from "styled-components";
-
-const StyledH3 = styled.h3`
-  font-size: 13px;
-  font-weight: bold;
-  margin-top: 13px;
-`;
+import AddressSubtitle from "./addressSubtitle";
 
 const StyledForm = styled(AntdForm)`
+  .ant-form-item-control {
+    line-height: 28px;
+  }
   .ant-form-item {
+    font-size: 11px;
     border: 1px solid #eeeeee;
+    border-bottom: none;
     margin: 0;
     background: #f5f5f5;
     display: flex;
     align-items: center;
   }
+  .required-label .ant-form-item-label {
+    font-weight: bold;
+  }
   &&& .ant-form-item-label {
     text-align: left;
     padding-left: 20px;
-    font-weight: bold;
     span span {
       font-size: 11px;
       font-weight: normal;
@@ -35,35 +37,32 @@ const StyledForm = styled(AntdForm)`
   }
   .description {
     font-size: 11px;
-    line-height: 11px;
+    line-height: 20px;
     background: #f5f2e9;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
+    width: fit-content;
   }
+  border-bottom: 1px solid #eeeeee;
 `;
 
-const InnerFormItem = styled(AntdForm.Item)`
-  &&& {
-    border: none;
+const StyledFormFooter = styled(Row)`
+  margin: 20px 0;
+  a {
+    color: #333333;
+    text-decoration: underline;
+    :hover {
+      color: #7f0019;
+    }
   }
 `;
-
-const ColSpan = props => (
-  <Col span={props.span}>
-    <span
-      style={{ display: "inline-block", width: "100%", textAlign: "center" }}
-    >
-      {props.children}
-    </span>
-  </Col>
-);
 
 const formItemLayout = {
   labelCol: {
-    span: 8
+    span: 9
   },
   wrapperCol: {
-    span: 16
+    span: 15
   }
 };
 
@@ -76,12 +75,14 @@ const NextButton = styled(Button)`
 
 const FormItem = props => {
   let require = "";
+  let requiredLabel = "";
   if (props.required) {
     require = <IntlMessages id="label.require" />;
+    requiredLabel = "required-label";
   }
   return (
     <AntdForm.Item
-      className="outer-item"
+      className={requiredLabel}
       label={<IntlMessages id={props.labelId} values={{ require: require }} />}
       colon={false}
       {...formItemLayout}
@@ -100,17 +101,18 @@ class Form extends Component {
         familyName: this.props.entity.familyName
           ? this.props.entity.familyName
           : "",
-        firstName: this.props.entity.familyName
+        firstName: this.props.entity.firstName
           ? this.props.entity.firstName
           : "",
         familyNameKana: this.props.entity.familyNameKana
           ? this.props.entity.familyNameKana
           : "",
-        firstNameKana: this.props.entity.familyNameKana
+        firstNameKana: this.props.entity.firstNameKana
           ? this.props.entity.firstNameKana
           : ""
       },
-      ...this.getZipCodes(this.props.entity.zip_code)
+      ...this.getZipCodes(this.props.entity.zip_code),
+      ...this.getTelNumbers(this.props.entity.tel)
     };
   }
 
@@ -122,6 +124,14 @@ class Form extends Component {
     return { zip_code_1: codes[0], zip_code_2: codes[1] };
   };
 
+  getTelNumbers = tel_number => {
+    let numbers = ["", "", ""];
+    if (tel_number) {
+      numbers = tel_number.split("-");
+    }
+    return { tel_1: numbers[0], tel_2: numbers[1], tel_3: numbers[2] };
+  };
+
   updateEntity = (keyName, value) => {
     const entity = {
       ...this.state.entity,
@@ -130,7 +140,7 @@ class Form extends Component {
     this.setState({ entity });
   };
 
-  updateZipCode = (keyName, value) => {
+  updateState = (keyName, value) => {
     const state = {
       ...this.state,
       [keyName]: value
@@ -151,7 +161,8 @@ class Form extends Component {
       ...this.state.entity,
       name: name,
       name_memo: name_memo,
-      zip_code: `${this.state.zip_code_1}-${this.state.zip_code_2}`
+      zip_code: `${this.state.zip_code_1}-${this.state.zip_code_2}`,
+      tel: `${this.state.tel_1}-${this.state.tel_2}-${this.state.tel_3}`
     };
     this.props.requestHandler(entity);
   };
@@ -160,51 +171,54 @@ class Form extends Component {
     const { actionType } = this.props;
     return (
       <div>
-        <StyledH3>お届け先情報</StyledH3>
-
+        <AddressSubtitle />
         <StyledForm>
           <FormItem labelId="customerAddress.attributes.name" required={true}>
             {actionType === "new" ? (
-              <Row>
-                <ColSpan span={1}>
-                  <IntlMessages id="label.familyName" />:
-                </ColSpan>
-                <Col span={5}>
-                  <InnerFormItem>
-                    <Input
-                      value={this.state.entity.familyName}
-                      size="small"
-                      onChange={e =>
-                        this.updateEntity("familyName", e.target.value)
-                      }
-                    />
-                  </InnerFormItem>
+              <Row type="flex" justify="start" align="middle">
+                <Col span={2}>
+                  <IntlMessages id="label.familyName" /> :
                 </Col>
-                <ColSpan span={1}>
-                  <IntlMessages id="label.firstName" />:
-                </ColSpan>
-                <Col span={5}>
-                  <InnerFormItem>
-                    <Input
-                      value={this.state.entity.firstName}
-                      size="small"
-                      onChange={e =>
-                        this.updateEntity("firstName", e.target.value)
-                      }
-                    />
-                  </InnerFormItem>
+                <Col span={7}>
+                  <Input
+                    value={this.state.entity.familyName}
+                    size="small"
+                    onChange={e =>
+                      this.updateEntity("familyName", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={2} offset={1}>
+                  <IntlMessages id="label.firstName" /> :
+                </Col>
+                <Col span={7}>
+                  <Input
+                    value={this.state.entity.firstName}
+                    size="small"
+                    onChange={e =>
+                      this.updateEntity("firstName", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={3} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
                 </Col>
               </Row>
             ) : (
-              <Col span={10}>
-                <Input
-                  value={this.state.entity.name}
-                  onChange={e => this.updateEntity("name", e.target.value)}
-                />
-              </Col>
+              <Row type="flex" justify="start" align="middle">
+                <Col span={15}>
+                  <Input
+                    value={this.state.entity.name}
+                    size="small"
+                    onChange={e => this.updateEntity("name", e.target.value)}
+                  />
+                </Col>
+                <Col span={4} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
+                </Col>
+              </Row>
             )}
             <Row>
-              <IntlMessages id="label.zenkaku" />
               <Col span={24}>
                 <IntlMessages id="label.example.name" />
               </Col>
@@ -215,45 +229,51 @@ class Form extends Component {
             required={true}
           >
             {actionType === "new" ? (
-              <Row>
-                <ColSpan span={1}>
-                  <IntlMessages id="label.familyName" />:
-                </ColSpan>
-                <Col span={5}>
-                  <InnerFormItem>
-                    <Input
-                      value={this.state.entity.familyNameKana}
-                      size="small"
-                      onChange={e =>
-                        this.updateEntity("familyNameKana", e.target.value)
-                      }
-                    />
-                  </InnerFormItem>
+              <Row type="flex" justify="start" align="middle">
+                <Col span={2}>
+                  <IntlMessages id="label.familyName" /> :
                 </Col>
-                <ColSpan span={1}>
-                  <IntlMessages id="label.firstName" />:
-                </ColSpan>
-                <Col span={5}>
-                  <InnerFormItem>
-                    <Input
-                      value={this.state.entity.firstNameKana}
-                      size="small"
-                      onChange={e =>
-                        this.updateEntity("firstNameKana", e.target.value)
-                      }
-                    />
-                  </InnerFormItem>
+                <Col span={7}>
+                  <Input
+                    value={this.state.entity.familyNameKana}
+                    size="small"
+                    onChange={e =>
+                      this.updateEntity("familyNameKana", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={2} offset={1}>
+                  <IntlMessages id="label.firstName" /> :
+                </Col>
+                <Col span={7}>
+                  <Input
+                    value={this.state.entity.firstNameKana}
+                    size="small"
+                    onChange={e =>
+                      this.updateEntity("firstNameKana", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={3} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
                 </Col>
               </Row>
             ) : (
-              <Col span={10}>
-                <Input
-                  value={this.state.entity.name_memo}
-                  onChange={e => this.updateEntity("name_memo", e.target.value)}
-                />
-              </Col>
+              <Row type="flex" justify="start" align="middle">
+                <Col span={15}>
+                  <Input
+                    size="small"
+                    value={this.state.entity.name_memo}
+                    onChange={e =>
+                      this.updateEntity("name_memo", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={4} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
+                </Col>
+              </Row>
             )}
-            <IntlMessages id="label.zenkaku" />
             <div>
               <IntlMessages id="label.example.nameKana" />
             </div>
@@ -262,39 +282,37 @@ class Form extends Component {
             labelId="customerAddress.attributes.zipCode"
             required={true}
           >
-            <Row>
-              <ColSpan span={1}>
+            <Row type="flex" justify="start" align="middle">
+              <Col span={1}>
                 <IntlMessages id="label.zipCode" />
-              </ColSpan>
-              <Col span={3}>
-                <InnerFormItem>
-                  <Input
-                    value={this.state.zip_code_1}
-                    size="small"
-                    onChange={e =>
-                      this.updateZipCode("zip_code_1", e.target.value)
-                    }
-                  />
-                </InnerFormItem>
               </Col>
-              <ColSpan span={1}> - </ColSpan>
+              <Col span={3}>
+                <Input
+                  value={this.state.zip_code_1}
+                  size="small"
+                  onChange={e => this.updateState("zip_code_1", e.target.value)}
+                />
+              </Col>
+              <Col
+                span={1}
+                style={{ paddingLeft: "5px", paddingRight: "10px" }}
+              >
+                -
+              </Col>
               <Col span={4}>
-                <InnerFormItem>
-                  <Input
-                    value={this.state.zip_code_2}
-                    size="small"
-                    onChange={e =>
-                      this.updateZipCode("zip_code_2", e.target.value)
-                    }
-                  />
-                </InnerFormItem>
+                <Input
+                  value={this.state.zip_code_2}
+                  size="small"
+                  onChange={e => this.updateState("zip_code_2", e.target.value)}
+                />
               </Col>
-              <Col span={3}>
-                <InnerFormItem>
-                  <Button type="primary" size="small">
-                    <IntlMessages id="customerAddress.button.addressDisplay" />
-                  </Button>
-                </InnerFormItem>
+              <Col span={3} offset={1}>
+                <Button type="primary" size="small">
+                  <IntlMessages id="customerAddress.button.addressDisplay" />
+                </Button>
+              </Col>
+              <Col span={4} offset={1}>
+                <IntlMessages id="label.number" />
               </Col>
             </Row>
             <Row>
@@ -303,7 +321,7 @@ class Form extends Component {
               </Col>
             </Row>
             <Row>
-              <Col span={20} className="description">
+              <Col span={24} className="description">
                 <IntlMessages id="customerAddress.form.zipCode.description1" />
                 <br />
                 <IntlMessages id="customerAddress.form.zipCode.description2" />
@@ -314,7 +332,7 @@ class Form extends Component {
             labelId="customerAddress.attributes.address1"
             required={true}
           >
-            <Row>
+            <Row gutter={8} type="flex" justify="start" align="middle">
               <Col span={14}>
                 <Select defaultValue={0} size="small">
                   <Select.Option value={0}>
@@ -326,54 +344,171 @@ class Form extends Component {
                 </Select>
               </Col>
               <Col span={10} className="description">
-                郵便番号より自動検索されます
+                <IntlMessages id="customerAddress.form.address1.description" />
               </Col>
-              <Col span={24}>例: 東京都 豊島区</Col>
+              <Col span={24}>
+                <IntlMessages id="label.example.address1" />
+              </Col>
             </Row>
           </FormItem>
+
           <FormItem
-            labelId="customerAddress.attributes.address2"
+            labelId={
+              actionType === "edit"
+                ? "customerAddress.attributes.address3"
+                : "customerAddress.attributes.address3ForNew"
+            }
             required={true}
           >
-            <Col span={24}>
-              <Input
-                value={this.state.entity.address2}
-                onChange={e => this.updateZipCode("address2", e.target.value)}
-              />
-            </Col>
+            <Row type="flex" justify="start" align="middle">
+              <Col span={18}>
+                <Input
+                  size="small"
+                  value={this.state.entity.address3}
+                  onChange={e => this.updateEntity("address3", e.target.value)}
+                />
+              </Col>
+              <Col span={4} offset={1}>
+                <IntlMessages id="label.zenkaku" />
+              </Col>
+              <Col span={24}>
+                {actionType === "edit" ? (
+                  <IntlMessages id="label.example.address3" />
+                ) : (
+                  <IntlMessages id="label.example.address3ForNew" />
+                )}
+              </Col>
+            </Row>
           </FormItem>
-          <FormItem
-            labelId="customerAddress.attributes.address3"
-            required={true}
-          >
-            <Col span={24}>
-              <Input
-                value={this.state.entity.address3}
-                onChange={e => this.updateZipCode("address3", e.target.value)}
-              />
-            </Col>
-          </FormItem>
+
+          {actionType === "new" && (
+            <FormItem
+              labelId="customerAddress.attributes.blockNumber"
+              required={true}
+            >
+              <Row type="flex" justify="start" align="middle">
+                <Col span={18}>
+                  <Input
+                    size="small"
+                    value={this.state.entity.block_number}
+                    onChange={e =>
+                      this.updateEntity("block_number", e.target.value)
+                    }
+                  />
+                </Col>
+                <Col span={4} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
+                </Col>
+                <Col span={24}>
+                  <IntlMessages id="label.example.blockNumber" />
+                </Col>
+                <Col span={20} className="description">
+                  <IntlMessages id="customerAddress.form.blockNumber.description" />
+                </Col>
+              </Row>
+            </FormItem>
+          )}
+
           <FormItem labelId="customerAddress.attributes.address4">
-            <Col span={24}>
-              <Input
-                value={this.state.entity.address4}
-                onChange={e => this.updateZipCode("address4", e.target.value)}
-              />
-            </Col>
+            <Row type="flex" justify="start" align="middle">
+              <Col span={18}>
+                <Input
+                  size="small"
+                  value={this.state.entity.address4}
+                  onChange={e => this.updateEntity("address4", e.target.value)}
+                />
+              </Col>
+              <Col span={4} offset={1}>
+                <IntlMessages id="label.zenkaku" />
+              </Col>
+              <Col span={24}>
+                <IntlMessages id="label.example.address4" />
+              </Col>
+              <Col span={20} className="description">
+                <IntlMessages id="customerAddress.form.address4.description" />
+              </Col>
+            </Row>
           </FormItem>
-          <Row>
-            <Col span={10}>
-              <Link to="/store/cust/address/list">
-                <IntlMessages id="customerAddress.link.back" />
-              </Link>
-            </Col>
-            <Col span={14}>
-              <NextButton onClick={this.submit} type="primary">
-                <IntlMessages id="customerAddress.button.next" />
-              </NextButton>
-            </Col>
-          </Row>
+
+          {actionType === "new" && (
+            <FormItem labelId="customerAddress.attributes.care">
+              <Row gutter={8} type="flex" justify="start" align="middle">
+                <Col span={14}>
+                  <Input
+                    size="small"
+                    value={this.state.entity.care}
+                    onChange={e => this.updateEntity("care", e.target.value)}
+                  />
+                </Col>
+                <Col span={3}>
+                  <IntlMessages id="customerAddress.attributes.care" />
+                </Col>
+                <Col span={4} offset={1}>
+                  <IntlMessages id="label.zenkaku" />
+                </Col>
+              </Row>
+            </FormItem>
+          )}
+
+          <FormItem labelId="customerAddress.attributes.tel" required={true}>
+            <Row type="flex" justify="start" align="middle">
+              <Col span={3}>
+                <Input
+                  value={this.state.tel_1}
+                  size="small"
+                  onChange={e => this.updateState("tel_1", e.target.value)}
+                />
+              </Col>
+              <Col
+                span={1}
+                style={{ paddingLeft: "5px", paddingRight: "10px" }}
+              >
+                -
+              </Col>
+              <Col span={3}>
+                <Input
+                  value={this.state.tel_2}
+                  size="small"
+                  onChange={e => this.updateState("tel_2", e.target.value)}
+                />
+              </Col>
+              <Col
+                span={1}
+                style={{ paddingLeft: "5px", paddingRight: "10px" }}
+              >
+                -
+              </Col>
+              <Col span={3}>
+                <Input
+                  value={this.state.tel_3}
+                  size="small"
+                  onChange={e => this.updateState("tel_3", e.target.value)}
+                />
+              </Col>
+              <Col span={4} offset={1}>
+                <IntlMessages id="label.number" />
+              </Col>
+            </Row>
+            <Row>
+              <Col span={24}>
+                <IntlMessages id="label.example.telNumber" />
+              </Col>
+            </Row>
+          </FormItem>
         </StyledForm>
+
+        <StyledFormFooter type="flex" jsuttify="start" align="middle">
+          <Col span={9}>
+            <Link to="/store/cust/address/list">
+              <IntlMessages id="customerAddress.link.back" />
+            </Link>
+          </Col>
+          <Col span={15}>
+            <NextButton onClick={this.submit} type="primary">
+              <IntlMessages id="customerAddress.button.next" />
+            </NextButton>
+          </Col>
+        </StyledFormFooter>
       </div>
     );
   }

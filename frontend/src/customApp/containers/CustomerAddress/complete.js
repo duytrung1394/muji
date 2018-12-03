@@ -6,6 +6,7 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
+import AddressHeader from "../../components/customerAddress/addressHeader";
 
 const Wrapper = styled.div`
   width: 700px;
@@ -34,24 +35,30 @@ const Complete = props => {
     <ContentAreaLayout>
       <BaseContentLayout>
         <Wrapper>
-          <h1>
+          <AddressHeader>
+            <h1>
+              {actionType === "new" ? (
+                <IntlMessages id={`customerAddress.complete.new.title`} />
+              ) : (
+                <IntlMessages id={`customerAddress.complete.edit.title`} />
+              )}
+            </h1>
             {actionType === "new" ? (
-              <IntlMessages id={`customerAddress.complete.new.title`} />
+              <p>
+                <IntlMessages id={`customerAddress.complete.new.description`} />
+                <br />
+                <IntlMessages
+                  id={`customerAddress.complete.new.description2`}
+                />
+              </p>
             ) : (
-              <IntlMessages id={`customerAddress.complete.edit.title`} />
+              <p>
+                <IntlMessages
+                  id={`customerAddress.complete.edit.description`}
+                />
+              </p>
             )}
-          </h1>
-          {actionType === "new" ? (
-            <p>
-              <IntlMessages id={`customerAddress.complete.new.description`} />
-              <br />
-              <IntlMessages id={`customerAddress.complete.new.description2`} />
-            </p>
-          ) : (
-            <p>
-              <IntlMessages id={`customerAddress.complete.edit.description`} />
-            </p>
-          )}
+          </AddressHeader>
           <BackLinkLayout>
             <Link to="/store/cust/address/list">
               <IntlMessages id="customerAddress.complete.backLink" />

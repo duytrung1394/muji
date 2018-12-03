@@ -1,27 +1,49 @@
-import React, { Component } from "react";
-import { Row, Col, Input, Form as AntdForm } from "antd";
+import React from "react";
+import { Row, Col, Form as AntdForm } from "antd";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Button } from "./button";
-import styled from "styled-components";
+import AddressSubtitle from "./addressSubtitle";
 
-const StyledDiv = styled.div`
-  h3 {
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 13px;
-  }
+const StyledH3 = styled.h3`
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 13px;
+`;
+
+const StyledForm = styled(AntdForm)`
   .ant-form-item {
+    font-size: 13px;
     border: 1px solid #eeeeee;
+    border-bottom: none;
     margin: 0;
     background: #f5f5f5;
+    display: flex;
+    align-items: center;
   }
-  .ant-form-item-label {
+  &&& .ant-form-item-label {
     text-align: left;
+    padding-left: 20px;
   }
-  .ant-form-item-control-wrapper {
-    border-left: 1px solid #eeeeee;
+  &&& .ant-form-item-control-wrapper {
     background: white;
+    padding: 5px 20px;
+  }
+  span:empty {
+    padding: 26px 20px;
+  }
+  border-bottom: 1px solid #eeeeee;
+`;
+
+const StyledFormFooter = styled(Row)`
+  margin: 20px 0;
+  a {
+    color: #333333;
+    text-decoration: underline;
+    :hover {
+      color: #7f0019;
+    }
   }
 `;
 
@@ -59,9 +81,9 @@ const FormItem = props => {
 
 const Confirm = ({ entity, actionType, returnPathname, requestHandler }) => {
   return (
-    <StyledDiv>
-      <h3>お届け先情報</h3>
-      <AntdForm>
+    <div>
+      <AddressSubtitle />
+      <StyledForm>
         <FormItem labelId="customerAddress.attributes.name">
           <span>{entity.name}</span>
         </FormItem>
@@ -71,25 +93,51 @@ const Confirm = ({ entity, actionType, returnPathname, requestHandler }) => {
         <FormItem labelId="customerAddress.attributes.zipCode">
           <span>{entity.zip_code}</span>
         </FormItem>
-        <Row>
-          <Col span={10}>
-            <Link
-              to={{
-                pathname: returnPathname,
-                state: { fromConfirm: true }
-              }}
-            >
-              <IntlMessages id="customerAddress.link.back" />
-            </Link>
-          </Col>
-          <Col span={14}>
-            <SubmitButton onClick={requestHandler} type="primary">
-              <IntlMessages id="customerAddress.button.submit" />
-            </SubmitButton>
-          </Col>
-        </Row>
-      </AntdForm>
-    </StyledDiv>
+        <FormItem labelId="customerAddress.attributes.confirm.address1">
+          <span>{entity.address1}</span>
+        </FormItem>
+        <FormItem labelId="customerAddress.attributes.confirm.address2">
+          <span>{entity.address2}</span>
+        </FormItem>
+        <FormItem labelId="customerAddress.attributes.confirm.address3">
+          <span>{entity.address3}</span>
+        </FormItem>
+        {actionType === "new" && (
+          <FormItem labelId="customerAddress.attributes.confirm.blockNumber">
+            <span>{entity.block_number}</span>
+          </FormItem>
+        )}
+        <FormItem labelId="customerAddress.attributes.confirm.address4">
+          <span>{entity.address4}</span>
+        </FormItem>
+        {actionType === "new" && (
+          <FormItem labelId="customerAddress.attributes.care">
+            <span>{entity.care}</span>
+            <IntlMessages id="customerAddress.attributes.care" />
+          </FormItem>
+        )}
+        <FormItem labelId="customerAddress.attributes.tel">
+          <span>{entity.tel}</span>
+        </FormItem>
+      </StyledForm>
+      <StyledFormFooter type="flex" jsuttify="start" align="middle">
+        <Col span={10}>
+          <Link
+            to={{
+              pathname: returnPathname,
+              state: { fromConfirm: true }
+            }}
+          >
+            <IntlMessages id="customerAddress.link.back" />
+          </Link>
+        </Col>
+        <Col span={14}>
+          <SubmitButton onClick={requestHandler} type="primary">
+            <IntlMessages id="customerAddress.button.submit" />
+          </SubmitButton>
+        </Col>
+      </StyledFormFooter>
+    </div>
   );
 };
 

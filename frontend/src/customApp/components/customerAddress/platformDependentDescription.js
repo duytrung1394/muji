@@ -61,7 +61,10 @@ class PlatformDependentDescription extends Component {
           values={{
             link: this.platformDependentLink,
             icon: (
-              <img src="https://www.muji.net/cache/img/common/imageview.gif" />
+              <img
+                src="https://www.muji.net/cache/img/common/imageview.gif"
+                alt=""
+              />
             )
           }}
         />
