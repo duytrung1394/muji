@@ -69,10 +69,24 @@ const routes = [
     )
   },
   {
+    path: "/store/cmdty/donation",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/index")
+    )
+  },
+  {
     path: "/store/cust/address/list",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cmdty/donation/:donation_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/show")
     )
   },
   {
