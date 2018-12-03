@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "../../form/link";
 import { Icon, Rate, Popover } from "antd";
 
 const StyledItem = styled.li`
