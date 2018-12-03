@@ -8,6 +8,7 @@ import Activity from "./card";
 import Message from "./message";
 import OtherDonation from "./otherDonation";
 import Guide from "./guide";
+import LargeButton from "../../form/largeButton";
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -17,6 +18,18 @@ const MainImage = styled.img`
   height:auto;
   max-width:720px;
   ma-height:720px;
+`;
+
+const DonationButton = styled(LargeButton)`
+  padding: 0;
+  width: 153px;
+  border-radius: 25px;
+  background-color: #333;
+  color:#fff;
+  border:none;
+  &:hover{
+    color:#fff;
+  }
 `;
 
 const ImgCol = styled(Col)`
@@ -31,6 +44,9 @@ const FormCol = styled(Col)`
 const StyledSelect = styled(Select)`
   display:
 `
+const NeckPrice = styled.span`
+  
+`;
 
 const Quantity = styled.div`
   display:inline-block;
@@ -62,6 +78,16 @@ const RadioCol = styled(Col)`
     padding:0
   };
 `
+
+const DonationTicket = styled(LargeButton)`
+  padding: 0;
+  width: 100px;
+  border-radius: 25px;
+  font-size:
+  &:hover{
+    
+  }
+`;
 
 const SnsButtons = styled.ul`
   list-style:none;
@@ -124,7 +150,11 @@ class Form extends Component {
                 <IntlMessages id="donationShow.note3"/>
               </div>
 
-              <span>{entity.price}</span>
+              <div>
+                <IntlMessages id="donationShow.unit"/>
+                  <NeckPrice>{entity.price}</NeckPrice>
+                <IntlMessages id="donationShow.yen"/>
+              </div>
               
               <AntdForm.Item label="種類" colon={false}>
 
@@ -155,9 +185,9 @@ class Form extends Component {
                       <Option value="1">1</Option>
                     </StyledSelect>
                   </Quantity>
-                  <Button type="primary">
+                  <DonationButton>
                     <IntlMessages id="donationShow.donate"/>
-                  </Button>
+                  </DonationButton>
                 </div>
                 
 
@@ -172,9 +202,9 @@ class Form extends Component {
               </div>
 
               <Link to="/store/cmdty/donation/" key="01">
-                <Button>
+                <DonationTicket>
                   <IntlMessages id="donationShow.ticket"/>
-                </Button>
+                </DonationTicket>
               </Link>
 
               <SnsButtons>
