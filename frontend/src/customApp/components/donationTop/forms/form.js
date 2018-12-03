@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 import Organization from "./organization";
-import Activity from "./card";
+import CardList from "./cardList";
 import Message from "./message";
-import OtherDonation from "./otherDonation";
 import Guide from "./guide";
 
 const InputGroup = Input.Group;
@@ -144,14 +143,17 @@ class Form extends Component {
            title={entity.organization}
            organizations={entity.organizations}
           />
-          <Activity
-          activities={entity.activities}
+          <CardList
+            items={entity.activities}
+            cardWidth={"25%"}
           />
           <Message
           messages={entity.messages}
           />
-          <OtherDonation
-          otherDonations={entity.other_donations}
+          <CardList
+            title={"その他の募金券"}
+            items={entity.other_donations}
+            cardWidth={"215px"}
           />
           <Guide/>
           <Row>
