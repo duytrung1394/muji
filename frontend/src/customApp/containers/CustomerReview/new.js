@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
-import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components"
 import ReviewTop from "./reviewTop";
 import PostReview from "./postReview";
@@ -17,6 +16,7 @@ const ReviewFormWrapper = styled.div`
   padding:30px 50px;
   text-align:center;
   margin-bottom:70px;
+  background-color:#f7f7f7;
 `;
 
 class New extends Component {
@@ -47,7 +47,7 @@ class New extends Component {
         <ReviewTop
           entity={entity}
          />
-        <ReviewFormWrapper style={{backgroundColor:"#f7f7f7"}}>
+        <ReviewFormWrapper>
         { isChangeView ?
           <ConfirmReview/>
           :
