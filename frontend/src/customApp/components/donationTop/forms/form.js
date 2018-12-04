@@ -231,7 +231,6 @@ const TotalDonationSpan = styled.span`
 const StyledTotalDonationSpan = styled.span`
   font-size: 11px;
   vertical-align: bottom;
->>>>>>> develop_/2728_donation_detail_form
 `;
 
 class Form extends Component {
@@ -257,7 +256,6 @@ class Form extends Component {
       <div>
         <AntdForm>
           <Row type="flex">
-
             <ImgCol span={13}>
               <MainImage src={entity.img} />
             </ImgCol>
@@ -370,17 +368,19 @@ class Form extends Component {
             <StyledTotalDonationSpan>
               <IntlMessages id="donationShow.current" values={{ time: 16 }} />
             </StyledTotalDonationSpan>
-
           </TotalDonationWrapper>
 
           <Organization
             title={entity.organization}
             organizations={entity.organizations}
-
           />
-          <Activity activities={entity.activities} />
+          <CardList items={entity.activities} cardWidth={"25%"} />
           <Message messages={entity.messages} />
-          <OtherDonation />
+          <CardList
+            title={"その他の募金券"}
+            items={entity.other_donations}
+            cardWidth={"215px"}
+          />
 
           <Guide />
           <Row>
