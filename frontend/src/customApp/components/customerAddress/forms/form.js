@@ -97,26 +97,22 @@ class Form extends Component {
     super(props);
     this.state = {
       entity: {
-        ...this.props.entity,
-        familyName: this.props.entity.familyName
-          ? this.props.entity.familyName
+        ...props.entity,
+        familyName: props.entity.familyName ? props.entity.familyName : "",
+        firstName: props.entity.firstName ? props.entity.firstName : "",
+        familyNameKana: props.entity.familyNameKana
+          ? props.entity.familyNameKana
           : "",
-        firstName: this.props.entity.firstName
-          ? this.props.entity.firstName
-          : "",
-        familyNameKana: this.props.entity.familyNameKana
-          ? this.props.entity.familyNameKana
-          : "",
-        firstNameKana: this.props.entity.firstNameKana
-          ? this.props.entity.firstNameKana
+        firstNameKana: props.entity.firstNameKana
+          ? props.entity.firstNameKana
           : ""
       },
-      ...this.getZipCodes(this.props.entity.zip_code),
-      ...this.getTelNumbers(this.props.entity.tel)
+      ...this.initialZipCodes(props.entity.zip_code),
+      ...this.initialTelNumbers(props.entity.tel)
     };
   }
 
-  getZipCodes = zip_code => {
+  initialZipCodes = zip_code => {
     let codes = ["", ""];
     if (zip_code) {
       codes = zip_code.split("-");
@@ -124,7 +120,7 @@ class Form extends Component {
     return { zip_code_1: codes[0], zip_code_2: codes[1] };
   };
 
-  getTelNumbers = tel_number => {
+  initialTelNumbers = tel_number => {
     let numbers = ["", "", ""];
     if (tel_number) {
       numbers = tel_number.split("-");
@@ -146,6 +142,19 @@ class Form extends Component {
       [keyName]: value
     };
     this.setState(state);
+  };
+
+  getAddress = () => {
+    // TODO: 本来は外部API呼び出し
+    if (this.state.zip_code_1) {
+      const entity = {
+        ...this.state.entity,
+        address1: "東京都",
+        address2: "新宿区",
+        address3: "新宿"
+      };
+      this.setState({ entity });
+    }
   };
 
   submit = () => {
@@ -307,7 +316,7 @@ class Form extends Component {
                 />
               </Col>
               <Col span={3} offset={1}>
-                <Button type="primary" size="small">
+                <Button onClick={this.getAddress} type="primary" size="small">
                   <IntlMessages id="customerAddress.button.addressDisplay" />
                 </Button>
               </Col>
@@ -334,7 +343,7 @@ class Form extends Component {
           >
             <Row gutter={8} type="flex" justify="start" align="middle">
               <Col span={14}>
-                <Select defaultValue={0} size="small">
+                <Select value={0} size="small">
                   <Select.Option value={0}>
                     {this.state.entity.address1}
                     {this.state.entity.address2}
