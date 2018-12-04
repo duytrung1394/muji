@@ -6,7 +6,7 @@ import { Icon, Rate, Popover } from "antd";
 const StyledItem = styled.li`
   border: 1px solid #ccc;
   padding: 15px 20px;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const ReviewItemHeader = styled.div`

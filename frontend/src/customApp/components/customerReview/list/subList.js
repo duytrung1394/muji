@@ -7,7 +7,10 @@ const List = styled.ul`
   list-style: none;
   display: flex;
   align-items: baseline;
-  padding: 0;
+  padding: 10px 15px;
+  margin: 0px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 `;
 
 const SortList = styled.li`
@@ -18,6 +21,7 @@ const StyledSelect = styled(Select)`
   width: 200px;
   .ant-select-selection {
     border: none;
+    background: none transparent;
     &:focus {
       box-shadow: none;
     }

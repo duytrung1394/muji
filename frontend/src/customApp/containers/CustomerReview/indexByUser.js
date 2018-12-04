@@ -11,6 +11,8 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
+import SubList from "../../components/customerReview/list/subList";
+import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 
 const BASE_URL = "/store/review/user";
@@ -79,7 +81,10 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching || destroying} size="large">
           <ContentLayout>
-            <ListHeader></ListHeader>
+            <ListHeader>
+              <ReviewUserProfile />
+              <SubList backgroundColor={"#eee"} />
+            </ListHeader>
             <ItemsList>
               {entities.customer_reviews &&
                 entities.customer_reviews.map((item, index) => (
