@@ -20,6 +20,21 @@ class CustomerReviewsController extends Controller
     }
 
     /**
+     * Display a listing of the resource(ユーザ別一覧).
+     *
+     * @return Response
+     */
+    public function indexByUser(Request $request)
+    {
+        $data = $this->getMultiMockDataByUser(
+            (int)$request->input('page'),$request->input('nickname')
+        );
+        return [
+            'data'  => $data
+        ];
+    }
+
+    /**
       * Show the form for creating a new resource.
       *
       * @return \Illuminate\Http\Response
@@ -60,6 +75,16 @@ class CustomerReviewsController extends Controller
         return [
             'data'  => $data
         ];
+    }
+
+    /**
+     * ユーザ別リストデータ取得
+     *
+     * @return array
+     */
+    private function getMultiMockDataByUser($page = 1, $nickname)
+    {
+        return getMultiMockData($aoge);
     }
 
     /**
