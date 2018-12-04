@@ -12,7 +12,10 @@ class CustomerReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $this->getMultiMockData(0, 5);
+        $data = $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+        );
         return [
             'data'  => $data
         ];
@@ -45,23 +48,6 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * Customer Review(もっと見る).
-     *
-     * @return Response
-     */
-    public function getCustomerReviewsSeeMore(Request $request)
-    {
-        $data = $this->getMultiMockData(
-                (int)$request->input('offset'),
-                (int)$request->input('length')
-        );
-        \Log::info( print_r($data,true));
-        return [
-            'data'  => $data
-        ];
-    }
-
-    /**
      * モックデータ取得用．
      *
      * @return array
@@ -70,8 +56,10 @@ class CustomerReviewsController extends Controller
     {
         $reviews = [];
         $reviewTotal = 23;
-        $isAllDataDisp = ($offset + $length) > $reviewTotal;
-        $end = $isAllDataDisp ? $reviewTotal : ($offset + $length);
+        $getCount = ($offset == 0 && $length == 0) ? 5 : $length;
+        
+        $isAllDataDisp = ($offset + $getCount) > $reviewTotal;
+        $end = $isAllDataDisp ? $reviewTotal : ($offset + $getCount);
 
         for ($i = $offset; $i < $end; $i++) {
             $reviews[] = $this->getMockData($i);
