@@ -98,6 +98,7 @@ class DonationTopsController extends Controller
                     'ten_bill' => '10円券',
                     'one_hundred_bill' => '100円券',
                     'price' => '10', 
+                    'total_good' => '15',
                     'sub_description' => 'ジャパン・プラットフォームの「緊急災害復興支援」に寄付することができます。',           
                     'description' => 'ジャパン・プラットフォームは、国内外の災害被災地などに、1秒でも速く支援を届けます。',
                     'organization' => 'ジャパン・プラットホーム',
