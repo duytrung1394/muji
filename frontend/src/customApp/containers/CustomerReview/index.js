@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -45,24 +44,15 @@ class Index extends Component {
     this.props.fetchRequest({ page: this.getPage(this.props) });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const props = this.props;
-
-    if (this.getPage(prevProps) !== this.getPage(props)) {
-      props.fetchRequest({ page: this.getPage(props) });
-    }
-
-    if (props.destroyed) {
-      props.destroyCleanup();
-      props.fetchRequest({ page: this.getPage(props) });
-    }
-  }
-
   getPage = props => {
     return parseInt(props.match.params.page, 10) || 1;
   };
 
   seeMore = page => {
+    // this.props.getCustomerReviewRequest({
+    //   offset: this.props.entities.customer_reviews.length,
+    //   length: 5
+    // });
     let url;
 
     if (page === 1) {
@@ -72,7 +62,7 @@ class Index extends Component {
     }
     this.props.history.push(url);
   };
-
+  
   render() {
     const {
       entities,
@@ -99,11 +89,9 @@ class Index extends Component {
                 ))}
             </ItemsList>
             <Spin spinning={gettingCustomerReview} size="large">
-              {entities.isShowSeeMore && (
-                <ReviewButton
-                  seeMore={() => this.seeMore(this.getPage(this.props) + 1)}
-                />
-              )}
+              {entities.isShowSeeMore && 
+                <ReviewButton seeMore={this.seeMore(this.getPage(this.props))} />
+              }
             </Spin>
           </ContentLayout>
         </Spin>
@@ -129,8 +117,7 @@ const enhance = C => {
     actionCreators
   )(C);
   const injected = injectIntl(connected, { withRef: true });
-  const injectedWithRouter = withRouter(injected);
-  return injectedWithRouter;
+  return injected;
 };
 
 export default enhance(Index);
