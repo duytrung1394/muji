@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
-import CustomerReview from ".";
 
 const FixArea = styled.div`
   max-width: 768px;
