@@ -12,8 +12,7 @@ class CustomerReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        //$data = $this->getMultiMockData(0, 5);
-        $data = $this->getMultiMockData((int)$request->input('page'));
+        $data = $this->getMultiMockData(0, 5);
         return [
             'data'  => $data
         ];
@@ -67,19 +66,12 @@ class CustomerReviewsController extends Controller
      *
      * @return array
      */
-    private function getMultiMockData($page = 1)
+    private function getMultiMockData($offset, $length)
     {
-        \Log::info("page: " . $page);
         $reviews = [];
         $reviewTotal = 23;
-        $offset = 0;
-        $length = $page * 5;
         $isAllDataDisp = ($offset + $length) > $reviewTotal;
         $end = $isAllDataDisp ? $reviewTotal : ($offset + $length);
-
-        
-        \Log::info( print_r($offset,true));
-        \Log::info( print_r($end,true));
 
         for ($i = $offset; $i < $end; $i++) {
             $reviews[] = $this->getMockData($i);
