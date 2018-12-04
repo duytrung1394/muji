@@ -36,8 +36,9 @@ require_once 'api/v1/tops.php';
 require_once 'api/v1/product_category_tops.php';
 
 
-// /api/v1/donation-tops
-require_once 'api/v1/donation_tops.php';
+// /api/v1/customer-reviews
+require_once 'api/v1/customer_reviews.php';
+
 
 // /api/v1/customer-addresses
 require_once 'api/v1/customer_addresses.php';
