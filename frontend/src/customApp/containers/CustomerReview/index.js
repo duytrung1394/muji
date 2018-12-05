@@ -44,29 +44,22 @@ class Index extends Component {
       offset: this.getEntityLength(),
       length: 5
     });
-  }
+  };
 
   getEntityLength = () => {
-    return this.props.entities
-      ? this.props.entities.length
-      : 0;
-  }
+    return this.props.entities ? this.props.entities.length : 0;
+  };
 
   isFirstFetching = () => {
     return this.getEntityLength() === 0;
-  }
+  };
 
   hasMore = () => {
     return this.props.total > this.getEntityLength();
-  }
+  };
 
   render() {
-    const {
-      entities,
-      fetching,
-      fetched,
-      destroying,
-    } = this.props;
+    const { entities, fetching, fetched, destroying } = this.props;
 
     return (
       <ContentAreaLayout>
@@ -78,26 +71,24 @@ class Index extends Component {
         </ContentLayout>
 
         <ContentLayout>
-          <Spin spinning={(fetching && this.isFirstFetching()) || destroying} size="large">
-            {fetched || !this.isFirstFetching()
-             ? (
+          <Spin
+            spinning={(fetching && this.isFirstFetching()) || destroying}
+            size="large"
+          >
+            {fetched || !this.isFirstFetching() ? (
               <ItemsList>
                 {entities &&
                   entities.map((entity, index) => (
                     <ReviewItem entity={entity} key={index} />
                   ))}
               </ItemsList>
-            )
-            : null
-            }
+            ) : null}
           </Spin>
         </ContentLayout>
 
         <ContentLayout>
           <Spin spinning={fetching && !this.isFirstFetching()} size="large">
-            {this.hasMore() && (
-              <ReviewButton seeMore={this.seeMore} />
-            )}
+            {this.hasMore() && <ReviewButton seeMore={this.seeMore} />}
           </Spin>
         </ContentLayout>
       </ContentAreaLayout>

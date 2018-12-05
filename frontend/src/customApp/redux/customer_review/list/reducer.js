@@ -5,7 +5,7 @@ import restReducer, { restInitState } from "../../shared/list/reducer";
 const customRestInitState = restInitState.merge(
   Map({
     // TODO: fix
-    sortFlg: false,
+    sortFlg: false
   })
 );
 
@@ -19,10 +19,7 @@ export const fetchRequest = (state, action) =>
 
 export const fetchSuccess = (state, action) =>
   state
-    .set("entities", [
-      ...state.get("entities"),
-      ...action.payload.data
-    ])
+    .set("entities", [...state.get("entities"), ...action.payload.data])
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)
     .set("fetching", false)
