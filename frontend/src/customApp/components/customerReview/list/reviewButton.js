@@ -25,8 +25,7 @@ const StyledIcon = styled(Icon)`
   padding-left: 5px;
 `;
 
-const ReviewButton = props => {
-  const { seeMore } = props;
+const ReviewButton = ({ seeMore }) => {
   return (
     <ButtonWrapper>
       <SeeMoreButton onClick={seeMore}>

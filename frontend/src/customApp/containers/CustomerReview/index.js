@@ -15,14 +15,11 @@ import ReviewButton from "../../components/customerReview/list/reviewButton";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
-  margin: 20px 0 0;
 `;
 
-const ListHeader = styled.div`
-  h1 {
-    font-size: 28px;
-    font-weight: bold;
-  }
+const StyledH1 = styled.h1`
+  font-size: 28px;
+  font-weight: bold;
 `;
 
 const ItemsList = styled.ul`
@@ -43,44 +40,66 @@ class Index extends Component {
   }
 
   seeMore = () => {
-    this.props.getCustomerReviewRequest({
-      offset: this.props.entities.customer_reviews.length,
+    this.props.fetchRequest({
+      offset: this.getEntityLength(),
       length: 5
     });
-  };
+  }
+
+  getEntityLength = () => {
+    return this.props.entities
+      ? this.props.entities.length
+      : 0;
+  }
+
+  isFirstFetching = () => {
+    return this.getEntityLength() === 0;
+  }
+
+  hasMore = () => {
+    return this.props.total > this.getEntityLength();
+  }
 
   render() {
     const {
       entities,
       fetching,
+      fetched,
       destroying,
-      getCustomerReviewRequest,
-      gettingCustomerReview
     } = this.props;
 
     return (
       <ContentAreaLayout>
-        <Spin spinning={fetching || destroying} size="large">
-          <ContentLayout>
-            <ListHeader>
-              <h1>
-                <IntlMessages id="customerReview.list.title" />
-              </h1>
-              <SubList />
-            </ListHeader>
-            <ItemsList>
-              {entities.customer_reviews &&
-                entities.customer_reviews.map((item, index) => (
-                  <ReviewItem entity={item} key={index} />
-                ))}
-            </ItemsList>
-            <Spin spinning={gettingCustomerReview} size="large">
-              {entities.isShowSeeMore && (
-                <ReviewButton seeMore={this.seeMore} />
-              )}
-            </Spin>
-          </ContentLayout>
-        </Spin>
+        <ContentLayout>
+          <StyledH1>
+            <IntlMessages id="customerReview.list.title" />
+          </StyledH1>
+          <SubList />
+        </ContentLayout>
+
+        <ContentLayout>
+          <Spin spinning={(fetching && this.isFirstFetching()) || destroying} size="large">
+            {fetched || !this.isFirstFetching()
+             ? (
+              <ItemsList>
+                {entities &&
+                  entities.map((entity, index) => (
+                    <ReviewItem entity={entity} key={index} />
+                  ))}
+              </ItemsList>
+            )
+            : null
+            }
+          </Spin>
+        </ContentLayout>
+
+        <ContentLayout>
+          <Spin spinning={fetching && !this.isFirstFetching()} size="large">
+            {this.hasMore() && (
+              <ReviewButton seeMore={this.seeMore} />
+            )}
+          </Spin>
+        </ContentLayout>
       </ContentAreaLayout>
     );
   }
@@ -92,7 +111,6 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
-  getCustomerReviewRequest: actions.getCustomerReview.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

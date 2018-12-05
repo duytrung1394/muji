@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
+    private $mockTotal = 23;
+
     /**
      * Display a listing of the resource.
      *
@@ -12,12 +14,13 @@ class CustomerReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $this->getMultiMockData(
+        return [
+            'data'      => $this->getMultiMockData(
                 (int)$request->input('offset'),
                 (int)$request->input('length')
-        );
-        return [
-            'data'  => $data
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
         ];
     }
 
@@ -55,7 +58,7 @@ class CustomerReviewsController extends Controller
     private function getMultiMockData($offset, $length)
     {
         $reviews = [];
-        $reviewTotal = 23;
+        $reviewTotal = $this->mockTotal;
         $getCount = ($offset == 0 && $length == 0) ? 5 : $length;
         
         $isAllDataDisp = ($offset + $getCount) > $reviewTotal;
@@ -65,14 +68,7 @@ class CustomerReviewsController extends Controller
             $reviews[] = $this->getMockData($i);
         }
 
-        $data = [
-            'customer_reviews' => $reviews,
-            'total' => $reviewTotal,
-            'isShowSeeMore' => !$isAllDataDisp,
-            'sortFlg' => false
-        ];
-
-        return $data;
+        return $reviews;
     }
 
     /**
