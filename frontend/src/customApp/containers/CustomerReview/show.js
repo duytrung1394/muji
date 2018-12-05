@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
-import { Spin ,Icon ,Rate} from "antd";
+import { Spin ,Icon} from "antd";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewDetailItem from "../../components/customerReview/list/reviewDetailItem";
-import InfoList from "../../components/customerReview/list/infoList";
-import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { Link } from "react-router-dom";
+import Notices from "./notice";
+import Comment from "./comment";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -20,7 +19,7 @@ const ContentLayout = styled(BaseContentLayout)`
 `;
 
 const ListHeader = styled.div`
-  margin-bottom: 10px;
+  margin: 30px 0;
   font-size: 12px;
 `;
 
@@ -28,19 +27,13 @@ const ReviewItemHeader = styled.div`
   position: relative;
 `;
 
-const ReviewHeaderData = styled.div`
-  display: inline-block;
-  padding-left: 10px;
-`;
-
 const ItemImg = styled.img`
-  vertical-align: baseline;
+  margin-right:10px;
 `;
 
-const ReviewTitle = styled.p`
+const ReviewTitle = styled.span`
   font-size: 14px;
   color: #333;
-  margin:0;
   font-weight: bold;
 `;
 
@@ -54,27 +47,6 @@ const RigthArrow = styled(Icon)`
 const ItemsList = styled.ul`
   list-style: none;
   padding: 0;
-`;
-
-const StarWrap = styled.span`
-  color: #f60;
-  position: relative;
-  padding: 0;
-  line-height: 1;
-  display: inline-block;
-  vertical-align: middle;
-`;
-
-const StarWrapper = styled(StarWrap)`
-  & .ant-rate {
-    color: #f60;
-  }
-`;
-
-const Star = styled(Rate)`
-  & .ant-rate-star {
-    font-size: 14px;
-  }
 `;
 
 const LinkStyle = {
@@ -113,7 +85,6 @@ class Show extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching || destroying} size="large">
           <ContentLayout>
-
             <ListHeader>
               <ReviewItemHeader>
                 <Link to={``} style={LinkStyle} />
@@ -123,30 +94,15 @@ class Show extends Component {
                   width="60"
                   height="60"
                 />
-                <ReviewHeaderData>
-                  <ReviewTitle>{customer_reviews[0].product}</ReviewTitle>
-                  <StarWrapper>
-                    <Star defaultValue={3.5} />
-                  </StarWrapper>
-                  <IntlMessages id="reviewDetail.totalStar"/>
-                  <br/>
-                  <span>3</span>
-                  <IntlMessages id="reviewDetail.reviewTotal"/>
-                </ReviewHeaderData>
+                <ReviewTitle>{customer_reviews[0].product}</ReviewTitle>
                 <RigthArrow type="right" />
               </ReviewItemHeader>
             </ListHeader>
-            <InfoList />
             <ItemsList>
-              {entity.customer_reviews &&
-                entity.customer_reviews.map((item, index) => (
-                  <ReviewDetailItem entity={item} key={index} />
-                ))}
-              <ReviewButton
-                customerReviews={entity.customer_reviews}
-                getCustomerReviewRequest={getCustomerReviewRequest}
-              />
+              <ReviewDetailItem entity={customer_reviews[0]} /> 
             </ItemsList>
+            <Comment />
+            <Notices />
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>

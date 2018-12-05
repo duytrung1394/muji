@@ -38,12 +38,6 @@ const PostPageTitle = styled.div`
   margin: 20px 0;
 `;
 
-const ConfirmPageTitle = styled.div`
-  font-size: 25px;
-  font-weight: 600;
-  margin: 20px 0;
-`;
-
 const ReviewTop = props => {
   if (props.entity.user && props.entity.customer_reviews) {
     const { user, customer_reviews } = props.entity;

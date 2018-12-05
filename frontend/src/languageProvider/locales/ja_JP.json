@@ -368,6 +368,8 @@
   "reviewDetail.reviewTotal": "件のレビュー",
   "reviewDetail.question": "このレビューは役に立ちましたか？",
   "reviewDetail.usefulButton": "役に立った",
+  "reviewDetail.comment": "コメント",
+  "reviewDetail.nothingComment": "コメント投稿はありません",
   "shuffle.descriptionFive": "Backbone.js becomes a thing",
   "shuffle.descriptionFour": "First underscore.js commit",
   "shuffle.descriptionOne": "Netscape 2.0 ships   introducing Javascript",

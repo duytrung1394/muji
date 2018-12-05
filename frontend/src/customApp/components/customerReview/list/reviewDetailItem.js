@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Icon, Rate } from "antd";
+import { Icon, Rate, Popover  } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const StyledItem = styled.li`
+  position:relative;
   border: 1px solid #ccc;
   padding: 0 20px 15px;
-  margin: 10px;
+  margin: 10px 0;
 `;
 
 const StarWrap = styled.span`
@@ -68,6 +69,7 @@ const InfoList = styled.ul`
 
 const UserData = styled.div`
   position:relative;
+  margin-bottom: 10px;
 `;
 
 const UserIcon = styled.img`
@@ -94,6 +96,7 @@ const UsefulButton = styled.button`
   padding:3px 15px;
   background-color: #fff;
   color: #333;
+  cursor:pointer;
 `;
 
 const UsefulSelectedButton = styled.button`
@@ -103,6 +106,23 @@ const UsefulSelectedButton = styled.button`
   padding:3px 15px;
   background-color: #aaa;
   color: #fff;
+  cursor:pointer;
+`;
+
+
+const ActionIcons = styled.ul`
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  list-style: none;
+  display: flex;
+`;
+
+const ActionIcon = styled.li`
+  margin-right: 10px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
 `;
 
 const LinkStyle = {
@@ -142,29 +162,39 @@ const ReviewDetailItem = ({ entity }) => (
         <UserName>{entity.user_name}</UserName>
         </UserData>
     </div>
-
     <InfoList>
       <li>
         <CommentIcon type="message" />
-        <Link to={`store/review/detail/${entity.jancode}`}>
-          <span>{entity.evaluations_comment_count}</span>件のコメント
-        </Link>
+        <span>{entity.evaluations_comment_count}</span>件のコメント
       </li>
       <li>
         <CommentIcon type="like" />
-        <Link to={`store/review/detail/${entity.jancode}`}>
-          <span>{entity.evaluations_useful_count}</span>人が役に立ったと考えています
-        </Link>
+        <span>{entity.evaluations_useful_count}</span>人が役に立ったと考えています
       </li>
-      <Question>
-        <IntlMessages id="reviewDetail.question" />
-        { entity.selected_flg ?
-        <UsefulSelectedButton><IntlMessages id="reviewDetail.usefulButton" /></UsefulSelectedButton>
-        :
-        <UsefulButton><IntlMessages id="reviewDetail.usefulButton" /></UsefulButton>
-        }
-      </Question>
     </InfoList>
+    <Question>
+      <IntlMessages id="reviewDetail.question" />
+      { entity.selected_flg ?
+      <UsefulButton><IntlMessages id="reviewDetail.usefulButton" /></UsefulButton>
+      :
+      <UsefulSelectedButton><IntlMessages id="reviewDetail.usefulButton" /></UsefulSelectedButton>
+      }
+    </Question>
+    <ActionIcons>
+      <ActionIcon>
+        <Icon type="paper-clip" />
+      </ActionIcon>
+      <ActionIcon>
+      <Popover
+          placement="bottomRight"
+          content={<span>レビューを削除する</span>}
+          trigger="click"
+        >
+          <Icon type="ellipsis" />
+        </Popover>
+      </ActionIcon>
+    </ActionIcons>
+
   </StyledItem>
 );
 

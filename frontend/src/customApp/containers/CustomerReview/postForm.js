@@ -1,9 +1,9 @@
 import React from "react";
 import { Upload, message, Button, Icon } from "antd";
 import InputConfButton from "./inputConfButton";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
+import Notices from "./notice";
 
 const FormLabel = styled.label`
   display: block;
@@ -16,13 +16,11 @@ const FormLabel = styled.label`
 const Input = styled.input`
   border: 1px solid #eee;
 `;
+
 const Textarea = styled.textarea`
   border: 1px solid #eee;
 `;
-const Notices = styled.div`
-  text-align: left;
-  padding: 0 30px;
-`;
+
 const UploadButton = styled(Button)`
   &.ant-btn {
     font-size: 16px;
@@ -48,10 +46,6 @@ const UploadArea = styled.div`
 
 const UploadIcon = styled(Icon)`
   font-size: 20px;
-`;
-
-const Notice = styled.span`
-  font-size: 14px;
 `;
 
 const props = {
@@ -108,23 +102,7 @@ const PostForm = props => {
         </Upload>
       </UploadArea>
       <InputConfButton changeView={changeView} />
-      <Notices>
-        <Notice>
-          <IntlMessages id="reviewPost.notice1Front" />
-          <Link to={"/"}>
-            <IntlMessages id="reviewPost.noticeLink" />
-          </Link>
-          <IntlMessages id="reviewPost.notice1Back" />
-        </Notice>
-        <br />
-        <Notice>
-          <IntlMessages id="reviewPost.notice2" />
-        </Notice>
-        <br />
-        <Notice>
-          <IntlMessages id="reviewPost.notice3" />
-        </Notice>
-      </Notices>
+      <Notices/>
     </div>
   );
 };
