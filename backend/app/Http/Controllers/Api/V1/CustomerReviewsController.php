@@ -112,6 +112,9 @@ class CustomerReviewsController extends Controller
 
         $data = [
             'customer_reviews' => $reviews,
+            'follower' => '0',
+            'follow' => '5',
+            'total_rating' => '3',
             'total' => $reviewTotal,
             'isShowSeeMore' => !$isAllDataDisp,
             'sortFlg' => false

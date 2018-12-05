@@ -82,7 +82,7 @@ class Index extends Component {
         <Spin spinning={fetching || destroying} size="large">
           <ContentLayout>
             <ListHeader>
-              <ReviewUserProfile />
+              <ReviewUserProfile entity={entities}/>
               <SubList backgroundColor={"#eee"} />
             </ListHeader>
             <ItemsList>
