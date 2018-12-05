@@ -56,7 +56,6 @@ const Div = styled.div`
   }
 `;
 
-
 const Organization = ({ organizations, title }) => {
   if (organizations) {
     return (

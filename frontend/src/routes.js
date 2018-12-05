@@ -81,6 +81,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/index")
     )
+  },
+  {
+    path: "/store/cart/donation/payment/:donation_code/:number_of_units",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/payment")
+    )
   }
 ];
 export default routes;
