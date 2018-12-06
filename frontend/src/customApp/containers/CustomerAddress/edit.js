@@ -64,7 +64,7 @@ class Edit extends Component {
                   requestHandler={entity => {
                     this.props.confirmEntity(entity);
                     this.props.history.push(
-                      `/store/cust/address/confirmedit/${addressBookNo}`
+                      `/store/cust/address/edit/${addressBookNo}/confirm`
                     );
                   }}
                 />

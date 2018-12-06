@@ -63,7 +63,9 @@ class New extends Component {
                   entity={this.props.entity}
                   requestHandler={entity => {
                     this.props.confirmEntity(entity);
-                    this.props.history.push("/store/cust/address/confirmnew");
+                    this.props.history.push(
+                      "/store/cust/address/create/confirm"
+                    );
                   }}
                 />
               )}
