@@ -56,7 +56,7 @@ const ReviewUserProfile = props => {
           </span>フォロー中
         </li>
       </ul>
-      <div class="m-common__review__total">
+      <div className="m-common__review__total">
         <ul>
           <li className="lsf-icon balloons">
             レビュー数<span id="anotherReviewCount" className="num">

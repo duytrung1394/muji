@@ -131,7 +131,7 @@ const ReviewItem = ({ entity }) => (
         <CommentTitle>{entity.title}</CommentTitle>
         <Comment>{entity.detail_comment}</Comment>
       </Link>
-      <ReviewImageList/>
+      <ReviewImageList innerCategories={entity.images} />
     </div>
     <InfoList>
       <li>

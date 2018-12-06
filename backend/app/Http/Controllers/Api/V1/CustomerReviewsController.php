@@ -137,7 +137,11 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
-                'images'=[],
+                'images'=>[
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
+                ],
             ];
         case 1:
             return [
@@ -150,7 +154,7 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
-                'images'=[],
+                'images'=>[],
             ];
         case 2:
             return [
@@ -163,7 +167,7 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
-                'images'=[],
+                'images'=>[],
             ];
         case 3:
             return [
@@ -176,7 +180,7 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
-                'images'=[],
+                'images'=>[],
             ];
         case 4:
             return [
@@ -201,7 +205,7 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
                 'evaluations_comment_count' => 1,
                 'evaluations_useful_count' => 100,
-                'images'=[],
+                'images'=>[],
             ];
         default:
             return [];
