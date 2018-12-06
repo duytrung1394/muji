@@ -128,7 +128,7 @@ class CustomerReviewsController extends Controller
      */
     private function getMockData($index)
     {
-        switch ($index % 5){
+        switch ($index % 6){
         case 0:
             return [
                 'customer_review_code' => $index,
@@ -140,8 +140,26 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
+                ],
             ];
         case 1:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'ベーコンとチーズのキッシュ',
+                'jancode' => '4550182028072',
+                'title' => 'キッシュ美味しい',
+                'star' => 3,
+                'upload_date' => '1時間前',
+                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[],
+            ];
+        case 2:
             return [
                 'customer_review_code' => $index,
                 'product' => 'チキンとほうれん草のキッシュ',
@@ -152,8 +170,9 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[],
             ];
-        case 2:
+        case 3:
             return [
                 'customer_review_code' => $index,
                 'product' => 'オレンジピールクランチチョコ',
@@ -164,8 +183,9 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[],
             ];
-        case 3:
+        case 4:
             return [
                 'customer_review_code' => $index,
                 'product' => 'ポケットコイルスプリングマットレス・シングル',
@@ -177,7 +197,7 @@ class CustomerReviewsController extends Controller
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
             ];
-        case 4:
+        case 5:
             return [
                 'customer_review_code' => $index,
                 'product' => '無選別　おこげせんべい',
@@ -188,6 +208,7 @@ class CustomerReviewsController extends Controller
                 'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
                 'evaluations_comment_count' => 1,
                 'evaluations_useful_count' => 100,
+                'images'=>[],
             ];
         default:
             return [];
