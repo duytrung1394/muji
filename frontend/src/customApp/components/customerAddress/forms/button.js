@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "antd";
-import IntlMessages from "../../../../components/utility/intlMessages";
+import { Button as AntdButton } from "antd";
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(AntdButton)`
   &&& {
     font-size: 12px;
     span {
@@ -25,6 +24,6 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export const AddButton = props => (
+export const Button = props => (
   <StyledButton {...props}>{props.children}</StyledButton>
 );

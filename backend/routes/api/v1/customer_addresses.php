@@ -15,9 +15,17 @@ $router->get('/api/v1/customer-addresses', [
 ]);
 
 /**
+  * 作成
+  */
+ $router->get('/api/v1/customer-addresses/create', [
+     'middleware'    => [],
+     'uses'          => 'Api\V1\CustomerAddressesController@create',
+ ]);
+
+/**
  * 詳細取得
  */
-$router->get('/api/v1/customer-addresses/{taskCode}', [
+$router->get('/api/v1/customer-addresses/{addressBookNo}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerAddressesController@show',
 ]);
@@ -33,7 +41,7 @@ $router->post('/api/v1/customer-addresses', [
 /**
  * 更新
  */
-$router->put('/api/v1/customer-addresses/{taskCode}', [
+$router->put('/api/v1/customer-addresses/{addressBookNo}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerAddressesController@update',
 ]);
