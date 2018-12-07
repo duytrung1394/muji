@@ -4,49 +4,51 @@ import restReducer, { restInitState } from "../../shared/list/reducer";
 
 const customRestInitState = restInitState.merge(
   Map({
-    gettingCustomerReview: false,
-    gotCustomerReview: false,
-    getCustomerReviewError: false
+    // TODO: fix
+    sortFlg: false
   })
 );
 
-const getCustomerReviewRequest = state =>
+// GET
+export const fetchRequest = (state, action) =>
   state
-    .set("gettingCustomerReview", true)
-    .set("gotCustomerReview", false)
-    .set("getCustomerReviewError", false);
+    .set("doSearch", false)
+    .set("fetching", true)
+    .set("fetched", false)
+    .set("fetchError", false);
 
-const getCustomerReviewSuccess = (state, action) => {
-  const entities = state.get("entities");
-  const newEntity = {
-    ...entities,
-    customer_reviews: entities.customer_reviews.concat(
-      action.payload.data.customer_reviews
-    ),
-    isShowSeeMore: action.payload.data.isShowSeeMore
-  };
-
-  return state
-    .set("entities", newEntity)
-    .set("gettingCustomerReview", false)
-    .set("gotCustomerReview", true);
-};
-
-const getCustomerReviewFailure = state =>
+export const fetchSuccess = (state, action) =>
   state
-    .set("gettingCustomerReview", false)
-    .set("gotCustomerReview", false)
-    .set("getCustomerReviewError", true);
+    .set("entities", [...state.get("entities"), ...action.payload.data])
+    .set("total", action.payload.total)
+    .set("sortFlg", action.payload.sortFlg)
+    .set("fetching", false)
+    .set("fetched", true);
+
+export const fetchFailure = (state, action) =>
+  state
+    .set("entities", [])
+    .set("fetching", false)
+    .set("fetchError", true);
+
+export const fetchCleanup = (state, action) =>
+  state
+    .set("entities", [])
+    .set("total", 0)
+    .set("fetching", false)
+    .set("fetched", false)
+    .set("fetchError", false);
 
 const reducer = handleActions(
   {
     CUSTOMER_REVIEW: {
       LIST: {
         ...restReducer,
-        GET_CUSTOMER_REVIEW: {
-          REQUEST: getCustomerReviewRequest,
-          SUCCESS: getCustomerReviewSuccess,
-          FAILURE: getCustomerReviewFailure
+        FETCH: {
+          REQUEST: fetchRequest,
+          SUCCESS: fetchSuccess,
+          FAILURE: fetchFailure,
+          CLEANUP: fetchCleanup
         }
       }
     }

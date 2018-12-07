@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -11,22 +10,12 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
-import SubList from "../../components/customerReview/list/subList";
+import Header from "../../components/customerReview/list/header";
 import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 
-const BASE_URL = "/store/review/user";
-
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
-  margin: 20px 0 0;
-`;
-
-const ListHeader = styled.div`
-  h1 {
-    font-size: 28px;
-    font-weight: bold;
-  }
 `;
 
 const ItemsList = styled.ul`
@@ -43,61 +32,55 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest({ page: this.getPage(this.props) });
+    this.props.fetchRequest("");
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const props = this.props;
-
-    if (this.getPage(prevProps) !== this.getPage(props)) {
-      props.fetchRequest({ page: this.getPage(props) });
-    }
-
-    if (props.destroyed) {
-      props.destroyCleanup();
-      props.fetchRequest({ page: this.getPage(props) });
-    }
-  }
-
-  getPage = props => {
-    return parseInt(props.match.params.page, 10) || 1;
+  seeMore = () => {
+    this.props.fetchRequest({
+      offset: this.getEntityLength(),
+      length: 5
+    });
   };
 
-  seeMore = page => {
-    let url;
+  getEntityLength = () => {
+    return this.props.entities ? this.props.entities.length : 0;
+  };
 
-    if (page === 1) {
-      url = `${BASE_URL}`;
-    } else {
-      url = `${BASE_URL}/page/${page}`;
-    }
-    this.props.history.push(url);
+  isFirstFetching = () => {
+    return this.getEntityLength() === 0;
+  };
+
+  hasMore = () => {
+    return this.props.total > this.getEntityLength();
   };
 
   render() {
-    const { entities, fetching, destroying } = this.props;
-
+    const { entities, fetching, fetched, destroying } = this.props;
     return (
       <ContentAreaLayout>
-        <Spin spinning={fetching || destroying} size="large">
-          <ContentLayout>
-            <ListHeader>
-              <ReviewUserProfile entity={entities}/>
-              <SubList backgroundColor={"#eee"} />
-            </ListHeader>
-            <ItemsList>
-              {entities.customer_reviews &&
-                entities.customer_reviews.map((item, index) => (
-                  <ReviewItem entity={item} key={index} />
-                ))}
-            </ItemsList>
-            {entities.isShowSeeMore && (
-              <ReviewButton
-                seeMore={() => this.seeMore(this.getPage(this.props) + 1)}
-              />
-            )}
-          </ContentLayout>
-        </Spin>
+        <ContentLayout>
+          <Header title={<ReviewUserProfile entity={entities} />} />
+        </ContentLayout>
+        <ContentLayout>
+          <Spin
+            spinning={(fetching && this.isFirstFetching()) || destroying}
+            size="large"
+          >
+            {fetched || !this.isFirstFetching() ? (
+              <ItemsList>
+                {entities &&
+                  entities.map((entity, index) => (
+                    <ReviewItem entity={entity} key={index} />
+                  ))}
+              </ItemsList>
+            ) : null}
+          </Spin>
+        </ContentLayout>
+        <ContentLayout>
+          <Spin spinning={fetching && !this.isFirstFetching()} size="large">
+            {this.hasMore() && <ReviewButton seeMore={this.seeMore} />}
+          </Spin>
+        </ContentLayout>
       </ContentAreaLayout>
     );
   }
@@ -119,8 +102,7 @@ const enhance = C => {
     actionCreators
   )(C);
   const injected = injectIntl(connected, { withRef: true });
-  const injectedWithRouter = withRouter(injected);
-  return injectedWithRouter;
+  return injected;
 };
 
 export default enhance(Index);

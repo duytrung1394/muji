@@ -37,11 +37,3 @@ $router->delete('/api/v1/customer-reviews', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerReviewsController@destroy',
 ]);
-
-/**
- * Customer Review (もっと見る).
- */
-$router->get('/api/v1/customer-reviews/seemore', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@getCustomerReviewsSeeMore',
-]);

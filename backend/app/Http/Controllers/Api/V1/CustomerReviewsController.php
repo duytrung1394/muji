@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
+    private $mockTotal = 23;
+
     /**
      * Display a listing of the resource.
      *
@@ -12,10 +14,13 @@ class CustomerReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        //$data = $this->getMultiMockData(0, 5);
-        $data = $this->getMultiMockData((int)$request->input('page'));
         return [
-            'data'  => $data
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
         ];
     }
 
@@ -61,23 +66,6 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * Customer Review(もっと見る).
-     *
-     * @return Response
-     */
-    public function getCustomerReviewsSeeMore(Request $request)
-    {
-        $data = $this->getMultiMockData(
-                (int)$request->input('offset'),
-                (int)$request->input('length')
-        );
-        \Log::info( print_r($data,true));
-        return [
-            'data'  => $data
-        ];
-    }
-
-    /**
      * ユーザ別リストデータ取得
      *
      * @return array
@@ -92,35 +80,20 @@ class CustomerReviewsController extends Controller
      *
      * @return array
      */
-    private function getMultiMockData($page = 1)
+    private function getMultiMockData($offset, $length)
     {
-        \Log::info("page: " . $page);
         $reviews = [];
-        $reviewTotal = 23;
-        $offset = 0;
-        $length = $page * 5;
-        $isAllDataDisp = ($offset + $length) > $reviewTotal;
-        $end = $isAllDataDisp ? $reviewTotal : ($offset + $length);
-
+        $reviewTotal = $this->mockTotal;
+        $getCount = ($offset == 0 && $length == 0) ? 5 : $length;
         
-        \Log::info( print_r($offset,true));
-        \Log::info( print_r($end,true));
+        $isAllDataDisp = ($offset + $getCount) > $reviewTotal;
+        $end = $isAllDataDisp ? $reviewTotal : ($offset + $getCount);
 
         for ($i = $offset; $i < $end; $i++) {
             $reviews[] = $this->getMockData($i);
         }
 
-        $data = [
-            'customer_reviews' => $reviews,
-            'follower' => '0',
-            'follow' => '5',
-            'total_rating' => '3',
-            'total' => $reviewTotal,
-            'isShowSeeMore' => !$isAllDataDisp,
-            'sortFlg' => false
-        ];
-
-        return $data;
+        return $reviews;
     }
 
     /**

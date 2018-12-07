@@ -62,13 +62,6 @@ const routes = [
     )
   },
   {
-    path: "/store/review/history/page/:page(\\d+)",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/index")
-    )
-  },
-  {
     path: "/store/review/item/:item_code/post",
     exact: true,
     component: asyncComponent(() =>
@@ -115,6 +108,41 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cust/address/create",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/new")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/edit")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmEdit")
+    )
+  },
+  {
+    path: "/store/cust/address/create/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmNew")
+    )
+  },
+  {
+    path: "/store/cust/address/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/complete")
     )
   }
 ];
