@@ -95,6 +95,41 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/index")
     )
+  },
+  {
+    path: "/store/cust/address/create",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/new")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/edit")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmEdit")
+    )
+  },
+  {
+    path: "/store/cust/address/create/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmNew")
+    )
+  },
+  {
+    path: "/store/cust/address/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/complete")
+    )
   }
 ];
 export default routes;
