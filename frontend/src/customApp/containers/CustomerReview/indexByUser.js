@@ -11,7 +11,6 @@ import {
 } from "../../components/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
 import Header from "../../components/customerReview/list/header";
-import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -56,10 +55,11 @@ class Index extends Component {
 
   render() {
     const { entities, fetching, fetched, destroying } = this.props;
+    const profile = [];
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Header title={<ReviewUserProfile entity={entities} />} />
+          <Header profile={profile} />
         </ContentLayout>
         <ContentLayout>
           <Spin

@@ -3,7 +3,7 @@ import { Select, Icon, Button } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
-const StyledDiv = styled.div`
+const LayoutWrapper = styled.div`
   position: relative;
 `;
 
@@ -17,62 +17,60 @@ const UserIcon = styled.img`
   height: 75px;
 `;
 
-const UserName = styled.span`
-  font-size: 16px;
-`;
-
-const FollowList = styled.ul`
-  display: flex;
-  padding: 0;
-  padding-top: 10px;
-  margin: 0;
-  list-style: none;
-`;
-
-const FollowItem = styled.li`
-  width: 100%;
-  font-size: 12px;
-`;
-
-const FollowNum = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-`;
-
 const FollowButton = styled(Button)`
-  width: 68px;
-  height: 22px;
+  height: 24px;
   font-size: 11px;
   border-radius: 15px;
   position: absolute;
   right: 10px;
   top: 15px;
   font-weight: bold;
+  text-align: center;
 `;
 
-const UserDiv = styled.div`
+const UserInfoWrapper = styled.div`
   font-weight: 600;
   width: 150px;
+
+  span {
+    font-size: 16px;
+  }
+
+  ul {
+    display: flex;
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+    list-style: none;
+
+    li {
+      width: 100%;
+      font-size: 12px;
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
 `;
 
-const UserSpan = styled.span`
-  font-size: 14px;
-`;
+const RatingWrapper = styled.div`
+  ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
 
-const Ratings = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-  margin-right: 8px;
-`;
+    li {
+      margin-right: 10px;
 
-const RatingList = styled.ul`
-  list-style: none;
-  display: flex;
-  padding: 0;
-`;
-
-const RatingItem = styled.li`
-  margin-right: 10px;
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        margin-right: 8px;
+      }
+    }
+  }
 `;
 
 const StyledIcon = styled(Icon)`
@@ -81,49 +79,48 @@ const StyledIcon = styled(Icon)`
 
 const ReviewUserProfile = ({ entity }) => {
   return (
-    <StyledDiv>
+    <LayoutWrapper>
       <Profile>
         <UserIcon
           src="https://www.muji.com/jp/store/review/img/avatar_default.png"
           alt=""
         />
-        <UserDiv>
-          <UserName>
+        <UserInfoWrapper>
+          <span>
             <IntlMessages id="customerReview.userName" />
-          </UserName>
-          <FollowList>
-            <FollowItem>
-              <FollowNum>{entity.follower}</FollowNum>
+          </span>
+          <ul>
+            <li>
+              <span>{entity.follower}</span>
               <br />
               <IntlMessages id="customerReview.followers" />
-            </FollowItem>
-            <FollowItem>
-              <FollowNum>{entity.follow}</FollowNum>
+            </li>
+            <li>
+              <span>{entity.follow}</span>
               <br />
               <IntlMessages id="customerReview.following" />
-            </FollowItem>
-          </FollowList>
-        </UserDiv>
+            </li>
+          </ul>
+        </UserInfoWrapper>
       </Profile>
       <FollowButton>
         <IntlMessages id="customerReview.follow" />
       </FollowButton>
-      <div>
-        <RatingList>
-          <RatingItem>
+      <RatingWrapper>
+        <ul>
+          <li>
             <StyledIcon type="message" />
             <IntlMessages id="customerReview.numberOfReviews" />
-            <Ratings>{entity.total}</Ratings>
-          </RatingItem>
-
-          <RatingItem>
+            <span>{entity.total}</span>
+          </li>
+          <li>
             <StyledIcon type="like" />
             <IntlMessages id="customerReview.ratings" />
-            <Ratings>{entity.total_rating}</Ratings>
-          </RatingItem>
-        </RatingList>
-      </div>
-    </StyledDiv>
+            <span>{entity.total_rating}</span>
+          </li>
+        </ul>
+      </RatingWrapper>
+    </LayoutWrapper>
   );
 };
 
