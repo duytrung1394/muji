@@ -10,8 +10,8 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import ClippedItem from "../../components/customerReview/list/clippedItem";
-import ClippedSubList from "../../components/customerReview/list/clippedSubList";
 import ClippedButton from "../../components/customerReview/list/clippedButton";
+import Header from "../../components/customerReview/list/header";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -64,12 +64,14 @@ class IndexClipped extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <StyledH1>
-            <IntlMessages id="customerReview.list.clippedTitle" />
-          </StyledH1>
-          <ClippedSubList />
+          <Header
+            title={
+              <StyledH1>
+                <IntlMessages id="customerReview.list.clippedTitle" />
+              </StyledH1>
+            }
+          />
         </ContentLayout>
-
         <ContentLayout>
           <Spin
             spinning={(fetching && this.isFirstFetching()) || destroying}
@@ -85,7 +87,6 @@ class IndexClipped extends Component {
             ) : null}
           </Spin>
         </ContentLayout>
-
         <ContentLayout>
           <Spin spinning={fetching && !this.isFirstFetching()} size="large">
             {this.hasMore() && <ClippedButton seeMore={this.seeMore} />}

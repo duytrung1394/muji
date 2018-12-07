@@ -93,7 +93,7 @@ const UsefulReview = styled.div`
 const ButtonStyle = styled.div`
   margin-left: 5px;
   padding: 0;
-  display:inline-block;
+  display: inline-block;
   text-align: center;
 `;
 
@@ -107,15 +107,15 @@ const UsefulButton = styled(Button)`
     font-weight: bold;
     text-align: center;
     padding: 0;
-    &:active{
+    &:active {
       color: #555;
       border-color: #ccc;
     }
-    &:hover{
+    &:hover {
       color: #555;
       border-color: #ccc;
     }
-    &:focus{
+    &:focus {
       color: #555;
       border-color: #ccc;
     }
@@ -171,20 +171,20 @@ const ClippedItem = ({ entity }) => (
         <Comment>{entity.detail_comment}</Comment>
       </Link>
     </div>
-    <UserData/>
+    <UserData />
     <InfoList>
       <li>
         <CommentIcon type="message" />
         <Link to={`store/review/detail/${entity.jancode}`}>
           <span>{entity.evaluations_comment_count}</span>
-            <IntlMessages id="customerReview.list.matterComment" />
+          <IntlMessages id="customerReview.list.matterComment" />
         </Link>
       </li>
       <li>
         <CommentIcon type="like" />
         <Link to={`store/review/detail/${entity.jancode}`}>
           <span>{entity.evaluations_useful_count}</span>
-            <IntlMessages id="customerReview.list.usefulThinking" />
+          <IntlMessages id="customerReview.list.usefulThinking" />
         </Link>
       </li>
       <UsefulReview>
@@ -198,7 +198,11 @@ const ClippedItem = ({ entity }) => (
       <PopIcon>
         <Popover
           placement="bottomRight"
-          content={<span><IntlMessages id="customerReview.list.reviewDelete" /></span>}
+          content={
+            <span>
+              <IntlMessages id="customerReview.list.reviewDelete" />
+            </span>
+          }
           trigger="click"
         >
           <Icon type="paper-clip" />

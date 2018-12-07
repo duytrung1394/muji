@@ -1,7 +1,7 @@
 import React from "react";
 import LargeButton from "../../shared/form/largeButton";
 import styled from "styled-components";
-import { Icon,Button } from "antd";
+import { Icon, Button } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
@@ -30,7 +30,7 @@ const ClippedButton = ({ seeMore }) => {
   return (
     <ButtonWrapper>
       <SeeMoreButton onClick={seeMore}>
-      <IntlMessages id="customerReview.button.seeMore" />
+        <IntlMessages id="customerReview.button.seeMore" />
         <StyledIcon type="down" />
       </SeeMoreButton>
     </ButtonWrapper>
