@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Select } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
@@ -39,17 +39,12 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-const Header = ({ title }) => {
+const Header = ({ title, profile }) => {
   return (
-    <div>
+    <Fragment>
       {title}
-      <List
-        style={
-          title.type === ReviewUserProfile
-            ? { backgroundColor: "#eee" }
-            : { border: "none" }
-        }
-      >
+      {profile ? <ReviewUserProfile entity={profile} /> : null}
+      <List style={profile ? { backgroundColor: "#eee" } : { border: "none" }}>
         <li>
           <IntlMessages id="customerReview.name" />
           <Total>6</Total>
@@ -71,7 +66,7 @@ const Header = ({ title }) => {
           </StyledSelect>
         </SortList>
       </List>
-    </div>
+    </Fragment>
   );
 };
 
