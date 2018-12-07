@@ -3,28 +3,35 @@ import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
-import IntlMessages from "../../../components/utility/intlMessages";
+import styled from "styled-components";
+import PostReview from "../../components/customerReview/form/postReview";
+import ReviewTop from "../../components/customerReview/form/reviewTop";
+
+const ReviewLayout = styled(ContentAreaLayout)`
+  width: 880px;
+`;
+
+const ReviewFormWrapper = styled.div`
+  padding: 30px 50px;
+  text-align: center;
+  margin-bottom: 70px;
+  background-color: #f7f7f7;
+`;
 
 class New extends Component {
   componentDidMount() {
-    this.props.initCleanup();
-    this.props.initRequest();
-  }
-
-  componentDidUpdate(prevProps, prevState, prevContext) {
-    const { created, createCleanup, history } = this.props;
-    if (created) {
-      this.props.createCleanup();
-      history.push("/store/cust/review/item/{}/confirm");
-    }
+    this.props.fetchRequest("");
   }
 
   render() {
-    const { initialized } = this.props;
+    const { entity } = this.props;
     return (
-      <ContentAreaLayout>
-        <h1>レビューを投稿する</h1>
-      </ContentAreaLayout>
+      <ReviewLayout>
+        <ReviewTop entity={entity} />
+        <ReviewFormWrapper>
+          <PostReview />
+        </ReviewFormWrapper>
+      </ReviewLayout>
     );
   }
 }
@@ -33,13 +40,8 @@ const mapStateToProps = state => {
   return state.CustomerReview.Entity.toJS();
 };
 
-const { init, create } = actions;
-
 const actionCreators = {
-  initRequest: init.request,
-  initCleanup: init.cleanup,
-  createRequest: create.request,
-  createCleanup: create.cleanup
+  fetchRequest: actions.fetch.request
 };
 
 const enhance = C => {
