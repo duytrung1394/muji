@@ -17,7 +17,7 @@ const UserIcon = styled.img`
   height: 75px;
 `;
 
-const UserName = styled.span`
+const UserName = styled.div`
   font-size: 16px;
 `;
 
@@ -34,7 +34,7 @@ const FollowItem = styled.li`
   font-size: 12px;
 `;
 
-const FollowNum = styled.span`
+const FollowNum = styled.p`
   font-size: 16px;
   font-weight: 600;
 `;
@@ -78,10 +78,9 @@ const StyledIcon = styled(Icon)`
   color: #ccc;
 `;
 
-const ReviewUserProfile = ({ entity }) => {
-  return (
-    <StyledDiv>
-      <Profile>
+const Profile = () => {
+  return(
+    <ProfileStyle>
         <UserIcon
           src="https://www.muji.com/jp/store/review/img/avatar_default.png"
           alt=""
@@ -93,35 +92,43 @@ const ReviewUserProfile = ({ entity }) => {
           <FollowList>
             <FollowItem>
               <FollowNum>{entity.follower}</FollowNum>
-              <br />
               <IntlMessages id="customerReview.followers" />
             </FollowItem>
             <FollowItem>
               <FollowNum>{entity.follow}</FollowNum>
-              <br />
               <IntlMessages id="customerReview.following" />
             </FollowItem>
           </FollowList>
         </UserDiv>
-      </Profile>
+      </ProfileStyle>
+  )
+}
+
+const RatingList = () => {
+  return(
+    <RatingListStyle>
+      <RatingItem>
+        <StyledIcon type="message" />
+        <IntlMessages id="customerReview.numberOfReviews" />
+        <Ratings>{entity.total}</Ratings>
+      </RatingItem>
+      <RatingItem>
+        <StyledIcon type="like" />
+        <IntlMessages id="customerReview.ratings" />
+        <Ratings>{entity.total_rating}</Ratings>
+      </RatingItem>
+    </RatingListStyle>
+  )
+}
+
+const ReviewUserProfile = ({ entity }) => {
+  return (
+    <StyledDiv>
+      <Profile />
       <FollowButton>
         <IntlMessages id="customerReview.follow" />
       </FollowButton>
-      <div>
-        <RatingList>
-          <RatingItem>
-            <StyledIcon type="message" />
-            <IntlMessages id="customerReview.numberOfReviews" />
-            <Ratings>{entity.total}</Ratings>
-          </RatingItem>
-
-          <RatingItem>
-            <StyledIcon type="like" />
-            <IntlMessages id="customerReview.ratings" />
-            <Ratings>{entity.total_rating}</Ratings>
-          </RatingItem>
-        </RatingList>
-      </div>
+      <RatingList />
     </StyledDiv>
   );
 };

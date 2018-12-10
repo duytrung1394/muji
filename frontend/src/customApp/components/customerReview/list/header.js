@@ -42,7 +42,9 @@ function handleChange(value) {
 const Header = ({ title, profile }) => {
   return (
     <Fragment>
-      {title}
+      <div>
+        {title}
+      </div>
       {profile ? <ReviewUserProfile entity={profile} /> : null}
       <List style={profile ? { backgroundColor: "#eee" } : { border: "none" }}>
         <li>

@@ -72,7 +72,7 @@ class CustomerReviewsController extends Controller
      */
     private function getMultiMockDataByUser($page = 1, $nickname)
     {
-        return getMultiMockData($aoge);
+        return getMultiMockData($age);
     }
 
     /**
