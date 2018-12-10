@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Icon, Button } from "antd";
+import { Icon, Button } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
   position: relative;
 `;
 
-const Profile = styled.div`
+const ProfileStyle = styled.div`
   display: flex;
   margin-bottom: 10px;
 `;
@@ -54,17 +54,13 @@ const UserDiv = styled.div`
   width: 150px;
 `;
 
-const UserSpan = styled.span`
-  font-size: 14px;
-`;
-
 const Ratings = styled.span`
   font-size: 16px;
   font-weight: 600;
   margin-right: 8px;
 `;
 
-const RatingList = styled.ul`
+const RatingListStyle = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
@@ -78,34 +74,34 @@ const StyledIcon = styled(Icon)`
   color: #ccc;
 `;
 
-const Profile = () => {
-  return(
+const Profile = ({ entity }) => {
+  return (
     <ProfileStyle>
-        <UserIcon
-          src="https://www.muji.com/jp/store/review/img/avatar_default.png"
-          alt=""
-        />
-        <UserDiv>
-          <UserName>
-            <IntlMessages id="customerReview.userName" />
-          </UserName>
-          <FollowList>
-            <FollowItem>
-              <FollowNum>{entity.follower}</FollowNum>
-              <IntlMessages id="customerReview.followers" />
-            </FollowItem>
-            <FollowItem>
-              <FollowNum>{entity.follow}</FollowNum>
-              <IntlMessages id="customerReview.following" />
-            </FollowItem>
-          </FollowList>
-        </UserDiv>
-      </ProfileStyle>
-  )
-}
+      <UserIcon
+        src="https://www.muji.com/jp/store/review/img/avatar_default.png"
+        alt=""
+      />
+      <UserDiv>
+        <UserName>
+          <IntlMessages id="customerReview.userName" />
+        </UserName>
+        <FollowList>
+          <FollowItem>
+            <FollowNum>{entity.follower}</FollowNum>
+            <IntlMessages id="customerReview.followers" />
+          </FollowItem>
+          <FollowItem>
+            <FollowNum>{entity.follow}</FollowNum>
+            <IntlMessages id="customerReview.following" />
+          </FollowItem>
+        </FollowList>
+      </UserDiv>
+    </ProfileStyle>
+  );
+};
 
-const RatingList = () => {
-  return(
+const RatingList = ({ entity }) => {
+  return (
     <RatingListStyle>
       <RatingItem>
         <StyledIcon type="message" />
@@ -118,17 +114,17 @@ const RatingList = () => {
         <Ratings>{entity.total_rating}</Ratings>
       </RatingItem>
     </RatingListStyle>
-  )
-}
+  );
+};
 
 const ReviewUserProfile = ({ entity }) => {
   return (
     <StyledDiv>
-      <Profile />
+      <Profile entity={entity} />
       <FollowButton>
         <IntlMessages id="customerReview.follow" />
       </FollowButton>
-      <RatingList />
+      <RatingList entity={entity} />
     </StyledDiv>
   );
 };
