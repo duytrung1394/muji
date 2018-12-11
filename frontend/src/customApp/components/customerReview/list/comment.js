@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import { Icon } from "antd";
 
 const CommentTitle = styled.div`

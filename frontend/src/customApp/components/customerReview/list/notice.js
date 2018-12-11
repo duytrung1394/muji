@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const NoticeList = styled.div`
   text-align: left;

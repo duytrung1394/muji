@@ -8,10 +8,10 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ReviewDetailItem from "../../components/customerReview/list/reviewDetailItem";
 import { Link } from "react-router-dom";
-import Notices from "./notice";
-import Comment from "./comment";
+import ReviewDetailItem from "../../components/customerReview/list/reviewDetailItem";
+import Notices from "../../components/customerReview/list/notice";
+import Comment from "../../components/customerReview/list/comment";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;

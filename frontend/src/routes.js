@@ -62,13 +62,6 @@ const routes = [
     )
   },
   {
-    path: "/store/review/item/:item_code/post",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/new")
-    )
-  },
-  {
     path: "/store/review/detail/:item_code",
     exact: true,
     component: asyncComponent(() =>
