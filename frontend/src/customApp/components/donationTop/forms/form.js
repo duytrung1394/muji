@@ -100,7 +100,7 @@ const StyledA = styled.a`
 const DonationTicketButton = styled(LargeButton)`
   padding: 6px 22px;
   margin: 30px 0 230px 0;
-  width: 80px;
+  width: 90px;
   height: 27px;
   font-size: 12px;
   background-color: #f2f2f2;
