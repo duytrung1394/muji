@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Input,
-  Form as AntdForm,
-  Radio,
-  Select,
-  Button,
-  Popover
-} from "antd";
+import { Row, Col, Form as AntdForm, Select, Button, Popover } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
@@ -17,8 +8,8 @@ import CardList from "./cardList";
 import Message from "./message";
 import Guide from "./guide";
 import LargeButton from "../../form/largeButton";
+import RadioGroup from "./radioGroup";
 
-const InputGroup = Input.Group;
 const Option = Select.Option;
 
 const MainImage = styled.img`
@@ -42,11 +33,9 @@ const DonationButton = styled(LargeButton)`
   }
 `;
 
-const UserGuideDiv = styled.div`
-  font-size: 14px;
-`;
+const ImgCol = styled(Col)`
 
-const ImgCol = styled(Col)``;
+`;
 
 const FormCol = styled(Col)`
   && {
@@ -101,42 +90,6 @@ const NeckPrice = styled.span``;
 
 const Quantity = styled.div`
   display: inline-block;
-`;
-
-const RadioGroup = styled(Radio.Group)`
-  width: 100%;
-`;
-
-const RadioButton = styled(Radio.Button)`
-  height:50px;
-  width:100%;
-  max-width:180px;
-  text-align:center;
-  border: 3px solid #ccc;
-  color: #333333;
-  span {
-    height:10px;
-  }
-  &:hover {
-    border: 3px solid #7f0019;
-  }
-  & {
-    & .ant-radio-button-wrapper-checked:first-child{
-      border: 3px solid #7f0019;
-    }
-  }
-}
-`;
-
-const RadioRow = styled(Row)``;
-
-const RadioCol = styled(Col)`
-  & {
-    margin: 0;
-  }
-  & .ant-radio-button-wrapper {
-    padding: 0;
-  }
 `;
 
 const StyledA = styled.a`
@@ -292,27 +245,7 @@ class Form extends Component {
               </div>
 
               <FormItem label="種類" colon={false}>
-                <RadioGroup>
-                  <RadioRow>
-                    <RadioCol span={11}>
-                      <RadioButton value="a">
-                        <IntlMessages id="donationShow.unit" />
-                        <br />
-                        <IntlMessages id="donationShow.ten" />
-                        <IntlMessages id="donationShow.yen" />
-                      </RadioButton>
-                    </RadioCol>
-
-                    <RadioCol span={11} offset={2}>
-                      <RadioButton value="b">
-                        <IntlMessages id="donationShow.unit" />
-                        <br />
-                        <IntlMessages id="donationShow.hundred" />
-                        <IntlMessages id="donationShow.yen" />
-                      </RadioButton>
-                    </RadioCol>
-                  </RadioRow>
-                </RadioGroup>
+                <RadioGroup />
 
                 <div>
                   <Quantity>
