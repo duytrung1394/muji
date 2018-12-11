@@ -31,11 +31,17 @@ class CustomerReviewsController extends Controller
      */
     public function indexByUser(Request $request)
     {
-        $data = $this->getMultiMockDataByUser(
-            (int)$request->input('page'),$request->input('nickname')
-        );
+        $filter = [
+            'nickname' => $request->input('nickname')
+        ];
         return [
-            'data'  => $data
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length'),
+                $filter
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
         ];
     }
 
@@ -66,21 +72,11 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * ユーザ別リストデータ取得
-     *
-     * @return array
-     */
-    private function getMultiMockDataByUser($page = 1, $nickname)
-    {
-        return getMultiMockData($age);
-    }
-
-    /**
      * モックデータ取得用．
      *
      * @return array
      */
-    private function getMultiMockData($offset, $length)
+    private function getMultiMockData($offset, $length, $filter = null)
     {
         $reviews = [];
         $reviewTotal = $this->mockTotal;
@@ -105,12 +101,12 @@ class CustomerReviewsController extends Controller
         case 0:
             return [
                 'customer_review_code' => $index,
-                'product' => 'ベーコンとチーズのキッシュ',
-                'jancode' => '4550182028072',
-                'title' => 'キッシュ美味しい',
-                'star' => 3,
-                'upload_date' => '1時間前',
-                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'product' => 'オーガニックコットンフランネルスタンドカラーシャツ',
+                'jancode' => '4550002750077',
+                'title' => 'シルエット良好！',
+                'star' => 4,
+                'upload_date' => '1分前',
+                'detail_comment' => 'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
                 'images'=>[
@@ -124,7 +120,7 @@ class CustomerReviewsController extends Controller
                 'customer_review_code' => $index,
                 'product' => 'ベーコンとチーズのキッシュ',
                 'jancode' => '4550182028072',
-                'title' => 'キッシュ美味しい',
+                'title' => 'キッシュ美味しい！！',
                 'star' => 3,
                 'upload_date' => '1時間前',
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
