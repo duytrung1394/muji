@@ -32,8 +32,12 @@ const TotalPrice = ({ price }) => (
       <IntlMessages id="donation.label.totalPrice" />
     </Label>
     <Item span={20}>
-      <Price>{price}</Price>
-      <IntlMessages id="donation.label.priceCurrency" />
+      <IntlMessages
+        id="donation.payment.total.price"
+        values={{
+          price: <Price>{price}</Price>
+        }}
+      />
     </Item>
   </Box>
 );

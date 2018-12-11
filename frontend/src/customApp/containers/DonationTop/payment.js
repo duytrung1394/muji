@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Spin, Row, Col } from "antd";
+import { Spin } from "antd";
 import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
 import {
@@ -31,6 +31,7 @@ class Payment extends Component {
 
   render() {
     const donationCode = this.props.match.params.donation_code;
+    const numberOfUnits = this.props.match.params.number_of_units;
     const { fetched, fetching, entity } = this.props;
     return (
       <ContentAreaLayout>
@@ -46,7 +47,11 @@ class Payment extends Component {
             </PaymentHeader>
             {fetched && [
               <TotalPrice price={entity.total} />,
-              <Form {...this.props} />
+              <Form
+                {...this.props}
+                donationCode={donationCode}
+                numberOfUnits={numberOfUnits}
+              />
             ]}
           </BaseContentLayout>
         </Spin>

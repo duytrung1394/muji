@@ -308,6 +308,9 @@ class DonationTopsController extends Controller
     {
         return [
             'total' => 40,
+            'couponAvailableAmount' => 500,
+            'couponLimitDate' => "2010年12月28日(月)",
+            'giftCardAvailableAmount' => 1000,
         ];
     }
 }
