@@ -34,7 +34,7 @@ const FollowItem = styled.li`
   font-size: 12px;
 `;
 
-const FollowNum = styled.p`
+const FollowNum = styled.div`
   font-size: 16px;
   font-weight: 600;
 `;
