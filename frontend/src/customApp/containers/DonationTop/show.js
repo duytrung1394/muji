@@ -4,11 +4,11 @@ import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Form from "../../components/donationTop/forms/form";
-import Guide from "../../components/donationTop/forms/guide";
-import Others from "../../components/donationTop/forms/others";
-import Summary from "../../components/donationTop/forms/summary";
-import Includes from "../../components/donationTop/forms/includes";
+import Form from "../../components/donationTop/show/form";
+import Guide from "../../components/donationTop/show/guide";
+import Others from "../../components/donationTop/show/others";
+import Summary from "../../components/donationTop/show/summary";
+import Includes from "../../components/donationTop/show/includes";
 
 class Show extends Component {
   componentDidMount() {
