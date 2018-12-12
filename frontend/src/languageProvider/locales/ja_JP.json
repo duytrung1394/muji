@@ -136,6 +136,7 @@
   "donation.payment.mujiCardInfo.giftCardDescription": "カード番号、PIN番号は、ギフトカードの裏面に記載されています。",
   "donation.payment.mujiCardInfo.label.cardNo": "カード番号",
   "donation.payment.mujiCardInfo.label.giftCardDescription": "ご利用のギフトカード情報をご入力ください。",
+  "donation.payment.mujiCardInfo.label.mujiGiftCard": "MUJI GIFT CARD",
   "donation.payment.mujiCardInfo.label.noPointsAvailable": "ご利用可能なショッピングポイントはありません",
   "donation.payment.mujiCardInfo.label.pinNo": "PIN番号",
   "donation.payment.mujiCardInfo.label.shoppingPoint": "MUJIショッピングポイント",

@@ -158,7 +158,9 @@ const MujiCardForm = ({
 
       <StyledLabelItem gutter={16} type="flex" align="middle">
         <ColLabel span={6}>
-          <div>MUJI GIFT CARD</div>
+          <div>
+            <IntlMessages id="donation.payment.mujiCardInfo.label.mujiGiftCard" />
+          </div>
         </ColLabel>
         <ColItem span={18}>
           <UseAmount>
