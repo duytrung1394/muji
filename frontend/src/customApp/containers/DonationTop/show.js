@@ -5,8 +5,10 @@ import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Form from "../../components/donationTop/forms/form";
+import Guide from "../../components/donationTop/forms/guide";
+import Others from "../../components/donationTop/forms/others";
 
-class Detail extends Component {
+class Show extends Component {
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.donation_code);
   }
@@ -35,6 +37,8 @@ class Detail extends Component {
               }
             />
           )}
+        <Others others={entity.other_donations} />
+        <Guide />
       </ContentAreaLayout>
     );
   }
@@ -62,4 +66,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Detail);
+export default enhance(Show);

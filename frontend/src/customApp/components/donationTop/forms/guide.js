@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Col, Card, Popover, Row } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { BaseContentLayout } from "../../panel/contentLayout";
 
-const GuideWrapper = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   border: 1px solid #ddd;
   background: #f7f7f7;
 
@@ -64,7 +65,7 @@ const InsideDiv = styled.div`
 
 const Guide = () => {
   return (
-    <GuideWrapper>
+    <ContentLayout>
       <OutsideDiv>
         <h2>
           <IntlMessages id="donationTop.userGuide" />
@@ -94,7 +95,7 @@ const Guide = () => {
           </StyledA>
         </Popover>
       </OutsideDiv>
-    </GuideWrapper>
+    </ContentLayout>
   );
 };
 

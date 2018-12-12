@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Organization from "./organization";
 import CardList from "./cardList";
 import Message from "./message";
-import Guide from "./guide";
 import LargeButton from "../../form/largeButton";
 import RadioGroup from "./radioGroup";
 
@@ -226,7 +225,7 @@ class Form extends Component {
                 <StyledSpan>{entity.sub_description}</StyledSpan>
                 <br />
                 <ul>
-                  <li class="selected">
+                  <li className="selected">
                     <IntlMessages id="donationShow.note1" />
                     <br />
                     <IntlMessages id="donationShow.note2" />
@@ -236,7 +235,7 @@ class Form extends Component {
                 </ul>
               </div>
 
-              <div class="price">
+              <div className="price">
                 <IntlMessages id="donationShow.unit" />
                 <PriceSpan>
                   <NeckPrice>{entity.price}</NeckPrice>
@@ -309,21 +308,7 @@ class Form extends Component {
           />
           <CardList items={entity.activities} cardWidth={"25%"} />
           <Message messages={entity.messages} />
-          <CardList
-            title={"その他の募金券"}
-            items={entity.other_donations}
-            cardWidth={"215px"}
-          />
 
-          <Guide />
-          <Row>
-            <Col span={12}>
-              <Link to="/store/cmdty/donation">前のページに戻る</Link>
-            </Col>
-            <Col span={12}>
-              <div>次へ進む</div>
-            </Col>
-          </Row>
         </AntdForm>
       </div>
     );
