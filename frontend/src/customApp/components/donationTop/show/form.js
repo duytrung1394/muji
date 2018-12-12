@@ -1,24 +1,11 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Input,
-  Form as AntdForm,
-  Radio,
-  Select,
-  Button,
-  Popover
-} from "antd";
+import { Row, Col, Form as AntdForm, Select, Button, Popover } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import Organization from "./organization";
-import CardList from "./cardList";
-import Message from "./message";
-import Guide from "./guide";
 import LargeButton from "../../form/largeButton";
+import RadioGroup from "./radioGroup";
 
-const InputGroup = Input.Group;
 const Option = Select.Option;
 
 const MainImage = styled.img`
@@ -42,11 +29,9 @@ const DonationButton = styled(LargeButton)`
   }
 `;
 
-const UserGuideDiv = styled.div`
-  font-size: 14px;
-`;
+const ImgCol = styled(Col)`
 
-const ImgCol = styled(Col)``;
+`;
 
 const FormCol = styled(Col)`
   && {
@@ -103,42 +88,6 @@ const Quantity = styled.div`
   display: inline-block;
 `;
 
-const RadioGroup = styled(Radio.Group)`
-  width: 100%;
-`;
-
-const RadioButton = styled(Radio.Button)`
-  height:50px;
-  width:100%;
-  max-width:180px;
-  text-align:center;
-  border: 3px solid #ccc;
-  color: #333333;
-  span {
-    height:10px;
-  }
-  &:hover {
-    border: 3px solid #7f0019;
-  }
-  & {
-    & .ant-radio-button-wrapper-checked:first-child{
-      border: 3px solid #7f0019;
-    }
-  }
-}
-`;
-
-const RadioRow = styled(Row)``;
-
-const RadioCol = styled(Col)`
-  & {
-    margin: 0;
-  }
-  & .ant-radio-button-wrapper {
-    padding: 0;
-  }
-`;
-
 const StyledA = styled.a`
   font-size: 12px;
   color: #67affd;
@@ -147,7 +96,7 @@ const StyledA = styled.a`
 const DonationTicketButton = styled(LargeButton)`
   padding: 6px 22px;
   margin: 30px 0 230px 0;
-  width: 80px;
+  width: 90px;
   height: 27px;
   font-size: 12px;
   background-color: #f2f2f2;
@@ -206,33 +155,6 @@ const TotalGood = styled.span`
   padding-left: 5px;
 `;
 
-const TotalDonationWrapper = styled.div`
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 14px;
-
-  span{
-    &:nth-child(3){
-    margin-right: 40px;
-  }
-  &:nth-child(6){
-    margin-right: 20px;
-  }
-`;
-
-const TotalDonationSpan = styled.span`
-  font-size: 19px;
-  font-weight: bold;
-`;
-
-const StyledTotalDonationSpan = styled.span`
-  font-size: 11px;
-  vertical-align: bottom;
-`;
-
 class Form extends Component {
   state = {
     entity: this.props.entity
@@ -254,13 +176,13 @@ class Form extends Component {
     const { entity } = this.props;
     return (
       <div>
-        <AntdForm>
-          <Row type="flex">
-            <ImgCol span={13}>
-              <MainImage src={entity.img} />
-            </ImgCol>
+        <Row type="flex">
+          <ImgCol span={13}>
+            <MainImage src={entity.img} />
+          </ImgCol>
 
-            <FormCol span={11}>
+          <FormCol span={11}>
+            <AntdForm>
               <h2>
                 {entity.title}
                 <br />
@@ -273,7 +195,7 @@ class Form extends Component {
                 <StyledSpan>{entity.sub_description}</StyledSpan>
                 <br />
                 <ul>
-                  <li class="selected">
+                  <li className="selected">
                     <IntlMessages id="donationShow.note1" />
                     <br />
                     <IntlMessages id="donationShow.note2" />
@@ -283,7 +205,7 @@ class Form extends Component {
                 </ul>
               </div>
 
-              <div class="price">
+              <div className="price">
                 <IntlMessages id="donationShow.unit" />
                 <PriceSpan>
                   <NeckPrice>{entity.price}</NeckPrice>
@@ -292,27 +214,7 @@ class Form extends Component {
               </div>
 
               <FormItem label="種類" colon={false}>
-                <RadioGroup>
-                  <RadioRow>
-                    <RadioCol span={11}>
-                      <RadioButton value="a">
-                        <IntlMessages id="donationShow.unit" />
-                        <br />
-                        <IntlMessages id="donationShow.ten" />
-                        <IntlMessages id="donationShow.yen" />
-                      </RadioButton>
-                    </RadioCol>
-
-                    <RadioCol span={11} offset={2}>
-                      <RadioButton value="b">
-                        <IntlMessages id="donationShow.unit" />
-                        <br />
-                        <IntlMessages id="donationShow.hundred" />
-                        <IntlMessages id="donationShow.yen" />
-                      </RadioButton>
-                    </RadioCol>
-                  </RadioRow>
-                </RadioGroup>
+                <RadioGroup />
 
                 <div>
                   <Quantity>
@@ -354,44 +256,9 @@ class Form extends Component {
                   </FacebookButton>
                 </li>
               </SnsButtons>
-            </FormCol>
-          </Row>
-
-          <TotalDonationWrapper>
-            <IntlMessages id="donationShow.total" />
-            <TotalDonationSpan>{entity.total}</TotalDonationSpan>
-            <IntlMessages id="donationShow.yen" />
-
-            <IntlMessages id="donationShow.donationPeople" />
-            <TotalDonationSpan>{entity.total_people}</TotalDonationSpan>
-            <IntlMessages id="donationShow.people" />
-            <StyledTotalDonationSpan>
-              <IntlMessages id="donationShow.current" values={{ time: 16 }} />
-            </StyledTotalDonationSpan>
-          </TotalDonationWrapper>
-
-          <Organization
-            title={entity.organization}
-            organizations={entity.organizations}
-          />
-          <CardList items={entity.activities} cardWidth={"25%"} />
-          <Message messages={entity.messages} />
-          <CardList
-            title={"その他の募金券"}
-            items={entity.other_donations}
-            cardWidth={"215px"}
-          />
-
-          <Guide />
-          <Row>
-            <Col span={12}>
-              <Link to="/store/cmdty/donation">前のページに戻る</Link>
-            </Col>
-            <Col span={12}>
-              <div>次へ進む</div>
-            </Col>
-          </Row>
-        </AntdForm>
+            </AntdForm>
+          </FormCol>
+        </Row>
       </div>
     );
   }

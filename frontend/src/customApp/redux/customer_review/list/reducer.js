@@ -1,57 +1,59 @@
 import { handleActions } from "redux-actions";
 import { Map } from "immutable";
-import restReducer, { restInitState } from "../../shared/entity/reducer";
+import restReducer, { restInitState } from "../../shared/list/reducer";
 
-const initState = restInitState.merge(
+const customRestInitState = restInitState.merge(
   Map({
-    links: {},
+    // TODO: fix
+    sortFlg: false
   })
 );
 
 // GET
-const fetchRequest = (state, action) =>
+export const fetchRequest = (state, action) =>
   state
+    .set("doSearch", false)
     .set("fetching", true)
     .set("fetched", false)
     .set("fetchError", false);
 
-const fetchSuccess = (state, action) =>
+export const fetchSuccess = (state, action) =>
   state
-    .set("entity", action.payload.data)
-    .set("links", action.payload.links)
+    .set("entities", [...state.get("entities"), ...action.payload.data])
+    .set("total", action.payload.total)
+    .set("sortFlg", action.payload.sortFlg)
     .set("fetching", false)
     .set("fetched", true);
 
-const fetchFailure = (state, action) =>
+export const fetchFailure = (state, action) =>
   state
-    .set("entity", {})
-    .set("links", {})
+    .set("entities", [])
     .set("fetching", false)
     .set("fetchError", true);
 
-const fetchCleanup = (state, action) =>
+export const fetchCleanup = (state, action) =>
   state
-    .set("entity", {})
-    .set("links", {})
+    .set("entities", [])
+    .set("total", 0)
     .set("fetching", false)
     .set("fetched", false)
     .set("fetchError", false);
 
 const reducer = handleActions(
   {
-    DONATION_TOP: {
-      ENTITY: {
+    CUSTOMER_REVIEW: {
+      LIST: {
         ...restReducer,
         FETCH: {
           REQUEST: fetchRequest,
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
-        },
+        }
       }
     }
   },
-  restInitState
+  customRestInitState
 );
 
 export default reducer;

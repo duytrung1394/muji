@@ -7,7 +7,7 @@ const StyledRow = styled(Row)`
 `;
 
 const StyledCol = styled(Col)`
-  width: 25%;
+  width: ${props => props.cardwidth};
   padding: 0 20px;
   margin-bottom: 20px;
 
@@ -29,17 +29,15 @@ const StyledCol = styled(Col)`
   }
 `;
 
-const { Meta } = Card;
-
-const Activity = ({ activities }) => {
-  if (activities) {
+const CardList = ({ items, cardWidth }) => {
+  if (items) {
     return (
       <StyledRow type="flex">
-        {activities.map((activity, index) => {
+        {items.map((item, index) => {
           return (
-            <StyledCol key={index}>
-              <Card cover={<img src={activity.img} />} />
-              <Meta title={activity.title} description={activity.description} />
+            <StyledCol key={index} cardwidth={cardWidth}>
+              <Card cover={<img src={item.img} />} />
+              <Card.Meta title={item.title} description={item.description} />
             </StyledCol>
           );
         })}
@@ -48,4 +46,4 @@ const Activity = ({ activities }) => {
   } else return null;
 };
 
-export default Activity;
+export default CardList;
