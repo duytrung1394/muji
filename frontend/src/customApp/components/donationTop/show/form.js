@@ -29,9 +29,7 @@ const DonationButton = styled(LargeButton)`
   }
 `;
 
-const ImgCol = styled(Col)`
-
-`;
+const ImgCol = styled(Col)``;
 
 const FormCol = styled(Col)`
   && {

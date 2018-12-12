@@ -4,7 +4,7 @@ import restReducer, { restInitState } from "../../shared/entity/reducer";
 
 const initState = restInitState.merge(
   Map({
-    links: {},
+    links: {}
   })
 );
 
@@ -47,7 +47,7 @@ const reducer = handleActions(
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
-        },
+        }
       }
     }
   },
