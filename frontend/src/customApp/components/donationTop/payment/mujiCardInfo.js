@@ -44,7 +44,11 @@ const StyledLabelItem = styled(Row)`
   border: 1px solid #eeeeee;
 `;
 
-const ColLabel = styled(Col)``;
+const ColLabel = styled(Col)`
+  div {
+    padding: 10px;
+  }
+`;
 
 const ColItem = styled(Col)`
   background: #ffffff;
@@ -53,9 +57,12 @@ const ColItem = styled(Col)`
 
 const UseAmount = styled(Row)`
   &&& {
+    div {
+      padding: 2px;
+    }
     .use-amount {
       margin-top: 20px;
-      padding: 10px 0;
+      padding: 10px;
       background: #f5f5f5;
     }
     .label {
@@ -99,8 +106,10 @@ const MujiCardForm = ({
 
       <CardAnnotation />
 
-      <StyledLabelItem gutter={4} type="flex" align="middle">
-        <ColLabel span={6}>MUJIショッピングポイント</ColLabel>
+      <StyledLabelItem gutter={16} type="flex" align="middle">
+        <ColLabel span={6}>
+          <div>MUJIショッピングポイント</div>
+        </ColLabel>
         <ColItem span={18}>
           {couponAvailableAmount &&
             couponAvailableAmount > 0 && (
@@ -129,26 +138,35 @@ const MujiCardForm = ({
         </ColItem>
       </StyledLabelItem>
 
-      <StyledLabelItem gutter={4} type="flex" align="middle">
-        <ColLabel span={6}>MUJI GIFT CARD</ColLabel>
+      <StyledLabelItem gutter={16} type="flex" align="middle">
+        <ColLabel span={6}>
+          <div>MUJI GIFT CARD</div>
+        </ColLabel>
         <ColItem span={18}>
           <UseAmount>
             <Col span={12}>
-              <Col span={24}>残額: {giftCardAvailableAmount}円分</Col>
+              <Col span={24}>
+                <IntlMessages
+                  id="donation.payment.remaining.price"
+                  values={{
+                    price: <Price>{giftCardAvailableAmount}</Price>
+                  }}
+                />
+              </Col>
               <Col span={24} className="gift-card-description">
                 ご利用のギフトカード情報をご入力ください。
               </Col>
-              <Col span={5} className="label">
+              <Col span={6} className="label">
                 カード番号
               </Col>
               <Col span={18} className="card-no">
                 {inputCardNo}
               </Col>
-              <Col span={5} className="label">
+              <Col span={6} className="label">
                 PIN番号
               </Col>
               <Col span={18}>{inputPinNo}</Col>
-              <Col span={18} offset={5}>
+              <Col span={18} offset={6}>
                 <Button
                   type="primary"
                   size="small"

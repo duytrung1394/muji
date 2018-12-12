@@ -46,8 +46,9 @@ class Payment extends Component {
               </p>
             </PaymentHeader>
             {fetched && [
-              <TotalPrice price={entity.total} />,
+              <TotalPrice key={0} price={entity.total} />,
               <Form
+                key={1}
                 {...this.props}
                 donationCode={donationCode}
                 numberOfUnits={numberOfUnits}
