@@ -12,6 +12,7 @@ import {
 import ReviewItem from "../../components/customerReview/list/reviewItem";
 import Header from "../../components/customerReview/list/header";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
+import { parse } from "query-string";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -31,7 +32,8 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    const params = parse(this.props.location.search);
+    this.props.fetchRequest(params);
   }
 
   seeMore = () => {

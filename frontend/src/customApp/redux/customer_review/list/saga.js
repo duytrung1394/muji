@@ -24,5 +24,8 @@ const getListByUserFunction = function*({ payload }) {
 
 export default function* saga() {
   yield restAllSaga(api, actions);
-  yield takeEvery(actions.getListByUser.request.toString(), getListByUserFunction);
+  yield takeEvery(
+    actions.getListByUser.request.toString(),
+    getListByUserFunction
+  );
 }
