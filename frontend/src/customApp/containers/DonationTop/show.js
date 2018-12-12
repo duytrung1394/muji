@@ -7,6 +7,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import Form from "../../components/donationTop/forms/form";
 import Guide from "../../components/donationTop/forms/guide";
 import Others from "../../components/donationTop/forms/others";
+import Summary from "../../components/donationTop/forms/summary";
 
 class Show extends Component {
   componentDidMount() {
@@ -37,6 +38,10 @@ class Show extends Component {
               }
             />
           )}
+        <Summary
+          total={entity.total}
+          total_people={entity.total_people}
+        />
         <Others others={entity.other_donations} />
         <Guide />
       </ContentAreaLayout>

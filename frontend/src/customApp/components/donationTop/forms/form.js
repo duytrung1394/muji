@@ -158,33 +158,6 @@ const TotalGood = styled.span`
   padding-left: 5px;
 `;
 
-const TotalDonationWrapper = styled.div`
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 14px;
-
-  span{
-    &:nth-child(3){
-    margin-right: 40px;
-  }
-  &:nth-child(6){
-    margin-right: 20px;
-  }
-`;
-
-const TotalDonationSpan = styled.span`
-  font-size: 19px;
-  font-weight: bold;
-`;
-
-const StyledTotalDonationSpan = styled.span`
-  font-size: 11px;
-  vertical-align: bottom;
-`;
-
 class Form extends Component {
   state = {
     entity: this.props.entity
@@ -206,13 +179,13 @@ class Form extends Component {
     const { entity } = this.props;
     return (
       <div>
-        <AntdForm>
-          <Row type="flex">
-            <ImgCol span={13}>
-              <MainImage src={entity.img} />
-            </ImgCol>
+        <Row type="flex">
+          <ImgCol span={13}>
+            <MainImage src={entity.img} />
+          </ImgCol>
 
-            <FormCol span={11}>
+          <FormCol span={11}>
+            <AntdForm>
               <h2>
                 {entity.title}
                 <br />
@@ -286,30 +259,17 @@ class Form extends Component {
                   </FacebookButton>
                 </li>
               </SnsButtons>
-            </FormCol>
-          </Row>
+            </AntdForm>
+          </FormCol>
+        </Row>
 
-          <TotalDonationWrapper>
-            <IntlMessages id="donationShow.total" />
-            <TotalDonationSpan>{entity.total}</TotalDonationSpan>
-            <IntlMessages id="donationShow.yen" />
+        <Organization
+          title={entity.organization}
+          organizations={entity.organizations}
+        />
+        <CardList items={entity.activities} cardWidth={"25%"} />
+        <Message messages={entity.messages} />
 
-            <IntlMessages id="donationShow.donationPeople" />
-            <TotalDonationSpan>{entity.total_people}</TotalDonationSpan>
-            <IntlMessages id="donationShow.people" />
-            <StyledTotalDonationSpan>
-              <IntlMessages id="donationShow.current" values={{ time: 16 }} />
-            </StyledTotalDonationSpan>
-          </TotalDonationWrapper>
-
-          <Organization
-            title={entity.organization}
-            organizations={entity.organizations}
-          />
-          <CardList items={entity.activities} cardWidth={"25%"} />
-          <Message messages={entity.messages} />
-
-        </AntdForm>
       </div>
     );
   }
