@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
@@ -8,6 +8,7 @@ import Form from "../../components/donationTop/forms/form";
 import Guide from "../../components/donationTop/forms/guide";
 import Others from "../../components/donationTop/forms/others";
 import Summary from "../../components/donationTop/forms/summary";
+import Includes from "../../components/donationTop/forms/includes";
 
 class Show extends Component {
   componentDidMount() {
@@ -28,8 +29,8 @@ class Show extends Component {
     const { fetched, updated, entity } = this.props;
     return (
       <ContentAreaLayout>
-        {fetched &&
-          !updated && (
+        {fetched && !updated && (
+          <Fragment>
             <Form
               actionType="edit"
               entity={entity}
@@ -37,13 +38,20 @@ class Show extends Component {
                 this.props.updateRequest(donationCode, entity)
               }
             />
-          )}
-        <Summary
-          total={entity.total}
-          total_people={entity.total_people}
-        />
-        <Others others={entity.other_donations} />
-        <Guide />
+            <Summary
+              total={entity.total}
+              total_people={entity.total_people}
+            />
+            <Includes
+              organization={entity.organization}
+              organizations={entity.organizations}
+              activities={entity.activities}
+              messages={entity.messages}
+            />
+            <Others others={entity.other_donations} />
+            <Guide />
+          </Fragment>
+        )}
       </ContentAreaLayout>
     );
   }

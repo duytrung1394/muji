@@ -3,9 +3,6 @@ import { Row, Col, Form as AntdForm, Select, Button, Popover } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import Organization from "./organization";
-import CardList from "./cardList";
-import Message from "./message";
 import LargeButton from "../../form/largeButton";
 import RadioGroup from "./radioGroup";
 
@@ -262,14 +259,6 @@ class Form extends Component {
             </AntdForm>
           </FormCol>
         </Row>
-
-        <Organization
-          title={entity.organization}
-          organizations={entity.organizations}
-        />
-        <CardList items={entity.activities} cardWidth={"25%"} />
-        <Message messages={entity.messages} />
-
       </div>
     );
   }
