@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
+import ContentHeader from "../../components/header/contentHeader";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Form from "../../components/donationTop/show/form";
@@ -25,12 +26,13 @@ class Show extends Component {
   // }
 
   render() {
-    const donationCode = this.props.match.params.donationCode;
-    const { fetched, updated, entity } = this.props;
+    const donationCode = this.props.match.params.donation_code;
+    const { fetched, updated, entity, links } = this.props;
     return (
       <ContentAreaLayout>
         {fetched && !updated && (
           <Fragment>
+            <ContentHeader links={links} />
             <Form
               actionType="edit"
               entity={entity}
