@@ -36,9 +36,11 @@ const ExampleLimitYearMonth = styled.span`
 const securityCodeDescription = (
   <div>
     <p>
-      セキュリティコードとは、クレジットカードの裏面署名欄に印刷されている数字です。
+      <IntlMessages id="donation.payment.creditCardInfo.securityCodeDescription1" />
     </p>
-    <p>右端3桁（または4桁）の数字を入力してください。</p>
+    <p>
+      <IntlMessages id="donation.payment.creditCardInfo.securityCodeDescription2" />
+    </p>
     <img
       src="https://img.muji.net/img/store/cart/securitycode.png"
       wdith="169"
@@ -50,6 +52,12 @@ const securityCodeDescription = (
 
 const UnderlineSpan = styled.span`
   text-decoration: underline;
+  ::after {
+    content: " ";
+  }
+  ::before {
+    content: " ";
+  }
 `;
 
 const StyledCardAnnotation = styled(Row)`
@@ -63,12 +71,12 @@ const CardAnnotation = () => (
   <StyledCardAnnotation type="flex">
     <Col>
       <p>
-        ※有効期限が来月までのクレジットカードはご利用いただけません。有効期限が更新された新しいクレジットカードか、他のクレジットカードをご使用ください。
+        <IntlMessages id="donation.payment.creditCardInfo.cardAnnotation1" />
       </p>
     </Col>
     <Col>
       <p>
-        ※アメリカン・エキスプレスの場合は、カード番号が15桁のため、「4桁」「4桁」「4桁」「3桁」にて入力してください。
+        <IntlMessages id="donation.payment.creditCardInfo.cardAnnotation2" />
       </p>
     </Col>
   </StyledCardAnnotation>
@@ -87,17 +95,16 @@ const CreditCardForm = ({
     <Box>
       <StyledRow type="flex" gutter={16}>
         <Col span={6} className="title">
-          クレジットカード情報
+          <IntlMessages id="donation.payment.creditCardInfo.title" />
         </Col>
       </StyledRow>
 
       <StyledRow type="flex" gutter={16}>
         <Col span={6} className="label">
-          ご利用いただけるクレジットカード
+          <IntlMessages id="donation.payment.creditCardInfo.label.cardsAvailable" />
         </Col>
         <Col span={18}>
-          セゾンカード（MUJI Cardを含む）、 VISA、 MASTER CARD、 JCB、
-          アメリカン・エキスプレス
+          <IntlMessages id="donation.payment.creditCardInfo.label.cards" />
         </Col>
         <Col offset={6} span={18}>
           <img src="https://www.muji.net/img/store/cart/creditcards.png" />
@@ -106,7 +113,7 @@ const CreditCardForm = ({
 
       <StyledRow type="flex" gutter={16}>
         <Col span={6} className="label">
-          カード番号
+          <IntlMessages id="donation.payment.creditCardInfo.label.cardNo" />
         </Col>
         <Col span={18}>
           <Row type="flext" gutter={8}>
@@ -120,23 +127,24 @@ const CreditCardForm = ({
 
       <StyledRow type="flex" gutter={16}>
         <Col span={6} className="label">
-          有効期限
+          <IntlMessages id="donation.payment.creditCardInfo.label.expirationDate" />
         </Col>
         <Col span={18}>
           {selectLimitMonth} / {selectLimitYear}
           <ExampleLimitYearMonth id="example.LimitYearMonth">
-            例: (2012年5月の場合) 05/12
+            <IntlMessages id="donation.payment.creditCardInfo.label.expirationDateExample" />
           </ExampleLimitYearMonth>
         </Col>
       </StyledRow>
 
       <StyledRow type="flex" gutter={16}>
         <Col span={6} className="label">
-          セキュリティコード [{" "}
+          <IntlMessages id="donation.payment.creditCardInfo.label.securityCode" />
           <Popover content={securityCodeDescription} trigger="hover">
-            <UnderlineSpan>？</UnderlineSpan>
-          </Popover>{" "}
-          ]
+            [
+            <UnderlineSpan>?</UnderlineSpan>
+            ]
+          </Popover>
         </Col>
         <Col span={18}>
           <Row type="flext" gutter={8}>

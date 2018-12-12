@@ -29,11 +29,13 @@ const StyledCardAnnotation = styled(Row)`
 const CardAnnotation = () => (
   <StyledCardAnnotation type="flex">
     <Col span={24}>
-      <p>※MUJI GIFT CARDのご利用は、1回の寄付につき1枚までです。</p>
+      <p>
+        <IntlMessages id="donation.payment.mujiCardInfo.cardAnnotation1" />
+      </p>
     </Col>
     <Col span={24}>
       <p>
-        ※MUJI GIFT CARDご利用の際、MUJIショッピングポイントの併用が可能です。
+        <IntlMessages id="donation.payment.mujiCardInfo.cardAnnotation2" />
       </p>
     </Col>
   </StyledCardAnnotation>
@@ -88,6 +90,7 @@ const Price = styled.span`
 `;
 
 const MujiCardForm = ({
+  intl,
   couponAvailableAmount,
   couponLimitDate,
   inputCouponUseAmount,
@@ -100,7 +103,7 @@ const MujiCardForm = ({
     <Box>
       <StyledRow type="flex" gutter={16}>
         <Col span={24} className="title">
-          MUJIショッピングポイント／MUJI GIFT CARDの利用
+          <IntlMessages id="donation.payment.mujiCardInfo.title" />
         </Col>
       </StyledRow>
 
@@ -108,7 +111,9 @@ const MujiCardForm = ({
 
       <StyledLabelItem gutter={16} type="flex" align="middle">
         <ColLabel span={6}>
-          <div>MUJIショッピングポイント</div>
+          <div>
+            <IntlMessages id="donation.payment.mujiCardInfo.label.shoppingPoint" />
+          </div>
         </ColLabel>
         <ColItem span={18}>
           {couponAvailableAmount &&
@@ -122,18 +127,31 @@ const MujiCardForm = ({
                     }}
                   />
                 </Col>
-                <Col span={24}>有効期限: {couponLimitDate}まで</Col>
+                <Col span={24}>
+                  <IntlMessages
+                    id="donation.payment.mujiCardInfo.couponLimitDate"
+                    values={{ date: couponLimitDate }}
+                  />
+                </Col>
                 <Col span={24} className="use-amount">
-                  <div className="label">MUJInetクーポンご利用額</div>
+                  <div className="label">
+                    <IntlMessages id="donation.payment.mujiCardInfo.label.useCouponAmount" />
+                  </div>
                   <div>
-                    {inputCouponUseAmount}
-                    円
+                    <IntlMessages
+                      id="donation.payment.mujiCardInfo.amountInput"
+                      values={{
+                        input: inputCouponUseAmount
+                      }}
+                    />
                   </div>
                 </Col>
               </UseAmount>
             )}
           {!couponAvailableAmount && (
-            <div>ご利用可能なショッピングポイントはありあせん</div>
+            <div>
+              <IntlMessages id="donation.payment.mujiCardInfo.label.noPointsAvailable" />
+            </div>
           )}
         </ColItem>
       </StyledLabelItem>
@@ -154,16 +172,16 @@ const MujiCardForm = ({
                 />
               </Col>
               <Col span={24} className="gift-card-description">
-                ご利用のギフトカード情報をご入力ください。
+                <IntlMessages id="donation.payment.mujiCardInfo.label.giftCardDescription" />
               </Col>
               <Col span={6} className="label">
-                カード番号
+                <IntlMessages id="donation.payment.mujiCardInfo.label.cardNo" />
               </Col>
               <Col span={18} className="card-no">
                 {inputCardNo}
               </Col>
               <Col span={6} className="label">
-                PIN番号
+                <IntlMessages id="donation.payment.mujiCardInfo.label.pinNo" />
               </Col>
               <Col span={18}>{inputPinNo}</Col>
               <Col span={18} offset={6}>
@@ -172,23 +190,31 @@ const MujiCardForm = ({
                   size="small"
                   onClick={() => console.log("clicked")}
                 >
-                  紹会
+                  <IntlMessages id="donation.payment.mujiCardInfo.button.inquiry" />
                 </Button>
               </Col>
             </Col>
             <Col span={12}>
               <img
                 src="https://img.muji.net/img/store/cart/cart_giftcard01.jpg"
-                alt="カード番号、PIN番号は、ギフトカードの裏面に記載されています。"
+                alt={intl.formatMessage({
+                  id: "donation.payment.mujiCardInfo.giftCardDescription"
+                })}
               />
             </Col>
             {giftCardAvailableAmount &&
               giftCardAvailableAmount > 0 && (
                 <Col span={24} className="use-amount">
-                  <div className="label">MUJ GIFT CARDご利用額</div>
+                  <div className="label">
+                    <IntlMessages id="donation.payment.mujiCardInfo.label.useMujiGiftCardAmount" />
+                  </div>
                   <div>
-                    {inputCouponUseAmount}
-                    円
+                    <IntlMessages
+                      id="donation.payment.mujiCardInfo.amountInput"
+                      values={{
+                        input: inputGiftCardUseAmount
+                      }}
+                    />
                   </div>
                 </Col>
               )}

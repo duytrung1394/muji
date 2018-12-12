@@ -7,6 +7,7 @@ import CreditCardInfo from "./creditCardInfo";
 import MujiCardInfo from "./mujiCardInfo";
 import { Button } from "../../form/button";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { injectIntl } from "react-intl";
 
 const StyledFormFooter = styled(Row)`
   margin: 20px 0;
@@ -66,8 +67,11 @@ class Form extends Component {
     return yearOptions;
   };
 
+  submit = () => {};
+
   render() {
     const {
+      intl,
       donationCode,
       numberOfUnits,
       entity: {
@@ -148,10 +152,10 @@ class Form extends Component {
           }
         />
         <div>
-          お持ちの方は、MUJInetクーポン/MUJI GIFT
-          CARDをご利用いただくこともできます。
+          <IntlMessages id="donation.payment.form.description.canAlsoUseMujiCard" />
         </div>
         <MujiCardInfo
+          intl={intl}
           couponAvailableAmount={couponAvailableAmount}
           couponLimitDate={couponLimitDate}
           inputCouponUseAmount={
@@ -211,4 +215,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default injectIntl(Form);
