@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "../../form/link";
 import { Icon, Rate, Popover } from "antd";
+import ReviewImageList from "./reviewImageList";
 
 const StyledItem = styled.li`
   border: 1px solid #ccc;
   padding: 15px 20px;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const ReviewItemHeader = styled.div`
@@ -130,6 +131,7 @@ const ReviewItem = ({ entity }) => (
         <CommentTitle>{entity.title}</CommentTitle>
         <Comment>{entity.detail_comment}</Comment>
       </Link>
+      <ReviewImageList innerCategories={entity.images} />
     </div>
     <InfoList>
       <li>
