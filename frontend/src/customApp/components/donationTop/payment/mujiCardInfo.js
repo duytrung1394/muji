@@ -165,36 +165,46 @@ const MujiCardForm = ({
         <ColItem span={18}>
           <UseAmount>
             <Col span={12}>
-              <Col span={24}>
-                <IntlMessages
-                  id="donation.payment.remaining.price"
-                  values={{
-                    price: <Price>{giftCardAvailableAmount}</Price>
-                  }}
-                />
-              </Col>
-              <Col span={24} className="gift-card-description">
-                <IntlMessages id="donation.payment.mujiCardInfo.label.giftCardDescription" />
-              </Col>
-              <Col span={6} className="label">
-                <IntlMessages id="donation.payment.mujiCardInfo.label.cardNo" />
-              </Col>
-              <Col span={18} className="card-no">
-                {inputCardNo}
-              </Col>
-              <Col span={6} className="label">
-                <IntlMessages id="donation.payment.mujiCardInfo.label.pinNo" />
-              </Col>
-              <Col span={18}>{inputPinNo}</Col>
-              <Col span={18} offset={6}>
-                <Button
-                  type="primary"
-                  size="small"
-                  onClick={() => console.log("clicked")}
-                >
-                  <IntlMessages id="donation.payment.mujiCardInfo.button.inquiry" />
-                </Button>
-              </Col>
+              <Row type="flex">
+                <Col span={24}>
+                  <IntlMessages
+                    id="donation.payment.remaining.price"
+                    values={{
+                      price: <Price>{giftCardAvailableAmount}</Price>
+                    }}
+                  />
+                </Col>
+              </Row>
+              <Row type="flex">
+                <Col span={24} className="gift-card-description">
+                  <IntlMessages id="donation.payment.mujiCardInfo.label.giftCardDescription" />
+                </Col>
+              </Row>
+              <Row type="flex">
+                <Col span={6} className="label">
+                  <IntlMessages id="donation.payment.mujiCardInfo.label.cardNo" />
+                </Col>
+                <Col span={18} className="card-no">
+                  {inputCardNo}
+                </Col>
+              </Row>
+              <Row type="flex">
+                <Col span={6} className="label">
+                  <IntlMessages id="donation.payment.mujiCardInfo.label.pinNo" />
+                </Col>
+                <Col span={18}>{inputPinNo}</Col>
+              </Row>
+              <Row type="flex">
+                <Col span={18} offset={6}>
+                  <Button
+                    type="primary"
+                    size="small"
+                    onClick={() => console.log("clicked")}
+                  >
+                    <IntlMessages id="donation.payment.mujiCardInfo.button.inquiry" />
+                  </Button>
+                </Col>
+              </Row>
             </Col>
             <Col span={12}>
               <img
