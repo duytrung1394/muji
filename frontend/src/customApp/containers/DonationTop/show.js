@@ -1,12 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
+import ContentHeader from "../../components/header/contentHeader";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Form from "../../components/donationTop/forms/form";
+import Form from "../../components/donationTop/show/form";
+import Guide from "../../components/donationTop/show/guide";
+import Others from "../../components/donationTop/show/others";
+import Summary from "../../components/donationTop/show/summary";
+import Includes from "../../components/donationTop/show/includes";
 
-class Detail extends Component {
+class Show extends Component {
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.donation_code);
   }
@@ -21,19 +26,34 @@ class Detail extends Component {
   // }
 
   render() {
-    const donationCode = this.props.match.params.donationCode;
-    const { fetched, updated, entity } = this.props;
+    const donationCode = this.props.match.params.donation_code;
+    const { fetched, updated, entity, links } = this.props;
     return (
       <ContentAreaLayout>
         {fetched &&
           !updated && (
-            <Form
-              actionType="edit"
-              entity={entity}
-              requestHandler={entity =>
-                this.props.updateRequest(donationCode, entity)
-              }
-            />
+            <Fragment>
+              <ContentHeader links={links} />
+              <Form
+                actionType="edit"
+                entity={entity}
+                requestHandler={entity =>
+                  this.props.updateRequest(donationCode, entity)
+                }
+              />
+              <Summary
+                total={entity.total}
+                total_people={entity.total_people}
+              />
+              <Includes
+                organization={entity.organization}
+                organizations={entity.organizations}
+                activities={entity.activities}
+                messages={entity.messages}
+              />
+              <Others others={entity.other_donations} />
+              <Guide />
+            </Fragment>
           )}
       </ContentAreaLayout>
     );
@@ -62,4 +82,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Detail);
+export default enhance(Show);

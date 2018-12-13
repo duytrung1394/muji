@@ -4,11 +4,11 @@ import req from "../../shared/requestActions";
 
 const actions = createActions({
   CUSTOMER_REVIEW: {
-    ENTITY: {
+    LIST: {
       ...restActions,
       GET_CUSTOMER_REVIEW: { ...req }
     }
   }
 });
 
-export default actions.customerReview.entity;
+export default actions.customerReview.list;

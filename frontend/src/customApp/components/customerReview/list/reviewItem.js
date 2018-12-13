@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "../../form/link";
 import { Icon, Rate, Popover } from "antd";
 
 const StyledItem = styled.li`
@@ -121,7 +121,7 @@ const ReviewItem = ({ entity }) => (
       <SubData>
         <li>
           <StarWrapper>
-            <Star disabled defaultValue={3} />
+            <Star disabled defaultValue={entity.star} />
           </StarWrapper>
         </li>
         <SubDataDate>{entity.upload_date}</SubDataDate>
