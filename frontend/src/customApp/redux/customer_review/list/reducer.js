@@ -10,24 +10,20 @@ const customRestInitState = restInitState.merge(
 );
 
 // GET
-export const fetchRequest = (state, action) => {
+export const fetchRequest = (state, action) =>
   state
     .set("doSearch", false)
     .set("fetching", true)
     .set("fetched", false)
     .set("fetchError", false);
-};
 
-export const fetchSuccess = (state, action) => {
-  const entities = state.get("entities");
-  const newEntities = entities.concat(action.payload.data);
-  return state
-    .set("entities", newEntities)
+export const fetchSuccess = (state, action) =>
+  state
+    .set("entities", [...state.get("entities"), ...action.payload.data])
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)
     .set("fetching", false)
     .set("fetched", true);
-};
 
 export const fetchFailure = (state, action) =>
   state
@@ -53,6 +49,9 @@ const reducer = handleActions(
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
+        },
+        FETCH_BY_USER: {
+          REQUEST: fetchRequest
         }
       }
     }

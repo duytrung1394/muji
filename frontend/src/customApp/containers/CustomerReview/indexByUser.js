@@ -32,15 +32,19 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    const params = parse(this.props.location.search);
-    this.props.fetchRequest(params);
+    this.props.fetchRequest(this.getFetchRequestParams());
   }
 
   seeMore = () => {
-    this.props.fetchRequest({
+    this.props.fetchRequest(this.getFetchRequestParams());
+  };
+
+  getFetchRequestParams = () => {
+    return {
+      ...parse(this.props.location.search),
       offset: this.getEntityLength(),
       length: 5
-    });
+    };
   };
 
   getEntityLength = () => {
@@ -93,7 +97,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.getListByUser.request,
+  fetchRequest: actions.fetchByUser.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
