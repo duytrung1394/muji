@@ -4,11 +4,8 @@ import CardList from "./cardList";
 
 const Others = ({ others }) => {
   return (
-    <ContentPanel title={"その他の募金券"} >
-      <CardList
-        items={others}
-        cardWidth={"215px"}
-      />
+    <ContentPanel title={"その他の募金券"}>
+      <CardList items={others} cardWidth={"215px"} />
     </ContentPanel>
   );
 };

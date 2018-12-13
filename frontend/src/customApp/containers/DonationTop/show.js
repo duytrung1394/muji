@@ -30,30 +30,31 @@ class Show extends Component {
     const { fetched, updated, entity, links } = this.props;
     return (
       <ContentAreaLayout>
-        {fetched && !updated && (
-          <Fragment>
-            <ContentHeader links={links} />
-            <Form
-              actionType="edit"
-              entity={entity}
-              requestHandler={entity =>
-                this.props.updateRequest(donationCode, entity)
-              }
-            />
-            <Summary
-              total={entity.total}
-              total_people={entity.total_people}
-            />
-            <Includes
-              organization={entity.organization}
-              organizations={entity.organizations}
-              activities={entity.activities}
-              messages={entity.messages}
-            />
-            <Others others={entity.other_donations} />
-            <Guide />
-          </Fragment>
-        )}
+        {fetched &&
+          !updated && (
+            <Fragment>
+              <ContentHeader links={links} />
+              <Form
+                actionType="edit"
+                entity={entity}
+                requestHandler={entity =>
+                  this.props.updateRequest(donationCode, entity)
+                }
+              />
+              <Summary
+                total={entity.total}
+                total_people={entity.total_people}
+              />
+              <Includes
+                organization={entity.organization}
+                organizations={entity.organizations}
+                activities={entity.activities}
+                messages={entity.messages}
+              />
+              <Others others={entity.other_donations} />
+              <Guide />
+            </Fragment>
+          )}
       </ContentAreaLayout>
     );
   }
