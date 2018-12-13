@@ -67,7 +67,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest(this.props.match.params.item_code);
   }
 
   render() {

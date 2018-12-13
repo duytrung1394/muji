@@ -65,7 +65,7 @@ const routes = [
     path: "/store/review/detail/:item_code",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/new")
+      require("./customApp/containers/CustomerReview/show")
     )
   },
   {
