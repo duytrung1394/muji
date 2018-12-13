@@ -30,9 +30,14 @@ class Payment extends Component {
   }
 
   render() {
-    const donationCode = this.props.match.params.donation_code;
-    const numberOfUnits = this.props.match.params.number_of_units;
-    const { fetched, fetching, entity } = this.props;
+    const {
+      fetched,
+      fetching,
+      entity,
+      match: {
+        params: { donation_code, number_of_units }
+      }
+    } = this.props;
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
@@ -50,8 +55,8 @@ class Payment extends Component {
               <Form
                 key={1}
                 {...this.props}
-                donationCode={donationCode}
-                numberOfUnits={numberOfUnits}
+                donationCode={donation_code}
+                numberOfUnits={number_of_units}
               />
             ]}
           </BaseContentLayout>
