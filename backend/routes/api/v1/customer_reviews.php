@@ -15,6 +15,14 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+ * ユーザ別一覧取得
+ */
+$router->get('/api/v1/customer-reviews/user', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByUser',
+]);
+
+/**
   * 作成
   */
  $router->get('/api/v1/customer-reviews/create', [
