@@ -29,7 +29,7 @@ const StyledTotalDonationSpan = styled.span`
   vertical-align: bottom;
 `;
 
-const Summary = ({total, total_people}) => {
+const Summary = ({ total, total_people }) => {
   return (
     <ContentLayout>
       <IntlMessages id="donationShow.total" />

@@ -69,6 +69,13 @@ const routes = [
     )
   },
   {
+    path: "/store/review/user/",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexByUser")
+    )
+  },
+  {
     path: "/store/cmdty/donation",
     exact: true,
     component: asyncComponent(() =>
@@ -129,6 +136,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerAddress/complete")
+    )
+  },
+  {
+    path: "/store/cart/donation/payment/:donation_code/:number_of_units",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/payment")
     )
   }
 ];

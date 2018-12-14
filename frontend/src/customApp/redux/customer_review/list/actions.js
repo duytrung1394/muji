@@ -6,7 +6,9 @@ const actions = createActions({
   CUSTOMER_REVIEW: {
     LIST: {
       ...restActions,
-      GET_CUSTOMER_REVIEW: { ...req }
+      FETCH_BY_USER: {
+        REQUEST: undefined
+      }
     }
   }
 });

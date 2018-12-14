@@ -41,6 +41,20 @@ class DonationTopsController extends Controller
     }
 
     /**
+     * お支払い方法の選択.
+     *
+     * @param  string   $donationCode
+     * @param  string   $numberOfUnits
+     * @return Response
+     */
+    public function showPayment($donationCode, $numberOfUnits)
+    {
+        return [
+            'data' => $this->getMockPaymentData($donationCode, $numberOfUnits),
+        ];
+    }
+
+    /**
      * モックデータ取得用(募金一覧)
      */
     private function getMultiMockData()
@@ -110,7 +124,7 @@ class DonationTopsController extends Controller
                     'img' => 'https://img.muji.net/img/item/0299629000000_1260.jpg',
                     'title' => '募金券「緊急災害復興支援」',
                     'ten_bill' => '10円券',
-                    'one_hundred_bill' => '100円券',
+                    'one_hundred_bill' => '100円券',
                     'price' => '10', 
                     'total_good' => '15',
                     'sub_description' => 'ジャパン・プラットフォームの「緊急災害復興支援」に寄付することができます。',           
@@ -298,5 +312,15 @@ class DonationTopsController extends Controller
         }
         $data['donationCode'] = $donationCode;
         return $data;
+    }
+
+    private function getMockPaymentData($donationCode, $numberOfUnits)
+    {
+        return [
+            'total' => 40,
+            'couponAvailableAmount' => 500,
+            'couponLimitDate' => "2010年12月28日(月)",
+            'giftCardAvailableAmount' => 1000,
+        ];
     }
 }

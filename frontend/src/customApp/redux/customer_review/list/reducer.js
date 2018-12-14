@@ -49,6 +49,9 @@ const reducer = handleActions(
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
+        },
+        FETCH_BY_USER: {
+          REQUEST: fetchRequest
         }
       }
     }
