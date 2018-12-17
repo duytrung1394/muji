@@ -176,7 +176,6 @@ babelでのJSトランスパイルにホスト名が必要です。
 ※ここではpreviewサーバーへの動作を想定します。
 
 まず、以下のコマンドでビルドを行います。
-※releaseサーバー上での実行を推奨
 
 ```
 yarn build-preview
@@ -185,7 +184,7 @@ yarn build-preview
 次に、以下のコマンドでexpressサーバーを立ち上げます。
 
 ```
-PORT=80 yarn server
+PORT=80 yarn serve-preview
 ```
 
 リバースプロキシ等の都合がある場合は別なポート番号を使用してください。
