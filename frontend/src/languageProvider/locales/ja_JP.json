@@ -140,7 +140,7 @@
   "donation.payment.form.description.canAlsoUseMujiCard": "お持ちの方は、MUJInetクーポン/MUJI GIFT CARDをご利用いただくこともできます。",
   "donation.payment.description": "寄付に使用されるクレジットカード情報を入力してください。",
   "donation.payment.link.back": "前のページに戻る",
-  "donation.payment.mujiCardInfo.button.inquiry": "紹会",
+  "donation.payment.mujiCardInfo.button.inquiry": "照会",
   "donation.payment.mujiCardInfo.cardAnnotation1": "※MUJI GIFT CARDのご利用は、1回の寄付につき1枚までです。",
   "donation.payment.mujiCardInfo.cardAnnotation2": "※MUJI GIFT CARDご利用の際、MUJIショッピングポイントの併用が可能です。",
   "donation.payment.mujiCardInfo.couponLimitDate": "有効期限: {date}まで",
