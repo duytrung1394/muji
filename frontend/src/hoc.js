@@ -6,11 +6,32 @@ import { LocaleProvider } from "antd";
 import { IntlProvider } from "react-intl";
 import themes from "./settings/themes";
 import AppLocale from "./languageProvider";
-import config, {
-  getCurrentLanguage
-} from "./containers/LanguageSwitcher/config";
 import { themeConfig } from "./settings";
 import DashAppHolder from "./dashAppStyle";
+import { isServer } from "./helpers/ssr";
+import { language } from "./settings";
+
+let config, getCurrentLanguage;
+if( isServer() ){
+  // SSR向けにはデフォルトの言語を返すようにだけしておく
+  const option = {
+    languageId: "japanese",
+    locale: "ja",
+    text: "Japanese",
+    // iconのsvgをimportするの無理なので作り直す必要ありそう
+  };
+  config = {
+    defaultLanguage: language,
+    options: [
+      option
+    ]
+  };
+  getCurrentLanguage = () => (option);
+}else{
+  const lsConfig = require("./containers/LanguageSwitcher/config");
+  config = lsConfig.default;
+  getCurrentLanguage = lsConfig.getCurrentLanguage;
+}
 
 const currentAppLocale =
   AppLocale[getCurrentLanguage(config.defaultLanguage || "english").locale];
