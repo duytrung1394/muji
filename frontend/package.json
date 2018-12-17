@@ -115,7 +115,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "dev": "NODE_ENV=development REACT_APP_ENV=development babel-watch src/server",
-    "build": "react-app-rewired --max_old_space_size=8192 build",
+    "build": "REACT_APP_ENV=development BABEL_ENV=development react-app-rewired --max_old_space_size=8192 build",
     "build-preview": "REACT_APP_ENV=preview BABEL_ENV=preview react-app-rewired --max_old_space_size=8192 build",
     "build-release": "REACT_APP_ENV=release BABEL_ENV=release react-app-rewired --max_old_space_size=8192 build",
     "serve-local": "REACT_APP_ENV=development NODE_ENV=production babel-node src/server",

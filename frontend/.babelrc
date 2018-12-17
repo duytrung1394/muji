@@ -37,7 +37,7 @@
           "import-static-files", 
           {
             "baseDir": "/static",
-            "baseUri": "https://changeit.preview.muji.example.com"
+            "baseUri": "https://muji-ec.xenophy.info"
           }
         ]
       ]
@@ -49,7 +49,7 @@
           "import-static-files", 
           {
             "baseDir": "/static",
-            "baseUri": "https://changeit.release.muji.example.com"
+            "baseUri": "https://muji-ec-release.xenophy.info"
           }
         ]
       ]
