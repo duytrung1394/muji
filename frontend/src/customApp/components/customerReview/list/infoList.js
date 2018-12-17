@@ -8,7 +8,7 @@ const List = styled.ul`
   display: flex;
   align-items: baseline;
   padding: 8px 0 8px 10px;
-  background-color:#eee;
+  background-color: #eee;
   border-top: 2px solid #e5e5e5;
   border-bottom: 2px solid #e5e5e5;
 `;
@@ -20,7 +20,7 @@ const SortList = styled.li`
 const StyledSelect = styled(Select)`
   width: 200px;
   .ant-select-selection {
-    background-color:#eee;
+    background-color: #eee;
     border: none;
     &:focus {
       box-shadow: none;

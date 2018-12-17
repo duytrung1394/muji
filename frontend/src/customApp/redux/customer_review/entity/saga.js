@@ -6,5 +6,4 @@ const api = RESTEntityApi("customer-reviews");
 
 export default function* saga() {
   yield restAllSaga("customer_review", api, actions);
-
 }

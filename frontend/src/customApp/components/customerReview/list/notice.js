@@ -12,26 +12,26 @@ const Notice = styled.span`
   font-size: 14px;
 `;
 
-const Notices =()=>{
-    return(
-        <NoticeList>
-            <Notice>
-                <IntlMessages id="reviewPost.notice1Front" />
-                <Link to={"/"}>
-                <IntlMessages id="reviewPost.noticeLink" />
-                </Link>
-                <IntlMessages id="reviewPost.notice1Back" />
-            </Notice>
-            <br />
-            <Notice>
-                <IntlMessages id="reviewPost.notice2" />
-            </Notice>
-            <br />
-            <Notice>
-                <IntlMessages id="reviewPost.notice3" />
-            </Notice>
-        </NoticeList>
-    )
-}
+const Notices = () => {
+  return (
+    <NoticeList>
+      <Notice>
+        <IntlMessages id="reviewPost.notice1Front" />
+        <Link to={"/"}>
+          <IntlMessages id="reviewPost.noticeLink" />
+        </Link>
+        <IntlMessages id="reviewPost.notice1Back" />
+      </Notice>
+      <br />
+      <Notice>
+        <IntlMessages id="reviewPost.notice2" />
+      </Notice>
+      <br />
+      <Notice>
+        <IntlMessages id="reviewPost.notice3" />
+      </Notice>
+    </NoticeList>
+  );
+};
 
 export default Notices;

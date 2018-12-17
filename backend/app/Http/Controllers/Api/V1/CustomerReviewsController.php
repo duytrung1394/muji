@@ -24,6 +24,18 @@ class CustomerReviewsController extends Controller
         ];
     }
 
+      /**
+     * Display a listing of the resource.
+     * @param  string $itemCode
+     * @return Response
+     */
+    public function show($itemCode)
+    {
+        return [
+            'data' => $this->getMockItemData($itemCode),
+        ];
+    }
+
     /**
       * Show the form for creating a new resource.
       *
@@ -141,6 +153,34 @@ class CustomerReviewsController extends Controller
         default:
             return [];
         }
+    }
+
+    /**
+     * モックデータを生成して取得(募金詳細)
+     */
+    private function getMockItemData($itemCode)
+    {
+        $data = [];
+        switch ($itemCode){
+            case '4550182028072':
+                $data =
+                [
+                    'customer_review_code' => $index,
+                    'product' => 'ベーコンとチーズのキッシュ',
+                    'jancode' => '4550182028072',
+                    'title' => 'キッシュ美味しい',
+                    'star' => 3,
+                    'upload_date' => '1時間前',
+                    'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                    'evaluations_comment_count' => 0,
+                    'evaluations_useful_count' => 0,
+                ];
+                break;
+            default :
+                return [];
+        }
+        $data['itemCode'] = $itemCode;
+        return $data;
     }
 }
 

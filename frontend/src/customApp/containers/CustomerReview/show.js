@@ -2,61 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
-import { Spin ,Icon} from "antd";
+import { Spin } from "antd";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import { Link } from "react-router-dom";
-import ReviewDetailItem from "../../components/customerReview/list/reviewDetailItem";
-import Notices from "../../components/customerReview/list/notice";
+import ReviewDetailItems from "../../components/customerReview/list/reviewDetailItems";
 import Comment from "../../components/customerReview/list/comment";
+import ListHeader from "../../components/customerReview/list/listHeader";
+import ReviewPageing from "../../components/customerReview/list/reviewPaging";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
   margin: 20px 0 0;
 `;
-
-const ListHeader = styled.div`
-  margin: 30px 0;
-  font-size: 12px;
-`;
-
-const ReviewItemHeader = styled.div`
-  position: relative;
-`;
-
-const ItemImg = styled.img`
-  margin-right:10px;
-`;
-
-const ReviewTitle = styled.span`
-  font-size: 14px;
-  color: #333;
-  font-weight: bold;
-`;
-
-const RigthArrow = styled(Icon)`
-  color: rgba(0, 0, 0, 0.25);
-  position: absolute;
-  top: 35%;
-  right: 0;
-`;
-
-const ItemsList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const LinkStyle = {
-  position: "absolute",
-  top: "0",
-  left: "0",
-  height: "100%",
-  width: "100%",
-  zIndex: "10"
-};
 
 class Show extends Component {
   constructor(props) {
@@ -78,36 +38,20 @@ class Show extends Component {
       getCustomerReviewRequest
     } = this.props;
 
-    if (entity.user && entity.customer_reviews) {
-    //   const { user, customer_reviews } = props.entity;
-    const { customer_reviews } = entity;
+    console.log(this.props);
+
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching || destroying} size="large">
           <ContentLayout>
-            <ListHeader>
-              <ReviewItemHeader>
-                <Link to={``} style={LinkStyle} />
-                <ItemImg
-                  src={`https://img.muji.net/img/item/${customer_reviews[0].jancode}_180.jpg`}
-                  alt="itemImage"
-                  width="60"
-                  height="60"
-                />
-                <ReviewTitle>{customer_reviews[0].product}</ReviewTitle>
-                <RigthArrow type="right" />
-              </ReviewItemHeader>
-            </ListHeader>
-            <ItemsList>
-              <ReviewDetailItem entity={customer_reviews[0]} /> 
-            </ItemsList>
+            <ListHeader />
+            <ReviewDetailItems entity={entity} />
+            <ReviewPageing />
             <Comment />
-            <Notices />
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>
     );
-    } return null;
   }
 }
 
@@ -121,8 +65,6 @@ const actionCreators = {
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
-
-const { request, cleanup } = actions.fetch;
 
 const enhance = C => {
   const connected = connect(
