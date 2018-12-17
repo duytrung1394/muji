@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import ProductCategoryTopHeader from "../../components/productCategoryTop/header";
+import ContentHeader from "../../components/header/contentHeader";
 import Article from "../../components/productCategoryTop/article";
 import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
+import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 
 class Index extends Component {
@@ -24,9 +25,10 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <ProductCategoryTopHeader title={entity.category_title} />
+          <ContentHeader title={entity.category_title} links={entity.links} />
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
+          <CategoryList innerCategories={entity.innerCategories} />
           <ItemList {...entity} />
         </Spin>
       </ContentAreaLayout>

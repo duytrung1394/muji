@@ -7,9 +7,18 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 
 const Item = styled(Col)`
   padding: 10px;
+  text-align: center;
   img {
     width: 100%;
   }
+  position: relative;
+}
+ &&{
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+  
 `;
 
 const Title = styled.div`

@@ -15,6 +15,14 @@ $router->get('/api/v1/<%= endpoint %>', [
 ]);
 
 /**
+  * 作成
+  */
+$router->get('/api/v1/<%= endpoint %>/create', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\<%= EndPoint %>Controller@create',
+]);
+
+/**
  * 詳細取得
  */
 $router->get('/api/v1/<%= endpoint %>/{taskCode}', [

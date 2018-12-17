@@ -2,6 +2,7 @@ import req from "../requestActions";
 
 const restEntityActions = {
   FETCH: req,
+  INIT: req,
   CREATE: req,
   UPDATE: {
     ...req,
