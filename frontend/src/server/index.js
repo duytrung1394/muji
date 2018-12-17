@@ -44,8 +44,8 @@ if (process.env.NODE_ENV !== "production") {
 } else {
   app.use(
     manifest({
-      manifest: path.join(__dirname, "../build/asset-manifest.json"),
-      prepend: path.join(__dirname, "../build"),
+      manifest: path.join(__dirname, "../../build/asset-manifest.json"),
+      prepend: path.join(__dirname, "../../build"),
       reqPathFind: /^(\/?)/,
       reqPathReplace: "",
       debug: false
