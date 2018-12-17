@@ -2,6 +2,8 @@ import express from "express";
 import manifest from "express-manifest";
 import path from "path";
 
+Error.stackTraceLimit = 300;
+
 const app = express();
 const renderer = require("./serverRenderer");
 
