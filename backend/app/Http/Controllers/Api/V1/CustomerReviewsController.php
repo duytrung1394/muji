@@ -47,6 +47,22 @@ class CustomerReviewsController extends Controller
     }
 
     /**
+     * Display a listing of the resource(フォロー中のユーザー一覧).
+     *
+     * @return Response
+     */
+    public function indexByFollowing(Request $request)
+    {
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
+    /**
       * Show the form for creating a new resource.
       *
       * @return \Illuminate\Http\Response

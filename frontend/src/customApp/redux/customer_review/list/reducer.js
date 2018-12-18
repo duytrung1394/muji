@@ -18,7 +18,6 @@ export const fetchRequest = (state, action) =>
     .set("fetchError", false);
 
 export const fetchSuccess = (state, action) => {
-  console.log(action.payload);
   return state
     .set("entities", [...state.get("entities"), ...action.payload.data])
     .set("total", action.payload.total)
@@ -54,6 +53,9 @@ const reducer = handleActions(
           CLEANUP: fetchCleanup
         },
         FETCH_BY_USER: {
+          REQUEST: fetchRequest
+        },
+        FETCH_BY_FOLLOWING: {
           REQUEST: fetchRequest
         }
       }
