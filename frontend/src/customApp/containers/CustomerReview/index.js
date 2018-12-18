@@ -70,6 +70,7 @@ class Index extends Component {
                 <IntlMessages id="customerReview.list.title" />
               </StyledH1>
             }
+            sort={[]}
           />
         </ContentLayout>
         <ContentLayout>

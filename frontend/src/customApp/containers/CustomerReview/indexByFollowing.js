@@ -10,8 +10,8 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import FollwingItem from "../../components/customerReview/list/followingItem";
-import FollowingHeader from "../../components/customerReview/list/followingHeader";
-import FollowingButton from "../../components/customerReview/list/followingButton";
+import Header from "../../components/customerReview/list/header";
+import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -72,7 +72,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <FollowingHeader
+          <Header
             title={
               <StyledH1>
                 <IntlMessages id="customerReview.list.followingTitle" />
@@ -97,7 +97,7 @@ class Index extends Component {
         </ContentLayout>
         <ContentLayout>
           <Spin spinning={fetching && !this.isFirstFetching()} size="large">
-            {this.hasMore() && <FollowingButton seeMore={this.seeMore} />}
+            {this.hasMore() && <ReviewButton seeMore={this.seeMore} />}
           </Spin>
         </ContentLayout>
       </ContentAreaLayout>
