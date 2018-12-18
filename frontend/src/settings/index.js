@@ -1,11 +1,24 @@
+import { isServer } from "../helpers/ssr";
+
 const apiUrl = {
-  release: "https://muji-ec-release.xenophy.info",
-  preview: "https://muji-ec.xenophy.info",
-  development: "http://localhost:8081"
+  release: {
+    ssr: "http://backend:8080",
+    browser: "https://muji-ec-release.xenophy.info",
+  },
+  preview: {
+    ssr: "http://backend:8080",
+    browser: "https://muji-ec.xenophy.info",
+  },
+  development: {
+    ssr: "http://localhost:8081",
+    broswer: "http://localhost:8081",
+  }
 };
 
+const env = isServer() ? "ssr" : "browser";
+
 export default {
-  apiUrl: apiUrl[process.env.REACT_APP_ENV],
+  apiUrl: apiUrl[process.env.REACT_APP_ENV][env],
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
 const siteConfig = {
