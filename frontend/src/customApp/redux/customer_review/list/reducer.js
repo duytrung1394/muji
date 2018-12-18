@@ -17,13 +17,16 @@ export const fetchRequest = (state, action) =>
     .set("fetched", false)
     .set("fetchError", false);
 
-export const fetchSuccess = (state, action) =>
-  state
+export const fetchSuccess = (state, action) => {
+  console.log(action.payload);
+  return state
     .set("entities", [...state.get("entities"), ...action.payload.data])
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)
+    .set("userTotal", action.payload.userTotal)
     .set("fetching", false)
     .set("fetched", true);
+};
 
 export const fetchFailure = (state, action) =>
   state

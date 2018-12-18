@@ -69,10 +69,10 @@ const routes = [
     )
   },
   {
-    path: "/store/review/user/",
+    path: "/store/review/following/",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByUser")
+      require("./customApp/containers/CustomerReview/indexByFollowing")
     )
   },
   {
