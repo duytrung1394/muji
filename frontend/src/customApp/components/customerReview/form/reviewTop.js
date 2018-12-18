@@ -39,8 +39,8 @@ const PostPageTitle = styled.div`
 `;
 
 const ReviewTop = props => {
-  if (props.entity.user && props.entity.customer_reviews) {
-    const { user, customer_reviews } = props.entity;
+  if (props.entity && props.user) {
+    const { user, entity } = props;
     return (
       <FixArea>
         <PostPageTitle>
@@ -57,14 +57,12 @@ const ReviewTop = props => {
         </UserData>
         <SelectedItem>
           <ItemImg
-            src={`https://img.muji.net/img/item/${
-              customer_reviews[0].jancode
-            }_180.jpg`}
+            src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
             alt="itemImage"
             width="120"
             height="120"
           />
-          <Name>{customer_reviews[0].product}</Name>
+          <Name>{entity.product}</Name>
         </SelectedItem>
       </FixArea>
     );

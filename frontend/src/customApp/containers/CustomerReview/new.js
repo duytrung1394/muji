@@ -18,16 +18,21 @@ const ReviewFormWrapper = styled.div`
   background-color: #f7f7f7;
 `;
 
+// TODO: get user data from backend
+const user = {
+  user_image: "https://www.muji.com/jp/store/review/img/avatar_default.png",
+  user_name: "user name"
+};
+
 class New extends Component {
   componentDidMount() {
     this.props.fetchRequest("");
   }
-
   render() {
     const { entity } = this.props;
     return (
       <ReviewLayout>
-        <ReviewTop entity={entity} />
+        <ReviewTop entity={entity[0]} user={user} />
         <ReviewFormWrapper>
           <PostReview />
         </ReviewFormWrapper>
