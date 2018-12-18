@@ -21,12 +21,14 @@ services:
       - ./backend/.env.dev
   frontend:
     build: frontend
-    command: "yarn start"
+    command: "yarn serve"
     ports:
       - "4000:3000"
     volumes:
       - ./frontend:/usr/src/app
       - backend_cache:/usr/local/share/.cache
+    env_file:
+      - ./.env
   mariadb:
     image: mariadb:10.3.5
     environment:
