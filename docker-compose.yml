@@ -51,5 +51,14 @@ services:
     command: 'echo "USE docker-compose run instead of docker-compose up"'
     volumes:
       - .:/builder
+
+  # 本番用のnginx
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - built_files:/usr/src/app
 volumes:
   backend_cache:
