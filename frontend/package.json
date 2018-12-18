@@ -119,8 +119,7 @@
     "build-preview": "REACT_APP_ENV=preview BABEL_ENV=preview react-app-rewired --max_old_space_size=8192 build",
     "build-release": "REACT_APP_ENV=release BABEL_ENV=release react-app-rewired --max_old_space_size=8192 build",
     "serve-local": "REACT_APP_ENV=development NODE_ENV=production babel-node src/server",
-    "serve-preview": "REACT_APP_ENV=preview NODE_ENV=production babel-node src/server",
-    "serve-release": "REACT_APP_ENV=release NODE_ENV=production babel-node src/server",
+    "serve": "NODE_ENV=production babel-node src/server",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   }
