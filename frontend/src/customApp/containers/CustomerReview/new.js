@@ -4,8 +4,8 @@ import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import styled from "styled-components";
-import PostReview from "../../components/customerReview/form/postReview";
-import ReviewTop from "../../components/customerReview/form/reviewTop";
+import PostReview from "../../components/customerReview/new/postReview";
+import ReviewTop from "../../components/customerReview/forms/reviewTop";
 
 const ReviewLayout = styled(ContentAreaLayout)`
   width: 880px;
