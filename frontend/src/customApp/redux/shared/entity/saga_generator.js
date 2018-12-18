@@ -6,9 +6,13 @@ export function restSagaFunctions(name, api, actions) {
     // USAGE: fetch.request(primary_key)
     fetch: function*({ payload }) {
       try {
+        console.log("fetch request");
+        console.log(api.GET);
         const response = yield call(api.GET, payload);
         yield put(actions.fetch.success(response.data));
       } catch (error) {
+        console.log("error");
+        console.log(error);
         if (error.response && error.response.status == 401) {
           yield put(authActions.unauthorized(error));
         } else {
