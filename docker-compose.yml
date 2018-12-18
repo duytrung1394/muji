@@ -27,6 +27,7 @@ services:
     volumes:
       - ./frontend:/usr/src/app
       - backend_cache:/usr/local/share/.cache
+      - built_files:/usr/src/app/build
     env_file:
       - ./.env
   mariadb:
@@ -62,3 +63,4 @@ services:
       - built_files:/usr/src/app
 volumes:
   backend_cache:
+  built_files:
