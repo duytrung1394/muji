@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/customer_review/list/actions";
+import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import styled from "styled-components";
@@ -27,7 +27,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.item_code);
+    this.props.fetchRequest("");
   }
 
   render() {
@@ -35,23 +35,28 @@ class Show extends Component {
       entity,
       fetching,
       destroying,
+      fetchRequest,
       getCustomerReviewRequest
     } = this.props;
 
-    console.log(this.props);
-
-    return (
-      <ContentAreaLayout>
-        <Spin spinning={fetching || destroying} size="large">
-          <ContentLayout>
-            <ListHeader />
-            <ReviewDetailItems entity={entity} />
-            <ReviewPageing />
-            <Comment />
-          </ContentLayout>
-        </Spin>
-      </ContentAreaLayout>
-    );
+    if (entity.customer_reviews) {
+      return (
+        <ContentAreaLayout>
+          <Spin spinning={fetching || destroying} size="large">
+            <ContentLayout>
+              <ListHeader reviewData={entity.customer_reviews[0]} />
+              <ReviewDetailItems reviewData={entity.customer_reviews[0]} />
+              <ReviewPageing />
+              <Comment
+                entities={entity.customer_reviews}
+                fetchRequest={fetchRequest}
+              />
+            </ContentLayout>
+          </Spin>
+        </ContentAreaLayout>
+      );
+    }
+    return null;
   }
 }
 

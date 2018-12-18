@@ -6,7 +6,10 @@ const actions = createActions({
   CUSTOMER_REVIEW: {
     ENTITY: {
       ...restActions,
-      GET_CUSTOMER_REVIEW: { ...req, CHANGE: undefined }
+      GET_CUSTOMER_REVIEW: {
+        ...req,
+        CHANGE: undefined
+      }
     }
   }
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
@@ -69,6 +69,7 @@ const UserName = styled.span`
 const Comments = styled.p`
   font-size: 14px;
   color: #333;
+  margin-top: 10px;
 `;
 
 const ActionIcon = styled.div`
@@ -93,9 +94,12 @@ const SeeMore = styled.div`
   color: #9e9e9e;
   font-size: 14px;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
-const SeeMoreIcon = styled(Icon)``;
+const SeeMoreIcon = styled(Icon)`
+  font-size: 12px;
+`;
 
 const VaridateMessage = styled.div`
   text-align: center;
@@ -113,59 +117,69 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const Comment = () => {
-  return (
-    <div>
-      <CommentTitle>
-        <IntlMessages id="reviewDetail.comment" />
-      </CommentTitle>
-      <CommentArea>
-        <UserData>
-          <Link to={``} style={LinkStyle} />
-          <UserIcon
-            // src={entity.user_icon}
-            alt="itemImage"
-            width="60"
-            height="60"
-          />
-          {/* <UserName>{entity.user_name}</UserName> */}
-          <UserName>user name</UserName>
-          {/* <Link to={`store/review/detail/${entity.jancode}`}> */}
-          <div>
-            <Link to={`store/review/detail`}>
-              {/* <Comment>{entity.detail_comment}</Comment> */}
-              <Comments>comment</Comments>
-            </Link>
-          </div>
-          <ActionIcon>
-            <Popover
-              placement="bottomRight"
-              content={<IntlMessages id="reviewDetail.delete" />}
-              trigger="click"
-            >
-              <Icon type="ellipsis" />
-            </Popover>
-          </ActionIcon>
-        </UserData>
-        {/* <NothingComment>
+class Comment extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  seeMore = () => {
+    this.props.fetchRequest("");
+  };
+
+  render() {
+    const { entities } = this.props;
+    return (
+      <div>
+        <CommentTitle>
+          <IntlMessages id="reviewDetail.comment" />
+        </CommentTitle>
+        <CommentArea>
+          {entities &&
+            entities.map((entity, index) => {
+              return (
+                <UserData>
+                  <Link to={``} style={LinkStyle} />
+                  <UserIcon
+                    src={entity.user_icon}
+                    alt="itemImage"
+                    width="60"
+                    height="60"
+                  />
+                  <UserName>{entity.user_name}</UserName>
+                  <Link to={`store/review/detail/${entity.jancode}`} />
+                  <Comments>{entity.detail_comment}</Comments>
+                  <ActionIcon>
+                    <Popover
+                      placement="bottomRight"
+                      content={<IntlMessages id="reviewDetail.delete" />}
+                      trigger="click"
+                    >
+                      <Icon type="ellipsis" />
+                    </Popover>
+                  </ActionIcon>
+                </UserData>
+              );
+            })}
+          {/* <NothingComment>
                 <IntlMessages id="reviewDetail.nothingComment" />
             </NothingComment> */}
-        <SeeMore>
-          <SeeMoreIcon type="down" />
-          <IntlMessages id="reviewDetail.seeMore" />
-        </SeeMore>
-      </CommentArea>
-      <PostComment>
-        <StyledTextArea placeholder="コメントする" />
-        <PostButton>
-          <Icon type="mail" />
-        </PostButton>
-        <VaridateMessage>
-          <IntlMessages id="reviewDetail.varidateMessage" />
-        </VaridateMessage>
-      </PostComment>
-    </div>
-  );
-};
+          <SeeMore onClick={this.seeMore}>
+            <SeeMoreIcon type="down" />
+            <IntlMessages id="reviewDetail.seeMore" />
+          </SeeMore>
+        </CommentArea>
+        <PostComment>
+          <StyledTextArea placeholder="コメントする" />
+          <PostButton>
+            <Icon type="mail" />
+          </PostButton>
+          <VaridateMessage>
+            <IntlMessages id="reviewDetail.varidateMessage" />
+          </VaridateMessage>
+        </PostComment>
+      </div>
+    );
+  }
+}
 
 export default Comment;

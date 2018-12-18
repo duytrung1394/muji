@@ -89,6 +89,18 @@ const UserName = styled.span`
   font-weight: bold;
 `;
 
+const TagList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+`;
+
+const TagItem = styled.li``;
+
+const TagImg = styled.img``;
+
 const Question = styled.div`
   font-size: 12px;
   margin: 10px 0 0;
@@ -138,49 +150,69 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const ReviewDetailItems = ({ entity }) => (
+const ReviewDetailItems = ({ reviewData }) => (
   <ItemsList>
     <StyledItem>
       <div>
         <SubData>
           <li>
             <StarWrapper>
-              <Star disabled defaultValue={3} />
+              <Star disabled defaultValue={reviewData.star} />
             </StarWrapper>
           </li>
-          <SubDataDate>{entity.upload_date}</SubDataDate>
+          <SubDataDate>{reviewData.upload_date}</SubDataDate>
         </SubData>
 
-        <Link to={`store/review/detail/${entity.jancode}`}>
-          <CommentTitle>{entity.title}</CommentTitle>
-          <Comment>{entity.detail_comment}</Comment>
+        <Link to={`store/review/detail/${reviewData.jancode}`}>
+          <CommentTitle>{reviewData.title}</CommentTitle>
+          <Comment>{reviewData.detail_comment}</Comment>
         </Link>
         <UserData>
           <Link to={``} style={LinkStyle} />
           <UserIcon
-            src={entity.user_icon}
+            src={reviewData.user_icon}
             alt="itemImage"
             width="60"
             height="60"
           />
-          <UserName>{entity.user_name}</UserName>
+          <UserName>{reviewData.user_name}</UserName>
         </UserData>
       </div>
+      <TagList>
+        {reviewData.tag_imgs.map((imgCode, index) => {
+          return (
+            <TagItem key={index}>
+              <Link to={``}>
+                <TagImg
+                  src={`https://img.muji.net/img/item/${imgCode}_180.jpg`}
+                  alt="itemImage"
+                  width="120"
+                  height="120"
+                />
+              </Link>
+            </TagItem>
+          );
+        })}
+      </TagList>
       <InfoList>
         <li>
           <CommentIcon type="message" />
-          <span>{entity.evaluations_comment_count}</span>
-          <IntlMessages id="reviewDetail.totalComment" />
+          <Link to={``}>
+            <span>{reviewData.evaluations_comment_count}</span>
+            <IntlMessages id="reviewDetail.totalComment" />
+          </Link>
         </li>
         <li>
           <CommentIcon type="like" />
-          <span>{entity.evaluations_useful_count}</span>
-          <IntlMessages id="reviewDetail.totalUsefull" />
+          <Link to={``}>
+            <span>{reviewData.evaluations_useful_count}</span>
+            <IntlMessages id="reviewDetail.totalUsefull" />
+          </Link>
         </li>
       </InfoList>
       <Question>
         <IntlMessages id="reviewDetail.question" />
-        {entity.selected_flg ? (
+        {reviewData.selected_flg ? (
           <UsefulButton>
             <IntlMessages id="reviewDetail.usefulButton" />
           </UsefulButton>
