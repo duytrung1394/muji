@@ -4,20 +4,18 @@ import restAllSaga from "../../shared/list/saga_generator";
 import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
-const api = RESTListApi("customer-reviews", "codes");
-const listApi = RESTListApi("customer-reviews");
+const api = RESTListApi("customer-reviews");
+const listByUserApi = RESTListApi("customer-reviews/user");
 
-const getCustomerReviewApiGET = payload => listApi.GET(payload);
-
-const getCustomerReviewFunction = function*({ payload }) {
+const getListByUserFunction = function*({ payload }) {
   try {
-    const response = yield call(getCustomerReviewApiGET, payload);
-    yield put(actions.getCustomerReview.success(response.data));
+    const response = yield call(listByUserApi.GET, payload);
+    yield put(actions.fetch.success(response.data));
   } catch (error) {
     if (error.response.status == 401) {
       yield put(authActions.unauthorized(error));
     } else {
-      yield put(actions.getCustomerReview.failure(error));
+      yield put(actions.fetch.failure(error));
     }
   }
 };
@@ -25,7 +23,7 @@ const getCustomerReviewFunction = function*({ payload }) {
 export default function* saga() {
   yield restAllSaga(api, actions);
   yield takeEvery(
-    actions.getCustomerReview.request.toString(),
-    getCustomerReviewFunction
+    actions.fetchByUser.request.toString(),
+    getListByUserFunction
   );
 }

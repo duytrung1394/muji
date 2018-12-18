@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
+    private $mockTotal = 23;
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,33 @@ class CustomerReviewsController extends Controller
     public function index(Request $request)
     {
         return [
-            'data' => $this->getMockData()
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
+
+    /**
+     * Display a listing of the resource(ユーザ別一覧).
+     *
+     * @return Response
+     */
+    public function indexByUser(Request $request)
+    {
+        $filter = [
+            'nickname' => $request->input('nickname')
+        ];
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length'),
+                $filter
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
         ];
     }
 
@@ -44,205 +72,115 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * Customer Review(もっと見る).
-     *
-     * @return Response
-     */
-    public function getCustomerReviewsSeeMore(Request $request)
-    {
-        return [
-            'data' => $this->getMockData()
-        ];
-        // return [
-        //     'data'  => $this->getCustomerReviews(
-        //         (int)$request->input('offset'),
-        //         (int)$request->input('length')
-        //     )
-        // ];
-    }
-
-    /**
-     * モックデータ: 商品一覧「もっと見る」のデータ.
+     * モックデータ取得用．
      *
      * @return array
      */
-    private function getCustomerReviews($offset, $length)
+    private function getMultiMockData($offset, $length, $filter = null)
     {
         $reviews = [];
-        $reviewTotal = 10;
-        $isAllDataDisp = ($offset + $length) >= $reviewTotal;
-        $end = $isAllDataDisp ? $reviewTotal : ($offset + $length);
+        $reviewTotal = $this->mockTotal;
+        $getCount = ($offset == 0 && $length == 0) ? 5 : $length;
+        
+        $isAllDataDisp = ($offset + $getCount) > $reviewTotal;
+        $end = $isAllDataDisp ? $reviewTotal : ($offset + $getCount);
 
         for ($i = $offset; $i < $end; $i++) {
-            $reviews[] = $this->getMockCustomerReviews($offset, $length);
+            $reviews[] = $this->getMockData($i);
         }
 
-        $customerReviewObj = [
-            'customerReviews' => $reviews,
-            'total' => $reviewTotal,
-            'seeMoreButton' => !$isAllDataDisp,
-            'sortFlg' => false
-        ];
-
-        return $customerReviewObj;
+        return $reviews;
     }
 
     /**
      * モックデータを生成して取得
      */
-    private function getMockData()
+    private function getMockData($index)
     {
-        return [
-            'customer_reviews' => $this->getMockCustomerReviews(0,5),
-            'user' => $user = [
-                'user_image' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-                'user_name' => 'user name'
-            ]
-        ];
-     }
-
-    /**
-     * モックデータ: Customer Reviews 「もっと見る」のデータ.
-     */
-    private function getMockCustomerReviews($offset, $length)
-    {
-        $customerReviews = [
-        [
-            'customer_review_code' => 1,
-            'product' => 'ベーコンとチーズのキッシュ',
-            'jancode' => '4550182028072',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user1',
-            'title' => 'キッシュ美味しい',
-            'star' => 2,
-            'total_star' => 3.7,
-            'review_total' => 3,
-            'selected_flg' => true,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 2,
-            'product' => 'チキンとほうれん草のキッシュ',
-            'jancode' => '4550182028065',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user2',
-            'title' => '気軽に解凍キッシュ',
-            'star' => 4,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 3,
-            'product' => 'オレンジピールクランチチョコ',
-            'jancode' => '4550002873684',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user3',
-            'title' => 'オレンジピールクランチチョコ、Goodです！',
-            'star' => 3,
-            'upload_date' => '2時間前',
-            'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 4,
-            'product' => 'ポケットコイルスプリングマットレス・シングル',
-            'jancode' => '4548718094844',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user4',
-            'title' => '使ってます',
-            'star' => 2,
-            'upload_date' => '2時間前',
-            'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 5,
-            'product' => '無選別　おこげせんべい',
-            'jancode' => '4547315318926',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user5',
-            'title' => 'かみごたえ満点',
-            'star' => 5,
-            'upload_date' => '2018/11/13',
-            'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
-            'evaluations_comment_count' => 1,
-            'evaluations_useful_count' => 100,
-        ],
-        [
-            'customer_review_code' => 6,
-            'product' => 'ベーコンとチーズのキッシュ',
-            'jancode' => '4550182028072',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user6',
-            'title' => 'キッシュ美味しい',
-            'star' => 3,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 7,
-            'product' => 'チキンとほうれん草のキッシュ',
-            'jancode' => '4550182028065',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user7',
-            'title' => '気軽に解凍キッシュ',
-            'star' => 1,
-            'upload_date' => '1時間前',
-            'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 8,
-            'product' => 'オレンジピールクランチチョコ',
-            'jancode' => '4550002873684',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user8',
-            'title' => 'オレンジピールクランチチョコ、Goodです！',
-            'star' => 2,
-            'upload_date' => '2時間前',
-            'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 9,
-            'product' => 'ポケットコイルスプリングマットレス・シングル',
-            'jancode' => '4548718094844',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user9',
-            'title' => '使ってます',
-            'star' => 3,
-            'upload_date' => '2時間前',
-            'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
-            'evaluations_comment_count' => 0,
-            'evaluations_useful_count' => 0,
-        ],
-        [
-            'customer_review_code' => 10,
-            'product' => '無選別　おこげせんべい',
-            'jancode' => '4547315318926',
-            'user_icon' => 'https://www.muji.com/jp/store/review/img/avatar_default.png',
-            'user_name' => 'user10',
-            'title' => 'かみごたえ満点',
-            'star' => 5,
-            'upload_date' => '2018/11/13',
-            'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
-            'evaluations_comment_count' => 1,
-            'evaluations_useful_count' => 100,
-        ]
-    ];
-
-     return array_splice($customerReviews, $offset, $length);
+        switch ($index % 6){
+        case 0:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'オーガニックコットンフランネルスタンドカラーシャツ',
+                'jancode' => '4550002750077',
+                'title' => 'シルエット良好！',
+                'star' => 4,
+                'upload_date' => '1分前',
+                'detail_comment' => 'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
+                ],
+            ];
+        case 1:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'ベーコンとチーズのキッシュ',
+                'jancode' => '4550182028072',
+                'title' => 'キッシュ美味しい！！',
+                'star' => 3,
+                'upload_date' => '1時間前',
+                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[],
+            ];
+        case 2:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'チキンとほうれん草のキッシュ',
+                'jancode' => '4550182028065',
+                'title' => '気軽に解凍キッシュ',
+                'star' => 3,
+                'upload_date' => '1時間前',
+                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[],
+            ];
+        case 3:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'オレンジピールクランチチョコ',
+                'jancode' => '4550002873684',
+                'title' => 'オレンジピールクランチチョコ、Goodです！',
+                'star' => 4,
+                'upload_date' => '2時間前',
+                'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[],
+            ];
+        case 4:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'ポケットコイルスプリングマットレス・シングル',
+                'jancode' => '4548718094844',
+                'title' => '使ってます',
+                'star' => 4,
+                'upload_date' => '2時間前',
+                'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+            ];
+        case 5:
+            return [
+                'customer_review_code' => $index,
+                'product' => '無選別　おこげせんべい',
+                'jancode' => '4547315318926',
+                'title' => 'かみごたえ満点',
+                'star' => 5,
+                'upload_date' => '2018/11/13',
+                'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
+                'evaluations_comment_count' => 1,
+                'evaluations_useful_count' => 100,
+                'images'=>[],
+            ];
+        default:
+            return [];
+        }
     }
 }
-
