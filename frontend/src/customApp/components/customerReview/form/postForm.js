@@ -5,6 +5,12 @@ import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import InputConfirmButton from "./inputConfirmButton";
 
+const PostFormWrapper = styled.div`
+  form {
+    width: 700px;
+  }
+`;
+
 const FormLabel = styled.label`
   display: block;
   text-align: left;
@@ -15,14 +21,14 @@ const FormLabel = styled.label`
 `;
 const Input = styled.input`
   border: 1px solid #eee;
+  width: 700px;
 `;
 const Textarea = styled.textarea`
   border: 1px solid #eee;
+  width: 700px;
+  height: 100px;
 `;
-const Notices = styled.div`
-  text-align: left;
-  padding: 0 30px;
-`;
+
 const UploadButton = styled(Button)`
   &.ant-btn {
     font-size: 16px;
@@ -50,29 +56,35 @@ const UploadIcon = styled(Icon)`
   font-size: 20px;
 `;
 
-const Notice = styled.span`
+const Notices = styled.div`
+  text-align: left;
+  padding: 0 30px;
+`;
+
+const Notice = styled.p`
   font-size: 14px;
+  && {
+    margin: 0px;
+  }
 `;
 
 const PostForm = props => {
   return (
-    <div>
-      <form style={{ width: "700px" }}>
+    <PostFormWrapper>
+      <form>
         <FormLabel>
           <IntlMessages id="customerReview.new.inputReviewTitle" />
         </FormLabel>
         <Input
           type="text"
           name="title"
-          style={{ width: "700px" }}
-          placeholder={"タイトルを入力 (100文字いない)"}
+          placeholder={"タイトルを入力 (100文字以内)"}
         />
         <FormLabel>
           <IntlMessages id="customerReview.new.textAreaFormLabel" />
         </FormLabel>
         <Textarea
           type="text"
-          style={{ width: "700px", height: "100px" }}
           placeholder={"レビューを入力　(30文字以上、10000文字以内)"}
         />
       </form>
@@ -105,7 +117,7 @@ const PostForm = props => {
           <IntlMessages id="customerReview.new.notice3" />
         </Notice>
       </Notices>
-    </div>
+    </PostFormWrapper>
   );
 };
 
