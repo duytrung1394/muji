@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Button } from "antd";
+import { Icon } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
@@ -35,34 +35,11 @@ const RigthArrow = styled(Icon)`
   right: 0;
 `;
 
-const Ratings = styled.span`
-  font-size: 12px;
-  font-weight: bold;
-  margin-right: 7px;
-`;
-
-const RatingStyled = styled.div`
-  border-bottom: 1px solid #e6e6e6;
-  padding-bottom: 10px;
-`;
 
 const RatingListStyle = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
-`;
-
-const RatingItem = styled.li`
-  margin-right: 10px;
-  font-size: 12px;
-`;
-
-const StyledIcon = styled(Icon)`
-  color: #ccc;
-`;
-
-const MessageStyle = styled.span`
-  margin: 0 7px;
 `;
 
 const Profile = ({ entity }) => {
@@ -82,30 +59,50 @@ const Profile = ({ entity }) => {
   );
 };
 
-const RatingList = ({ entity }) => {
+const StyledRatingItem = styled.li`
+  margin-right: 15px;
+  font-size: 12px;
+
+  .rating-item-icon {
+    margin-right: 7px;
+    color: #ccc;
+  }
+
+  .rating-item-rating {
+    margin-left: 7px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+`;
+
+const RatingItem = ({ iconType, messageId, rating}) => {
   return (
-    <RatingStyled>
-      <RatingListStyle>
-        <RatingItem>
-          <StyledIcon type="message" />
-          <MessageStyle>
-            <IntlMessages id="customerReview.numberOfReviews" />
-          </MessageStyle>
-          <Ratings>{entity.review_count}</Ratings>
-        </RatingItem>
-        <RatingItem>
-          <StyledIcon type="like" />
-          <MessageStyle>
-            <IntlMessages id="customerReview.ratings" />
-          </MessageStyle>
-          <Ratings>{entity.rating_count}</Ratings>
-        </RatingItem>
-      </RatingListStyle>
-    </RatingStyled>
+    <StyledRatingItem>
+      <Icon className="rating-item-icon" type={iconType} />
+      <IntlMessages id={messageId} />
+      <span className="rating-item-rating">{rating}</span>
+    </StyledRatingItem>
   );
 };
 
-const FollowingUserProfile = ({ entity }) => {
+const RatingList = ({ entity }) => {
+  return (
+    <RatingListStyle>
+      <RatingItem
+        iconType="message"
+        messageId="customerReview.numberOfReviews"
+        rating={entity.review_count}
+      />
+      <RatingItem
+        iconType="like"
+        messageId="customerReview.ratings"
+        rating={entity.rating_count}
+      />
+    </RatingListStyle>
+  );
+};
+
+const UserProfile = ({ entity }) => {
   return (
     <UserProfileStyle>
       <Profile entity={entity} />
@@ -114,4 +111,4 @@ const FollowingUserProfile = ({ entity }) => {
   );
 };
 
-export default FollowingUserProfile;
+export default UserProfile;

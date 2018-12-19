@@ -13,6 +13,8 @@ const StyledItem = styled.li`
 
 const FollowingItemHeader = styled.div`
   position: relative;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 10px;
 `;
 
 const ReviewTitle = styled.h2`
