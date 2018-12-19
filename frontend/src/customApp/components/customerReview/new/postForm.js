@@ -1,9 +1,9 @@
 import React from "react";
 import { Upload, Button, Icon } from "antd";
-import { Link } from "react-router-dom";
+import { Link } from "../../../components/form/link";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import InputConfirmButton from "./inputConfirmButton";
+import ConfirmButton from "../forms/confirmButton";
 
 const PostFormWrapper = styled.div`
   form {
@@ -68,6 +68,10 @@ const Notice = styled.p`
   }
 `;
 
+const onClickInputConfirm = () => {
+  console.log("onClickInputConfirmButton");
+};
+
 const PostForm = props => {
   return (
     <PostFormWrapper>
@@ -99,7 +103,10 @@ const PostForm = props => {
           </UploadButton>
         </Upload>
       </UploadArea>
-      <InputConfirmButton />
+      <ConfirmButton
+        onClick={onClickInputConfirm}
+        title={<IntlMessages id="customerReview.new.confirmButton" />}
+      />
       <Notices>
         <Notice>
           <IntlMessages id="customerReview.new.notice1Front" />
@@ -108,11 +115,9 @@ const PostForm = props => {
           </Link>
           <IntlMessages id="customerReview.new.notice1Back" />
         </Notice>
-        <br />
         <Notice>
           <IntlMessages id="customerReview.new.notice2" />
         </Notice>
-        <br />
         <Notice>
           <IntlMessages id="customerReview.new.notice3" />
         </Notice>

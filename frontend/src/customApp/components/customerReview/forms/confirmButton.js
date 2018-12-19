@@ -1,7 +1,6 @@
 import React from "react";
 import LargeButton from "../../form/largeButton.js";
 import styled from "styled-components";
-import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
   padding-top: 10px;
@@ -30,16 +29,14 @@ const ConfirmButton = styled(LargeButton)`
   }
 `;
 
-const InputConfirmButtton = props => {
-  const { changeView } = props;
+const ConfirmButtton = props => {
+  const { onClick, title } = props;
 
   return (
     <ButtonWrapper>
-      <ConfirmButton onClick={changeView}>
-        <IntlMessages id="customerReview.new.confirmButton" />
-      </ConfirmButton>
+      <ConfirmButton onClick={onClick}>{title}</ConfirmButton>
     </ButtonWrapper>
   );
 };
 
-export default InputConfirmButtton;
+export default ConfirmButtton;
