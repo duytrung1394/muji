@@ -23,6 +23,14 @@ $router->get('/api/v1/customer-reviews/user', [
 ]);
 
 /**
+ * フォロー中のユーザー一覧取得
+ */
+$router->get('/api/v1/customer-reviews/following', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByFollowing',
+]);
+
+/**
   * 作成
   */
  $router->get('/api/v1/customer-reviews/create', [

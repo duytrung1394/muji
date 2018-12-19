@@ -76,6 +76,13 @@ const routes = [
     )
   },
   {
+    path: "/store/review/following/",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexByFollowing")
+    )
+  },
+  {
     path: "/store/cmdty/donation",
     exact: true,
     component: asyncComponent(() =>
