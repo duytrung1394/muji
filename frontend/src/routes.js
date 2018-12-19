@@ -144,6 +144,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/payment")
     )
+  },
+  {
+    path: "/store/cart/donation/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/confirm")
+    )
   }
 ];
 export default routes;

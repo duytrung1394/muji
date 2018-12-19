@@ -16,14 +16,11 @@ class Show extends Component {
     this.props.fetchRequest(this.props.match.params.donation_code);
   }
 
-  //　TODO: 更新時処理
-  // componentDidUpdate(prevProps, prevState, prevContext) {
-  //   const { updated, updateCleanup, history } = this.props;
-  //   if (updated) {
-  //     updateCleanup();
-  //     history.push("/store/cmdty/donation/confirm");
-  //   }
-  // }
+  transitToPayment = (donationCode, numberOfUnits) => {
+    this.props.history.push(
+      `/store/cart/donation/payment/${donationCode}/${numberOfUnits}`
+    );
+  };
 
   render() {
     const donationCode = this.props.match.params.donation_code;
@@ -37,8 +34,8 @@ class Show extends Component {
               <Form
                 actionType="edit"
                 entity={entity}
-                requestHandler={entity =>
-                  this.props.updateRequest(donationCode, entity)
+                requestHandler={numberOfUnits =>
+                  this.transitToPayment(donationCode, numberOfUnits)
                 }
               />
               <Summary

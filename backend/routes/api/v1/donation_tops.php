@@ -29,3 +29,19 @@ $router->get('/api/v1/donation-tops/payment/{donationCode}/{numberOfUnits}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DonationTopsController@showPayment',
 ]);
+
+/**
+ * MUJI GIFT CARD情報取得
+ */
+$router->get('/api/v1/donation-tops/payment/giftcard', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationTopsController@getGiftcard',
+]);
+
+/**
+ * 寄付内容の確認
+ */
+$router->post('/api/v1/donation-tops/payment/confirm', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationTopsController@confirm',
+]);
