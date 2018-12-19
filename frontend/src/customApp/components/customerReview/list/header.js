@@ -39,7 +39,7 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-const Header = ({ title, profile }) => {
+const Header = ({ title, profile, sort }) => {
   return (
     <Fragment>
       <div>{title}</div>
@@ -49,22 +49,24 @@ const Header = ({ title, profile }) => {
           <IntlMessages id="customerReview.name" />
           <Total>6</Total>
         </li>
-        <SortList>
-          <StyledSelect defaultValue="new" onChange={handleChange}>
-            <Option value="new">
-              <IntlMessages id="customerReview.newOrder" />
-            </Option>
-            <Option value="highUtility">
-              <IntlMessages id="customerReview.usefulOrder" />
-            </Option>
-            <Option value="highStar">
-              <IntlMessages id="customerReview.starManyOrder" />
-            </Option>
-            <Option value="lowStar">
-              <IntlMessages id="customerReview.newFewOrder" />
-            </Option>
-          </StyledSelect>
-        </SortList>
+        {sort && (
+          <SortList>
+            <StyledSelect defaultValue="new" onChange={handleChange}>
+              <Option value="new">
+                <IntlMessages id="customerReview.newOrder" />
+              </Option>
+              <Option value="highUtility">
+                <IntlMessages id="customerReview.usefulOrder" />
+              </Option>
+              <Option value="highStar">
+                <IntlMessages id="customerReview.starManyOrder" />
+              </Option>
+              <Option value="lowStar">
+                <IntlMessages id="customerReview.newFewOrder" />
+              </Option>
+            </StyledSelect>
+          </SortList>
+        )}
       </List>
     </Fragment>
   );

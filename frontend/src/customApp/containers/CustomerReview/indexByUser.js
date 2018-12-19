@@ -65,7 +65,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Header profile={profile} />
+          <Header profile={profile} sort={[]} />
         </ContentLayout>
         <ContentLayout>
           <Spin

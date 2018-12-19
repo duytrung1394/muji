@@ -2,6 +2,7 @@ import React from "react";
 import LargeButton from "../../form/largeButton";
 import styled from "styled-components";
 import { Icon } from "antd";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
   padding: 10px;
@@ -29,7 +30,7 @@ const ReviewButton = ({ seeMore }) => {
   return (
     <ButtonWrapper>
       <SeeMoreButton onClick={seeMore}>
-        もっと見る
+        <IntlMessages id="customerReview.button.seeMore" />
         <StyledIcon type="down" />
       </SeeMoreButton>
     </ButtonWrapper>

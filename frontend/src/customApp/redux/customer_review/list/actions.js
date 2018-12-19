@@ -8,6 +8,9 @@ const actions = createActions({
       ...restActions,
       FETCH_BY_USER: {
         REQUEST: undefined
+      },
+      FETCH_BY_FOLLOWING: {
+        REQUEST: undefined
       }
     }
   }
