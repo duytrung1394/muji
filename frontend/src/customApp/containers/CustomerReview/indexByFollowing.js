@@ -9,7 +9,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import FollwingItem from "../../components/customerReview/list/followingItem";
+import FollwingItem from "../../components/customerReview/following/item";
 import Header from "../../components/customerReview/list/header";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";

@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "../../form/link";
 import { Icon, Rate, Popover, Button } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import FollowingUserProfile from "../../../components/customerReview/list/followingUserProfile";
-import ReviewButton from "./reviewButton";
+import UserProfile from "./userProfile";
 
 const StyledItem = styled.li`
   border: 1px solid #ccc;
@@ -80,7 +79,7 @@ const Comment = styled.p`
 const FollwingItem = ({ entity }) => (
   <StyledItem>
     <FollowingItemHeader>
-      <FollowingUserProfile entity={entity} />
+      <UserProfile entity={entity} />
     </FollowingItemHeader>
     <div>
       <ReviewTitle>
