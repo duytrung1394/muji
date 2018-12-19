@@ -25,6 +25,20 @@ class CustomerReviewsController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function getOneMock()
+    {
+        return [
+            'data'      => $this->getMockData(2),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
+
+    /**
      * Display a listing of the resource(ユーザ別一覧).
      *
      * @return Response

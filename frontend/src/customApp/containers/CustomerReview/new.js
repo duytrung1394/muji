@@ -26,13 +26,13 @@ const user = {
 
 class New extends Component {
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest(1);
   }
   render() {
     const { entity } = this.props;
     return (
       <ReviewLayout>
-        <ReviewTop entity={entity[0]} user={user} />
+        <ReviewTop entity={entity} user={user} />
         <ReviewFormWrapper>
           <PostReview />
         </ReviewFormWrapper>
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request
+  fetchRequest: actions.getCustomerReview.getOneMock.request
 };
 
 const enhance = C => {

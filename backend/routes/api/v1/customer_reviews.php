@@ -15,6 +15,14 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+ * 一部取得
+ */
+$router->get('/api/v1/customer-reviews/getOneMock', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@getOneMock',
+]);
+
+/**
  * ユーザ別一覧取得
  */
 $router->get('/api/v1/customer-reviews/user', [

@@ -4,7 +4,15 @@ import req from "../../shared/requestActions";
 
 const actions = createActions({
   CUSTOMER_REVIEW: {
-    ENTITY: { ...restActions, GET_CUSTOMER_REVIEW: { ...req } }
+    ENTITY: {
+      ...restActions,
+      GET_CUSTOMER_REVIEW: {
+        ...req,
+        GET_ONE_MOCK: {
+          ...req
+        }
+      }
+    }
   }
 });
 
