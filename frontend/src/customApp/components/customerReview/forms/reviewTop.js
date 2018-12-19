@@ -39,8 +39,7 @@ const PostPageTitle = styled.div`
 `;
 
 const ReviewTop = ({ entity, user }) => {
-  console.log(entity);
-  if (entity.customer_review && user) {
+  if (entity.review_item && user) {
     return (
       <FixArea>
         <PostPageTitle>
@@ -58,13 +57,13 @@ const ReviewTop = ({ entity, user }) => {
         <SelectedItem>
           <ItemImg
             src={`https://img.muji.net/img/item/${
-              entity.customer_review.jancode
+              entity.review_item.jancode
             }_180.jpg`}
             alt="itemImage"
             width="120"
             height="120"
           />
-          <Name>{entity.customer_review.product}</Name>
+          <Name>{entity.review_item.name}</Name>
         </SelectedItem>
       </FixArea>
     );

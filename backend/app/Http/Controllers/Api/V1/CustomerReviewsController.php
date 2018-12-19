@@ -25,20 +25,6 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function getOneMock()
-    {
-        return [
-            'data'      => $this->getMockData(2),
-            'total'     => $this->mockTotal,
-            'sortFlg'   => false
-        ];
-    }
-
-    /**
      * Display a listing of the resource(ユーザ別一覧).
      *
      * @return Response
@@ -56,6 +42,20 @@ class CustomerReviewsController extends Controller
             ),
             'total'     => $this->mockTotal,
             'sortFlg'   => false
+        ];
+    }
+
+    /**
+     * 商品情報(レビュー用)取得
+     *
+     * @param  string   $itemCode
+     * @return Response
+     */
+    public function getReviewItem($itemCode)
+    {
+        return [
+            'data' => ['review_item' => $this->getMockReviewItem($itemCode)]
+            //'data'      => $this->getMockReviewItem($itemCode)
         ];
     }
 
@@ -196,5 +196,49 @@ class CustomerReviewsController extends Controller
         default:
             return [];
         }
+    }
+
+    /**
+     * モックデータを生成して取得(レビュー用の商品情報)
+     */
+    private function getMockReviewItem($jancode)
+    {
+        $itemData = [];
+        switch ($jancode){
+        case '4550002750077':
+            $itemData =  [
+                'name' => 'オーガニックコットンフランネルスタンドカラーシャツ',
+            ];
+            break;
+        case '4550182028072':
+            $itemData =  [
+                'name' => 'ベーコンとチーズのキッシュ',
+            ];
+            break;
+        case '4550182028065':
+            $itemData =  [
+                'name' => 'チキンとほうれん草のキッシュ',
+            ];
+            break;
+        case '4550002873684':
+            $itemData =  [
+                'name' => 'オレンジピールクランチチョコ',
+            ];
+            break;
+        case '4548718094844':
+            $itemData =  [
+                'name' => 'ポケットコイルスプリングマットレス・シングル',
+            ];
+            break;
+        case '4547315318926':
+            $itemData =  [
+                'namee' => '無選別　おこげせんべい',
+            ];
+            break;
+        default:
+            return [];
+        }
+        $itemData['jancode'] = $jancode;
+        return $itemData;
     }
 }

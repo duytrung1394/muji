@@ -8,7 +8,7 @@ const actions = createActions({
       ...restActions,
       GET_CUSTOMER_REVIEW: {
         ...req,
-        GET_ONE_MOCK: {
+        GET_REVIEW_ITEM: {
           ...req
         }
       }

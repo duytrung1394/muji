@@ -4,36 +4,31 @@ import restReducer, { restInitState } from "../../shared/entity/reducer";
 
 const customRestInitState = restInitState.merge(
   Map({
-    gettingOneMock: false,
-    gotOneMock: false,
-    getOneMockError: false
+    gettingReviewItem: false,
+    gotReviewItem: false,
+    getReviewItemError: false
   })
 );
 
-const getOneMockRequest = (state, action) =>
+const getReviewItemRequest = (state, action) =>
   state
-    .set("gettingOneMock", true)
-    .set("gotOneMock", false)
-    .set("getOneMockError", false);
+    .set("gettingReviewItem", true)
+    .set("gotReviewItem", false)
+    .set("getReviewItemError", false);
 
-const getOneMockSuccess = (state, action) => {
-  const entity = state.get("entity");
-  const newEntity = {
-    ...entity,
-    customer_review: action.payload.data
-  };
+const getReviewItemSuccess = (state, action) => {
   return state
-    .set("entity", newEntity)
-    .set("gettingOneMock", false)
-    .set("gotOneMock", true);
+    .set("entity", { ...state.get("entity"), ...action.payload.data })
+    .set("gettingReviewItem", false)
+    .set("gotReviewItem", true);
 };
 
-const getOneMockFailure = (state, action) =>
+const getReviewItemFailure = (state, action) =>
   state
     .set("seeMoreData", [])
-    .set("gettingOneMock", false)
-    .set("gotOneMock", false)
-    .set("getOneMockError", true);
+    .set("gettingReviewItem", false)
+    .set("gotReviewItem", false)
+    .set("getReviewItemError", true);
 
 const reducer = handleActions(
   {
@@ -41,10 +36,10 @@ const reducer = handleActions(
       ENTITY: {
         ...restReducer,
         GET_CUSTOMER_REVIEW: {
-          GET_ONE_MOCK: {
-            REQUEST: getOneMockRequest,
-            SUCCESS: getOneMockSuccess,
-            FAILURE: getOneMockFailure
+          GET_REVIEW_ITEM: {
+            REQUEST: getReviewItemRequest,
+            SUCCESS: getReviewItemSuccess,
+            FAILURE: getReviewItemFailure
           }
         }
       }

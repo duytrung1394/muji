@@ -15,11 +15,11 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
- * 一部取得
+ * 商品情報(レビュー用)取得
  */
-$router->get('/api/v1/customer-reviews/getOneMock', [
+$router->get('/api/v1/customer-reviews/getReviewItem/{itemCode}', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@getOneMock',
+    'uses'          => 'Api\V1\CustomerReviewsController@getReviewItem',
 ]);
 
 /**

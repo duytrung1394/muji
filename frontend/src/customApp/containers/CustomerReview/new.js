@@ -26,7 +26,7 @@ const user = {
 
 class New extends Component {
   componentDidMount() {
-    this.props.fetchRequest(1);
+    this.props.fetchRequest(this.props.match.params.item_code);
   }
   render() {
     const { entity } = this.props;
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.getCustomerReview.getOneMock.request
+  fetchRequest: actions.getCustomerReview.getReviewItem.request
 };
 
 const enhance = C => {
