@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import {Link} from "../../form/link";
+import { Link } from "../../form/link";
 
 const ProfileStyle = styled.div`
   margin-bottom: 10px;
@@ -66,7 +66,7 @@ const RatingItemStyle = styled.li`
   }
 `;
 
-const RatingItem = ({ iconType, messageId, rating}) => {
+const RatingItem = ({ iconType, messageId, rating }) => {
   return (
     <RatingItemStyle>
       <Icon className="rating-item-icon" type={iconType} />
