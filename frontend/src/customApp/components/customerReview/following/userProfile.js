@@ -2,29 +2,26 @@ import React from "react";
 import { Icon } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-
-const UserProfileStyle = styled.div`
-  position: relative;
-`;
+import {Link} from "../../form/link";
 
 const ProfileStyle = styled.div`
   margin-bottom: 10px;
   position: relative;
-`;
 
-const UserIcon = styled.img`
-  width: 75px;
-  height: 75px;
-  margin-right: 10px;
-`;
+  .profile-user-icon {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+  }
 
-const UserName = styled.span`
-  color: #333;
-  font-size: 16px;
-  font-weight: 600;
-  width: 150px;
-  :hover {
+  .profile-user-name {
     color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    width: 150px;
+    :hover {
+      color: #333;
+    }
   }
 `;
 
@@ -35,31 +32,25 @@ const RigthArrow = styled(Icon)`
   right: 0;
 `;
 
-
-const RatingListStyle = styled.ul`
-  list-style: none;
-  display: flex;
-  padding: 0;
-`;
-
 const Profile = ({ entity }) => {
   return (
     <ProfileStyle>
-      <a href="">
-        <UserIcon
+      <Link to="">
+        <img
+          className="profile-user-icon"
           src="https://www.muji.com/jp/store/review/img/avatar_default.png"
           alt=""
         />
-        <UserName>
+        <span className="profile-user-name">
           <IntlMessages id="customerReview.userName" />
-        </UserName>
-      </a>
+        </span>
+      </Link>
       <RigthArrow type="right" />
     </ProfileStyle>
   );
 };
 
-const StyledRatingItem = styled.li`
+const RatingItemStyle = styled.li`
   margin-right: 15px;
   font-size: 12px;
 
@@ -77,13 +68,19 @@ const StyledRatingItem = styled.li`
 
 const RatingItem = ({ iconType, messageId, rating}) => {
   return (
-    <StyledRatingItem>
+    <RatingItemStyle>
       <Icon className="rating-item-icon" type={iconType} />
       <IntlMessages id={messageId} />
       <span className="rating-item-rating">{rating}</span>
-    </StyledRatingItem>
+    </RatingItemStyle>
   );
 };
+
+const RatingListStyle = styled.ul`
+  list-style: none;
+  display: flex;
+  padding: 0;
+`;
 
 const RatingList = ({ entity }) => {
   return (
@@ -101,6 +98,10 @@ const RatingList = ({ entity }) => {
     </RatingListStyle>
   );
 };
+
+const UserProfileStyle = styled.div`
+  position: relative;
+`;
 
 const UserProfile = ({ entity }) => {
   return (
