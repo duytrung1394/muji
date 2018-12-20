@@ -8,6 +8,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
+import Header from "../../components/customerReview/list/header";
 import ProductReviewHeader from "../../components/customerReview/indexByProduct/productReviewHeader";
 import ProductReviewItem from "../../components/customerReview/indexByProduct/item";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
@@ -65,6 +66,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <ProductReviewHeader profile={profile} />
+          <Header sort={[]} listBackgroundColor={"#eee"} />
         </ContentLayout>
         <ContentLayout>
           <Spin

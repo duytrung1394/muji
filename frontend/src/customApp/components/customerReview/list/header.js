@@ -39,12 +39,20 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-const Header = ({ title, profile, sort }) => {
+const Header = ({ title, profile, sort, listBackgroundColor }) => {
   return (
     <Fragment>
       <div>{title}</div>
       {profile ? <ReviewUserProfile entity={profile} /> : null}
-      <List style={profile ? { backgroundColor: "#eee" } : { border: "none" }}>
+      <List
+        style={
+          listBackgroundColor
+            ? { backgroundColor: listBackgroundColor }
+            : profile
+              ? { backgroundColor: "#eee" }
+              : { border: "none" }
+        }
+      >
         <li>
           <IntlMessages id="customerReview.name" />
           <Total>6</Total>
