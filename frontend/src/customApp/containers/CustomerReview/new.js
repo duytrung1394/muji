@@ -4,22 +4,12 @@ import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 import { Spin } from "antd";
-import {
-  ContentAreaLayout,
-  BaseContentLayout
-} from "../../components/panel/contentLayout";
+import { ContentAreaLayout as BaseContentAreaLayout } from "../../components/panel/contentLayout";
 import PostReview from "../../components/customerReview/new/postReview";
 import ReviewTop from "../../components/customerReview/forms/reviewTop";
 
-const ContentLayout = styled(BaseContentLayout)`
-  width: 800px;
-`;
-
-const ReviewFormWrapper = styled.div`
-  padding: 30px 50px;
-  text-align: center;
-  margin-bottom: 70px;
-  background-color: #f7f7f7;
+const ContentAreaLayout = styled(BaseContentAreaLayout)`
+  max-width: 860px;
 `;
 
 // TODO: get user data from backend
@@ -41,17 +31,13 @@ class New extends Component {
     const { entity, gettingReviewItem } = this.props;
     return (
       <ContentAreaLayout>
-        <ContentLayout>
-          <Spin
-            spinning={gettingReviewItem && this.isFirstFetching()}
-            size="large"
-          >
-            <ReviewTop entity={entity} user={user} />
-            <ReviewFormWrapper>
-              <PostReview />
-            </ReviewFormWrapper>
-          </Spin>
-        </ContentLayout>
+        <Spin
+          spinning={gettingReviewItem && this.isFirstFetching()}
+          size="large"
+        >
+          <ReviewTop entity={entity} user={user} />
+          <PostReview />
+        </Spin>
       </ContentAreaLayout>
     );
   }
