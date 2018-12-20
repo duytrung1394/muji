@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
 import { Spin } from "antd";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ProductReviewHeader from "../../components/customerReview/list/productReviewHeader";
-import ProductReviewList from "../../components/customerReview/list/productReviewList";
+import ProductReviewHeader from "../../components/customerReview/indexByProduct/productReviewHeader";
+import ProductReviewItem from "../../components/customerReview/indexByProduct/item";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";
 
@@ -76,7 +75,7 @@ class Index extends Component {
               <ItemsList>
                 {entities &&
                   entities.map((entity, index) => (
-                    <ProductReviewList entity={entity} key={index} />
+                    <ProductReviewItem entity={entity} key={index} />
                   ))}
               </ItemsList>
             ) : null}
