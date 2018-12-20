@@ -15,6 +15,14 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+ * 一部取得
+ */
+$router->get('/api/v1/customer-reviews/{itemCode}/{commentCode}', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@report',
+]);
+
+/**
   * 作成
   */
  $router->get('/api/v1/customer-reviews/create', [

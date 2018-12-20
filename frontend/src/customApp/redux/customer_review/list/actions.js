@@ -6,7 +6,8 @@ const actions = createActions({
   CUSTOMER_REVIEW: {
     LIST: {
       ...restActions,
-      GET_CUSTOMER_REVIEW: { ...req }
+      GET_CUSTOMER_REVIEW: { ...req },
+      GET_REPORT: { ...req }
     }
   }
 });

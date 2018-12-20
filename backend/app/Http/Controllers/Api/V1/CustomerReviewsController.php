@@ -50,6 +50,19 @@ class CustomerReviewsController extends Controller
         ];
     }
 
+     /**
+     * Remove some resources from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function report($itemCode,$commentCode)
+    {
+        return [
+            'data' => $this->getMockData($itemCode)
+        ];
+    }
+
     /**
      * モックデータ取得用．
      *
