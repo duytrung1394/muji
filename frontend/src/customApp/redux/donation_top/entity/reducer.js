@@ -4,7 +4,15 @@ import restReducer, { restInitState } from "../../shared/entity/reducer";
 
 const initState = restInitState.merge(
   Map({
-    links: {}
+    links: {},
+    giftcard: {},
+    doingGiftcardInquiry: false,
+    didGiftcardInquiry: false,
+    doGiftcardInquiryError: false,
+    confrimationEntity: {},
+    confirmingDonation: false,
+    confirmedDonation: false,
+    confirmEonationError: false
   })
 );
 
@@ -37,6 +45,58 @@ const fetchCleanup = (state, action) =>
     .set("fetched", false)
     .set("fetchError", false);
 
+// GET GIFTCARD
+const doGiftCardInquiryRequest = (state, action) =>
+  state
+    .set("doingGiftcardInquiry", true)
+    .set("didGiftcardInquiry", false)
+    .set("doGiftcardInquiryError", false);
+
+const doGiftCardInquirySuccess = (state, action) =>
+  state
+    .set("giftcard", action.payload.data)
+    .set("doingGiftcardInquiry", false)
+    .set("didGiftcardInquiry", true);
+
+const doGiftCardInquiryFailure = (state, action) =>
+  state
+    .set("giftcard", {})
+    .set("doingGiftcardInquiry", false)
+    .set("doGiftcardInquiryError", true);
+
+const doGiftCardInquiryCleanup = (state, action) =>
+  state
+    .set("giftcard", {})
+    .set("doingGiftcardInquiry", false)
+    .set("didGiftcardInquiry", false)
+    .set("doGiftcardInquiryError", false);
+
+// POST CONFIRM_DONATION
+const confirmDonationRequest = (state, action) =>
+  state
+    .set("confirmingDonation", true)
+    .set("confirmedDonation", false)
+    .set("confirmDonationError", false);
+
+const confirmDonationSuccess = (state, action) =>
+  state
+    .set("confirmationDonation", action.payload.data)
+    .set("confirmingDonation", false)
+    .set("confirmedDonation", true);
+
+const confirmDonationFailure = (state, action) =>
+  state
+    .set("confirmationDonation", {})
+    .set("confirmingDonation", false)
+    .set("confirmedDonation", false)
+    .set("confirDonationError", true);
+
+const confirmDonationCleanup = (state, action) =>
+  state
+    .set("confirmingDonation", false)
+    .set("confirmedDonation", false)
+    .set("confirDonationError", false);
+
 const reducer = handleActions(
   {
     DONATION_TOP: {
@@ -47,11 +107,23 @@ const reducer = handleActions(
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
+        },
+        DO_GIFTCARD_INQUIRY: {
+          REQUEST: doGiftCardInquiryRequest,
+          SUCCESS: doGiftCardInquirySuccess,
+          FAILURE: doGiftCardInquiryFailure,
+          CLEANUP: doGiftCardInquiryCleanup
+        },
+        CONFIRM_DONATION: {
+          REQUEST: confirmDonationRequest,
+          SUCCESS: confirmDonationSuccess,
+          FAILURE: confirmDonationFailure,
+          CLEANUP: confirmDonationCleanup
         }
       }
     }
   },
-  restInitState
+  initState
 );
 
 export default reducer;
