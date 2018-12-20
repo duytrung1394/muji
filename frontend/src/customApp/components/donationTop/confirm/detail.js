@@ -39,7 +39,10 @@ const ColItem = styled(Col)`
   .product-name {
     padding: 20px 20px;
   }
-  .number-of-units,
+  .number-of-units{
+    padding: 40px 0;
+    text-align: center;
+  }
   .price {
     padding: 40px 20px;
     text-align: right;
@@ -79,7 +82,7 @@ const Detail = ({
       <RowItem type="flex">
         <ColItem span={16}>
           <Row className="product-name">
-            <Col span={2} className="product-image">
+            <Col span={4}>
               <img src={img} alt="" />
             </Col>
             <Col span={18} offset={2}>
