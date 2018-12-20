@@ -97,7 +97,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetchByUser.request,
+  fetchRequest: actions.fetchByItem.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

@@ -31,6 +31,14 @@ $router->get('/api/v1/customer-reviews/following', [
 ]);
 
 /**
+ * 商品別一覧取得
+ */
+$router->get('/api/v1/customer-reviews/item', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByItem',
+]);
+
+/**
   * 作成
   */
  $router->get('/api/v1/customer-reviews/create', [

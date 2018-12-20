@@ -11,6 +11,9 @@ const actions = createActions({
       },
       FETCH_BY_FOLLOWING: {
         REQUEST: undefined
+      },
+      FETCH_BY_ITEM: {
+        REQUEST: undefined
       }
     }
   }

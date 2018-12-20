@@ -62,6 +62,24 @@ class CustomerReviewsController extends Controller
             'sortFlg'   => false
         ];
     }
+
+    /**
+     * Display a listing of the resource(商品別一覧).
+     *
+     * @return Response
+     */
+    public function indexByItem(Request $request)
+    {
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
+
     /**
       * Show the form for creating a new resource.
       *
