@@ -55,6 +55,30 @@ class DonationTopsController extends Controller
     }
 
     /**
+     * MUJI GIFT CARD情報取得.
+     *
+     * @return Response
+     */
+    public function getGiftcard(Request $request)
+    {
+        return [
+            'data' => $this->getMockGiftcard(),
+        ];
+    }
+
+    /**
+     * 寄付内容の確認
+     *
+     * @return Response
+     */
+    public function confirm(Request $request)
+    {
+        return [
+            'data' => $this->getMockConfirmData(),
+        ];
+    }
+
+    /**
      * モックデータ取得用(募金一覧)
      */
     private function getMultiMockData()
@@ -320,7 +344,28 @@ class DonationTopsController extends Controller
             'total' => 40,
             'couponAvailableAmount' => 500,
             'couponLimitDate' => "2010年12月28日(月)",
+        ];
+    }
+
+    private function getMockGiftcard()
+    {
+        return [
             'giftCardAvailableAmount' => 1000,
+        ];
+    }
+
+    private function getMockConfirmData()
+    {
+        return [
+            'img' => 'https://img.muji.net/img/item/0299629000000_50.jpg',
+            'title' => '開発途上国の給食支援',
+            'organization' => 'TABLE FOR TWO',
+            'total' => 1500,
+            'quantity' => 15,
+            'unitPrice' => 100,
+            'creditUseAmount' => 1500,
+            'giftCarUseAmount' => 0,
+            'couponUseAmlunt' => 0,
         ];
     }
 }
