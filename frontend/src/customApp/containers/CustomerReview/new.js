@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
-import ContentAreaLayout from "../../components/panel/contentLayout";
 import styled from "styled-components";
+import { Spin } from "antd";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/panel/contentLayout";
 import PostReview from "../../components/customerReview/new/postReview";
 import ReviewTop from "../../components/customerReview/forms/reviewTop";
 
-const ReviewLayout = styled(ContentAreaLayout)`
-  width: 880px;
+const ContentLayout = styled(BaseContentLayout)`
+  width: 800px;
 `;
 
 const ReviewFormWrapper = styled.div`
@@ -28,15 +32,27 @@ class New extends Component {
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.item_code);
   }
+
+  isFirstFetching = () => {
+    return !(this.props.entity.review_item && user);
+  };
+
   render() {
-    const { entity } = this.props;
+    const { entity, gettingReviewItem } = this.props;
     return (
-      <ReviewLayout>
-        <ReviewTop entity={entity} user={user} />
-        <ReviewFormWrapper>
-          <PostReview />
-        </ReviewFormWrapper>
-      </ReviewLayout>
+      <ContentAreaLayout>
+        <ContentLayout>
+          <Spin
+            spinning={gettingReviewItem && this.isFirstFetching()}
+            size="large"
+          >
+            <ReviewTop entity={entity} user={user} />
+            <ReviewFormWrapper>
+              <PostReview />
+            </ReviewFormWrapper>
+          </Spin>
+        </ContentLayout>
+      </ContentAreaLayout>
     );
   }
 }

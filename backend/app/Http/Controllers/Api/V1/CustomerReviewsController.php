@@ -73,7 +73,6 @@ class CustomerReviewsController extends Controller
     {
         return [
             'data' => ['review_item' => $this->getMockReviewItem($itemCode)]
-            //'data'      => $this->getMockReviewItem($itemCode)
         ];
     }
 

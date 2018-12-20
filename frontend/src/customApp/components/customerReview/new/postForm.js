@@ -6,9 +6,7 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 import ConfirmButton from "../forms/confirmButton";
 
 const PostFormWrapper = styled.div`
-  form {
-    width: 700px;
-  }
+  width: 700px;
 `;
 
 const FormLabel = styled.label`
@@ -21,11 +19,11 @@ const FormLabel = styled.label`
 `;
 const Input = styled.input`
   border: 1px solid #eee;
-  width: 700px;
+  width: 100%;
 `;
 const Textarea = styled.textarea`
   border: 1px solid #eee;
-  width: 700px;
+  width: 100%;
   height: 100px;
 `;
 
@@ -49,7 +47,7 @@ const UploadButton = styled(Button)`
 const UploadArea = styled.div`
   border: 3px dashed #ccc;
   padding: 20px 0;
-  width: 700px;
+  width: 100%;
 `;
 
 const UploadIcon = styled(Icon)`
