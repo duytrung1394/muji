@@ -41,6 +41,10 @@ require_once 'api/v1/donation_tops.php';
 // /api/v1/customer-addresses
 require_once 'api/v1/customer_addresses.php';
 
+
+// /api/v1/lotteries
+require_once 'api/v1/lotteries.php';
+
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
 

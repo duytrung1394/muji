@@ -158,6 +158,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/confirm")
     )
+  },
+  {
+    path: "/store/lotteries",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Lottery/index")
+    )
+  },
+  {
+    path: "/store/lotteries/:lottery_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Lottery/show")
+    )
   }
 ];
 export default routes;
