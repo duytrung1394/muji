@@ -5,19 +5,19 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
 const api = RESTEntityApi("customer-reviews");
-const getReviewItemApi = RESTEntityApi("customer-reviews/getReviewItem");
+const getReviewItemApi = RESTEntityApi("customer-reviews/items");
 
 const getReviewItemApiGET = payload => getReviewItemApi.GET(payload);
 
 const getReviewItemFunction = function*({ payload }) {
   try {
     const response = yield call(getReviewItemApiGET, payload);
-    yield put(actions.getCustomerReview.getReviewItem.success(response.data));
+    yield put(actions.getReviewItem.success(response.data));
   } catch (error) {
     if (error.response.status == 401) {
       yield put(authActions.unauthorized(error));
     } else {
-      yield put(actions.getCustomerReview.getReviewItem.failure(error));
+      yield put(actions.getReviewItem.failure(error));
     }
   }
 };
@@ -25,7 +25,7 @@ const getReviewItemFunction = function*({ payload }) {
 export default function* saga() {
   yield restAllSaga("customer_review", api, actions);
   yield takeEvery(
-    actions.getCustomerReview.getReviewItem.request.toString(),
+    actions.getReviewItem.request.toString(),
     getReviewItemFunction
   );
 }

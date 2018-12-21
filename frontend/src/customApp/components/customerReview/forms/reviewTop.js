@@ -58,15 +58,13 @@ const ItemData = ({ data }) => {
   return (
     <StyledItemData>
       <img
-        src={`https://img.muji.net/img/item/${
-          data.review_item.jancode
-        }_180.jpg`}
+        src={`https://img.muji.net/img/item/${data.jancode}_180.jpg`}
         className="item-data-icon"
         alt="itemImage"
         width="120"
         height="120"
       />
-      <span className="item-data-name">{data.review_item.name}</span>
+      <span className="item-data-name">{data.name}</span>
     </StyledItemData>
   );
 };
@@ -76,7 +74,7 @@ const ContentLayout = styled(BaseContentLayout)`
 `;
 
 const ReviewTop = ({ entity, user }) => {
-  if (entity.review_item && user) {
+  if (entity && user) {
     return (
       <ContentLayout>
         <Title>

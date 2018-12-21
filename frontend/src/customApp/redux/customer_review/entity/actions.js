@@ -7,10 +7,10 @@ const actions = createActions({
     ENTITY: {
       ...restActions,
       GET_CUSTOMER_REVIEW: {
-        ...req,
-        GET_REVIEW_ITEM: {
-          ...req
-        }
+        ...req
+      },
+      GET_REVIEW_ITEM: {
+        ...req
       }
     }
   }

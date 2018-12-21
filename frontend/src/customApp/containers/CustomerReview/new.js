@@ -24,17 +24,14 @@ class New extends Component {
   }
 
   isFirstFetching = () => {
-    return !(this.props.entity.review_item && user);
+    return !(this.props.entity && user);
   };
 
   render() {
-    const { entity, gettingReviewItem } = this.props;
+    const { entity } = this.props;
     return (
       <ContentAreaLayout>
-        <Spin
-          spinning={gettingReviewItem && this.isFirstFetching()}
-          size="large"
-        >
+        <Spin spinning={this.isFirstFetching()} size="large">
           <ReviewTop entity={entity} user={user} />
           <PostReview />
         </Spin>
@@ -44,11 +41,12 @@ class New extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.CustomerReview.Entity);
   return state.CustomerReview.Entity.toJS();
 };
 
 const actionCreators = {
-  fetchRequest: actions.getCustomerReview.getReviewItem.request
+  fetchRequest: actions.getReviewItem.request
 };
 
 const enhance = C => {

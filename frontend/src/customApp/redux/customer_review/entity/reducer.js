@@ -35,12 +35,10 @@ const reducer = handleActions(
     CUSTOMER_REVIEW: {
       ENTITY: {
         ...restReducer,
-        GET_CUSTOMER_REVIEW: {
-          GET_REVIEW_ITEM: {
-            REQUEST: getReviewItemRequest,
-            SUCCESS: getReviewItemSuccess,
-            FAILURE: getReviewItemFailure
-          }
+        GET_REVIEW_ITEM: {
+          REQUEST: getReviewItemRequest,
+          SUCCESS: getReviewItemSuccess,
+          FAILURE: getReviewItemFailure
         }
       }
     }
