@@ -32,7 +32,11 @@ class Payment extends Component {
   componentDidUpdate(prevProps, prevState, prevContext) {
     if (this.props.confirmedDonation) {
       this.props.confirmDonationCleanup();
-      this.props.history.push("/store/cart/donation/confirm");
+      this.props.history.push(
+        `/store/cart/donation/confirm/${
+          this.props.match.params.donation_code
+        }/${this.props.match.params.number_of_units}`
+      );
     }
   }
 
