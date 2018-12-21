@@ -17,10 +17,18 @@ const user = {
   user_image: "https://www.muji.com/jp/store/review/img/avatar_default.png",
   user_name: "user name"
 };
+// TODO: get product data from backend
+const product = {
+  entity: {
+    jancode: "4550002873684",
+    name: "オレンジピールクランチチョコ"
+  }
+};
 
 class New extends Component {
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.item_code);
+    this.props.initCleanup();
+    this.props.initRequest();
   }
 
   isFirstFetching = () => {
@@ -40,13 +48,17 @@ class New extends Component {
   }
 }
 
+const { init } = actions;
+
 const mapStateToProps = state => {
-  console.log(state.CustomerReview.Entity);
-  return state.CustomerReview.Entity.toJS();
+  //TODO: inculude selected Product.Entity
+  //return Object.assign(state.CustomerReview.Entity.toJS(), state.Product.Entity.toJS());
+  return product;
 };
 
 const actionCreators = {
-  fetchRequest: actions.getReviewItem.request
+  initRequest: actions.init.request,
+  initCleanup: actions.init.cleanup
 };
 
 const enhance = C => {

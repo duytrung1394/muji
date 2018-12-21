@@ -8,9 +8,6 @@ const actions = createActions({
       ...restActions,
       GET_CUSTOMER_REVIEW: {
         ...req
-      },
-      GET_REVIEW_ITEM: {
-        ...req
       }
     }
   }

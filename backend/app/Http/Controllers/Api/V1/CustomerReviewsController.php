@@ -64,19 +64,6 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-     * 商品情報(レビュー用)取得
-     *
-     * @param  string   $itemCode
-     * @return Response
-     */
-    public function getReviewItem($itemCode)
-    {
-        return [
-            'data' => $this->getMockReviewItem($itemCode)
-        ];
-    }
-
-    /**
       * Show the form for creating a new resource.
       *
       * @return \Illuminate\Http\Response
@@ -232,42 +219,19 @@ class CustomerReviewsController extends Controller
      */
     private function getMockReviewItem($jancode)
     {
-        $itemData = [];
-        switch ($jancode){
-        case '4550002750077':
-            $itemData =  [
-                'name' => 'オーガニックコットンフランネルスタンドカラーシャツ',
-            ];
-            break;
-        case '4550182028072':
-            $itemData =  [
-                'name' => 'ベーコンとチーズのキッシュ',
-            ];
-            break;
-        case '4550182028065':
-            $itemData =  [
-                'name' => 'チキンとほうれん草のキッシュ',
-            ];
-            break;
-        case '4550002873684':
-            $itemData =  [
-                'name' => 'オレンジピールクランチチョコ',
-            ];
-            break;
-        case '4548718094844':
-            $itemData =  [
-                'name' => 'ポケットコイルスプリングマットレス・シングル',
-            ];
-            break;
-        case '4547315318926':
-            $itemData =  [
-                'namee' => '無選別　おこげせんべい',
-            ];
-            break;
-        default:
-            return [];
-        }
-        $itemData['jancode'] = $jancode;
+        $itemNames = [
+            '4550002750077' => 'オーガニックコットンフランネルスタンドカラーシャツ',
+            '4550182028072' => 'ベーコンとチーズのキッシュ',
+            '4550182028065' => 'チキンとほうれん草のキッシュ',
+            '4550002873684' => 'オレンジピールクランチチョコ',
+            '4548718094844' => 'ポケットコイルスプリングマットレス・シングル',
+            '4547315318926' => '無選別　おこげせんべい',
+        ];
+
+        return [
+            'jancode' => $jancode,
+            'name' => $itemNames[$jancode],
+        ];
         return $itemData;
     }
 }
