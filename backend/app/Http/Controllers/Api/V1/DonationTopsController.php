@@ -363,9 +363,9 @@ class DonationTopsController extends Controller
             'total' => 1500,
             'quantity' => 15,
             'unitPrice' => 100,
-            'creditUseAmount' => 1500,
-            'giftCarUseAmount' => 0,
-            'couponUseAmlunt' => 0,
+            'creditUseAmount' => 1000,
+            'giftCardUseAmount' => 300,
+            'couponUseAmount' => 200,
         ];
     }
 }
