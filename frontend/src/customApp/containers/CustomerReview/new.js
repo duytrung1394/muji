@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import styled from "styled-components";
 import { Spin } from "antd";
 import { ContentAreaLayout as BaseContentAreaLayout } from "../../components/panel/contentLayout";
-import PostReview from "../../components/customerReview/new/postReview";
+import Form from "../../components/customerReview/new/form";
 import ReviewTop from "../../components/customerReview/forms/reviewTop";
 
 const ContentAreaLayout = styled(BaseContentAreaLayout)`
@@ -33,7 +33,7 @@ class New extends Component {
       <ContentAreaLayout>
         <Spin spinning={this.isFirstFetching()} size="large">
           <ReviewTop entity={entity} user={user} />
-          <PostReview />
+          <Form />
         </Spin>
       </ContentAreaLayout>
     );

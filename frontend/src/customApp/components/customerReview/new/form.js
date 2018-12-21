@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Rate, Upload, Button, Icon } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../../components/panel/contentLayout";
-import { Link } from "../../../components/form/link";
+import { BaseContentLayout } from "../../panel/contentLayout";
+import { Link } from "../../form/link";
 import ConfirmButton from "../forms/confirmButton";
 
 const Title = styled.div`
@@ -90,7 +90,7 @@ const Notice = styled.p`
   }
 `;
 
-const PostReview = () => {
+const Form = () => {
   return (
     <ContentLayout>
       <Title>
@@ -148,4 +148,4 @@ const PostReview = () => {
   );
 };
 
-export default PostReview;
+export default Form;
