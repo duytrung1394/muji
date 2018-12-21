@@ -39,7 +39,7 @@ const ColItem = styled(Col)`
   .product-name {
     padding: 20px 20px;
   }
-  .number-of-units{
+  .number-of-units {
     padding: 40px 0;
     text-align: center;
   }

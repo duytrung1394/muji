@@ -54,6 +54,12 @@ class Confirm extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    if (this.props.orderedDonation) {
+      this.props.history.push("/store/cart/donation/complete");
+    }
+  }
+
   exsitsConfirmationEntity = () => {
     return (
       this.props.confirmationEntity &&
@@ -65,6 +71,42 @@ class Confirm extends Component {
     `/store/cart/donation/payment/${this.props.match.params.donation_code}/${
       this.props.match.params.number_of_units
     }`;
+
+  submit = () => {
+    const {
+      contributionCode,
+      quantity,
+      total,
+      unitPrice,
+      cardNo1,
+      cardNo2,
+      cardNo3,
+      cardNo4,
+      limitMonth,
+      limitYear,
+      cardNo,
+      couponUseAmount,
+      creditUseAmount,
+      giftCardUseAmount
+    } = this.props.confirmationEntity;
+
+    this.props.orderRequest({
+      contributionCode,
+      quantity,
+      total,
+      unitPrice,
+      cardNo1,
+      cardNo2,
+      cardNo3,
+      cardNo4,
+      limitMonth,
+      limitYear,
+      cardNo,
+      couponUseAmount,
+      creditUseAmount,
+      giftCardUseAmount
+    });
+  };
 
   render() {
     if (this.exsitsConfirmationEntity()) {
@@ -98,7 +140,7 @@ class Confirm extends Component {
                   </Link>
                 </Col>
                 <AlignRightCol span={8}>
-                  <SubmitButton type="primary">
+                  <SubmitButton type="primary" onClick={this.submit}>
                     <IntlMessages id="donation.confirm.submit" />
                   </SubmitButton>
                 </AlignRightCol>
@@ -118,8 +160,8 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
-  fetchCleanup: actions.fetch.cleanup
+  orderRequest: actions.orderDonation.request,
+  orderCleanup: actions.orderDonation.cleanup
 };
 
 const enhance = C => {
