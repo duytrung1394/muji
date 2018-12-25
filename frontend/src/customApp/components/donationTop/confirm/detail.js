@@ -44,7 +44,7 @@ const ColItem = styled(Col)`
     }
   }
 
-  .number-of-units{
+  .number-of-units {
     padding: 40px 0;
     text-align: center;
   }

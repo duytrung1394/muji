@@ -52,30 +52,29 @@ const RightIcon = styled(Icon)`
   left: 720px;
 `;
 
+const data = {
+  url: "https://www.muji.net/img/item/4550002560928_180.jpg",
+  title: "ウールシルク洗えるVネックセーター",
+  rate: 4,
+  evaluation: "5つ星のうち4.1",
+  review: "13件のレビュー"
+};
+
 const ProductReviewHeader = () => {
   return (
     <Fragment>
       <Link to="">
         <ProductWrapper>
-          <ProductIcon
-            src="https://www.muji.net/img/item/4550002560928_180.jpg"
-            alt=""
-          />
+          <ProductIcon src={data.url} alt="" />
           <ProductItem>
-            <ProductTitle>
-              <IntlMessages id="customerReview.list.productTitle" />
-            </ProductTitle>
+            <ProductTitle>{data.title}</ProductTitle>
             <li>
               <StarWrapper>
-                <Star disabled defaultValue={4} />
+                <Star disabled defaultValue={data.rate} />
               </StarWrapper>
-              <span>
-                <IntlMessages id="customerReview.list.fiveStarsEvaluation" />
-              </span>
+              <span>{data.evaluation}</span>
             </li>
-            <li>
-              <IntlMessages id="customerReview.list.numberOfReviews" />
-            </li>
+            <li>{data.review}</li>
           </ProductItem>
         </ProductWrapper>
       </Link>
