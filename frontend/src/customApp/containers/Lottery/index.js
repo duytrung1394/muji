@@ -4,28 +4,19 @@ import actions from "../../redux/lottery/list/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import {
-  ContentAreaLayout,
-  BaseContentLayout
-} from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
 import LotteryInfo from "../../components/lottery/list/lotteryInfo";
 import LotteryList from "../../components/lottery/list/lotteryList";
 import LotteryNotes from "../../components/lottery/list/lotteryNotes";
 
 const AreaLayout = styled(ContentAreaLayout)`
-  max-width: 748px
-`;
-
-const BaseLayout = styled(BaseContentLayout)`
-
+  width: 960px;
 `;
 
 const LotteryTitle = styled.h1`
-
+  font-weight: bold;
 `;
-
 
 class Index extends Component {
   constructor(props) {
@@ -35,7 +26,6 @@ class Index extends Component {
     };
   }
 
-  // React methods
   componentDidMount() {
     this.props.fetchRequest("");
   }
@@ -52,13 +42,15 @@ class Index extends Component {
       history
     } = this.props;
 
+    const { title, info_data, notes, list_items } = entities;
+
     return (
       <LayoutWrapper>
         <AreaLayout>
-          <LotteryTitle>福袋2019</LotteryTitle>
-          <LotteryInfo />
-          <LotteryNotes />
-          <LotteryList />
+          <LotteryTitle>{title}</LotteryTitle>
+          <LotteryInfo infoData={info_data} />
+          <LotteryNotes notes={notes} />
+          <LotteryList listItems={list_items} />
         </AreaLayout>
       </LayoutWrapper>
     );
@@ -75,10 +67,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);
