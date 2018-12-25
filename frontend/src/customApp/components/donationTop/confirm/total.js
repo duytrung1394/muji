@@ -44,13 +44,11 @@ const ProductPrice = ({ product, price }) => {
       <Col span={18}>
         <IntlMessages id={`donation.confirm.total.product.${product}`} />
       </Col>
-      <Col span={6}>
-        <div className="price">
-          <IntlMessages
-            id="donation.confirm.total.price"
-            values={{ price: priceValue }}
-          />
-        </div>
+      <Col span={6} className="price">
+        <IntlMessages
+          id="donation.confirm.total.price"
+          values={{ price: priceValue }}
+        />
       </Col>
     </Row>
   );

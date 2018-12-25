@@ -31,10 +31,10 @@ const ConfirmFooter = styled(Row)`
       color: #7f0019;
     }
   }
-`;
 
-const AlignRightCol = styled(Col)`
-  text-align: right;
+  .align-right {
+    text-align: right;
+  }
 `;
 
 const SubmitButton = styled(Button)`
@@ -139,11 +139,11 @@ class Confirm extends Component {
                     <IntlMessages id="donation.payment.link.back" />
                   </Link>
                 </Col>
-                <AlignRightCol span={8}>
+                <Col span={8} className="align-right">
                   <SubmitButton type="primary" onClick={this.submit}>
                     <IntlMessages id="donation.confirm.submit" />
                   </SubmitButton>
-                </AlignRightCol>
+                </Col>
               </ConfirmFooter>
             </BaseContentLayout>
           </Spin>

@@ -4,14 +4,9 @@ import { Row, Col } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import Total from "./total";
 
-const StyledDiv = styled.div`
-  margin-top: 20px;
-`;
-
 const Box = styled.div`
   border: 5px solid #ccc;
   padding: 20px;
-}
 `;
 
 const RowLabel = styled(Row)`
@@ -36,22 +31,27 @@ const RowItem = styled(Row)`
 
 const ColItem = styled(Col)`
   border-left: 1px solid #ccc;
+
   .product-name {
     padding: 20px 20px;
   }
+
+  .unit-price {
+    padding: 5px 0px 10px;
+
+    .price-value {
+      font-weight: bold;
+    }
+  }
+
   .number-of-units {
     padding: 40px 0;
     text-align: center;
   }
+
   .price {
     padding: 40px 20px;
     text-align: right;
-  }
-  .price-value {
-    font-weight: bold;
-  }
-  .unit-price {
-    padding: 5px 0px 10px;
   }
 `;
 

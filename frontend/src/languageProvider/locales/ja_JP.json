@@ -133,7 +133,7 @@
   "donation.complete.title": "ご協力ありがとうございました",
   "donation.confirm.description": "寄付内容をご確認の上、変更がなければ「寄付を確定する」を押してください。",
   "donation.confirm.detail.label.numberOfUnits": "口数",
-  "donation.confirm.detail.label.productName": "支援団体/団体名",
+  "donation.confirm.detail.label.productName": "支援活動名/団体名",
   "donation.confirm.detail.label.subTotal": "小計",
   "donation.confirm.detail.price": "{price}円",
   "donation.confirm.detail.unitPrice": "1口 {price}円",
