@@ -72,7 +72,7 @@ const routes = [
     path: "/store/review/report/:item_code/:comment_code",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/userByReport")
+      require("./customApp/containers/CustomerReview/commentReport")
     )
   },
   {
