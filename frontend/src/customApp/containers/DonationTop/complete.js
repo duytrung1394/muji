@@ -3,16 +3,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-import actions from "../../redux/donation_top/entity/actions";
 import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Summary from "../../components/donationTop/confirm/summary";
-import Detail from "../../components/donationTop/confirm/detail";
-import { Button } from "../../components/form/button";
 
 const CompleteHeader = styled.div`
   h1 {
@@ -46,10 +42,6 @@ const CompleteFooter = styled.div`
       color: #7f0019;
     }
   }
-`;
-
-const AlignCenterCol = styled(Col)`
-  text-align: center;
 `;
 
 class Complete extends Component {
