@@ -26,10 +26,6 @@ const ContentLayout = styled(BaseContentLayout)`
   background-color: #f7f7f7;
 `;
 
-const PostFormWrapper = styled.div`
-  width: 700px;
-`;
-
 const FormLabel = styled.label`
   display: block;
   text-align: left;
@@ -62,8 +58,10 @@ const UploadButton = styled(Button)`
     color: #fff;
     background-color: #999999;
     font-weight: 600;
-    height: 40px;
+    height: 48px;
+    width: 400px;
     border: none;
+    border-radius: 24px;
   }
   && {
     &:hover {
@@ -118,15 +116,13 @@ const Form = () => {
         <IntlMessages id="customerReview.new.image" />
       </FormLabel>
       <UploadArea>
-        <Upload>
-          <UploadButton>
-            <UploadIcon type="camera" />
-            <IntlMessages id="customerReview.new.addImage" />
-          </UploadButton>
-        </Upload>
+        <UploadButton>
+          <UploadIcon type="camera" />
+          <IntlMessages id="customerReview.new.addImage" />
+        </UploadButton>
       </UploadArea>
       <ConfirmButton
-        // onClick={}
+        // TOTO: onClick
         title={<IntlMessages id="customerReview.new.confirmButton" />}
       />
       <Notices>

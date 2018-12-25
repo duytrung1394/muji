@@ -15,14 +15,6 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
- * 商品情報(レビュー用)取得
- */
-$router->get('/api/v1/customer-reviews/items/{itemCode}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@getReviewItem',
-]);
-
-/**
  * ユーザ別一覧取得
  */
 $router->get('/api/v1/customer-reviews/user', [

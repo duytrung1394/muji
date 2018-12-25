@@ -9,23 +9,23 @@ const ButtonWrapper = styled.div`
 
 const ConfirmButton = styled(LargeButton)`
   width: 400px;
-  height:40px
+  height: 48px;
   border: none;
   background-color: #191919;
   border-radius: 24px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   color: #fff;
-  margin:24px 0;
-  font-weight:600;
+  margin: 24px 0;
+  font-weight: 600;
 
-  &{
-      padding:14px 0;
-      border:none;
+  & {
+    padding: 14px 0;
+    border: none;
   }
 
-  &:hover{
-    color:#fff;
+  &:hover {
+    color: #fff;
   }
 `;
 

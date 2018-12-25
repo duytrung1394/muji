@@ -213,25 +213,4 @@ class CustomerReviewsController extends Controller
             return [];
         }
     }
-
-    /**
-     * モックデータを生成して取得(レビュー用の商品情報)
-     */
-    private function getMockReviewItem($jancode)
-    {
-        $itemNames = [
-            '4550002750077' => 'オーガニックコットンフランネルスタンドカラーシャツ',
-            '4550182028072' => 'ベーコンとチーズのキッシュ',
-            '4550182028065' => 'チキンとほうれん草のキッシュ',
-            '4550002873684' => 'オレンジピールクランチチョコ',
-            '4548718094844' => 'ポケットコイルスプリングマットレス・シングル',
-            '4547315318926' => '無選別　おこげせんべい',
-        ];
-
-        return [
-            'jancode' => $jancode,
-            'name' => $itemNames[$jancode],
-        ];
-        return $itemData;
-    }
 }
