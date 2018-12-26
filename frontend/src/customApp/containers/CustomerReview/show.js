@@ -8,10 +8,10 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ReviewDetailItems from "../../components/customerReview/list/reviewDetailItems";
-import Comment from "../../components/customerReview/list/comment";
-import ListHeader from "../../components/customerReview/list/listHeader";
-import ReviewPageing from "../../components/customerReview/list/reviewPaging";
+import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
+import Comment from "../../components/customerReview/show/comment";
+import ListHeader from "../../components/customerReview/show/listHeader";
+import ReviewPageing from "../../components/customerReview/show/reviewPaging";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -35,8 +35,7 @@ class Show extends Component {
       entity,
       fetching,
       destroying,
-      fetchRequest,
-      getCustomerReviewRequest
+      fetchRequest
     } = this.props;
 
     if (entity.customer_reviews) {
@@ -66,7 +65,6 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
-  getCustomerReviewRequest: actions.getCustomerReview.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
