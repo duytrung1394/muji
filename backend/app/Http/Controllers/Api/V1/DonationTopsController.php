@@ -79,6 +79,18 @@ class DonationTopsController extends Controller
     }
 
     /**
+     * 寄付の確定(注文)
+     *
+     * @return Response
+     */
+    public function order(Request $request)
+    {
+        return [
+            'orderCode' => "123456789012",
+        ];
+    }
+
+    /**
      * モックデータ取得用(募金一覧)
      */
     private function getMultiMockData()
@@ -357,15 +369,23 @@ class DonationTopsController extends Controller
     private function getMockConfirmData()
     {
         return [
+            'contributionCode' => "0299667000000",
             'img' => 'https://img.muji.net/img/item/0299629000000_50.jpg',
             'title' => '開発途上国の給食支援',
             'organization' => 'TABLE FOR TWO',
             'total' => 1500,
             'quantity' => 15,
             'unitPrice' => 100,
-            'creditUseAmount' => 1000,
-            'giftCardUseAmount' => 300,
+            'cardNo' => "12345678",
+            'cardNo1' => "0000",
+            'cardNo2' => "1111",
+            'cardNo3' => "2222",
+            'cardNo4' => "3333",
+            'limitMonth' => "12",
+            'limitYear' => "28",
             'couponUseAmount' => 200,
+            'giftCardUseAmount' => 300,
+            'creditUseAmount' => 1000,
         ];
     }
 }
