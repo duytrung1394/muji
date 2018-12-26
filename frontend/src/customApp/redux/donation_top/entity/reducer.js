@@ -9,7 +9,7 @@ const initState = restInitState.merge(
     doingGiftcardInquiry: false,
     didGiftcardInquiry: false,
     doGiftcardInquiryError: false,
-    confrimationEntity: {},
+    confirmationEntity: {},
     confirmingDonation: false,
     confirmedDonation: false,
     confirmEonationError: false
@@ -80,13 +80,13 @@ const confirmDonationRequest = (state, action) =>
 
 const confirmDonationSuccess = (state, action) =>
   state
-    .set("confirmationDonation", action.payload.data)
+    .set("confirmationEntity", action.payload.data)
     .set("confirmingDonation", false)
     .set("confirmedDonation", true);
 
 const confirmDonationFailure = (state, action) =>
   state
-    .set("confirmationDonation", {})
+    .set("confirmationEntity", {})
     .set("confirmingDonation", false)
     .set("confirmedDonation", false)
     .set("confirDonationError", true);
