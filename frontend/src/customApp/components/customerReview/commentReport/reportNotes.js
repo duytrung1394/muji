@@ -11,6 +11,10 @@ const NotesTitle = styled.span`
 
 const Notes = styled.div``;
 
+const StyledP = styled.p`
+  margin-bottom: 0;
+`;
+
 const ReportNotes = () => {
   return (
     <div>
@@ -19,9 +23,9 @@ const ReportNotes = () => {
       </NotesTitle>
       <Notes>
         <IntlMessages id="customerReview.commentReport.violation_note1" />
-        <br />
+        <StyledP />
         <IntlMessages id="customerReview.commentReport.violation_note2" />
-        <br />
+        <StyledP />
         <IntlMessages id="customerReview.commentReport.violation_note3" />
       </Notes>
     </div>

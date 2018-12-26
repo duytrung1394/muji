@@ -23,6 +23,7 @@ export const fetchSuccess = (state, action) => {
     .set("entities", action.payload.data)
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)
+    .set("userTotal", action.payload.userTotal)
     .set("fetching", false)
     .set("fetched", true);
 };
@@ -51,6 +52,12 @@ const reducer = handleActions(
           SUCCESS: fetchSuccess,
           FAILURE: fetchFailure,
           CLEANUP: fetchCleanup
+        },
+        FETCH_BY_USER: {
+          REQUEST: fetchRequest
+        },
+        FETCH_BY_FOLLOWING: {
+          REQUEST: fetchRequest
         }
       }
     }

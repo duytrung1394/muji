@@ -7,13 +7,15 @@ const Form = styled.form`
   margin: 0;
 `;
 
-const BoldSpan = styled.span`
+const FormTitle = styled.p`
   color: #333;
   font-weight: bold;
+  margin-bottom: 0;
 `;
 
-const ChooseSpan = styled.span`
+const ChooseMessage = styled.p`
   line-height: 3;
+  margin-bottom: 0;
 `;
 
 const RadioGroup = Radio.Group;
@@ -39,14 +41,12 @@ const { TextArea } = Input;
 const ReportForm = () => {
   return (
     <Form>
-      <BoldSpan>
+      <FormTitle>
         <IntlMessages id="customerReview.commentReport.violation_items" />
-      </BoldSpan>
-      <br />
-      <ChooseSpan>
+      </FormTitle>
+      <ChooseMessage>
         <IntlMessages id="customerReview.commentReport.violation_items_note" />
-      </ChooseSpan>
-      <br />
+      </ChooseMessage>
       <RadioGroup>
         <StyledRadio value={1}>
           <IntlMessages id="customerReview.commentReport.radioItem1" />

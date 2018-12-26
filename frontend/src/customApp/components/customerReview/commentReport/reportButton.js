@@ -4,7 +4,7 @@ import LargeButton from "../../form/largeButton.js";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
-  margin-top: 40px;
+  margin: 20px 0;
   text-align: center;
 `;
 

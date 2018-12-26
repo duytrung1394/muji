@@ -15,11 +15,29 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+
  * 一部取得
  */
 $router->get('/api/v1/customer-reviews/{itemCode}/{commentCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerReviewsController@report',
+]);
+
+/**
+ * ユーザ別一覧取得
+ */
+$router->get('/api/v1/customer-reviews/user', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByUser',
+]);
+
+/**
+ * フォロー中のユーザー一覧取得
+ */
+$router->get('/api/v1/customer-reviews/following', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByFollowing',
+
 ]);
 
 /**

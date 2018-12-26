@@ -8,10 +8,10 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ReportForm from "../../components/customerReview/list/reportForm";
-import ReportItem from "../../components/customerReview/list/reportItem";
-import ReportNotes from "../../components/customerReview/list/reportNotes";
-import ReportButton from "../../components/customerReview/list/reportButton";
+import ReportForm from "../../components/customerReview/commentReport/reportForm";
+import ReportItem from "../../components/customerReview/commentReport/reportItem";
+import ReportNotes from "../../components/customerReview/commentReport/reportNotes";
+import ReportButton from "../../components/customerReview/commentReport/reportButton";
 
 const ContentLayout = styled(BaseContentLayout)`
   padding-top: 40px;
@@ -34,12 +34,13 @@ const MainLayout = styled(ContentLayout)`
   margin: 0 auto 100px auto;
 `;
 
-const BoldSpan = styled.span`
+const BoldMessage = styled.p`
   font-weight: bold;
   color: #333;
+  margin-bottom: 0;
 `;
 
-class CommentReport extends Component {
+class Report extends Component {
   componentDidMount() {
     this.props.getReport(
       `${this.props.match.params.item_code}/${
@@ -50,21 +51,19 @@ class CommentReport extends Component {
 
   render() {
     const { entities } = this.props;
-    console.log(entities);
     return (
       <ContentAreaLayout>
         <HeadLayout>
           <Title>
             <IntlMessages
               id="customerReview.commentReport.title"
-              style={BoldSpan}
+              style={BoldMessage}
             />
           </Title>
-          <IntlMessages id="customerReview.commentReport.note1" />
-          <br />
-          <BoldSpan>
+            <IntlMessages id="customerReview.commentReport.note1" />
+          <BoldMessage>
             <IntlMessages id="customerReview.commentReport.note2" />
-          </BoldSpan>
+          </BoldMessage>
         </HeadLayout>
         <MainLayout>
           <ReportForm />
@@ -94,4 +93,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(CommentReport);
+export default enhance(Report);

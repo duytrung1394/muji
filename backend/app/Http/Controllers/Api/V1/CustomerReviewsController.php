@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 class CustomerReviewsController extends Controller
 {
     private $mockTotal = 23;
-
+    private $userTotal = 5;
     /**
      * Display a listing of the resource.
      *
@@ -20,10 +20,48 @@ class CustomerReviewsController extends Controller
                 (int)$request->input('length')
             ),
             'total'     => $this->mockTotal,
+            'sortFlg'   => false,
+            'userTotal' => $this->userTotal,
+        ];
+    }
+
+    /**
+     * Display a listing of the resource(ユーザ別一覧).
+     *
+     * @return Response
+     */
+    public function indexByUser(Request $request)
+    {
+        $filter = [
+            'nickname' => $request->input('nickname')
+        ];
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length'),
+                $filter
+            ),
+            'total'     => $this->mockTotal,
             'sortFlg'   => false
         ];
     }
 
+    /**
+     * Display a listing of the resource(フォロー中のユーザー一覧).
+     *
+     * @return Response
+     */
+    public function indexByFollowing(Request $request)
+    {
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
     /**
       * Show the form for creating a new resource.
       *
@@ -68,7 +106,7 @@ class CustomerReviewsController extends Controller
      *
      * @return array
      */
-    private function getMultiMockData($offset, $length)
+    private function getMultiMockData($offset, $length, $filter = null)
     {
         $reviews = [];
         $reviewTotal = $this->mockTotal;
@@ -89,20 +127,42 @@ class CustomerReviewsController extends Controller
      */
     private function getMockData($index)
     {
-        switch ($index % 5){
+        switch ($index % 6){
         case 0:
+            return [
+                'customer_review_code' => $index,
+                'product' => 'オーガニックコットンフランネルスタンドカラーシャツ',
+                'jancode' => '4550002750077',
+                'title' => 'シルエット良好！',
+                'star' => 4,
+                'upload_date' => '1分前',
+                'review_count' => '9',
+                'rating_count' => '6',
+                'detail_comment' => 'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
+                'evaluations_comment_count' => 0,
+                'evaluations_useful_count' => 0,
+                'images'=>[
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
+                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
+                ],
+            ];
+        case 1:
             return [
                 'customer_review_code' => $index,
                 'product' => 'ベーコンとチーズのキッシュ',
                 'jancode' => '4550182028072',
-                'title' => 'キッシュ美味しい',
+                'title' => 'キッシュ美味しい！！',
                 'star' => 3,
                 'upload_date' => '1時間前',
+                'review_count' => '9',
+                'rating_count' => '6',
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[],
             ];
-        case 1:
+        case 2:
             return [
                 'customer_review_code' => $index,
                 'product' => 'チキンとほうれん草のキッシュ',
@@ -110,11 +170,14 @@ class CustomerReviewsController extends Controller
                 'title' => '気軽に解凍キッシュ',
                 'star' => 3,
                 'upload_date' => '1時間前',
+                'review_count' => '9',
+                'rating_count' => '6',
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[],
             ];
-        case 2:
+        case 3:
             return [
                 'customer_review_code' => $index,
                 'product' => 'オレンジピールクランチチョコ',
@@ -122,11 +185,14 @@ class CustomerReviewsController extends Controller
                 'title' => 'オレンジピールクランチチョコ、Goodです！',
                 'star' => 4,
                 'upload_date' => '2時間前',
+                'review_count' => '9',
+                'rating_count' => '6',
                 'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
+                'images'=>[],
             ];
-        case 3:
+        case 4:
             return [
                 'customer_review_code' => $index,
                 'product' => 'ポケットコイルスプリングマットレス・シングル',
@@ -134,11 +200,13 @@ class CustomerReviewsController extends Controller
                 'title' => '使ってます',
                 'star' => 4,
                 'upload_date' => '2時間前',
+                'review_count' => '9',
+                'rating_count' => '6',
                 'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
                 'evaluations_comment_count' => 0,
                 'evaluations_useful_count' => 0,
             ];
-        case 4:
+        case 5:
             return [
                 'customer_review_code' => $index,
                 'product' => '無選別　おこげせんべい',
@@ -146,9 +214,12 @@ class CustomerReviewsController extends Controller
                 'title' => 'かみごたえ満点',
                 'star' => 5,
                 'upload_date' => '2018/11/13',
+                'review_count' => '9',
+                'rating_count' => '6',
                 'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
                 'evaluations_comment_count' => 1,
                 'evaluations_useful_count' => 100,
+                'images'=>[],
             ];
         default:
             return [];

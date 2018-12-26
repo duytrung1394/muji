@@ -6,8 +6,13 @@ const actions = createActions({
   CUSTOMER_REVIEW: {
     LIST: {
       ...restActions,
-      GET_CUSTOMER_REVIEW: { ...req },
-      GET_REPORT: { ...req }
+      GET_REPORT: { ...req },
+      FETCH_BY_USER: {
+        REQUEST: undefined
+      },
+      FETCH_BY_FOLLOWING: {
+        REQUEST: undefined
+      }
     }
   }
 });

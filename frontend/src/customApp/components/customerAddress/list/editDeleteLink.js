@@ -1,7 +1,5 @@
-import React, { Component } from "react";
-import { injectIntl } from "react-intl";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Modal } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 
@@ -20,46 +18,18 @@ const Div = styled.div`
   }
 `;
 
-class EditDeleteLink extends Component {
-  deleteAddress = (addressBookNo, name, destroyRequest) => {
-    Modal.confirm({
-      title: this.props.intl.formatMessage(
-        {
-          id: "customerAddress.list.delete.confirm"
-        },
-        {
-          name: name
-        }
-      ),
-      onOk() {
-        destroyRequest(addressBookNo);
-      }
-    });
-  };
+const EditDeleteLink = ({ to, deleteAddress }) => (
+  <Div>
+    <Link to={to}>
+      <IntlMessages id="customerAddress.list.link.edit" />
+    </Link>
+    {deleteAddress && [
+      " | ",
+      <a onClick={() => deleteAddress()} key="delete">
+        <IntlMessages id="customerAddress.list.link.delete" />
+      </a>
+    ]}
+  </Div>
+);
 
-  render() {
-    const { addressBookNo, name, destroyRequest } = this.props;
-    return (
-      <Div>
-        <Link to={`/store/cust/address/edit/${addressBookNo}`}>
-          <IntlMessages id="customerAddress.list.link.edit" />
-        </Link>
-        {addressBookNo !== 0 && [
-          " | ",
-          <a
-            onClick={() =>
-              this.deleteAddress(addressBookNo, name, destroyRequest)
-            }
-            key="delete"
-          >
-            <IntlMessages id="customerAddress.list.link.delete" />
-          </a>
-        ]}
-      </Div>
-    );
-  }
-}
-
-export default injectIntl(EditDeleteLink, {
-  withRef: true
-});
+export default EditDeleteLink;
