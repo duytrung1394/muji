@@ -48,8 +48,6 @@ class New extends Component {
   }
 }
 
-const { init } = actions;
-
 const mapStateToProps = state => {
   //TODO: inculude selected Product.Entity
   //return Object.assign(state.CustomerReview.Entity.toJS(), state.Product.Entity.toJS());
