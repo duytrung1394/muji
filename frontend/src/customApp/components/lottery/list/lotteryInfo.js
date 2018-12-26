@@ -8,8 +8,6 @@ const LotteryItem = styled.div`
   margin-bottom: 8px;
 `;
 
-const ImgArea = styled.div``;
-
 const InfoImg = styled.img`
   display: block;
   padding-top: 40px;
@@ -44,9 +42,9 @@ const LotteryInfo = ({ infoData }) => {
   if (infoData) {
     return (
       <LotteryItem>
-        <ImgArea>
+        <div>
           <InfoImg src="http://img.muji.net/img/store/lucky/L101220_1.jpg" />
-        </ImgArea>
+        </div>
         <Info>
           <h2>{infoData.title}</h2>
           <p>{infoData.description}</p>

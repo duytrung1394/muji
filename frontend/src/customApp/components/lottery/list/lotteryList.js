@@ -15,7 +15,7 @@ const LotteryItemList = styled.ul`
 const ListItem = styled.li`
   max-width: 160px;
   padding-bottom: 8px;
-  margin-right: 16px;
+  margin: 0 1%;
 `;
 
 const ItemImg = styled.img`

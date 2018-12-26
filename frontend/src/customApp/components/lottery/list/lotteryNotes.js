@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
-const Notes = styled.ul`
+const Notes = styled.div`
   background-color: #eee;
-  padding: 10px 8px 8px;
+  padding: 10px 12px 8px;
   margin-bottom: 16px;
 `;
 
@@ -21,6 +21,11 @@ const NoteText = styled.p`
   font-weight: bold;
 `;
 
+const NoteList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
 const noteStyle = {
   default: {
     display: "flex",
@@ -31,13 +36,13 @@ const noteStyle = {
   }
 };
 
-const Note = ({ note, key }) => {
+const Note = ({ note }) => {
   let _noteStyle = { ...noteStyle.default };
   if (note.note_flg) {
     _noteStyle = { ..._noteStyle, ...noteStyle.flgStyle };
   }
   return (
-    <li key={key} style={_noteStyle}>
+    <li style={_noteStyle}>
       <KomeMark>
         <IntlMessages id="lottery.kome" />
       </KomeMark>
@@ -52,10 +57,12 @@ const LotteryNotes = ({ notes }) => {
       <NotesTitle>
         <IntlMessages id="lottery.notes" />
       </NotesTitle>
-      {notes &&
-        notes.map((note, index) => {
-          return <Note note={note} key={index} />;
-        })}
+      <NoteList>
+        {notes &&
+          notes.map((note, index) => {
+            return <Note note={note} key={index} />;
+          })}
+      </NoteList>
     </Notes>
   );
 };
