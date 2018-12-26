@@ -26,33 +26,52 @@ const ContentPanelWrapper = styled(ContentPanel)`
 `;
 
 const GroupName = styled.h1`
-  border-bottom: 2px solid;
-  width: fit-content;
-  margin: 0 auto 40px;
+  font-size: 19px;
+  font-weight: bold;
 `;
 
 const ItemName = styled.span`
   padding: 0 10px;
 `;
 
+const StyledLargeButton = styled(LargeButton)`
+  border-radius: 30px;
+  border: 1px solid #999;
+  background: #999;
+  color: #fafafa;
+  padding: 14px 0;
+  :hover {
+    color: #ffffff;
+  }
+`;
+
 const SeeMoreButton = props => (
-  <LargeButton>
+  <StyledLargeButton>
     <IntlMessages id="productCategoryTop.button.seeMore" />
-  </LargeButton>
+  </StyledLargeButton>
 );
 
-const NameWithItemCountButtonWrapper = styled.div`
+const ItemCountButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 40px;
 `;
 
-const NameWithItemCountButton = props => (
-  <LargeButton {...props}>
+const Separator = styled.span`
+  padding: 0 10px;
+  :after {
+    content: "|";
+  }
+`;
+
+const ItemCountButton = props => (
+  <StyledLargeButton {...props}>
+    <IntlMessages id="productCategoryTop.button.showList" />
+    <Separator />
     <IntlMessages
-      id="productCategoryTop.button.nameWithItemCount"
-      values={{ name: <ItemName>{props.name}</ItemName>, count: props.count }}
+      id="productCategoryTop.button.itemCount"
+      values={{ count: props.count }}
     />
-  </LargeButton>
+  </StyledLargeButton>
 );
 
 const ItemList = props => {
@@ -71,12 +90,9 @@ const ItemList = props => {
               {group.items.map((item, index) => {
                 return <ItemView {...item} key={index} />;
               })}
-              <NameWithItemCountButtonWrapper>
-                <NameWithItemCountButton
-                  name={<ItemName>{group.group_name}</ItemName>}
-                  count={group.total}
-                />
-              </NameWithItemCountButtonWrapper>
+              <ItemCountButtonWrapper>
+                <ItemCountButton name={group.group_name} count={group.total} />
+              </ItemCountButtonWrapper>
             </div>
           );
         })}

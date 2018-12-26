@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
 import styled from "styled-components";
 
-const iconImageSize = 60;
+const iconImageSize = 107;
 const iconImageMargin = 10;
 
 export const ListBoxRow = styled(Row)`
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
 `;
@@ -31,18 +31,14 @@ export const StyledCol = styled(Col)`
     font-size: 13px;
     word-wrap: break-word;
     padding: 10px;
+    color: #000;
   }
 `;
 
-export const LinkIcon = styled(Link)`
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+const Box = styled.div`
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 #585858;
+  margin: 10px;
 `;
 
 const CategoryList = ({ innerCategories }) => {
@@ -69,9 +65,12 @@ const ItemIcon = props => {
   };
   return (
     <StyledCol {...colLayout}>
-      <LinkIcon to="" />
-      <img src={item.img_src} alt="" />
-      {item.title && <span>{item.title}</span>}
+      <Link to={item.title}>
+        <Box>
+          <img src={item.img_src} alt="" />
+          {item.title && <span>{item.title}</span>}
+        </Box>
+      </Link>
     </StyledCol>
   );
 };
