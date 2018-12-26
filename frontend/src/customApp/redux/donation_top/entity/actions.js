@@ -7,7 +7,8 @@ const actions = createActions({
     ENTITY: {
       ...restActions,
       DO_GIFTCARD_INQUIRY: { ...req },
-      CONFIRM_DONATION: { ...req }
+      CONFIRM_DONATION: { ...req },
+      ORDER_DONATION: { ...req }
     }
   }
 });

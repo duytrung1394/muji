@@ -2,8 +2,28 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
-import ContentAreaLayout from "../../components/panel/contentLayout";
-import IntlMessages from "../../../components/utility/intlMessages";
+import styled from "styled-components";
+import { Spin } from "antd";
+import { ContentAreaLayout as BaseContentAreaLayout } from "../../components/panel/contentLayout";
+import Form from "../../components/customerReview/new/form";
+import ReviewTop from "../../components/customerReview/forms/reviewTop";
+
+const ContentAreaLayout = styled(BaseContentAreaLayout)`
+  max-width: 860px;
+`;
+
+// TODO: get user data from backend
+const user = {
+  user_image: "https://www.muji.com/jp/store/review/img/avatar_default.png",
+  user_name: "user name"
+};
+// TODO: get product data from backend
+const product = {
+  entity: {
+    jancode: "4550002873684",
+    name: "オレンジピールクランチチョコ"
+  }
+};
 
 class New extends Component {
   componentDidMount() {
@@ -11,35 +31,32 @@ class New extends Component {
     this.props.initRequest();
   }
 
-  componentDidUpdate(prevProps, prevState, prevContext) {
-    const { created, createCleanup, history } = this.props;
-    if (created) {
-      this.props.createCleanup();
-      history.push("/store/cust/review/item/{}/confirm");
-    }
-  }
+  isFirstFetching = () => {
+    return !(this.props.entity && user);
+  };
 
   render() {
-    const { initialized } = this.props;
+    const { entity } = this.props;
     return (
       <ContentAreaLayout>
-        <h1>レビューを投稿する</h1>
+        <Spin spinning={this.isFirstFetching()} size="large">
+          <ReviewTop entity={entity} user={user} />
+          <Form />
+        </Spin>
       </ContentAreaLayout>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return state.CustomerReview.Entity.toJS();
+  //TODO: inculude selected Product.Entity
+  //return Object.assign(state.CustomerReview.Entity.toJS(), state.Product.Entity.toJS());
+  return product;
 };
 
-const { init, create } = actions;
-
 const actionCreators = {
-  initRequest: init.request,
-  initCleanup: init.cleanup,
-  createRequest: create.request,
-  createCleanup: create.cleanup
+  initRequest: actions.init.request,
+  initCleanup: actions.init.cleanup
 };
 
 const enhance = C => {

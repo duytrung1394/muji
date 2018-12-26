@@ -62,6 +62,7 @@ class CustomerReviewsController extends Controller
             'sortFlg'   => false
         ];
     }
+
     /**
       * Show the form for creating a new resource.
       *
@@ -213,4 +214,3 @@ class CustomerReviewsController extends Controller
         }
     }
 }
-

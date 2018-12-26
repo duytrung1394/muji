@@ -45,3 +45,11 @@ $router->post('/api/v1/donation-tops/payment/confirm', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DonationTopsController@confirm',
 ]);
+
+/**
+ * 寄付の確定(注文)
+ */
+$router->post('/api/v1/donation-tops/payment/order', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationTopsController@order',
+]);
