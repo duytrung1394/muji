@@ -7,6 +7,7 @@ import authActions from "../../../../redux/auth/actions";
 const api = RESTEntityApi("donation-tops");
 const giftcardApi = RESTListApi("donation-tops/payment/giftcard");
 const confirmApi = RESTEntityApi("donation-tops/payment/confirm");
+const orderApi = RESTEntityApi("donation-tops/payment/order");
 
 const getGiftcardFunction = function*({ payload }) {
   try {
@@ -34,6 +35,19 @@ const confirmDonationFunction = function*({ payload }) {
   }
 };
 
+const orderDonationFunction = function*({ payload }) {
+  try {
+    const response = yield call(orderApi.POST, payload);
+    yield put(actions.orderDonation.success(response.data));
+  } catch (error) {
+    if (error.response.status == 401) {
+      yield put(authActions.unauthorized(error));
+    } else {
+      yield put(actions.orderDonation.failure(error));
+    }
+  }
+};
+
 export default function* saga() {
   yield restAllSaga("donation_top", api, actions);
   yield takeEvery(
@@ -43,5 +57,9 @@ export default function* saga() {
   yield takeEvery(
     actions.confirmDonation.request.toString(),
     confirmDonationFunction
+  );
+  yield takeEvery(
+    actions.orderDonation.request.toString(),
+    orderDonationFunction
   );
 }

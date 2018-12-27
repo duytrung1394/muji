@@ -12,7 +12,11 @@ const initState = restInitState.merge(
     confirmationEntity: {},
     confirmingDonation: false,
     confirmedDonation: false,
-    confirmEonationError: false
+    confirmEonationError: false,
+    orderCode: null,
+    orderingDonation: false,
+    orderedDonation: false,
+    orderEonationError: false
   })
 );
 
@@ -97,6 +101,33 @@ const confirmDonationCleanup = (state, action) =>
     .set("confirmedDonation", false)
     .set("confirDonationError", false);
 
+// POST ORDER_DONATION
+const orderDonationRequest = (state, action) =>
+  state
+    .set("orderCode", null)
+    .set("orderingDonation", true)
+    .set("orderedDonation", false)
+    .set("orderDonationError", false);
+
+const orderDonationSuccess = (state, action) =>
+  state
+    .set("orderCode", action.payload.orderCode)
+    .set("orderingDonation", false)
+    .set("orderedDonation", true);
+
+const orderDonationFailure = (state, action) =>
+  state
+    .set("orderCode", null)
+    .set("orderingDonation", false)
+    .set("orderedDonation", false)
+    .set("orderDonationError", true);
+
+const orderDonationCleanup = (state, action) =>
+  state
+    .set("orderingDonation", false)
+    .set("orderedDonation", false)
+    .set("orderDonationError", false);
+
 const reducer = handleActions(
   {
     DONATION_TOP: {
@@ -119,6 +150,12 @@ const reducer = handleActions(
           SUCCESS: confirmDonationSuccess,
           FAILURE: confirmDonationFailure,
           CLEANUP: confirmDonationCleanup
+        },
+        ORDER_DONATION: {
+          REQUEST: orderDonationRequest,
+          SUCCESS: orderDonationSuccess,
+          FAILURE: orderDonationFailure,
+          CLEANUP: orderDonationCleanup
         }
       }
     }
