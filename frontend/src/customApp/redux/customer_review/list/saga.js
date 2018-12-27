@@ -25,7 +25,6 @@ const getListByUserFunction = function*({ payload }) {
   }
 };
 
-
 const getListByFollowingFunction = function*({ payload }) {
   try {
     const response = yield call(listByFollowingApi.GET, payload);

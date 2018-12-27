@@ -60,7 +60,7 @@ class Report extends Component {
               style={BoldMessage}
             />
           </Title>
-            <IntlMessages id="customerReview.commentReport.note1" />
+          <IntlMessages id="customerReview.commentReport.note1" />
           <BoldMessage>
             <IntlMessages id="customerReview.commentReport.note2" />
           </BoldMessage>
