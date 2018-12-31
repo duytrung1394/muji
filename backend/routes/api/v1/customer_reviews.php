@@ -15,6 +15,22 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+ * ユーザ別一覧取得
+ */
+$router->get('/api/v1/customer-reviews/user', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByUser',
+]);
+
+/**
+ * フォロー中のユーザー一覧取得
+ */
+$router->get('/api/v1/customer-reviews/following', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByFollowing',
+]);
+
+/**
   * 作成
   */
  $router->get('/api/v1/customer-reviews/create', [
@@ -36,12 +52,4 @@ $router->put('/api/v1/customer-reviews/{taskCode}', [
 $router->delete('/api/v1/customer-reviews', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerReviewsController@destroy',
-]);
-
-/**
- * Customer Review (もっと見る).
- */
-$router->get('/api/v1/customer-reviews/seemore', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@getCustomerReviewsSeeMore',
 ]);
