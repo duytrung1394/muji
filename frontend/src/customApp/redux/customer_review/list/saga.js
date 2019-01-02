@@ -8,7 +8,7 @@ const api = RESTListApi("customer-reviews");
 const listByUserApi = RESTListApi("customer-reviews/user");
 const listByFollowingApi = RESTListApi("customer-reviews/following");
 
-const getListByUserFunction = function* ({ payload }) {
+const getListByUserFunction = function*({ payload }) {
   try {
     const response = yield call(listByUserApi.GET, payload);
     yield put(actions.fetch.success(response.data));
@@ -21,7 +21,7 @@ const getListByUserFunction = function* ({ payload }) {
   }
 };
 
-const getListByFollowingFunction = function* ({ payload }) {
+const getListByFollowingFunction = function*({ payload }) {
   try {
     const response = yield call(listByFollowingApi.GET, payload);
     yield put(actions.fetch.success(response.data));

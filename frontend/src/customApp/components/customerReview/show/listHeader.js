@@ -38,18 +38,18 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const ListHeader = ({ reviewData }) => {
+const ListHeader = ({ entity }) => {
   return (
     <Header>
       <ReviewItemHeader>
         <Link to={``} style={LinkStyle} />
         <ItemImg
-          src={`https://img.muji.net/img/item/${reviewData.jancode}_180.jpg`}
+          src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
           alt="itemImage"
           width="60"
           height="60"
         />
-        <ReviewTitle>{reviewData.product}</ReviewTitle>
+        <ReviewTitle>{entity.product}</ReviewTitle>
         <RigthArrow type="right" />
       </ReviewItemHeader>
     </Header>

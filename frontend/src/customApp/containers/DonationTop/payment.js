@@ -29,10 +29,26 @@ class Payment extends Component {
     );
   }
 
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    if (this.props.confirmedDonation) {
+      this.props.confirmDonationCleanup();
+      this.props.history.push(
+        `/store/cart/donation/confirm/${
+          this.props.match.params.donation_code
+        }/${this.props.match.params.number_of_units}`
+      );
+    }
+  }
+
   render() {
-    const donationCode = this.props.match.params.donation_code;
-    const numberOfUnits = this.props.match.params.number_of_units;
-    const { fetched, fetching, entity } = this.props;
+    const {
+      fetched,
+      fetching,
+      entity,
+      match: {
+        params: { donation_code, number_of_units }
+      }
+    } = this.props;
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
@@ -50,8 +66,8 @@ class Payment extends Component {
               <Form
                 key={1}
                 {...this.props}
-                donationCode={donationCode}
-                numberOfUnits={numberOfUnits}
+                donationCode={donation_code}
+                numberOfUnits={number_of_units}
               />
             ]}
           </BaseContentLayout>
@@ -67,7 +83,11 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
-  fetchCleanup: actions.fetch.cleanup
+  fetchCleanup: actions.fetch.cleanup,
+  doGiftcardInquiryRequest: actions.doGiftcardInquiry.request,
+  doGiftcardInquiryCleanup: actions.doGiftcardInquiry.cleanup,
+  confirmDonationRequest: actions.confirmDonation.request,
+  confirmDonationCleanup: actions.confirmDonation.cleanup
 };
 
 const enhance = C => {

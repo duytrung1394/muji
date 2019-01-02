@@ -27,11 +27,12 @@ export const fetchSuccess = (state, action) => {
     .set("fetched", true);
 };
 
-export const fetchFailure = (state, action) =>
-  state
+export const fetchFailure = (state, action) => {
+  return state
     .set("entities", [])
     .set("fetching", false)
     .set("fetchError", true);
+};
 
 export const fetchCleanup = (state, action) =>
   state

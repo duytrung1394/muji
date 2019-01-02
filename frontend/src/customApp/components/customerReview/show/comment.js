@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
@@ -123,31 +123,32 @@ class Comment extends Component {
   }
 
   seeMore = () => {
-    this.props.fetchRequest("");
+    console.log("click seeMore");
   };
 
   render() {
-    const { entities } = this.props;
+    const { comments } = this.props;
     return (
       <div>
         <CommentTitle>
           <IntlMessages id="reviewDetail.comment" />
         </CommentTitle>
         <CommentArea>
-          {entities &&
-            entities.map((entity, index) => {
+          {(comments && comments.length > 0) ?
+          <Fragment>
+            {comments.map((entity, index) => {
               return (
-                <UserData>
+                <UserData key={ index }>
                   <Link to={``} style={LinkStyle} />
                   <UserIcon
-                    src={entity.user_icon}
+                    src={entity.user_image}
                     alt="itemImage"
                     width="60"
                     height="60"
                   />
                   <UserName>{entity.user_name}</UserName>
                   <Link to={`store/review/detail/${entity.jancode}`} />
-                  <Comments>{entity.detail_comment}</Comments>
+                  <Comments>{entity.comment}</Comments>
                   <ActionIcon>
                     <Popover
                       placement="bottomRight"
@@ -160,9 +161,12 @@ class Comment extends Component {
                 </UserData>
               );
             })}
-          {/* <NothingComment>
-                <IntlMessages id="reviewDetail.nothingComment" />
-            </NothingComment> */}
+          </Fragment>
+          :
+          < NothingComment >
+            <IntlMessages id="reviewDetail.nothingComment" />
+          </NothingComment>
+          }
           <SeeMore onClick={this.seeMore}>
             <SeeMoreIcon type="down" />
             <IntlMessages id="reviewDetail.seeMore" />

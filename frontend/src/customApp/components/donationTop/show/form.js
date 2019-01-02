@@ -167,7 +167,9 @@ class Form extends Component {
   };
 
   submit = () => {
-    this.props.requestHandler(this.state.entity);
+    // TODO: this.state.entity.numberOfUnits...
+    const numberOfUnits = 3;
+    this.props.requestHandler(numberOfUnits);
   };
 
   render() {
@@ -221,7 +223,7 @@ class Form extends Component {
                       <Option value="1">1</Option>
                     </StyledSelect>
                   </Quantity>
-                  <DonationButton>
+                  <DonationButton onClick={this.submit}>
                     <IntlMessages id="donationShow.donate" />
                   </DonationButton>
                 </div>

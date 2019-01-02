@@ -62,10 +62,31 @@ const routes = [
     )
   },
   {
-    path: "/store/review/detail/:item_code",
+    path: "/store/review/item/:item_code/post",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/new")
+    )
+  },
+  {
+    path: "/store/review/detail/:review_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerReview/show")
+    )
+  },
+  {
+    path: "/store/review/user/",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexByUser")
+    )
+  },
+  {
+    path: "/store/review/following/",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexByFollowing")
     )
   },
   {
@@ -136,6 +157,20 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/payment")
+    )
+  },
+  {
+    path: "/store/cart/donation/confirm/:donation_code/:number_of_units",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/confirm")
+    )
+  },
+  {
+    path: "/store/cart/donation/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/DonationTop/complete")
     )
   }
 ];

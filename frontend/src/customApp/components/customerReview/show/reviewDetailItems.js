@@ -99,7 +99,10 @@ const TagList = styled.ul`
 
 const TagItem = styled.li``;
 
-const TagImg = styled.img``;
+const TagImg = styled.img`
+  width: 120px;
+  height: 120px;
+`;
 
 const Question = styled.div`
   font-size: 12px;
@@ -150,44 +153,39 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const ReviewDetailItems = ({ reviewData }) => (
+const ReviewDetailItems = ({ entity, user }) => (
   <ItemsList>
     <StyledItem>
       <div>
         <SubData>
           <li>
             <StarWrapper>
-              <Star disabled defaultValue={reviewData.star} />
+              <Star disabled defaultValue={entity.star} />
             </StarWrapper>
           </li>
-          <SubDataDate>{reviewData.upload_date}</SubDataDate>
+          <SubDataDate>{entity.upload_date}</SubDataDate>
         </SubData>
 
-        <Link to={`store/review/detail/${reviewData.jancode}`}>
-          <CommentTitle>{reviewData.title}</CommentTitle>
-          <Comment>{reviewData.detail_comment}</Comment>
+        <Link to={`store/review/detail/${entity.jancode}`}>
+          <CommentTitle>{entity.title}</CommentTitle>
+          <Comment>{entity.detail_comment}</Comment>
         </Link>
         <UserData>
           <Link to={``} style={LinkStyle} />
           <UserIcon
-            src={reviewData.user_icon}
-            alt="itemImage"
-            width="60"
-            height="60"
+            src={user.user_image}
           />
-          <UserName>{reviewData.user_name}</UserName>
+          <UserName>{user.user_name}</UserName>
         </UserData>
       </div>
       <TagList>
-        {reviewData.tag_imgs.map((imgCode, index) => {
+        {entity.tag_imgs && entity.tag_imgs.map((imgCode, index) => {
           return (
             <TagItem key={index}>
               <Link to={``}>
                 <TagImg
                   src={`https://img.muji.net/img/item/${imgCode}_180.jpg`}
                   alt="itemImage"
-                  width="120"
-                  height="120"
                 />
               </Link>
             </TagItem>
@@ -198,21 +196,21 @@ const ReviewDetailItems = ({ reviewData }) => (
         <li>
           <CommentIcon type="message" />
           <Link to={``}>
-            <span>{reviewData.evaluations_comment_count}</span>
+            {/* <span>{entity.comments.count}</span> */}
             <IntlMessages id="reviewDetail.totalComment" />
           </Link>
         </li>
         <li>
           <CommentIcon type="like" />
           <Link to={``}>
-            <span>{reviewData.evaluations_useful_count}</span>
+            <span>{entity.count_helpful}</span>
             <IntlMessages id="reviewDetail.totalUsefull" />
           </Link>
         </li>
       </InfoList>
       <Question>
         <IntlMessages id="reviewDetail.question" />
-        {reviewData.selected_flg ? (
+        {entity.selected_flg ? (
           <UsefulButton>
             <IntlMessages id="reviewDetail.usefulButton" />
           </UsefulButton>

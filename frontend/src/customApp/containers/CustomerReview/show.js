@@ -18,16 +18,16 @@ const ContentLayout = styled(BaseContentLayout)`
   margin: 20px 0 0;
 `;
 
+// TODO: get user data from backend
+const user = {
+  user_image: "https://www.muji.com/jp/store/review/img/avatar_default.png",
+  user_name: "user name"
+};
+
 class Show extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest(this.props.match.params.review_code);
   }
 
   render() {
@@ -38,16 +38,16 @@ class Show extends Component {
       fetchRequest
     } = this.props;
 
-    if (entity.customer_reviews) {
+    if (entity) {
       return (
         <ContentAreaLayout>
           <Spin spinning={fetching || destroying} size="large">
             <ContentLayout>
-              <ListHeader reviewData={entity.customer_reviews[0]} />
-              <ReviewDetailItems reviewData={entity.customer_reviews[0]} />
+              <ListHeader entity={entity} />
+              <ReviewDetailItems entity={entity} user={user} />
               <ReviewPageing />
               <Comment
-                entities={entity.customer_reviews}
+                comments={entity.comments}
                 fetchRequest={fetchRequest}
               />
             </ContentLayout>
