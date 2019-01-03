@@ -172,31 +172,30 @@ const ReviewDetailItems = ({ entity, user }) => (
         </Link>
         <UserData>
           <Link to={``} style={LinkStyle} />
-          <UserIcon
-            src={user.user_image}
-          />
+          <UserIcon src={user.user_image} />
           <UserName>{user.user_name}</UserName>
         </UserData>
       </div>
       <TagList>
-        {entity.tag_imgs && entity.tag_imgs.map((imgCode, index) => {
-          return (
-            <TagItem key={index}>
-              <Link to={``}>
-                <TagImg
-                  src={`https://img.muji.net/img/item/${imgCode}_180.jpg`}
-                  alt="itemImage"
-                />
-              </Link>
-            </TagItem>
-          );
-        })}
+        {entity.tag_imgs &&
+          entity.tag_imgs.map((imgCode, index) => {
+            return (
+              <TagItem key={index}>
+                <Link to={``}>
+                  <TagImg
+                    src={`https://img.muji.net/img/item/${imgCode}_180.jpg`}
+                    alt="itemImage"
+                  />
+                </Link>
+              </TagItem>
+            );
+          })}
       </TagList>
       <InfoList>
         <li>
           <CommentIcon type="message" />
           <Link to={``}>
-            {/* <span>{entity.comments.count}</span> */}
+            <span>{entity.comments ? entity.comments.length : 0}</span>
             <IntlMessages id="reviewDetail.totalComment" />
           </Link>
         </li>

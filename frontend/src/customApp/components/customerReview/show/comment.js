@@ -134,39 +134,39 @@ class Comment extends Component {
           <IntlMessages id="reviewDetail.comment" />
         </CommentTitle>
         <CommentArea>
-          {(comments && comments.length > 0) ?
-          <Fragment>
-            {comments.map((entity, index) => {
-              return (
-                <UserData key={ index }>
-                  <Link to={``} style={LinkStyle} />
-                  <UserIcon
-                    src={entity.user_image}
-                    alt="itemImage"
-                    width="60"
-                    height="60"
-                  />
-                  <UserName>{entity.user_name}</UserName>
-                  <Link to={`store/review/detail/${entity.jancode}`} />
-                  <Comments>{entity.comment}</Comments>
-                  <ActionIcon>
-                    <Popover
-                      placement="bottomRight"
-                      content={<IntlMessages id="reviewDetail.delete" />}
-                      trigger="click"
-                    >
-                      <Icon type="ellipsis" />
-                    </Popover>
-                  </ActionIcon>
-                </UserData>
-              );
-            })}
-          </Fragment>
-          :
-          < NothingComment >
-            <IntlMessages id="reviewDetail.nothingComment" />
-          </NothingComment>
-          }
+          {comments && comments.length > 0 ? (
+            <Fragment>
+              {comments.map((entity, index) => {
+                return (
+                  <UserData key={index}>
+                    <Link to={``} style={LinkStyle} />
+                    <UserIcon
+                      src={entity.user_image}
+                      alt="itemImage"
+                      width="60"
+                      height="60"
+                    />
+                    <UserName>{entity.user_name}</UserName>
+                    <Link to={`store/review/detail/${entity.jancode}`} />
+                    <Comments>{entity.comment}</Comments>
+                    <ActionIcon>
+                      <Popover
+                        placement="bottomRight"
+                        content={<IntlMessages id="reviewDetail.delete" />}
+                        trigger="click"
+                      >
+                        <Icon type="ellipsis" />
+                      </Popover>
+                    </ActionIcon>
+                  </UserData>
+                );
+              })}
+            </Fragment>
+          ) : (
+            <NothingComment>
+              <IntlMessages id="reviewDetail.nothingComment" />
+            </NothingComment>
+          )}
           <SeeMore onClick={this.seeMore}>
             <SeeMoreIcon type="down" />
             <IntlMessages id="reviewDetail.seeMore" />

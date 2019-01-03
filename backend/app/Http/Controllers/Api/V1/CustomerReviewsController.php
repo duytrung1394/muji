@@ -161,7 +161,7 @@ class CustomerReviewsController extends Controller
                 'rating_count' => '6',
                 'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
                 'evaluations_comment_count' => 0,
-                'count_helpful' => 0,
+                'count_helpful' => 2,
                 'images'=>[
                     [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
                     [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],

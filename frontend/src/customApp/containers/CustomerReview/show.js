@@ -25,31 +25,26 @@ const user = {
 };
 
 class Show extends Component {
-
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.review_code);
   }
 
+  isFirstFetching = () => {
+    return !(this.props.entity && this.props.entity.comments && user);
+  };
+
   render() {
-    const {
-      entity,
-      fetching,
-      destroying,
-      fetchRequest
-    } = this.props;
+    const { entity, fetching, destroying, fetchRequest } = this.props;
 
     if (entity) {
       return (
         <ContentAreaLayout>
-          <Spin spinning={fetching || destroying} size="large">
+          <Spin spinning={this.isFirstFetching()} size="large">
             <ContentLayout>
               <ListHeader entity={entity} />
               <ReviewDetailItems entity={entity} user={user} />
               <ReviewPageing />
-              <Comment
-                comments={entity.comments}
-                fetchRequest={fetchRequest}
-              />
+              <Comment comments={entity.comments} fetchRequest={fetchRequest} />
             </ContentLayout>
           </Spin>
         </ContentAreaLayout>
