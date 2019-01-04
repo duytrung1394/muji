@@ -66,6 +66,7 @@ class Index extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { entities, fetching, fetched, destroying } = this.props;
     const profile = [];
     return (
