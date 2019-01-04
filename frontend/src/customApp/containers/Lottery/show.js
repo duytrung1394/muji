@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 
 class Show extends Component {
   componentDidMount() {
-    this.props.request(this.props.match.params.lottery_code);
+    this.props.request(this.props.match.params.lucky_code);
   }
 
   render() {

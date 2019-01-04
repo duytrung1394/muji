@@ -160,14 +160,14 @@ const routes = [
     )
   },
   {
-    path: "/store/lotteries",
+    path: "/store/lucky",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Lottery/index")
     )
   },
   {
-    path: "/store/lotteries/:lottery_code",
+    path: "/store/lucky/:lucky_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Lottery/show")
