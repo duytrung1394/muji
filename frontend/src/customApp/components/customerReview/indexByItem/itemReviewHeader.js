@@ -5,17 +5,17 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 
 const Link = styled.a``;
 
-const ProductWrapper = styled.div`
+const ItemWrapper = styled.div`
   display: flex;
 `;
 
-const ProductIcon = styled.img`
+const ItemIcon = styled.img`
   width: 60px;
   height: 60px;
   padding-right: 10px;
 `;
 
-const ProductItem = styled.ul`
+const ItemItem = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -23,7 +23,7 @@ const ProductItem = styled.ul`
   color: #333;
 `;
 
-const ProductTitle = styled.li`
+const ItemTitle = styled.li`
   font-size: 14px;
   font-weight: bold;
 `;
@@ -56,31 +56,35 @@ const data = {
   url: "https://www.muji.net/img/item/4550002560928_180.jpg",
   title: "ウールシルク洗えるVネックセーター",
   rate: 4,
-  evaluation: "5つ星のうち4.1",
-  review: "13件のレビュー"
+  evaluation: "4.1",
+  review: "13"
 };
 
-const ProductReviewHeader = () => {
+const ItemReviewHeader = () => {
   return (
     <Fragment>
       <Link to="">
-        <ProductWrapper>
-          <ProductIcon src={data.url} alt="" />
-          <ProductItem>
-            <ProductTitle>{data.title}</ProductTitle>
+        <ItemWrapper>
+          <ItemIcon src={data.url} alt="" />
+          <ItemItem>
+            <ItemTitle>{data.title}</ItemTitle>
             <li>
               <StarWrapper>
                 <Star disabled defaultValue={data.rate} />
               </StarWrapper>
-              <span>{data.evaluation}</span>
+              <IntlMessages id="customerReview.fiveStarsEvaluation" />
+              {data.evaluation}
             </li>
-            <li>{data.review}</li>
-          </ProductItem>
-        </ProductWrapper>
+            <li>
+              {data.review}
+              <IntlMessages id="customerReview.ReviewCount" />
+            </li>
+          </ItemItem>
+        </ItemWrapper>
       </Link>
       <RightIcon type="right" />
     </Fragment>
   );
 };
 
-export default ProductReviewHeader;
+export default ItemReviewHeader;

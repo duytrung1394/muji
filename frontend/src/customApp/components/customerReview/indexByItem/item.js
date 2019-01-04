@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "../../form/link";
-import { Icon, Rate, Popover } from "antd";
+import { Icon, Rate } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ReviewStyle = styled.li`
@@ -114,7 +114,7 @@ const UsefulButton = styled.button`
   weight: 100;
 `;
 
-const ProductReviewList = ({ entity }) => (
+const Item = ({ entity }) => (
   <ReviewStyle>
     <ReviewContent>
       <div>
@@ -165,4 +165,4 @@ const ProductReviewList = ({ entity }) => (
   </ReviewStyle>
 );
 
-export default ProductReviewList;
+export default Item;

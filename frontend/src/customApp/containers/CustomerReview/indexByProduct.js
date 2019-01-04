@@ -9,8 +9,8 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import Header from "../../components/customerReview/list/header";
-import ProductReviewHeader from "../../components/customerReview/indexByProduct/productReviewHeader";
-import ProductReviewItem from "../../components/customerReview/indexByProduct/item";
+import ItemReviewHeader from "../../components/customerReview/indexByItem/itemReviewHeader";
+import Item from "../../components/customerReview/indexByItem/item";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";
 
@@ -65,7 +65,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <ProductReviewHeader profile={profile} />
+          <ItemReviewHeader profile={profile} />
           <Header sort={[]} listBackgroundColor={"#eee"} />
         </ContentLayout>
         <ContentLayout>
@@ -77,7 +77,7 @@ class Index extends Component {
               <ItemsList>
                 {entities &&
                   entities.map((entity, index) => (
-                    <ProductReviewItem entity={entity} key={index} />
+                    <Item entity={entity} key={index} />
                   ))}
               </ItemsList>
             ) : null}
