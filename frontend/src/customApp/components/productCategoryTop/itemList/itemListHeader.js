@@ -12,12 +12,16 @@ const ItemListHeaderWrapper = styled.div`
 `;
 
 const SortLinkWrapper = styled.span`
+  font-size: 14px;
+  a {
+    font-size: 12px;
+  }
   :after {
     padding: 0 10px;
     content: "/";
   }
   :last-child:after {
-    content: none;
+    content: "";
   }
 `;
 
