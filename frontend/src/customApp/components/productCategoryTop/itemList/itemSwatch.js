@@ -18,18 +18,11 @@ const Swatch = styled(Col)`
 `;
 
 const ImageWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-
-  :hover {
-    border: 2px solid grey;
-  }
+  width: 34px;
+  height: 34px;
 
   img {
-    border-radius: 50%;
-    padding: 1px;
-    border: 1px solid white;
+    border: 1px solid #585858;
   }
 `;
 
