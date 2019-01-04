@@ -5,7 +5,6 @@ import restReducer, { restInitState } from "../../shared/list/reducer";
 const customRestInitState = restInitState.merge(
   Map({
     // TODO: fix
-    entities: [],
     sortFlg: false
   })
 );
