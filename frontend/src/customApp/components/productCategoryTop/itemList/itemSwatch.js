@@ -9,7 +9,7 @@ const Swatch = styled(Col)`
   &&& {
     font-size: 12px;
     cursor: pointer;
-    margin: 0 2px;
+    margin: 2px 2px;
   }
 
   .anticon {
