@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon } from "antd";
-import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 
@@ -54,14 +53,10 @@ class ItemSwatch extends Component {
           onMouseOver={() => changeSwatch(swatch.jancode, swatch.nostock)}
         >
           <ImageWrapper>
-            <Link to={``}>
-              <img
-                src={`https://img.muji.net/img/item/${
-                  swatch.jancode
-                }_99_95.jpg`}
-                alt=""
-              />
-            </Link>
+            <img
+              src={`https://img.muji.net/img/item/${swatch.jancode}_99_95.jpg`}
+              alt=""
+            />
           </ImageWrapper>
         </Swatch>
       );

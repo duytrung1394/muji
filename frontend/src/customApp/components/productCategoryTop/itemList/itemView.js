@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Col } from "antd";
 import ItemSwatch from "./itemSwatch";
@@ -97,12 +98,14 @@ class ItemView extends Component {
     }_400.jpg`;
     return (
       <Item xs={12} sm={12} md={8} lg={8} xl={5}>
-        <div>
-          <img src={image} alt="" />
-        </div>
-        <ItemTag tags={tags} nostock={this.state.nostock} />
-        <Material>{material}</Material>
-        <Title>{title}</Title>
+        <Link to={``}>
+          <div>
+            <img src={image} alt="" />
+          </div>
+          <ItemTag tags={tags} nostock={this.state.nostock} />
+          <Material>{material}</Material>
+          <Title>{title}</Title>
+        </Link>
         <SizeRange minSize={minSize} maxSize={maxSize} />
         <ItemSwatch
           swatches={swatches}
