@@ -13,4 +13,4 @@ const actions = createActions({
   }
 });
 
-export default actions.customerReview.list;
+export default actions.customerReview.entity;
