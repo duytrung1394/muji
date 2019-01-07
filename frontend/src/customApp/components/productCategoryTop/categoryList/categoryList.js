@@ -65,7 +65,7 @@ const ItemIcon = props => {
   };
   return (
     <StyledCol {...colLayout}>
-      <Link to={item.title}>
+      <Link to="">
         <Box>
           <img src={item.img_src} alt="" />
           {item.title && <span>{item.title}</span>}

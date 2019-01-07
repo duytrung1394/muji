@@ -98,7 +98,7 @@ class ItemView extends Component {
     }_400.jpg`;
     return (
       <Item xs={10} sm={10} md={8} lg={8} xl={5}>
-        <Link to={``}>
+        <Link to="">
           <div>
             <img src={image} alt="" />
           </div>
