@@ -97,7 +97,7 @@ class ItemView extends Component {
       this.state.currentJancode
     }_400.jpg`;
     return (
-      <Item xs={12} sm={12} md={8} lg={8} xl={5}>
+      <Item xs={10} sm={10} md={8} lg={8} xl={5}>
         <Link to={``}>
           <div>
             <img src={image} alt="" />
