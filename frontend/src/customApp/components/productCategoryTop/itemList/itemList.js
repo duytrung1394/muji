@@ -34,6 +34,11 @@ const ItemName = styled.span`
   padding: 0 10px;
 `;
 
+const ItemViewWrapper = styled.div`
+  display: flex;
+  overflow-x: scroll;
+`;
+
 const StyledLargeButton = styled(LargeButton)`
   border-radius: 30px;
   border: 1px solid #999;
@@ -53,7 +58,7 @@ const SeeMoreButton = props => (
 
 const ItemCountButtonWrapper = styled.div`
   text-align: center;
-  margin-bottom: 40px;
+  margin: 30px 0 40px 0;
 `;
 
 const Separator = styled.span`
@@ -87,9 +92,11 @@ const ItemList = props => {
           return (
             <div key={index}>
               <GroupName>{group.group_name}</GroupName>
-              {group.items.map((item, index) => {
-                return <ItemView {...item} key={index} />;
-              })}
+              <ItemViewWrapper>
+                {group.items.map((item, index) => {
+                  return <ItemView {...item} key={index} />;
+                })}
+              </ItemViewWrapper>
               <ItemCountButtonWrapper>
                 <ItemCountButton name={group.group_name} count={group.total} />
               </ItemCountButtonWrapper>
