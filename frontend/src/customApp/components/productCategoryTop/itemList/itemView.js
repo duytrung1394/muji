@@ -49,10 +49,9 @@ const PriceValue = styled.span`
   color: ${props => (props.isOldPrice ? "#999" : "#333")};
   text-decoration: ${props =>
     props.isOldPrice ? "line-through black" : "none"};
+  font-family: "Helvetica", sans-serif;
   span.price {
     font-size: ${props => (props.isOldPrice ? "inherit" : "15px")};
-    margin: 0 3px;
-    font-family: "Helvetica", sans-serif;
   }
 `;
 
@@ -60,7 +59,7 @@ const NewPriceValue = styled(PriceValue)`
   color: #7f0019;
   .arrow {
     color: #999;
-    margin-left: 0 3px;
+    margin: 3px;
   }
 `;
 
