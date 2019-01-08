@@ -16,7 +16,8 @@ const ItemTitle = styled.div`
   padding: 10px;
 `;
 
-const BoxShadow = styled.div`
+const LinkBoxShadow = styled.a`
+  display: block;
   box-shadow: 0 1px 3px 0 #585858;
   border-radius: 4px;
   width: 100%;
@@ -55,15 +56,13 @@ const Campaign = ({ campaigns }) => {
           campaigns.map((item, index) => {
             return (
               <StyledCol {...colLayout} key={index}>
-                <BoxShadow>
-                  <Link to="">
-                    <ItemImage
-                      src={`${settings.apiUrl}/${item.img_src}`}
-                      alt=""
-                    />
-                    <ItemTitle>{item.title}</ItemTitle>
-                  </Link>
-                </BoxShadow>
+                <LinkBoxShadow to="">
+                  <ItemImage
+                    src={`${settings.apiUrl}/${item.img_src}`}
+                    alt=""
+                  />
+                  <ItemTitle>{item.title}</ItemTitle>
+                </LinkBoxShadow>
               </StyledCol>
             );
           })}
