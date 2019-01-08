@@ -19,6 +19,7 @@ export const fetchRequest = (state, action) =>
 
 export const fetchSuccess = (state, action) => {
   return state
+    .set("entities",[...state.get("entities"), ...action.payload.data])
     .set("entities", action.payload.data)
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)

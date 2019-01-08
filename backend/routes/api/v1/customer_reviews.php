@@ -20,7 +20,7 @@ $router->get('/api/v1/customer-reviews', [
  */
 $router->get('/api/v1/customer-reviews/{itemCode}/{commentCode}', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@report',
+    'uses'          => 'Api\V1\CustomerReviewsController@getReportMock',
 ]);
 
 /**

@@ -43,6 +43,8 @@ const Date = styled.span`
 `;
 
 const ReportItem = ({ entities }) => {
+  if(entities.item && entities.comment){
+  const {item,comment} = entities;
   return (
     <CommentsReportContent>
       <CommentsReportContentTitle>
@@ -51,19 +53,20 @@ const ReportItem = ({ entities }) => {
       <CommentsReportData>
         <CommentsReportDataHead>
           <ItemImg
-            src={`https://img.muji.net/img/item/${entities.jancode}_180.jpg`}
+            src={`https://img.muji.net/img/item/${item.jancode}_180.jpg`}
           />
           <CommentsReportContentTitle>
-            {entities.product}
+            {item.product}
           </CommentsReportContentTitle>
         </CommentsReportDataHead>
         <ItemDescription>
-          <Description>{entities.detail_comment}</Description>
-          <Date>{entities.upload_date}</Date>
+          <Description>{comment}</Description>
+          <Date>{item.upload_date}</Date>
         </ItemDescription>
       </CommentsReportData>
     </CommentsReportContent>
   );
+  }return null;
 };
 
 export default ReportItem;

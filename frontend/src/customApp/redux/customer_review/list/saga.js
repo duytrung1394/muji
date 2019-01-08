@@ -5,7 +5,6 @@ import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
 const api = RESTListApi("customer-reviews", "codes");
-const listApi = RESTListApi("customer-reviews");
 const reportApi = RESTEntityApi("customer-reviews");
 const listByUserApi = RESTListApi("customer-reviews/user");
 const listByFollowingApi = RESTListApi("customer-reviews/following");
