@@ -17,7 +17,6 @@ const ItemTitle = styled.div`
 `;
 
 const LinkBoxShadow = styled.a`
-  display: block;
   box-shadow: 0 1px 3px 0 #585858;
   border-radius: 4px;
   width: 100%;
