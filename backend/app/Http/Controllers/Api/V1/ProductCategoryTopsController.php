@@ -132,6 +132,24 @@ class ProductCategoryTopsController extends Controller
                     'title' => '【ネットストア限定 配送料無料】先行予約（秋冬）',
                 ]
             ],
+            'campaigns' => [
+                [
+                    'img_src' => 'images/cmdty/woman/img/img-campaign-1.png',
+                    'title' => 'ネット限定 | 先行予約（秋冬）',
+                ],
+                [
+                    'img_src' => 'images/cmdty/woman/img/img-campaign-2.png',
+                    'title' => '伝統から学んだ、暮らしの服。',
+                ],
+                [
+                    'img_src' => 'images/cmdty/woman/img/img-campaign-3.png',
+                    'title' => '人と自然 ー直線栽ちの服ー',
+                ],
+                [
+                    'img_src' => 'images/cmdty/woman/img/img-campaign-4.png',
+                    'title' => '日本の布作りの旅（後編）',
+                ],
+            ],
             'sort_type'      => 'group',
             'total'          => 550,
             'groups' => [
@@ -141,9 +159,9 @@ class ProductCategoryTopsController extends Controller
                     'items'      => [
                         $this->getMockItemData(3),
                         $this->getMockItemData(4, ['new']),
-                        $this->getMockItemData(5, ['new', 'freeDelivery']),
-                        $this->getMockItemData(6, ['new', 'freeDelivery', 'campaign']),
-                        $this->getMockItemData(7, ['new', 'freeDelivery', 'discount']),
+                        $this->getMockItemData(5, ['discount']),
+                        $this->getMockItemData(6, ['early']),
+                        $this->getMockItemData(7, ['new', 'discount', 'early']),
                         $this->getMockItemData(8),
                         $this->getMockItemData(9),
                         $this->getMockItemData(10),
@@ -200,10 +218,13 @@ class ProductCategoryTopsController extends Controller
     private function getMockItemData($swatchNumber, $tags=[])
     {
         $item = [
-            'title' => '首のチクチクをおさえた洗えるタートルネックセーター',
+            'title' => 'タートルネックセーター',
+            'material' => 'ウールシルク洗える',
             'price' => 4900,
             'swatches' => $this->getMockSwatches($swatchNumber),
             'tags' => $tags,
+            'minSize' => 'XS',
+            'maxSize' => 'XXL',
         ];
 
         if (in_array("campaign", $tags) || in_array("discount", $tags)) {
@@ -219,6 +240,11 @@ class ProductCategoryTopsController extends Controller
     private function getMockSwatches($swatchNumber)
     {
         $swatches = [
+            [
+                'jancode' => '4550002032364',
+                'color_title' => 'バーガンディ',
+                'nostock' => false
+            ],
             [
                 'jancode' => '4549738163794',
                 'color_title' => 'モカブラウン',
@@ -282,11 +308,6 @@ class ProductCategoryTopsController extends Controller
             [
                 'jancode' => '4550002032302',
                 'color_title' => 'ブルー',
-                'nostock' => false
-            ],
-            [
-                'jancode' => '4550002032364',
-                'color_title' => 'バーガンディ',
                 'nostock' => false
             ],
         ];

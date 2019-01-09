@@ -26,33 +26,57 @@ const ContentPanelWrapper = styled(ContentPanel)`
 `;
 
 const GroupName = styled.h1`
-  border-bottom: 2px solid;
-  width: fit-content;
-  margin: 0 auto 40px;
+  font-size: 19px;
+  font-weight: bold;
 `;
 
 const ItemName = styled.span`
   padding: 0 10px;
 `;
 
-const SeeMoreButton = props => (
-  <LargeButton>
-    <IntlMessages id="productCategoryTop.button.seeMore" />
-  </LargeButton>
-);
-
-const NameWithItemCountButtonWrapper = styled.div`
-  text-align: center;
-  margin-bottom: 40px;
+const ItemViewWrapper = styled.div`
+  display: flex;
+  overflow-x: scroll;
 `;
 
-const NameWithItemCountButton = props => (
-  <LargeButton {...props}>
+const StyledLargeButton = styled(LargeButton)`
+  border-radius: 30px;
+  border: 1px solid #999;
+  background: #999;
+  color: #fafafa;
+  padding: 14px 0;
+  :hover {
+    color: #ffffff;
+  }
+`;
+
+const SeeMoreButton = props => (
+  <StyledLargeButton>
+    <IntlMessages id="productCategoryTop.button.seeMore" />
+  </StyledLargeButton>
+);
+
+const ItemCountButtonWrapper = styled.div`
+  text-align: center;
+  margin: 30px 0 40px 0;
+`;
+
+const Separator = styled.span`
+  padding: 0 10px;
+  :after {
+    content: "|";
+  }
+`;
+
+const ItemCountButton = props => (
+  <StyledLargeButton {...props}>
+    <IntlMessages id="productCategoryTop.button.showList" />
+    <Separator />
     <IntlMessages
-      id="productCategoryTop.button.nameWithItemCount"
-      values={{ name: <ItemName>{props.name}</ItemName>, count: props.count }}
+      id="productCategoryTop.button.itemCount"
+      values={{ count: props.count }}
     />
-  </LargeButton>
+  </StyledLargeButton>
 );
 
 const ItemList = props => {
@@ -68,15 +92,14 @@ const ItemList = props => {
           return (
             <div key={index}>
               <GroupName>{group.group_name}</GroupName>
-              {group.items.map((item, index) => {
-                return <ItemView {...item} key={index} />;
-              })}
-              <NameWithItemCountButtonWrapper>
-                <NameWithItemCountButton
-                  name={<ItemName>{group.group_name}</ItemName>}
-                  count={group.total}
-                />
-              </NameWithItemCountButtonWrapper>
+              <ItemViewWrapper>
+                {group.items.map((item, index) => {
+                  return <ItemView {...item} key={index} />;
+                })}
+              </ItemViewWrapper>
+              <ItemCountButtonWrapper>
+                <ItemCountButton name={group.group_name} count={group.total} />
+              </ItemCountButtonWrapper>
             </div>
           );
         })}
