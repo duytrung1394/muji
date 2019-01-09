@@ -17,28 +17,22 @@ const StyledButton = styled.button`
   color: #676767;
 `;
 
-const LeftArrowIcon = styled(Icon)`
+const ArrowIcon = styled(Icon)`
   position: absolute;
   top: 12px;
-  left: 10px;
-`;
-
-const RightArrowIcon = styled(Icon)`
-  position: absolute;
-  top: 12px;
-  right: 10px;
+  ${props => props.direction}: 10px;
 `;
 
 const ReviewPageing = () => {
   return (
     <Paging>
       <StyledButton>
-        <LeftArrowIcon type="left" />
+        <ArrowIcon type="left" direction={"left"} />
         <IntlMessages id="reviewDetail.previous" />
       </StyledButton>
       <StyledButton>
         <IntlMessages id="reviewDetail.next" />
-        <RightArrowIcon type="right" />
+        <ArrowIcon type="right" direction={"right"} />
       </StyledButton>
     </Paging>
   );

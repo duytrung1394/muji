@@ -9,13 +9,13 @@ import {
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
-import Comment from "../../components/customerReview/show/comment";
-import ListHeader from "../../components/customerReview/show/listHeader";
+import Comments from "../../components/customerReview/show/comments";
+import ListInfo from "../../components/customerReview/show/listInfo";
 import ReviewPageing from "../../components/customerReview/show/reviewPaging";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
-  margin: 20px 0 0;
+  margin: 20px auto 0;
 `;
 
 // TODO: get user data from backend
@@ -41,10 +41,13 @@ class Show extends Component {
         <ContentAreaLayout>
           <Spin spinning={this.isFirstFetching()} size="large">
             <ContentLayout>
-              <ListHeader entity={entity} />
+              <ListInfo entity={entity} />
               <ReviewDetailItems entity={entity} user={user} />
               <ReviewPageing />
-              <Comment comments={entity.comments} fetchRequest={fetchRequest} />
+              <Comments
+                comments={entity.comments}
+                fetchRequest={fetchRequest}
+              />
             </ContentLayout>
           </Spin>
         </ContentAreaLayout>

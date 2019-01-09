@@ -44,7 +44,7 @@ export default class extends Component {
 
         <Box
           title={<IntlMessages id="forms.transfer.Title" />}
-          subtitle={< id="forms.transfer.SubTitle" />}
+          subtitle={<IntlMessages id="forms.transfer.SubTitle" />}
         >
           <ContentHolder>
             <Transfer

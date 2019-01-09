@@ -89,21 +89,6 @@ const UserName = styled.span`
   font-weight: bold;
 `;
 
-const TagList = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin: 0 0 10px;
-  padding: 0;
-`;
-
-const TagItem = styled.li``;
-
-const TagImg = styled.img`
-  width: 120px;
-  height: 120px;
-`;
-
 const Question = styled.div`
   font-size: 12px;
   margin: 10px 0 0;
@@ -176,21 +161,6 @@ const ReviewDetailItems = ({ entity, user }) => (
           <UserName>{user.user_name}</UserName>
         </UserData>
       </div>
-      <TagList>
-        {entity.tag_imgs &&
-          entity.tag_imgs.map((imgCode, index) => {
-            return (
-              <TagItem key={index}>
-                <Link to={``}>
-                  <TagImg
-                    src={`https://img.muji.net/img/item/${imgCode}_180.jpg`}
-                    alt="itemImage"
-                  />
-                </Link>
-              </TagItem>
-            );
-          })}
-      </TagList>
       <InfoList>
         <li>
           <CommentIcon type="message" />

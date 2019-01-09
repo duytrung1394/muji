@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Icon } from "antd";
 
-const Header = styled.div`
+const Info = styled.div`
   margin: 30px 0;
   font-size: 12px;
 `;
 
-const ReviewItemHeader = styled.div`
+const ReviewItemInfo = styled.div`
   position: relative;
 `;
 
@@ -38,10 +38,10 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const ListHeader = ({ entity }) => {
+const ListInfo = ({ entity }) => {
   return (
-    <Header>
-      <ReviewItemHeader>
+    <Info>
+      <ReviewItemInfo>
         <Link to={``} style={LinkStyle} />
         <ItemImg
           src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
@@ -51,9 +51,9 @@ const ListHeader = ({ entity }) => {
         />
         <ReviewTitle>{entity.product}</ReviewTitle>
         <RigthArrow type="right" />
-      </ReviewItemHeader>
-    </Header>
+      </ReviewItemInfo>
+    </Info>
   );
 };
 
-export default ListHeader;
+export default ListInfo;

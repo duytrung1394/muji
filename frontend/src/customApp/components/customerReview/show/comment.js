@@ -1,50 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
 import { Icon, Popover } from "antd";
-
-const CommentTitle = styled.div`
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-`;
-
-const CommentArea = styled.div`
-  margin-bottom: 10px;
-`;
-
-const StyledTextArea = styled.textarea`
-  max-width: 650px;
-  width: 90%;
-  height: 40px;
-  background-color: #f7f7f7;
-  over-flow: scroll;
-  border: none;
-  padding: 10px 0 0 10px;
-  resize: none;
-  border-radius: 20px;
-  .ant-input {
-    &:focus {
-      border-color: #fff;
-    }
-  }
-`;
-
-const PostComment = styled.div`
-  position: relative;
-`;
-
-const PostButton = styled.button`
-  font-size: 36px;
-  position: absolute;
-  top: 0;
-  right: 5px;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-  color: #d8d8d8;
-`;
 
 const UserData = styled.div`
   position: relative;
@@ -66,12 +24,6 @@ const UserName = styled.span`
   font-weight: bold;
 `;
 
-const Comments = styled.p`
-  font-size: 14px;
-  color: #333;
-  margin-top: 10px;
-`;
-
 const ActionIcon = styled.div`
   margin-right: 10px;
   font-size: 16px;
@@ -83,29 +35,10 @@ const ActionIcon = styled.div`
   z-index: 10;
 `;
 
-const NothingComment = styled.div`
-  padding: 10px 0 20px;
-  text-align: center;
-  margin-bottom: 30px;
-`;
-
-const SeeMore = styled.div`
-  text-align: center;
-  color: #9e9e9e;
+const Comments = styled.p`
   font-size: 14px;
-  margin-bottom: 20px;
-  cursor: pointer;
-`;
-
-const SeeMoreIcon = styled(Icon)`
-  font-size: 12px;
-`;
-
-const VaridateMessage = styled.div`
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
 `;
 
 const LinkStyle = {
@@ -117,73 +50,36 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-class Comment extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  seeMore = () => {
-    console.log("click seeMore");
-  };
-
-  render() {
-    const { comments } = this.props;
-    return (
-      <div>
-        <CommentTitle>
-          <IntlMessages id="reviewDetail.comment" />
-        </CommentTitle>
-        <CommentArea>
-          {comments && comments.length > 0 ? (
-            <Fragment>
-              {comments.map((entity, index) => {
-                return (
-                  <UserData key={index}>
-                    <Link to={``} style={LinkStyle} />
-                    <UserIcon
-                      src={entity.user_image}
-                      alt="itemImage"
-                      width="60"
-                      height="60"
-                    />
-                    <UserName>{entity.user_name}</UserName>
-                    <Link to={`store/review/detail/${entity.jancode}`} />
-                    <Comments>{entity.comment}</Comments>
-                    <ActionIcon>
-                      <Popover
-                        placement="bottomRight"
-                        content={<IntlMessages id="reviewDetail.delete" />}
-                        trigger="click"
-                      >
-                        <Icon type="ellipsis" />
-                      </Popover>
-                    </ActionIcon>
-                  </UserData>
-                );
-              })}
-            </Fragment>
-          ) : (
-            <NothingComment>
-              <IntlMessages id="reviewDetail.nothingComment" />
-            </NothingComment>
-          )}
-          <SeeMore onClick={this.seeMore}>
-            <SeeMoreIcon type="down" />
-            <IntlMessages id="reviewDetail.seeMore" />
-          </SeeMore>
-        </CommentArea>
-        <PostComment>
-          <StyledTextArea placeholder="コメントする" />
-          <PostButton>
-            <Icon type="mail" />
-          </PostButton>
-          <VaridateMessage>
-            <IntlMessages id="reviewDetail.varidateMessage" />
-          </VaridateMessage>
-        </PostComment>
-      </div>
-    );
-  }
-}
+const Comment = ({ comments }) => {
+  return (
+    <Fragment>
+      {comments.map((entity, index) => {
+        return (
+          <UserData key={index}>
+            <Link to={``} style={LinkStyle} />
+            <UserIcon
+              src={entity.user_image}
+              alt="itemImage"
+              width="60"
+              height="60"
+            />
+            <UserName>{entity.user_name}</UserName>
+            <Link to={`store/review/detail/${entity.jancode}`} />
+            <Comments>{entity.comment}</Comments>
+            <ActionIcon>
+              <Popover
+                placement="bottomRight"
+                content={<IntlMessages id="reviewDetail.delete" />}
+                trigger="click"
+              >
+                <Icon type="ellipsis" />
+              </Popover>
+            </ActionIcon>
+          </UserData>
+        );
+      })}
+    </Fragment>
+  );
+};
 
 export default Comment;
