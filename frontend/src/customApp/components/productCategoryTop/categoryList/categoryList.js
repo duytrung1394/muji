@@ -3,75 +3,60 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
 import styled from "styled-components";
 
-const iconImageSize = 107;
-const iconImageMargin = 10;
-
-export const ListBoxRow = styled(Row)`
-  // border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
+const StyledCol = styled(Col)`
+  display: flex;
 `;
 
-export const StyledCol = styled(Col)`
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  margin: 0;
-  padding-bottom: 10px;
-
-  img {
-    height: ${iconImageSize}px;
-    width: ${iconImageSize}px;
-    margin: ${iconImageMargin}px;
-  }
-
-  span {
-    display: block;
-    vertical-align: middle;
-    font-size: 13px;
-    word-wrap: break-word;
-    padding: 10px;
-    color: #000;
-  }
-`;
-
-const Box = styled.div`
-  border-radius: 4px;
+const LinkBoxShadow = styled(Link)`
   box-shadow: 0 1px 3px 0 #585858;
-  margin: 10px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
 `;
+
+const Image = styled.img`
+  max-width: 110px;
+`;
+
+const Title = styled.div`
+  color: #585858;
+  text-align: center;
+  padding: 10px;
+`;
+
+const rowGutter = {
+  xs: 16,
+  sm: 16,
+  md: 24,
+  xl: 24
+};
+
+const colLayout = {
+  xs: 12,
+  sm: 8,
+  md: 6,
+  xl: 4
+};
 
 const CategoryList = ({ innerCategories }) => {
   if (!innerCategories) {
     return null;
   }
   return (
-    <ListBoxRow type="flex" justify="normal" align="top">
+    <Row type="flex" gutter={rowGutter}>
       {innerCategories &&
         innerCategories.map((item, index) => {
-          return <ItemIcon key={index} item={item} />;
+          return (
+            <StyledCol {...colLayout} key={index}>
+              <LinkBoxShadow to="">
+                <Image src={item.img_src} alt="" />
+                {item.title && <Title>{item.title}</Title>}
+              </LinkBoxShadow>
+            </StyledCol>
+          );
         })}
-    </ListBoxRow>
-  );
-};
-
-const ItemIcon = props => {
-  const { item } = props;
-  const colLayout = {
-    xs: 12,
-    sm: 8,
-    md: 6,
-    xl: 4
-  };
-  return (
-    <StyledCol {...colLayout}>
-      <Link to="">
-        <Box>
-          <img src={item.img_src} alt="" />
-          {item.title && <span>{item.title}</span>}
-        </Box>
-      </Link>
-    </StyledCol>
+    </Row>
   );
 };
 

@@ -16,7 +16,7 @@ const ItemTitle = styled.div`
   padding: 10px;
 `;
 
-const LinkBoxShadow = styled.a`
+const LinkBoxShadow = styled(Link)`
   box-shadow: 0 1px 3px 0 #585858;
   border-radius: 4px;
   width: 100%;
