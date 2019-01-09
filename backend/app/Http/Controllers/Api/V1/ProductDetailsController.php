@@ -13,7 +13,7 @@ class ProductDetailsController extends Controller
     public function index(string $janCode)
     {
         return [
-            'item'  => $this->getMockData($janCode),
+            'data'  => $this->getMockData($janCode),
         ];
     }
 
