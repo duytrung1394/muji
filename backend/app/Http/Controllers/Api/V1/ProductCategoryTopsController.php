@@ -13,7 +13,7 @@ class ProductCategoryTopsController extends Controller
     public function index(string $categoryCode)
     {
         return [
-            'item' => $this->getMockdata($categoryCode),
+            'data' => $this->getMockdata($categoryCode),
         ];
     }
 
@@ -23,6 +23,12 @@ class ProductCategoryTopsController extends Controller
     private function getMockData($categoryCode)
     {
         return [
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
+                ],
+            ],
             'category_code'  => $categoryCode,
             'category_title' => "婦人ウェア",
             'article' => [

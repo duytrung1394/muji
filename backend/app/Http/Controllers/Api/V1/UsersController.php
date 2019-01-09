@@ -487,7 +487,7 @@ class UsersController extends Controller {
     public function show($id)
     {
         return [
-            'item' => User::find($id),
+            'data' => User::find($id),
         ];
     }
 
@@ -521,7 +521,7 @@ class UsersController extends Controller {
         $user->save();
 
         return [
-            'item' => $user->toArray(),
+            'data' => $user->toArray(),
         ];
     }
 
@@ -571,7 +571,7 @@ class UsersController extends Controller {
         $user->save();
 
         return [
-            'item' => $user->toArray(),
+            'data' => $user->toArray(),
         ];
     }
 

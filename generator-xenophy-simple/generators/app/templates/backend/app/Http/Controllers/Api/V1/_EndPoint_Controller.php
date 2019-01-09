@@ -19,6 +19,18 @@ class <%= EndPoint %>Controller extends Controller
     }
 
     /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function create()
+     {
+         return [
+             'data' => new \stdClass,
+         ];
+     }
+
+   /**
      * Display the specified resource.
      *
      * @param  string   $<%= camelCase(pkName) %>
@@ -27,7 +39,7 @@ class <%= EndPoint %>Controller extends Controller
     public function show($<%= camelCase(pkName) %>)
     {
         return [
-            'item' => $this->getMockdata($<%= camelCase(pkName) %>),
+            'data' => $this->getMockdata($<%= camelCase(pkName) %>),
         ];
     }
 

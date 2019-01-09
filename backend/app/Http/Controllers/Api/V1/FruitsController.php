@@ -19,6 +19,18 @@ class FruitsController extends Controller
     }
 
     /**
+      * Show the form for creating a new resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function create()
+     {
+         return [
+             'data' => new \stdClass,
+         ];
+     }
+
+    /**
      * Display the specified resource.
      *
      * @param  string   $fruitCode
@@ -27,7 +39,7 @@ class FruitsController extends Controller
     public function show($fruitCode)
     {
         return [
-            'item' => $this->getMockdata($fruitCode),
+            'data' => $this->getMockdata($fruitCode),
         ];
     }
 
@@ -40,7 +52,9 @@ class FruitsController extends Controller
     public function store(Request $request)
     {
         return [
-            'data' => [],
+            'data' => [
+                'fruit_code'   => 'fruit_code' . rand(0, 199),
+            ],
         ];
     }
 
