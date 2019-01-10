@@ -5,6 +5,7 @@ import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import ContentHeader from "../../components/header/contentHeader";
 import Article from "../../components/productCategoryTop/article";
+import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
 import ContentAreaLayout from "../../components/panel/contentLayout";
@@ -27,6 +28,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ContentHeader title={entity.category_title} links={entity.links} />
           <Article article={entity.article} />
+          <PopularityRanking rankings={entity.rankings} />
           <CategoryList innerCategories={entity.innerCategories} />
           <Campaign campaigns={entity.campaigns} />
           <ItemList {...entity} />

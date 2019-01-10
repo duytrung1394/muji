@@ -50,23 +50,28 @@ class ProductCategoryTopsController extends Controller
             ],
             'rankings' => [
                 [
-                    'title' => 'ウールシルク洗えるVネックセーター',
+                    'material' => 'ウールシルク',
+                    'title' => '洗えるVネックセーター',
                     'img' => '//img.muji.net/img/item/4550002561062_1260.jpg'
                 ],
                 [
-                    'title' => 'ウールシルク洗えるクルーネックセーター',
+                    'material' => 'ウールシルク',
+                    'title' => '洗えるクルーネックセーター',
                     'img' => '//img.muji.net/img/item/4550002557867_1260.jpg'
                 ],
                 [
-                    'title' => '首のチクチクをおさえた・洗えるタートルネックセーター',
+                    'material' => '首のチクチクをおさえた',
+                    'title' => '洗えるタートルネックセーター',
                     'img' => '//img.muji.net/img/item/4550002687540_1260.jpg'
                 ],
                 [
-                    'title' => 'ヤクウールVネックセーター',
+                    'material' => 'ヤクウール',
+                    'title' => 'Vネックセーター',
                     'img' => '//img.muji.net/img/item/4550002691622_1260.jpg'
                 ],
                 [
-                    'title' => 'ウールシルク洗えるワイドリブボトルネックセーター',
+                    'material' => 'ウールシルク',
+                    'title' => '洗えるワイドリブボトルネックセーター',
                     'img' => '//img.muji.net/img/item/4550002558239_1260.jpg'
                 ]
             ],
