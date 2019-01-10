@@ -9,10 +9,11 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
-import CommentList from "../../components/customerReview/show/commentList";
 import ListInfo from "../../components/customerReview/show/listInfo";
+import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
 import ReviewPageing from "../../components/customerReview/show/reviewPaging";
+import CommentList from "../../components/customerReview/show/commentList";
+import CommentForm from "../../components/customerReview/show/commentForm";
 import Notices from "../../components/customerReview/notices";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -31,49 +32,6 @@ const SeeMore = styled.div`
 const SeeMoreIcon = styled(Icon)`
   font-size: 12px;
 `;
-
-const PostComment = styled.div`
-  position: relative;
-`;
-
-const StyledTextArea = styled.textarea`
-  max-width: 650px;
-  width: 90%;
-  height: 40px;
-  background-color: #f7f7f7;
-  over-flow: scroll;
-  border: none;
-  padding: 10px 0 0 10px;
-  resize: none;
-  border-radius: 20px;
-  .ant-input {
-    &:focus {
-      border-color: #fff;
-    }
-  }
-`;
-
-const PostButton = styled.button`
-  font-size: 36px;
-  position: absolute;
-  top: 0;
-  right: 5px;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-  color: #d8d8d8;
-`;
-
-const CommentForm = () => {
-  return (
-    <PostComment>
-      <StyledTextArea placeholder="コメントする" />
-      <PostButton>
-        <Icon type="mail" />
-      </PostButton>
-    </PostComment>
-  );
-};
 
 // TODO: get user data from backend
 const user = {
