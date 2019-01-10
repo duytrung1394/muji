@@ -160,7 +160,7 @@ const routes = [
     )
   },
   {
-    path: "/store/lucky",
+    path: "/store/lucky/:section_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Lottery/index")

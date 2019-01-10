@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('/api/v1/lotteries', [
+$router->get('/api/v1/lotteries/{sectionCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\LotteriesController@index',
 ]);
@@ -17,7 +17,7 @@ $router->get('/api/v1/lotteries', [
 /**
  * 詳細取得
  */
-$router->get('/api/v1/lotteries/{taskCode}', [
+$router->get('/api/v1/lotteries/{taskCode}/{code}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\LotteriesController@show',
 ]);

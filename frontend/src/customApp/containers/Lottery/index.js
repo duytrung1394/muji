@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/lottery/list/actions";
+import actions from "../../redux/lottery/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
@@ -27,7 +27,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest(this.props.match.params.section_code);
   }
 
   // React.render
@@ -35,14 +35,14 @@ class Index extends Component {
     const {
       // types
       total,
-      entities,
+      entity,
       fetching,
       destroying,
       // react-router
       history
     } = this.props;
 
-    const { title, info_data, notes, list_items } = entities;
+    const { title, info_data, notes, list_items } = entity;
 
     return (
       <LayoutWrapper>
@@ -58,7 +58,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Lottery.List.toJS();
+  return state.Lottery.Entity.toJS();
 };
 
 const actionCreators = {
