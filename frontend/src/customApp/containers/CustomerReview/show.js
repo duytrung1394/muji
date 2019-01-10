@@ -2,21 +2,78 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
-import { Spin } from "antd";
+import { Spin, Icon } from "antd";
+import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
 import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
-import Comments from "../../components/customerReview/show/comments";
+import CommentList from "../../components/customerReview/show/commentList";
 import ListInfo from "../../components/customerReview/show/listInfo";
 import ReviewPageing from "../../components/customerReview/show/reviewPaging";
+import Notices from "../../components/customerReview/notices";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
   margin: 20px auto 0;
 `;
+
+const SeeMore = styled.div`
+  text-align: center;
+  color: #9e9e9e;
+  font-size: 14px;
+  margin-bottom: 20px;
+  cursor: pointer;
+`;
+
+const SeeMoreIcon = styled(Icon)`
+  font-size: 12px;
+`;
+
+const PostComment = styled.div`
+  position: relative;
+`;
+
+const StyledTextArea = styled.textarea`
+  max-width: 650px;
+  width: 90%;
+  height: 40px;
+  background-color: #f7f7f7;
+  over-flow: scroll;
+  border: none;
+  padding: 10px 0 0 10px;
+  resize: none;
+  border-radius: 20px;
+  .ant-input {
+    &:focus {
+      border-color: #fff;
+    }
+  }
+`;
+
+const PostButton = styled.button`
+  font-size: 36px;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  color: #d8d8d8;
+`;
+
+const CommentForm = () => {
+  return (
+    <PostComment>
+      <StyledTextArea placeholder="コメントする" />
+      <PostButton>
+        <Icon type="mail" />
+      </PostButton>
+    </PostComment>
+  );
+};
 
 // TODO: get user data from backend
 const user = {
@@ -33,6 +90,10 @@ class Show extends Component {
     return !(this.props.entity && this.props.entity.comments && user);
   };
 
+  seeMore = () => {
+    console.log("click seeMore");
+  };
+
   render() {
     const { entity, fetching, destroying, fetchRequest } = this.props;
 
@@ -44,10 +105,17 @@ class Show extends Component {
               <ListInfo entity={entity} />
               <ReviewDetailItems entity={entity} user={user} />
               <ReviewPageing />
-              <Comments
+              <CommentList
                 comments={entity.comments}
                 fetchRequest={fetchRequest}
               />
+
+              <SeeMore onClick={this.seeMore}>
+                <SeeMoreIcon type="down" />
+                <IntlMessages id="reviewDetail.seeMore" />
+              </SeeMore>
+              <CommentForm />
+              <Notices />
             </ContentLayout>
           </Spin>
         </ContentAreaLayout>
