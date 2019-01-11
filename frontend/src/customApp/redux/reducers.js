@@ -1,5 +1,6 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
+import Order from "./order/reducers";
 import CustomerReview from "./customer_review/reducers";
 import DonationTop from "./donation_top/reducers";
 import CustomerAddress from "./customer_address/reducers";
@@ -15,5 +16,6 @@ export default {
   ProductCategoryTop,
   CustomerAddress,
   CustomerReview,
-  DonationTop
+  DonationTop,
+  Order
 };

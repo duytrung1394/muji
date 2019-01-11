@@ -165,6 +165,27 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/complete")
     )
+  },
+  {
+    path: "/store/cust/orders",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/index")
+    )
+  },
+  {
+    path: "/store/cust/orders/purchaseHistory",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexPurchaseHistory")
+    )
+  },
+  {
+    path: "/orders/:order_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/show")
+    )
   }
 ];
 export default routes;
