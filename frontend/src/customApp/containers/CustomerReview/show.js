@@ -9,7 +9,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/panel/contentLayout";
-import ListInfo from "../../components/customerReview/show/listInfo";
+import ItemInfo from "../../components/customerReview/show/itemInfo";
 import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
 import ReviewPageing from "../../components/customerReview/show/reviewPaging";
 import CommentList from "../../components/customerReview/show/commentList";
@@ -60,7 +60,7 @@ class Show extends Component {
         <ContentAreaLayout>
           <Spin spinning={this.isFirstFetching()} size="large">
             <ContentLayout>
-              <ListInfo entity={entity} />
+              <ItemInfo entity={entity} />
               <ReviewDetailItems entity={entity} user={user} />
               <ReviewPageing />
               <CommentList
