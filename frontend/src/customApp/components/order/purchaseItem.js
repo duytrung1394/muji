@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Popover, Icon} from "antd";
+import { Popconfirm, Popover, Icon, message } from "antd";
+import IntlMessages from "../../../components/utility/intlMessages";
+import settings from "../../../settings";
 
 const PurchesItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
@@ -44,7 +46,9 @@ const ShoppingAddress = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  a, a:hover, a:focus {
+  a,
+  a:hover,
+  a:focus {
     color: rgb(96, 179, 250);
   }
 `;
@@ -67,20 +71,30 @@ const PurchesItemMenu = styled.div`
 const PurchesItemImage = styled.div`
   max-width: 120px;
   width: 40%;
+
+  img {
+    width: 100%;
+
+    a {
+      display: block;
+    }
+  }
 `;
 
 const PurchesItemDescribeList = styled.ul`
   margin-left: 15px;
   margin-bottom: 0px;
   width: calc(80% - 15px);
-  padding: 0;  
+  padding: 0;
   list-style: none;
 `;
 
 const PurchesItemDescribe = styled.li`
   line-height: 20px;
 
-  a, a:hover, a:focus {
+  a,
+  a:hover,
+  a:focus {
     color: rgb(0, 0, 0, 0.65);
   }
 `;
@@ -102,7 +116,7 @@ const EllipsisButton = styled.button`
   font-weight: bold;
   color: rgba(0, 0, 0, 0.36);
   border: 1px solid rgba(0, 0, 0, 0.36);
-  
+
   i {
     position: absolute;
     height: 30px;
@@ -138,16 +152,22 @@ const PurchesItemButton = styled.li`
     border-left: 1px solid #e5e5e5;
   }
 
-  a {
+  a,
+  p {
     display: block;
     padding: 12px 24px;
     position: relative;
     top: 50%;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
+  }
 
-    &, &:hover{
-      color: rgba(0, 0, 0, 0.65);
-    }
+  a,
+  a:hover {
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   i {
@@ -170,7 +190,6 @@ const PopoverContentWrapper = styled.ul`
   &:last-child {
     border-bottom: none;
   }
-
 `;
 
 const PopoverContent = styled.li`
@@ -188,34 +207,95 @@ const PopoverContent = styled.li`
     padding: 16px 5px;
     display: block;
 
-    &, &:hover {
+    &,
+    &:hover {
       color: rgba(0, 0, 0, 0.65);
     }
   }
 `;
 
 const canselButtonDisabled = {
-  'link': {color: "rgba(0, 0, 0, 0.4)"},
-  'icon': {color: "rgba(0, 0, 0, 0.09)"}
+  link: { color: "rgba(0, 0, 0, 0.4)" },
+  icon: { color: "rgba(0, 0, 0, 0.09)" }
 };
+
+const intlId = [
+  "order.purchesHistory.ellipsisButton.review",
+  "order.purchesHistory.ellipsisButton.favorite",
+  "order.purchesHistory.ellipsisButton.maintenanceParts"
+];
 
 const purchaseItemPopover = (
   <PopoverContentWrapper>
-    <PopoverContent><Link to={"#"}>レビューの投稿</Link></PopoverContent>
-    <PopoverContent><Link to={"#"}>お気に入り</Link></PopoverContent>
-    <PopoverContent><Link to={"#"}>メンテナンスパーツを見る</Link></PopoverContent>
+    {intlId.map((id, index) => {
+      return (
+        <PopoverContent key={index}>
+          <Link to={"#"}>
+            <IntlMessages id={id} />
+          </Link>
+        </PopoverContent>
+      );
+    })}
   </PopoverContentWrapper>
 );
 
-const PurchaseItem = ({purchaseItem}) => {
+const cancelConfirmText = (
+  <IntlMessages id="order.purchesHistory.cancelConfirm" />
+);
+
+const PurchaseItem = ({ purchaseItem }) => {
   const describeList = [
     purchaseItem.order_state,
     purchaseItem.item_num,
     purchaseItem.item_color,
     purchaseItem.item_size,
-    purchaseItem.item_price,
-  ]
-  return(
+    purchaseItem.item_price
+  ];
+
+  const cancelConfirm = () => {
+    message.info("キャンセル");
+  };
+
+  const buttonSwitch = type => {
+    let buttonText = {
+      return: "order.purchesHistory.returnProduct",
+      cancel: "order.purchesHistory.cancel"
+    };
+
+    switch (type) {
+      case 1:
+        return (
+          <Popconfirm
+            placement="topLeft"
+            title={cancelConfirmText}
+            onConfirm={cancelConfirm}
+            okText="はい"
+            cancelText="いいえ"
+          >
+            <Link to={"#"}>
+              <IntlMessages id={buttonText.cancel} />
+              <Icon type="right" />
+            </Link>
+          </Popconfirm>
+        );
+      case 2:
+        return (
+          <p style={canselButtonDisabled.link}>
+            <IntlMessages id={buttonText.return} />
+            <Icon type="right" style={canselButtonDisabled.icon} />
+          </p>
+        );
+      case 3:
+        return (
+          <Link to={"#"}>
+            <IntlMessages id={buttonText.return} />
+            <Icon type="right" />
+          </Link>
+        );
+    }
+  };
+
+  return (
     <PurchesItemWrapper>
       <PurchaseHistoryTitle to={"#"}>
         {purchaseItem.item_name}
@@ -223,58 +303,53 @@ const PurchaseItem = ({purchaseItem}) => {
       <PurchesItemInfo>
         <div>{purchaseItem.order_date}</div>
         <ShoppingAddress>
-          {
-            purchaseItem && purchaseItem.store_name ? (
-              <OrderAddress>{purchaseItem.order_address}</OrderAddress>
-            ) : (
-              <Link to={"#"}>{purchaseItem.store_name}</Link>
-            )
-          }
+          {purchaseItem && purchaseItem.order_address ? (
+            <OrderAddress>{purchaseItem.order_address}</OrderAddress>
+          ) : (
+            <Link to={"#"}>{purchaseItem.store_name}</Link>
+          )}
         </ShoppingAddress>
       </PurchesItemInfo>
       <PurchesItemMenu>
         <PurchesItemImage>
           <Link to={"#"}>
-            <img src={purchaseItem.img_src} alt="" />
+            <img src={`${settings.apiUrl}/${purchaseItem.img_src}`} alt="" />
           </Link>
         </PurchesItemImage>
         <PurchesItemDescribeList>
-          {
-            describeList.map((describe, index) => {
-              return (
-                <PurchesItemDescribe key={index}>
-                  <Link to={"#"}>{describe}</Link>
-                </PurchesItemDescribe>
-              );
-            })
-          }
+          {describeList.map((describe, index) => {
+            return (
+              <PurchesItemDescribe key={index}>
+                <Link to={"#"}>{describe}</Link>
+              </PurchesItemDescribe>
+            );
+          })}
         </PurchesItemDescribeList>
         <EllipsisButtonWrapper>
           <Popover
             placement="topRight"
             content={purchaseItemPopover}
-            trigger="click">
-              <EllipsisButton>
-                <Icon type="ellipsis"/>
-              </EllipsisButton>
+            trigger="click"
+          >
+            <EllipsisButton>
+              <Icon type="ellipsis" />
+            </EllipsisButton>
           </Popover>
         </EllipsisButtonWrapper>
       </PurchesItemMenu>
       <PurchesItemButtonWrapper>
         <PurchesItemButton>
-          <Link to={"#"} style={purchaseItem.cancel_button_disabled ? canselButtonDisabled.link : null}>
-            {purchaseItem.cancel_button}
-            <Icon type="right" style={purchaseItem.cancel_button_disabled ? canselButtonDisabled.icon : null}/>
-          </Link>
+          {buttonSwitch(purchaseItem.cancel_type)}
         </PurchesItemButton>
         <PurchesItemButton>
           <Link to={"#"}>
-            購入履歴詳細<Icon type="right" />
+            <IntlMessages id="order.purchesHistory.itemDetails" />
+            <Icon type="right" />
           </Link>
         </PurchesItemButton>
       </PurchesItemButtonWrapper>
     </PurchesItemWrapper>
   );
-}
+};
 
 export default PurchaseItem;

@@ -140,7 +140,8 @@ class OrdersController extends Controller
                 'item_price' => '税込495円',
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => false,
-                'img_src' => '/images/order/purchase_history/img-purchase-history-1.png',
+                'cancel_type' => 3,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
             ],
             [
                 'order_date' => '2018/11/21',
@@ -151,7 +152,8 @@ class OrdersController extends Controller
                 'item_price' => '税込495円',
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => false,
-                'img_src' => '/images/order/purchase_history/img-purchase-history-2.png',
+                'cancel_type' => 3,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-2.png',
             ],
             [
                 'order_date' => '2018/10/20',
@@ -164,7 +166,8 @@ class OrdersController extends Controller
                 'item_price' => '税込465円',
                 'cancel_button' => 'キャンセル',
                 'cancel_button_disabled' => false,
-                'img_src' => '/images/order/purchase_history/img-purchase-history-3.png',
+                'cancel_type' => 1,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-3.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -175,7 +178,8 @@ class OrdersController extends Controller
                 'item_price' => '税込24,000円',
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
-                'img_src' => '/images/order/purchase_history/img-purchase-history-4.png',
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
             ]
         ];
     }

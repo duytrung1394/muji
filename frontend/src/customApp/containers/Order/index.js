@@ -11,7 +11,6 @@ class Index extends Component {
     this.state = {
       selectedKeys: []
     };
-
   }
 
   // React methods
@@ -49,7 +48,7 @@ class Index extends Component {
         title: "Name",
         dataIndex: "name",
         key: "name"
-      },
+      }
     ];
 
     const rowSelection = {
@@ -67,7 +66,7 @@ class Index extends Component {
       onChange: page => {
         let url;
         if (page === 1) {
-          url = '/orders';
+          url = "/orders";
         } else {
           url = `/orders/page/${page}`;
         }
@@ -103,10 +102,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);

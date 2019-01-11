@@ -41,11 +41,6 @@ require_once 'api/v1/donation_tops.php';
 // /api/v1/customer-addresses
 require_once 'api/v1/customer_addresses.php';
 
-
-// /api/v1/order-histories
-require_once 'api/v1/order_histories.php';
-
-
 // /api/v1/orders
 require_once 'api/v1/orders.php';
 

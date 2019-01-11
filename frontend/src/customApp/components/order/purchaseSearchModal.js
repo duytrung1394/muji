@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Input, Select, Checkbox} from "antd";
+import { Input, Select, Checkbox } from "antd";
 
-const {Option} = Select;
+const { Option } = Select;
 
 const ModalContent = styled.div`
   h1 {
@@ -25,12 +25,13 @@ const CategoryCheckbox = styled.div`
     padding-top: 15px;
     margin-right: 10%;
     font-size: 13px;
-  
+
     & + label {
       margin-left: 0 !important;
     }
-  
-    &:nth-child(1), &:nth-child(2){
+
+    &:nth-child(1),
+    &:nth-child(2) {
       padding-top: 0px;
     }
 
@@ -55,7 +56,9 @@ const PurchaseSearchButton = styled.p`
     outline: none;
   }
 
-  button, button:hover, button:focus {
+  button,
+  button:hover,
+  button:focus {
     color: #585858;
     text-decoration: none;
   }
@@ -67,17 +70,9 @@ const yearSelect = {
 
 const monthSelect = {
   minWidth: "calc(2em + 22px + 12px)"
-}
+};
 
-
-const yearList = [
-  "2014",
-  "2015",
-  "2016",
-  "2017",
-  "2018",
-  "2019",
-];
+const yearList = ["2014", "2015", "2016", "2017", "2018", "2019"];
 
 const monthList = [
   "1",
@@ -91,7 +86,7 @@ const monthList = [
   "9",
   "10",
   "11",
-  "12",
+  "12"
 ];
 
 const categoryList = [
@@ -103,7 +98,7 @@ const categoryList = [
   "雑貨・日用品",
   "食品",
   "花・グリーン",
-  "産地直送",
+  "産地直送"
 ];
 
 const Label = styled.label`
@@ -120,69 +115,82 @@ const DateWrapper = styled.div`
 `;
 
 const PurchaseSearchModal = () => {
-    return(
-      <ModalContent>
-      <h1><IntlMessages id="item.search.show" /></h1>
-        <Input placeholder="フリーワード検索" />
-        <h2>購入期間</h2>
-        <DateWrapper>
-        <Select style={yearSelect} defaultValue={defaultYear} >
-          {
-          yearList.map((value, index) => {
-            return (
-            <Option key={index} value={value}>{value}</Option>
-            )
-          })
-          }
-        </Select>
-        <Label>年</Label>
-        <Select style={monthSelect} defaultValue={defaultMonth}>
-          {
-          monthList.map((value, index) => {
-            return (
-            <Option key={index} value={value}>{value}</Option>
-            )
-          })
-          }
-        </Select>
-        <Label>月 から</Label>
-        </DateWrapper>
-        <DateWrapper>
+  return (
+    <ModalContent>
+      <h1>
+        <IntlMessages id="item.search.show" />
+      </h1>
+      <Input placeholder="フリーワード検索" />
+      <h2>
+        <IntlMessages id="order.purchesHistory.searchModal.period.title" />
+      </h2>
+      <DateWrapper>
         <Select style={yearSelect} defaultValue={defaultYear}>
-          {
-          yearList.map((value, index) => {
+          {yearList.map((value, index) => {
             return (
-            <Option key={index} value={value}>{value}</Option>
-            )
-          })
-          }
+              <Option key={index} value={value}>
+                {value}
+              </Option>
+            );
+          })}
         </Select>
-        <Label>年</Label>
+        <Label>
+          <IntlMessages id="order.purchesHistory.searchModal.period.year" />
+        </Label>
         <Select style={monthSelect} defaultValue={defaultMonth}>
-          {
-          monthList.map((value, index) => {
+          {monthList.map((value, index) => {
             return (
-            <Option key={index} value={value}>{value}</Option>
-            )
-          })
-          }
+              <Option key={index} value={value}>
+                {value}
+              </Option>
+            );
+          })}
         </Select>
-        <Label>月</Label>
-        </DateWrapper>
-        <h2><IntlMessages id="item.show.category.title" /></h2>
-        <CategoryCheckbox>
-        {
-          categoryList.map((value, index) => {
-          return (
-            <Checkbox key={index}>{value}</Checkbox>
-          )
-          })
-        }
-        </CategoryCheckbox>
-        <PurchaseSearchButton>
-          <button to={"#"} >この条件で検索する</button>
-        </PurchaseSearchButton>
-      </ModalContent>
-    )
-  }
+        <Label>
+          <IntlMessages id="order.purchesHistory.searchModal.period.month" />{" "}
+          <IntlMessages id="order.purchesHistory.searchModal.period.to" />
+        </Label>
+      </DateWrapper>
+      <DateWrapper>
+        <Select style={yearSelect} defaultValue={defaultYear}>
+          {yearList.map((value, index) => {
+            return (
+              <Option key={index} value={value}>
+                {value}
+              </Option>
+            );
+          })}
+        </Select>
+        <Label>
+          <IntlMessages id="order.purchesHistory.searchModal.period.year" />
+        </Label>
+        <Select style={monthSelect} defaultValue={defaultMonth}>
+          {monthList.map((value, index) => {
+            return (
+              <Option key={index} value={value}>
+                {value}
+              </Option>
+            );
+          })}
+        </Select>
+        <Label>
+          <IntlMessages id="order.purchesHistory.searchModal.period.month" />
+        </Label>
+      </DateWrapper>
+      <h2>
+        <IntlMessages id="item.show.category.title" />
+      </h2>
+      <CategoryCheckbox>
+        {categoryList.map((value, index) => {
+          return <Checkbox key={index}>{value}</Checkbox>;
+        })}
+      </CategoryCheckbox>
+      <PurchaseSearchButton>
+        <button to={"#"}>
+          <IntlMessages id="order.purchesHistory.searchModal.submit" />
+        </button>
+      </PurchaseSearchButton>
+    </ModalContent>
+  );
+};
 export default PurchaseSearchModal;

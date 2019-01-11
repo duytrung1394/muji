@@ -16,21 +16,14 @@ const PurchaseItemListWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const PurchaseItemList = ({purchaseItemList}) => {
+const PurchaseItemList = ({ purchaseItemList }) => {
   return (
     <PurchaseItemListWrapper>
-      {
-        purchaseItemList.map((purchaseItem, index) => {
-          return(
-            <PurchaseItem
-              key={index}
-              purchaseItem={purchaseItem}
-            />
-          );
-        })
-      }
+      {purchaseItemList.map((purchaseItem, index) => {
+        return <PurchaseItem key={index} purchaseItem={purchaseItem} />;
+      })}
     </PurchaseItemListWrapper>
   );
-}
+};
 
 export default PurchaseItemList;
