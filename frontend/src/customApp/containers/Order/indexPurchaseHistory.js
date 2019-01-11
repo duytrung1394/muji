@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/order_history/list/actions";
+import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import PurchesSort from "../../components/order/purchaseSort";
+import PurchaseSort from "../../components/order/purchaseSort";
 import PurchaseItemList from "../../components/order/purchaseItemList";
 import styled from "styled-components";
 
@@ -18,7 +18,7 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-class IndexPurchaseHistory extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,9 +46,8 @@ class IndexPurchaseHistory extends Component {
 
     return (
       <LayoutWrapper>
-        test
         <Title><IntlMessages id="orderHistory.name" /></Title>
-        <PurchesSort/>
+        <PurchaseSort/>
         <PurchaseItemList
           purchaseItemList={entities}
         />
@@ -58,7 +57,7 @@ class IndexPurchaseHistory extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.PurchaseHistory.List.toJS();
+  return state.Order.List.toJS();
 };
 
 const actionCreators = {
@@ -73,4 +72,4 @@ const enhance = (C) => {
   return injected
 }
 
-export default enhance(IndexPurchaseHistory);
+export default enhance(Index);

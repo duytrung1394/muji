@@ -1,8 +1,7 @@
-import React,{Component} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Breadcrumb, Row, Col, Popover, Input, Modal, Select, Checkbox} from "antd";
+import { Input, Select, Checkbox} from "antd";
 
 const {Option} = Select;
 
@@ -41,7 +40,7 @@ const CategoryCheckbox = styled.div`
   }
 `;
 
-const OrderSearchButton = styled.p`
+const PurchaseSearchButton = styled.p`
   max-width: 300px;
   margin: 20px auto 0;
   text-align: center;
@@ -113,8 +112,6 @@ const Label = styled.label`
   font-size: 12px;
 `;
 
-// let defaultYear = "2019";
-// let defaultMonth = "1";
 let defaultYear = "";
 let defaultMonth = "";
 
@@ -122,7 +119,7 @@ const DateWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const OrderSearchModal = () => {
+const PurchaseSearchModal = () => {
     return(
       <ModalContent>
       <h1><IntlMessages id="item.search.show" /></h1>
@@ -182,10 +179,10 @@ const OrderSearchModal = () => {
           })
         }
         </CategoryCheckbox>
-        <OrderSearchButton>
+        <PurchaseSearchButton>
           <button to={"#"} >この条件で検索する</button>
-        </OrderSearchButton>
+        </PurchaseSearchButton>
       </ModalContent>
     )
   }
-export default OrderSearchModal;
+export default PurchaseSearchModal;

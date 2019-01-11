@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col, Popover } from "antd";
 import PurchaseItem from "./purchaseItem";
 
 const PurchaseItemListWrapper = styled.div`

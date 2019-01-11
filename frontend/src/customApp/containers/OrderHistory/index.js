@@ -46,7 +46,7 @@ class Index extends Component {
 
     return (
       <LayoutWrapper>
-        <Title><IntlMessages id="orderHistory.name" /></Title>
+        <Title>Order<IntlMessages id="orderHistory.name" /></Title>
         <Sort/>
         <OrderItemList
           orderItemList={entities}

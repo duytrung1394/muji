@@ -203,6 +203,7 @@ const orderPopover = (
 );
 
 const Order = ({orderItem}) => {
+  console.log({purchaseITem});
   const describeList = [
     orderItem.order_state,
     orderItem.item_num,

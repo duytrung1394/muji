@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Row, Col, Popover, Button, Icon} from "antd";
+import { Popover, Icon} from "antd";
 
-const OrderWrapper = styled.section`
+const PurchesItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
   margin: 20px 30px 0 0;
   border-radius: 4px;
@@ -16,7 +16,7 @@ const OrderWrapper = styled.section`
   }
 `;
 
-const OrderTitle = styled.h2`
+const PurchaseHistoryTitle = styled.h2`
   line-height: 16px;
   margin-top: 15px;
   padding: 0 16px;
@@ -28,7 +28,7 @@ const OrderTitle = styled.h2`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const OrderInfo = styled.div`
+const PurchesItemInfo = styled.div`
   margin-top: 13px;
   padding: 0 16px;
   display: flex;
@@ -49,12 +49,12 @@ const ShoppingAddress = styled.div`
   }
 `;
 
-const StoreName = styled.p`
+const OrderAddress = styled.p`
   display: inline;
   color: rgb(96, 179, 250);
 `;
 
-const OrderMenu = styled.div`
+const PurchesItemMenu = styled.div`
   position: relative;
   margin-top: 13px;
   min-height: 139px;
@@ -64,12 +64,12 @@ const OrderMenu = styled.div`
   border-top: 1px solid rgb(229, 229, 229);
 `;
 
-const OrderImage = styled.div`
+const PurchesItemImage = styled.div`
   max-width: 120px;
   width: 40%;
 `;
 
-const OrderDescribeList = styled.ul`
+const PurchesItemDescribeList = styled.ul`
   margin-left: 15px;
   margin-bottom: 0px;
   width: calc(80% - 15px);
@@ -77,7 +77,7 @@ const OrderDescribeList = styled.ul`
   list-style: none;
 `;
 
-const OrderDescribe = styled.li`
+const PurchesItemDescribe = styled.li`
   line-height: 20px;
 
   a, a:hover, a:focus {
@@ -116,7 +116,7 @@ const EllipsisButton = styled.button`
   }
 `;
 
-const OrderButtonWrapper = styled.ul`
+const PurchesItemButtonWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   padding: 0;
@@ -126,7 +126,7 @@ const OrderButtonWrapper = styled.ul`
   overflow: hidden;
 `;
 
-const OrderButton = styled.li`
+const PurchesItemButton = styled.li`
   width: 50%;
   position: relative;
   background: rgba(0, 0, 0, 0.05);
@@ -162,7 +162,7 @@ const OrderButton = styled.li`
   }
 `;
 
-const OrderPopoverWrapper = styled.ul`
+const PopoverContentWrapper = styled.ul`
   margin: -10px;
   padding: 0;
   border-bottom: 1px solid rgb(153, 153, 153);
@@ -173,7 +173,7 @@ const OrderPopoverWrapper = styled.ul`
 
 `;
 
-const OrderPopoverContent = styled.li`
+const PopoverContent = styled.li`
   list-style-type: none;
   list-style: none;
   text-align: center;
@@ -194,12 +194,17 @@ const OrderPopoverContent = styled.li`
   }
 `;
 
-const orderPopover = (
-  <OrderPopoverWrapper>
-    <OrderPopoverContent><Link to={"#"}>レビューの投稿</Link></OrderPopoverContent>
-    <OrderPopoverContent><Link to={"#"}>お気に入り</Link></OrderPopoverContent>
-    <OrderPopoverContent><Link to={"#"}>メンテナンスパーツを見る</Link></OrderPopoverContent>
-  </OrderPopoverWrapper>
+const canselButtonDisabled = {
+  'link': {color: "rgba(0, 0, 0, 0.4)"},
+  'icon': {color: "rgba(0, 0, 0, 0.09)"}
+};
+
+const purchaseItemPopover = (
+  <PopoverContentWrapper>
+    <PopoverContent><Link to={"#"}>レビューの投稿</Link></PopoverContent>
+    <PopoverContent><Link to={"#"}>お気に入り</Link></PopoverContent>
+    <PopoverContent><Link to={"#"}>メンテナンスパーツを見る</Link></PopoverContent>
+  </PopoverContentWrapper>
 );
 
 const PurchaseItem = ({purchaseItem}) => {
@@ -211,65 +216,64 @@ const PurchaseItem = ({purchaseItem}) => {
     purchaseItem.item_price,
   ]
   return(
-    <OrderWrapper>
-      <OrderTitle to={"#"}>
+    <PurchesItemWrapper>
+      <PurchaseHistoryTitle to={"#"}>
         {purchaseItem.item_name}
-      </OrderTitle>
-      <OrderInfo>
+      </PurchaseHistoryTitle>
+      <PurchesItemInfo>
         <div>{purchaseItem.order_date}</div>
         <ShoppingAddress>
           {
             purchaseItem && purchaseItem.store_name ? (
-              <StoreName>{purchaseItem.store_name}</StoreName>
+              <OrderAddress>{purchaseItem.order_address}</OrderAddress>
             ) : (
-              <Link to={"#"}>{purchaseItem.order_address}</Link>
+              <Link to={"#"}>{purchaseItem.store_name}</Link>
             )
           }
         </ShoppingAddress>
-      </OrderInfo>
-      <OrderMenu>
-        <OrderImage>
+      </PurchesItemInfo>
+      <PurchesItemMenu>
+        <PurchesItemImage>
           <Link to={"#"}>
-            {/* <img src={purchaseItem.img_src} alt=""/> */}
             <img src={purchaseItem.img_src} alt="" />
           </Link>
-        </OrderImage>
-        <OrderDescribeList>
+        </PurchesItemImage>
+        <PurchesItemDescribeList>
           {
             describeList.map((describe, index) => {
               return (
-                <OrderDescribe key={index}>
+                <PurchesItemDescribe key={index}>
                   <Link to={"#"}>{describe}</Link>
-                </OrderDescribe>
+                </PurchesItemDescribe>
               );
             })
           }
-        </OrderDescribeList>
+        </PurchesItemDescribeList>
         <EllipsisButtonWrapper>
           <Popover
             placement="topRight"
-            content={orderPopover}
+            content={purchaseItemPopover}
             trigger="click">
               <EllipsisButton>
                 <Icon type="ellipsis"/>
               </EllipsisButton>
           </Popover>
         </EllipsisButtonWrapper>
-      </OrderMenu>
-      <OrderButtonWrapper>
-        <OrderButton>
-          <Link to={"#"} style={purchaseItem.cancel_button_disabled ? {color: "rgba(0, 0, 0, 0.4)"} : null}>
+      </PurchesItemMenu>
+      <PurchesItemButtonWrapper>
+        <PurchesItemButton>
+          <Link to={"#"} style={purchaseItem.cancel_button_disabled ? canselButtonDisabled.link : null}>
             {purchaseItem.cancel_button}
-            <Icon type="right" style={purchaseItem.cancel_button_disabled ? {color: "rgba(0, 0, 0, 0.09)"} : null}/>
+            <Icon type="right" style={purchaseItem.cancel_button_disabled ? canselButtonDisabled.icon : null}/>
           </Link>
-        </OrderButton>
-        <OrderButton>
+        </PurchesItemButton>
+        <PurchesItemButton>
           <Link to={"#"}>
             購入履歴詳細<Icon type="right" />
           </Link>
-        </OrderButton>
-      </OrderButtonWrapper>
-    </OrderWrapper>
+        </PurchesItemButton>
+      </PurchesItemButtonWrapper>
+    </PurchesItemWrapper>
   );
 }
 

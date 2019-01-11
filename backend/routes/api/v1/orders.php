@@ -15,6 +15,14 @@ $router->get('/api/v1/orders', [
 ]);
 
 /**
+ * 購入履歴一覧取得
+ */
+$router->get('/api/v1/orders/purchase-history', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@indexPurchaseHistory',
+]);
+
+/**
   * 作成
   */
 $router->get('/api/v1/orders/create', [

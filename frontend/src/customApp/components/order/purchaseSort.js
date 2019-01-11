@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import styled from "styled-components";
-import { Breadcrumb, Row, Col, Popover, Input, Modal, Select, Checkbox} from "antd";
+import { Breadcrumb, Modal,} from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
-import OrderSearchModal from "../../components/orderHistory/orderSearchModal";
+import PurchaseSearchModal from "../../components/order/purchaseSearchModal";
 import { NavLink } from "react-router-dom";
 
 const SortTab = styled.div`
@@ -113,7 +113,7 @@ class Sort extends Component{
             onCancel={this.handleCancel}
             width = "400px"
           >
-            <OrderSearchModal />
+            <PurchaseSearchModal />
           </Modal>
       </SortTab>
     );

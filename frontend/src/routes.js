@@ -167,20 +167,6 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/orderHistories",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/OrderHistory/index")
-    )
-  },
-  {
-    path: "/store/cust/orderHistories/:order_history_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/OrderHistory/show")
-    )
-  },
-  {
     path: "/store/cust/orders",
     exact: true,
     component: asyncComponent(() =>
