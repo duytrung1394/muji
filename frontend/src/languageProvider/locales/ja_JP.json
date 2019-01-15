@@ -469,6 +469,7 @@
   "order.purchesHistory.returnProduct": "返品する",
   "order.purchesHistory.cancel": "キャンセル",
   "order.purchesHistory.cancelConfirm": "購入をキャンセルしますか？",
+  "order.reservationHistory.name": "店舗取り置き",
   "orderHistory.attributes.name": "名称",
   "orderHistory.attributes.order_history_code": "注文履歴コード",
   "orderHistory.name": "購入履歴",

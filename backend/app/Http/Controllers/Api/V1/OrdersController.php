@@ -31,6 +31,21 @@ class OrdersController extends Controller
             'total' => 200,
         ];
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function indexReservationHistory(Request $request)
+    {
+        return [
+            // 'data'  => $this->getMultiMockData( (int)$request->input('page') ),
+            'data'  => $this->getMultiMockData(),
+            'total' => 200,
+        ];
+    }
+
     /**
       * Show the form for creating a new resource.
       *
@@ -168,6 +183,126 @@ class OrdersController extends Controller
                 'cancel_button_disabled' => false,
                 'cancel_type' => 1,
                 'img_src' => 'images/order/purchase_history/img-purchase-history-3.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+            ],
+            [
+                'order_date' => '2018/11/23',
+                'order_state' => '配送中（2018/11/02 お届け予定）',
+                'order_address' => '東京都渋谷区宇田川町',
+                'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                'item_num' => '個数：1個',
+                'item_price' => '税込24,000円',
+                'cancel_button' => '返品する',
+                'cancel_button_disabled' => true,
+                'cancel_type' => 2,
+                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',

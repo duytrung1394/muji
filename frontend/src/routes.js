@@ -181,6 +181,13 @@ const routes = [
     )
   },
   {
+    path: "/store/cust/orders/reservationHistory",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexReservationHistory")
+    )
+  },
+  {
     path: "/orders/:order_code",
     exact: true,
     component: asyncComponent(() =>

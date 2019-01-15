@@ -85,7 +85,6 @@ class Index extends Component {
             loading={fetching || destroying}
             pagination={pagination}
           />
-          test
         </div>
       </LayoutWrapper>
     );
