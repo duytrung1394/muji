@@ -15,11 +15,11 @@ const Notice = styled.li`
   }
 `;
 
-const Notices = () => {
+const Notices = ({ value }) => {
   return (
     <NoticeList>
       <Notice>
-        <IntlMessages id="customerReview.new.notice1Front" />
+        <IntlMessages id={`customerReview.new.notice1${value}`} />
         <Link to={"/"}>
           <IntlMessages id="customerReview.new.noticeLink" />
         </Link>

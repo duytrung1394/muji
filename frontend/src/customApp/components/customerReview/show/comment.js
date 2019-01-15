@@ -50,34 +50,30 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const Comment = ({ comments }) => {
+const Comment = ({ comment }) => {
   return (
     <Fragment>
-      {comments.map((entity, index) => {
-        return (
-          <UserData key={index}>
-            <Link to={``} style={LinkStyle} />
-            <UserIcon
-              src={entity.user_image}
-              alt="itemImage"
-              width="60"
-              height="60"
-            />
-            <UserName>{entity.user_name}</UserName>
-            <Link to={`store/review/detail/${entity.jancode}`} />
-            <Comments>{entity.comment}</Comments>
-            <ActionIcon>
-              <Popover
-                placement="bottomRight"
-                content={<IntlMessages id="reviewDetail.delete" />}
-                trigger="click"
-              >
-                <Icon type="ellipsis" />
-              </Popover>
-            </ActionIcon>
-          </UserData>
-        );
-      })}
+      <UserData>
+        <Link to={``} style={LinkStyle} />
+        <UserIcon
+          src={comment.user_image}
+          alt="itemImage"
+          width="60"
+          height="60"
+        />
+        <UserName>{comment.user_name}</UserName>
+        <Link to={`store/review/detail/${comment.jancode}`} />
+        <Comments>{comment.comment}</Comments>
+        <ActionIcon>
+          <Popover
+            placement="bottomRight"
+            content={<IntlMessages id="reviewDetail.delete" />}
+            trigger="click"
+          >
+            <Icon type="ellipsis" />
+          </Popover>
+        </ActionIcon>
+      </UserData>
     </Fragment>
   );
 };

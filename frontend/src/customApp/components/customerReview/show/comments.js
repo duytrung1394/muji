@@ -65,13 +65,6 @@ const SeeMoreIcon = styled(Icon)`
   font-size: 12px;
 `;
 
-const VaridateMessage = styled.div`
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  font-weight: 600;
-`;
-
 const CommentForm = () => {
   return (
     <PostComment>
@@ -80,14 +73,6 @@ const CommentForm = () => {
         <Icon type="mail" />
       </PostButton>
     </PostComment>
-  );
-};
-
-const Notice = () => {
-  return (
-    <VaridateMessage>
-      <IntlMessages id="reviewDetail.varidateMessage" />
-    </VaridateMessage>
   );
 };
 
@@ -109,7 +94,9 @@ class Comments extends Component {
         </CommentTitle>
         <CommentList>
           {comments && comments.length > 0 ? (
-            <Comment comments={comments} />
+            comments.map((comment, index) => {
+              return <Comment comment={comment} key={index} />;
+            })
           ) : (
             <NothingComment>
               <IntlMessages id="reviewDetail.nothingComment" />
@@ -121,7 +108,7 @@ class Comments extends Component {
           </SeeMore>
         </CommentList>
         <CommentForm />
-        <Notices />
+        <Notices value={"comment"} />
       </div>
     );
   }
