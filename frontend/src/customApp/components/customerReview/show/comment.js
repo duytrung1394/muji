@@ -52,29 +52,27 @@ const LinkStyle = {
 
 const Comment = ({ comment }) => {
   return (
-    <Fragment>
-      <UserData>
-        <Link to={``} style={LinkStyle} />
-        <UserIcon
-          src={comment.user_image}
-          alt="itemImage"
-          width="60"
-          height="60"
-        />
-        <UserName>{comment.user_name}</UserName>
-        <Link to={`store/review/detail/${comment.jancode}`} />
-        <Comments>{comment.comment}</Comments>
-        <ActionIcon>
-          <Popover
-            placement="bottomRight"
-            content={<IntlMessages id="reviewDetail.delete" />}
-            trigger="click"
-          >
-            <Icon type="ellipsis" />
-          </Popover>
-        </ActionIcon>
-      </UserData>
-    </Fragment>
+    <UserData>
+      <Link to={``} style={LinkStyle} />
+      <UserIcon
+        src={comment.user_image}
+        alt="itemImage"
+        width="60"
+        height="60"
+      />
+      <UserName>{comment.user_name}</UserName>
+      <Link to={`store/review/detail/${comment.jancode}`} />
+      <Comments>{comment.comment}</Comments>
+      <ActionIcon>
+        <Popover
+          placement="bottomRight"
+          content={<IntlMessages id="reviewDetail.delete" />}
+          trigger="click"
+        >
+          <Icon type="ellipsis" />
+        </Popover>
+      </ActionIcon>
+    </UserData>
   );
 };
 

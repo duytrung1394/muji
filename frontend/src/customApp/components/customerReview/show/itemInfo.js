@@ -3,12 +3,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Icon } from "antd";
 
-const Info = styled.div`
+const ItemInfoStyle = styled.div`
   margin: 30px 0;
   font-size: 12px;
-`;
-
-const ReviewItemInfo = styled.div`
   position: relative;
 `;
 
@@ -38,22 +35,20 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const ListInfo = ({ entity }) => {
+const ItemInfo = ({ entity }) => {
   return (
-    <Info>
-      <ReviewItemInfo>
-        <Link to={``} style={LinkStyle} />
-        <ItemImg
-          src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
-          alt="itemImage"
-          width="60"
-          height="60"
-        />
-        <ReviewTitle>{entity.product}</ReviewTitle>
-        <RigthArrow type="right" />
-      </ReviewItemInfo>
-    </Info>
+    <ItemInfoStyle>
+      <Link to={``} style={LinkStyle} />
+      <ItemImg
+        src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
+        alt="itemImage"
+        width="60"
+        height="60"
+      />
+      <ReviewTitle>{entity.product}</ReviewTitle>
+      <RigthArrow type="right" />
+    </ItemInfoStyle>
   );
 };
 
-export default ListInfo;
+export default ItemInfo;
