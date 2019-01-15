@@ -11,16 +11,21 @@ const apiUrl = {
   },
   development: {
     ssr: "http://localhost:8081",
-    broswer: "http://localhost:8081",
+    browser: "http://localhost:8081",
   }
 };
 
 const env = isServer() ? "ssr" : "browser";
 
-export default {
-  apiUrl: apiUrl[process.env.REACT_APP_ENV][env],
+const react_app_env = process.env.REACT_APP_ENV;
+
+const settings = {
+  apiUrl: apiUrl[react_app_env][env],
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
+
+export default settings;
+
 const siteConfig = {
   siteName: "ISOMORPHIC",
   siteIcon: "ion-flash",
