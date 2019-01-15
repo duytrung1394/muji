@@ -8,42 +8,9 @@ import { NavLink } from "react-router-dom";
 
 const TabPane = Tabs.TabPane;
 
-const ReservationTabWrapper = styled.div`
-  // width: 100%;
-  // // display: flex;
-  // // justify-content: space-between;
-  // align-items: center;
-  // margin: 30px auto 0px;
-  // padding: 0 50px;
-
-  // a {
-  //   display: flex;
-  //   align-items: center;
-  //   font-size: 12px;
-  //   cursor: pointer;
-  //   text-decoration: none;
-  // }
-`;
-
-const ReservationTabBreadcrumb = styled(Breadcrumb)`
-  padding: 20px 0 20px 16px !important;
-
-  &,
-  span {
-    display: flex;
-  }
-
-  span {
-    a,
-    a:hover,
-    a:focus {
-      color: rgb(96, 179, 250);
-    }
-  }
-`;
-
 const ReservationTabs = styled(Tabs)`
   overflow-y: initial;
+  width: 100%;
 
   .ant-tabs-nav-wrap {
     margin-top: 20px;
@@ -78,9 +45,15 @@ const ReservationTabs = styled(Tabs)`
 `;
 
 const ReservationTabPane = styled(TabPane)`
-  // height: 10px;
   padding-bottom: 16px;
 `;
+
+const TabList = [
+  '全て',
+  '取り置き完了',
+  '取り置き依頼中'
+];
+
 // class ReservationTab extends Component {
 
 const ReservationTab = ({purchaseItemList}) => {
@@ -95,18 +68,19 @@ const ReservationTab = ({purchaseItemList}) => {
   // render() {
     return (
       <ReservationTabs
-        defaultActiveKey="1"
+        defaultActiveKey="0"
         // onChange={callback}
       >
-        <ReservationTabPane tab="全て" key="1">
-          <PurchaseItemList purchaseItemList={purchaseItemList} />
-        </ReservationTabPane>
-        <ReservationTabPane tab="取り置き完了" key="2">
-          <PurchaseItemList purchaseItemList={purchaseItemList} />
-        </ReservationTabPane>
-        <ReservationTabPane tab="取り置き依頼中" key="3">
-          <PurchaseItemList purchaseItemList={purchaseItemList} />
-        </ReservationTabPane>
+        {
+          purchaseItemList.map((purchaseItem, index) => {
+            return (
+              <ReservationTabPane tab={TabList[index]} key={index}>
+                <PurchaseItemList purchaseItemList={purchaseItem} />
+              </ReservationTabPane>
+            )
+          })
+        }
+
       </ReservationTabs>
     );
 }
