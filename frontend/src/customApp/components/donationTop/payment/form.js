@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Select, Row, Col } from "antd";
+import { Input, Select, Row, Col, Spin } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import moment from "moment";
@@ -37,12 +37,33 @@ class Form extends Component {
       limitMonth: "",
       limitYear: "",
       securityCode: "",
-      couponUseAmout: null,
+      couponUseAmount: null,
       cardNo: "",
       pinNo: "",
-      gitfCardUseAmount: null
+      giftCardUseAmount: null
+    },
+    giftcard: {
+      cardNo: "",
+      pinNo: ""
     }
   };
+
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    if (this.props.didGiftcardInquiry) {
+      const {
+        giftcard: { giftCardAvailableAmount }
+      } = this.props;
+      const { cardNo, pinNo } = this.state.giftcard;
+      this.props.doGiftcardInquiryCleanup();
+      const entity = {
+        ...this.state.entity,
+        cardNo: cardNo,
+        pinNo: pinNo,
+        giftCardAvailableAmount: giftCardAvailableAmount
+      };
+      this.setState({ entity: entity });
+    }
+  }
 
   updateEntity = (name, value) => {
     const entity = {
@@ -50,6 +71,14 @@ class Form extends Component {
       [name]: value
     };
     this.setState({ entity: entity });
+  };
+
+  updateGiftcard = (name, value) => {
+    const giftcard = {
+      ...this.state.giftcard,
+      [name]: value
+    };
+    this.setState({ giftcard: giftcard });
   };
 
   getSelectYearOptions = () => {
@@ -67,18 +96,33 @@ class Form extends Component {
     return yearOptions;
   };
 
-  submit = () => {};
+  inquiryHandler = () => {
+    this.props.doGiftcardInquiryRequest({
+      cardNo: this.state.giftcard.cardNo,
+      pinNo: this.state.giftcard.pinNo
+    });
+  };
+
+  submit = () => {
+    const { donationCode, numberOfUnits } = this.props;
+
+    const entity = {
+      ...this.state.entity,
+      donationCode: donationCode,
+      numberOfUnits: numberOfUnits
+    };
+
+    this.props.confirmDonationRequest(entity);
+  };
 
   render() {
     const {
       intl,
       donationCode,
       numberOfUnits,
-      entity: {
-        couponAvailableAmount,
-        couponLimitDate,
-        giftCardAvailableAmount
-      }
+      doingGiftcardInquiry,
+      confirmingDonation,
+      entity: { couponAvailableAmount, couponLimitDate }
     } = this.props;
 
     return (
@@ -156,6 +200,7 @@ class Form extends Component {
         </div>
         <MujiCardInfo
           intl={intl}
+          doingGiftcardInquiry={doingGiftcardInquiry}
           couponAvailableAmount={couponAvailableAmount}
           couponLimitDate={couponLimitDate}
           inputCouponUseAmount={
@@ -167,19 +212,20 @@ class Form extends Component {
               }
             />
           }
-          giftCardAvailableAmount={giftCardAvailableAmount}
+          giftCardAvailableAmount={this.state.entity.giftCardAvailableAmount}
+          cardNo={this.state.entity.cardNo}
           inputCardNo={
             <Input
               size="small"
-              value={this.state.entity.cardNo}
-              onChange={e => this.updateEntity("cardNo", e.target.value)}
+              value={this.state.giftcard.cardNo}
+              onChange={e => this.updateGiftcard("cardNo", e.target.value)}
             />
           }
           inputPinNo={
             <Input
               size="small"
-              value={this.state.entity.pinNo}
-              onChange={e => this.updateEntity("pinNo", e.target.value)}
+              value={this.state.giftcard.pinNo}
+              onChange={e => this.updateGiftcard("pinNo", e.target.value)}
             />
           }
           inputGiftCardUseAmount={
@@ -191,25 +237,41 @@ class Form extends Component {
               }
             />
           }
+          buttonInquiry={
+            <Button
+              type="primary"
+              size="small"
+              onClick={this.inquiryHandler}
+              disabled={doingGiftcardInquiry}
+            >
+              <IntlMessages id="donation.payment.mujiCardInfo.button.inquiry" />
+            </Button>
+          }
         />
 
-        <StyledFormFooter type="flex" jsuttify="start" align="middle">
-          <Col span={9}>
-            <Link
-              to={{
-                pathname: `/store/cmdty/donation/${donationCode}`,
-                search: `?addNum=${numberOfUnits}`
-              }}
-            >
-              <IntlMessages id="donation.payment.link.back" />
-            </Link>
-          </Col>
-          <Col span={15}>
-            <NextButton onClick={this.submit} type="primary">
-              <IntlMessages id="donation.payment.button.next" />
-            </NextButton>
-          </Col>
-        </StyledFormFooter>
+        <Spin spinning={confirmingDonation} size="large">
+          <StyledFormFooter type="flex" jsuttify="start" align="middle">
+            <Col span={9}>
+              <Link
+                to={{
+                  pathname: `/store/cmdty/donation/${donationCode}`,
+                  search: `?addNum=${numberOfUnits}`
+                }}
+              >
+                <IntlMessages id="donation.payment.link.back" />
+              </Link>
+            </Col>
+            <Col span={15}>
+              <NextButton
+                onClick={this.submit}
+                type="primary"
+                disabled={confirmingDonation}
+              >
+                <IntlMessages id="donation.payment.button.next" />
+              </NextButton>
+            </Col>
+          </StyledFormFooter>
+        </Spin>
       </div>
     );
   }

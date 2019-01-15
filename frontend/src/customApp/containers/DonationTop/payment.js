@@ -29,6 +29,17 @@ class Payment extends Component {
     );
   }
 
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    if (this.props.confirmedDonation) {
+      this.props.confirmDonationCleanup();
+      this.props.history.push(
+        `/store/cart/donation/confirm/${
+          this.props.match.params.donation_code
+        }/${this.props.match.params.number_of_units}`
+      );
+    }
+  }
+
   render() {
     const {
       fetched,
@@ -72,7 +83,11 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
-  fetchCleanup: actions.fetch.cleanup
+  fetchCleanup: actions.fetch.cleanup,
+  doGiftcardInquiryRequest: actions.doGiftcardInquiry.request,
+  doGiftcardInquiryCleanup: actions.doGiftcardInquiry.cleanup,
+  confirmDonationRequest: actions.confirmDonation.request,
+  confirmDonationCleanup: actions.confirmDonation.cleanup
 };
 
 const enhance = C => {
