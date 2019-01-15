@@ -191,3 +191,52 @@ PORT=80 yarn serve-preview
 
 また、 /static 以下は単にディレクトリ内を配信しているだけなので、
 フロントにnginx等を置く場合は直接配信することも可能です。
+
+## リリースサーバーでの動かし方
+
+※リリースサーバーと同等の環境をローカルで動かす場合も含みます
+
+1. 直下に `.env` ファイルを作成します。
+
+内容は `.env.sample-local` を参考にしてください。
+
+2. 以下のコマンドでbackend(Lumen)を立ち上げます
+
+```
+docker-compose -f production.yml run --rm backend composer install
+docker-compose -f production.yml run --rm backend php artisan migrate:refresh
+docker-compose -f production.yml run --rm backend composer dump-autoload
+docker-compose -f production.yml run --rm backend php artisan db:seed
+docker-compose -f production.yml up -d backend
+```
+
+3. 以下のコマンドでfrontend向けのスクリプトをビルドし、frontendを立ち上げます
+
+
+```
+docker-compose -f production.yml run --rm frontend yarn install
+docker-compose -f production.yml run --rm frontend yarn build
+docker-compose -f production.yml up -d frontend
+```
+
+4. Nginxを立ち上げます。
+
+ポートの都合上、ローカルとサーバーで立ち上げるものが異なります。
+
+```
+# ローカル
+docker-compose -f production.yml up -d nginx_local
+# http://localhost:8000 にアクセス
+```
+
+```
+# (プレビュー)サーバー
+docker-compose -f production.yml up -d nginx
+# そのサーバーにアクセス
+```
+
+※ 未実現事項は以下の通り
+
+- プレビュー向けのSSL対応
+- プレビュー向けのBASIC認証対応
+

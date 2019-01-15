@@ -9,6 +9,12 @@ const apiUrl = {
     ssr: "http://backend:8080",
     browser: "https://muji-ec.xenophy.info",
   },
+  // ローカルでサーバーに近い動かし方をするとき向け
+  local: {
+    ssr: "http://backend:8080",
+    browser: "http://localhost:8000",
+  },
+  // yarn dev で動かす場合向け
   development: {
     ssr: "http://localhost:8081",
     browser: "http://localhost:8081",
