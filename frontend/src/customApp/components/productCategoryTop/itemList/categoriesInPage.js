@@ -1,0 +1,120 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Row, Col } from "antd";
+import styled from "styled-components";
+import ItemView from "./itemView";
+import IntlMessages from "../../../../components/utility/intlMessages";
+
+const PageWrapper = styled.div`
+  scroll-behavior: smooth;
+`;
+
+const Nav = styled.div`
+  padding: 15px;
+  a {
+    padding: 10px;
+    color: #585858;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+`;
+
+const colContentLayout = {
+  xs: 24,
+  sm: 24,
+  md: 14,
+  xl: 14
+};
+
+const colImageLayout = {
+  xs: 24,
+  sm: 24,
+  md: 10,
+  xl: 10
+};
+
+const CategoryWrapper = styled.div`
+  margin: 50px 0;
+`;
+
+const Title = styled.h1`
+  font-size: 36px;
+  color: #585858;
+`;
+
+const Description = styled.div`
+  font-size: 16px;
+  line-height: 1.9;
+`;
+
+const LinkWrapper = styled.div`
+  margin: 10px 0;
+  text-align: right;
+`;
+
+const CategoryTitle = styled.h2`
+  font-size: 19px;
+  color: #585858;
+  text-align: center;
+  margin-top: 30px;
+`;
+
+const ItemViewWrapper = styled.div`
+  display: flex;
+  overflow-x: scroll;
+`;
+
+const CategorisInPage = ({ categories, groups }) => (
+  <div style={{ scrollBehavior: "smooth" }}>
+    <Nav>
+      {categories.map((category, index) => {
+        return (
+          <a href={`#${category.code}`} key={index}>
+            {category.title}
+            <IntlMessages id="productCategoryTop.link.underArrow" />
+          </a>
+        );
+      })}
+    </Nav>
+
+    <PageWrapper>
+      {categories.map((category, index) => {
+        return (
+          <CategoryWrapper id={category.code} key={index}>
+            <Row type="flex" gutter={32}>
+              <Col {...colContentLayout}>
+                <Title>{category.title}</Title>
+                <Description>{category.description}</Description>
+                <LinkWrapper>
+                  <Link to="">
+                    <IntlMessages id="productCategoryTop.link.viewDetail" />
+                  </Link>
+                </LinkWrapper>
+              </Col>
+              <Col {...colImageLayout}>
+                <img src={category.img} style={{ width: "100%" }} />
+              </Col>
+            </Row>
+            {groups.map((group, index) => {
+              if (group.category_code_in_page !== category.code) {
+                return null;
+              }
+              return (
+                <div key={index}>
+                  <CategoryTitle>{group.group_name}</CategoryTitle>
+                  <ItemViewWrapper>
+                    {group.items.map((item, index) => {
+                      return <ItemView {...item} key={index} />;
+                    })}
+                  </ItemViewWrapper>
+                </div>
+              );
+            })}
+          </CategoryWrapper>
+        );
+      })}
+    </PageWrapper>
+  </div>
+);
+
+export default CategorisInPage;

@@ -68,6 +68,13 @@ const priceCurrencyLabel = (
   <IntlMessages id="productCategoryTop.label.priceCurrency" />
 );
 
+const Stock = styled.div`
+  margin: 10px 10px 0;
+  border: ${props => (props.noStock ? "1px solid #999" : "none")};
+  font-size: 12px;
+  color: #585858;
+`;
+
 class ItemView extends Component {
   state = {
     currentJancode: this.props.swatches[0].jancode,
@@ -102,6 +109,13 @@ class ItemView extends Component {
             <img src={image} alt="" />
           </div>
           <ItemTag tags={tags} nostock={this.state.nostock} />
+          <Stock noStock={this.state.nostock}>
+            {this.state.nostock ? (
+              <IntlMessages id="productCategoryTop.stock.noStock" />
+            ) : (
+              "\u00A0"
+            )}
+          </Stock>
           <Material>{material}</Material>
           <Title>{title}</Title>
         </Link>

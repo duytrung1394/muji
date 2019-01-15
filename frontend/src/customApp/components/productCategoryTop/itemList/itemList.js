@@ -5,6 +5,7 @@ import LargeButton from "../../form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import CategoriesInPage from "./categoriesInPage";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -80,14 +81,15 @@ const ItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { total, groups } = props;
+  const { total, groups, categories_in_page } = props;
 
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader total={total} />}
       actions={[<SeeMoreButton />]}
     >
-      {groups &&
+      {!categories_in_page &&
+        groups &&
         groups.map((group, index) => {
           return (
             <div key={index}>
@@ -103,6 +105,10 @@ const ItemList = props => {
             </div>
           );
         })}
+
+      {categories_in_page && (
+        <CategoriesInPage categories={categories_in_page} groups={groups} />
+      )}
     </ContentPanelWrapper>
   );
 };

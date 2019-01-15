@@ -49,7 +49,7 @@ const CategoryList = ({ innerCategories }) => {
         innerCategories.map((item, index) => {
           return (
             <StyledCol {...colLayout} key={index}>
-              <LinkBoxShadow to="">
+              <LinkBoxShadow to={`/store/cmdty/section/${item.sectionCode}`}>
                 <Image src={item.img_src} alt="" />
                 {item.title && <Title>{item.title}</Title>}
               </LinkBoxShadow>
