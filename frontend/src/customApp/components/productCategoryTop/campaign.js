@@ -8,12 +8,7 @@ import imgCampaign2 from "../../../image/cmdty/woman/img-campaign-2.png";
 import imgCampaign3 from "../../../image/cmdty/woman/img-campaign-3.png";
 import imgCampaign4 from "../../../image/cmdty/woman/img-campaign-4.png";
 
-const images = [
-  imgCampaign1,
-  imgCampaign2,
-  imgCampaign3,
-  imgCampaign4,
-];
+const images = [imgCampaign1, imgCampaign2, imgCampaign3, imgCampaign4];
 
 const ItemImage = styled.img`
   border-radius: 4px 4px 0 0;
@@ -66,10 +61,7 @@ const Campaign = ({ campaigns }) => {
             return (
               <StyledCol {...colLayout} key={index}>
                 <LinkBoxShadow to="">
-                  <ItemImage
-                    src={images[index]}
-                    alt=""
-                  />
+                  <ItemImage src={images[index]} alt="" />
                   <ItemTitle>{item.title}</ItemTitle>
                 </LinkBoxShadow>
               </StyledCol>
