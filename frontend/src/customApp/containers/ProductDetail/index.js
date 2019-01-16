@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/product_detail/entity/actions";
 import { injectIntl } from "react-intl";
-import { Spin } from "antd";
+import { Spin, Row } from "antd";
 import ContentAreaLayout from "../../components/panel/contentLayout";
+import DetailPicture from "../../components/productDetail/detailPicture";
+import DetailInfo from "../../components/productDetail/detailInfo";
 
 class Index extends Component {
   componentDidMount() {
@@ -20,7 +22,12 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <div>商品詳細画面</div>
+          <div>
+            <Row>
+              <DetailPicture />
+              <DetailInfo />
+            </Row>
+          </div>
         </Spin>
       </ContentAreaLayout>
     );
