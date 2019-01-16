@@ -185,54 +185,54 @@ class ProductCategoryTopsController extends Controller
                     'group_name' => 'セーター',
                     'total'      => 321,
                     'items'      => [
-                        $this->getMockItemData(3),
-                        $this->getMockItemData(4, ['new']),
-                        $this->getMockItemData(5, ['discount']),
-                        $this->getMockItemData(6, ['early']),
-                        $this->getMockItemData(7, ['new', 'discount', 'early']),
-                        $this->getMockItemData(8),
-                        $this->getMockItemData(9),
-                        $this->getMockItemData(10),
-                        $this->getMockItemData(11),
-                        $this->getMockItemData(12),
-                        $this->getMockItemData(13),
-                        $this->getMockItemData(14),
+                        $this->getMockItemData(1,3),
+                        $this->getMockItemData(1,4, ['new']),
+                        $this->getMockItemData(1,5, ['discount']),
+                        $this->getMockItemData(1,6, ['early']),
+                        $this->getMockItemData(1,7, ['new', 'discount', 'early']),
+                        $this->getMockItemData(1,8),
+                        $this->getMockItemData(1,9),
+                        $this->getMockItemData(1,10),
+                        $this->getMockItemData(1,11),
+                        $this->getMockItemData(1,12),
+                        $this->getMockItemData(1,13),
+                        $this->getMockItemData(1,14),
                     ],
                 ],
                 [
                     'group_name' => 'セーター2',
                     'total'      => 123,
                     'items'      => [
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
                     ],
                 ],
                 [
                     'group_name' => 'セーター3',
                     'total'      => 123,
                     'items'      => [
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
+                        $this->getMockItemData(1,4),
                     ],
                 ],
             ],
@@ -319,18 +319,18 @@ class ProductCategoryTopsController extends Controller
                     'category_code_in_page' => 'product-t-shirt',
                     'total'      => 321,
                     'items'      => [
-                        $this->getMockItemData(3),
-                        $this->getMockItemData(4, ['new']),
-                        $this->getMockItemData(5, ['discount']),
-                        $this->getMockItemData(6, ['early']),
-                        $this->getMockItemData(7, ['new', 'discount', 'early']),
-                        $this->getMockItemData(8),
-                        $this->getMockItemData(9),
-                        $this->getMockItemData(10),
-                        $this->getMockItemData(11),
-                        $this->getMockItemData(12),
-                        $this->getMockItemData(13),
-                        $this->getMockItemData(14),
+                        $this->getMockItemData(2,3),
+                        $this->getMockItemData(2,4, ['new']),
+                        $this->getMockItemData(2,5, ['discount']),
+                        $this->getMockItemData(2,6, ['early']),
+                        $this->getMockItemData(2,7, ['new', 'discount', 'early']),
+                        $this->getMockItemData(2,8),
+                        $this->getMockItemData(2,9),
+                        $this->getMockItemData(2,10),
+                        $this->getMockItemData(2,11),
+                        $this->getMockItemData(2,12),
+                        $this->getMockItemData(2,13),
+                        $this->getMockItemData(2,14),
                     ],
                 ],
                 [
@@ -338,18 +338,18 @@ class ProductCategoryTopsController extends Controller
                     'category_code_in_page' => 'product-t-shirt',
                     'total'      => 123,
                     'items'      => [
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
                     ],
                 ],
                 [
@@ -357,18 +357,18 @@ class ProductCategoryTopsController extends Controller
                     'category_code_in_page' => 'product-uv-cut',
                     'total'      => 123,
                     'items'      => [
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
-                        $this->getMockItemData(4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
+                        $this->getMockItemData(2,4),
                     ],
                 ],
             ],
@@ -379,13 +379,18 @@ class ProductCategoryTopsController extends Controller
     /**
      * モックデータ: アイテム.
      */
-    private function getMockItemData($swatchNumber, $tags=[])
+    private function getMockItemData($level, $swatchNumber, $tags=[])
     {
+        $title = 'タートルネックセーター';
+        $material = 'ウールシルク洗える';
+        if ($level === 2) {
+            $title = 'レベル2';
+        }
         $item = [
-            'title' => 'タートルネックセーター',
-            'material' => 'ウールシルク洗える',
+            'title' => $title,
+            'material' => $material,
             'price' => 4900,
-            'swatches' => $this->getMockSwatches($swatchNumber),
+            'swatches' => $this->getMockSwatches($level, $swatchNumber),
             'tags' => $tags,
             'minSize' => 'XS',
             'maxSize' => 'XXL',
@@ -401,7 +406,7 @@ class ProductCategoryTopsController extends Controller
     /**
      * モックデータ: アイテムの見本部分.
      */
-    private function getMockSwatches($swatchNumber)
+    private function getMockSwatches($level, $swatchNumber)
     {
         $swatches = [
             [
@@ -475,6 +480,23 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false
             ],
         ];
+
+        if ($level === 2) {
+            $swatches[0]['jancode'] = '4550002208479';
+            $swatches[1]['jancode'] = '4550002208516';
+            $swatches[2]['jancode'] = '4550002361402';
+            $swatches[3]['jancode'] = '4550002361440';
+            $swatches[4]['jancode'] = '4550002361525';
+            $swatches[5]['jancode'] = '4550002361624';
+            $swatches[6]['jancode'] = '4550002361648';
+            $swatches[7]['jancode'] = '4550002361686';
+            $swatches[8]['jancode'] = '4550002361723';
+            $swatches[9]['jancode'] = '4550002208431';
+            $swatches[10]['jancode'] = '4550002361488';
+            $swatches[11]['jancode'] = '4550002361563';
+            $swatches[12]['jancode'] = '4550002389062';
+            $swatches[13]['jancode'] = '4550002388942';
+        }
 
         return array_splice($swatches, 0, $swatchNumber);
     }
