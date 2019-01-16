@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Rate, Upload, Button, Icon } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { BaseContentLayout } from "../../panel/contentLayout";
-import { Link } from "../../form/link";
 import ConfirmButton from "../forms/confirmButton";
+import Notices from "../notices";
 
 const Title = styled.div`
   font-size: 25px;
@@ -76,18 +76,6 @@ const UploadIcon = styled(Icon)`
   font-size: 20px;
 `;
 
-const Notices = styled.div`
-  text-align: left;
-  padding: 0 30px;
-`;
-
-const Notice = styled.p`
-  font-size: 14px;
-  && {
-    margin: 0px;
-  }
-`;
-
 const Form = () => {
   return (
     <ContentLayout>
@@ -125,21 +113,7 @@ const Form = () => {
         // TOTO: onClick
         title={<IntlMessages id="customerReview.new.confirmButton" />}
       />
-      <Notices>
-        <Notice>
-          <IntlMessages id="customerReview.new.notice1Front" />
-          <Link to={"/"}>
-            <IntlMessages id="customerReview.new.noticeLink" />
-          </Link>
-          <IntlMessages id="customerReview.new.notice1Back" />
-        </Notice>
-        <Notice>
-          <IntlMessages id="customerReview.new.notice2" />
-        </Notice>
-        <Notice>
-          <IntlMessages id="customerReview.new.notice3" />
-        </Notice>
-      </Notices>
+      <Notices />
     </ContentLayout>
   );
 };

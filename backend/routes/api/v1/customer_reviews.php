@@ -36,8 +36,16 @@ $router->get('/api/v1/customer-reviews/following', [
  $router->get('/api/v1/customer-reviews/create', [
      'middleware'    => [],
      'uses'          => 'Api\V1\CustomerReviewsController@create',
- ]);
- 
+]);
+
+/**
+ * 詳細
+ */
+$router->get('/api/v1/customer-reviews/{reviewCode}', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@show',
+]);
+
 /**
  * 更新
  */
