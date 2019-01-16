@@ -43,6 +43,26 @@ class ProductDetailsController extends Controller
                 'title' => 'ヤクウールＶネックセーター',
                 'url' => 'https://img.muji.net/img/item/4550002691646_1260.jpg',
             ],
+            'images' => [
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_1260.jpg',
+                ],
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_01_1260.jpg',
+                ],
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_02_1260.jpg',
+                ],
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_03_1260.jpg',
+                ],
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_04_1260.jpg',
+                ],
+                [
+                    'url' => 'https://img.muji.net/img/item/4550002253899_05_1260.jpg',
+                ],
+            ],
             'detail_items' => [
                 [
                     'type' => 'video',

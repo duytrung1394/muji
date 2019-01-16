@@ -5,15 +5,6 @@ import fab from "../../../image/cmdty/detail/ico-fob-heart.png";
 import fabActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
 import Slider, { Link } from "../slider";
 
-const imgUrl = [
-  "https://img.muji.net/img/item/4550002253899_1260.jpg",
-  "https://img.muji.net/img/item/4550002253899_01_1260.jpg",
-  "https://img.muji.net/img/item/4550002253899_02_1260.jpg",
-  "https://img.muji.net/img/item/4550002253899_03_1260.jpg",
-  "https://img.muji.net/img/item/4550002253899_04_1260.jpg",
-  "https://img.muji.net/img/item/4550002253899_05_1260.jpg"
-];
-
 // const PictureCol = styled(Col)`
 //   max-height: 700px;
 //   overflow: hidden;
@@ -98,68 +89,38 @@ const FabImage = () => {
   );
 };
 
-class DetailPicture extends Component {
-  constructor() {
-    super();
-    this.state = {
-      visible: false
-    };
+const customSliderSettings = {};
+
+const DetailPicture = ({ productImages }) => {
+  if (!productImages) {
+    return null;
   }
-  showModal = () => {
-    this.setState({
-      visible: true
-    });
-  };
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-
-  render() {
-    const customSliderSettings = {};
-    
-    return (
-      <Fragment>
-      {/* <PictureCol span={24}> */}
-        {/* {imgUrl.map((url, index) => {
-          return <Img key={index} src={url} />;
-        })} */}
-        <Dots>
-          {imgUrl.map((url, index) => {
-            return (
-              <Dot key={index}>
-                <PageLink />
-              </Dot>
-            );
-          })}
-        </Dots>
-        <Slider {...customSliderSettings}>
-          {imgUrl.map((productImage, index) => {
-            return (<ProductImageItem key={index} productImage={productImage} />);
-          })}
-        </Slider>
-        <ShowItemList onClick={this.showModal}>着目商品リスト</ShowItemList>
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        />
-        <FabImage />
-      {/* </PictureCol> */}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+    {/* <PictureCol span={24}> */}
+      {/* {imgUrl.map((url, index) => {
+        return <Img key={index} src={url} />;
+      })} */}
+      {/* <Dots>
+        {imgUrl.map((url, index) => {
+          return (
+            <Dot key={index}>
+              <PageLink />
+            </Dot>
+          );
+        })}
+      </Dots> */}
+      <Slider {...customSliderSettings}>
+        {productImages.map((productImage, index) => {
+          return (<ProductImageItem key={index} productImage={productImage.url} />);
+        })}
+      </Slider>
+      <ShowItemList onClick={this.showModal}>着目商品リスト</ShowItemList>
+      <FabImage />
+    {/* </PictureCol> */}
+    </Fragment>
+  );
+};
 
 export default DetailPicture;

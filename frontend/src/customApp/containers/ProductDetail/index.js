@@ -7,10 +7,38 @@ import ContentAreaLayout from "../../components/panel/contentLayout";
 import DetailPicture from "../../components/productDetail/detailPicture";
 import DetailInfo from "../../components/productDetail/detailInfo";
 
+import { Modal } from "antd";
+
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.jan_code);
   }
+
+  constructor() {
+    super();
+    this.state = {
+      visible: false
+    };
+  }
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
 
   render() {
     const {
@@ -24,11 +52,17 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <div>
             <Row>
-              <DetailPicture />
+              <DetailPicture productImages={entity.images}/>
               <DetailInfo />
             </Row>
           </div>
         </Spin>
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        />
       </ContentAreaLayout>
     );
   }
