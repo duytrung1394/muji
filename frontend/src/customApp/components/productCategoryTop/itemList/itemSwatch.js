@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon } from "antd";
-import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 
@@ -9,7 +8,7 @@ const Swatch = styled(Col)`
   &&& {
     font-size: 12px;
     cursor: pointer;
-    margin: 0 2px;
+    margin: 2px 2px;
   }
 
   .anticon {
@@ -18,18 +17,11 @@ const Swatch = styled(Col)`
 `;
 
 const ImageWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-
-  :hover {
-    border: 2px solid grey;
-  }
+  width: 34px;
+  height: 34px;
 
   img {
-    border-radius: 50%;
-    padding: 1px;
-    border: 1px solid white;
+    border: 1px solid #585858;
   }
 `;
 
@@ -61,14 +53,10 @@ class ItemSwatch extends Component {
           onMouseOver={() => changeSwatch(swatch.jancode, swatch.nostock)}
         >
           <ImageWrapper>
-            <Link to={``}>
-              <img
-                src={`https://img.muji.net/img/item/${
-                  swatch.jancode
-                }_99_95.jpg`}
-                alt=""
-              />
-            </Link>
+            <img
+              src={`https://img.muji.net/img/item/${swatch.jancode}_99_95.jpg`}
+              alt=""
+            />
           </ImageWrapper>
         </Swatch>
       );

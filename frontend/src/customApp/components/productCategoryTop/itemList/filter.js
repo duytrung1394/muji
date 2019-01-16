@@ -9,15 +9,7 @@ const FilterWrapper = styled.span`
   display: flex;
   font-size: 14px;
   height: 21px;
-  :before {
-    margin: 4px 4px;
-    display: block;
-    content: " ";
-    background: url(https://www.muji.net/img/common/icon-refine.svg) 0 0
-      no-repeat;
-    width: 22px;
-    height: 16px;
-  }
+  color: #60b3fa;
 `;
 
 const filterOverlayStyle = {
