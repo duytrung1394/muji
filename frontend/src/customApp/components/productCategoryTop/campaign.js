@@ -2,8 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
 import styled from "styled-components";
-import settings from "../../../settings";
 import IntlMessages from "../../../components/utility/intlMessages";
+import imgCampaign1 from "../../../image/cmdty/woman/img-campaign-1.png";
+import imgCampaign2 from "../../../image/cmdty/woman/img-campaign-2.png";
+import imgCampaign3 from "../../../image/cmdty/woman/img-campaign-3.png";
+import imgCampaign4 from "../../../image/cmdty/woman/img-campaign-4.png";
+
+const images = [
+  imgCampaign1,
+  imgCampaign2,
+  imgCampaign3,
+  imgCampaign4,
+];
 
 const ItemImage = styled.img`
   border-radius: 4px 4px 0 0;
@@ -57,7 +67,7 @@ const Campaign = ({ campaigns }) => {
               <StyledCol {...colLayout} key={index}>
                 <LinkBoxShadow to="">
                   <ItemImage
-                    src={`${settings.apiUrl}/${item.img_src}`}
+                    src={images[index]}
                     alt=""
                   />
                   <ItemTitle>{item.title}</ItemTitle>
