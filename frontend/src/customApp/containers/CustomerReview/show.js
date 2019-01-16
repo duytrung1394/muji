@@ -72,7 +72,7 @@ class Show extends Component {
                 <IntlMessages id="reviewDetail.seeMore" />
               </SeeMore>
               <CommentForm />
-              <Notices idFlg={"comment"} />
+              <Notices type={"comment"} />
             </ContentLayout>
           </Spin>
         </ContentAreaLayout>

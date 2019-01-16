@@ -15,29 +15,26 @@ const Notice = styled.li`
   }
 `;
 
-const Message = ({ idFlg }) => {
-  return idFlg == "comment" ? (
-    <IntlMessages id={`customerReview.new.notice1comment`} />
-  ) : (
-    <IntlMessages id={`customerReview.new.notice1review`} />
-  );
-};
-
-const Notices = ({ idFlg }) => {
+const Notices = ({ type = "review" }) => {
   return (
     <NoticeList>
       <Notice>
-        <Message idFlg={idFlg} />
-        <Link to={"/"}>
-          <IntlMessages id="customerReview.new.noticeLink" />
-        </Link>
-        <IntlMessages id="customerReview.new.notice1Back" />
+        <IntlMessages
+          id={`customerReview.new.notice.${type}.1`}
+          values={{
+            terms: (
+              <Link to={"/"}>
+                <IntlMessages id="customerReview.new.notice.terms" />
+              </Link>
+            )
+          }}
+        />
       </Notice>
       <Notice>
-        <IntlMessages id="customerReview.new.notice2" />
+        <IntlMessages id={`customerReview.new.notice.${type}.2`} />
       </Notice>
       <Notice>
-        <IntlMessages id="customerReview.new.notice3" />
+        <IntlMessages id={`customerReview.new.notice.${type}.3`} />
       </Notice>
     </NoticeList>
   );
