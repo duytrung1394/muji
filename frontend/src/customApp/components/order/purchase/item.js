@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Popconfirm, Popover, Icon, message } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import settings from "../../../../settings";
+import imgPurchaseHistory1 from "../../../../image/order/purchase_history/img-purchase-history-1.png";
+import imgPurchaseHistory2 from "../../../../image/order/purchase_history/img-purchase-history-2.png";
+import imgPurchaseHistory3 from "../../../../image/order/purchase_history/img-purchase-history-3.png";
+import imgPurchaseHistory4 from "../../../../image/order/purchase_history/img-purchase-history-4.png";
 
-const PurchesItemWrapper = styled.section`
+const images = {
+  "img-purchase-history-1.png": imgPurchaseHistory1,
+  "img-purchase-history-2.png": imgPurchaseHistory2,
+  "img-purchase-history-3.png": imgPurchaseHistory3,
+  "img-purchase-history-4.png": imgPurchaseHistory4
+};
+
+const PurchaseItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
   margin: 20px 30px 0 0;
   border-radius: 4px;
@@ -30,7 +40,7 @@ const PurchaseHistoryTitle = styled.h2`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const PurchesItemInfo = styled.div`
+const PurchaseItemInfo = styled.div`
   margin-top: 13px;
   padding: 0 16px;
   display: flex;
@@ -58,7 +68,7 @@ const OrderAddress = styled.p`
   color: rgb(96, 179, 250);
 `;
 
-const PurchesItemMenu = styled.div`
+const PurchaseItemMenu = styled.div`
   position: relative;
   margin-top: 13px;
   min-height: 139px;
@@ -68,7 +78,7 @@ const PurchesItemMenu = styled.div`
   border-top: 1px solid rgb(229, 229, 229);
 `;
 
-const PurchesItemImage = styled.div`
+const PurchaseItemImage = styled.div`
   max-width: 120px;
   width: 40%;
 
@@ -81,7 +91,7 @@ const PurchesItemImage = styled.div`
   }
 `;
 
-const PurchesItemDescribeList = styled.ul`
+const PurchaseItemDescribeList = styled.ul`
   margin-left: 15px;
   margin-bottom: 0px;
   width: calc(80% - 15px);
@@ -89,7 +99,7 @@ const PurchesItemDescribeList = styled.ul`
   list-style: none;
 `;
 
-const PurchesItemDescribe = styled.li`
+const PurchaseItemDescribe = styled.li`
   line-height: 20px;
 
   a,
@@ -130,7 +140,7 @@ const EllipsisButton = styled.button`
   }
 `;
 
-const PurchesItemButtonWrapper = styled.ul`
+const PurchaseItemButtonWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   padding: 0;
@@ -140,7 +150,7 @@ const PurchesItemButtonWrapper = styled.ul`
   overflow: hidden;
 `;
 
-const PurchesItemButton = styled.li`
+const PurchaseItemButton = styled.li`
   width: 50%;
   position: relative;
   background: rgba(0, 0, 0, 0.05);
@@ -220,9 +230,9 @@ const canselButtonDisabled = {
 };
 
 const intlId = [
-  "order.purchesHistory.ellipsisButton.review",
-  "order.purchesHistory.ellipsisButton.favorite",
-  "order.purchesHistory.ellipsisButton.maintenanceParts"
+  "order.purchaseHistory.ellipsisButton.review",
+  "order.purchaseHistory.ellipsisButton.favorite",
+  "order.purchaseHistory.ellipsisButton.maintenanceParts"
 ];
 
 const purchaseItemPopover = (
@@ -240,7 +250,7 @@ const purchaseItemPopover = (
 );
 
 const cancelConfirmText = (
-  <IntlMessages id="order.purchesHistory.cancelConfirm" />
+  <IntlMessages id="order.purchaseHistory.cancelConfirm" />
 );
 
 const Item = ({ purchaseItem }) => {
@@ -258,8 +268,8 @@ const Item = ({ purchaseItem }) => {
 
   const buttonSwitch = type => {
     let buttonText = {
-      return: "order.purchesHistory.returnProduct",
-      cancel: "order.purchesHistory.cancel"
+      return: "order.purchaseHistory.returnProduct",
+      cancel: "order.purchaseHistory.cancel"
     };
 
     switch (type) {
@@ -296,11 +306,11 @@ const Item = ({ purchaseItem }) => {
   };
 
   return (
-    <PurchesItemWrapper>
+    <PurchaseItemWrapper>
       <PurchaseHistoryTitle to={"#"}>
         {purchaseItem.item_name}
       </PurchaseHistoryTitle>
-      <PurchesItemInfo>
+      <PurchaseItemInfo>
         <div>{purchaseItem.order_date}</div>
         <ShoppingAddress>
           {purchaseItem && purchaseItem.order_address ? (
@@ -309,22 +319,22 @@ const Item = ({ purchaseItem }) => {
             <Link to={"#"}>{purchaseItem.store_name}</Link>
           )}
         </ShoppingAddress>
-      </PurchesItemInfo>
-      <PurchesItemMenu>
-        <PurchesItemImage>
+      </PurchaseItemInfo>
+      <PurchaseItemMenu>
+        <PurchaseItemImage>
           <Link to={"#"}>
-            <img src={`${settings.apiUrl}/${purchaseItem.img_src}`} alt="" />
+            <img src={images[purchaseItem.img_src]} alt="" />
           </Link>
-        </PurchesItemImage>
-        <PurchesItemDescribeList>
+        </PurchaseItemImage>
+        <PurchaseItemDescribeList>
           {describeList.map((describe, index) => {
             return (
-              <PurchesItemDescribe key={index}>
+              <PurchaseItemDescribe key={index}>
                 <Link to={"#"}>{describe}</Link>
-              </PurchesItemDescribe>
+              </PurchaseItemDescribe>
             );
           })}
-        </PurchesItemDescribeList>
+        </PurchaseItemDescribeList>
         <EllipsisButtonWrapper>
           <Popover
             placement="topRight"
@@ -336,19 +346,19 @@ const Item = ({ purchaseItem }) => {
             </EllipsisButton>
           </Popover>
         </EllipsisButtonWrapper>
-      </PurchesItemMenu>
-      <PurchesItemButtonWrapper>
-        <PurchesItemButton>
+      </PurchaseItemMenu>
+      <PurchaseItemButtonWrapper>
+        <PurchaseItemButton>
           {buttonSwitch(purchaseItem.cancel_type)}
-        </PurchesItemButton>
-        <PurchesItemButton>
+        </PurchaseItemButton>
+        <PurchaseItemButton>
           <Link to={"#"}>
-            <IntlMessages id="order.purchesHistory.itemDetails" />
+            <IntlMessages id="order.purchaseHistory.itemDetails" />
             <Icon type="right" />
           </Link>
-        </PurchesItemButton>
-      </PurchesItemButtonWrapper>
-    </PurchesItemWrapper>
+        </PurchaseItemButton>
+      </PurchaseItemButtonWrapper>
+    </PurchaseItemWrapper>
   );
 };
 

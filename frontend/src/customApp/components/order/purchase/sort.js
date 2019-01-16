@@ -52,10 +52,10 @@ const currentPageStyle = {
 };
 
 const intlId = [
-  "order.purchesHistory.sort.category",
-  "order.purchesHistory.sort.recent",
-  "order.purchesHistory.sort.lowerPrice",
-  "order.purchesHistory.sort.ranking"
+  "order.purchaseHistory.sort.category",
+  "order.purchaseHistory.sort.recent",
+  "order.purchaseHistory.sort.lowerPrice",
+  "order.purchaseHistory.sort.ranking"
 ];
 
 const SortModal = styled(Modal)`

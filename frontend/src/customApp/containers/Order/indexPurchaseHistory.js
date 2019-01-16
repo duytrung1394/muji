@@ -48,7 +48,7 @@ class Index extends Component {
       <Spin size="large" spinning={fetching}>
         <LayoutWrapper>
           <Title>
-            <IntlMessages id="order.purchesHistory.name" />
+            <IntlMessages id="order.purchaseHistory.name" />
           </Title>
           <PurchaseSort />
           <PurchaseItemList purchaseItemList={entities} />

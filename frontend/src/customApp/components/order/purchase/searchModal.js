@@ -83,7 +83,7 @@ const SearchModal = () => {
       </h1>
       <Input placeholder="フリーワード検索" />
       <h2>
-        <IntlMessages id="order.purchesHistory.searchModal.period.title" />
+        <IntlMessages id="order.purchaseHistory.searchModal.period.title" />
       </h2>
       <DateInput from />
       <DateInput />
@@ -97,7 +97,7 @@ const SearchModal = () => {
       </CategoryCheckbox>
       <SearchButton>
         <button to={"#"}>
-          <IntlMessages id="order.purchesHistory.searchModal.submit" />
+          <IntlMessages id="order.purchaseHistory.searchModal.submit" />
         </button>
       </SearchButton>
     </ModalContent>

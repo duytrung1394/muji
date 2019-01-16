@@ -60,7 +60,7 @@ const DateInput = ({ from }) => {
         })}
       </Select>
       <Label>
-        <IntlMessages id="order.purchesHistory.searchModal.period.year" />
+        <IntlMessages id="order.purchaseHistory.searchModal.period.year" />
       </Label>
       <Select style={monthSelect} defaultValue={defaultMonth}>
         {monthList.map((value, index) => {
@@ -72,12 +72,10 @@ const DateInput = ({ from }) => {
         })}
       </Select>
       <Label>
-        <IntlMessages id="order.purchesHistory.searchModal.period.month" />
+        <IntlMessages id="order.purchaseHistory.searchModal.period.month" />
         {from ? (
-          <IntlMessages id="order.purchesHistory.searchModal.period.to" />
+          <IntlMessages id="order.purchaseHistory.searchModal.period.to" />
         ) : null}
-        {/* {" "}
-        <IntlMessages id="order.purchesHistory.searchModal.period.to" /> */}
       </Label>
     </DateWrapper>
   );
