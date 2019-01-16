@@ -166,19 +166,15 @@ class ProductCategoryTopsController extends Controller
             ],
             'campaigns' => [
                 [
-                    'img_src' => 'images/cmdty/woman/img/img-campaign-1.png',
                     'title' => 'ネット限定 | 先行予約（秋冬）',
                 ],
                 [
-                    'img_src' => 'images/cmdty/woman/img/img-campaign-2.png',
                     'title' => '伝統から学んだ、暮らしの服。',
                 ],
                 [
-                    'img_src' => 'images/cmdty/woman/img/img-campaign-3.png',
                     'title' => '人と自然 ー直線栽ちの服ー',
                 ],
                 [
-                    'img_src' => 'images/cmdty/woman/img/img-campaign-4.png',
                     'title' => '日本の布作りの旅（後編）',
                 ],
             ],
