@@ -1,21 +1,18 @@
 import React from "react";
-import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { BaseContentLayout } from "../../components/panel/contentLayout";
+import Slider from "../slider";
 
 const PopularityRankingTitle = styled.h1`
   font-size: 25px;
   padding: 10px;
 `;
 
-const RankingWrapper = styled.div`
-  display: flex;
-  overflow-x: scroll;
-`;
-
-const StyledCol = styled(Col)`
+const StyledLink = styled(Link)`
+  position: relative;
+  display: block;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 #585858;
   margin: 10px;
@@ -54,11 +51,8 @@ const ItemTitle = styled.div`
   padding: 5px 10px 10px;
 `;
 
-const colLayout = {
-  xs: 8,
-  sm: 8,
-  md: 6,
-  xl: 5
+const customSliderSettings = {
+  infinite: true
 };
 
 const PopularityRanking = ({ rankings }) => {
@@ -71,20 +65,20 @@ const PopularityRanking = ({ rankings }) => {
       <PopularityRankingTitle>
         <IntlMessages id="productCategoryTop.popularityRanking.title" />
       </PopularityRankingTitle>
-      <RankingWrapper>
+      <Slider {...customSliderSettings}>
         {rankings.map((ranking, index) => {
           return (
-            <StyledCol key={index} {...colLayout}>
-              <Link to="">
+            <div key={index}>
+              <StyledLink to="">
                 <ItemImage src={ranking.img} />
                 <Badge>{index + 1}</Badge>
                 <ItemMaterial>{ranking.material}</ItemMaterial>
                 <ItemTitle>{ranking.title}</ItemTitle>
-              </Link>
-            </StyledCol>
+              </StyledLink>
+            </div>
           );
         })}
-      </RankingWrapper>
+      </Slider>
     </BaseContentLayout>
   );
 };

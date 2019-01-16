@@ -5,6 +5,7 @@ import LargeButton from "../../form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import Slider from "../../slider";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -28,15 +29,6 @@ const ContentPanelWrapper = styled(ContentPanel)`
 const GroupName = styled.h1`
   font-size: 19px;
   font-weight: bold;
-`;
-
-const ItemName = styled.span`
-  padding: 0 10px;
-`;
-
-const ItemViewWrapper = styled.div`
-  display: flex;
-  overflow-x: scroll;
 `;
 
 const StyledLargeButton = styled(LargeButton)`
@@ -92,11 +84,11 @@ const ItemList = props => {
           return (
             <div key={index}>
               <GroupName>{group.group_name}</GroupName>
-              <ItemViewWrapper>
+              <Slider>
                 {group.items.map((item, index) => {
                   return <ItemView {...item} key={index} />;
                 })}
-              </ItemViewWrapper>
+              </Slider>
               <ItemCountButtonWrapper>
                 <ItemCountButton name={group.group_name} count={group.total} />
               </ItemCountButtonWrapper>

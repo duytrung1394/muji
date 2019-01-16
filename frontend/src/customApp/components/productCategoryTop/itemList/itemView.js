@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Col } from "antd";
 import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
 import SizeRange from "./sizeRange";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
-const Item = styled(Col)`
+const Item = styled.div`
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 #585858;
   margin: 10px;
@@ -96,7 +95,7 @@ class ItemView extends Component {
       this.state.currentJancode
     }_400.jpg`;
     return (
-      <Item xs={10} sm={10} md={8} lg={8} xl={5}>
+      <Item>
         <Link to="">
           <div>
             <img src={image} alt="" />
