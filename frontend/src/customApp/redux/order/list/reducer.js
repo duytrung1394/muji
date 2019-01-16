@@ -17,7 +17,7 @@ const reducer = handleActions(
         ...restReducer,
         FETCH_PURCHASE_HISTORY: {
           REQUEST: fetchRequest
-        },
+        }
       }
     }
   },

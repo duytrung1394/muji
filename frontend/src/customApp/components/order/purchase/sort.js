@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Breadcrumb, Modal } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import SearchModal from "./searchModal"
+import SearchModal from "./searchModal";
 import { NavLink } from "react-router-dom";
 
 const SortTab = styled.div`
@@ -59,12 +59,11 @@ const intlId = [
 ];
 
 const SortModal = styled(Modal)`
-  top:0 !important;
+  top: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-
 `;
 
 class Sort extends Component {

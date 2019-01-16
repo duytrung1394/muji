@@ -75,7 +75,6 @@ const categoryList = [
   "産地直送"
 ];
 
-
 const SearchModal = () => {
   return (
     <ModalContent>
@@ -86,7 +85,7 @@ const SearchModal = () => {
       <h2>
         <IntlMessages id="order.purchesHistory.searchModal.period.title" />
       </h2>
-      <DateInput from/>
+      <DateInput from />
       <DateInput />
       <h2>
         <IntlMessages id="item.show.category.title" />

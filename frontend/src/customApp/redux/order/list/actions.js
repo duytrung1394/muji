@@ -7,7 +7,7 @@ const actions = createActions({
       ...restActions,
       FETCH_PURCHASE_HISTORY: {
         REQUEST: undefined
-      },
+      }
     }
   }
 });

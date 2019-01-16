@@ -47,7 +47,7 @@ const DateWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const DateInput = ({from}) => {
+const DateInput = ({ from }) => {
   return (
     <DateWrapper>
       <Select style={yearSelect} defaultValue={defaultYear}>
@@ -73,12 +73,9 @@ const DateInput = ({from}) => {
       </Select>
       <Label>
         <IntlMessages id="order.purchesHistory.searchModal.period.month" />
-        {
-          from ? (
-            <IntlMessages id="order.purchesHistory.searchModal.period.to" />
-          ) :
-          null
-        }
+        {from ? (
+          <IntlMessages id="order.purchesHistory.searchModal.period.to" />
+        ) : null}
         {/* {" "}
         <IntlMessages id="order.purchesHistory.searchModal.period.to" /> */}
       </Label>
