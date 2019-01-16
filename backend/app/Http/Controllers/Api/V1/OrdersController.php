@@ -45,6 +45,19 @@ class OrdersController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function indexStoreReserve(Request $request)
+    {
+        return [
+            'data'  => $this->getMockDataStoreReserve(),
+            'total' => 200,
+        ];
+    }
+
+    /**
       * Show the form for creating a new resource.
       *
       * @return \Illuminate\Http\Response
@@ -307,6 +320,126 @@ class OrdersController extends Controller
      * モックデータを生成して取得
      */
     private function getMockDataByReservationHistory()
+    {
+        return [
+            [
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'store_name' => 'イオンモール各務原',
+                    'item_name' => 'オーガニックコットンVネック半袖Tシャツ',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込495円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 3,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                ],
+                [
+                    'order_date' => '2018/11/21',
+                    'order_state' => '受け取り済み',
+                    'store_name' => 'イオンモール各務原',
+                    'item_name' => 'ステンレスユニットシェルフ・ステンレス追加棚',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込495円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 3,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-2.png',
+                ],
+                [
+                    'order_date' => '2018/10/20',
+                    'order_state' => '配送準備中（2018/10/22 お届け予定）',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'item_name' => 'オーガニックコットンスムース編み五分袖Tシャツ',
+                    'item_num' => '個数：1個',
+                    'item_color'  => 'カラー：スモーキーブルー',
+                    'item_size' => 'サイズ：S',
+                    'item_price' => '税込465円',
+                    'cancel_button' => 'キャンセル',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 1,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-3.png',
+                ],
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '配送中（2018/11/02 お届け予定）',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込24,000円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => true,
+                    'cancel_type' => 2,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                ],
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '配送中（2018/11/02 お届け予定）',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'item_name' => 'オーク材ユニットシェルフ・小・基本セット',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込24,000円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => true,
+                    'cancel_type' => 2,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                ],
+            ],
+            [
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'store_name' => 'イオンモール各務原',
+                    'item_name' => 'オーガニックコットンVネック半袖Tシャツ',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込495円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 3,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                ],
+                [
+                    'order_date' => '2018/11/21',
+                    'order_state' => '受け取り済み',
+                    'store_name' => 'イオンモール各務原',
+                    'item_name' => 'ステンレスユニットシェルフ・ステンレス追加棚',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込495円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 3,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-2.png',
+                ],
+            ],
+            [
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'store_name' => 'イオンモール各務原',
+                    'item_name' => 'オーガニックコットンVネック半袖Tシャツ',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込495円',
+                    'cancel_button' => '返品する',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 3,
+                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                ],
+            ]
+        ];
+    }
+
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getMockDataStoreReserve()
     {
         return [
             [

@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Breadcrumb, Modal, Tab, Tabs } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
-import PurchaseItemList from "../../components/order/purchaseItemList";
-import PurchaseSearchModal from "../../components/order/purchaseSearchModal";
-import { NavLink } from "react-router-dom";
+// import PurchaseItemList from "./itemList";
+import StoreReserveItemList from "./storeReserve/itemList";
 
 const TabPane = Tabs.TabPane;
 
-const ReservationTabs = styled(Tabs)`
+const TabsWrapper = styled(Tabs)`
   overflow-y: initial;
   width: 100%;
 
@@ -44,7 +43,7 @@ const ReservationTabs = styled(Tabs)`
   }
 `;
 
-const ReservationTabPane = styled(TabPane)`
+const StyledTabPane = styled(TabPane)`
   padding-bottom: 16px;
 `;
 
@@ -54,35 +53,23 @@ const TabList = [
   '取り置き依頼中'
 ];
 
-// class ReservationTab extends Component {
-
-const ReservationTab = ({purchaseItemList}) => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     modalVisible: false,
-  //     currentPage: 0
-  //   };
-  // }
-
-  // render() {
+const OrderTabs = ({itemList}) => {
     return (
-      <ReservationTabs
+      <TabsWrapper
         defaultActiveKey="0"
-        // onChange={callback}
       >
         {
-          purchaseItemList.map((purchaseItem, index) => {
+          itemList.map((item, index) => {
             return (
-              <ReservationTabPane tab={TabList[index]} key={index}>
-                <PurchaseItemList purchaseItemList={purchaseItem} />
-              </ReservationTabPane>
+              <StyledTabPane tab={TabList[index]} key={index}>
+                <StoreReserveItemList itemList={item} />
+              </StyledTabPane>
             )
           })
         }
 
-      </ReservationTabs>
+      </TabsWrapper>
     );
 }
 
-export default ReservationTab;
+export default OrderTabs;

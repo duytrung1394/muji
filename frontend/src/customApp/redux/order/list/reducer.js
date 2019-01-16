@@ -8,7 +8,10 @@ const reducer = handleActions(
       LIST: {
         ...restReducer,
       },
-      FETCH_BY_RESERVATION_HISTORY: {
+      FETCH_RESERVATION_HISTORY: {
+        REQUEST: fetchRequest
+      },
+      FETCH_STORE_RESERVE: {
         REQUEST: fetchRequest
       }
     }

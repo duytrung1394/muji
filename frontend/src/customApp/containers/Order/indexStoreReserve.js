@@ -6,6 +6,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import ReservationTab from "../../components/order/orderTabs";
 import PurchaseItemList from "../../components/order/purchaseItemList";
+import Tabs from "../../components/order/orderTabs"
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -49,7 +50,7 @@ class Index extends Component {
           <IntlMessages id="order.purchesHistory.name" />
         </Title>
         {/* <PurchaseSort /> */}
-        <ReservationTab purchaseItemList={entities}/>
+        <Tabs itemList={entities}/>
         {/* <PurchaseItemList purchaseItemList={entities} /> */}
       </LayoutWrapper>
     );
@@ -61,7 +62,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetchByReservationHistory.request,
+  fetchRequest: actions.fetchStoreReserve.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

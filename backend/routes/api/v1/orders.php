@@ -31,6 +31,14 @@ $router->get('/api/v1/orders/reservation-history', [
 ]);
 
 /**
+ * 店舗取り置き一覧取得
+ */
+$router->get('/api/v1/orders/store-reserve', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@indexStoreReserve',
+]);
+
+/**
   * 作成
   */
 $router->get('/api/v1/orders/create', [
