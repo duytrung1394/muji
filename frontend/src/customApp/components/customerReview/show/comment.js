@@ -50,9 +50,9 @@ const LinkStyle = {
   zIndex: "10"
 };
 
-const Comment = ({ comment, key }) => {
+const Comment = ({ comment }) => {
   return (
-    <UserData key={key}>
+    <UserData>
       <Link to={``} style={LinkStyle} />
       <UserIcon
         src={comment.user_image}
