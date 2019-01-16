@@ -5,14 +5,14 @@ import { injectIntl } from "react-intl";
 import { Spin, Button } from "antd";
 import ContentHeader from "../../components/header/contentHeader";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
-import Article from "../../components/donationTop/article";
-import DonationList from "../../components/donationTop/donationList";
+import Article from "../../components/donation/article";
+import DonationList from "../../components/donation/donationList";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import {
   PerformanceButton,
   FutureButton
-} from "../../components/donationTop/button";
+} from "../../components/donation/button";
 
 class Index extends Component {
   componentDidMount() {
