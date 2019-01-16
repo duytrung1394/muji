@@ -15,11 +15,19 @@ const Notice = styled.li`
   }
 `;
 
-const Notices = ({ value }) => {
+const Message = ({ idFlg }) => {
+  return idFlg == "comment" ? (
+    <IntlMessages id={`customerReview.new.notice1comment`} />
+  ) : (
+    <IntlMessages id={`customerReview.new.notice1review`} />
+  );
+};
+
+const Notices = ({ idFlg }) => {
   return (
     <NoticeList>
       <Notice>
-        <IntlMessages id={`customerReview.new.notice1${value}`} />
+        <Message idFlg={idFlg} />
         <Link to={"/"}>
           <IntlMessages id="customerReview.new.noticeLink" />
         </Link>

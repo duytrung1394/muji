@@ -67,13 +67,12 @@ class Show extends Component {
                 comments={entity.comments}
                 fetchRequest={fetchRequest}
               />
-
               <SeeMore onClick={this.seeMore}>
                 <SeeMoreIcon type="down" />
                 <IntlMessages id="reviewDetail.seeMore" />
               </SeeMore>
               <CommentForm />
-              <Notices />
+              <Notices idFlg={"comment"} />
             </ContentLayout>
           </Spin>
         </ContentAreaLayout>
