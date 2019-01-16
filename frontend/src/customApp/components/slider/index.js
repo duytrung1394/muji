@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "./link";
 
 const SliderWrapper = styled(SlickSlider)`
   .slick-track {
@@ -61,3 +62,5 @@ const Slider = props => {
 };
 
 export default Slider;
+
+export { Link };

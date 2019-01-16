@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { BaseContentLayout } from "../../components/panel/contentLayout";
-import Slider from "../slider";
+import Slider, { Link } from "../slider";
 
 const PopularityRankingTitle = styled.h1`
   font-size: 25px;
