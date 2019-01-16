@@ -62,7 +62,7 @@ const RankingItemStyle = styled.div`
   padding: 10px;
 `;
 
-const RankingItem = ({badgeNum, ranking}) => {
+const RankingItem = ({ badgeNum, ranking }) => {
   return (
     <RankingItemStyle>
       <StyledLink to="">
@@ -96,7 +96,9 @@ const PopularityRanking = ({ rankings }) => {
       </PopularityRankingTitle>
       <Slider {...customSliderSettings}>
         {rankings.map((ranking, index) => {
-          return (<RankingItem key={index} badgeNum={index + 1} ranking={ranking} />);
+          return (
+            <RankingItem key={index} badgeNum={index + 1} ranking={ranking} />
+          );
         })}
       </Slider>
     </BaseContentLayout>
