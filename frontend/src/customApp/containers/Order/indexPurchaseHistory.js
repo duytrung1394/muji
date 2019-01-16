@@ -4,8 +4,9 @@ import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import PurchaseSort from "../../components/order/purchaseSort";
-import PurchaseItemList from "../../components/order/purchaseItemList";
+import PurchaseSort from "../../components/order/purchase/sort";
+import PurchaseItemList from "../../components/order/purchase/itemList";
+import { Spin } from "antd";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -44,13 +45,15 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <LayoutWrapper>
-        <Title>
-          <IntlMessages id="order.purchesHistory.name" />
-        </Title>
-        <PurchaseSort />
-        <PurchaseItemList purchaseItemList={entities} />
-      </LayoutWrapper>
+      <Spin size="large" spinning={fetching}>
+        <LayoutWrapper>
+          <Title>
+            <IntlMessages id="order.purchesHistory.name" />
+          </Title>
+          <PurchaseSort />
+          <PurchaseItemList purchaseItemList={entities} />
+        </LayoutWrapper>
+      </Spin>
     );
   }
 }
@@ -60,7 +63,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
+  fetchRequest: actions.fetchPurchaseHistory.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

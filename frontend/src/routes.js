@@ -174,7 +174,7 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/orders/purchaseHistory",
+    path: "/store/cust/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")

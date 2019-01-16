@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Popconfirm, Popover, Icon, message } from "antd";
-import IntlMessages from "../../../components/utility/intlMessages";
-import settings from "../../../settings";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import settings from "../../../../settings";
 
 const PurchesItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
@@ -243,7 +243,7 @@ const cancelConfirmText = (
   <IntlMessages id="order.purchesHistory.cancelConfirm" />
 );
 
-const PurchaseItem = ({ purchaseItem }) => {
+const Item = ({ purchaseItem }) => {
   const describeList = [
     purchaseItem.order_state,
     purchaseItem.item_num,
@@ -352,4 +352,4 @@ const PurchaseItem = ({ purchaseItem }) => {
   );
 };
 
-export default PurchaseItem;
+export default Item;

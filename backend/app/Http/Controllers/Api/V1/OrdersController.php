@@ -26,8 +26,7 @@ class OrdersController extends Controller
     public function indexPurchaseHistory(Request $request)
     {
         return [
-            // 'data'  => $this->getMultiMockData( (int)$request->input('page') ),
-            'data'  => $this->getMultiMockData(),
+            'data'  => $this->getPurchaseHistoryMock(),
             'total' => 200,
         ];
     }
@@ -104,14 +103,12 @@ class OrdersController extends Controller
      */
     private function getMultiMockData($page = 1)
     {
-        // $data = [];
-        // $start = ((int) $page - 1) * 10;
+        $data = [];
+        $start = ((int) $page - 1) * 10;
 
-        // for ($i = 0; $i < 10; $i++) {
-        //     $data[] = $this->getMockData('order_code' . ($i + $start ));
-        // }
-
-        $data = $this->getMockData();
+        for ($i = 0; $i < 10; $i++) {
+            $data[] = $this->getMockData('order_code' . ($i + $start ));
+        }
 
         return $data;
     }
@@ -119,15 +116,16 @@ class OrdersController extends Controller
     /**
      * モックデータを生成して取得
      */
-    // private function getMockData($code)
-    private function getMockData()
+    private function getMockData($code)
     {
-        // return [
-        //     'order_code'   => $code,
-        //     'name'        => 'name_' . $code,
-        //     'description' => 'description_' . $code,
-        // ];
+        return [
+            'order_code'   => $code,
+            'name'        => 'name_' . $code,
+            'description' => 'description_' . $code,
+        ];
+    }
 
+    private function getPurchaseHistoryMock(){
         return [
             [
                 'order_date' => '2018/11/23',
