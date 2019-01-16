@@ -86,7 +86,8 @@ const routes = [
     path: "/store/cmdty/donation",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/index")
+      // require("./customApp/containers/DonationTop/index")
+      require("./customApp/containers/Donation/index")
     )
   },
   {
@@ -166,19 +167,5 @@ const routes = [
       require("./customApp/containers/DonationTop/complete")
     )
   },
-  {
-    path: "/donations",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Donation/index")
-    )
-  },
-  {
-    path: "/donations/:donation_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Donation/show")
-    )
-  }
 ];
 export default routes;
