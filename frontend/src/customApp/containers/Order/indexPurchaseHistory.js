@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PurchaseSort from "../../components/order/purchase/sort";
 import PurchaseItemList from "../../components/order/purchase/itemList";
 import { Spin } from "antd";
 import styled from "styled-components";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -45,15 +45,15 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <Spin size="large" spinning={fetching}>
-        <LayoutWrapper>
-          <Title>
-            <IntlMessages id="order.purchaseHistory.name" />
-          </Title>
-          <PurchaseSort />
+      <ContentAreaLayout>
+        <Title>
+          <IntlMessages id="order.purchaseHistory.name" />
+        </Title>
+        <PurchaseSort />
+        <Spin size="large" spinning={fetching}>
           <PurchaseItemList purchaseItemList={entities} />
-        </LayoutWrapper>
-      </Spin>
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
