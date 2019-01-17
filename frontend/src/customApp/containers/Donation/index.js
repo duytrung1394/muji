@@ -20,7 +20,6 @@ class Index extends Component {
   }
 
   render() {
-    console.log("aaa");
     const { entity, fetching } = this.props;
     return (
       <ContentAreaLayout>

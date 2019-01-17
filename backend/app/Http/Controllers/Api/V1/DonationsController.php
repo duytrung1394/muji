@@ -26,8 +26,19 @@ class DonationsController extends Controller
      */
     public function show($donationCode)
     {
+        \Log::info("Donations show");        
         return [
-            'item' => $this->getMockdata($donationCode),
+            'data' => $this->getMockData($donationCode),
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
+                ],
+                [
+                    'path' => '/store/cmdty/donation',
+                    'name' => '募金券',
+                ],
+            ],
         ];
     }
 

@@ -17,7 +17,7 @@ $router->get('/api/v1/donations', [
 /**
  * 詳細取得
  */
-$router->get('/api/v1/donations/{taskCode}', [
+$router->get('/api/v1/donations/{donationCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DonationsController@show',
 ]);
