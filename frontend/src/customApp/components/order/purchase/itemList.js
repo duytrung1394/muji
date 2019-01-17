@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import PurchaseItem from "./purchaseItem";
+import Item from "./item";
 
-const PurchaseItemListWrapper = styled.div`
+const ItemListWrapper = styled.div`
   float: left;
   list-style: none;
   position: relative;
@@ -16,14 +16,14 @@ const PurchaseItemListWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const PurchaseItemList = ({ purchaseItemList }) => {
+const ItemList = ({ purchaseItemList }) => {
   return (
-    <PurchaseItemListWrapper>
+    <ItemListWrapper>
       {purchaseItemList.map((purchaseItem, index) => {
-        return <PurchaseItem key={index} purchaseItem={purchaseItem} />;
+        return <Item key={index} purchaseItem={purchaseItem} />;
       })}
-    </PurchaseItemListWrapper>
+    </ItemListWrapper>
   );
 };
 
-export default PurchaseItemList;
+export default ItemList;

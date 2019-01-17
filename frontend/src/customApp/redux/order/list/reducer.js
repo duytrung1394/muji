@@ -9,13 +9,16 @@ const reducer = handleActions(
   {
     ORDER: {
       LIST: {
-        ...restReducer
-      },
-      FETCH_RESERVATION_HISTORY: {
-        REQUEST: fetchRequest
-      },
-      FETCH_STORE_RESERVE: {
-        REQUEST: fetchRequest
+        ...restReducer,
+        FETCH_RESERVATION_HISTORY: {
+          REQUEST: fetchRequest
+        },
+        FETCH_STORE_RESERVE: {
+          REQUEST: fetchRequest
+        },
+        FETCH_PURCHASE_HISTORY: {
+          REQUEST: fetchRequest
+        }
       }
     }
   },

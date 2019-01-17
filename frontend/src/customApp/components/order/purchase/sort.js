@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Breadcrumb, Modal } from "antd";
-import IntlMessages from "../../../components/utility/intlMessages";
-import PurchaseSearchModal from "../../components/order/purchaseSearchModal";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import SearchModal from "./searchModal";
 import { NavLink } from "react-router-dom";
 
 const SortTab = styled.div`
@@ -52,11 +52,19 @@ const currentPageStyle = {
 };
 
 const intlId = [
-  "order.purchesHistory.sort.category",
-  "order.purchesHistory.sort.recent",
-  "order.purchesHistory.sort.lowerPrice",
-  "order.purchesHistory.sort.ranking"
+  "order.purchaseHistory.sort.category",
+  "order.purchaseHistory.sort.recent",
+  "order.purchaseHistory.sort.lowerPrice",
+  "order.purchaseHistory.sort.ranking"
 ];
+
+const SortModal = styled(Modal)`
+  top: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
 class Sort extends Component {
   constructor(props) {
@@ -110,15 +118,14 @@ class Sort extends Component {
         <Refine onClick={this.showModal}>
           <IntlMessages id="item.search.show" />
         </Refine>
-        <Modal
-          centered
+        <SortModal
           visible={this.state.modalVisible}
           footer={null}
           onCancel={this.handleCancel}
           width="400px"
         >
-          <PurchaseSearchModal />
-        </Modal>
+          <SearchModal />
+        </SortModal>
       </SortTab>
     );
   }

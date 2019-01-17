@@ -69,6 +69,13 @@ const routes = [
     )
   },
   {
+    path: "/store/review/detail/:review_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/show")
+    )
+  },
+  {
     path: "/store/review/user/",
     exact: true,
     component: asyncComponent(() =>

@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import PurchaseSort from "../../components/order/purchaseSort";
-import PurchaseItemList from "../../components/order/purchaseItemList";
+import PurchaseSort from "../../components/order/purchase/sort";
+import PurchaseItemList from "../../components/order/purchase/itemList";
+import { Spin } from "antd";
 import styled from "styled-components";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -44,13 +45,15 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <LayoutWrapper>
+      <ContentAreaLayout>
         <Title>
-          <IntlMessages id="order.purchesHistory.name" />
+          <IntlMessages id="order.purchaseHistory.name" />
         </Title>
         <PurchaseSort />
-        <PurchaseItemList purchaseItemList={entities} />
-      </LayoutWrapper>
+        <Spin size="large" spinning={fetching}>
+          <PurchaseItemList purchaseItemList={entities} />
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
@@ -60,7 +63,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
+  fetchRequest: actions.fetchPurchaseHistory.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

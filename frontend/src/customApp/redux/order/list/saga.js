@@ -7,6 +7,7 @@ import authActions from "../../../../redux/auth/actions";
 const api = RESTListApi("orders", "codes");
 const listByReservationApi = RESTListApi("orders/reservation-history");
 const listStoreReserveApi = RESTListApi("orders/store-reserve");
+const listPurchaseHistoryApi = RESTListApi("orders/purchase-history");
 
 const getListByReservationHistoryFunction = function*({ payload }) {
   try {
@@ -32,6 +33,19 @@ const getListStoreReserveFunction = function*({ payload }) {
       yield put(actions.fetch.failure(error));
     }
   }
+}
+
+const getListByPurchaseHistoryFunction = function*({ payload }) {
+  try {
+    const response = yield call(listPurchaseHistoryApi.GET, payload);
+    yield put(actions.fetch.success(response.data));
+  } catch (error) {
+    if (error.response.status == 401) {
+      yield put(authActions.unauthorized(error));
+    } else {
+      yield put(actions.fetch.failure(error));
+    }
+  }
 };
 
 export default function* saga() {
@@ -43,5 +57,9 @@ export default function* saga() {
   yield takeEvery(
     actions.fetchStoreReserve.request.toString(),
     getListStoreReserveFunction
+  );
+  yield takeEvery(
+    actions.fetchPurchaseHistory.request.toString(),
+    getListByPurchaseHistoryFunction
   );
 }
