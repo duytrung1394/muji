@@ -33,7 +33,7 @@ const getListStoreReserveFunction = function*({ payload }) {
       yield put(actions.fetch.failure(error));
     }
   }
-}
+};
 
 const getListByPurchaseHistoryFunction = function*({ payload }) {
   try {

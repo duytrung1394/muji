@@ -10,7 +10,7 @@ const ItemListWrapper = styled.div`
 
   max-width: 1590px;
   margin: 10px auto 0;
-  padding: 0 50px 16px 0;
+  padding: 0 50px 16px 50px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import Tabs from "../../components/order/orderTabs";
 import styled from "styled-components";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { Spin } from "antd";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -49,12 +50,14 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <LayoutWrapper>
+      <ContentAreaLayout>
         <Title>
           <IntlMessages id="order.storeReserve.name" />
         </Title>
-        <Tabs itemList={entities} tabList={tabList} />
-      </LayoutWrapper>
+        <Spin size="large" spinning={fetching}>
+          <Tabs itemList={entities} tabList={tabList} />
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
