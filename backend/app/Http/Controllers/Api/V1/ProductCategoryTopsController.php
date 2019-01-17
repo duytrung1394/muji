@@ -384,12 +384,13 @@ class ProductCategoryTopsController extends Controller
         $title = 'タートルネックセーター';
         $material = 'ウールシルク洗える';
         if ($level === 2) {
-            $title = 'レベル2';
+            $title = 'プリントTシャツ';
+            $material = 'オーガニックコットン';
         }
         $item = [
             'title' => $title,
             'material' => $material,
-            'price' => 4900,
+            'price' => 2903,
             'swatches' => $this->getMockSwatches($level, $swatchNumber),
             'tags' => $tags,
             'minSize' => 'XS',
@@ -397,7 +398,7 @@ class ProductCategoryTopsController extends Controller
         ];
 
         if (in_array("campaign", $tags) || in_array("discount", $tags)) {
-            $item['new_price'] = 1900;
+            $item['new_price'] = 1495;
         }
 
         return $item;
@@ -482,10 +483,10 @@ class ProductCategoryTopsController extends Controller
         ];
 
         if ($level === 2) {
-            $swatches[0]['jancode'] = '4550002208479';
-            $swatches[1]['jancode'] = '4550002208516';
-            $swatches[2]['jancode'] = '4550002361402';
-            $swatches[3]['jancode'] = '4550002361440';
+            $swatches[0]['jancode'] = '4550002253899';
+            $swatches[1]['jancode'] = '4550002253912';
+            $swatches[2]['jancode'] = '4550002253936';
+            $swatches[3]['jancode'] = '4550002253974';
             $swatches[4]['jancode'] = '4550002361525';
             $swatches[5]['jancode'] = '4550002361624';
             $swatches[6]['jancode'] = '4550002361648';
