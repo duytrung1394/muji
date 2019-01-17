@@ -19,7 +19,7 @@ const getListByReservationHistoryFunction = function*({ payload }) {
       yield put(actions.fetch.failure(error));
     }
   }
-}
+};
 
 const getListStoreReserveFunction = function*({ payload }) {
   try {
@@ -32,7 +32,7 @@ const getListStoreReserveFunction = function*({ payload }) {
       yield put(actions.fetch.failure(error));
     }
   }
-}
+};
 
 export default function* saga() {
   yield restAllSaga(api, actions);

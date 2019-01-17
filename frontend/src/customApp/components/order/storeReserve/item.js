@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Popconfirm, Popover, Icon, message } from "antd";
+import { Popconfirm, Icon, message } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import settings from "../../../../settings";
+
+import imgStoreReserve1 from "../../../../image/order/store_reserve/img-reserve-1.png";
+import imgStoreReserve2 from "../../../../image/order/store_reserve/img-reserve-2.png";
+import imgStoreReserve3 from "../../../../image/order/store_reserve/img-reserve-3.png";
+
+const images = {
+  "img-reserve-1.png": imgStoreReserve1,
+  "img-reserve-2.png": imgStoreReserve2,
+  "img-reserve-3.png": imgStoreReserve3
+};
 
 const StoreReserveItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
@@ -18,10 +27,19 @@ const StoreReserveItemWrapper = styled.section`
   }
 `;
 
-const StoreReserveTitle = styled.h2`
-  line-height: 16px;
-  margin-top: 15px;
+const StoreReserveHeader = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
   padding: 0 16px;
+`;
+
+const StoreReserveTitle = styled.h2`
+  width: 30%;
+  margin: 0;
+  line-height: 16px;
   font-size: 13px;
   font-weight: bold;
   white-space: nowrap;
@@ -30,37 +48,15 @@ const StoreReserveTitle = styled.h2`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const StoreReserveItemInfo = styled.div`
-  margin-top: 13px;
-  padding: 0 16px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ShoppingAddress = styled.div`
+const StoreReserveState = styled.div`
+  width: 70%;
   text-align: right;
-  width: 30%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  a,
-  a:hover,
-  a:focus {
-    color: rgb(96, 179, 250);
-  }
-`;
-
-const OrderAddress = styled.p`
-  display: inline;
-  color: rgb(96, 179, 250);
+  font-size: 11px;
 `;
 
 const StoreReserveItemMenu = styled.div`
   position: relative;
-  margin-top: 13px;
+  margin-top: 16px;
   min-height: 139px;
   display: flex;
   flex-wrap: nowrap;
@@ -99,40 +95,10 @@ const StoreReserveItemDescribe = styled.li`
   }
 `;
 
-const EllipsisButtonWrapper = styled.div`
-  width: 49px;
-  position: absolute;
-  bottom: 10px;
-  right: 16px;
-  cursor: pointer;
-`;
-
-const EllipsisButton = styled.button`
-  height: 49px;
-  width: 49px;
-  border-radius: 50%;
-  box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.65);
-  font-size: 30px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.36);
-  border: 1px solid rgba(0, 0, 0, 0.36);
-
-  i {
-    position: absolute;
-    height: 30px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    margin: auto;
-    font-size: 30px;
-    font-weight: bold;
-  }
-`;
-
 const StoreReserveItemButtonWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-between;
   padding: 0;
   margin: 0;
   border-bottom-left-radius: 4px;
@@ -141,7 +107,7 @@ const StoreReserveItemButtonWrapper = styled.ul`
 `;
 
 const StoreReserveItemButton = styled.li`
-  width: 50%;
+  width: 100%;
   position: relative;
   background: rgba(0, 0, 0, 0.05);
   text-align: center;
@@ -182,138 +148,87 @@ const StoreReserveItemButton = styled.li`
   }
 `;
 
-const PopoverContentWrapper = styled.ul`
-  margin: -10px;
-  padding: 0;
-  border-bottom: 1px solid rgb(153, 153, 153);
-
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const PopoverContent = styled.li`
-  list-style-type: none;
-  list-style: none;
-  text-align: center;
-  font-size: 12px;
-  border-bottom: 1px solid #999;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  a {
-    padding: 16px 5px;
-    display: block;
-
-    &,
-    &:hover {
-      color: rgba(0, 0, 0, 0.65);
-    }
-  }
-`;
-
-const canselButtonDisabled = {
-  link: { color: "rgba(0, 0, 0, 0.4)" },
-  icon: { color: "rgba(0, 0, 0, 0.09)" }
+const buttonText = {
+  reStoreReserve: "order.storeReserve.reStoreReserve",
+  extend: "order.storeReserve.extend",
+  delete: "order.storeReserve.delete",
+  cancel: "order.storeReserve.cancel"
 };
 
-const intlId = [
-  "order.storeReserve.ellipsisButton.review",
-  "order.storeReserve.ellipsisButton.favorite",
-  "order.storeReserve.ellipsisButton.maintenanceParts"
-];
+const CancelButton = ({ placement, onConfirm }) => {
+  let confirmText = <IntlMessages id="order.storeReserve.cancelConfirm" />;
 
-const purchaseItemPopover = (
-  <PopoverContentWrapper>
-    {intlId.map((id, index) => {
+  return (
+    <StoreReserveItemButton>
+      <Popconfirm
+        placement={placement}
+        title={confirmText}
+        onConfirm={onConfirm}
+        okText="はい"
+        cancelText="いいえ"
+      >
+        <Link to={"#"}>
+          <IntlMessages id={buttonText.cancel} />
+          <Icon type="right" />
+        </Link>
+      </Popconfirm>
+    </StoreReserveItemButton>
+  );
+};
+
+const LinkButton = ({ to, textId }) => {
+  return (
+    <StoreReserveItemButton>
+      <Link to={to}>
+        <IntlMessages id={textId} />
+        <Icon type="right" />
+      </Link>
+    </StoreReserveItemButton>
+  );
+};
+
+const cancelConfirm = () => {
+  message.info("キャンセル");
+};
+
+const StoreReserveItemFooter = ({ type }) => {
+  switch (type) {
+    case 1:
       return (
-        <PopoverContent key={index}>
-          <Link to={"#"}>
-            <IntlMessages id={id} />
-          </Link>
-        </PopoverContent>
+        <StoreReserveItemButtonWrapper>
+          <CancelButton placement="top" onConfirm={cancelConfirm} />
+        </StoreReserveItemButtonWrapper>
       );
-    })}
-  </PopoverContentWrapper>
-);
-
-const cancelConfirmText = (
-  <IntlMessages id="order.storeReserve.cancelConfirm" />
-);
+    case 2:
+      return (
+        <StoreReserveItemButtonWrapper>
+          <CancelButton placement="topLeft" onConfirm={cancelConfirm} />
+          <LinkButton to={"#"} textId={buttonText.extend} />
+        </StoreReserveItemButtonWrapper>
+      );
+    case 3:
+      return (
+        <StoreReserveItemButtonWrapper>
+          <LinkButton to={"#"} textId={buttonText.delete} />
+          <LinkButton to={"#"} textId={buttonText.reStoreReserve} />
+        </StoreReserveItemButtonWrapper>
+      );
+  }
+};
 
 const StoreReserveItem = ({ item }) => {
-  const describeList = [
-    item.order_state,
-    item.item_num,
-    item.item_color,
-    item.item_size,
-    item.item_price
-  ];
-
-  const cancelConfirm = () => {
-    message.info("キャンセル");
-  };
-
-  const buttonSwitch = type => {
-    let buttonText = {
-      return: "order.storeReserve.returnProduct",
-      cancel: "order.storeReserve.cancel"
-    };
-
-    switch (type) {
-      case 1:
-        return (
-          <Popconfirm
-            placement="topLeft"
-            title={cancelConfirmText}
-            onConfirm={cancelConfirm}
-            okText="はい"
-            cancelText="いいえ"
-          >
-            <Link to={"#"}>
-              <IntlMessages id={buttonText.cancel} />
-              <Icon type="right" />
-            </Link>
-          </Popconfirm>
-        );
-      case 2:
-        return (
-          <p style={canselButtonDisabled.link}>
-            <IntlMessages id={buttonText.return} />
-            <Icon type="right" style={canselButtonDisabled.icon} />
-          </p>
-        );
-      case 3:
-        return (
-          <Link to={"#"}>
-            <IntlMessages id={buttonText.return} />
-            <Icon type="right" />
-          </Link>
-        );
-    }
-  };
+  const describeList = [item.item_name, item.item_num, item.item_price];
 
   return (
     <StoreReserveItemWrapper>
-      <StoreReserveTitle to={"#"}>
-        {item.item_name}
-      </StoreReserveTitle>
-      <StoreReserveItemInfo>
-        <div>{item.order_date}</div>
-        <ShoppingAddress>
-          {item && item.order_address ? (
-            <OrderAddress>{item.order_address}</OrderAddress>
-          ) : (
-            <Link to={"#"}>{item.store_name}</Link>
-          )}
-        </ShoppingAddress>
-      </StoreReserveItemInfo>
+      <StoreReserveHeader>
+        <StoreReserveTitle to={"#"}>{item.store_name}</StoreReserveTitle>
+        <StoreReserveState>{item.order_state}</StoreReserveState>
+      </StoreReserveHeader>
       <StoreReserveItemMenu>
         <StoreReserveItemImage>
           <Link to={"#"}>
-            <img src={`${settings.apiUrl}/${item.img_src}`} alt="" />
+            <img src={images[item.img_src]} alt="" />
           </Link>
         </StoreReserveItemImage>
         <StoreReserveItemDescribeList>
@@ -325,29 +240,8 @@ const StoreReserveItem = ({ item }) => {
             );
           })}
         </StoreReserveItemDescribeList>
-        <EllipsisButtonWrapper>
-          <Popover
-            placement="topRight"
-            content={purchaseItemPopover}
-            trigger="click"
-          >
-            <EllipsisButton>
-              <Icon type="ellipsis" />
-            </EllipsisButton>
-          </Popover>
-        </EllipsisButtonWrapper>
       </StoreReserveItemMenu>
-      <StoreReserveItemButtonWrapper>
-        <StoreReserveItemButton>
-          {buttonSwitch(item.cancel_type)}
-        </StoreReserveItemButton>
-        <StoreReserveItemButton>
-          <Link to={"#"}>
-            <IntlMessages id="order.storeReserve.itemDetails" />
-            <Icon type="right" />
-          </Link>
-        </StoreReserveItemButton>
-      </StoreReserveItemButtonWrapper>
+      <StoreReserveItemFooter type={item.cancel_type} />
     </StoreReserveItemWrapper>
   );
 };

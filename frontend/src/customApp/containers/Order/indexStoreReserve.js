@@ -4,9 +4,7 @@ import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import ReservationTab from "../../components/order/orderTabs";
-import PurchaseItemList from "../../components/order/purchaseItemList";
-import Tabs from "../../components/order/orderTabs"
+import Tabs from "../../components/order/orderTabs";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -18,6 +16,12 @@ const Title = styled.h1`
   margin: 30px 0px 0px;
   padding: 0 50px;
 `;
+
+const tabList = [
+  "order.storeReserve.tab.all",
+  "order.storeReserve.tab.complete",
+  "order.storeReserve.tab.request"
+];
 
 class Index extends Component {
   constructor(props) {
@@ -47,11 +51,9 @@ class Index extends Component {
     return (
       <LayoutWrapper>
         <Title>
-          <IntlMessages id="order.purchesHistory.name" />
+          <IntlMessages id="order.storeReserve.name" />
         </Title>
-        {/* <PurchaseSort /> */}
-        <Tabs itemList={entities}/>
-        {/* <PurchaseItemList purchaseItemList={entities} /> */}
+        <Tabs itemList={entities} tabList={tabList} />
       </LayoutWrapper>
     );
   }
