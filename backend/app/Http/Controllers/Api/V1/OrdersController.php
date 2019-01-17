@@ -204,7 +204,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -216,7 +216,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -228,7 +228,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -240,7 +240,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -252,7 +252,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -264,7 +264,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -276,7 +276,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -288,7 +288,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -300,7 +300,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -312,7 +312,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ],
             [
                 'order_date' => '2018/11/23',
@@ -324,7 +324,7 @@ class OrdersController extends Controller
                 'cancel_button' => '返品する',
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
-                'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                'img_src' => 'img-purchase-history-4.png',
             ]
         ];
     }
@@ -348,7 +348,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 3,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                    'img_src' => 'img-purchase-history-1.png',
                 ],
                 [
                     'order_date' => '2018/11/21',
@@ -360,7 +360,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 3,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-2.png',
+                    'img_src' => 'img-purchase-history-2.png',
                 ],
                 [
                     'order_date' => '2018/10/20',
@@ -374,7 +374,7 @@ class OrdersController extends Controller
                     'cancel_button' => 'キャンセル',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 1,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-3.png',
+                    'img_src' => 'img-purchase-history-3.png',
                 ],
                 [
                     'order_date' => '2018/11/23',
@@ -386,7 +386,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => true,
                     'cancel_type' => 2,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                    'img_src' => 'img-purchase-history-4.png',
                 ],
                 [
                     'order_date' => '2018/11/23',
@@ -398,7 +398,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => true,
                     'cancel_type' => 2,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-4.png',
+                    'img_src' => 'img-purchase-history-4.png',
                 ],
             ],
             [
@@ -414,7 +414,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 3,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                    'img_src' => 'img-purchase-history-1.png',
                 ],
                 [
                     'order_date' => '2018/11/21',
@@ -426,7 +426,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 3,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-2.png',
+                    'img_src' => 'img-purchase-history-2.png',
                 ],
             ],
             [
@@ -442,7 +442,7 @@ class OrdersController extends Controller
                     'cancel_button' => '返品する',
                     'cancel_button_disabled' => false,
                     'cancel_type' => 3,
-                    'img_src' => 'images/order/purchase_history/img-purchase-history-1.png',
+                    'img_src' => 'img-purchase-history-1.png',
                 ],
             ]
         ];
@@ -590,7 +590,6 @@ class OrdersController extends Controller
                     'cancel_type' => 3,
                     'img_src' => 'img-reserve-3.png',
                 ],
-                'img_src' => 'img-purchase-history-4.png',
             ]
         ];
     }
