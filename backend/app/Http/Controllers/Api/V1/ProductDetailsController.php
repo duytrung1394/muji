@@ -25,18 +25,18 @@ class ProductDetailsController extends Controller
         $data = [
             'jan_code' => $janCode,
             'fab_flg' => 1,
-            'navigation_list' => [
+            'links' => [
                 [
                     'path' => '/store',
-                    'title' => '無印良品トップ',
+                    'name' => '無印良品トップ',
                 ],
                 [
                     'path' => '/store/cmdty/section/T10000',
-                    'title' => '婦人ウェア',
+                    'name' => '婦人ウェア',
                 ],
                 [
-                    'path' => '/store/cmdty/section/S10002',
-                    'title' => 'カットソー',
+                    'path' => '/store/cmdty/section/S10003',
+                    'name' => 'カットソー',
                 ],
             ],
             'title' => "ミニ裏毛五分袖ワイドＴシャツ",

@@ -6,6 +6,7 @@ import { Spin, Row } from "antd";
 import ContentAreaLayout from "../../components/panel/contentLayout";
 import DetailPicture from "../../components/productDetail/detailPicture";
 import DetailInfo from "../../components/productDetail/detailInfo";
+import ContentHeader from "../../components/header/contentHeader";
 
 import { Modal } from "antd";
 
@@ -50,6 +51,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
+          <ContentHeader links={entity.links} />
           <div>
             <Row>
               <DetailPicture entity={entity} />
