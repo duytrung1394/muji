@@ -31,6 +31,14 @@ $router->get('/api/v1/donation/payment/{donationCode}/{numberOfUnits}', [
 ]);
 
 /**
+ * 寄付内容の確認
+ */
+$router->post('/api/v1/donation/payment/confirm', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationsController@confirm',
+]);
+
+/**
  * 登録
  */
 $router->post('/api/v1/donations', [

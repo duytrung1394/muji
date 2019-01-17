@@ -1,5 +1,5 @@
-import {createActions} from "redux-actions";
-import restActions from '../../shared/entity/actions';
+import { createActions } from "redux-actions";
+import restActions from "../../shared/entity/actions";
 import req from "../../shared/requestActions";
 
 const actions = createActions({
@@ -10,7 +10,7 @@ const actions = createActions({
       CONFIRM_DONATION: { ...req },
       ORDER_DONATION: { ...req }
     }
-  },
+  }
 });
 
 export default actions.donation.entity;
