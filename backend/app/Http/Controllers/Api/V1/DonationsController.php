@@ -12,7 +12,6 @@ class DonationsController extends Controller
      */
     public function index(Request $request)
     {
-        \Log::info("Donations index");        
         return [
             'data' => $this->getMultiMockData(),
         ];
@@ -26,7 +25,6 @@ class DonationsController extends Controller
      */
     public function show($donationCode)
     {
-        \Log::info("Donations show");        
         return [
             'data' => $this->getMockData($donationCode),
             'links' => [
