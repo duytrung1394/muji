@@ -315,7 +315,7 @@ class ProductCategoryTopsController extends Controller
             'total'          => 550,
             'groups' => [
                 [
-                    'group_name' => '長袖・七分袖',
+                    'group_name' => '半袖・タンクトップ',
                     'category_code_in_page' => 'product-t-shirt',
                     'total'      => 321,
                     'items'      => [
