@@ -4,6 +4,7 @@ import actions from "../../redux/product_detail/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import ContentAreaLayout from "../../components/panel/contentLayout";
+import StockStatus from "../../components/productDetail/stockStatus";
 
 class Index extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <div>商品詳細画面</div>
+          <StockStatus />
         </Spin>
       </ContentAreaLayout>
     );
