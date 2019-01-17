@@ -12,7 +12,6 @@ class DonationTopsController extends Controller
      */
     public function index(Request $request)
     {
-        \Log::info("DonationTops index");
         return [
             'data' => $this->getMultiMockData(),
         ];

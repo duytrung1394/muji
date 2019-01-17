@@ -149,7 +149,7 @@ const routes = [
     path: "/store/cart/donation/payment/:donation_code/:number_of_units",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/payment")
+      require("./customApp/containers/Donation/payment")
     )
   },
   {

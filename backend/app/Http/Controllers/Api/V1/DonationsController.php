@@ -41,6 +41,20 @@ class DonationsController extends Controller
     }
 
     /**
+         * お支払い方法の選択.
+         *
+         * @param  string   $donationCode
+         * @param  string   $numberOfUnits
+         * @return Response
+         */
+        public function showPayment($donationCode, $numberOfUnits)
+        {
+            return [
+                'data' => $this->getMockPaymentData($donationCode, $numberOfUnits),
+            ];
+        }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request

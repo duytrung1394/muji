@@ -23,6 +23,14 @@ $router->get('/api/v1/donations/{donationCode}', [
 ]);
 
 /**
+ * お支払い方法の選択
+ */
+$router->get('/api/v1/donation/payment/{donationCode}/{numberOfUnits}', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationsController@showPayment',
+]);
+
+/**
  * 登録
  */
 $router->post('/api/v1/donations', [
