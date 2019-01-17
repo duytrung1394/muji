@@ -6,6 +6,7 @@ import Color from "./color";
 import Size from "./size";
 import Quantity from "./quantity";
 import Buttons from "./buttons";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const DetailName = styled.p`
   color: #999;
@@ -26,24 +27,35 @@ const DetailText = styled.p`
   font-size: 13px;
 `;
 
-const Info = () => {
+const Info = ({info}) => {
   return (
     <div>
       <DetailText>
-        裏のループが短い裏毛素材に編み立てました。ほど良い厚みの生地とゆったりとしたシルエットが特長です。
-        着心地やわらかに、自由に楽しめるベーシックなTシャツです。
+        {info.messages.map((message,index) => {
+          return (
+            <span key={index}>
+              {message}<br/>
+            </span>
+          )
+        })}
       </DetailText>
-      <SeeMore>もっと見る</SeeMore>
+      <SeeMore>
+        <IntlMessages id="rest.seeMore" />
+      </SeeMore>
     </div>
   );
 };
 
-const DetailInfo = () => {
+const DetailInfo = ({ entity }) => {
+  if (!entity.material || !entity.read_more_info) {
+    return null;
+  }
+  
   return (
     <Col span={11} offset={1}>
-      <DetailName>オーガニックコットン</DetailName>
-      <ItemName>ミニ裏毛五分袖ワイドＴシャツ</ItemName>
-      <Info />
+      <DetailName>{entity.material}</DetailName>
+      <ItemName>{entity.title}</ItemName>
+      <Info info={entity.read_more_info}/>
       <Detail />
       <Color />
       <Size />

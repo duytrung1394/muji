@@ -536,6 +536,7 @@
   "rest.new.back.index": "{name}一覧",
   "rest.new.created.message": "{name}を新規作成しました",
   "rest.save": "保存",
+  "rest.seeMore": "もっと見る",
   "rest.show": "{name}詳細",
   "rest.show.delete.message.content": "削除した{name}を元に戻すことはできません",
   "rest.show.delete.message.title": "この{name}を削除してよろしいですか?",

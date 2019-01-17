@@ -25,23 +25,34 @@ class ProductDetailsController extends Controller
         $data = [
             'jan_code' => $janCode,
             'navigation_list' => [
-                 [
-                     'path' => '/store',
-                     'title' => '無印良品トップ',
-                 ],
-                 [
-                     'path' => '/store/cmdty/section/T10000',
-                     'title' => '婦人ウェア',
-                 ],
-                 [
-                     'path' => '/store/cmdty/section/S10002',
-                     'title' => 'セーター',
-                 ],
-             ],
+                [
+                    'path' => '/store',
+                    'title' => '無印良品トップ',
+                ],
+                [
+                    'path' => '/store/cmdty/section/T10000',
+                    'title' => '婦人ウェア',
+                ],
+                [
+                    'path' => '/store/cmdty/section/S10002',
+                    'title' => 'セーター',
+                ],
+            ],
             'title' => "ヤクウールＶネックセーター　婦人Ｓ・ライトグレー",
+            'material' => "オーガニックコットン",
             'main_item' => [
                 'title' => 'ヤクウールＶネックセーター',
                 'url' => 'https://img.muji.net/img/item/4550002691646_1260.jpg',
+            ],
+            'read_more_info' => [
+                'messages' => [
+                    [
+                        "裏のループが短い裏毛素材に編み立てました。ほど良い厚みの生地とゆったりとしたシルエットが特長です。"
+                    ],
+                    [
+                        "着心地やわらかに、自由に楽しめるベーシックなTシャツです。"
+                    ],
+                ],
             ],
             'detail_items' => [
                 [

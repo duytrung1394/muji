@@ -53,7 +53,7 @@ class Index extends Component {
           <div>
             <Row>
               <DetailPicture productImages={entity.images}/>
-              <DetailInfo />
+              <DetailInfo entity={entity}/>
             </Row>
           </div>
         </Spin>
