@@ -52,8 +52,8 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <div>
             <Row>
-              <DetailPicture entity={entity}/>
-              <DetailInfo entity={entity}/>
+              <DetailPicture entity={entity} />
+              <DetailInfo entity={entity} />
             </Row>
           </div>
         </Spin>

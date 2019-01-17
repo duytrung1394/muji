@@ -27,16 +27,17 @@ const DetailText = styled.p`
   font-size: 13px;
 `;
 
-const Info = ({info}) => {
+const Info = ({ info }) => {
   return (
     <div>
       <DetailText>
-        {info.messages.map((message,index) => {
+        {info.messages.map((message, index) => {
           return (
             <span key={index}>
-              {message}<br/>
+              {message}
+              <br />
             </span>
-          )
+          );
         })}
       </DetailText>
       <SeeMore>
@@ -47,18 +48,23 @@ const Info = ({info}) => {
 };
 
 const DetailInfo = ({ entity }) => {
-  if (!entity.material || !entity.read_more_info || !entity.color_list || !entity.size_list) {
+  if (
+    !entity.material ||
+    !entity.read_more_info ||
+    !entity.color_list ||
+    !entity.size_list
+  ) {
     return null;
   }
-  
+
   return (
     <Col span={11} offset={1}>
       <DetailName>{entity.material}</DetailName>
       <ItemName>{entity.title}</ItemName>
-      <Info info={entity.read_more_info}/>
+      <Info info={entity.read_more_info} />
       <Detail />
-      <Color select={entity.color_list_select} colorList={entity.color_list}/>
-      <Size select={entity.size_list_select} sizeList={entity.size_list}/>
+      <Color select={entity.color_list_select} colorList={entity.color_list} />
+      <Size select={entity.size_list_select} sizeList={entity.size_list} />
       <Quantity />
       <Buttons />
     </Col>

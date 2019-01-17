@@ -7,10 +7,10 @@ import imgColor3 from "../../../image/cmdty/detail/img-color-3.png";
 import imgColor4 from "../../../image/cmdty/detail/img-color-4.png";
 
 const images = [
-  { "src": imgColor1, "filename": "img-color-1.png", },
-  { "src": imgColor2, "filename": "img-color-2.png", },
-  { "src": imgColor3, "filename": "img-color-3.png", },
-  { "src": imgColor4, "filename": "img-color-4.png", },
+  { src: imgColor1, filename: "img-color-1.png" },
+  { src: imgColor2, filename: "img-color-2.png" },
+  { src: imgColor3, filename: "img-color-3.png" },
+  { src: imgColor4, filename: "img-color-4.png" }
 ];
 
 const ColorItems = styled.ul`
@@ -32,7 +32,7 @@ const ColorImg = styled.img`
   padding: 2px;
 `;
 
-const Color = ({ select, colorList}) => {
+const Color = ({ select, colorList }) => {
   return (
     <div>
       <p>
@@ -42,8 +42,7 @@ const Color = ({ select, colorList}) => {
       <ColorItems>
         {colorList.map((color, index) => {
           const img = images.find(imgColor => imgColor.filename === color.img);
-          return img ? 
-          (
+          return img ? (
             <ColorItem key={index}>
               <ColorImg src={img.src} />
             </ColorItem>
