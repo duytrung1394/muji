@@ -59,9 +59,8 @@ const CategoryTitle = styled.h2`
   margin-top: 30px;
 `;
 
-const ItemViewWrapper = styled.div`
-  display: flex;
-  overflow-x: scroll;
+const ItemViewWrapper = styled(Row)`
+  text-align: center;
 `;
 
 const CategorisInPage = ({ categories, groups }) => (
@@ -104,7 +103,9 @@ const CategorisInPage = ({ categories, groups }) => (
                   <CategoryTitle>{group.group_name}</CategoryTitle>
                   <ItemViewWrapper>
                     {group.items.map((item, index) => {
-                      return <ItemView {...item} key={index} />;
+                      return (
+                        <ItemView isSlideScroll={false} {...item} key={index} />
+                      );
                     })}
                   </ItemViewWrapper>
                 </div>

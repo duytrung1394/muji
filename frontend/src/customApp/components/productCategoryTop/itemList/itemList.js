@@ -78,7 +78,7 @@ const ItemList = props => {
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader total={total} />}
-      actions={[<SeeMoreButton />]}
+      actions={categories_in_page ? [] : [<SeeMoreButton />]}
     >
       {!categories_in_page &&
         groups &&
@@ -88,7 +88,9 @@ const ItemList = props => {
               <GroupName>{group.group_name}</GroupName>
               <Slider>
                 {group.items.map((item, index) => {
-                  return <ItemView {...item} key={index} />;
+                  return (
+                    <ItemView isSlideScroll={true} {...item} key={index} />
+                  );
                 })}
               </Slider>
               <ItemCountButtonWrapper>
