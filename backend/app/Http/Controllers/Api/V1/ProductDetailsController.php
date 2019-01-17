@@ -22,7 +22,7 @@ class ProductDetailsController extends Controller
      */
     private function getMockData($janCode)
     {
-        return [
+        $data = [
             'jan_code' => $janCode,
             'navigation_list' => [
                  [
@@ -42,26 +42,6 @@ class ProductDetailsController extends Controller
             'main_item' => [
                 'title' => 'ヤクウールＶネックセーター',
                 'url' => 'https://img.muji.net/img/item/4550002691646_1260.jpg',
-            ],
-            'images' => [
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_01_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_02_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_03_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_04_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_05_1260.jpg',
-                ],
             ],
             'detail_items' => [
                 [
@@ -95,5 +75,18 @@ class ProductDetailsController extends Controller
                 ],
             ],
         ];
+
+        $imageTotal = 5;
+        $imageBaseUrl = 'https://img.muji.net/img/item/';
+        $imageSize = 1260;
+        $images = [];
+        for ($i = 0; $i < $imageTotal; $i++) {
+            $images[] = [
+                'url' => $imageBaseUrl . $janCode . ($i!=0 ? '_' . sprintf('%02d',$i) : '') . '_' . $imageSize . '.jpg',
+            ];
+        }
+        $data['images']= $images;
+
+        return $data;
     }
 }
