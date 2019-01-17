@@ -4,10 +4,10 @@ import restAllSaga from "../../shared/entity/saga_generator";
 import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
-const api = RESTEntityApi("donation");
-const giftcardApi = RESTListApi("donation/payment/giftcard");
-const confirmApi = RESTEntityApi("donation/payment/confirm");
-const orderApi = RESTEntityApi("donation/payment/order");
+const api = RESTEntityApi("donations");
+const giftcardApi = RESTListApi("donations/payment/giftcard");
+const confirmApi = RESTEntityApi("donations/payment/confirm");
+const orderApi = RESTEntityApi("donations/payment/order");
 
 const getGiftcardFunction = function*({ payload }) {
   try {

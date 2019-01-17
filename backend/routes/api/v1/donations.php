@@ -25,7 +25,7 @@ $router->get('/api/v1/donations/{donationCode}', [
 /**
  * お支払い方法の選択
  */
-$router->get('/api/v1/donation/payment/{donationCode}/{numberOfUnits}', [
+$router->get('/api/v1/donations/payment/{donationCode}/{numberOfUnits}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DonationsController@showPayment',
 ]);
@@ -33,7 +33,7 @@ $router->get('/api/v1/donation/payment/{donationCode}/{numberOfUnits}', [
 /**
  * 寄付内容の確認
  */
-$router->post('/api/v1/donation/payment/confirm', [
+$router->post('/api/v1/donations/payment/confirm', [
     'middleware'    => [],
     'uses'          => 'Api\V1\DonationsController@confirm',
 ]);
