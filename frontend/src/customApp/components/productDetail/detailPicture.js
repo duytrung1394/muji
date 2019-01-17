@@ -1,19 +1,14 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import { Col, Modal, Button } from "antd";
+import { Col, Modal, Button, Carousel } from "antd";
 import fab from "../../../image/cmdty/detail/ico-fob-heart.png";
 import fabActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
 import Slider, { Link } from "../slider";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-// const PictureCol = styled(Col)`
-//   max-height: 700px;
-//   overflow: hidden;
-//   position: relative;
-// `;
-
-const Img = styled.img`
-  max-width: 100%;
-  display: block;
+const PictureCol = styled(Col)`
+  max-height: 700px;
+  position: relative;
 `;
 
 const FabImg = styled.img`
@@ -23,104 +18,77 @@ const FabImg = styled.img`
   height: 65px;
   width: 65px;
   z-index: 10;
-`;
-
-const Dots = styled.ul`
-  list-style: none;
-  display: flex;
-  position: absolute;
-  bottom: 16px;
-  left: 30%;
-`;
-
-const Dot = styled.li`
-  border-radius: 50%;
-  background-color: #fff;
-  height: 12px;
-  width: 12px;
-  margin: 0 4px;
-  border: 0.5px solid #eee;
-`;
-
-const PageLink = styled.a`
-  display: block;
+  cursor: pointer;
 `;
 
 const ShowItemList = styled.a`
   position: absolute;
-  bottom: 15px;
+  bottom: -30px;
   left: 10px;
 `;
 
-const ProductImageItemStyle = styled.div`
-  display: inline-block;
-  position: relative;
-  padding: 10px;
-  height: 375px;
-  width: 375px;
-`;
-
-const StyledLink = styled(Link)`
-  display: inline-block;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px 0 #585858;
-
-  .product-image {
-    border-radius: 4px 4px 0 0;
-    width: 100%;
+const StyledSlider = styled(Slider)`
+  .slick-dots {
+    & button {
+      color: #fff;
+    }
   }
 `;
 
-
-const ProductImageItem = ({ productImage }) => {
+const FabImage = ({ fabFlg, changeFlg }) => {
+  console.log(fabFlg);
+  console.log(changeFlg);
   return (
-    <ProductImageItemStyle>
-      <StyledLink to="">
-        <img className="product-image" src={productImage} />
-      </StyledLink>
-    </ProductImageItemStyle>
+    <span>
+      {fabFlg ? (
+        <FabImg src={fab} onClick={changeFlg} />
+      ) : (
+        <FabImg src={fabActive} onClick={changeFlg} />
+      )}
+    </span>
   );
 };
 
-const FabImage = () => {
-  let fabFlg = false;
-  return (
-    <span>{fabFlg ? <FabImg src={fab} /> : <FabImg src={fabActive} />}</span>
-  );
-};
-
-const customSliderSettings = {};
-
-const DetailPicture = ({ productImages }) => {
-  if (!productImages) {
-    return null;
+class DetailPicture extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fabFlg: false
+    };
+    this.changeFlg = this.changeFlg.bind(this);
   }
 
-  return (
-    <Fragment>
-    {/* <PictureCol span={24}> */}
-      {/* {imgUrl.map((url, index) => {
-        return <Img key={index} src={url} />;
-      })} */}
-      {/* <Dots>
-        {imgUrl.map((url, index) => {
-          return (
-            <Dot key={index}>
-              <PageLink />
-            </Dot>
-          );
-        })}
-      </Dots> */}
-      <Slider {...customSliderSettings}>
-        {productImages.map((productImage, index) => {
-          return (<ProductImageItem key={index} productImage={productImage.url} />);
-        })}
-      </Slider>
-      <ShowItemList onClick={this.showModal}>着目商品リスト</ShowItemList>
-      <FabImage />
-    {/* </PictureCol> */}
-    </Fragment>
-  );
-};
+  changeFlg() {
+    this.setState(() => {
+      return { fabFlg: (this.state.fabFlg = !this.state.fabFlg) };
+    });
+  }
+
+  render() {
+    const { productImages } = this.props;
+    if (!productImages) {
+      return null;
+    }
+    return (
+      <PictureCol span={12}>
+        <StyledSlider
+          dots={true}
+          infinite={true}
+          slidesToScroll={1}
+          slidesToShow={1}
+          responsive={[]}
+        >
+          {productImages.map((productImage, index) => {
+            return <img key={index} src={productImage.url} />;
+          })}
+        </StyledSlider>
+        <ShowItemList onClick={this.showModal}>
+          <IntlMessages id="productDetail.attentionItemList" />
+        </ShowItemList>
+        <FabImage fabFlg={this.state.fabFlg} changeFlg={this.changeFlg} />
+      </PictureCol>
+    );
+  }
+}
 
 export default DetailPicture;
