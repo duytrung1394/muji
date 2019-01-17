@@ -540,6 +540,7 @@
   "rest.show": "{name}詳細",
   "rest.show.delete.message.content": "削除した{name}を元に戻すことはできません",
   "rest.show.delete.message.title": "この{name}を削除してよろしいですか?",
+  "rest.taxIncluded": "税込",
   "shuffle.descriptionFive": "Backbone.js becomes a thing",
   "shuffle.descriptionFour": "First underscore.js commit",
   "shuffle.descriptionOne": "Netscape 2.0 ships   introducing Javascript",

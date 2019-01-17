@@ -35,15 +35,11 @@ class ProductDetailsController extends Controller
                 ],
                 [
                     'path' => '/store/cmdty/section/S10002',
-                    'title' => 'セーター',
+                    'title' => 'カットソー',
                 ],
             ],
-            'title' => "ヤクウールＶネックセーター　婦人Ｓ・ライトグレー",
+            'title' => "ミニ裏毛五分袖ワイドＴシャツ",
             'material' => "オーガニックコットン",
-            'main_item' => [
-                'title' => 'ヤクウールＶネックセーター',
-                'url' => 'https://img.muji.net/img/item/4550002691646_1260.jpg',
-            ],
             'read_more_info' => [
                 'messages' => [
                     [
@@ -54,35 +50,61 @@ class ProductDetailsController extends Controller
                     ],
                 ],
             ],
-            'detail_items' => [
+            'store_info' => [
+                'toriatukai_flg' => 1,
+                'labal' => '店舗受け取り不可',
+            ],
+            'price_info' => [
+                'price_original' => 2903,
+                'price_present' => 1495,
+                'sales_date' => '18/05/02 AM09:30',
+                'number' => '02619589'
+            ],
+            `distribution_fee` => 490,
+            'color_list_select' => 0,
+            'color_list' => [
                 [
-                    'type' => 'video',
-                    'url' => 'https://www.muji.com/jp/img/store/cmdty/include/mainpicture_movie/yak_mov_01.mp4',
-                    'poster' => 'https://www.muji.com/jp/img/store/cmdty/include/mainpicture_movie/yak_mov_1080.jpg',
+                    'title' => 'ライトシルバーグレー',
+                    'img' => 'cmdty/detail/img-color-1.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_01_400.jpg',
+                    'title' => '黒',
+                    'img' => 'cmdty/detail/img-color-2.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_02_1260.jpg',
+                    'title' => 'ライトシルバーグレー×ボーダー',
+                    'img' => 'cmdty/detail/img-color-3.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_03_1260.jpg',
+                    'title' => 'ライトシルバーグレー×柄',
+                    'img' => 'cmdty/detail/img-color-4.png',
+                ],
+            ],
+            'size_list_select' => 1,
+            'size_list' => [
+                [
+                    'title' => 'XS',
+                    'value' => 'XS',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_04_1260.jpg',
+                    'title' => 'S',
+                    'value' => 'S',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_05_1260.jpg',
+                    'title' => 'M',
+                    'value' => 'M',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_06_1260.jpg',
+                    'title' => 'L',
+                    'value' => 'L',
+                ],
+                [
+                    'title' => 'XL',
+                    'value' => 'XL',
+                ],
+                [
+                    'title' => 'XXL',
+                    'value' => 'XXL',
                 ],
             ],
         ];
