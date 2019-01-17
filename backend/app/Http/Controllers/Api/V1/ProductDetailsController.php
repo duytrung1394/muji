@@ -22,78 +22,105 @@ class ProductDetailsController extends Controller
      */
     private function getMockData($janCode)
     {
-        return [
+        $data = [
             'jan_code' => $janCode,
+            'fab_flg' => 1,
             'navigation_list' => [
-                 [
-                     'path' => '/store',
-                     'title' => '無印良品トップ',
-                 ],
-                 [
-                     'path' => '/store/cmdty/section/T10000',
-                     'title' => '婦人ウェア',
-                 ],
-                 [
-                     'path' => '/store/cmdty/section/S10002',
-                     'title' => 'セーター',
-                 ],
-             ],
-            'title' => "ヤクウールＶネックセーター　婦人Ｓ・ライトグレー",
-            'main_item' => [
-                'title' => 'ヤクウールＶネックセーター',
-                'url' => 'https://img.muji.net/img/item/4550002691646_1260.jpg',
-            ],
-            'images' => [
                 [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_1260.jpg',
+                    'path' => '/store',
+                    'title' => '無印良品トップ',
                 ],
                 [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_01_1260.jpg',
+                    'path' => '/store/cmdty/section/T10000',
+                    'title' => '婦人ウェア',
                 ],
                 [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_02_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_03_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_04_1260.jpg',
-                ],
-                [
-                    'url' => 'https://img.muji.net/img/item/4550002253899_05_1260.jpg',
+                    'path' => '/store/cmdty/section/S10002',
+                    'title' => 'カットソー',
                 ],
             ],
-            'detail_items' => [
+            'title' => "ミニ裏毛五分袖ワイドＴシャツ",
+            'material' => "オーガニックコットン",
+            'read_more_info' => [
+                'messages' => [
+                    [
+                        "裏のループが短い裏毛素材に編み立てました。ほど良い厚みの生地とゆったりとしたシルエットが特長です。"
+                    ],
+                    [
+                        "着心地やわらかに、自由に楽しめるベーシックなTシャツです。"
+                    ],
+                ],
+            ],
+            'store_info' => [
+                'toriatukai_flg' => 1,
+                'labal' => '店舗受け取り不可',
+            ],
+            'price_info' => [
+                'price_original' => 2903,
+                'price_present' => 1495,
+                'sales_date' => '18/05/02 AM09:30',
+                'number' => '02619589'
+            ],
+            `distribution_fee` => 490,
+            'color_list_select' => 0,
+            'color_list' => [
                 [
-                    'type' => 'video',
-                    'url' => 'https://www.muji.com/jp/img/store/cmdty/include/mainpicture_movie/yak_mov_01.mp4',
-                    'poster' => 'https://www.muji.com/jp/img/store/cmdty/include/mainpicture_movie/yak_mov_1080.jpg',
+                    'title' => 'ライトシルバーグレー',
+                    'img' => 'img-color-1.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_01_400.jpg',
+                    'title' => '黒',
+                    'img' => 'img-color-2.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_02_1260.jpg',
+                    'title' => 'ライトシルバーグレー×ボーダー',
+                    'img' => 'img-color-3.png',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_03_1260.jpg',
+                    'title' => 'ライトシルバーグレー×柄',
+                    'img' => 'img-color-4.png',
+                ],
+            ],
+            'size_list_select' => 1,
+            'size_list' => [
+                [
+                    'title' => 'XS',
+                    'value' => 'XS',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_04_1260.jpg',
+                    'title' => 'S',
+                    'value' => 'S',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_05_1260.jpg',
+                    'title' => 'M',
+                    'value' => 'M',
                 ],
                 [
-                    'type' => 'image',
-                    'url' => 'https://img.muji.net/img/item/4550002691608_06_1260.jpg',
+                    'title' => 'L',
+                    'value' => 'L',
+                ],
+                [
+                    'title' => 'XL',
+                    'value' => 'XL',
+                ],
+                [
+                    'title' => 'XXL',
+                    'value' => 'XXL',
                 ],
             ],
         ];
+
+        $imageTotal = 5;
+        $imageBaseUrl = 'https://img.muji.net/img/item/';
+        $imageSize = 1260;
+        $images = [];
+        for ($i = 0; $i < $imageTotal; $i++) {
+            $images[] = [
+                'url' => $imageBaseUrl . $janCode . ($i!=0 ? '_' . sprintf('%02d',$i) : '') . '_' . $imageSize . '.jpg',
+            ];
+        }
+        $data['images']= $images;
+
+        return $data;
     }
 }

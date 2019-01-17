@@ -36,11 +36,9 @@ const StyledSlider = styled(Slider)`
 `;
 
 const FabImage = ({ fabFlg, changeFlg }) => {
-  console.log(fabFlg);
-  console.log(changeFlg);
   return (
     <span>
-      {fabFlg ? (
+      {fabFlg === 0 ? (
         <FabImg src={fab} onClick={changeFlg} />
       ) : (
         <FabImg src={fabActive} onClick={changeFlg} />
@@ -65,8 +63,8 @@ class DetailPicture extends Component {
   }
 
   render() {
-    const { productImages } = this.props;
-    if (!productImages) {
+    const { entity } = this.props;
+    if (!entity.images) {
       return null;
     }
     return (
@@ -78,14 +76,14 @@ class DetailPicture extends Component {
           slidesToShow={1}
           responsive={[]}
         >
-          {productImages.map((productImage, index) => {
+          {entity.images.map((productImage, index) => {
             return <img key={index} src={productImage.url} />;
           })}
         </StyledSlider>
         <ShowItemList onClick={this.showModal}>
           <IntlMessages id="productDetail.attentionItemList" />
         </ShowItemList>
-        <FabImage fabFlg={this.state.fabFlg} changeFlg={this.changeFlg} />
+        <FabImage fabFlg={entity.fab_flg} changeFlg={this.changeFlg} />
       </PictureCol>
     );
   }

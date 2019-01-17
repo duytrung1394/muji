@@ -1,13 +1,17 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
-
 import imgColor1 from "../../../image/cmdty/detail/img-color-1.png";
 import imgColor2 from "../../../image/cmdty/detail/img-color-2.png";
 import imgColor3 from "../../../image/cmdty/detail/img-color-3.png";
 import imgColor4 from "../../../image/cmdty/detail/img-color-4.png";
 
-const images = [imgColor1, imgColor2, imgColor3, imgColor4];
+const images = [
+  { "src": imgColor1, "filename": "img-color-1.png", },
+  { "src": imgColor2, "filename": "img-color-2.png", },
+  { "src": imgColor3, "filename": "img-color-3.png", },
+  { "src": imgColor4, "filename": "img-color-4.png", },
+];
 
 const ColorItems = styled.ul`
   list-style: none;
@@ -28,20 +32,22 @@ const ColorImg = styled.img`
   padding: 2px;
 `;
 
-const Color = () => {
+const Color = ({ select, colorList}) => {
   return (
     <div>
       <p>
         <IntlMessages id="productDetail.color" />
-        <span>ライトシルバーグレー</span>
+        <span>{colorList[select].title}</span>
       </p>
       <ColorItems>
-        {images.map((img, index) => {
-          return (
+        {colorList.map((color, index) => {
+          const img = images.find(imgColor => imgColor.filename === color.img);
+          return img ? 
+          (
             <ColorItem key={index}>
-              <ColorImg src={img} />
+              <ColorImg src={img.src} />
             </ColorItem>
-          );
+          ) : null;
         })}
       </ColorItems>
     </div>

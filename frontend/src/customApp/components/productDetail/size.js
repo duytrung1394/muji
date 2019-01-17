@@ -33,18 +33,18 @@ const StyledLabel = styled.label`
   border: 1px solid #e5e5e5;
 `;
 
-const Size = () => {
+const Size = ({ select, sizeList }) => {
   return (
     <div>
       <p>
         <IntlMessages id="productDetail.size" />
       </p>
       <SizeList>
-        {sizes.map((size, index) => {
+        {sizeList.map((size, index) => {
           return (
             <SizeItem key={index}>
-              <Input id="bar1" type="radio" value={size} />
-              <StyledLabel for="bar1">{size}</StyledLabel>
+              <Input id="bar1" type="radio" value={size.value} />
+              <StyledLabel for="bar1">{size.title}</StyledLabel>
             </SizeItem>
           );
         })}
