@@ -18,6 +18,9 @@ const reducer = handleActions(
         },
         FETCH_PURCHASE_HISTORY: {
           REQUEST: fetchRequest
+        },
+        FETCH_SUBSCRIPTION: {
+          REQUEST: fetchRequest
         }
       }
     }

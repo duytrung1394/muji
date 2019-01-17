@@ -202,6 +202,13 @@ const routes = [
     )
   },
   {
+    path: "/store/cust/order/subscription",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexSubscription")
+    )
+  },
+  {
     path: "/orders/:order_code",
     exact: true,
     component: asyncComponent(() =>

@@ -8,6 +8,7 @@ const api = RESTListApi("orders", "codes");
 const listByReservationApi = RESTListApi("orders/reservation-history");
 const listStoreReserveApi = RESTListApi("orders/store-reserve");
 const listPurchaseHistoryApi = RESTListApi("orders/purchase-history");
+const listSubscriptionApi = RESTListApi("orders/subscription");
 
 const getListByReservationHistoryFunction = function*({ payload }) {
   try {
@@ -48,6 +49,19 @@ const getListByPurchaseHistoryFunction = function*({ payload }) {
   }
 };
 
+const getListSubscriptionFunction = function*({ payload }) {
+  try {
+    const response = yield call(listSubscriptionApi.GET, payload);
+    yield put(actions.fetch.success(response.data));
+  } catch (error) {
+    if (error.response.status == 401) {
+      yield put(authActions.unauthorized(error));
+    } else {
+      yield put(actions.fetch.failure(error));
+    }
+  }
+};
+
 export default function* saga() {
   yield restAllSaga(api, actions);
   yield takeEvery(
@@ -61,5 +75,9 @@ export default function* saga() {
   yield takeEvery(
     actions.fetchPurchaseHistory.request.toString(),
     getListByPurchaseHistoryFunction
+  );
+  yield takeEvery(
+    actions.fetchSubscription.request.toString(),
+    getListSubscriptionFunction
   );
 }

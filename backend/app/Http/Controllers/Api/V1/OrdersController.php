@@ -58,6 +58,19 @@ class OrdersController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function indexSubscription(Request $request)
+    {
+        return [
+            'data'  => $this->getMockDataSubscription(),
+            'total' => 200,
+        ];
+    }
+
+    /**
       * Show the form for creating a new resource.
       *
       * @return \Illuminate\Http\Response
@@ -446,6 +459,99 @@ class OrdersController extends Controller
                     'cancel_type' => 3,
                     'img_src' => 'img-reserve-3.png',
                 ],
+            ]
+        ];
+    }
+
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getMockDataSubscription()
+    {
+        return [
+            [
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'order_frequency' => '配送頻度：1ヶ月ごと',
+                    'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込980円',
+                    'item_price_present' => '税込784円',
+                    'item_discount' => '定期購入10%OFF',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 1,
+                    'img_src' => 'img-subscription-pro-1.png',
+                ],
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'order_frequency' => '配送頻度：1ヶ月ごと',
+                    'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込980円',
+                    'item_price_present' => '税込784円',
+                    'item_discount' => '定期購入10%OFF',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 1,
+                    'img_src' => 'img-subscription-pro-1.png',
+                ],
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'order_frequency' => '配送頻度：1ヶ月ごと',
+                    'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込980円',
+                    'item_price_present' => '税込784円',
+                    'item_discount' => '定期購入10%OFF',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 1,
+                    'img_src' => 'img-subscription-pro-1.png',
+                ],
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'order_frequency' => '配送頻度：1ヶ月ごと',
+                    'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込980円',
+                    'item_price_present' => '税込784円',
+                    'item_discount' => '定期購入10%OFF',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 1,
+                    'img_src' => 'img-subscription-pro-1.png',
+                ]
+            ],
+            [
+                [
+                    'order_date' => '2018/11/23',
+                    'order_state' => '受け取り済み',
+                    'order_address' => '東京都渋谷区宇田川町',
+                    'order_frequency' => '配送頻度：1ヶ月ごと',
+                    'order_warning' => 'MUJIコインが不足しているため停止中です',
+                    'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
+                    'item_color' => 'カラー：マスタード',
+                    'item_size' => 'サイズ：S',
+                    'item_num' => '個数：1個',
+                    'item_price' => '税込980円',
+                    'cancel_button_disabled' => false,
+                    'cancel_type' => 2,
+                    'img_src' => 'img-subscription-pro-1.png',
+                ]
             ]
         ];
     }

@@ -39,6 +39,14 @@ $router->get('/api/v1/orders/store-reserve', [
 ]);
 
 /**
+ * 定期購入一覧取得
+ */
+$router->get('/api/v1/orders/subscription', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@indexSubscription',
+]);
+
+/**
   * 作成
   */
 $router->get('/api/v1/orders/create', [
