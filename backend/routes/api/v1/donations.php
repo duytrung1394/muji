@@ -39,6 +39,14 @@ $router->post('/api/v1/donations/payment/confirm', [
 ]);
 
 /**
+ * 寄付の確定(注文)
+ */
+$router->post('/api/v1/donations/payment/order', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\DonationsController@order',
+]);
+
+/**
  * 登録
  */
 $router->post('/api/v1/donations', [

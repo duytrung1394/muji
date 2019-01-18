@@ -66,6 +66,18 @@ class DonationsController extends Controller
 				];
 		}
 
+		/**
+     * 寄付の確定(注文)
+     *
+     * @return Response
+     */
+    public function order(Request $request)
+    {
+        return [
+            'orderCode' => "123456789012",
+        ];
+		}
+		
     /**
      * Store a newly created resource in storage.
      *

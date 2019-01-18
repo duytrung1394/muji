@@ -163,7 +163,7 @@ const routes = [
     path: "/store/cart/donation/complete",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/complete")
+      require("./customApp/containers/Donation/complete")
     )
   }
 ];
