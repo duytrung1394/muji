@@ -49,7 +49,7 @@ const orderDonationFunction = function*({ payload }) {
 };
 
 export default function* saga() {
-  yield restAllSaga("donation", api, actions);
+  yield restAllSaga("donations", api, actions);
   yield takeEvery(
     actions.doGiftcardInquiry.request.toString(),
     getGiftcardFunction
