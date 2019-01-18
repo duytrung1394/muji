@@ -542,7 +542,7 @@ class OrdersController extends Controller
                     'order_state' => '受け取り済み',
                     'order_address' => '東京都渋谷区宇田川町',
                     'order_frequency' => '配送頻度：1ヶ月ごと',
-                    'order_warning' => 'MUJIコインが不足しているため停止中です',
+                    'order_warning' => 1,
                     'item_name' => '化粧水・敏感肌用・さっぱりタイプ（大容量）400ml',
                     'item_color' => 'カラー：マスタード',
                     'item_size' => 'サイズ：S',

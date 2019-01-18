@@ -1,10 +1,12 @@
-import React from "react";
+import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Popconfirm, Icon, message, Popover } from "antd";
+import { Popconfirm, Icon, message, Popover, Modal, Button } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 import imgSubscription1 from "../../../../image/order/subscription/img-subscription-pro-1.png";
+
+const confirm = Modal.confirm;
 
 const images = {
   "img-subscription-pro-1.png": imgSubscription1,
@@ -208,31 +210,12 @@ const PopoverContent = styled.li`
   }
 `;
 
-const intlId = [
-  "order.subscription.ellipsisButton.stop",
-];
-
-const subscriptionItemPopover = (
-  <PopoverContentWrapper>
-    {intlId.map((id, index) => {
-      return (
-        <PopoverContent key={index}>
-          <Link to={"#"}>
-            <IntlMessages id={id} />
-          </Link>
-        </PopoverContent>
-      );
-    })}
-  </PopoverContentWrapper>
-);
-
 const buttonText = {
   skip: "order.subscription.skip",
   change: "order.subscription.change",
   delete: "order.subscription.delete",
   resume: "order.subscription.resume"
 };
-
 
 const DeleteButton = ({ placement, onConfirm }) => {
   let confirmText = <IntlMessages id="order.subscription.deleteConfirm" />;
@@ -334,9 +317,6 @@ const DescribePriceWrapper = styled.li`
   }
 `;
 
-const DescribePrice = styled.span`
-`;
-
 const DescribePricePresent = styled.span`
   color: rgb(139, 26, 39);
   font-weight: 600;
@@ -350,77 +330,128 @@ const DiscribePriceArrow = styled.span`
   margin: 0 5px;
 `;
 
-const SubscriptionItem = ({ item }) => {
-  const describeList = [
-    item.order_frequency,
-    item.item_num
-  ];
+class SubscriptionItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false,
+      popoverVisible: false
+    }
+  }
 
-  return (
-    <SubscriptionItemWrapper>
-      <SubscriptionHeader>
-        <SubscriptionTitle to={"#"}>{item.item_name}</SubscriptionTitle>
-      </SubscriptionHeader>
-      {
-        item.order_warning ? (
-          <SubscriptionOrderInfo>
-            <OrderWorning>{item.order_warning}</OrderWorning>
-          </SubscriptionOrderInfo>
-        ) : (
-          <SubscriptionOrderInfo>
-            <OrderInfo>
-              <IntlMessages id="order.subscription.nextTime" />
-              <span>：</span>
-              <span>{item.order_date}</span>
-            </OrderInfo>
-            <OrderAddress><Link to={"#"}>{item.order_address}</Link></OrderAddress>
-          </SubscriptionOrderInfo>
-        )
-      }
-      <SubscriptionItemMenu>
-        <SubscriptionItemImage>
-          <Link to={"#"}>
-            <img src={images[item.img_src]} alt="" />
-          </Link>
-        </SubscriptionItemImage>
-        <SubscriptionItemDescribeList>
-          {describeList.map((describe, index) => {
-            return (
-              <SubscriptionItemDescribe key={index}>
-                <Link to={"#"}>{describe}</Link>
-              </SubscriptionItemDescribe>
-            );
-          })}
-            {item.item_price_present ? (
-              <DescribePriceWrapper>
-                <DescribePrice style={{textDecoration: "line-through"}}>{item.item_price}</DescribePrice>
-                <DiscribePriceArrow>→</DiscribePriceArrow>
-                <DescribePricePresent>{item.item_price_present}</DescribePricePresent>
-              </DescribePriceWrapper>
-            ):(
-              <DescribePriceWrapper>
-                <DescribePrice>{item.item_price}</DescribePrice>
-              </DescribePriceWrapper>
-            )}
-          <DescribeDiscount>{item.item_discount}</DescribeDiscount>
-        </SubscriptionItemDescribeList>
-        {item.cancel_type === 1 ? (
-          <EllipsisButtonWrapper>
-            <Popover
-              placement="topRight"
-              content={subscriptionItemPopover}
-              trigger="click"
-            >
-              <EllipsisButton>
-                <Icon type="ellipsis" />
-              </EllipsisButton>
-            </Popover>
-          </EllipsisButtonWrapper>
-        ) : null}
-      </SubscriptionItemMenu>
-      <SubscriptionItemFooter type={item.cancel_type} />
-    </SubscriptionItemWrapper>
+  stopConfirmStyle = {
+    top: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
+  }
+
+  stopConfirm = () => {
+    confirm({
+      title: "停止しますがよろしいですか？",
+      style: this.stopConfirmStyle,
+      onOk() {
+        message.info('停止');
+      },
+      oncancel() {}
+    });
+    this.setState({popoverVisible: false});
+  }
+  
+  subscriptionItemPopover = (
+    <PopoverContentWrapper>
+      <PopoverContent>
+        <Link to={"#"} onClick={this.stopConfirm}>
+          <IntlMessages id={"order.subscription.ellipsisButton.stop"} />
+        </Link>
+      </PopoverContent>
+    </PopoverContentWrapper>
   );
+
+  handleVisibleChange = (visible) => {
+    if (visible) {
+      this.setState({popoverVisible: true});
+    }
+  }
+  
+  render() {
+    const {item} = this.props;
+    const describeList = [
+      item.order_frequency,
+      item.item_num
+    ];
+
+    return (
+      <SubscriptionItemWrapper>
+        <SubscriptionHeader>
+          <SubscriptionTitle to={"#"}>{item.item_name}</SubscriptionTitle>
+        </SubscriptionHeader>
+        {
+          item.order_warning ? (
+            <SubscriptionOrderInfo>
+              <OrderWorning>
+                <IntlMessages id={`order.subscription.warning.code${item.order_warning}`} />
+              </OrderWorning>
+            </SubscriptionOrderInfo>
+          ) : (
+            <SubscriptionOrderInfo>
+              <OrderInfo>
+                <IntlMessages id="order.subscription.nextTime" />
+                <span>：</span>
+                <span>{item.order_date}</span>
+              </OrderInfo>
+              <OrderAddress><Link to={"#"}>{item.order_address}</Link></OrderAddress>
+            </SubscriptionOrderInfo>
+          )
+        }
+        <SubscriptionItemMenu>
+          <SubscriptionItemImage>
+            <Link to={"#"}>
+              <img src={images[item.img_src]} alt="" />
+            </Link>
+          </SubscriptionItemImage>
+          <SubscriptionItemDescribeList>
+            {describeList.map((describe, index) => {
+              return (
+                <SubscriptionItemDescribe key={index}>
+                  <Link to={"#"}>{describe}</Link>
+                </SubscriptionItemDescribe>
+              );
+            })}
+              {item.item_price_present ? (
+                <DescribePriceWrapper>
+                  <span style={{textDecoration: "line-through"}}>{item.item_price}</span>
+                  <DiscribePriceArrow>→</DiscribePriceArrow>
+                  <DescribePricePresent>{item.item_price_present}</DescribePricePresent>
+                </DescribePriceWrapper>
+              ):(
+                <DescribePriceWrapper>
+                  <span>{item.item_price}</span>
+                </DescribePriceWrapper>
+              )}
+            <DescribeDiscount>{item.item_discount}</DescribeDiscount>
+          </SubscriptionItemDescribeList>
+          {item.cancel_type === 1 ? (
+            <EllipsisButtonWrapper>
+              <Popover
+                placement="topRight"
+                content={this.subscriptionItemPopover}
+                trigger="click"
+                visible={this.state.popoverVisible}
+                onVisibleChange={this.handleVisibleChange}
+              >
+                <EllipsisButton>
+                  <Icon type="ellipsis" />
+                </EllipsisButton>
+              </Popover>
+            </EllipsisButtonWrapper>
+          ) : null}
+        </SubscriptionItemMenu>
+        <SubscriptionItemFooter type={item.cancel_type} />
+      </SubscriptionItemWrapper>
+    )
+  }
 };
 
 export default SubscriptionItem;

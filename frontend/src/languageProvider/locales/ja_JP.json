@@ -494,6 +494,7 @@
   "order.subscription.resume": "再開する",
   "order.subscription.deleteConfirm": "削除しますがよろしいですか？",
   "order.subscription.nextTime": "次回お届け日",
+  "order.subscription.warning.code1": "MUJIコインが不足しているため停止中です",
   "orderHistory.attributes.name": "名称",
   "orderHistory.attributes.order_history_code": "注文履歴コード",
   "orderHistory.name": "購入履歴",
