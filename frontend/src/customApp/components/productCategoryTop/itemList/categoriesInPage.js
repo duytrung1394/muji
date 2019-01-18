@@ -63,7 +63,7 @@ const ItemViewWrapper = styled(Row)`
   text-align: center;
 `;
 
-const CategorisInPage = ({ categories, groups }) => (
+const CategoriesInPage = ({ categories, groups }) => (
   <div style={{ scrollBehavior: "smooth" }}>
     <Nav>
       {categories.map((category, index) => {
@@ -118,4 +118,4 @@ const CategorisInPage = ({ categories, groups }) => (
   </div>
 );
 
-export default CategorisInPage;
+export default CategoriesInPage;
