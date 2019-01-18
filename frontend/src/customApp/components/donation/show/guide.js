@@ -68,30 +68,30 @@ const Guide = () => {
     <ContentLayout>
       <OutsideDiv>
         <h2>
-          <IntlMessages id="donationTop.userGuide" />
+          <IntlMessages id="donation.userGuide" />
         </h2>
         <InsideDiv>
           <StyledRow type="flex" justify="center">
             <StyledCol>
-              <Card title={<IntlMessages id="donationTop.paymentMethod" />}>
-                <IntlMessages id="donationTop.paymentMethodContent" />
+              <Card title={<IntlMessages id="donation.paymentMethod" />}>
+                <IntlMessages id="donation.paymentMethodContent" />
               </Card>
             </StyledCol>
             <StyledCol>
-              <Card title={<IntlMessages id="donationTop.change" />}>
-                <IntlMessages id="donationTop.donationCancel" />
+              <Card title={<IntlMessages id="donation.change" />}>
+                <IntlMessages id="donation.donationCancel" />
               </Card>
             </StyledCol>
             <StyledCol>
-              <Card title={<IntlMessages id="donationTop.taxExemptions" />}>
-                <IntlMessages id="donationTop.taxExemptionsCertificate" />
+              <Card title={<IntlMessages id="donation.taxExemptions" />}>
+                <IntlMessages id="donation.taxExemptionsCertificate" />
               </Card>
             </StyledCol>
           </StyledRow>
         </InsideDiv>
         <Popover trigger="click">
           <StyledA>
-            <IntlMessages id="donationTop.fundRaisingTickets" />
+            <IntlMessages id="donation.fundRaisingTickets" />
           </StyledA>
         </Popover>
       </OutsideDiv>
