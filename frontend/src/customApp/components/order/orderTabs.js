@@ -16,15 +16,14 @@ const TabText = id => {
 };
 
 const OrderTabs = ({ itemList, tabList, itemType }) => {
-
-  const ItemList = ({itemType, itemList}) => {
+  const ItemList = ({ itemType, itemList }) => {
     switch (itemType) {
       case "subscription":
-        return (<SubscriptionItemList itemList={itemList}/>);
+        return <SubscriptionItemList itemList={itemList} />;
       default:
-        return (<StoreReserveItemList itemList={itemList}/>);
+        return <StoreReserveItemList itemList={itemList} />;
     }
-  }
+  };
 
   const TabsWrapper = styled(Tabs)`
     overflow-y: initial;

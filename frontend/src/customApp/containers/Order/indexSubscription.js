@@ -54,7 +54,11 @@ class Index extends Component {
           <IntlMessages id="order.subscription.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <Tabs itemList={entities} tabList={tabList} itemType={"subscription"}/>
+          <Tabs
+            itemList={entities}
+            tabList={tabList}
+            itemType={"subscription"}
+          />
         </Spin>
       </ContentAreaLayout>
     );
