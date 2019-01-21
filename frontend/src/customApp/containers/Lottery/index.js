@@ -21,12 +21,14 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest({ section_code: this.props.match.params.section_code });
+    this.props.fetchRequest({
+      section_code: this.props.match.params.section_code
+    });
   }
 
   // React.render
   render() {
-    console.log(this.props)
+    console.log(this.props);
     const {
       // types
       total,
