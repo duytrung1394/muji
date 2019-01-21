@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../panel/contentLayout";
+import { BaseContentLayout } from "../../shared/panel/contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
   border-top: 1px solid #ddd;

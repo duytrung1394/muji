@@ -3,7 +3,7 @@ import { Col, Row } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../components/panel/contentLayout";
+import { BaseContentLayout } from "../../components/shared/panel/contentLayout";
 
 const PopularityRankingTitle = styled.h1`
   font-size: 25px;
