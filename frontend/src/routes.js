@@ -167,7 +167,7 @@ const routes = [
     )
   },
   {
-    path: "/store/lucky/:lucky_code",
+    path: "/store/lucky/:section_code/:jan_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Lottery/show")

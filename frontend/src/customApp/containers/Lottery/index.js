@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/lottery/entity/actions";
+import actions from "../../redux/lottery/list/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
 import styled from "styled-components";
-import LotteryInfo from "../../components/lottery/list/lotteryInfo";
 import LotteryList from "../../components/lottery/list/lotteryList";
-import LotteryNotes from "../../components/lottery/list/lotteryNotes";
 
 const AreaLayout = styled(ContentAreaLayout)`
   width: 960px;
-`;
-
-const LotteryTitle = styled.h1`
-  font-weight: bold;
 `;
 
 class Index extends Component {
@@ -27,29 +21,27 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.section_code);
+    this.props.fetchRequest({ section_code: this.props.match.params.section_code });
   }
 
   // React.render
   render() {
+    console.log(this.props)
     const {
       // types
       total,
-      entity,
+      entities,
       fetching,
       destroying,
       // react-router
       history
     } = this.props;
 
-    const { title, info_data, notes, list_items } = entity;
+    const { list_items } = entities;
 
     return (
       <LayoutWrapper>
         <AreaLayout>
-          <LotteryTitle>{title}</LotteryTitle>
-          <LotteryInfo infoData={info_data} />
-          <LotteryNotes notes={notes} />
           <LotteryList listItems={list_items} />
         </AreaLayout>
       </LayoutWrapper>
@@ -58,7 +50,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Lottery.Entity.toJS();
+  return state.Lottery.List.toJS();
 };
 
 const actionCreators = {
