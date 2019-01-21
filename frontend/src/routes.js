@@ -76,6 +76,13 @@ const routes = [
     )
   },
   {
+    path: "/store/review/detail/:review_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/show")
+    )
+  },
+  {
     path: "/store/review/user/",
     exact: true,
     component: asyncComponent(() =>
@@ -171,6 +178,27 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/DonationTop/complete")
+    )
+  },
+  {
+    path: "/store/cust/orders",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/index")
+    )
+  },
+  {
+    path: "/store/cust/order/itemlist",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexPurchaseHistory")
+    )
+  },
+  {
+    path: "/orders/:order_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/show")
     )
   }
 ];

@@ -151,7 +151,7 @@ const Item = ({ entity }) => (
       <li>
         <IconStyle type="like" />
         <InfoLink to={`store/review/detail/${entity.jancode}`}>
-          <span>{entity.evaluations_useful_count}</span>
+          <span>{entity.count_helpful}</span>
           <IntlMessages id="customerReview.usefulThink" />
         </InfoLink>
       </li>
