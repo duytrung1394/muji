@@ -2,8 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/favorite/list/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import IntlMessages from "../../../components/utility/intlMessages";
+import Tabs from "../../components/favorite/favoriteTabs";
+import styled from "styled-components";
+import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { Spin } from "antd";
+
+const Title = styled.h1`
+  line-height: 19px;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  font-size: 19px;
+  letter-spacing: 0.25px;
+  margin: 30px 0px 0px;
+  padding: 0 50px;
+`;
+
+const tabList = [
+  "favorite.tab.product",
+  "favorite.tab.event",
+  "favorite.tab.article",
+];
 
 class Index extends Component {
   constructor(props) {
@@ -39,55 +58,19 @@ class Index extends Component {
       history
     } = this.props;
 
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
-      },
-    ];
-
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
-    };
-
-    const pagination = {
-      defaultCurrent: 1,
-      total: total,
-      onChange: page => {
-        let url;
-        if (page === 1) {
-          url = '/favorites';
-        } else {
-          url = `/favorites/page/${page}`;
-        }
-        history.push(url);
-      }
-    };
-
     return (
-      <LayoutWrapper>
-        <div className="isoLayoutContent">
-          <Table
-            rowKey="id"
-            dataSource={entities}
-            columns={columns}
-            rowSelection={rowSelection}
-            loading={fetching || destroying}
-            pagination={pagination}
+      <ContentAreaLayout>
+        <Title>
+          <IntlMessages id="favorite.name" />
+        </Title>
+        <Spin size="large" spinning={fetching}>
+          <Tabs
+            itemList={entities}
+            tabList={tabList}
+            itemType={"subscription"}
           />
-        </div>
-      </LayoutWrapper>
+        </Spin>
+      </ContentAreaLayout>
     );
   }
 }
