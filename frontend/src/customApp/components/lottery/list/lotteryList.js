@@ -12,12 +12,6 @@ const LotteryItemList = styled.ul`
   font-size: 12px;
 `;
 
-const ListItem = styled.li`
-  max-width: 160px;
-  padding-bottom: 8px;
-  margin: 0 1%;
-`;
-
 const ItemImg = styled.img`
   height: 160px;
   width: 160;
@@ -33,35 +27,17 @@ const Price = styled.span`
   font-weight: bold;
 `;
 
-const LinkStyle = {
-  textDecoration: "underline",
-  color: "#333"
-};
-
-const CommonButton = ({ style, text }) => {
-  return (
-    <Button style={style}>
-      <IntlMessages id={text} />
-    </Button>
-  );
-};
-
 const DistributesButton = ({ hasApply }) => {
-  let style = { backgroundColor: "#595959", cursor: "default" };
-  switch (hasApply) {
-    case "before":
-      style = { backgroundColor: "#810b1b", cursor: "pointer" };
-      return (
-        <NavLink to="lotteries">
-          <CommonButton style={style} text={"lottery.apply"} />
-        </NavLink>
-      );
-    case "done":
-      return <CommonButton style={style} text={"lottery.applyDone"} />;
-    case "end":
-      return <CommonButton style={style} text={"lottery.applyEnd"} />;
-    default:
-      return null;
+  const backgroundColor = hasApply === "before" ? "#810b1b" : "#595959";
+
+  if (["before", "done", "end"].find(type => type === hasApply)) {
+    return (
+      <Button style={{ backgroundColor }}>
+        <IntlMessages id={`lottery.apply.${hasApply}`} />
+      </Button>
+    );
+  } else {
+    return null;
   }
 };
 
@@ -71,20 +47,29 @@ const LotteryList = ({ listItems }) => {
       {listItems &&
         listItems.map((item, index) => {
           return (
-            <ListItem key={index}>
-              <NavLink to="lotteries" style={LinkStyle}>
-                <ItemImg src={item.img} />
-                <p>{item.title}</p>
-              </NavLink>
+            <NavLink
+              to={"/store/lucky/section_code/jan_code"}
+              tag="li"
+              key={index}
+              style={{
+                maxWidth: "160px",
+                paddingBottom: "8px",
+                margin: "1%",
+                color: "#333"
+              }}
+            >
+              <ItemImg src={item.img} />
+              <p>{item.title}</p>
               <ItemPrice>
-                <IntlMessages id="lottery.taxIncluded" />
-                <Price>{item.price}</Price>
-                <IntlMessages id="lottery.yen" />
+                <IntlMessages
+                  id="lottery.price"
+                  values={{
+                    price: <Price>{item.price}</Price>
+                  }}
+                />
               </ItemPrice>
-              <p>
-                <DistributesButton hasApply={item.has_apply} />
-              </p>
-            </ListItem>
+              <DistributesButton hasApply={item.has_apply} />
+            </NavLink>
           );
         })}
     </LotteryItemList>
