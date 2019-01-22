@@ -2,17 +2,14 @@ import { createActions } from "redux-actions";
 import restActions from "../../shared/list/actions";
 
 const actions = createActions({
-  CUSTOMER_REVIEW: {
+  ORDER: {
     LIST: {
       ...restActions,
-      FETCH_BY_USER: {
-        REQUEST: undefined
-      },
-      FETCH_BY_FOLLOWING: {
+      FETCH_PURCHASE_HISTORY: {
         REQUEST: undefined
       }
     }
   }
 });
 
-export default actions.customerReview.list;
+export default actions.order.list;

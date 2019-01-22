@@ -38,9 +38,11 @@ require_once 'api/v1/customer_reviews.php';
 // /api/v1/customer-addresses
 require_once 'api/v1/customer_addresses.php';
 
-
 // /api/v1/donations
 require_once 'api/v1/donations.php';
+
+// /api/v1/orders
+require_once 'api/v1/orders.php';
 
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。

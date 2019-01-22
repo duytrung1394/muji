@@ -2,6 +2,7 @@
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
 import donationSagas from "./donation/sagas";
+import orderSagas from "./order/sagas";
 import customerReviewSagas from "./customer_review/sagas";
 import customerAddressSagas from "./customer_address/sagas";
 import productCategoryTopSagas from "./product_category_top/sagas";
@@ -17,6 +18,7 @@ export default function* devSaga() {
     productCategoryTopSagas(),
     customerAddressSagas(),
     customerReviewSagas(),
+    orderSagas(),
     donationSagas()
   ]);
 }
