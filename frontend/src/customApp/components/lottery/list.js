@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import IntlMessages from "../../../../components/utility/intlMessages";
-import Button from "../button.js";
+import IntlMessages from "../../../components/utility/intlMessages";
+import Button from "./button.js";
 
 const LotteryItemList = styled.ul`
   display: flex;
