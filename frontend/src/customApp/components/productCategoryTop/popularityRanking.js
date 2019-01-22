@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../components/panel/contentLayout";
+import { BaseContentLayout } from "../../components/shared/panel/contentLayout";
 import Slider, { Link } from "../slider";
 
 const StyledLink = styled(Link)`

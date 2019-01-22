@@ -8,11 +8,11 @@ import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Summary from "../../components/donationTop/confirm/summary";
 import Detail from "../../components/donationTop/confirm/detail";
-import { Button } from "../../components/form/button";
+import { Button } from "../../components/shared/form/button";
 
 const ConfirmHeader = styled.div`
   h1 {

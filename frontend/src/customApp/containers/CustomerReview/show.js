@@ -2,21 +2,83 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
+import { Spin, Icon } from "antd";
+import IntlMessages from "../../../components/utility/intlMessages";
+import styled from "styled-components";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/shared/panel/contentLayout";
+import ItemInfo from "../../components/customerReview/show/itemInfo";
+import ReviewDetailItems from "../../components/customerReview/show/reviewDetailItems";
+import ReviewPageing from "../../components/customerReview/show/reviewPaging";
+import CommentList from "../../components/customerReview/show/commentList";
+import CommentForm from "../../components/customerReview/show/commentForm";
+import Notices from "../../components/customerReview/notices";
+
+const ContentLayout = styled(BaseContentLayout)`
+  max-width: 748px;
+  margin: 20px auto 0;
+`;
+
+const SeeMore = styled.div`
+  text-align: center;
+  color: #9e9e9e;
+  font-size: 14px;
+  margin-bottom: 20px;
+  cursor: pointer;
+`;
+
+const SeeMoreIcon = styled(Icon)`
+  font-size: 12px;
+`;
+
+// TODO: get user data from backend
+const user = {
+  user_image: "https://www.muji.com/jp/store/review/img/avatar_default.png",
+  user_name: "user name"
+};
 
 class Show extends Component {
   componentDidMount() {
-    this.props.request(this.props.match.params.customer_review_code);
+    this.props.fetchRequest(this.props.match.params.review_code);
   }
 
-  render() {
-    const { entity } = this.props;
+  isFirstFetching = () => {
+    return !(this.props.entity && this.props.entity.comments && user);
+  };
 
-    return (
-      <div>
-        <p>{entity.name}</p>
-        <p>{entity.description}</p>
-      </div>
-    );
+  seeMore = () => {
+    console.log("click seeMore");
+  };
+
+  render() {
+    const { entity, fetching, destroying, fetchRequest } = this.props;
+
+    if (entity) {
+      return (
+        <ContentAreaLayout>
+          <Spin spinning={this.isFirstFetching()} size="large">
+            <ContentLayout>
+              <ItemInfo entity={entity} />
+              <ReviewDetailItems entity={entity} user={user} />
+              <ReviewPageing />
+              <CommentList
+                comments={entity.comments}
+                fetchRequest={fetchRequest}
+              />
+              <SeeMore onClick={this.seeMore}>
+                <SeeMoreIcon type="down" />
+                <IntlMessages id="reviewDetail.seeMore" />
+              </SeeMore>
+              <CommentForm />
+              <Notices type={"comment"} />
+            </ContentLayout>
+          </Spin>
+        </ContentAreaLayout>
+      );
+    }
+    return null;
   }
 }
 
@@ -24,12 +86,9 @@ const mapStateToProps = state => {
   return state.CustomerReview.Entity.toJS();
 };
 
-const { request, cleanup } = actions.fetch;
-
 const actionCreators = {
-  request,
-  cleanup,
-  destroy: actions.destroy.request,
+  fetchRequest: actions.fetch.request,
+  destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
 

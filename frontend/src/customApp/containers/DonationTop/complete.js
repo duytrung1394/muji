@@ -7,7 +7,7 @@ import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const CompleteHeader = styled.div`

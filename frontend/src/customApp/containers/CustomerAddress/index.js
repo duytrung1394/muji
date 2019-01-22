@@ -10,7 +10,7 @@ import { List, Popover } from "antd";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import { Button } from "../../components/customerAddress/forms/button";
 import Pagination from "../../components/customerAddress/list/pagination";
 import AddressItem from "../../components/customerAddress/list/addressItem";

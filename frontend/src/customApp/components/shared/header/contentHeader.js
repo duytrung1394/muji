@@ -2,7 +2,7 @@ import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { BaseContentLayout } from "../../components/panel/contentLayout";
+import { BaseContentLayout } from "../panel/contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
   margin-top: 0;
