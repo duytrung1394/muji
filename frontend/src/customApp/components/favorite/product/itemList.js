@@ -23,7 +23,6 @@ const FavoriteItemListWrapper = styled.div`
 const FavoriteItemList = ({ itemList }) => {
   return (
     <FavoriteItemListWrapper>
-      {console.log(itemList)}
       {itemList.map((item, index) => {
         return <FavoriteItem key={index} item={item} />;
       })}

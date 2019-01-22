@@ -167,6 +167,20 @@ const stopConfirmStyle = {
   height: "100%"
 };
 
+const dateSuffix = type => {
+  switch(type) {
+    case 1:
+      return 'favorite.product.dateSuffix';
+    case 2:
+      return 'favorite.event.dateSuffix';
+    case 3:
+      return 'favorite.article.dateSuffix';
+  }
+}
+
+const SubscriptionItemCaption = styled.li`
+`;
+
 class SubscriptionItem extends Component {
   constructor(props) {
     super(props);
@@ -214,6 +228,9 @@ class SubscriptionItem extends Component {
           </Link>
         </SubscriptionItemImage>
         <SubscriptionItemDescribeList>
+          {item.caption ? (
+            <SubscriptionItemCaption>{item.caption}</SubscriptionItemCaption>
+          ) : null}
           {describeList.map((describe, index) => {
             return (
               <SubscriptionItemDescribe key={index}>
@@ -239,7 +256,7 @@ class SubscriptionItem extends Component {
           <DescribeDiscount>
             <Link to={"#"}>{item.item_discount}</Link>
           </DescribeDiscount>
-          <div>YYYY/mm/dd<IntlMessages id="favorite.product.dateSuffix" /></div>
+          <div>{item.order_date}<IntlMessages id={dateSuffix(item.favorite_type)} /></div>
         </SubscriptionItemDescribeList>
         {item.favorite_type === 1 ? (
           <EllipsisButtonWrapper>
