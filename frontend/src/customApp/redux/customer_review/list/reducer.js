@@ -10,16 +10,16 @@ const customRestInitState = restInitState.merge(
 );
 
 // GET
-export const fetchRequest = (state, action) =>
+const fetchRequest = (state, action) =>
   state
     .set("doSearch", false)
     .set("fetching", true)
     .set("fetched", false)
     .set("fetchError", false);
 
-export const fetchSuccess = (state, action) => {
+const fetchSuccess = (state, action) => {
   return state
-    .set("entities",[...state.get("entities"), ...action.payload.data])
+    .set("entities", [...state.get("entities"), ...action.payload.data])
     .set("entities", action.payload.data)
     .set("total", action.payload.total)
     .set("sortFlg", action.payload.sortFlg)
@@ -28,13 +28,13 @@ export const fetchSuccess = (state, action) => {
     .set("fetched", true);
 };
 
-export const fetchFailure = (state, action) =>
+const fetchFailure = (state, action) =>
   state
     .set("entities", [])
     .set("fetching", false)
     .set("fetchError", true);
 
-export const fetchCleanup = (state, action) =>
+const fetchCleanup = (state, action) =>
   state
     .set("entities", [])
     .set("total", 0)

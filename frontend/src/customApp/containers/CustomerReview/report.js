@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/customer_review/list/actions";
+import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
@@ -50,7 +50,7 @@ class Report extends Component {
   }
 
   render() {
-    const { entities } = this.props;
+    const { entity } = this.props;
     return (
       <ContentAreaLayout>
         <HeadLayout>
@@ -67,7 +67,7 @@ class Report extends Component {
         </HeadLayout>
         <MainLayout>
           <ReportForm />
-          <ReportItem entities={entities} />
+          <ReportItem entity={entity} />
           <ReportNotes />
           <ReportButton />
         </MainLayout>
@@ -77,7 +77,7 @@ class Report extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.CustomerReview.List.toJS();
+  return state.CustomerReview.Entity.toJS();
 };
 
 const actionCreators = {

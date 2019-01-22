@@ -42,31 +42,32 @@ const Date = styled.span`
   float: right;
 `;
 
-const ReportItem = ({ entities }) => {
-  if(entities.item && entities.comment){
-  const {item,comment} = entities;
-  return (
-    <CommentsReportContent>
-      <CommentsReportContentTitle>
-        <IntlMessages id="customerReview.commentReport.violation_content" />
-      </CommentsReportContentTitle>
-      <CommentsReportData>
-        <CommentsReportDataHead>
-          <ItemImg
-            src={`https://img.muji.net/img/item/${item.jancode}_180.jpg`}
-          />
-          <CommentsReportContentTitle>
-            {item.product}
-          </CommentsReportContentTitle>
-        </CommentsReportDataHead>
-        <ItemDescription>
-          <Description>{comment}</Description>
-          <Date>{item.upload_date}</Date>
-        </ItemDescription>
-      </CommentsReportData>
-    </CommentsReportContent>
-  );
-  }return null;
+const ReportItem = ({ entity }) => {
+  if (entity.item && entity.comment) {
+    const { item, comment } = entity;
+    return (
+      <CommentsReportContent>
+        <CommentsReportContentTitle>
+          <IntlMessages id="customerReview.commentReport.violation_content" />
+        </CommentsReportContentTitle>
+        <CommentsReportData>
+          <CommentsReportDataHead>
+            <ItemImg
+              src={`https://img.muji.net/img/item/${item.jancode}_180.jpg`}
+            />
+            <CommentsReportContentTitle>
+              {item.product}
+            </CommentsReportContentTitle>
+          </CommentsReportDataHead>
+          <ItemDescription>
+            <Description>{comment}</Description>
+            <Date>{item.upload_date}</Date>
+          </ItemDescription>
+        </CommentsReportData>
+      </CommentsReportContent>
+    );
+  }
+  return null;
 };
 
 export default ReportItem;
