@@ -83,8 +83,6 @@
   "customerAddress.list.pagination.showTotal": "{total} ",
   "customerAddress.list.title": "お届け先一覧",
   "customerAddress.subtitle": "お届け先情報",
-  "customerReview.attributes.customer_review_code": "お客様レビュコード",
-  "customerReview.attributes.name": "名称",
   "customerReview.button.seeMore": "もっと見る",
   "customerReview.follow": "フォロー",
   "customerReview.followers": "フォロワー",
