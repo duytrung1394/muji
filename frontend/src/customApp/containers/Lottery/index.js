@@ -3,23 +3,41 @@ import { connect } from "react-redux";
 import actions from "../../redux/lottery/list/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import { ContentAreaLayout } from "../../components/panel/contentLayout";
 import styled from "styled-components";
 import LotteryList from "../../components/lottery/list/lotteryList";
+import LotteryNotice from "../../components/lottery/notice";
 
 const AreaLayout = styled(ContentAreaLayout)`
-  width: 960px;
+  max-width: 960px;
 `;
 
-class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
+const Dummy = () => {
+  const blockStyle = {
+    'text-align': 'center',
+    'height': '200px',
+    'width': '100%',
+    'display': 'table',
+    'padding-bottom': '30px',
+  };
+  const textStyle = {
+      'color': '#f56c6c',
+      'font-weight': 'bold',
+      'display': 'table-cell',
+      'vertical-align': 'middle',
+      'margin': 'auto',
+      'width': '100%',
+      'background-color': '#eee',
+  };
 
+  return (
+    <div style={blockStyle}>
+      <div style={textStyle}>TODO: インクルードコンテンツ表示</div>
+    </div>
+  );
+};
+
+class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest({
       section_code: this.props.match.params.section_code
@@ -28,7 +46,6 @@ class Index extends Component {
 
   // React.render
   render() {
-    console.log(this.props);
     const {
       // types
       total,
@@ -42,11 +59,11 @@ class Index extends Component {
     const { list_items } = entities;
 
     return (
-      <LayoutWrapper>
-        <AreaLayout>
-          <LotteryList listItems={list_items} />
-        </AreaLayout>
-      </LayoutWrapper>
+      <AreaLayout>
+        <Dummy />
+        <LotteryNotice />
+        <LotteryList listItems={list_items} />
+      </AreaLayout>
     );
   }
 }
