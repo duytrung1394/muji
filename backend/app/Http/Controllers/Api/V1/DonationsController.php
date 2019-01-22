@@ -41,32 +41,32 @@ class DonationsController extends Controller
     }
 
     /**
-		 * お支払い方法の選択.
-		 *
-		 * @param  string   $donationCode
-		 * @param  string   $numberOfUnits
-		 * @return Response
-		 */
-		public function showPayment($donationCode, $numberOfUnits)
-		{
-				return [
-						'data' => $this->getMockPaymentData($donationCode, $numberOfUnits),
-				];
-		}
+     * お支払い方法の選択.
+     *
+     * @param  string   $donationCode
+     * @param  string   $numberOfUnits
+     * @return Response
+     */
+    public function showPayment($donationCode, $numberOfUnits)
+    {
+        return [
+            'data' => $this->getMockPaymentData($donationCode, $numberOfUnits),
+        ];
+    }
 
     /**
-		 * 寄付内容の確認
-		 *
-		 * @return Response
-		 */
-		public function confirm(Request $request)
-		{
-				return [
-						'data' => $this->getMockConfirmData(),
-				];
-		}
+     * 寄付内容の確認
+     *
+     * @return Response
+     */
+    public function confirm(Request $request)
+    {
+        return [
+            'data' => $this->getMockConfirmData(),
+        ];
+    }
 
-		/**
+    /**
      * 寄付の確定(注文)
      *
      * @return Response
@@ -76,8 +76,8 @@ class DonationsController extends Controller
         return [
             'orderCode' => "123456789012",
         ];
-		}
-		
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
