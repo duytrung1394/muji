@@ -23,14 +23,6 @@ $router->get('/api/v1/orders/purchase-history', [
 ]);
 
 /**
- * 予約履歴一覧取得
- */
-$router->get('/api/v1/orders/reservation-history', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\OrdersController@indexReservationHistory',
-]);
-
-/**
  * 店舗取り置き一覧取得
  */
 $router->get('/api/v1/orders/store-reserve', [

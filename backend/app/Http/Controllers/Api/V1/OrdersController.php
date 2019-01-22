@@ -26,30 +26,10 @@ class OrdersController extends Controller
     public function indexPurchaseHistory(Request $request)
     {
         return [
-<<<<<<< HEAD
             'data'  => $this->getPurchaseHistoryMock(),
-=======
-            // 'data'  => $this->getMultiMockData( (int)$request->input('page') ),
-            'data'  => $this->getMultiMockData(),
->>>>>>> parent of c25d3a17... [update] refs #3072 注文 - 予約履歴 : redux/Mock周りの調整
             'total' => 200,
         ];
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function indexReservationHistory(Request $request)
-    {
-        return [
-            // 'data'  => $this->getMultiMockData( (int)$request->input('page') ),
-            'data'  => $this->getMultiMockData(),
-            'total' => 200,
-        ];
-    }
-
     /**
      * Display a listing of the resource.
      *
