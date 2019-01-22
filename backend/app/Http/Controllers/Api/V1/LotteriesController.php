@@ -10,64 +10,23 @@ class LotteriesController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(string $sectionCode)
     {
         return [
-            'data'  => $this->getMockData($request->input('section_code'))
+            'data'  => $this->getMultiMockData(),
         ];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  string   $lotteryCode
+     * @param  string   $sectionCode
      * @return Response
      */
-    public function show($sectionCode)
+    public function show(string $sectionCode, string $janCode)
     {
         return [
-            'item' => $this->getMockdata($sectionCode),
-        ];
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  string   $camelCase(pkName)
-     * @return Response
-     */
-    public function update(Request $request, $lotteryCode)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Remove some resources from storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function destroy(Request $request)
-    {
-        return [
-            'data'  => [],
-            'count' => 1,
+            'data' => $this->getMultiMockData()[0],
         ];
     }
 
@@ -78,74 +37,49 @@ class LotteriesController extends Controller
      */
     private function getMultiMockData()
     {
-        // $data = [];
-        // $start = ((int) $page - 1) * 10;
-
-        // for ($i = 0; $i < 10; $i++) {
-        //     $data[] = $this->getMockData('lottery_code' . ($i + $start ));
-        // }
-
         return [
-            $this->getMockData()
-        ];
-    }
-
-    /**
-     * モックデータを生成して取得
-     */
-    private function getMockData($section_code)
-    {
-        // 'lottery_code'   => $code,
-        // 'name'        => 'name_' . $code,
-        // 'description' => 'description_' . $code,
-        $sections = [
-            'T181206' => [
-                'list_items' => [
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "before"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "before"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "done"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "done"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "end"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "end"
-                    ],
-                    [
-                        'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
-                        'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
-                        'price' => '2,000',
-                        'has_apply' => "previous"
-                    ],
-                ]
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "before"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "before"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "done"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "done"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "end"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "end"
+            ],
+            [
+                'img' => 'https://tokutoku.mobi/wp-content/uploads/2018/06/mujifukubukuro.png',
+                'title' => '【ネット限定】夏福袋　ヘルス&ビューティー・トラベル',
+                'price' => '2,000',
+                'has_apply' => "previous"
             ],
         ];
-        return $sections[$section_code];
     }
 }

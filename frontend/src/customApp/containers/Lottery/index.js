@@ -14,20 +14,20 @@ const AreaLayout = styled(ContentAreaLayout)`
 
 const Dummy = () => {
   const blockStyle = {
-    'text-align': 'center',
-    'height': '200px',
-    'width': '100%',
-    'display': 'table',
-    'padding-bottom': '30px',
+    textAlign: "center",
+    height: "200px",
+    width: "100%",
+    display: "table",
+    paddingBottom: "30px"
   };
   const textStyle = {
-      'color': '#f56c6c',
-      'font-weight': 'bold',
-      'display': 'table-cell',
-      'vertical-align': 'middle',
-      'margin': 'auto',
-      'width': '100%',
-      'background-color': '#eee',
+    color: "#f56c6c",
+    fontWeight: "bold",
+    display: "table-cell",
+    verticalAlign: "middle",
+    margin: "auto",
+    width: "100%",
+    backgroundColor: "#eee"
   };
 
   return (
@@ -40,7 +40,9 @@ const Dummy = () => {
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest({
-      section_code: this.props.match.params.section_code
+      replaces: {
+        section_code: this.props.match.params.section_code
+      }
     });
   }
 
@@ -56,13 +58,11 @@ class Index extends Component {
       history
     } = this.props;
 
-    const { list_items } = entities;
-
     return (
       <AreaLayout>
         <Dummy />
         <LotteryNotice />
-        <LotteryList listItems={list_items} />
+        <LotteryList listItems={entities} />
       </AreaLayout>
     );
   }

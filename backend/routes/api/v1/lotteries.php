@@ -9,7 +9,7 @@ if (empty($router)) {
 /**
  * 一覧取得
  */
-$router->get('/api/v1/lotteries', [
+$router->get('/api/v1/lotteries/{sectionCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\LotteriesController@index',
 ]);
@@ -20,28 +20,4 @@ $router->get('/api/v1/lotteries', [
 $router->get('/api/v1/lotteries/{sectionCode}/{janCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\LotteriesController@show',
-]);
-
-/**
- * 登録
- */
-$router->post('/api/v1/lotteries', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\LotteriesController@store',
-]);
-
-/**
- * 更新
- */
-$router->put('/api/v1/lotteries/{taskCode}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\LotteriesController@update',
-]);
-
-/**
- * 削除
- */
-$router->delete('/api/v1/lotteries', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\LotteriesController@destroy',
 ]);
