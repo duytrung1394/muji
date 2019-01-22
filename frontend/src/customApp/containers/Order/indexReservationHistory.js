@@ -64,7 +64,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetchByReservationHistory.request,
+  fetchRequest: actions.fetch.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

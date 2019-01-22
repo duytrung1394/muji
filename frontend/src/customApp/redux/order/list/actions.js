@@ -5,9 +5,6 @@ const actions = createActions({
   ORDER: {
     LIST: {
       ...restActions,
-      FETCH_BY_RESERVATION_HISTORY: {
-        REQUEST: undefined
-      },
       FETCH_STORE_RESERVE: {
         REQUEST: undefined
       },
