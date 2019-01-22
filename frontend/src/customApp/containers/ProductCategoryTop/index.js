@@ -9,6 +9,7 @@ import PopularityRanking from "../../components/productCategoryTop/popularityRan
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
 import ContentAreaLayout from "../../components/panel/contentLayout";
+import Campaign from "../../components/productCategoryTop/campaign";
 
 class Index extends Component {
   componentDidMount() {
@@ -29,6 +30,7 @@ class Index extends Component {
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
           <CategoryList innerCategories={entity.innerCategories} />
+          <Campaign campaigns={entity.campaigns} />
           <ItemList {...entity} />
         </Spin>
       </ContentAreaLayout>

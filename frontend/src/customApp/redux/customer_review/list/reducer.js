@@ -26,7 +26,7 @@ const fetchSuccess = (state, action) => {
     .set("userTotal", action.payload.userTotal)
     .set("fetching", false)
     .set("fetched", true);
-};
+}
 
 const fetchFailure = (state, action) =>
   state
