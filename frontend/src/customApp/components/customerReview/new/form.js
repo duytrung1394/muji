@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Rate, Upload, Button, Icon } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../panel/contentLayout";
+import { BaseContentLayout } from "../../shared/panel/contentLayout";
 import ConfirmButton from "../forms/confirmButton";
 import Notices from "../notices";
 
