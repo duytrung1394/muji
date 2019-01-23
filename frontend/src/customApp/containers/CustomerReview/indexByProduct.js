@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import Header from "../../components/customerReview/list/header";
 import ItemReviewHeader from "../../components/customerReview/indexByItem/itemReviewHeader";
 import Item from "../../components/customerReview/indexByItem/item";

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import styled from "styled-components";
-import { BaseContentLayout } from "../../components/panel/contentLayout";
+import { BaseContentLayout } from "./contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
   && {

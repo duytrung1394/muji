@@ -8,7 +8,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import FollwingItem from "../../components/customerReview/following/item";
 import Header from "../../components/customerReview/list/header";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
