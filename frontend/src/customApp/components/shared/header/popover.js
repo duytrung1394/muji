@@ -86,6 +86,7 @@ class HeaderPopover extends Component {
       list,
       placement = "bottom",
       trigger = "click",
+      overlayStyle = {},
       children
     } = this.props;
     const { visible } = this.state;
@@ -97,6 +98,8 @@ class HeaderPopover extends Component {
         trigger={trigger}
         visible={visible}
         onVisibleChange={this.onVisibleChange}
+        overlayClassName="header-popover"
+        overlayStyle={overlayStyle}
       >
         {children}
       </Popover>

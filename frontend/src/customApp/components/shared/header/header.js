@@ -183,6 +183,7 @@ class Header extends Component {
                   list={loginMenus}
                   placement="bottomRight"
                   trigger="hover"
+                  overlayStyle={{padding: 0}}
                 >
                   <Icon type="user" />
                   <div className="header-btn-text">ログイン</div>
@@ -193,6 +194,7 @@ class Header extends Component {
                   list={supportMenus}
                   placement="bottomRight"
                   trigger="hover"
+                  overlayStyle={{padding: 0}}
                 >
                   <Icon type="info-circle" />
                   <div className="header-btn-text">サポート</div>
