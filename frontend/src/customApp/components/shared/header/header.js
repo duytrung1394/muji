@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { Layout, Form, Input, Icon, Row, Col } from "antd";
 import HeaderPopover from "./popover";
@@ -134,7 +135,10 @@ class Header extends Component {
   };
 
   render() {
-    const { isLoggedIn } = this.props;
+    const {
+      isLoggedIn,
+      intl: { formatMessage }
+    } = this.props;
 
     return (
       <AntdHeader>
@@ -160,6 +164,9 @@ class Header extends Component {
               <Input
                 addonBefore={<this.TargetSelector />}
                 onPressEnter={event => this.onPressEnter(event)}
+                placeholder={formatMessage({
+                  id: `header.search.placeholder.${this.state.target}`
+                })}
               />
             </Form>
           </Col>
@@ -199,6 +206,6 @@ class Header extends Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create()(Header);
-
-export default WrappedRegistrationForm;
+export default injectIntl(Form.create()(Header), {
+  withRef: true
+});
