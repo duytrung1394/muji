@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import actions from "../../redux/lottery/list/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import styled from "styled-components";
 import LotteryList from "../../components/lottery/list";
 import LotteryNotice from "../../components/lottery/notice";

@@ -8,7 +8,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import ClippedItem from "../../components/customerReview/list/clippedItem";
 import ClippedSubList from "../../components/customerReview/list/clippedSubList";
 import ClippedButton from "../../components/customerReview/list/clippedButton";
