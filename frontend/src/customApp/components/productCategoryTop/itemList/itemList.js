@@ -5,7 +5,7 @@ import LargeButton from "../../shared/form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import Slider from "../../slider";
+import Slider from "../../shared/slider";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {

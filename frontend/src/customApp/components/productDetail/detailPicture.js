@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Col, Modal, Button, Carousel } from "antd";
 import fab from "../../../image/cmdty/detail/ico-fob-heart.png";
 import fabActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
-import Slider, { Link } from "../slider";
+import Slider, { Link } from "../shared/slider";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const PictureCol = styled(Col)`
