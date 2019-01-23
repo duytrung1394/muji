@@ -195,7 +195,7 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/orders/purchaseHistory",
+    path: "/store/cust/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
@@ -206,13 +206,6 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexStoreReserve")
-    )
-  },
-  {
-    path: "/orders/:order_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Order/show")
     )
   }
 ];
