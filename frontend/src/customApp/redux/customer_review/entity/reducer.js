@@ -37,7 +37,7 @@ const reducer = handleActions(
   {
     CUSTOMER_REVIEW: {
       ENTITY: {
-        restReducer,
+        ...restReducer,
         GET_REPORT: {
           REQUEST: getReportFetchRequest,
           SUCCESS: getReportFetchSuccess,

@@ -15,7 +15,6 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
-
  * 一部取得
  */
 $router->get('/api/v1/customer-reviews/{itemCode}/{commentCode}', [
