@@ -1,6 +1,4 @@
 {
-  "header.search.placeholder.item": "商品名・商品番号を入力",
-  "header.search.placeholder.shop": "店舗検索",
   "Component.contacts.noOption": "No contact found",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",
   "Map.leaflet.basicTitle": "Basic Map",
@@ -382,6 +380,8 @@
   "fruit.attributes.name": "名称",
   "fruit.name": "フルーツ",
   "fruit.sidebar": "フルーツ管理",
+  "header.search.placeholder.item": "商品名・商品番号を入力",
+  "header.search.placeholder.shop": "店舗検索",
   "httpbin.attributes.httpbin_code": "Httpbinコード",
   "httpbin.attributes.name": "名称",
   "httpbin.name": "httpbin",
