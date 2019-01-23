@@ -1,100 +1,200 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Layout, Form, Input, Select, Icon, Row, Col } from "antd";
-import { HeaderWrapper, HeaderBtnsCol } from "./header.style";
-import { Dropdown as HoverMenu } from "../dropdown/dropdown";
+import { Layout, Form, Input, Icon, Row, Col } from "antd";
+import HeaderPopover from "./popover";
 
-const AntdHeader = Layout.Header;
-const Option = Select.Option;
-const bannerFlag = false;
-
-const loginMenus = ["ログイン", "新規登録"];
-
-const supportMenus = [
-  "お問い合わせ",
-  "ご利用ガイド",
-  "重要なお知らせ",
-  "サイトからのお知らせ"
+const loginMenus = [
+  {
+    text: "ログイン",
+    to: "login"
+  },
+  {
+    text: "新規登録",
+    to: "create"
+  }
 ];
 
-class Header extends Component {
-  render() {
-    const { getFieldDecorator } = this.props.form;
+const supportMenus = [
+  {
+    text: "お問い合わせ",
+    to: "#qa"
+  },
+  {
+    text: "ご利用ガイド",
+    to: "#guide"
+  },
+  {
+    text: "重要なお知らせ",
+    to: "#important"
+  },
+  {
+    text: "サイトからのお知らせ",
+    to: "#media"
+  }
+];
 
-    const prefixSelector = getFieldDecorator("prefix", {
-      initialValue: "item"
-    })(
-      <Select style={{ width: 90 }}>
-        <Option value="item">
-          <Icon type="search" theme="outlined" /> 商品
-        </Option>
-        <Option value="shop">
-          <Icon type="search" theme="outlined" /> 店舗
-        </Option>
-      </Select>
-    );
+const targets = [
+  {
+    text: "商品",
+    value: "item"
+  },
+  {
+    text: "店舗",
+    value: "shop"
+  }
+];
+
+// TODO: sidebar-width
+const sidebarWidth = 230;
+
+const AntdHeader = styled(Layout.Header)`
+  && {
+    height: 70px;
+    background: #fff;
+    padding: 0;
+    line-height: normal;
+  }
+
+  .antd-header-row {
+    height: 100%;
+
+    .header-logo {
+      width: ${sidebarWidth}px;
+      max-width: ${sidebarWidth}px;
+      min-width: ${sidebarWidth}px;
+      text-indent: 20px;
+    }
+
+    .header-search {
+      flex: 1;
+      padding: 0 15px;
+    }
+  }
+`;
+
+const HeaderBtnsCol = styled(Col)`
+  .header-btn {
+    position: relative;
+    padding: 0 5px;
+    text-align: center;
+    font-size: 28px;
+
+    & > a {
+      display: block;
+      text-align: center;
+      padding: 0 5px;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .header-btn-text {
+      font-size: 13px;
+    }
+
+    .dropdown-list {
+      z-index: 3000;
+      display: none;
+    }
+
+    &:hover .dropdown-list {
+      display: block;
+    }
+  }
+`;
+
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      target: "item"
+    };
+  }
+
+  TargetSelector = () => (
+    <HeaderPopover
+      list={targets}
+      listType="select"
+      trigger="click"
+      onClick={this.onChangeTarget}
+    >
+      <Icon type="search" theme="outlined" />
+    </HeaderPopover>
+  );
+
+  onChangeTarget = value => {
+    this.setState({
+      target: value
+    });
+  };
+
+  onPressEnter = event => {
+    // TODO: fix
+    console.log("value: " + event.target.value);
+    console.log("target: " + this.state.target);
+  };
+
+  render() {
+    const { isLoggedIn } = this.props;
 
     return (
-      <HeaderWrapper>
-        {bannerFlag === true ? (
-          <div className="banner">
-            <p>
+      <AntdHeader>
+        <Row
+          type="flex"
+          align="middle"
+          justify="space-between"
+          className="antd-header-row"
+        >
+          <Col className="header-logo">
+            <Link to="/store">
               <img
-                src="https://img.muji.net/img/store/common/banner_ryohinweek.png"
-                alt="無印良品週間 メンバー限定10％OFF"
+                src="https://img.muji.net/img/common/logo-muji.svg"
+                width="128"
+                height="20"
+                alt="無印良品"
+                id="logo"
               />
-              <b>
-                9/29(土) – 10/8(月)<span> ネットは10/9(火)午前10時まで</span>
-              </b>
-            </p>
-          </div>
-        ) : null}
-        <AntdHeader>
-          <Row
-            type="flex"
-            align="middle"
-            justify="space-between"
-            className="antd-header-row"
-          >
-            <Col className="header-logo">
-              <Link to="/store">
-                <img
-                  src="https://img.muji.net/img/common/logo-muji.svg"
-                  width="128"
-                  height="20"
-                  alt="無印良品"
-                  id="logo"
-                />
-              </Link>
-            </Col>
-            <Col className="header-search">
-              <Form className="search">
-                <Input addonBefore={prefixSelector} />
-              </Form>
-            </Col>
-            <HeaderBtnsCol>
-              <Row type="flex" justify="space-between">
-                <Col className="header-btn">
-                  <a href="">
-                    <Icon type="shopping-cart" />
-                    <div className="header-btn-text">カート</div>
-                  </a>
-                </Col>
-                <Col className="header-btn">
+            </Link>
+          </Col>
+          <Col className="header-search">
+            <Form className="search">
+              <Input
+                addonBefore={<this.TargetSelector />}
+                onPressEnter={event => this.onPressEnter(event)}
+              />
+            </Form>
+          </Col>
+          <HeaderBtnsCol>
+            <Row type="flex" justify="space-between">
+              <Col className="header-btn">
+                <a href="">
+                  <Icon type="shopping-cart" />
+                  <div className="header-btn-text">カート</div>
+                </a>
+              </Col>
+              <Col className="header-btn">
+                <HeaderPopover
+                  list={loginMenus}
+                  placement="bottomRight"
+                  trigger="hover"
+                >
                   <Icon type="user" />
                   <div className="header-btn-text">ログイン</div>
-                  <HoverMenu menus={loginMenus} />
-                </Col>
-                <Col className="header-btn">
+                </HeaderPopover>
+              </Col>
+              <Col className="header-btn">
+                <HeaderPopover
+                  list={supportMenus}
+                  placement="bottomRight"
+                  trigger="hover"
+                >
                   <Icon type="info-circle" />
                   <div className="header-btn-text">サポート</div>
-                  <HoverMenu menus={supportMenus} />
-                </Col>
-              </Row>
-            </HeaderBtnsCol>
-          </Row>
-        </AntdHeader>
-      </HeaderWrapper>
+                </HeaderPopover>
+              </Col>
+            </Row>
+          </HeaderBtnsCol>
+        </Row>
+      </AntdHeader>
     );
   }
 }
