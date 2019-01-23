@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { List, Col, Row } from "antd";
-import { Icons } from "./Icons";
+import { Icons } from "./icons";
 
 const siteMaps = [
   [
