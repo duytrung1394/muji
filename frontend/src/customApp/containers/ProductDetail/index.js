@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import actions from "../../redux/product_detail/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin, Row } from "antd";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 import DetailPicture from "../../components/productDetail/detailPicture";
 import DetailInfo from "../../components/productDetail/detailInfo";
-import ContentHeader from "../../components/header/contentHeader";
+import ContentHeader from "../../components/shared/header/contentHeader";
 
 import { Modal } from "antd";
 
