@@ -19,7 +19,7 @@ const DashApp = () => (
   <Hoc>
     <BrowserRouter>
       <Layout style={{ height: "100%" }}>
-        <Header />
+        <Header isLoggedIn={false} />
         <Layout>
           <Sider />
           <Layout>

@@ -16,6 +16,33 @@ const loginMenus = [
   }
 ];
 
+const userMenus = [
+  {
+    text: "<ユーザ名>さんのマイページ",
+    to: "mypage"
+  },
+  {
+    text: "メッセージ",
+    to: "message"
+  },
+  {
+    text: "購入履歴",
+    to: "history"
+  },
+  {
+    text: "お気に入り",
+    to: "favorite"
+  },
+  {
+    text: "メンバー情報の変更",
+    to: "update"
+  },
+  {
+    text: "ログアウト",
+    to: "logout"
+  }
+];
+
 const supportMenus = [
   {
     text: "お問い合わせ",
@@ -180,13 +207,15 @@ class Header extends Component {
               </Col>
               <Col className="header-btn">
                 <HeaderPopover
-                  list={loginMenus}
+                  list={isLoggedIn ? userMenus : loginMenus}
                   placement="bottomRight"
                   trigger="hover"
-                  overlayStyle={{padding: 0}}
+                  overlayStyle={{ padding: 0 }}
                 >
                   <Icon type="user" />
-                  <div className="header-btn-text">ログイン</div>
+                  <div className="header-btn-text">
+                    {isLoggedIn ? "<ユーザ名>" : "ログイン"}
+                  </div>
                 </HeaderPopover>
               </Col>
               <Col className="header-btn">
@@ -194,7 +223,7 @@ class Header extends Component {
                   list={supportMenus}
                   placement="bottomRight"
                   trigger="hover"
-                  overlayStyle={{padding: 0}}
+                  overlayStyle={{ padding: 0 }}
                 >
                   <Icon type="info-circle" />
                   <div className="header-btn-text">サポート</div>
