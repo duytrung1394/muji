@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
-    private $mockTotal = 23;
+    private $mockTotal = 7;
     private $userTotal = 5;
     /**
      * Display a listing of the resource.
