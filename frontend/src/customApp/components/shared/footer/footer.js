@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
-import { SiteMap } from "./SiteMap";
-import { Navigation } from "./Navigation";
+import { SiteMap } from "./siteMap";
+import { Navigation } from "./navigation";
 
 const Footer = () => {
   return (
