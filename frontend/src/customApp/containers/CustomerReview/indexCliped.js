@@ -36,7 +36,9 @@ class IndexClipped extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest("");
+    if (this.getEntityLength() <= 0) {
+      this.props.fetchRequest("");
+    }
   }
 
   seeMore = () => {
