@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import ContentHeader from "../../components/header/contentHeader";
+import ContentHeader from "../../components/shared/header/contentHeader";
 import Article from "../../components/productCategoryTop/article";
 import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 import Campaign from "../../components/productCategoryTop/campaign";
 
 class Index extends Component {

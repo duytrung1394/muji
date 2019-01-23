@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import AddressHeader from "../../components/customerAddress/addressHeader";
 

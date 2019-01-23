@@ -5,7 +5,7 @@ import styled from "styled-components";
 import moment from "moment";
 import CreditCardInfo from "./creditCardInfo";
 import MujiCardInfo from "./mujiCardInfo";
-import { Button } from "../../form/button";
+import { Button } from "../../shared/form/button";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { injectIntl } from "react-intl";
 

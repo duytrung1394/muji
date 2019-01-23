@@ -4,7 +4,7 @@ import actions from "../../redux/customer_review/entity/actions";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 import { Spin } from "antd";
-import { ContentAreaLayout as BaseContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout as BaseContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import Form from "../../components/customerReview/new/form";
 import ReviewTop from "../../components/customerReview/forms/reviewTop";
 

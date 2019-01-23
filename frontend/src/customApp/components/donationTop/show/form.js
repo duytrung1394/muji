@@ -3,7 +3,7 @@ import { Row, Col, Form as AntdForm, Select, Button, Popover } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import LargeButton from "../../form/largeButton";
+import LargeButton from "../../shared/form/largeButton";
 import RadioGroup from "./radioGroup";
 
 const Option = Select.Option;

@@ -1,7 +1,7 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
-import IconList from "../panel/iconList";
+import ContentPanel from "../shared/panel/contentPanel";
+import IconList from "../shared/panel/iconList";
 import { CategoryBoxCol, CategoryTitle } from "./categoryList.style";
 import { Row } from "antd";
 

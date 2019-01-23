@@ -167,6 +167,20 @@ const routes = [
     )
   },
   {
+    path: "/store/lucky/:section_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Lottery/index")
+    )
+  },
+  {
+    path: "/store/lucky/:section_code/:jan_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Lottery/show")
+    )
+  },
+  {
     path: "/store/cart/donation/complete",
     exact: true,
     component: asyncComponent(() =>

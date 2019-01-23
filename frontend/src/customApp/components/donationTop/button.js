@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "../../components/form/link";
+import { Link } from "../../components/shared/form/link";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Button as AntButton } from "antd";
 
