@@ -8,7 +8,7 @@ import {
   MenuItem,
   LinkMenuItem
 } from "./sider.style";
-import NavLink from "./NavLink";
+import NavLink from "./navLink";
 import { Link } from "react-router-dom";
 import sidebarIcons from "./sider_icons/sidebarIcons";
 import menuJson from "./sidemenu.json";

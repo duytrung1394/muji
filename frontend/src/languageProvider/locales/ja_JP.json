@@ -1,4 +1,6 @@
 {
+  "header.search.placeholder.item": "商品名・商品番号を入力",
+  "header.search.placeholder.shop": "店舗検索",
   "Component.contacts.noOption": "No contact found",
   "Map.leaflet.basicMarkerTitle": "Basic Map(With Default Marker",
   "Map.leaflet.basicTitle": "Basic Map",
