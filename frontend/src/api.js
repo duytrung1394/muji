@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "./redux/store";
 import settings from "./settings";
 
-const base = settings.apiUrl;
+const base = `${settings.apiUrl}/api/v1`;
 
 function getHeaders() {
   const idToken = store.getState().Auth.get("idToken");

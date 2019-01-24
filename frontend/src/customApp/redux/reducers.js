@@ -1,6 +1,7 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
 import Favorite from "./favorite/reducers";
+import Lottery from "./lottery/reducers";
 import Order from "./order/reducers";
 import CustomerReview from "./customer_review/reducers";
 import DonationTop from "./donation_top/reducers";
@@ -19,5 +20,6 @@ export default {
   CustomerReview,
   DonationTop,
   Order,
-  Favorite
+  Favorite,
+  Lottery
 };
