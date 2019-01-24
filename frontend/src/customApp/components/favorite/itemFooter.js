@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Popconfirm, Icon, message, Modal, Button} from "antd";
+import { Popconfirm, Icon, message, Modal, Button } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const FavoriteItemButtonWrapper = styled.ul`
@@ -59,7 +59,7 @@ const FavoriteItemButton = styled.li`
 
 const buttonText = {
   add: "favorite.add",
-  delete: "favorite.delete",
+  delete: "favorite.delete"
 };
 
 const DeleteModalButton = styled.p`
@@ -100,8 +100,10 @@ const LinkButton = ({ to, textId }) => {
   );
 };
 
-const DeleteModal = styled(Modal)`
-  &&{
+// const DeleteModal = styled(Modal)`
+
+const DeleteModalWrapper = styled(Modal)`
+  && {
     top: 0;
     display: flex;
     justify-content: center;
@@ -118,29 +120,49 @@ const DeleteModal = styled(Modal)`
   }
 `;
 
+const DeleteModal = ({ visible, onOk, onCancel }) => {
+  return (
+    <DeleteModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <DeleteConfirmMessage>
+        <IntlMessages id="favorite.deleteConfirm" />
+      </DeleteConfirmMessage>
+      <DeleteModalButton>
+        <button to={"#"} onClick={onOk}>
+          <IntlMessages id="favorite.delete" />
+        </button>
+      </DeleteModalButton>
+    </DeleteModalWrapper>
+  );
+};
+
 class FavoriteItemFooter extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ...this.state,
-      deleteModalVisible: false,
-    }
+      deleteModalVisible: false
+    };
   }
 
-  modalOpen = ()  => {
-    this.setState({deleteModalVisible: true});
+  modalOpen = () => {
+    this.setState({ deleteModalVisible: true });
   };
 
   handleOk = () => {
-    message.info('削除');
-    this.setState({deleteModalVisible: false});
-  }
+    message.info("削除");
+    this.setState({ deleteModalVisible: false });
+  };
 
   handleCancel = () => {
-    this.setState({deleteModalVisible: false});
-  }
+    this.setState({ deleteModalVisible: false });
+  };
 
-  render () {
+  render() {
     const { item } = this.props;
     switch (item.favorite_type) {
       case 1:
@@ -154,15 +176,9 @@ class FavoriteItemFooter extends Component {
             </FavoriteItemButton>
             <DeleteModal
               visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
               onCancel={this.handleCancel}
-              footer={null}
-              sidth={600}
-            >
-              <DeleteConfirmMessage><IntlMessages id="favorite.deleteConfirm" /></DeleteConfirmMessage>
-              <DeleteModalButton>
-                <button to={"#"} onClick={this.handleOk}><IntlMessages id="favorite.delete" /></button>
-              </DeleteModalButton>
-            </DeleteModal>
+            />
             <LinkButton to={"#"} textId={buttonText.add} />
           </FavoriteItemButtonWrapper>
         );
@@ -178,15 +194,9 @@ class FavoriteItemFooter extends Component {
             </FavoriteItemButton>
             <DeleteModal
               visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
               onCancel={this.handleCancel}
-              footer={null}
-              sidth={600}
-            >
-              <DeleteConfirmMessage><IntlMessages id="favorite.deleteConfirm" /></DeleteConfirmMessage>
-              <DeleteModalButton>
-                <button to={"#"} onClick={this.handleOk}><IntlMessages id="favorite.delete" /></button>
-              </DeleteModalButton>
-            </DeleteModal>
+            />
           </FavoriteItemButtonWrapper>
         );
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import FavoriteItemList from "./itemList"
+import FavoriteItemList from "./itemList";
 import IntlMessages from "../../../components/utility/intlMessages";
 import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -21,7 +21,6 @@ const DeliveryList = styled.div`
     text-decoration: none;
   }
 `;
-
 
 const SliderWrapper = styled(SlickSlider)`
   && {
@@ -93,11 +92,13 @@ const FavoriteTabs = ({ itemList, tabList }) => {
       {itemList.map((item, index) => {
         return (
           <div key={index}>
-          {index === 0 ? (
-            <DeliveryList>
-              <Link to={"#"} draggable={false}><IntlMessages id="favorite.deriveryList" /></Link>
-            </DeliveryList>
-          ) : null}
+            {index === 0 ? (
+              <DeliveryList>
+                <Link to={"#"} draggable={false}>
+                  <IntlMessages id="favorite.deriveryList" />
+                </Link>
+              </DeliveryList>
+            ) : null}
             <FavoriteItemList itemList={item} />
           </div>
         );

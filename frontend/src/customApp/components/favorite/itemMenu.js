@@ -13,7 +13,7 @@ const images = {
   "img-favorite-slide-1.png": imgProduct1,
   "img-favorite-slide-2.png": imgEvent1,
   "img-favorite-slide-3-1.png": imgArticle1,
-  "img-favorite-slide-3-2.png": imgArticle2,
+  "img-favorite-slide-3-2.png": imgArticle2
 };
 
 const FavoriteItemMenu = styled.div`
@@ -158,18 +158,17 @@ const DiscribePriceArrow = styled.span`
 `;
 
 const dateSuffix = type => {
-  switch(type) {
+  switch (type) {
     case 1:
-      return 'favorite.dateSuffix.product';
+      return "favorite.dateSuffix.product";
     case 2:
-      return 'favorite.dateSuffix.event';
+      return "favorite.dateSuffix.event";
     case 3:
-      return 'favorite.dateSuffix.article';
+      return "favorite.dateSuffix.article";
   }
-}
+};
 
-const FavoriteItemCaption = styled.li`
-`;
+const FavoriteItemCaption = styled.li``;
 
 class FavoriteItem extends Component {
   constructor(props) {
@@ -218,23 +217,36 @@ class FavoriteItem extends Component {
           })}
           {item.item_price_present ? (
             <DescribePriceWrapper>
-              <Link to={"#"} style={{ textDecoration: "line-through" }} draggable={false}>
+              <Link
+                to={"#"}
+                style={{ textDecoration: "line-through" }}
+                draggable={false}
+              >
                 {item.item_price}
               </Link>
               <DiscribePriceArrow>→</DiscribePriceArrow>
               <DescribePricePresent>
-                <Link to={"#"} draggable={false}>{item.item_price_present}</Link>
+                <Link to={"#"} draggable={false}>
+                  {item.item_price_present}
+                </Link>
               </DescribePricePresent>
             </DescribePriceWrapper>
           ) : (
             <DescribePriceWrapper>
-              <Link to={"#"} draggable={false}>{item.item_price}</Link>
+              <Link to={"#"} draggable={false}>
+                {item.item_price}
+              </Link>
             </DescribePriceWrapper>
           )}
           <DescribeDiscount>
-            <Link to={"#"} draggable={false}>{item.item_discount}</Link>
+            <Link to={"#"} draggable={false}>
+              {item.item_discount}
+            </Link>
           </DescribeDiscount>
-          <div>{item.order_date}<IntlMessages id={dateSuffix(item.favorite_type)} /></div>
+          <div>
+            {item.order_date}
+            <IntlMessages id={dateSuffix(item.favorite_type)} />
+          </div>
         </FavoriteItemDescribeList>
         {item.favorite_type === 1 ? (
           <EllipsisButtonWrapper>

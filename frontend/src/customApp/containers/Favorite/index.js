@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Tabs from "../../components/favorite/favoriteTabs";
 import styled from "styled-components";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { Spin } from "antd";
 
 const Title = styled.h1`
@@ -21,7 +21,7 @@ const Title = styled.h1`
 const tabList = [
   "favorite.tab.product",
   "favorite.tab.event",
-  "favorite.tab.article",
+  "favorite.tab.article"
 ];
 
 class Index extends Component {
@@ -30,7 +30,6 @@ class Index extends Component {
     this.state = {
       selectedKeys: []
     };
-
   }
 
   // React methods
@@ -85,10 +84,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);
