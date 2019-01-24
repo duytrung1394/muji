@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
-import ItemImageList from "../panel/itemImageList";
+import ContentPanel from "../shared/panel/contentPanel";
+import ItemImageList from "../shared/panel/itemImageList";
 
 const Feature = props => {
   return (

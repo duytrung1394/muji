@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "antd";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { Link } from "../../form/link";
+import { Link } from "../../shared/form/link";
 
 const ProfileStyle = styled.div`
   margin-bottom: 10px;

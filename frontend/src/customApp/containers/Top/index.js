@@ -16,7 +16,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import FromMuji from "../../components/top/fromMuji";
 
 const ContentLayout = styled(BaseContentLayout)`

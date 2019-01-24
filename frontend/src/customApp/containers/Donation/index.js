@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/donation/entity/actions";
 import { injectIntl } from "react-intl";
-import { Spin, Button } from "antd";
-import ContentHeader from "../../components/header/contentHeader";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { Spin } from "antd";
+import ContentHeader from "../../components/shared/header/contentHeader";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import Article from "../../components/donation/article";
 import DonationList from "../../components/donation/donationList";
-import { Link } from "react-router-dom";
-import IntlMessages from "../../../components/utility/intlMessages";
 import {
   PerformanceButton,
   FutureButton

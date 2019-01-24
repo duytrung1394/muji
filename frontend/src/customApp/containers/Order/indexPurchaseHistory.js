@@ -7,7 +7,7 @@ import PurchaseSort from "../../components/order/purchase/sort";
 import PurchaseItemList from "../../components/order/purchase/itemList";
 import { Spin } from "antd";
 import styled from "styled-components";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 
 const Title = styled.h1`
   line-height: 19px;

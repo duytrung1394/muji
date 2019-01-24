@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ContentPanel from "../../panel/contentPanel";
+import ContentPanel from "../../shared/panel/contentPanel";
 import CardList from "./cardList";
 
 const Others = ({ others }) => {

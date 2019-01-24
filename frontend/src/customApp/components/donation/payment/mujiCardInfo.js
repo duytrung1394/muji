@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col, Spin } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { Button } from "../../form/button";
 
 const Box = styled.div`
   border: 5px solid #ccc;

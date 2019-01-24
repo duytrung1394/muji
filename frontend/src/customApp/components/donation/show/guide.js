@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Col, Card, Popover, Row } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import { BaseContentLayout } from "../../panel/contentLayout";
+import { BaseContentLayout } from "../../shared/panel/contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
   border: 1px solid #ddd;
