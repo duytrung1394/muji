@@ -2,18 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import {
-  Layout,
-  Form,
-  Input,
-  Icon,
-  Row,
-  Col,
-  List as BaseList,
-  Popover
-} from "antd";
+import { Layout, Form, Input, Icon, Row, Col, List, Popover } from "antd";
 
-const List = styled(BaseList)`
+const LayoutList = styled(List)`
   background-color: #fff;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
 
@@ -47,12 +38,12 @@ class HeaderPopover extends Component {
     const { list, listType = "link" } = this.props;
 
     return (
-      <List
+      <LayoutList
         className="dropdown-list"
         bordered
         dataSource={list}
         renderItem={item => (
-          <BaseList.Item className="dropdown-list-item">
+          <List.Item className="dropdown-list-item">
             {listType === "select" ? (
               <div
                 className="dropdown-list-item-link"
@@ -71,7 +62,7 @@ class HeaderPopover extends Component {
                 {item.text}
               </Link>
             )}
-          </BaseList.Item>
+          </List.Item>
         )}
       />
     );

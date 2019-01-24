@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import styled from "styled-components";
 import { List, Col, Row } from "antd";
 
-const SocialsLayout = styled.ul`
+const LayoutSocials = styled.ul`
   display: flex;
   padding: 0;
   margin: 110px 0 0 0;
@@ -27,7 +27,7 @@ const srcs = [
 
 const Socials = () => {
   return (
-    <SocialsLayout>
+    <LayoutSocials>
       {srcs.map((src, index) => {
         return (
           <li key={index}>
@@ -37,7 +37,7 @@ const Socials = () => {
           </li>
         );
       })}
-    </SocialsLayout>
+    </LayoutSocials>
   );
 };
 
@@ -75,7 +75,7 @@ const siteMaps = [
   ]
 ];
 
-const SiteMapLayout = styled(Row)`
+const LayoutSiteMap = styled(Row)`
   overflow: hidden;
   margin-bottom: 30px;
 `;
@@ -96,7 +96,7 @@ const SiteMapList = styled(List)`
 
 const SiteMap = () => {
   return (
-    <SiteMapLayout>
+    <LayoutSiteMap>
       <Col span={8}>
         <img src="https://img.muji.net/img/common/logo-muji.svg" />
         <Socials />
@@ -115,11 +115,11 @@ const SiteMap = () => {
           </Col>
         );
       })}
-    </SiteMapLayout>
+    </LayoutSiteMap>
   );
 };
 
-const NavigationLayout = styled(Row)`
+const LayoutNavigation = styled(Row)`
   .navigation-link {
     font-size: 12px;
     margin: 20px 10px;
@@ -138,7 +138,7 @@ const NavigationLayout = styled(Row)`
 
 const Navigation = () => {
   return (
-    <NavigationLayout type="flex">
+    <LayoutNavigation type="flex">
       <Col>
         <a className="navigation-link" href="">
           日本
@@ -157,7 +157,7 @@ const Navigation = () => {
       <Col className="copy-right">
         <p>Copyright ©Ryohin Keikaku Co., Ltd.</p>
       </Col>
-    </NavigationLayout>
+    </LayoutNavigation>
   );
 };
 
