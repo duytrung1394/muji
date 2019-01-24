@@ -319,7 +319,6 @@
       "items": [
         {
           "title": "無印良品キャンプ場",
-          "externalLink": true,
           "url": "https://www.muji.net/camp/"
         }
       ]
@@ -331,22 +330,18 @@
       "items": [
         {
           "title": "くらしの収納相談",
-          "externalLink": true,
           "url": "https://www.muji.com/jp/mujisupport/#storage"
         },
         {
           "title": "部屋づくり相談",
-          "externalLink": true,
           "url": "https://www.muji.com/jp/mujisupport/#roommaking"
         },
         {
           "title": "サイズオーダーサービス",
-          "externalLink": true,
           "url": "https://www.muji.com/jp/mujisupport/#sizeorder"
         },
         {
           "title": "各種取り付けサービス",
-          "externalLink": true,
           "url": "https://www.muji.com/jp/mujisupport/#installation"
         }
       ]
@@ -358,32 +353,26 @@
       "items": [
         {
           "title": "無印良品の家",
-          "externalLink": true,
           "url": "https://www.muji.net/ie/"
         },
         {
           "title": "無印良品のリノベーション",
-          "externalLink": true,
           "url": "https://www.muji.net/renovation/"
         },
         {
           "title": "団地リノベーション",
-          "externalLink": true,
           "url": "https://www.muji.net/ie/mujiur/"
         },
         {
           "title": "MUJI Renovation Club",
-          "externalLink": true,
           "url": "https://housevision.muji.com/renovation/"
         },
         {
           "title": "くらしのパーツ相談",
-          "externalLink": true,
           "url": "https://housevision.muji.com/infillplus/"
         },
         {
           "title": "法人サービス",
-          "externalLink": true,
           "url": "https://www.muji.net/hojin/"
         }
       ]

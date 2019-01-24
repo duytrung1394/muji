@@ -1,10 +1,32 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import sidebarIcons from "./sider_icons/sidebarIcons";
 import { menus } from "./sidemenu.json";
-import NavLink from "./navLink";
+
+const menuHeight = "28px";
+
+const Link = props => {
+  const { to, children } = props;
+  const style = {
+    lineHeight: menuHeight
+  };
+
+  if (typeof to === "string" && to.startsWith("http")) {
+    return (
+      <a href={to} {...props} style={style}>
+        {children}
+      </a>
+    );
+  } else {
+    return (
+      <ReactRouterLink {...props} style={style}>
+        {children}
+      </ReactRouterLink>
+    );
+  }
+};
 
 const LayoutGroupMenu = styled(Menu.ItemGroup)`
   margin-bottom: 20px;
@@ -25,7 +47,7 @@ const MenuItemGroupIcon = styled.img`
 `;
 
 const MenuItem = styled(Menu.Item)`
-  height: 28px !important;
+  height: ${menuHeight} !important;
   color: #333;
   font-weight: 700;
   font-family: Hiragino Kaku Gothic ProN;
@@ -48,11 +70,7 @@ class GroupMenu extends Component {
           menu.items.map((item, index) => {
             return (
               <MenuItem key={index}>
-                {item.externalLink && item.externalLink ? (
-                  <a href={item.url}>{item.title}</a>
-                ) : (
-                  <NavLink to={item.url}>{item.title}</NavLink>
-                )}
+                <Link to={item.url}>{item.title}</Link>
               </MenuItem>
             );
           })}
@@ -70,7 +88,7 @@ const LayoutLinkMenu = styled(Menu.Item)`
 
   a {
     padding-top: 10px;
-    line-height: 28px;
+    line-height: ${menuHeight};
 
     span {
       font-size: 14px;
