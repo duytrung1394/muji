@@ -18,6 +18,7 @@ const DeliveryList = styled.div`
   a:hover,
   a:focus {
     color: rgb(96, 179, 250);
+    text-decoration: none;
   }
 `;
 
@@ -55,8 +56,10 @@ const SliderTabs = styled.ul`
         vertical-align: middle;
 
         &,
-        &:hover {
+        &:hover,
+        &:focus {
           color: rgba(0, 0, 0, 0.65);
+          text-decoration: none;
         }
       }
     }
@@ -92,7 +95,7 @@ const FavoriteTabs = ({ itemList, tabList }) => {
           <div key={index}>
           {index === 0 ? (
             <DeliveryList>
-              <Link to={"#"}><IntlMessages id="favorite.deriveryList" /></Link>
+              <Link to={"#"} draggable={false}><IntlMessages id="favorite.deriveryList" /></Link>
             </DeliveryList>
           ) : null}
             <FavoriteItemList itemList={item} />

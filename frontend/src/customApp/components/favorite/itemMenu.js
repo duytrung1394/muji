@@ -160,11 +160,11 @@ const DiscribePriceArrow = styled.span`
 const dateSuffix = type => {
   switch(type) {
     case 1:
-      return 'favorite.product.dateSuffix';
+      return 'favorite.dateSuffix.product';
     case 2:
-      return 'favorite.event.dateSuffix';
+      return 'favorite.dateSuffix.event';
     case 3:
-      return 'favorite.article.dateSuffix';
+      return 'favorite.dateSuffix.article';
   }
 }
 
@@ -218,21 +218,21 @@ class FavoriteItem extends Component {
           })}
           {item.item_price_present ? (
             <DescribePriceWrapper>
-              <Link to={"#"} style={{ textDecoration: "line-through" }}>
+              <Link to={"#"} style={{ textDecoration: "line-through" }} draggable={false}>
                 {item.item_price}
               </Link>
               <DiscribePriceArrow>→</DiscribePriceArrow>
               <DescribePricePresent>
-                <Link to={"#"}>{item.item_price_present}</Link>
+                <Link to={"#"} draggable={false}>{item.item_price_present}</Link>
               </DescribePricePresent>
             </DescribePriceWrapper>
           ) : (
             <DescribePriceWrapper>
-              <Link to={"#"}>{item.item_price}</Link>
+              <Link to={"#"} draggable={false}>{item.item_price}</Link>
             </DescribePriceWrapper>
           )}
           <DescribeDiscount>
-            <Link to={"#"}>{item.item_discount}</Link>
+            <Link to={"#"} draggable={false}>{item.item_discount}</Link>
           </DescribeDiscount>
           <div>{item.order_date}<IntlMessages id={dateSuffix(item.favorite_type)} /></div>
         </FavoriteItemDescribeList>

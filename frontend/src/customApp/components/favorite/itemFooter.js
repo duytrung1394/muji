@@ -92,7 +92,7 @@ const DeleteConfirmMessage = styled.p`
 const LinkButton = ({ to, textId }) => {
   return (
     <FavoriteItemButton>
-      <Link to={to}>
+      <Link to={to} draggable={false}>
         <IntlMessages id={textId} />
         <Icon type="right" />
       </Link>
@@ -147,7 +147,7 @@ class FavoriteItemFooter extends Component {
         return (
           <FavoriteItemButtonWrapper>
             <FavoriteItemButton>
-              <Link to={"#"} onClick={this.modalOpen}>
+              <Link to={"#"} onClick={this.modalOpen} draggable={false}>
                 <IntlMessages id={buttonText.delete} />
                 <Icon type="right" />
               </Link>
@@ -171,7 +171,7 @@ class FavoriteItemFooter extends Component {
         return (
           <FavoriteItemButtonWrapper>
             <FavoriteItemButton>
-              <Link to={"#"} onClick={this.modalOpen}>
+              <Link to={"#"} onClick={this.modalOpen} draggable={false}>
                 <IntlMessages id={buttonText.delete} />
                 <Icon type="right" />
               </Link>

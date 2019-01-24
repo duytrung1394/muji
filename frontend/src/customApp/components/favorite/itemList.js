@@ -15,6 +15,12 @@ const FavoriteItemListWrapper = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
 
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
+
   div + & {
       margin-top: 0;
   }
