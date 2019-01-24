@@ -200,13 +200,6 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Favorite/index")
     )
-  },
-  {
-    path: "/favorites/:favorite_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Favorite/show")
-    )
   }
 ];
 export default routes;

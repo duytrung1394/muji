@@ -1,7 +1,7 @@
-import React from "react";
+import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Popconfirm, Icon, message } from "antd";
+import { Popconfirm, Icon, message, Modal, Button} from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ProductItemButtonWrapper = styled.ul`
@@ -62,26 +62,32 @@ const buttonText = {
   delete: "favorite.product.delete",
 };
 
-const DeleteButton = ({ placement, onConfirm }) => {
-  let confirmText = <IntlMessages id="favorite.product.deleteConfirm" />;
+const DeleteModalButton = styled.p`
+  max-width: 300px;
+  margin: 20px auto 0;
+  text-align: center;
 
-  return (
-    <ProductItemButton>
-      <Popconfirm
-        placement={placement}
-        title={confirmText}
-        onConfirm={onConfirm}
-        okText="はい"
-        cancelText="いいえ"
-      >
-        <Link to={"#"}>
-          <IntlMessages id={buttonText.delete} />
-          <Icon type="right" />
-        </Link>
-      </Popconfirm>
-    </ProductItemButton>
-  );
-};
+  button {
+    border: 1px solid rgb(127, 0, 25);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+
+  button,
+  button:hover,
+  button:focus {
+    color: rgb(127, 0, 25);
+    text-decoration: none;
+  }
+`;
+
+const DeleteConfirmMessage = styled.p`
+  text-align: center;
+`;
 
 const LinkButton = ({ to, textId }) => {
   return (
@@ -94,27 +100,99 @@ const LinkButton = ({ to, textId }) => {
   );
 };
 
-const cancelConfirm = () => {
-  message.info("削除");
-};
-
-const ProductItem = ({ item }) => {
-  switch (item.favorite_type) {
-    case 1:
-      return (
-        <ProductItemButtonWrapper>
-          <DeleteButton placement="topLeft" onConfirm={cancelConfirm} />
-          <LinkButton to={"#"} textId={buttonText.add} />
-        </ProductItemButtonWrapper>
-      );
-    case 2:
-    case 3:
-      return (
-        <ProductItemButtonWrapper>
-          <DeleteButton placement="top" onConfirm={cancelConfirm} />
-        </ProductItemButtonWrapper>
-      );
+const DeleteModal = styled(Modal)`
+  &&{
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
-};
 
-export default ProductItem;
+  .ant-modal-content {
+    width: 100%;
+
+    & .ant-modal-body {
+      padding: 16px;
+    }
+  }
+`;
+
+class ProductItemFooter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.state,
+      deleteModalVisible: false,
+    }
+  }
+
+  modalOpen = ()  => {
+    this.setState({deleteModalVisible: true});
+  };
+
+  handleOk = () => {
+    message.info('削除');
+    this.setState({deleteModalVisible: false});
+  }
+
+  handleCancel = () => {
+    this.setState({deleteModalVisible: false});
+  }
+
+  render () {
+    const { item } = this.props;
+    switch (item.favorite_type) {
+      case 1:
+        return (
+          <ProductItemButtonWrapper>
+            <ProductItemButton>
+              <Link to={"#"} onClick={this.modalOpen}>
+                <IntlMessages id={buttonText.delete} />
+                <Icon type="right" />
+              </Link>
+            </ProductItemButton>
+            <DeleteModal
+              visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+              sidth={600}
+            >
+              <DeleteConfirmMessage>お気に入りから削除しますか？</DeleteConfirmMessage>
+              <DeleteModalButton>
+                <button to={"#"} onClick={this.handleOk}>削除する</button>
+              </DeleteModalButton>
+            </DeleteModal>
+            <LinkButton to={"#"} textId={buttonText.add} />
+          </ProductItemButtonWrapper>
+        );
+      case 2:
+      case 3:
+        return (
+          <ProductItemButtonWrapper>
+            <ProductItemButton>
+              <Link to={"#"} onClick={this.modalOpen}>
+                <IntlMessages id={buttonText.delete} />
+                <Icon type="right" />
+              </Link>
+            </ProductItemButton>
+            <DeleteModal
+              visible={this.state.deleteModalVisible}
+              // onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+              sidth={600}
+            >
+              <DeleteConfirmMessage>お気に入りから削除しますか？</DeleteConfirmMessage>
+              <DeleteModalButton>
+                <button to={"#"} onClick={this.handleOk}>削除する</button>
+              </DeleteModalButton>
+            </DeleteModal>
+          </ProductItemButtonWrapper>
+        );
+    }
+  }
+}
+
+export default ProductItemFooter;

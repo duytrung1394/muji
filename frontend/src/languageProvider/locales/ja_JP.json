@@ -222,6 +222,7 @@
   "favorite.product.delete": "削除する",
   "favorite.product.deleteConfirm": "削除してもよろしいですか？",
   "favorite.product.deriveryList": "配送リストを確認",
+  "favorite.product.addDeriveryList": "配送リストに追加する",
   "favorite.sidebar": "お気に入り管理",
   "favorite.tab.article": "読み物",
   "favorite.tab.event": "イベント",

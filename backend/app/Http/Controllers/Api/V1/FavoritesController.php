@@ -19,102 +19,6 @@ class FavoritesController extends Controller
         ];
     }
 
-    /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function create()
-     {
-         return [
-             'data' => new \stdClass,
-         ];
-     }
-
-   /**
-     * Display the specified resource.
-     *
-     * @param  string   $favoriteCode
-     * @return Response
-     */
-    public function show($favoriteCode)
-    {
-        return [
-            'data' => $this->getMockdata($favoriteCode),
-        ];
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  string   $camelCase(pkName)
-     * @return Response
-     */
-    public function update(Request $request, $favoriteCode)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Remove some resources from storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function destroy(Request $request)
-    {
-        return [
-            'data'  => [],
-            'count' => 1,
-        ];
-    }
-
-    /**
-     * モックデータ取得用．
-     *
-     * @return array
-     */
-    private function getMultiMockData($page = 1)
-    {
-        $data = [];
-        $start = ((int) $page - 1) * 10;
-
-        for ($i = 0; $i < 10; $i++) {
-            $data[] = $this->getMockData('favorite_code' . ($i + $start ));
-        }
-
-        return $data;
-    }
-
-    /**
-     * モックデータを生成して取得
-     */
-    private function getMockData($code)
-    {
-        return [
-            'favorite_code'   => $code,
-            'name'        => 'name_' . $code,
-            'description' => 'description_' . $code,
-        ];
-    }
-
-
     private function getProductMock(){
         return [
             [
@@ -216,10 +120,10 @@ class FavoritesController extends Controller
                     'headline' => 'くらしの良品研究所',
                     'item_name' => '自然の色',
                     'caption' =>  '10月に入り、北国からは、そろそろ紅葉の便りが聞かれるようになりました...',
-                    // 'item_color' => 'カラー：マスタード',
-                    // 'item_size' => 'サイズ：S',
-                    // 'item_num' => '個数：1個',
-                    // 'item_price' => '税込495円',
+                    'item_color' => '',
+                    'item_size' => '',
+                    'item_num' => '',
+                    'item_price' => '',
                     'favorite_type' => 3,
                     'img_src' => 'img-favorite-slide-3-1.png',
                 ],
@@ -230,8 +134,8 @@ class FavoritesController extends Controller
                     'headline' => 'くらしの良品研究所',
                     'item_name' => '日本の布づくりの旅（前編）',
                     'caption' => '今年の4月に、MUJI BOOKSから『日本の布　1』が発売されました...',
-                    // 'item_num' => '個数：1個',
-                    // 'item_price' => '税込24,000円',
+                    'item_num' => '',
+                    'item_price' => '',
                     'favorite_type' => 3,
                     'img_src' => 'img-favorite-slide-3-2.png',
                 ]

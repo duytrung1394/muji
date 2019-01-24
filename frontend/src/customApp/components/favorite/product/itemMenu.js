@@ -18,7 +18,7 @@ const images = {
   "img-favorite-slide-3-2.png": imgArticle2,
 };
 
-const SubscriptionItemMenu = styled.div`
+const FavoriteItemMenu = styled.div`
   position: relative;
   margin-top: 9px;
   min-height: 119px;
@@ -28,7 +28,7 @@ const SubscriptionItemMenu = styled.div`
   border-top: 1px solid rgb(229, 229, 229);
 `;
 
-const SubscriptionItemImage = styled.div`
+const FavoriteItemImage = styled.div`
   max-width: 120px;
   width: 40%;
 
@@ -41,7 +41,7 @@ const SubscriptionItemImage = styled.div`
   }
 `;
 
-const SubscriptionItemDescribeList = styled.ul`
+const FavoriteItemDescribeList = styled.ul`
   margin-left: 15px;
   margin-bottom: 0px;
   width: calc(80% - 15px);
@@ -50,7 +50,7 @@ const SubscriptionItemDescribeList = styled.ul`
   line-height: 20px;
 `;
 
-const SubscriptionItemDescribe = styled.li`
+const FavoriteItemDescribe = styled.li`
   line-height: 20px;
 
   a,
@@ -159,14 +159,6 @@ const DiscribePriceArrow = styled.span`
   margin: 0 5px;
 `;
 
-const stopConfirmStyle = {
-  top: 0,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%"
-};
-
 const dateSuffix = type => {
   switch(type) {
     case 1:
@@ -178,10 +170,10 @@ const dateSuffix = type => {
   }
 }
 
-const SubscriptionItemCaption = styled.li`
+const FavoriteItemCaption = styled.li`
 `;
 
-class SubscriptionItem extends Component {
+class FavoriteItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -190,23 +182,11 @@ class SubscriptionItem extends Component {
     };
   }
 
-  stopConfirm = () => {
-    this.setState({ popoverVisible: false });
-    confirm({
-      title: "停止しますがよろしいですか？",
-      style: stopConfirmStyle,
-      onOk() {
-        message.info("停止");
-      },
-      oncancel() {}
-    });
-  };
-
-  subscriptionItemPopover = (
+  favoriteItemPopover = (
     <PopoverContentWrapper>
       <PopoverContent>
-        <Link to={"#"} onClick={this.stopConfirm}>
-          <IntlMessages id={"favorite.product.delete"} />
+        <Link to={"#"}>
+          <IntlMessages id={"favorite.product.addDeriveryList"} />
         </Link>
       </PopoverContent>
     </PopoverContentWrapper>
@@ -221,21 +201,21 @@ class SubscriptionItem extends Component {
     const describeList = [item.order_frequency, item.item_num];
 
     return (
-      <SubscriptionItemMenu>
-        <SubscriptionItemImage>
+      <FavoriteItemMenu>
+        <FavoriteItemImage>
           <Link to={"#"}>
             <img src={images[item.img_src]} alt="" />
           </Link>
-        </SubscriptionItemImage>
-        <SubscriptionItemDescribeList>
+        </FavoriteItemImage>
+        <FavoriteItemDescribeList>
           {item.caption ? (
-            <SubscriptionItemCaption>{item.caption}</SubscriptionItemCaption>
+            <FavoriteItemCaption>{item.caption}</FavoriteItemCaption>
           ) : null}
           {describeList.map((describe, index) => {
             return (
-              <SubscriptionItemDescribe key={index}>
+              <FavoriteItemDescribe key={index}>
                 <Link to={"#"}>{describe}</Link>
-              </SubscriptionItemDescribe>
+              </FavoriteItemDescribe>
             );
           })}
           {item.item_price_present ? (
@@ -257,12 +237,12 @@ class SubscriptionItem extends Component {
             <Link to={"#"}>{item.item_discount}</Link>
           </DescribeDiscount>
           <div>{item.order_date}<IntlMessages id={dateSuffix(item.favorite_type)} /></div>
-        </SubscriptionItemDescribeList>
+        </FavoriteItemDescribeList>
         {item.favorite_type === 1 ? (
           <EllipsisButtonWrapper>
             <Popover
               placement="topRight"
-              content={this.subscriptionItemPopover}
+              content={this.favoriteItemPopover}
               trigger="click"
               onVisibleChange={this.handleVisibleChange}
               visible={this.state.popoverVisible}
@@ -273,9 +253,9 @@ class SubscriptionItem extends Component {
             </Popover>
           </EllipsisButtonWrapper>
         ) : null}
-      </SubscriptionItemMenu>
+      </FavoriteItemMenu>
     );
   }
 }
 
-export default SubscriptionItem;
+export default FavoriteItem;
