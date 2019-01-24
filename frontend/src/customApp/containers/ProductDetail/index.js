@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import { Spin, Row } from "antd";
 import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 import DetailPicture from "../../components/productDetail/detailPicture";
-import DetailInfo from "../../components/productDetail/detailInfo";
+import Form from "../../components/productDetail/form";
 import ContentHeader from "../../components/shared/header/contentHeader";
 
 import { Modal } from "antd";
@@ -52,12 +52,10 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <ContentHeader links={entity.links} />
-          <div>
-            <Row>
-              <DetailPicture entity={entity} />
-              <DetailInfo entity={entity} />
-            </Row>
-          </div>
+          <Row>
+            <DetailPicture entity={entity} />
+            <Form entity={entity} />
+          </Row>
         </Spin>
         <Modal
           title="Basic Modal"

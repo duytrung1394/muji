@@ -1,10 +1,10 @@
 import React from "react";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import imgColor1 from "../../../image/cmdty/detail/img-color-1.png";
-import imgColor2 from "../../../image/cmdty/detail/img-color-2.png";
-import imgColor3 from "../../../image/cmdty/detail/img-color-3.png";
-import imgColor4 from "../../../image/cmdty/detail/img-color-4.png";
+import imgColor1 from "../../../../image/cmdty/detail/img-color-1.png";
+import imgColor2 from "../../../../image/cmdty/detail/img-color-2.png";
+import imgColor3 from "../../../../image/cmdty/detail/img-color-3.png";
+import imgColor4 from "../../../../image/cmdty/detail/img-color-4.png";
 
 const images = [
   { src: imgColor1, filename: "img-color-1.png" },

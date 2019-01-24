@@ -571,6 +571,8 @@
   "productCategoryTop.tag.new": "NEW",
   "productCategoryTop.tag.sale": "SALE",
   "productCategoryTop.title.campaign": "特集",
+  "rest.cart": "カートに入れる",
+  "rest.buyNow": "今すぐ購入する",
   "rest.delete": "{name}削除",
   "rest.deleted.message": "削除しました",
   "rest.edit": "{name}編集",

@@ -1,5 +1,5 @@
 import React from "react";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 
 const sizes = ["xs", "s", "m", "l", "xl", "xxl"];

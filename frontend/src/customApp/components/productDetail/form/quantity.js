@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import AntCheckbox from "../../../components/uielements/styles/checkbox.style";
+import AntCheckbox from "../../../../components/uielements/styles/checkbox.style";
 
 const QuantityBox = styled.div`
   display: flex;

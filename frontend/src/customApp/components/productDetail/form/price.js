@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Icon } from "antd";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 import moment from "moment";
 
@@ -39,11 +39,13 @@ const Span = styled.span`
 
 const Detail = ({ price, priceKindList }) => {
   let startDate = null;
-  if (priceKindList.length > 0 && priceKindList[0].bannerInfo){
+  if (priceKindList.length > 0 && priceKindList[0].bannerInfo) {
     startDate = priceKindList[0].bannerInfo.startDate;
   }
-  const startDateTime = startDate && startDate.length == 12 ? 
-    moment(startDate.substr(0, 8) + "T" + startDate.substr(8) ) : null;
+  const startDateTime =
+    startDate && startDate.length == 12
+      ? moment(startDate.substr(0, 8) + "T" + startDate.substr(8))
+      : null;
   return (
     <Fragment>
       <li>
@@ -51,29 +53,31 @@ const Detail = ({ price, priceKindList }) => {
           <IntlMessages id="productDetail.unableToAcceptStore" />
         </Unable>
       </li>
-      {price.oldPrices ? 
+      {price.oldPrices ? (
         <li>
           <strike>
             <Span>
               <IntlMessages id="rest.taxIncluded" />
-              <LargePrice>{price.oldPrices[0].oldPrice.toLocaleString()}</LargePrice>
+              <LargePrice>
+                {price.oldPrices[0].oldPrice.toLocaleString()}
+              </LargePrice>
               <IntlMessages id="productDetail.yen" />
             </Span>
           </strike>
           <StyledIcon type="arrow-right" />
-        <Seal>
-          <IntlMessages id="rest.taxIncluded" />
+          <Seal>
+            <IntlMessages id="rest.taxIncluded" />
             <SealPrice>{price.basicPrice.toLocaleString()}</SealPrice>
             <IntlMessages id="rest.priceCurrency" />
-        </Seal>
+          </Seal>
         </li>
-        :
+      ) : (
         <li>
           <IntlMessages id="rest.taxIncluded" />
           <SealPrice>{price.basicPrice}</SealPrice>
           <IntlMessages id="rest.priceCurrency" />
         </li>
-      }
+      )}
       <li>
         <Span>{startDateTime && startDateTime.format("YY/MM/DD")}</Span>
         <Span> {startDateTime && startDateTime.format("AHH:mm")}</Span>
