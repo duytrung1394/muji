@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import ProductItemList from "./product/itemList"
+import FavoriteItemList from "./itemList"
 import IntlMessages from "../../../components/utility/intlMessages";
 import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -92,10 +92,10 @@ const FavoriteTabs = ({ itemList, tabList }) => {
           <div key={index}>
           {index === 0 ? (
             <DeliveryList>
-              <Link to={"#"}><IntlMessages id="favorite.product.deriveryList" /></Link>
+              <Link to={"#"}><IntlMessages id="favorite.deriveryList" /></Link>
             </DeliveryList>
           ) : null}
-            <ProductItemList itemList={item} />
+            <FavoriteItemList itemList={item} />
           </div>
         );
       })}

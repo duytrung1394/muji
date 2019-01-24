@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Icon, message, Popover, Modal } from "antd";
-import IntlMessages from "../../../../components/utility/intlMessages";
+import { Icon, Popover } from "antd";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-import imgArticle1 from "../../../../image/favorite/article/img-favorite-slide-3-1.png";
-import imgArticle2 from "../../../../image/favorite/article/img-favorite-slide-3-2.png";
-import imgEvent1 from "../../../../image/favorite/event/img-favorite-slide-2.png";
-import imgProduct1 from "../../../../image/favorite/product/img-favorite-slide-1.png";
-
-const confirm = Modal.confirm;
+import imgArticle1 from "../../../image/favorite/article/img-favorite-slide-3-1.png";
+import imgArticle2 from "../../../image/favorite/article/img-favorite-slide-3-2.png";
+import imgEvent1 from "../../../image/favorite/event/img-favorite-slide-2.png";
+import imgProduct1 from "../../../image/favorite/product/img-favorite-slide-1.png";
 
 const images = {
   "img-favorite-slide-1.png": imgProduct1,
@@ -186,7 +184,7 @@ class FavoriteItem extends Component {
     <PopoverContentWrapper>
       <PopoverContent>
         <Link to={"#"}>
-          <IntlMessages id={"favorite.product.addDeriveryList"} />
+          <IntlMessages id={"favorite.addDeriveryList"} />
         </Link>
       </PopoverContent>
     </PopoverContentWrapper>

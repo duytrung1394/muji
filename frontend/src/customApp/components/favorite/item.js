@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { message, Modal } from "antd";
-import IntlMessages from "../../../../components/utility/intlMessages";
-import ProductItemMenu from "./itemMenu";
-import ProductItemFooter from "./itemFooter";
+import IntlMessages from "../../../components/utility/intlMessages";
+import FavoriteItemMenu from "./itemMenu";
+import FavoriteItemFooter from "./itemFooter";
 
 const confirm = Modal.confirm;
 
-const ProductItemWrapper = styled.section`
+const FavoriteItemWrapper = styled.section`
   width: calc((100% - 60px) / 3);
   margin: 20px 30px 0 0;
   border-radius: 4px;
@@ -21,17 +21,17 @@ const ProductItemWrapper = styled.section`
   }
 `;
 
-const ProductHeader = styled.div`
+const FavoriteHeader = styled.div`
   margin-top: 15px;
   padding: 0 16px;
   font-size: 10px;
 `;
 
-const ProductHeadline = styled.div`
+const FavoriteHeadline = styled.div`
   color: rgb(163, 163, 163);
 `;
 
-const ProductTitle = styled.h2`
+const FavoriteTitle = styled.h2`
   width: 100%;
   margin: 0;
   line-height: 16px;
@@ -75,7 +75,7 @@ const PopoverContent = styled.li`
   }
 `;
 
-class ProductItem extends Component {
+class FavoriteItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -104,11 +104,11 @@ class ProductItem extends Component {
     this.setState({ popoverVisible: false });
   };
 
-  ProductItemPopover = (
+  FavoriteItemPopover = (
     <PopoverContentWrapper>
       <PopoverContent>
         <Link to={"#"} onClick={this.stopConfirm}>
-          <IntlMessages id={"favorite.product.delete"} />
+          <IntlMessages id={"favorite.delete"} />
         </Link>
       </PopoverContent>
     </PopoverContentWrapper>
@@ -124,16 +124,16 @@ class ProductItem extends Component {
     const { item } = this.props;
 
     return (
-      <ProductItemWrapper>
-        <ProductHeader>
-          <ProductHeadline>{item.headline}</ProductHeadline>
-          <ProductTitle to={"#"}>{item.item_name}</ProductTitle>
-        </ProductHeader>
-        <ProductItemMenu item={item} />
-        <ProductItemFooter item={item} />
-      </ProductItemWrapper>
+      <FavoriteItemWrapper>
+        <FavoriteHeader>
+          <FavoriteHeadline>{item.headline}</FavoriteHeadline>
+          <FavoriteTitle to={"#"}>{item.item_name}</FavoriteTitle>
+        </FavoriteHeader>
+        <FavoriteItemMenu item={item} />
+        <FavoriteItemFooter item={item} />
+      </FavoriteItemWrapper>
     );
   }
 }
 
-export default ProductItem;
+export default FavoriteItem;

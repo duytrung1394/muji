@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Popconfirm, Icon, message, Modal, Button} from "antd";
-import IntlMessages from "../../../../components/utility/intlMessages";
+import IntlMessages from "../../../components/utility/intlMessages";
 
-const ProductItemButtonWrapper = styled.ul`
+const FavoriteItemButtonWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -15,7 +15,7 @@ const ProductItemButtonWrapper = styled.ul`
   overflow: hidden;
 `;
 
-const ProductItemButton = styled.li`
+const FavoriteItemButton = styled.li`
   width: 100%;
   position: relative;
   background: rgba(0, 0, 0, 0.05);
@@ -58,8 +58,8 @@ const ProductItemButton = styled.li`
 `;
 
 const buttonText = {
-  add: "favorite.product.add",
-  delete: "favorite.product.delete",
+  add: "favorite.add",
+  delete: "favorite.delete",
 };
 
 const DeleteModalButton = styled.p`
@@ -91,12 +91,12 @@ const DeleteConfirmMessage = styled.p`
 
 const LinkButton = ({ to, textId }) => {
   return (
-    <ProductItemButton>
+    <FavoriteItemButton>
       <Link to={to}>
         <IntlMessages id={textId} />
         <Icon type="right" />
       </Link>
-    </ProductItemButton>
+    </FavoriteItemButton>
   );
 };
 
@@ -118,7 +118,7 @@ const DeleteModal = styled(Modal)`
   }
 `;
 
-class ProductItemFooter extends Component {
+class FavoriteItemFooter extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -145,54 +145,52 @@ class ProductItemFooter extends Component {
     switch (item.favorite_type) {
       case 1:
         return (
-          <ProductItemButtonWrapper>
-            <ProductItemButton>
+          <FavoriteItemButtonWrapper>
+            <FavoriteItemButton>
               <Link to={"#"} onClick={this.modalOpen}>
                 <IntlMessages id={buttonText.delete} />
                 <Icon type="right" />
               </Link>
-            </ProductItemButton>
+            </FavoriteItemButton>
             <DeleteModal
               visible={this.state.deleteModalVisible}
-              onOk={this.handleOk}
               onCancel={this.handleCancel}
               footer={null}
               sidth={600}
             >
-              <DeleteConfirmMessage>お気に入りから削除しますか？</DeleteConfirmMessage>
+              <DeleteConfirmMessage><IntlMessages id="favorite.deleteConfirm" /></DeleteConfirmMessage>
               <DeleteModalButton>
-                <button to={"#"} onClick={this.handleOk}>削除する</button>
+                <button to={"#"} onClick={this.handleOk}><IntlMessages id="favorite.delete" /></button>
               </DeleteModalButton>
             </DeleteModal>
             <LinkButton to={"#"} textId={buttonText.add} />
-          </ProductItemButtonWrapper>
+          </FavoriteItemButtonWrapper>
         );
       case 2:
       case 3:
         return (
-          <ProductItemButtonWrapper>
-            <ProductItemButton>
+          <FavoriteItemButtonWrapper>
+            <FavoriteItemButton>
               <Link to={"#"} onClick={this.modalOpen}>
                 <IntlMessages id={buttonText.delete} />
                 <Icon type="right" />
               </Link>
-            </ProductItemButton>
+            </FavoriteItemButton>
             <DeleteModal
               visible={this.state.deleteModalVisible}
-              // onOk={this.handleOk}
               onCancel={this.handleCancel}
               footer={null}
               sidth={600}
             >
-              <DeleteConfirmMessage>お気に入りから削除しますか？</DeleteConfirmMessage>
+              <DeleteConfirmMessage><IntlMessages id="favorite.deleteConfirm" /></DeleteConfirmMessage>
               <DeleteModalButton>
-                <button to={"#"} onClick={this.handleOk}>削除する</button>
+                <button to={"#"} onClick={this.handleOk}><IntlMessages id="favorite.delete" /></button>
               </DeleteModalButton>
             </DeleteModal>
-          </ProductItemButtonWrapper>
+          </FavoriteItemButtonWrapper>
         );
     }
   }
 }
 
-export default ProductItemFooter;
+export default FavoriteItemFooter;
