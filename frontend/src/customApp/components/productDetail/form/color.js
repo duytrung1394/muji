@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Component} from "react";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 import imgColor1 from "../../../../image/cmdty/detail/img-color-1.png";
@@ -20,37 +20,84 @@ const ColorItems = styled.ul`
 `;
 
 const ColorItem = styled.li`
-  max-width: 70px;
-  border: 2px solid #e5e5e5;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   margin-right: 10px;
+
+  input[type="radio"]{
+
+    &+label{
+    background-repeat: no-repeat;
+    background-size:contain;
+    border: 2px solid #e5e5e5;
+    }
+
+    &:checked+label{
+      border: 2px solid #333;
+    }
+  }
 `;
 
-const ColorImg = styled.img`
-  width: 100%;
-  height: auto;
+const ColorInput = styled.input`
+  
+`;
+
+const ColorLabel = styled.label`
   padding: 2px;
+  background-image: url(${props => props.backGroundImage});
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 `;
 
-const Color = ({ select, colorList }) => {
-  return (
-    <div>
-      <p>
-        <IntlMessages id="productDetail.color" />
-        <span>{colorList[select].title}</span>
-      </p>
-      <ColorItems>
-        {colorList.map((color, index) => {
-          const img = images.find(imgColor => imgColor.filename === color.img);
-          return img ? (
-            <ColorItem key={index}>
-              <ColorImg src={img.src} />
-            </ColorItem>
-          ) : null;
-        })}
-      </ColorItems>
-    </div>
-  );
-};
+class Color extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      checked: "",
+    }
+  }
+
+  handleOptionChange = (color) => {
+    this.setState({
+      checked: color
+    });
+  }
+
+  render(){
+    const {colorList, select} = this.props;
+    return (
+      <div>
+        <p>
+          <IntlMessages id="productDetail.color" />
+          <span>{colorList[select].title}</span>
+        </p>
+        <ColorItems>
+          {colorList.map((color, index) => {
+            const img = images.find(imgColor => imgColor.filename === color.img);
+            return img ? (
+              <ColorItem key={index}>
+              <ColorLabel
+                backGroundImage={img.src}
+                onChange={()=>this.handleOptionChange(color.title)}
+                >
+                <ColorInput
+                type="radio"
+                name="color"
+                value={color.title}
+                checked={this.state.checked === color.title}
+                onChange={()=>this.handleOptionChange(color.title)}
+                />
+                </ColorLabel>
+              </ColorItem>
+            ) : null;
+          })}
+        </ColorItems>
+      </div>
+    );
+  };
+}
 
 export default Color;

@@ -6,8 +6,9 @@ import styled from "styled-components";
 const OrderButton = styled.button`
   display: inline-block;
   width: 300px;
-  line-height: 48px;
+  line-height: 40px;
   margin-right: 15px;
+  margin-bottom: 16px;
   color: #fff;
   border-radius: 25px;
   cursor: pointer;
