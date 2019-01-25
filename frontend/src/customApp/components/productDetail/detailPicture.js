@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { Col, Modal, Button, Carousel } from "antd";
-import fab from "../../../image/cmdty/detail/ico-fob-heart.png";
-import fabActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
+import fav from "../../../image/cmdty/detail/ico-fob-heart.png";
+import favActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
 import Slider, { Link } from "../shared/slider";
 import IntlMessages from "../../../components/utility/intlMessages";
 
@@ -11,7 +11,7 @@ const PictureCol = styled(Col)`
   position: relative;
 `;
 
-const FabImg = styled.img`
+const FavImg = styled.img`
   position: absolute;
   bottom: -40px;
   right: 20px;
@@ -35,58 +35,41 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
-const FabImage = ({ fabFlg, changeFlg }) => {
+const FavImage = ({ favFlg, changeFlg }) => {
   return (
     <span>
-      {fabFlg === 0 ? (
-        <FabImg src={fab} onClick={changeFlg} />
+      {favFlg ? (
+        <FavImg src={favActive} onClick={changeFlg} />
       ) : (
-        <FabImg src={fabActive} onClick={changeFlg} />
+        <FavImg src={fav} onClick={changeFlg} />
       )}
     </span>
   );
 };
 
-class DetailPicture extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fabFlg: false
-    };
-    this.changeFlg = this.changeFlg.bind(this);
+const DetailPicture = ({ favFlg, changeFlg, entity }) => {
+  if (!entity.images) {
+    return null;
   }
-
-  changeFlg() {
-    this.setState(() => {
-      return { fabFlg: (this.state.fabFlg = !this.state.fabFlg) };
-    });
-  }
-
-  render() {
-    const { entity } = this.props;
-    if (!entity.images) {
-      return null;
-    }
-    return (
-      <PictureCol span={12}>
-        <StyledSlider
-          dots={true}
-          infinite={true}
-          slidesToScroll={1}
-          slidesToShow={1}
-          responsive={[]}
-        >
-          {entity.images.map((productImage, index) => {
-            return <img key={index} src={productImage.url} />;
-          })}
-        </StyledSlider>
-        <ShowItemList onClick={this.showModal}>
-          <IntlMessages id="productDetail.attentionItemList" />
-        </ShowItemList>
-        <FabImage fabFlg={entity.fab_flg} changeFlg={this.changeFlg} />
-      </PictureCol>
-    );
-  }
-}
+  return (
+    <PictureCol span={12}>
+      <StyledSlider
+        dots={true}
+        infinite={true}
+        slidesToScroll={1}
+        slidesToShow={1}
+        responsive={[]}
+      >
+        {entity.images.map((productImage, index) => {
+          return <img key={index} src={productImage.url} />;
+        })}
+      </StyledSlider>
+      <ShowItemList onClick={this.showModal}>
+        <IntlMessages id="productDetail.attentionItemList" />
+      </ShowItemList>
+      <FavImage favFlg={favFlg} changeFlg={changeFlg} />
+    </PictureCol>
+  );
+};
 
 export default DetailPicture;

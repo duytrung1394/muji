@@ -17,13 +17,14 @@ const SizeItem = styled.li`
 
 const Input = styled.input`
   display: none;
-  &:checked {
-    border: #333;
+
+  &:checked + label {
+    border: 1px solid #333;
   }
 `;
 
 const StyledLabel = styled.label`
-  width: 70%;
+  width: 80%;
   text-align: center;
   font-size: 14px;
   font-weight: bold;
@@ -31,9 +32,13 @@ const StyledLabel = styled.label`
   padding: 5px 0;
   cursor: pointer;
   border: 1px solid #e5e5e5;
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
-const Size = ({ select, sizeList }) => {
+const Size = props => {
+  const { select, sizeList, currentSize, sizeChange } = props;
+
   return (
     <div>
       <p>
@@ -43,8 +48,14 @@ const Size = ({ select, sizeList }) => {
         {sizeList.map((size, index) => {
           return (
             <SizeItem key={index}>
-              <Input id="bar1" type="radio" value={size.value} />
-              <StyledLabel for="bar1">{size.title}</StyledLabel>
+              <Input
+                id={size.value}
+                type="radio"
+                value={size.value}
+                checked={currentSize === size.value}
+                onChange={() => sizeChange(size.value)}
+              />
+              <StyledLabel htmlFor={size.value}>{size.title}</StyledLabel>
             </SizeItem>
           );
         })}

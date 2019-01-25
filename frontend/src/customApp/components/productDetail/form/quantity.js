@@ -30,43 +30,20 @@ const CommonButton = ({ value, action }) => {
   return <Button onClick={action}>{value}</Button>;
 };
 
-class Quantity extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sam: 0
-    };
-  }
-
-  plus = () => {
-    this.setState(() => {
-      return { sam: this.state.sam + 1 };
-    });
-  };
-
-  minus = () => {
-    if (this.state.sam > 0) {
-      this.setState(() => {
-        return { sam: this.state.sam - 1 };
-      });
-    }
-    null;
-  };
-
-  render() {
-    return (
-      <div>
-        <p>
-          <IntlMessages id="productDetail.quantity" />
-        </p>
-        <QuantityBox>
-          <CommonButton value="-" action={this.minus} />
-          <Sum value={this.state.sam} />
-          <CommonButton value="+" action={this.plus} />
-        </QuantityBox>
-      </div>
-    );
-  }
-}
+const Quantity = props => {
+  const { quantity, addQuantity, minusQuantity } = props;
+  return (
+    <div>
+      <p>
+        <IntlMessages id="productDetail.quantity" />
+      </p>
+      <QuantityBox>
+        <CommonButton value="-" action={minusQuantity} />
+        <Sum value={quantity} />
+        <CommonButton value="+" action={addQuantity} />
+      </QuantityBox>
+    </div>
+  );
+};
 
 export default Quantity;

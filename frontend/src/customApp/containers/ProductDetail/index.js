@@ -11,16 +11,24 @@ import ContentHeader from "../../components/shared/header/contentHeader";
 import { Modal } from "antd";
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      favFlg: true
+    };
+  }
+
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.jan_code);
   }
 
-  constructor() {
-    super();
-    this.state = {
-      visible: false
-    };
+  componentWillReceiveProps(props) {
+    this.setState({
+      favFlg: props.entity.fav_flg
+    });
   }
+
   showModal = () => {
     this.setState({
       visible: true
@@ -41,6 +49,12 @@ class Index extends Component {
     });
   };
 
+  changeFlg = () => {
+    this.setState({
+      favFlg: !this.state.favFlg
+    });
+  };
+
   render() {
     const {
       // types
@@ -53,7 +67,11 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ContentHeader links={entity.links} />
           <Row>
-            <DetailPicture entity={entity} />
+            <DetailPicture
+              entity={entity}
+              favFlg={this.state.favFlg}
+              changeFlg={this.changeFlg}
+            />
             <Form entity={entity} />
           </Row>
         </Spin>

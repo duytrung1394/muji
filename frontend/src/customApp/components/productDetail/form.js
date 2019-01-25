@@ -80,7 +80,10 @@ const Info = ({ description }) => {
 
 class Form extends Component {
   state = {
-    entity: this.props.entity
+    entity: this.props.entity,
+    currentColor: "",
+    currentSize: "",
+    quantity: 0
   };
 
   updateEntity = (keyName, value) => {
@@ -99,6 +102,33 @@ class Form extends Component {
   requestHandler = () => {
     console.log("BuyNowButton");
     //this.props.requestHandler());
+  };
+
+  colorChange = color => {
+    this.setState({
+      currentColor: color
+    });
+  };
+
+  sizeChange = size => {
+    this.setState({
+      currentSize: size
+    });
+  };
+
+  addQuantity = () => {
+    this.setState({
+      quantity: this.state.quantity + 1
+    });
+  };
+
+  minusQuantity = () => {
+    if (this.state.quantity > 0) {
+      this.setState({
+        quantity: this.state.quantity - 1
+      });
+    }
+    null;
   };
 
   render() {
@@ -142,9 +172,20 @@ class Form extends Component {
         <Color
           select={entity.color_list_select}
           colorList={entity.color_list}
+          colorChange={this.colorChange}
+          currentColor={this.state.currentColor}
         />
-        <Size select={entity.size_list_select} sizeList={entity.size_list} />
-        <Quantity />
+        <Size
+          select={entity.size_list_select}
+          sizeList={entity.size_list}
+          currentSize={this.state.currentSize}
+          sizeChange={this.sizeChange}
+        />
+        <Quantity
+          quantity={this.state.quantity}
+          minusQuantity={this.minusQuantity}
+          addQuantity={this.addQuantity}
+        />
         <ButtonsBox>
           <CartButton onClick={this.submit} />
           <BuyNowButton onClick={this.requestHandler} />

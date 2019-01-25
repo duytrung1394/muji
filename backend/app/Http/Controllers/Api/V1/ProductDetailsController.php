@@ -24,7 +24,7 @@ class ProductDetailsController extends Controller
     {
         $data = [
             'jan_code' => $janCode,
-            'fab_flg' => 1,
+            'fav_flg' => false,
             'links' => [
                 [
                     'path' => '/store',
