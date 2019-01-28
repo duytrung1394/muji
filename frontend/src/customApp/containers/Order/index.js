@@ -3,7 +3,24 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import UserData from "../../components/order/userData";
+import Gift from "../../components/order/gift";
+import Delivery from "../../components/order/delivery";
+import MujiShoppingpoint from "../../components/order/mujiShoppingPoint";
+import MujiCoins from "../../components/order/mujiCoins";
+import PartnerSales from "../../components/order/partnerSales";
+import BillingSummary from "../../components/order/billingSummary";
+import PaymentMethod from "../../components/order/paymentMethod";
+import Button from "../../components/order/button";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  line-height: 19px;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  font-size: 19px;
+  letter-spacing: 0.25px;
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -38,55 +55,20 @@ class Index extends Component {
       history
     } = this.props;
 
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
-      }
-    ];
-
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
-    };
-
-    const pagination = {
-      defaultCurrent: 1,
-      total: total,
-      onChange: page => {
-        let url;
-        if (page === 1) {
-          url = "/orders";
-        } else {
-          url = `/orders/page/${page}`;
-        }
-        history.push(url);
-      }
-    };
-
     return (
       <LayoutWrapper>
-        <div className="isoLayoutContent">
-          <Table
-            rowKey="id"
-            dataSource={entities}
-            columns={columns}
-            rowSelection={rowSelection}
-            loading={fetching || destroying}
-            pagination={pagination}
-          />
-          test
-        </div>
+        <Title>
+          ご注文手続き
+        </Title>
+        <UserData />
+        <Gift />
+        <Delivery />
+        <MujiShoppingpoint />
+        <MujiCoins />
+        <PartnerSales />
+        <BillingSummary />
+        <PaymentMethod />
+        <Button />
       </LayoutWrapper>
     );
   }

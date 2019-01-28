@@ -5,19 +5,19 @@ import IntlMessages from "../../../components/utility/intlMessages";
 const Title = styled.h2`
 `;
 
-const MujiCoins = () => {
+const MujiShoppingpoint = () => {
   return (
     <div>
       <Title>
-        MUJIコイン
+        MUJIショッピングポイント
       </Title>
       詳細
-      コインを利用する<br />
-      （保有コイン：3,000コイン）<br />
+      ポイントを利用する<br />
+      （保有ポイント：3,000ポイント）<br />
       全て利用する<br />
       一部を利用する<br />
     </div>
   );
 };
     
-export default MujiCoins;
+export default MujiShoppingpoint;
