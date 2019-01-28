@@ -91,7 +91,7 @@ class Complete extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.DonationTop.Entity.toJS();
+  return state.Donation.Entity.toJS();
 };
 
 const enhance = C => {

@@ -93,7 +93,7 @@ const routes = [
     path: "/store/cmdty/donation",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/index")
+      require("./customApp/containers/Donation/index")
     )
   },
   {
@@ -107,7 +107,7 @@ const routes = [
     path: "/store/cmdty/donation/:donation_code",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/show")
+      require("./customApp/containers/Donation/show")
     )
   },
   {
@@ -156,14 +156,14 @@ const routes = [
     path: "/store/cart/donation/payment/:donation_code/:number_of_units",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/payment")
+      require("./customApp/containers/Donation/payment")
     )
   },
   {
     path: "/store/cart/donation/confirm/:donation_code/:number_of_units",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/confirm")
+      require("./customApp/containers/Donation/confirm")
     )
   },
   {
@@ -184,7 +184,7 @@ const routes = [
     path: "/store/cart/donation/complete",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/DonationTop/complete")
+      require("./customApp/containers/Donation/complete")
     )
   },
   {
