@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const Title = styled.h2`
-
+const Title = styled.h1`
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(88, 88, 88);
 `;
 
 const Gift = () => {

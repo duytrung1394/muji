@@ -1,25 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Row, Col } from 'antd';
 
-const UserRow = styled(Row)`
+const UserInformation　= styled.div`
   padding: 16px;
   margin-top: 20px;
   background-color: #F2F2F2;
-  &{
-    width: 100%;
-  }
 `;
 
-const AddresseeCol = styled(Col)`
+const Addressee = styled.div`
+  display: inline-block;
+  width: 294px;
+  height: 174px;
   background-color: #FFF;
   &&&{
     padding: 16px;
   }
 `;
 
-const CustomerInfoCol = styled(Col)`
+const CustomerInfo = styled.div`
+  display: inline-block;
+  width: 294px;
+  height: 174px;
   background-color: #FFF;
   &&&{
     padding: 16px;
@@ -43,22 +45,22 @@ const UserUl = styled.ul`
 
 const UserData = () => {
   return (
-      <UserRow gutter={16}>
-        <AddresseeCol span={12}>
-            <Title>お届け先</Title>
-            <UserName>無印　花子　様</UserName>
-            <UserUl>
-              〒 123 - 4567 東京都渋谷区1-2-3<p />
-              TEL：01 - 2345 - 6789
-            </UserUl>
-            【変更ボタン】
-        </AddresseeCol>
-        <CustomerInfoCol span={12}>
-          <Title>ご注文者情報</Title>
-          <UserName>無印 花子 様</UserName>
-            【変更ボタン】
-        </CustomerInfoCol>
-      </UserRow>
+    <UserInformation>
+      <Addressee>
+        <Title>お届け先</Title>
+        <UserName>無印　花子　様</UserName>
+        <UserUl>
+          〒 123 - 4567 東京都渋谷区1-2-3<p />
+          TEL：01 - 2345 - 6789
+        </UserUl>
+        【変更ボタン】
+      </Addressee>
+      <CustomerInfo>
+        <Title>ご注文者情報</Title>
+        <UserName>無印 花子 様</UserName>
+        【変更ボタン】
+      </CustomerInfo>
+    </UserInformation>
   );
 };
 

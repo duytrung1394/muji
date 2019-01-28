@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/shared/panel/contentLayout";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import UserData from "../../components/order/userData";
 import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
@@ -12,7 +16,10 @@ import PartnerSales from "../../components/order/partnerSales";
 import BillingSummary from "../../components/order/billingSummary";
 import PaymentMethod from "../../components/order/paymentMethod";
 import Button from "../../components/order/button";
-import styled from "styled-components";
+
+const ContentLayout = styled(BaseContentLayout)`
+  max-width: 748px;
+`;
 
 const Title = styled.h1`
   line-height: 19px;
@@ -56,23 +63,25 @@ class Index extends Component {
     } = this.props;
 
     return (
-      <LayoutWrapper>
-        <Title>
-          ご注文手続き
-        </Title>
-        <UserData />
-        <Gift />
-        <Delivery />
-        <MujiShoppingpoint />
-        <MujiCoins />
-        <PartnerSales />
-        <BillingSummary />
-        <PaymentMethod />
-        <Button />
-      </LayoutWrapper>
+      <ContentAreaLayout>
+        <ContentLayout>
+          <Title>
+            ご注文手続き
+          </Title>
+          <UserData />
+          <Gift />
+          <Delivery />
+          <MujiShoppingpoint />
+          <MujiCoins />
+          <PartnerSales />
+          <BillingSummary />
+          <PaymentMethod />
+          <Button />
+        </ContentLayout>
+      </ContentAreaLayout>
     );
   }
-}
+};
 
 const mapStateToProps = state => {
   return state.Order.List.toJS();
