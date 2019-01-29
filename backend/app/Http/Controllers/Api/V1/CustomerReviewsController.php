@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
-    private $mockTotal = 23;
+    private $mockTotal = 7;
     private $userTotal = 5;
     /**
      * Display a listing of the resource.
@@ -64,28 +64,45 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-      * 詳細
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function show($reviewCode)
-     {
-         return [
-             'data' => $this->getMockData((int)$reviewCode),
-         ];
-     }
+     * Display a listing of the resource(商品別一覧).
+     *
+     * @return Response
+     */
+    public function indexByItem(Request $request)
+    {
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
 
     /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function create()
-     {
-         return [
-             'data' => ['isDetail' => true],
-         ];
-     }
+     * 詳細
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($reviewCode)
+    {
+        return [
+            'data' => $this->getMockData((int)$reviewCode),
+        ];
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return [
+            'data' => ['isDetail' => true],
+        ];
+    }
 
     /**
      * Remove some resources from storage.
