@@ -200,6 +200,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
     )
+  },
+  {
+    path: "/store/cust/order/storeReserve",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexStoreReserve")
+    )
   }
 ];
 export default routes;
