@@ -24,7 +24,7 @@ const Button = ({ to, messagesId }) => {
     <Div>
       <Link to={to}>
         <AntButton icon="caret-right">
-          <IntlMessages id={`donationTop.${messagesId}`} />
+          <IntlMessages id={`donation.${messagesId}`} />
         </AntButton>
       </Link>
     </Div>

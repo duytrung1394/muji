@@ -130,7 +130,7 @@ const orderDonationCleanup = (state, action) =>
 
 const reducer = handleActions(
   {
-    DONATION_TOP: {
+    DONATION: {
       ENTITY: {
         ...restReducer,
         FETCH: {

@@ -4,10 +4,10 @@ import restAllSaga from "../../shared/entity/saga_generator";
 import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
-const api = RESTEntityApi("donation-tops");
-const giftcardApi = RESTListApi("donation-tops/payment/giftcard");
-const confirmApi = RESTEntityApi("donation-tops/payment/confirm");
-const orderApi = RESTEntityApi("donation-tops/payment/order");
+const api = RESTEntityApi("donations");
+const giftcardApi = RESTListApi("donations/payment/giftcard");
+const confirmApi = RESTEntityApi("donations/payment/confirm");
+const orderApi = RESTEntityApi("donations/payment/order");
 
 const getGiftcardFunction = function*({ payload }) {
   try {
@@ -49,7 +49,7 @@ const orderDonationFunction = function*({ payload }) {
 };
 
 export default function* saga() {
-  yield restAllSaga("donation_top", api, actions);
+  yield restAllSaga("donations", api, actions);
   yield takeEvery(
     actions.doGiftcardInquiry.request.toString(),
     getGiftcardFunction
