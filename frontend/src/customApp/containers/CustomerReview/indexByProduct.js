@@ -68,7 +68,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <ItemReviewHeader profile={profile} />
-          <Header sort={[]} listBackgroundColor={"#eee"} />
+          <Header sort={[]} listStyle={{ backgroundColor: "#eee" }} />
         </ContentLayout>
         <ContentLayout>
           <Spin
