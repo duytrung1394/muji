@@ -69,7 +69,7 @@ class BillItems extends Component{
           </Link>
         </div>
         <div>
-          <Checkbox onChange={console.log("checked")}>
+          <Checkbox onChange={console.log("billItems.js onChange checked")}>
             <IntlMessages id={labelName}/><br />
             <IntlMessages id="order.procedure.leftBracket" />
             <IntlMessages id={usedBy}/>
