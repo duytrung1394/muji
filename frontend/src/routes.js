@@ -97,59 +97,10 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/address/list",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/index")
-    )
-  },
-  {
     path: "/store/cmdty/donation/:donation_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Donation/show")
-    )
-  },
-  {
-    path: "/store/cust/address/list/page/:page(\\d+)",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/index")
-    )
-  },
-  {
-    path: "/store/cust/address/create",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/new")
-    )
-  },
-  {
-    path: "/store/cust/address/edit/:addressBookNo(\\d+)",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/edit")
-    )
-  },
-  {
-    path: "/store/cust/address/edit/:addressBookNo(\\d+)/confirm",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/confirmEdit")
-    )
-  },
-  {
-    path: "/store/cust/address/create/confirm",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/confirmNew")
-    )
-  },
-  {
-    path: "/store/cust/address/complete",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerAddress/complete")
     )
   },
   {
@@ -167,6 +118,62 @@ const routes = [
     )
   },
   {
+    path: "/store/cart/donation/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Donation/complete")
+    )
+  },
+  {
+    path: "/store/cust/address/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cust/address/list/page/:page(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/index")
+    )
+  },
+  {
+    path: "/store/cust/address/create",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/new")
+    )
+  },
+  {
+    path: "/store/cust/address/create/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmNew")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/edit")
+    )
+  },
+  {
+    path: "/store/cust/address/edit/:addressBookNo(\\d+)/confirm",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/confirmEdit")
+    )
+  },
+  {
+    path: "/store/cust/address/complete",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerAddress/complete")
+    )
+  },
+  {
     path: "/store/lucky/:section_code",
     exact: true,
     component: asyncComponent(() =>
@@ -181,31 +188,10 @@ const routes = [
     )
   },
   {
-    path: "/store/cart/donation/complete",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Donation/complete")
-    )
-  },
-  {
-    path: "/store/cust/orders",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Order/index")
-    )
-  },
-  {
     path: "/store/cust/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
-    )
-  },
-  {
-    path: "/orders/:order_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Order/show")
     )
   }
 ];
