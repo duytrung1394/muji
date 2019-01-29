@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
-} from "../../components/panel/contentLayout";
+} from "../../components/shared/panel/contentLayout";
 import ReportForm from "../../components/customerReview/commentReport/reportForm";
 import ReportItem from "../../components/customerReview/commentReport/reportItem";
 import ReportNotes from "../../components/customerReview/commentReport/reportNotes";

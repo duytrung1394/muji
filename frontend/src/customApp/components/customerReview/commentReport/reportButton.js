@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LargeButton from "../../form/largeButton.js";
+import LargeButton from "../../shared/form/largeButton.js";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ButtonWrapper = styled.div`
