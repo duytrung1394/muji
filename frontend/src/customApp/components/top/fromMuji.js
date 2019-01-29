@@ -12,7 +12,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/top/entity/actions";
 import { injectIntl } from "react-intl";
-import LargeButton from "../form/largeButton";
+import LargeButton from "../shared/form/largeButton";
 import { Spin } from "antd";
 
 class FromMuji extends Component {

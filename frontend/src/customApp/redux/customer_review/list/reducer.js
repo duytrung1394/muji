@@ -58,6 +58,9 @@ const reducer = handleActions(
         },
         FETCH_BY_FOLLOWING: {
           REQUEST: fetchRequest
+        },
+        FETCH_BY_ITEM: {
+          REQUEST: fetchRequest
         }
       }
     }
