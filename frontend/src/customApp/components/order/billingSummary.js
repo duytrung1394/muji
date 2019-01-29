@@ -14,7 +14,7 @@ const BillSummaryDiv = styled.div`
   padding: 16px;
   margin-bottom: 16px;
   background-color: #fff;
-  box-shadow: 0 0 1px rgba(0,0,0,.5);
+  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
   font-size: 13px;
 `;
 

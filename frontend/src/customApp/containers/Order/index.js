@@ -10,7 +10,7 @@ import { injectIntl } from "react-intl";
 import UserData from "../../components/order/userData";
 import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
-import Button from "../../components/order/button";
+import Button from "../../components/order/commonButton";
 import BillDetails from "../../components/order/billDetails"
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -68,7 +68,6 @@ class Index extends Component {
           <Gift />
           <Delivery />
           <BillDetails />
-          <Button />
         </ContentLayout>
       </ContentAreaLayout>
     );
