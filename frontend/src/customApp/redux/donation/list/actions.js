@@ -2,9 +2,9 @@ import { createActions } from "redux-actions";
 import restActions from "../../shared/list/actions";
 
 const actions = createActions({
-  DONATION_TOP: {
+  DONATION: {
     LIST: restActions
   }
 });
 
-export default actions.donationTop.list;
+export default actions.donation.list;

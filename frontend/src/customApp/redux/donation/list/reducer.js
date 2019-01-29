@@ -4,7 +4,7 @@ import restReducer, { restInitState } from "../../shared/list/reducer";
 
 const reducer = handleActions(
   {
-    DONATION_TOP: {
+    DONATION: {
       LIST: restReducer
     }
   },

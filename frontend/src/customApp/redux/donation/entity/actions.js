@@ -3,7 +3,7 @@ import restActions from "../../shared/entity/actions";
 import req from "../../shared/requestActions";
 
 const actions = createActions({
-  DONATION_TOP: {
+  DONATION: {
     ENTITY: {
       ...restActions,
       DO_GIFTCARD_INQUIRY: { ...req },
@@ -13,4 +13,4 @@ const actions = createActions({
   }
 });
 
-export default actions.donationTop.entity;
+export default actions.donation.entity;
