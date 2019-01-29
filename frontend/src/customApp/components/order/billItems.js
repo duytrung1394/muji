@@ -1,7 +1,7 @@
-import React,{Component} from "react";
+import React,{Component,createRef} from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Radio, Input, Checkbox  } from 'antd';
+import { Radio, Input, Checkbox } from 'antd';
 import {Link} from "react-router-dom";
 
 const BillContent = styled.div`
@@ -22,6 +22,16 @@ const DetailLink = styled.span`
   font-size: 12px;
 `;
 
+const CheackBoxArea = styled.div`
+&.ant-checkbox-wrapper {
+  .ant-checkbox-checked .ant-checkbox-inner,
+  .ant-checkbox-indeterminate .ant-checkbox-inner {
+    background-color: red;
+    border-color: red;
+  }
+}
+`;
+
 const radioStyle = {
   display: 'block',
   height: '30px',
@@ -35,18 +45,33 @@ const InputStyle = {
 
 const RadioGroup = Radio.Group;
 
+let aaa = true;
+
 class BillItems extends Component{
   constructor(props){
-    super(props)
+    super(props);
     this.state={
-      value: 1
+      value: 1,
+      disableFlg: true,
     }
+    this.inputRef = createRef();
   }
 
   onChange = (e) => {
     this.setState({
       value: e.target.value,
     });
+  }
+
+  resetValue = ()=>{
+    this.inputRef.current.input.value = "";
+  }
+
+  changeFlg = ()=>{
+    this.setState({
+      disableFlg: !this.state.disableFlg
+    })
+    this.resetValue();
   }
 
   render(){
@@ -56,6 +81,7 @@ class BillItems extends Component{
       usedBy,
       useItemUnit
     } = this.props;
+
     return(
       <BillContent>
         <div>
@@ -68,8 +94,8 @@ class BillItems extends Component{
             </DetailLink>
           </Link>
         </div>
-        <div>
-          <Checkbox onChange={console.log("billItems.js onChange checked")}>
+        <CheackBoxArea>
+          <Checkbox onChange={() => {this.changeFlg()}}>
             <IntlMessages id={labelName}/><br />
             <IntlMessages id="order.procedure.leftBracket" />
             <IntlMessages id={usedBy}/>
@@ -77,18 +103,25 @@ class BillItems extends Component{
             <IntlMessages id={useItemUnit}/>
             <IntlMessages id="order.procedure.rightBracket" />
           </Checkbox>
-        </div>
+        </CheackBoxArea>
         <div>
-          <RadioGroup onChange={this.onChange} value={this.state.value}>
-            <Radio style={radioStyle} value={1}>
+          <RadioGroup
+            onChange={this.onChange}
+            value={this.state.value}
+            disabled={this.state.disableFlg}
+          >
+            <Radio style={radioStyle} value={1} onClick={this.resetValue}>
               <IntlMessages id="order.procedure.useAll"/>
             </Radio>
             <Radio style={radioStyle} value={2}>
               <IntlMessages id="order.procedure.usePart"/>
-              {
-                this.state.value === 2 ?
-                <Input style={InputStyle} />:
-                <Input style={InputStyle} disabled/>
+              {aaa ?
+                  this.state.value === 2 && this.state.disableFlg === false ?
+                  <Input style={InputStyle} ref={this.inputRef}/>
+                  :
+                  <Input style={InputStyle} ref={this.inputRef} disabled />
+                :
+                null
               }
             </Radio>
           </RadioGroup>

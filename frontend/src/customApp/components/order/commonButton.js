@@ -16,8 +16,7 @@ const StyledCommonButton = styled.button`
   box-shadow: 0px 1px 3px 0px rgba(88, 88, 88, 0.3) ;
 
   :hover {
-    color: #0b0b0b;
-    border-color: #808080;
+    
   }
 
   :focus {

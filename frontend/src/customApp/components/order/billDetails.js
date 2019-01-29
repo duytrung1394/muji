@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
 import BillItems from "./billItems";
 import BillingSummary from "./billingSummary";
 import PaymentMethod from "./paymentMethod";
@@ -8,6 +7,7 @@ import PaymentMethod from "./paymentMethod";
 const BillContents　= styled.div`
   padding: 16px;
   margin-top: 20px;
+  margin-bottom: 32px;
   background-color: #F2F2F2;
 `;
 
