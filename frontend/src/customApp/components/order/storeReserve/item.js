@@ -230,7 +230,7 @@ const StoreReserveItem = ({ item }) => {
       </StoreReserveHeader>
       <StoreReserveItemMenu>
         <StoreReserveItemImage>
-          <Link to={"#"} draggable={false}>
+          <Link to={"/store/cmdty/detail/" + item.jan_code} draggable={false}>
             <img src={images[item.img_src]} alt="" />
           </Link>
         </StoreReserveItemImage>
