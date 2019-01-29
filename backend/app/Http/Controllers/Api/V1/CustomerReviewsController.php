@@ -81,16 +81,28 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function create()
-     {
-         return [
-             'data' => ['isDetail' => true],
-         ];
-     }
+     * 詳細
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($reviewCode)
+    {
+        return [
+            'data' => $this->getMockData((int)$reviewCode),
+        ];
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return [
+            'data' => ['isDetail' => true],
+        ];
+    }
 
     /**
      * Remove some resources from storage.

@@ -32,10 +32,10 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    if(this.getEntityLength() <= 0) {
-        this.props.fetchRequest("");
+    if (this.getEntityLength() <= 0) {
+      this.props.fetchRequest("");
     }
-  };
+  }
 
   seeMore = () => {
     this.props.fetchRequest(this.getFetchRequestParams());
