@@ -6,6 +6,7 @@ const UserInformation　= styled.div`
   padding: 16px;
   margin-top: 20px;
   background-color: #F2F2F2;
+
 `;
 
 const Addressee = styled.div`

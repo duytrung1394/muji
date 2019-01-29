@@ -2,24 +2,97 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const Title = styled.h2`
+const BillSummaryDiv = styled.div`
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0,0,0,.5);
+`;
+
+const BillSummaryList = styled.ul`
+  padding: 0px;
+  list-style: none;
+`;
+
+const BillSummaryTitles = styled.h2`
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+`;
+
+const AmountOfMoney = styled.span`
+  float: right;
 `;
 
 const BillingSummary = () => {
   return (
-    <div>
-      <Title>
+    <BillSummaryDiv>
+      <BillSummaryTitles>
         ご請求内容
-      </Title>
-      商品小計<br />
-      税込7,960円<br />
-      付帯・ギフトサービス 税込0円<br />
-      配送料 税込980円<br />
-      MUJIショッピングポイント - 3,000ポイント<br />
-      MUJIコイン - 3,000コイン<br />
-      パートナー売上 - 2,000円<br />
-      お支払い合計金額 税込450円<br />
-    </div>
+      </BillSummaryTitles>
+        <BillSummaryList>
+          <li>
+            <IntlMessages id="order.procedure.productsSubtotal" />
+            <AmountOfMoney>
+              <IntlMessages id="order.procedure.taxIn" />
+              <span>7,960</span>
+              <IntlMessages id="order.procedure.yen" />
+            </AmountOfMoney>
+          </li>
+          <li>
+            <div>
+              <IntlMessages id="order.procedure.productsSubtotal" />
+              <AmountOfMoney>
+                <IntlMessages id="order.procedure.taxIn" />
+                <span>0</span>
+                <IntlMessages id="order.procedure.yen" />
+              </AmountOfMoney>
+            </div>
+            <div>
+              <IntlMessages id="order.procedure.productsSubtotal" />
+              <AmountOfMoney>
+                <IntlMessages id="order.procedure.taxIn" />
+                <span>980</span>
+                <IntlMessages id="order.procedure.yen" />
+              </AmountOfMoney>
+            </div>
+          </li>
+          <li>
+            <IntlMessages id="order.procedure.productsSubtotal" />
+            <AmountOfMoney>
+              <IntlMessages id="order.procedure.taxIn" />
+              <span>-3,000</span>
+              <IntlMessages id="order.procedure.yen" />
+            </AmountOfMoney>
+          </li>
+          <li>
+            <div>
+              <IntlMessages id="order.procedure.productsSubtotal" />
+              <AmountOfMoney>
+                <IntlMessages id="order.procedure.taxIn" />
+                <span>-3,000</span>
+                <IntlMessages id="order.procedure.point" />
+              </AmountOfMoney>
+            </div>
+            <div>
+              <IntlMessages id="order.procedure.productsSubtotal" />
+              <AmountOfMoney>
+                <IntlMessages id="order.procedure.taxIn" />
+                <span>-2,000</span>
+                <IntlMessages id="order.procedure.coin" />
+              </AmountOfMoney>
+            </div>
+          </li>
+          <li>
+            <IntlMessages id="order.procedure.productsSubtotal" />
+            <AmountOfMoney>
+              <IntlMessages id="order.procedure.taxIn" />
+              <span>450</span>
+              <IntlMessages id="order.procedure.yen" />
+            </AmountOfMoney>
+          </li>
+        </BillSummaryList>
+    </BillSummaryDiv>
   );
 };
     
