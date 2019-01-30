@@ -23,13 +23,12 @@ const DetailLink = styled.span`
 `;
 
 const CheackBoxArea = styled.div`
-&.ant-checkbox-wrapper {
-  .ant-checkbox-checked .ant-checkbox-inner,
-  .ant-checkbox-indeterminate .ant-checkbox-inner {
-    background-color: red;
-    border-color: red;
+  & label {
+    & .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #7f0019;
+      border-color: #7f0019;
+    }
   }
-}
 `;
 
 const radioStyle = {
@@ -42,6 +41,21 @@ const InputStyle = {
   width: '100px',
   marginLeft: '10px'
 };
+
+const StyledRadio = styled(Radio)`
+  & span .ant-radio-inner{
+    border-color: #7f0019;
+    :after{
+      background-color: #7f0019;
+      border-color: #7f0019;
+      height: 10px;
+      width: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+`;
 
 const RadioGroup = Radio.Group;
 
@@ -110,10 +124,10 @@ class BillItems extends Component{
             value={this.state.value}
             disabled={this.state.disableFlg}
           >
-            <Radio style={radioStyle} value={1} onClick={this.resetValue}>
+            <StyledRadio style={radioStyle} value={1} onClick={this.resetValue}>
               <IntlMessages id="order.procedure.useAll"/>
-            </Radio>
-            <Radio style={radioStyle} value={2}>
+            </StyledRadio>
+            <StyledRadio style={radioStyle} value={2}>
               <IntlMessages id="order.procedure.usePart"/>
               {aaa ?
                   this.state.value === 2 && this.state.disableFlg === false ?
@@ -123,7 +137,7 @@ class BillItems extends Component{
                 :
                 null
               }
-            </Radio>
+            </StyledRadio>
           </RadioGroup>
         </div>
     </BillContent>
