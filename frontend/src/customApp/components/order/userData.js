@@ -2,27 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const UserInformation　= styled.div`
+const UserInformation = styled.div`
   padding: 16px;
   margin-top: 20px;
   background-color: #F2F2F2;
+  display: flex;
 `;
 
 const Addressee = styled.div`
-  display: inline-block;
-  width: 294px;
-  height: 174px;
   background-color: #FFF;
+  flex: 1;
   &&&{
     padding: 16px;
   }
 `;
 
-const CustomerInfo = styled.div`
-  display: inline-block;
-  width: 294px;
-  height: 174px;
+const OrderInfo = styled.div`
   background-color: #FFF;
+  flex: 1;
+  margin-left: 16px;
   &&&{
     padding: 16px;
   }
@@ -38,7 +36,7 @@ const UserName =styled.h2`
   font-size: 13px;
 `;
 
-const UserUl = styled.ul`
+const Others = styled.ul`
   font-size: 13px;
   padding-left: 0;
 `;
@@ -49,17 +47,17 @@ const UserData = () => {
       <Addressee>
         <Title>お届け先</Title>
         <UserName>無印　花子　様</UserName>
-        <UserUl>
+        <Others>
           〒 123 - 4567 東京都渋谷区1-2-3<p />
           TEL：01 - 2345 - 6789
-        </UserUl>
+        </Others>
         【変更ボタン】
       </Addressee>
-      <CustomerInfo>
+      <OrderInfo>
         <Title>ご注文者情報</Title>
         <UserName>無印 花子 様</UserName>
         【変更ボタン】
-      </CustomerInfo>
+      </OrderInfo>
     </UserInformation>
   );
 };
