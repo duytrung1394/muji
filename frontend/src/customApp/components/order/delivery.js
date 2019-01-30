@@ -10,6 +10,7 @@ const DeliveryWrapper = styled.div`
 const DeliveryStyle = styled.div`
   padding: 16px;
   background-color: #FFF;
+  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
 const Title = styled.h1`

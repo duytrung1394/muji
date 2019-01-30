@@ -11,6 +11,7 @@ const UserInformation = styled.div`
 
 const Addressee = styled.div`
   background-color: #FFF;
+  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
   flex: 1;
   &&&{
     padding: 16px;
@@ -19,6 +20,7 @@ const Addressee = styled.div`
 
 const OrderInfo = styled.div`
   background-color: #FFF;
+  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
   flex: 1;
   margin-left: 16px;
   &&&{
