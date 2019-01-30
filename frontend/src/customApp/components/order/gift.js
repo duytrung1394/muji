@@ -18,9 +18,17 @@ const Title = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
+  margin-bottom: 0;
+`;
+
+const GiftCheckboxtWrapper = styled.div`
+  margin: 20px 0;
 `;
 
 const GiftCheckbox = styled(Checkbox)`
+  && {
+    font-size: 13px;
+  }
   .ant-checkbox-inner {
     border: 2px solid #999;
   }
@@ -45,15 +53,18 @@ const Gift = () => {
         <Title>
           ギフト包装
         </Title>
-        <GiftCheckbox>ギフト包装を利用する（162円）</GiftCheckbox><p />
+        <GiftCheckboxtWrapper>
+          <GiftCheckbox>ギフト包装を利用する（162円）</GiftCheckbox>
+        </GiftCheckboxtWrapper>
         <GiftSelect
+          style={{ width: 250 }}
           onChange={handleChange}
         >
           <Option value="まとめて包装する">まとめて包装する</Option>
           <Option value="個々に包装する">個々に包装する</Option>
-        </GiftSelect>
+        </GiftSelect><p />
         のし：指定なし　メッセージ：指定なし<p />
-        のし・メッセージの指定
+        【のし・メッセージの指定　ボタン】
       </GiftStyle>
     </GiftWrapper>
   );
