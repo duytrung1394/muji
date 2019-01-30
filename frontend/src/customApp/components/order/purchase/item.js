@@ -17,14 +17,14 @@ const images = {
 };
 
 const PurchaseItemWrapper = styled.section`
+  margin-bottom: 20px;
   padding-top: 1px;
   border-radius: 4px;
-  margin-bottom: 10px;
   box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.65);
   box-sizing: border-box;
   font-size: 12px;
-  ${mediaQuery.lessThan("sm")`
-    margin-bottom: 20px;
+  ${mediaQuery.greaterThan("sm")`
+    margin-bottom: 10px;
   `}
 `;
 

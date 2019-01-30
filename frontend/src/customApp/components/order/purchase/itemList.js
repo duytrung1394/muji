@@ -6,15 +6,15 @@ import mediaQuery from "../../../mediaQuery";
 
 // ※↓ 必要か微妙ですが、サンプルとして。
 const ItemListWrapper = styled.div`
-  margin-left: 15px;
-  margin-right: 15px;
-  ${mediaQuery.lessThan("lg")`
+  margin-left: 0;
+  margin-right: 0;
+  ${mediaQuery.greaterThan("sm")`
+    margin-left: 15px;
+    margin-right: 15px;
+  `}
+  ${mediaQuery.greaterThan("md")`
     margin-left: 30px;
     margin-right: 30px;
-  `}
-  ${mediaQuery.lessThan("sm")`
-    margin-left: 0;
-    margin-right: 0;
   `}
 `;
 
