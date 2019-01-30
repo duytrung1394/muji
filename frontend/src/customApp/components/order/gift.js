@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
+import { Checkbox, Select } from 'antd';
 
 const GiftWrapper = styled.div`
   padding: 16px;
@@ -19,6 +20,24 @@ const Title = styled.h1`
   color: rgb(88, 88, 88);
 `;
 
+const GiftCheckbox = styled(Checkbox)`
+  .ant-checkbox-inner {
+    border: 2px solid #999;
+  }
+  .ant-checkbox-checked {
+    border: 2px solid #7f0119;
+  }
+`;
+
+const GiftSelect = styled(Select)`
+`;
+
+const Option = Select.Option;
+
+const handleChange = (value)=>{
+  console.log(`selected ${value}`);
+};
+
 const Gift = () => {
   return (
     <GiftWrapper>
@@ -26,13 +45,18 @@ const Gift = () => {
         <Title>
           ギフト包装
         </Title>
-        ギフト包装を利用する（162円）<p />
-        まとめて包装する<p />
+        <GiftCheckbox>ギフト包装を利用する（162円）</GiftCheckbox><p />
+        <GiftSelect
+          onChange={handleChange}
+        >
+          <Option value="まとめて包装する">まとめて包装する</Option>
+          <Option value="個々に包装する">個々に包装する</Option>
+        </GiftSelect>
         のし：指定なし　メッセージ：指定なし<p />
         のし・メッセージの指定
       </GiftStyle>
     </GiftWrapper>
   );
 };
-  
+
 export default Gift;
