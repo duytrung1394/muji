@@ -10,12 +10,8 @@ import { injectIntl } from "react-intl";
 import UserData from "../../components/order/userData";
 import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
-import MujiShoppingpoint from "../../components/order/mujiShoppingPoint";
-import MujiCoins from "../../components/order/mujiCoins";
-import PartnerSales from "../../components/order/partnerSales";
-import BillingSummary from "../../components/order/billingSummary";
-import PaymentMethod from "../../components/order/paymentMethod";
-import Button from "../../components/order/button";
+import BillFooter from "../../components/order/billFooter";
+import BillDetails from "../../components/order/billDetails"
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -71,12 +67,8 @@ class Index extends Component {
           <UserData />
           <Gift />
           <Delivery />
-          <MujiShoppingpoint />
-          <MujiCoins />
-          <PartnerSales />
-          <BillingSummary />
-          <PaymentMethod />
-          <Button />
+          <BillDetails />
+          <BillFooter />
         </ContentLayout>
       </ContentAreaLayout>
     );
