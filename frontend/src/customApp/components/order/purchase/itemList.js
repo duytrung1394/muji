@@ -1,27 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import Item from "./item";
+import { Col, Row } from "antd";
 
+// ※ 後でCSSを足したくなりそうなので
 const ItemListWrapper = styled.div`
-  float: left;
-  list-style: none;
-  position: relative;
-  width: 100%;
-
-  max-width: 1590px;
-  margin: 10px auto 0;
-  padding: 0 50px 16px 50px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
 `;
 
 const ItemList = ({ purchaseItemList }) => {
   return (
     <ItemListWrapper>
-      {purchaseItemList.map((purchaseItem, index) => {
-        return <Item key={index} purchaseItem={purchaseItem} />;
-      })}
+      <Row gutter={{ xs: 0, sm: 8 }}>
+        {purchaseItemList.map((purchaseItem, index) => {
+          return (
+            <Col lg={6} md={8} xs={24}>
+              <Item key={index} purchaseItem={purchaseItem} />
+            </Col>
+          );
+        })}
+      </Row>
     </ItemListWrapper>
   );
 };
