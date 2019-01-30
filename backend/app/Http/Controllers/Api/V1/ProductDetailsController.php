@@ -23,8 +23,6 @@ class ProductDetailsController extends Controller
     private function getMockData($janCode)
     {
         $data = [
-            'jan_code' => $janCode,
-            'fav_flg' => false,
             'links' => [
                 [
                     'path' => '/store',
@@ -39,8 +37,60 @@ class ProductDetailsController extends Controller
                     'name' => 'カットソー',
                 ],
             ],
-//
-//
+            'fav_flg' => false,
+            'material' => "オーガニックコットン",
+            'store_info' => [
+                'toriatukai_flg' => 1,
+                'labal' => '店舗受け取り不可',
+            ],
+            'distribution_fee' => 490,
+            'color_list_select' => 0,
+            'color_list' => [
+                [
+                    'title' => 'ライトシルバーグレー',
+                    'img' => 'img-color-1.png',
+                ],
+                [
+                    'title' => '黒',
+                    'img' => 'img-color-2.png',
+                ],
+                [
+                    'title' => 'ライトシルバーグレー×ボーダー',
+                    'img' => 'img-color-3.png',
+                ],
+                [
+                    'title' => 'ライトシルバーグレー×柄',
+                    'img' => 'img-color-4.png',
+                ],
+            ],
+            'size_list_select' => 1,
+            'size_list' => [
+                [
+                    'title' => 'XS',
+                    'value' => 'XS',
+                ],
+                [
+                    'title' => 'S',
+                    'value' => 'S',
+                ],
+                [
+                    'title' => 'M',
+                    'value' => 'M',
+                ],
+                [
+                    'title' => 'L',
+                    'value' => 'L',
+                ],
+                [
+                    'title' => 'XL',
+                    'value' => 'XL',
+                ],
+                [
+                    'title' => 'XXL',
+                    'value' => 'XXL',
+                ],
+            ],
+            // TODO: 以下 サンプルデータ（QA26-商品詳細画面-20190118 .xlsx）について疑問点をQAに記述 : 回答にあわせ調整 or 本API対応が必要 2019/1/30
             "deliveryDivision" => "TH",
             "deliveryPrice" => "0",
             "docomoPayment" => true,
@@ -54,7 +104,7 @@ class ProductDetailsController extends Controller
             "itemName" => "オーガニックコットンストレッチタートルネックＴシャツ",
             "itemSalesStatus" => "NORMAL",
             "itemStandardName" => "婦人ＸＳ・黒",
-            "janCode" => "4550002684822",
+            "janCode" => $janCode,
             "mixRate" => "綿,97%,ポリウレタン,3%,",
             "newItem" => false,
             "orderItemFlag" => false,
@@ -615,77 +665,6 @@ class ProductDetailsController extends Controller
             ],
             "webCatalogDescription" => "ストレッチ糸を加えて編み立て、着やすく、動きやすく仕上げました。柔らかさとほどよいフィット感が特長です。",
             "yahooPayment" => true,
-//
-//
-            'title' => "ミニ裏毛五分袖ワイドＴシャツ",
-            'material' => "オーガニックコットン",
-            'read_more_info' => [
-                'messages' => [
-                    [
-                        "裏のループが短い裏毛素材に編み立てました。ほど良い厚みの生地とゆったりとしたシルエットが特長です。"
-                    ],
-                    [
-                        "着心地やわらかに、自由に楽しめるベーシックなTシャツです。"
-                    ],
-                ],
-            ],
-            'store_info' => [
-                'toriatukai_flg' => 1,
-                'labal' => '店舗受け取り不可',
-            ],
-            'price_info' => [
-                'price_original' => 2903,
-                'price_present' => 1495,
-                'sales_date' => '18/05/02 AM09:30',
-                'number' => '02619589'
-            ],
-            'distribution_fee' => 490,
-            'color_list_select' => 0,
-            'color_list' => [
-                [
-                    'title' => 'ライトシルバーグレー',
-                    'img' => 'img-color-1.png',
-                ],
-                [
-                    'title' => '黒',
-                    'img' => 'img-color-2.png',
-                ],
-                [
-                    'title' => 'ライトシルバーグレー×ボーダー',
-                    'img' => 'img-color-3.png',
-                ],
-                [
-                    'title' => 'ライトシルバーグレー×柄',
-                    'img' => 'img-color-4.png',
-                ],
-            ],
-            'size_list_select' => 1,
-            'size_list' => [
-                [
-                    'title' => 'XS',
-                    'value' => 'XS',
-                ],
-                [
-                    'title' => 'S',
-                    'value' => 'S',
-                ],
-                [
-                    'title' => 'M',
-                    'value' => 'M',
-                ],
-                [
-                    'title' => 'L',
-                    'value' => 'L',
-                ],
-                [
-                    'title' => 'XL',
-                    'value' => 'XL',
-                ],
-                [
-                    'title' => 'XXL',
-                    'value' => 'XXL',
-                ],
-            ],
         ];
 
         $imageTotal = 5;

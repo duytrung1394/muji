@@ -26,8 +26,8 @@ const StyledIcon = styled(Icon)`
 const Unable = styled.div`
   border: 1px solid #333;
   font-size: 10px;
-  width: 100px;
-  padding: 0.5px 1px;
+  width: fit-content;
+  padding: 2px 5px;
   text-align: center;
   margin: 8px 0;
 `;

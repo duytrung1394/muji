@@ -136,7 +136,6 @@ class Form extends Component {
 
     if (
       !entity.material ||
-      !entity.read_more_info ||
       !entity.color_list ||
       !entity.size_list ||
       !entity.priceKindList ||
