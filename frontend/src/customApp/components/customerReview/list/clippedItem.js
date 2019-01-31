@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "../../shared/form/link";
 import { Icon, Rate, Popover, Button } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
-
 import UserData from "./userData";
 
 const StyledItem = styled.li`
