@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 
-class DonationTopsController extends Controller
+class DonationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -51,18 +51,6 @@ class DonationTopsController extends Controller
     {
         return [
             'data' => $this->getMockPaymentData($donationCode, $numberOfUnits),
-        ];
-    }
-
-    /**
-     * MUJI GIFT CARD情報取得.
-     *
-     * @return Response
-     */
-    public function getGiftcard(Request $request)
-    {
-        return [
-            'data' => $this->getMockGiftcard(),
         ];
     }
 

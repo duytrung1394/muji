@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Spin, Row, Col } from "antd";
-import actions from "../../redux/donation_top/entity/actions";
+import actions from "../../redux/donation/entity/actions";
 import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Summary from "../../components/donationTop/confirm/summary";
-import Detail from "../../components/donationTop/confirm/detail";
+import Summary from "../../components/donation/confirm/summary";
+import Detail from "../../components/donation/confirm/detail";
 import { Button } from "../../components/shared/form/button";
 
 const ConfirmHeader = styled.div`
@@ -156,7 +156,7 @@ class Confirm extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.DonationTop.Entity.toJS();
+  return state.Donation.Entity.toJS();
 };
 
 const actionCreators = {

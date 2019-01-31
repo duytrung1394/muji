@@ -7,6 +7,7 @@ import authActions from "../../../../redux/auth/actions";
 const api = RESTListApi("customer-reviews");
 const listByUserApi = RESTListApi("customer-reviews/user");
 const listByFollowingApi = RESTListApi("customer-reviews/following");
+const listByItemgApi = RESTListApi("customer-reviews/item");
 
 const getListByUserFunction = function*({ payload }) {
   try {
@@ -34,6 +35,19 @@ const getListByFollowingFunction = function*({ payload }) {
   }
 };
 
+const getListByItemFunction = function*({ payload }) {
+  try {
+    const response = yield call(listByItemgApi.GET, payload);
+    yield put(actions.fetch.success(response.data));
+  } catch (error) {
+    if (error.response.status == 401) {
+      yield put(authActions.unauthorized(error));
+    } else {
+      yield put(actions.fetch.failure(error));
+    }
+  }
+};
+
 export default function* saga() {
   yield restAllSaga(api, actions);
   yield takeEvery(
@@ -43,5 +57,9 @@ export default function* saga() {
   yield takeEvery(
     actions.fetchByFollowing.request.toString(),
     getListByFollowingFunction
+  );
+  yield takeEvery(
+    actions.fetchByItem.request.toString(),
+    getListByItemFunction
   );
 }

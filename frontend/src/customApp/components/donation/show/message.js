@@ -88,7 +88,7 @@ const Message = ({ messages }) => {
     return (
       <MessageWrapper>
         <h2>
-          <IntlMessages id="donationTop.organizationMessageTitle" />
+          <IntlMessages id="donation.organizationMessageTitle" />
         </h2>
         <StyledList
           dataSource={data}
@@ -97,7 +97,7 @@ const Message = ({ messages }) => {
         <Div>
           <a href="https://www.japanplatform.org/">
             <Button icon="caret-right">
-              <IntlMessages id="donationTop.webSite" />
+              <IntlMessages id="donation.webSite" />
             </Button>
           </a>
         </Div>

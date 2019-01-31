@@ -1,7 +1,7 @@
 import IntlMessages from "../../../components/utility/intlMessages";
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/donation_top/entity/actions";
+import actions from "../../redux/donation/entity/actions";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 import { Row, Card } from "antd";
@@ -84,7 +84,7 @@ class DonationList extends Component {
                           >
                             {item.title === "北海道地震被災者支援" ? (
                               <EmeagencyCard>
-                                <IntlMessages id="donationTop.attributes.emergency_donation" />
+                                <IntlMessages id="donation.attributes.emergency_donation" />
                               </EmeagencyCard>
                             ) : null}
                             <Meta
