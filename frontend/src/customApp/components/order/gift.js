@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Checkbox, Select } from 'antd';
+import CommonButton from "./commonButton";
 
 const GiftWrapper = styled.div`
   padding: 16px;
@@ -15,14 +16,14 @@ const GiftStyle = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
-const Title = styled.h1`
+const GiftTitle= styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
   margin-bottom: 0;
 `;
 
-const GiftCheckboxtWrapper = styled.div`
+const GiftCheckboxArea = styled.div`
   margin: 20px 0;
 `;
 
@@ -47,25 +48,58 @@ const handleChange = (value)=>{
   console.log(`selected ${value}`);
 };
 
+const SpecifiedResult = styled.div`
+  margin-top: 20px;
+  font-size: 13px;
+`;
+
+const StyledSpan = styled.span`
+  padding-right: 30px;
+`;
+
+const ButtonArea = styled.div`
+  margin-top: 20px;
+`;
+
+const SpecifyMessageButton = styled(CommonButton)`
+  width: 300px;
+  font-size: 12px;
+`;
+
 const Gift = () => {
   return (
     <GiftWrapper>
       <GiftStyle>
-        <Title>
-          ギフト包装
-        </Title>
-        <GiftCheckboxtWrapper>
-          <GiftCheckbox>ギフト包装を利用する（162円）</GiftCheckbox>
-        </GiftCheckboxtWrapper>
+        <GiftTitle>
+          <IntlMessages id="order.procedure.GiftWrapping"/>
+        </GiftTitle>
+        <GiftCheckboxArea>
+          <GiftCheckbox>
+            <IntlMessages id="order.procedure.useGiftWrapping"/>
+          </GiftCheckbox>
+        </GiftCheckboxArea>
         <GiftSelect
           style={{ width: 250 }}
           onChange={handleChange}
         >
-          <Option value="まとめて包装する">まとめて包装する</Option>
-          <Option value="個々に包装する">個々に包装する</Option>
-        </GiftSelect><p />
-        のし：指定なし　メッセージ：指定なし<p />
-        【のし・メッセージの指定　ボタン】
+          <Option value="まとめて包装する">
+            <IntlMessages id="order.procedure.toPackTogether"/>
+          </Option>
+          <Option value="個々に包装する">
+            <IntlMessages id="order.procedure.toWrapIndividually"/>
+          </Option>
+        </GiftSelect>
+        <SpecifiedResult>
+          <StyledSpan>
+            <IntlMessages id="order.procedure.japaneseGiftWapping"/>指定なし
+          </StyledSpan>
+            <IntlMessages id="order.procedure.GiftMessage"/>指定なし
+        </SpecifiedResult>
+        <ButtonArea>
+          <SpecifyMessageButton>
+            <IntlMessages id="order.procedure.specifyMessage"/>
+          </SpecifyMessageButton>
+        </ButtonArea>
       </GiftStyle>
     </GiftWrapper>
   );

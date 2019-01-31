@@ -13,7 +13,7 @@ const DeliveryStyle = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
-const Title = styled.h1`
+const DeliverTitle = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
@@ -47,9 +47,9 @@ const Delivery = () => {
   return (
     <DeliveryWrapper>
       <DeliveryStyle>
-        <Title>
+        <DeliverTitle>
           配送便：1<TitleSpan>配送区分：小物</TitleSpan>
-        </Title>
+        </DeliverTitle>
         <DeliverySchedule>
           お届け予定：2019年10月30日（火）通常便<p />
         </DeliverySchedule>

@@ -35,13 +35,13 @@ const OrderInfo = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const UserInfomationTitles = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
 `;
 
-const UserName =styled.h2`
+const PersonsName =styled.h2`
   font-size: 13px;
 `;
 
@@ -70,8 +70,12 @@ const UserData = () => {
   return (
     <UserInformation>
       <Addressee>
-        <Title>お届け先</Title>
-        <UserName>無印　花子　様</UserName>
+        <UserInfomationTitles>
+          <IntlMessages id="order.procedure.addressee"/>
+        </UserInfomationTitles>
+        <PersonsName>
+          無印　花子<IntlMessages id="order.procedure.esq"/>
+        </PersonsName>
         <Others>
           〒 123 - 4567 東京都渋谷区1-2-3<p />
           TEL：01 - 2345 - 6789
@@ -81,8 +85,12 @@ const UserData = () => {
       </AddresseeChangeButton>
       </Addressee>
       <OrderInfo>
-        <Title>ご注文者情報</Title>
-        <UserName>無印 花子 様</UserName>
+        <UserInfomationTitles>
+          <IntlMessages id="order.procedure.orderInfomation"/>
+        </UserInfomationTitles>
+        <PersonsName>
+          無印 花子<IntlMessages id="order.procedure.esq"/>
+        </PersonsName>
         <OrderInfoChangeButton>
           <IntlMessages id="order.procedure.change"/>
       </OrderInfoChangeButton>
