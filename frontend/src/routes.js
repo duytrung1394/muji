@@ -65,7 +65,7 @@ const routes = [
     path: "/store/review/clipped",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexCliped")
+      require("./customApp/containers/CustomerReview/indexClipped")
     )
   },
   {

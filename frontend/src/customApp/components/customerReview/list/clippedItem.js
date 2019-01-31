@@ -166,7 +166,7 @@ const ClippedItem = ({ entity }) => (
         </li>
         <SubDataDate>{entity.upload_date}</SubDataDate>
       </SubData>
-      <Link to={`store/review/detail/${entity.jancode}`}>
+      <Link to={`/store/review/detail/${entity.jancode}`}>
         <CommentTitle>{entity.title}</CommentTitle>
         <Comment>{entity.detail_comment}</Comment>
       </Link>
@@ -175,14 +175,14 @@ const ClippedItem = ({ entity }) => (
     <InfoList>
       <li>
         <CommentIcon type="message" />
-        <Link to={`store/review/detail/${entity.jancode}`}>
+        <Link to={`/store/review/detail/${entity.jancode}`}>
           <span>{entity.evaluations_comment_count}</span>
           <IntlMessages id="customerReview.list.matterComment" />
         </Link>
       </li>
       <li>
         <CommentIcon type="like" />
-        <Link to={`store/review/detail/${entity.jancode}`}>
+        <Link to={`/store/review/detail/${entity.jancode}`}>
           <span>{entity.evaluations_useful_count}</span>
           <IntlMessages id="customerReview.list.usefulThinking" />
         </Link>
