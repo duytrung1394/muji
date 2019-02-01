@@ -73,7 +73,6 @@ class IndexClipped extends Component {
               </StyledH1>
             }
             sort={[]}
-            listStyle={{ backgroundColor: "#eee" }}
           />
         </ContentLayout>
         <ContentLayout>

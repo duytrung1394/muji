@@ -146,7 +146,7 @@ const LinkStyle = {
 const ClippedItem = ({ entity }) => (
   <StyledItem>
     <ClippedItemHeader>
-      <Link to={``} style={LinkStyle} />
+      <Link to={`/store/cmdty/detail/`+ entity.jancode} style={LinkStyle} />
       <img
         src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
         alt="itemImage"
