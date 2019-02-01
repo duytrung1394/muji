@@ -72,6 +72,8 @@ class IndexClipped extends Component {
                 <IntlMessages id="customerReview.list.clippedTitle" />
               </StyledH1>
             }
+            sort={[]}
+            listStyle={{ backgroundColor: "#eee" }}
           />
         </ContentLayout>
         <ContentLayout>
