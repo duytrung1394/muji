@@ -36,12 +36,15 @@ class Quantity extends Component {
     };
   }
   plus = () => {
-    this.setState(() => {
-      return { sum: this.state.sum + 1 };
-    });
+    if (this.state.sum < this.props.max ? this.props.max : Infinity) {
+      this.setState(() => {
+        return { sum: this.state.sum + 1 };
+      });
+    }
+    null;
   };
   minus = () => {
-    if (this.state.sum > 0) {
+    if (this.state.sum > this.props.min ? this.props.min : 0) {
       this.setState(() => {
         return { sum: this.state.sum - 1 };
       });
