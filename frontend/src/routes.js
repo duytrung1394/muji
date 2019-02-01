@@ -62,10 +62,24 @@ const routes = [
     )
   },
   {
+    path: "/store/review/item/:item_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexByProduct")
+    )
+  },
+  {
     path: "/store/review/item/:item_code/post",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/CustomerReview/new")
+    )
+  },
+  {
+    path: "/store/review/report/:item_code/:comment_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/report")
     )
   },
   {
@@ -199,6 +213,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Favorite/index")
+    )
+  },
+  {
+    path: "/store/cust/order/storeReserve",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexStoreReserve")
     )
   }
 ];

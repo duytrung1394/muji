@@ -1,27 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 import Item from "./item";
+import { Col, Row } from "antd";
+import mediaQuery from "../../../mediaQuery";
 
+// ※↓ 必要か微妙ですが、サンプルとして。
 const ItemListWrapper = styled.div`
-  float: left;
-  list-style: none;
-  position: relative;
-  width: 100%;
-
-  max-width: 1590px;
-  margin: 10px auto 0;
-  padding: 0 50px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  margin-left: 0;
+  margin-right: 0;
+  ${mediaQuery.greaterThan("sm")`
+    margin-left: 15px;
+    margin-right: 15px;
+  `}
+  ${mediaQuery.greaterThan("md")`
+    margin-left: 30px;
+    margin-right: 30px;
+  `}
 `;
 
 const ItemList = ({ purchaseItemList }) => {
   return (
     <ItemListWrapper>
-      {purchaseItemList.map((purchaseItem, index) => {
-        return <Item key={index} purchaseItem={purchaseItem} />;
-      })}
+      <Row gutter={{ xs: 0, sm: 8 }}>
+        {purchaseItemList.map((purchaseItem, index) => {
+          return (
+            <Col lg={8} md={12} xs={24}>
+              <Item key={index} purchaseItem={purchaseItem} />
+            </Col>
+          );
+        })}
+      </Row>
     </ItemListWrapper>
   );
 };

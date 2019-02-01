@@ -8,9 +8,9 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import ReviewItem from "../../components/customerReview/list/reviewItem";
 import Header from "../../components/customerReview/list/header";
-import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
+import ItemReviewHeader from "../../components/customerReview/indexByItem/itemReviewHeader";
+import Item from "../../components/customerReview/indexByItem/item";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";
 
@@ -32,7 +32,9 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest(this.getFetchRequestParams());
+    if (this.getEntityLength() <= 0) {
+      this.props.fetchRequest("");
+    }
   }
 
   seeMore = () => {
@@ -65,11 +67,8 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Header
-            profile={<ReviewUserProfile entity={profile} />}
-            sort={[]}
-            listStyle={{ backgroundColor: "#eee" }}
-          />
+          <ItemReviewHeader profile={profile} />
+          <Header sort={[]} listStyle={{ backgroundColor: "#eee" }} />
         </ContentLayout>
         <ContentLayout>
           <Spin
@@ -80,7 +79,7 @@ class Index extends Component {
               <ItemsList>
                 {entities &&
                   entities.map((entity, index) => (
-                    <ReviewItem entity={entity} key={index} />
+                    <Item entity={entity} key={index} />
                   ))}
               </ItemsList>
             ) : null}
@@ -101,7 +100,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetchByUser.request,
+  fetchRequest: actions.fetchByItem.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

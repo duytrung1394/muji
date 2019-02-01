@@ -31,68 +31,15 @@ class OrdersController extends Controller
         ];
     }
     /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function create()
-     {
-         return [
-             'data' => new \stdClass,
-         ];
-     }
-
-   /**
-     * Display the specified resource.
+     * Display a listing of the resource.
      *
-     * @param  string   $orderCode
      * @return Response
      */
-    public function show($orderCode)
+    public function indexStoreReserve(Request $request)
     {
         return [
-            'data' => $this->getMockdata($orderCode),
-        ];
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  string   $camelCase(pkName)
-     * @return Response
-     */
-    public function update(Request $request, $orderCode)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Remove some resources from storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function destroy(Request $request)
-    {
-        return [
-            'data'  => [],
-            'count' => 1,
+            'data'  => $this->getMockDataStoreReserve(),
+            'total' => 200,
         ];
     }
 
@@ -178,6 +125,62 @@ class OrdersController extends Controller
                 'cancel_button_disabled' => true,
                 'cancel_type' => 2,
                 'img_src' => 'img-purchase-history-4.png',
+            ]
+        ];
+    }
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getMockDataStoreReserve()
+    {
+        $sample1 = [
+            'jan_code' => '4550002678944',
+            'order_state' => '取り置き完了(2018/12/08迄)',
+            'store_name' => '西武池袋店',
+            'item_name' => 'オーガニックコットンスムース編み五分袖Tシャツ',
+            'item_num' => '個数：1個',
+            'item_price' => '税込645円',
+            'cancel_button_disabled' => false,
+            'cancel_type' => 2,
+            'img_src' => 'img-reserve-1.png',
+        ];
+        $sample2 = [
+            'jan_code' => '4550002269258',
+            'order_state' => '取り置き依頼中',
+            'store_name' => '西武池袋店',
+            'item_name' => 'オーガニックコットンVネック半袖シャツ',
+            'item_num' => '個数：1個',
+            'item_price' => '税込495円',
+            'cancel_button_disabled' => false,
+            'cancel_type' => 1,
+            'img_src' => 'img-reserve-2.png',
+        ];
+        $sampleRepeat = [
+            'jan_code' => '4934761179179',
+            'order_state' => 'キャンセル済み',
+            'store_name' => '西武池袋店',
+            'item_name' => 'ステンレスユニットシェルフ・ステンレス追加棚',
+            'item_num' => '個数：1個',
+            'item_price' => '税込495円',
+            'cancel_button_disabled' => false,
+            'cancel_type' => 3,
+            'img_src' => 'img-reserve-3.png',
+        ];
+
+        $allReserves = [$sample1,$sample2];
+        for ($i = 0; $i < 8; $i++){
+            $allReserves[] = $sampleRepeat;
+        }
+        
+        return [
+            $allReserves,
+            [
+                $sample1,
+                $sample2,
+            ],
+            [
+                $sampleRepeat,
             ]
         ];
     }
