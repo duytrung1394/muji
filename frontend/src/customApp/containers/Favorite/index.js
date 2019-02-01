@@ -1,12 +1,14 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/favorite/list/actions";
-import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
-import Tabs from "../../components/favorite/favoriteTabs";
-import styled from "styled-components";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
+import { injectIntl } from "react-intl";
+import { Link } from "react-router-dom";
 import { Spin } from "antd";
+import { TabSlider, TabPanel } from "../../components/shared/tabSlider/tabSlider";
+import actions from "../../redux/favorite/list/actions";
+import FavoriteItem from "../../components/favorite/favoriteItem";
+import IntlMessages from "../../../components/utility/intlMessages";
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -23,6 +25,27 @@ const tabList = [
   "favorite.tab.event",
   "favorite.tab.article"
 ];
+
+const ItemBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 50px;
+`;
+
+const DeliveryList = styled.div`
+  margin-top: 20px;
+  padding: 0 50px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 600;
+
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(96, 179, 250);
+    text-decoration: none;
+  }
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -63,11 +86,24 @@ class Index extends Component {
           <IntlMessages id="favorite.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <Tabs
-            itemList={entities}
-            tabList={tabList}
-            itemType={"subscription"}
-          />
+          <TabSlider tabList={tabList}>
+          {entities.map((entity, index) => {
+            return (
+              <TabPanel key={index}>
+                {index === 0 &&
+                  <DeliveryList>
+                    <Link to={"#"} draggable={false}>
+                      <IntlMessages id="favorite.deriveryList" />
+                    </Link>
+                  </DeliveryList>}
+                <ItemBox>
+                  {entity.map((item, index) => {
+                   return <FavoriteItem item={item} key={index} />;
+                  })}
+                </ItemBox>
+              </TabPanel>);
+          })}
+          </TabSlider>
         </Spin>
       </ContentAreaLayout>
     );

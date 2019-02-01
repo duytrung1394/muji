@@ -1,26 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import FavoriteItemList from "./itemList";
-import IntlMessages from "../../../components/utility/intlMessages";
-import SlickSlider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const DeliveryList = styled.div`
-  margin-top: 20px;
-  padding: 0 50px;
-  text-align: right;
-  font-size: 12px;
-  font-weight: 600;
-
-  a,
-  a:hover,
-  a:focus {
-    color: rgb(96, 179, 250);
-    text-decoration: none;
-  }
-`;
+import "slick-carousel/slick/slick.css";
+import { Link } from "react-router-dom";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import React from "react";
+import SlickSlider from "react-slick";
+import styled from "styled-components";
 
 const SliderWrapper = styled(SlickSlider)`
   && {
@@ -34,7 +18,7 @@ const SliderWrapper = styled(SlickSlider)`
   }
 `;
 
-const SliderTabs = styled.ul`
+const Tabs = styled.ul`
   && {
     display: flex;
     flex-direction: row;
@@ -73,10 +57,11 @@ const SliderTabs = styled.ul`
   }
 `;
 
-const FavoriteTabs = ({ itemList, tabList }) => {
+export const TabSlider = props => {
+  const { tabList, children } = props;
   const defaultSettings = {
     dots: true,
-    appendDots: dots => <SliderTabs>{dots}</SliderTabs>,
+    appendDots: dots => <Tabs>{dots}</Tabs>,
     customPaging: i => (
       <Link to={"#"} key={i}>
         <IntlMessages id={tabList[i]} />
@@ -88,18 +73,11 @@ const FavoriteTabs = ({ itemList, tabList }) => {
   };
 
   return (
-    <SliderWrapper {...defaultSettings}>
-      {itemList.map((item, index) => {
+    <SliderWrapper {...defaultSettings} {...props}>
+      {children && children.map((child, index) => {
         return (
           <div key={index}>
-            {index === 0 ? (
-              <DeliveryList>
-                <Link to={"#"} draggable={false}>
-                  <IntlMessages id="favorite.deriveryList" />
-                </Link>
-              </DeliveryList>
-            ) : null}
-            <FavoriteItemList itemList={item} />
+            {child.props.children && child.props.children}
           </div>
         );
       })}
@@ -107,4 +85,28 @@ const FavoriteTabs = ({ itemList, tabList }) => {
   );
 };
 
-export default FavoriteTabs;
+export const TabPanel = styled.div`
+  & {
+    float: left;
+    list-style: none;
+    position: relative;
+    width: 100%;
+
+    max-width: 1590px;
+    margin: 10px auto 0;
+    padding: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    a,
+    a:hover,
+    a:focus {
+      text-decoration: none;
+    }
+
+    div + & {
+      margin-top: 0;
+    }
+  }
+`;
