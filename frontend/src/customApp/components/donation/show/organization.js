@@ -71,7 +71,7 @@ const Organization = ({ organizations, title }) => {
               <Div>
                 <a href="https://ryohin-keikaku.jp/csr/donation/dialog_052-01.html">
                   <Button icon="caret-right">
-                    <IntlMessages id="donationTop.employeeTalk" />
+                    <IntlMessages id="donation.employeeTalk" />
                   </Button>
                 </a>
               </Div>
