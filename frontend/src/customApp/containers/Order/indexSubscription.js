@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Tabs from "../../components/order/orderTabs";
 import styled from "styled-components";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { Spin } from "antd";
 
 const Title = styled.h1`

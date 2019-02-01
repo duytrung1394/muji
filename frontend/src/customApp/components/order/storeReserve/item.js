@@ -91,6 +91,7 @@ const StoreReserveItemDescribe = styled.li`
   a,
   a:hover,
   a:focus {
+    text-decoration: none;
     color: rgb(0, 0, 0, 0.65);
   }
 `;
@@ -128,7 +129,9 @@ const StoreReserveItemButton = styled.li`
   }
 
   a,
-  a:hover {
+  a:hover,
+  a:focus {
+    text-decoration: none;
     color: rgba(0, 0, 0, 0.65);
   }
 
@@ -167,7 +170,7 @@ const CancelButton = ({ placement, onConfirm }) => {
         okText="はい"
         cancelText="いいえ"
       >
-        <Link to={"#"}>
+        <Link to={"#"} draggable={false}>
           <IntlMessages id={buttonText.cancel} />
           <Icon type="right" />
         </Link>
@@ -179,7 +182,7 @@ const CancelButton = ({ placement, onConfirm }) => {
 const LinkButton = ({ to, textId }) => {
   return (
     <StoreReserveItemButton>
-      <Link to={to}>
+      <Link to={to} draggable={false}>
         <IntlMessages id={textId} />
         <Icon type="right" />
       </Link>
@@ -227,7 +230,7 @@ const StoreReserveItem = ({ item }) => {
       </StoreReserveHeader>
       <StoreReserveItemMenu>
         <StoreReserveItemImage>
-          <Link to={"#"}>
+          <Link to={"/store/cmdty/detail/" + item.jan_code} draggable={false}>
             <img src={images[item.img_src]} alt="" />
           </Link>
         </StoreReserveItemImage>
@@ -235,7 +238,9 @@ const StoreReserveItem = ({ item }) => {
           {describeList.map((describe, index) => {
             return (
               <StoreReserveItemDescribe key={index}>
-                <Link to={"#"}>{describe}</Link>
+                <Link to={"#"} draggable={false}>
+                  {describe}
+                </Link>
               </StoreReserveItemDescribe>
             );
           })}
