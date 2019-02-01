@@ -4,7 +4,7 @@ import restAllSaga from "../../shared/list/saga_generator";
 import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
-const api = RESTListApi("customer-reviews");
+const api = RESTListApi("customer-reviews", "codes");
 const listByUserApi = RESTListApi("customer-reviews/user");
 const listByFollowingApi = RESTListApi("customer-reviews/following");
 const listByItemgApi = RESTListApi("customer-reviews/item");

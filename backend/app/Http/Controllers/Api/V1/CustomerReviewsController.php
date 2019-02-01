@@ -118,6 +118,22 @@ class CustomerReviewsController extends Controller
         ];
     }
 
+     /**
+     * Remove some resources from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getReportMock($itemCode,$commentCode)
+    {
+        return [
+            'data' => [
+                'item' => $this->getMockData($itemCode),
+                'comment' => $this->getCommentData($commentCode)
+            ]
+        ];
+    }
+
     /**
      * モックデータ取得用．
      *
@@ -265,6 +281,18 @@ class CustomerReviewsController extends Controller
         }
     }
 
+    private function getCommentData($index){
+        $commentList = [
+            'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
+            '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+            'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
+            '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
+            '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
+        ];
+
+        return $commentList[$index];
+    }
+
     /**
      * レビューコメントのモックデータ
      */
@@ -311,5 +339,4 @@ class CustomerReviewsController extends Controller
 
         return $comments;
     }
-
 }

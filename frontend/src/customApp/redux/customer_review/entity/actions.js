@@ -8,6 +8,9 @@ const actions = createActions({
       ...restActions,
       GET_CUSTOMER_REVIEW: {
         ...req
+      },
+      GET_REPORT: {
+        ...req
       }
     }
   }
