@@ -16,7 +16,7 @@ const UserIcon = styled.img`
 const StyledSpan = styled.span`
   font-size: 14px;
   font-weight: bold;
-  color: black;
+  color: #333;
 `;
 
 const UserData = () => {
