@@ -18,17 +18,14 @@ const FavoriteTitle = styled.h2`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const FavoriteItemHeader = ({item}) => {
-  const {
-    headline,
-    item_name
-  } = item;
-  return(
-      <ItemHeader>
-        <FavoriteHeadline>{headline}</FavoriteHeadline>
-        <FavoriteTitle>{item_name}</FavoriteTitle>
-      </ItemHeader>
+const FavoriteItemHeader = ({ item }) => {
+  const { headline, item_name } = item;
+  return (
+    <ItemHeader>
+      <FavoriteHeadline>{headline}</FavoriteHeadline>
+      <FavoriteTitle>{item_name}</FavoriteTitle>
+    </ItemHeader>
   );
-}
+};
 
 export default FavoriteItemHeader;

@@ -1,6 +1,6 @@
 import { Icon, Popover } from "antd";
 import { Link } from "react-router-dom";
-import React　from "react";
+import React from "react";
 import styled from "styled-components";
 
 export const Item = styled.section`
@@ -20,7 +20,6 @@ export const Item = styled.section`
   a:focus {
     text-decoration: none;
   }
-
 `;
 
 export const ItemHeader = styled.div`
@@ -99,7 +98,7 @@ export const ItemFooterButton = props => {
   const initProps = {
     draggable: false,
     to: "#"
-  }
+  };
   return (
     <ItemFooterButtonWrapper>
       <Link {...initProps} {...props}>
@@ -124,13 +123,11 @@ const ItemImageWrapper = styled.div`
 `;
 
 export const ItemImage = props => {
-  const {
-    src
-  } = props;
+  const { src } = props;
 
   const initProps = {
     to: "#"
-  }
+  };
 
   return (
     <ItemImageWrapper>
@@ -139,7 +136,7 @@ export const ItemImage = props => {
       </Link>
     </ItemImageWrapper>
   );
-}
+};
 
 export const ItemDescribeList = styled.ul`
   margin-left: 15px;
@@ -201,7 +198,7 @@ export const EllipsisButton = props => {
       </Popover>
     </EllipsisButtonWrapper>
   );
-}
+};
 
 export const PopoverContentWrapper = styled.ul`
   margin: -10px;
@@ -234,5 +231,40 @@ export const PopoverContent = styled.li`
       color: rgba(0, 0, 0, 0.65);
       text-decoration: none;
     }
+  }
+`;
+
+export const DescribePriceWrapper = styled.span`
+  display: flex;
+  flex-wrap: wrap;
+
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(0, 0, 0, 0.65);
+    white-space: nowrap;
+  }
+`;
+
+export const DescribePricePresent = styled.span`
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(139, 26, 39);
+    font-weight: 600;
+  }
+`;
+
+export const DescribePriceArrow = styled.span`
+  margin: 0 5px;
+`;
+
+export const DescribeDiscount = styled.span`
+  font-size: 10px;
+
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(0, 0, 0, 0.65);
   }
 `;

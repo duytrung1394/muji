@@ -8,7 +8,11 @@ import {
   ItemDescribe,
   EllipsisButton,
   PopoverContent,
-  PopoverContentWrapper
+  PopoverContentWrapper,
+  DescribePriceWrapper,
+  DescribePricePresent,
+  DescribePriceArrow,
+  DescribeDiscount
 } from "../shared/tabSlider/tabSliderItem";
 
 import imgArticle1 from "../../../image/favorite/article/img-favorite-slide-3-1.png";
@@ -40,7 +44,7 @@ class FavoriteItemMain extends Component {
     this.state = {
       modalVisible: false,
       popoverVisible: false
-    }
+    };
   }
 
   handleVisibleChange = visible => {
@@ -57,7 +61,7 @@ class FavoriteItemMain extends Component {
     </PopoverContentWrapper>
   );
 
-  render () {
+  render() {
     const { item } = this.props;
 
     const {
@@ -66,34 +70,59 @@ class FavoriteItemMain extends Component {
       favorite_type,
       img_src,
       item_price,
+      item_price_present,
+      item_discount,
       order_date,
       caption
     } = item;
 
     const imgUrl = jan_code ? "/store/cmdty/detail/" + jan_code : id;
 
-    return(
-        <ItemMain>
-          <ItemImage src={images[img_src]} to={imgUrl}/>
-          <ItemDescribeList>
-            <ItemDescribe>{item_price}</ItemDescribe>
-            <ItemDescribe>{caption}</ItemDescribe>
-            <ItemDescribe>
-              {order_date}
-              <IntlMessages id={dateSuffix(favorite_type)} />
-            </ItemDescribe>
-          </ItemDescribeList>
+    return (
+      <ItemMain>
+        <ItemImage src={images[img_src]} to={imgUrl} />
+        <ItemDescribeList>
+          <ItemDescribe>
+            <DescribePriceWrapper>
+              {item_price_present ? (
+                <Link to={"#"} style={{ textDecoration: "line-through" }}>
+                  {item_price}
+                </Link>
+              ) : (
+                <Link to={"#"}>{item_price}</Link>
+              )}
+              {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
+              {item_price_present && (
+                <DescribePricePresent>
+                  <Link to={"#"}>{item_price_present}</Link>
+                </DescribePricePresent>
+              )}
+            </DescribePriceWrapper>
+          </ItemDescribe>
+          <ItemDescribe>
+            <DescribeDiscount>
+              <Link to={"#"}>{item_discount}</Link>
+            </DescribeDiscount>
+          </ItemDescribe>
+          <ItemDescribe>
+            <Link to={"#"}>{caption}</Link>
+          </ItemDescribe>
+          <ItemDescribe>
+            {order_date}
+            <IntlMessages id={dateSuffix(favorite_type)} />
+          </ItemDescribe>
+        </ItemDescribeList>
 
-          {favorite_type === 1 &&
-            <EllipsisButton 
-              placement="topRight"
-              content={this.favoriteItemPopover}
-              trigger="click"
-              onVisibleChange={this.handleVisibleChange}
-              visible={this.state.popoverVisible}
-            />
-          }
-        </ItemMain>
+        {favorite_type === 1 && (
+          <EllipsisButton
+            placement="topRight"
+            content={this.favoriteItemPopover}
+            trigger="click"
+            onVisibleChange={this.handleVisibleChange}
+            visible={this.state.popoverVisible}
+          />
+        )}
+      </ItemMain>
     );
   }
 }

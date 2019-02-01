@@ -74,13 +74,14 @@ export const TabSlider = props => {
 
   return (
     <SliderWrapper {...defaultSettings} {...props}>
-      {children && children.map((child, index) => {
-        return (
-          <div key={index}>
-            {child.props.children && child.props.children}
-          </div>
-        );
-      })}
+      {children &&
+        children.map((child, index) => {
+          return (
+            <div key={index}>
+              {child.props.children && child.props.children}
+            </div>
+          );
+        })}
     </SliderWrapper>
   );
 };

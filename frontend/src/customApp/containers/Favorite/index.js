@@ -3,7 +3,10 @@ import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { Spin } from "antd";
-import { TabSlider, TabPanel } from "../../components/shared/tabSlider/tabSlider";
+import {
+  TabSlider,
+  TabPanel
+} from "../../components/shared/tabSlider/tabSlider";
 import actions from "../../redux/favorite/list/actions";
 import FavoriteItem from "../../components/favorite/favoriteItem";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -87,22 +90,24 @@ class Index extends Component {
         </Title>
         <Spin size="large" spinning={fetching}>
           <TabSlider tabList={tabList}>
-          {entities.map((entity, index) => {
-            return (
-              <TabPanel key={index}>
-                {index === 0 &&
-                  <DeliveryList>
-                    <Link to={"#"} draggable={false}>
-                      <IntlMessages id="favorite.deriveryList" />
-                    </Link>
-                  </DeliveryList>}
-                <ItemBox>
-                  {entity.map((item, index) => {
-                   return <FavoriteItem item={item} key={index} />;
-                  })}
-                </ItemBox>
-              </TabPanel>);
-          })}
+            {entities.map((entity, index) => {
+              return (
+                <TabPanel key={index}>
+                  {index === 0 && (
+                    <DeliveryList>
+                      <Link to={"#"} draggable={false}>
+                        <IntlMessages id="favorite.deriveryList" />
+                      </Link>
+                    </DeliveryList>
+                  )}
+                  <ItemBox>
+                    {entity.map((item, index) => {
+                      return <FavoriteItem item={item} key={index} />;
+                    })}
+                  </ItemBox>
+                </TabPanel>
+              );
+            })}
           </TabSlider>
         </Spin>
       </ContentAreaLayout>

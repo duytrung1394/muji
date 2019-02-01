@@ -78,7 +78,7 @@ class FavoriteItemFooter extends Component {
     this.state = {
       ...this.state,
       deleteModalVisible: false
-    }
+    };
   }
 
   modalOpen = () => {
@@ -96,8 +96,16 @@ class FavoriteItemFooter extends Component {
 
   ItemFooterDeleteButton = () => {
     return (
-      <ItemFooterButton text={<IntlMessages id="favorite.delete" onClick={this.modalOpen} value={true}/>}/>
-    )
+      <ItemFooterButton
+        text={
+          <IntlMessages
+            id="favorite.delete"
+            onClick={this.modalOpen}
+            value={true}
+          />
+        }
+      />
+    );
   };
 
   render() {
@@ -106,31 +114,37 @@ class FavoriteItemFooter extends Component {
       case 1:
         return (
           <ItemFooter>
-            <ItemFooterButton text={<IntlMessages id="favorite.delete"/>}  onClick={this.modalOpen} />
-            <ItemFooterButton text={<IntlMessages id="favorite.add" />}/>
+            <ItemFooterButton
+              text={<IntlMessages id="favorite.delete" />}
+              onClick={this.modalOpen}
+            />
+            <ItemFooterButton text={<IntlMessages id="favorite.add" />} />
             <DeleteModal
-                visible={this.state.deleteModalVisible}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-              />
+              visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+            />
           </ItemFooter>
         );
       case 2:
       case 3:
         return (
           <ItemFooter>
-            <ItemFooterButton text={<IntlMessages id="favorite.delete"/>}  onClick={this.modalOpen} />
+            <ItemFooterButton
+              text={<IntlMessages id="favorite.delete" />}
+              onClick={this.modalOpen}
+            />
             <DeleteModal
-                visible={this.state.deleteModalVisible}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-              />
+              visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+            />
           </ItemFooter>
         );
       default:
-          return null;
+        return null;
     }
   }
-};
+}
 
 export default FavoriteItemFooter;

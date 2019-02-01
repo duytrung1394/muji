@@ -39,7 +39,7 @@ class FavoritesController extends Controller
 
         $sample2 = [
             'jan_code' => '4550002678944',
-            'order_date' => '2018/11/23',
+            'order_date' => '2018/3/25',
             'order_state' => '受け取り済み',
             'store_name' => 'イオンモール各務原',
             'headline' => 'アトレ川崎',
@@ -47,7 +47,7 @@ class FavoritesController extends Controller
             'item_color' => '',
             'item_size' => '',
             'item_num' => '',
-            'item_price' => '税込495円',
+            'item_price' => '税込380円',
             'favorite_type' => 2,
             'img_src' => 'img-favorite-slide-2.png'
         ];
