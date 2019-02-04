@@ -27,3 +27,28 @@ const StyledButton = styled(AntdButton)`
 export const Button = props => (
   <StyledButton {...props}>{props.children}</StyledButton>
 );
+
+
+const getBackgroundColor = props => {
+  const color = props.color ? props.color : "#fff";
+  return props.reverse ? color : "#fff";
+}
+
+const getColor = props => {
+  const color = props.color ? props.color : "#585858";
+  return props.reverse ? "fff" : color ;
+}
+
+export const OutlineButton = styled(Button)`
+  &&& {
+    background-color: ${getBackgroundColor};
+    color: ${getColor};
+    border: 1px solid ${getColor};
+    border-radius: 25px;
+    font-size: 12px;
+  }
+  &.ant-btn-clicked:after {
+    content: "";
+    border: none;
+  }
+`;
