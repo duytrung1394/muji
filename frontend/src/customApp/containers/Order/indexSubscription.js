@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Tabs from "../../components/order/orderTabs";
 import styled from "styled-components";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { Spin } from "antd";
+import {
+  TabSlider,
+  TabPanel
+} from "../../components/shared/tabSlider/tabSlider";
+import SubscriptionItem from "../../components/order/subscription/item";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -22,6 +26,12 @@ const tabList = [
   "order.subscription.tab.continue",
   "order.subscription.tab.stop"
 ];
+
+const ItemBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 50px;
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -54,11 +64,19 @@ class Index extends Component {
           <IntlMessages id="order.subscription.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <Tabs
-            itemList={entities}
-            tabList={tabList}
-            itemType={"subscription"}
-          />
+          <TabSlider tabList={tabList}>
+            {entities.map((entity, index) => {
+              return (
+                <TabPanel key={index}>
+                  <ItemBox>
+                    {entity.map((item, index) => {
+                      return <SubscriptionItem item={item} key={index} />;
+                    })}
+                  </ItemBox>
+                </TabPanel>
+              );
+            })}
+          </TabSlider>
         </Spin>
       </ContentAreaLayout>
     );

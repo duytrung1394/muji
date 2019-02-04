@@ -1,122 +1,134 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Popconfirm, Icon, message } from "antd";
+import { Modal, message } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import React, { Component } from "react";
+import styled from "styled-components";
+import {
+  ItemFooter as ItemFooterWrapper,
+  ItemFooterButton
+} from "../../shared/tabSlider/tabSliderItem";
 
-const SubscriptionItemButtonWrapper = styled.ul`
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  padding: 0;
-  margin: 0;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  overflow: hidden;
-`;
-
-const SubscriptionItemButton = styled.li`
-  width: 100%;
-  position: relative;
-  background: rgba(0, 0, 0, 0.05);
+const DeleteModalButton = styled.p`
+  max-width: 300px;
+  margin: 20px auto 0;
   text-align: center;
-  list-style-type: none;
-  list-style: none;
 
-  &:nth-child(2n) {
-    border-left: 1px solid #e5e5e5;
+  button {
+    border: 1px solid rgb(127, 0, 25);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
   }
 
-  a,
-  p {
-    display: block;
-    padding: 12px 24px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  a,
-  a:hover {
-    color: rgba(0, 0, 0, 0.65);
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-
-  i {
-    position: absolute;
-    height: 14px;
-    font-size: 14px;
-    font-weight: bold;
-    margin: auto;
-    top: 0px;
-    right: 3%;
-    bottom: 0px;
+  button,
+  button:hover,
+  button:focus {
+    color: rgb(127, 0, 25);
+    text-decoration: none;
   }
 `;
 
-const buttonText = {
-  skip: "order.subscription.skip",
-  change: "order.subscription.change",
-  delete: "order.subscription.delete",
-  resume: "order.subscription.resume"
-};
+const DeleteConfirmMessage = styled.p`
+  text-align: center;
+`;
 
-const DeleteButton = ({ placement, onConfirm }) => {
-  let confirmText = <IntlMessages id="order.subscription.deleteConfirm" />;
-
-  return (
-    <SubscriptionItemButton>
-      <Popconfirm
-        placement={placement}
-        title={confirmText}
-        onConfirm={onConfirm}
-        okText="はい"
-        cancelText="いいえ"
-      >
-        <Link to={"#"}>
-          <IntlMessages id={buttonText.delete} />
-          <Icon type="right" />
-        </Link>
-      </Popconfirm>
-    </SubscriptionItemButton>
-  );
-};
-
-const LinkButton = ({ to, textId }) => {
-  return (
-    <SubscriptionItemButton>
-      <Link to={to}>
-        <IntlMessages id={textId} />
-        <Icon type="right" />
-      </Link>
-    </SubscriptionItemButton>
-  );
-};
-
-const cancelConfirm = () => {
-  message.info("削除");
-};
-
-const SubscriptionItem = ({ item }) => {
-  switch (item.cancel_type) {
-    case 1:
-      return (
-        <SubscriptionItemButtonWrapper>
-          <LinkButton to={"#"} textId={buttonText.skip} />
-          <LinkButton to={"#"} textId={buttonText.change} />
-        </SubscriptionItemButtonWrapper>
-      );
-    case 2:
-      return (
-        <SubscriptionItemButtonWrapper>
-          <DeleteButton placement="topLeft" onConfirm={cancelConfirm} />
-          <LinkButton to={"#"} textId={buttonText.resume} />
-        </SubscriptionItemButtonWrapper>
-      );
+const DeleteModalWrapper = styled(Modal)`
+  && {
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
+
+  .ant-modal-content {
+    width: 100%;
+
+    & .ant-modal-body {
+      padding: 16px;
+    }
+  }
+`;
+
+const DeleteModal = ({ visible, onOk, onCancel }) => {
+  return (
+    <DeleteModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <DeleteConfirmMessage>
+        <IntlMessages id="order.subscription.deleteConfirm" />
+      </DeleteConfirmMessage>
+      <DeleteModalButton>
+        <button to={"#"} onClick={onOk}>
+          <IntlMessages id="order.subscription.delete" />
+        </button>
+      </DeleteModalButton>
+    </DeleteModalWrapper>
+  );
 };
 
-export default SubscriptionItem;
+class FavoriteItemFooter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.state,
+      deleteModalVisible: false
+    };
+  }
+
+  modalOpen = () => {
+    this.setState({ deleteModalVisible: true });
+  };
+
+  handleOk = () => {
+    message.info("削除");
+    this.setState({ deleteModalVisible: false });
+  };
+
+  handleCancel = () => {
+    this.setState({ deleteModalVisible: false });
+  };
+
+  render() {
+    const { type } = this.props;
+    switch (type) {
+      case 1:
+        return (
+          <ItemFooterWrapper>
+            <ItemFooterButton
+              text={<IntlMessages id="order.subscription.skip" />}
+            />
+            <ItemFooterButton
+              text={<IntlMessages id="order.subscription.change" />}
+            />
+          </ItemFooterWrapper>
+        );
+      case 2:
+        return (
+          <ItemFooterWrapper>
+            <ItemFooterButton
+              text={<IntlMessages id="order.subscription.delete" />}
+              onClick={this.modalOpen}
+            />
+            <DeleteModal
+              visible={this.state.deleteModalVisible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+            />
+            <ItemFooterButton
+              text={<IntlMessages id="order.subscription.resume" />}
+            />
+          </ItemFooterWrapper>
+        );
+      default:
+        return null;
+    }
+  }
+}
+
+export default FavoriteItemFooter;

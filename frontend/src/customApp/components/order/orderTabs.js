@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import StoreReserveItemList from "./storeReserve/itemList";
-import SubscriptionItemList from "./subscription/itemList";
 import IntlMessages from "../../../components/utility/intlMessages";
 import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -56,11 +55,8 @@ const SliderTabs = styled.ul`
   }
 `;
 
-
 const ItemList = ({ itemType, itemList }) => {
   switch (itemType) {
-    case "subscription":
-      return <SubscriptionItemList itemList={itemList} />;
     default:
       return <StoreReserveItemList itemList={itemList} />;
   }
