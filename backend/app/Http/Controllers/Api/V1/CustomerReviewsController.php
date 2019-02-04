@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class CustomerReviewsController extends Controller
 {
-    private $mockTotal = 23;
+    private $mockTotal = 7;
     private $userTotal = 5;
     /**
      * Display a listing of the resource.
@@ -64,28 +64,45 @@ class CustomerReviewsController extends Controller
     }
 
     /**
-      * 詳細
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function show($reviewCode)
-     {
-         return [
-             'data' => $this->getMockData((int)$reviewCode),
-         ];
-     }
+     * Display a listing of the resource(商品別一覧).
+     *
+     * @return Response
+     */
+    public function indexByItem(Request $request)
+    {
+        return [
+            'data'      => $this->getMultiMockData(
+                (int)$request->input('offset'),
+                (int)$request->input('length')
+            ),
+            'total'     => $this->mockTotal,
+            'sortFlg'   => false
+        ];
+    }
 
     /**
-      * Show the form for creating a new resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function create()
-     {
-         return [
-             'data' => ['isDetail' => true],
-         ];
-     }
+     * 詳細
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($reviewCode)
+    {
+        return [
+            'data' => $this->getMockData((int)$reviewCode),
+        ];
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return [
+            'data' => ['isDetail' => true],
+        ];
+    }
 
     /**
      * Remove some resources from storage.
@@ -98,6 +115,22 @@ class CustomerReviewsController extends Controller
         return [
             'data'  => [],
             'count' => 1,
+        ];
+    }
+
+     /**
+     * Remove some resources from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getReportMock($itemCode,$commentCode)
+    {
+        return [
+            'data' => [
+                'item' => $this->getMockData($itemCode),
+                'comment' => $this->getCommentData($commentCode)
+            ]
         ];
     }
 
@@ -248,6 +281,18 @@ class CustomerReviewsController extends Controller
         }
     }
 
+    private function getCommentData($index){
+        $commentList = [
+            'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
+            '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
+            'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
+            '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
+            '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
+        ];
+
+        return $commentList[$index];
+    }
+
     /**
      * レビューコメントのモックデータ
      */
@@ -294,5 +339,4 @@ class CustomerReviewsController extends Controller
 
         return $comments;
     }
-
 }

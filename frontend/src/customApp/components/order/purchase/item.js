@@ -7,6 +7,7 @@ import imgPurchaseHistory1 from "../../../../image/order/purchase_history/img-pu
 import imgPurchaseHistory2 from "../../../../image/order/purchase_history/img-purchase-history-2.png";
 import imgPurchaseHistory3 from "../../../../image/order/purchase_history/img-purchase-history-3.png";
 import imgPurchaseHistory4 from "../../../../image/order/purchase_history/img-purchase-history-4.png";
+import mediaQuery from "../../../mediaQuery";
 
 const images = {
   "img-purchase-history-1.png": imgPurchaseHistory1,
@@ -16,16 +17,15 @@ const images = {
 };
 
 const PurchaseItemWrapper = styled.section`
-  width: calc((100% - 60px) / 3);
-  margin: 20px 30px 0 0;
+  margin-bottom: 20px;
+  padding-top: 1px;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.65);
   box-sizing: border-box;
   font-size: 12px;
-
-  &:nth-child(3n) {
-    margin-right: 0;
-  }
+  ${mediaQuery.greaterThan("sm")`
+    margin-bottom: 10px;
+  `};
 `;
 
 const PurchaseHistoryTitle = styled.h2`

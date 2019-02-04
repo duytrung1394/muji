@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
-import SelectPrefecture from "../form/selectPrefecture";
+import ContentPanel from "../shared/panel/contentPanel";
+import SelectPrefecture from "../shared/form/selectPrefecture";
 
 const mapStyle = { position: "relative", width: "100%", height: "250px" };
 

@@ -2,7 +2,7 @@ import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { List } from "antd";
 import styled from "styled-components";
-import { BaseContentLayout } from "../../components/panel/contentLayout";
+import { BaseContentLayout } from "../../components/shared/panel/contentLayout";
 
 const ContentLayout = styled(BaseContentLayout)`
   text-align: center;

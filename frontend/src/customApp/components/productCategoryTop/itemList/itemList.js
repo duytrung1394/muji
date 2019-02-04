@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import ContentPanel from "../../panel/contentPanel";
-import LargeButton from "../../form/largeButton";
+import ContentPanel from "../../shared/panel/contentPanel";
+import LargeButton from "../../shared/form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import CategoriesInPage from "./categoriesInPage";
-import Slider from "../../slider";
+import Slider from "../../shared/slider";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
