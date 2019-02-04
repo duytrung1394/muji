@@ -66,43 +66,47 @@ const SpecifyMessageButton = styled(CommonButton)`
   font-size: 12px;
 `;
 
-const Gift = () => {
-  return (
-    <GiftWrapper>
-      <GiftStyle>
-        <GiftTitle>
-          <IntlMessages id="order.procedure.GiftWrapping"/>
-        </GiftTitle>
-        <GiftCheckboxArea>
-          <GiftCheckbox>
-            <IntlMessages id="order.procedure.useGiftWrapping"/>
-          </GiftCheckbox>
-        </GiftCheckboxArea>
-        <GiftSelect
-          style={{ width: 250 }}
-          onChange={handleChange}
-        >
-          <Option value="まとめて包装する">
-            <IntlMessages id="order.procedure.toPackTogether"/>
-          </Option>
-          <Option value="個々に包装する">
-            <IntlMessages id="order.procedure.toWrapIndividually"/>
-          </Option>
-        </GiftSelect>
-        <SpecifiedResult>
-          <StyledSpan>
-            <IntlMessages id="order.procedure.japaneseGiftWapping"/>指定なし
-          </StyledSpan>
-            <IntlMessages id="order.procedure.GiftMessage"/>指定なし
-        </SpecifiedResult>
-        <ButtonArea>
-          <SpecifyMessageButton>
-            <IntlMessages id="order.procedure.specifyMessage"/>
-          </SpecifyMessageButton>
-        </ButtonArea>
-      </GiftStyle>
-    </GiftWrapper>
-  );
+const Gift = ({giftData}) => {
+  if(giftData){
+    return (
+      <GiftWrapper>
+        <GiftStyle>
+          <GiftTitle>
+            <IntlMessages id="order.procedure.GiftWrapping"/>
+          </GiftTitle>
+          <GiftCheckboxArea>
+            <GiftCheckbox>
+              <IntlMessages id="order.procedure.useGiftWrapping"/>
+            </GiftCheckbox>
+          </GiftCheckboxArea>
+          <GiftSelect
+            style={{ width: 250 }}
+            onChange={handleChange}
+          >
+            <Option value="まとめて包装する">
+              <IntlMessages id="order.procedure.toPackTogether"/>
+            </Option>
+            <Option value="個々に包装する">
+              <IntlMessages id="order.procedure.toWrapIndividually"/>
+            </Option>
+          </GiftSelect>
+          <SpecifiedResult>
+            <StyledSpan>
+              <IntlMessages id="order.procedure.japaneseGiftWapping"/>
+              {giftData.wapping_state}
+            </StyledSpan>
+              <IntlMessages id="order.procedure.GiftMessage"/>
+              {giftData.message_state}
+          </SpecifiedResult>
+          <ButtonArea>
+            <SpecifyMessageButton>
+              <IntlMessages id="order.procedure.specifyMessage"/>
+            </SpecifyMessageButton>
+          </ButtonArea>
+        </GiftStyle>
+      </GiftWrapper>
+    );
+    } return null;
 };
 
 export default Gift;

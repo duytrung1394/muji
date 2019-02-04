@@ -57,16 +57,16 @@ class Index extends Component {
       // react-router
       history
     } = this.props;
-
+    console.log(entities);
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title>
             ご注文手続き
           </Title>
-          <UserData />
-          <Gift />
-          <Delivery />
+          <UserData userData={entities.user_data}/>
+          <Gift giftData={entities.gift}/>
+          <Delivery deliveryData={entities.delivery}/>
           <BillDetails />
           <BillFooter />
         </ContentLayout>

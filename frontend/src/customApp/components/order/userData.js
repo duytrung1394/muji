@@ -66,37 +66,42 @@ const OrderInfoChangeButton = styled(CommonButton)`
   width: 100px;
 `;
 
-const UserData = () => {
-  return (
-    <UserInformation>
-      <Addressee>
-        <UserInfomationTitles>
-          <IntlMessages id="order.procedure.addressee"/>
-        </UserInfomationTitles>
-        <PersonsName>
-          無印　花子<IntlMessages id="order.procedure.esq"/>
-        </PersonsName>
-        <Others>
-          〒 123 - 4567 東京都渋谷区1-2-3<p />
-          TEL：01 - 2345 - 6789
-        </Others>
-        <AddresseeChangeButton>
-          <IntlMessages id="order.procedure.change"/>
-      </AddresseeChangeButton>
-      </Addressee>
-      <OrderInfo>
-        <UserInfomationTitles>
-          <IntlMessages id="order.procedure.orderInfomation"/>
-        </UserInfomationTitles>
-        <PersonsName>
-          無印 花子<IntlMessages id="order.procedure.esq"/>
-        </PersonsName>
-        <OrderInfoChangeButton>
-          <IntlMessages id="order.procedure.change"/>
-      </OrderInfoChangeButton>
-      </OrderInfo>
-    </UserInformation>
-  );
+const UserData = ({userData}) => {
+  if(userData){
+    return (
+      <UserInformation>
+        <Addressee>
+          <UserInfomationTitles>
+            <IntlMessages id="order.procedure.addressee"/>
+          </UserInfomationTitles>
+          <PersonsName>
+            {userData.addressee_name}
+            <IntlMessages id="order.procedure.esq"/>
+          </PersonsName>
+          <Others>
+            {userData.street_address}<p />
+          <IntlMessages id="order.procedure.tel"/>
+            {userData.phone_number}
+          </Others>
+          <AddresseeChangeButton>
+            <IntlMessages id="order.procedure.change"/>
+        </AddresseeChangeButton>
+        </Addressee>
+        <OrderInfo>
+          <UserInfomationTitles>
+            <IntlMessages id="order.procedure.orderInfomation"/>
+          </UserInfomationTitles>
+          <PersonsName>
+            {userData.orderer_name}
+            <IntlMessages id="order.procedure.esq"/>
+          </PersonsName>
+          <OrderInfoChangeButton>
+            <IntlMessages id="order.procedure.change"/>
+        </OrderInfoChangeButton>
+        </OrderInfo>
+      </UserInformation>
+    );
+    } return null;
 };
 
 export default UserData;

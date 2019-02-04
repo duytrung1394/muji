@@ -4,7 +4,7 @@ import BillItems from "./billItems";
 import BillingSummary from "./billingSummary";
 import PaymentMethod from "./paymentMethod";
 
-const BillContents　= styled.div`
+const BillContents = styled.div`
   padding: 16px;
   margin-top: 20px;
   margin-bottom: 32px;

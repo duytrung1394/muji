@@ -13,7 +13,7 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMultiMockData( (int)$request->input('page') ),
+            'data'  => $this->getMockData(),
             'total' => 200,
         ];
     }
@@ -116,13 +116,66 @@ class OrdersController extends Controller
     /**
      * モックデータを生成して取得
      */
-    private function getMockData($code)
+    private function getMockData()
     {
         return [
-            'order_code'   => $code,
-            'name'        => 'name_' . $code,
-            'description' => 'description_' . $code,
-        ];
+            // 'order_code'   => $code,
+            // 'name'        => 'name_' . $code,
+            // 'description' => 'description_' . $code,
+            'user_data' => [
+                'addressee_name' => '無印　花子',
+                'street_address' => '〒 123 - 4567 東京都渋谷区1-2-3',
+                'phone_number' => '01 - 2345 - 6789',
+                'orderer_name' => '無印　花子',
+            ],  
+            'gift' => [  
+                'wapping_state' => '指定なし',
+                'message_state' => '指定なし',
+            ],
+            'delivery' => [
+                'delivery_info' => [
+                    'delivery_flight' => '1',
+                    'delivery_category' => '小物',
+                ],
+                'delivery_schedule' => '2019年10月30日（火）通常便',
+                'items' => [    
+                    [
+                        'clothes_type' => 'カットソー',
+                        'item_name' => 'ミニ裏毛五分袖ワイドＴシャツ',
+                        'item_color' => 'ライトシルバーグレー',
+                        'item_size' => 'S',
+                        'item_number' => '1',
+                        'item_price' => '2,980',
+                        'img_src' => 'img-order-delivery-1.png',
+                    ],
+                    [
+                        'clothes_type' => 'カットソー',
+                        'item_name' => 'スムースハイネックワンピース',
+                        'item_color' => 'チャコールグレー',
+                        'item_size' => 'S',
+                        'item_number' => '1',
+                        'item_before_cut_price' => '3,000',
+                        'item_price' => '2,903',
+                        'img_src' => 'img-order-delivery-2.png',
+                    ],
+                ]
+            ],
+            'bill_detail' => [
+                'holding_points' => '3000',
+                'holding_coins' => '3000',
+                'account' => '3000',
+            ],
+            'billing_summary' => [
+                'products_subtotal' => '7,960',
+                'incidental_service' => '0',
+                'delivery_fee' => '980',
+                'muji_shopping_points' => '3,000',
+                'muji_coins' => '3,000',
+                'partoner_sales' => '-2,000',
+                'payment_confirm' => '450',
+            ],
+            'lower_four_digits' => '1234',
+        ];    
     }
 
     private function getPurchaseHistoryMock(){

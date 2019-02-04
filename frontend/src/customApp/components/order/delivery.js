@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
+import OrderDeliveryImage1 from "../../../image/order/order_procedure/img-order-delivery-1.png";
+import OrderDeliveryImage2 from "../../../image/order/order_procedure/img-order-delivery-2.png";
+import CommonButton from "./commonButton";
 
 const DeliveryWrapper = styled.div`
   padding: 0 16px 16px 16px;
@@ -13,7 +16,7 @@ const DeliveryStyle = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
-const DeliverTitle = styled.h1`
+const DeliveryInfo = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
@@ -26,7 +29,17 @@ const TitleSpan = styled.span`
 
 const DeliverySchedule = styled.div`
   font-size: 13px;
-  margin-top: 12px;
+  margin: 12px 0 30px 0;
+`;
+
+const ButtonWrapper = styled.div`
+  text-align: center;
+`;
+
+const SpecifyDateButton = styled(CommonButton)`
+  width: 300px;
+  font-size: 12px;
+  text-align: center;
 `;
 
 const OrderItem = styled.div`
@@ -43,43 +56,66 @@ const OrderItemli = styled.li`
   border-top: 1px solid rgb(153, 153, 153);
 `;
 
-const Delivery = () => {
-  return (
-    <DeliveryWrapper>
-      <DeliveryStyle>
-        <DeliverTitle>
-          配送便：1<TitleSpan>配送区分：小物</TitleSpan>
-        </DeliverTitle>
-        <DeliverySchedule>
-          お届け予定：2019年10月30日（火）通常便<p />
-        </DeliverySchedule>
-        【お届け日時の指定　ボタン】<p />
-        <OrderItem>
-          <OrderItemUl>
-            <OrderItemli>
-              img<br />
-              カットソー<br />
-              ミニ裏毛五分袖ワイドＴシャツ<br />
-              カラー：ライトシルバーグレー<br />
-              サイズ：S<br />
-              個数：1<br />
-              税込2,980円
-            </OrderItemli>
-            <OrderItemli>
-              img<br />
-              カットソー<br />
-              スムースハイネックワンピース<br />
-              カラー：チャコールグレー<br />
-              サイズ：S<br />
-              個数：1<br />
-              税込 3,000 円 → 税込2,903円<br />
-            （期間限定価格）
-            </OrderItemli>
-        </OrderItemUl>
-      </OrderItem>
-      </DeliveryStyle>
-    </DeliveryWrapper>
-  );
+const images = [OrderDeliveryImage1, OrderDeliveryImage2];
+
+const ItemImage = styled.img`
+  width: 34px;
+  height: 21px;
+`;
+
+const Delivery = ({deliveryData}) => {
+  if(deliveryData){
+    return (
+      <DeliveryWrapper>
+        <DeliveryStyle>
+          <DeliveryInfo>
+            <IntlMessages id="order.procedure.deliveryFlight" />
+            {deliveryData.delivery_info.delivery_flight}
+            <TitleSpan>
+              <IntlMessages id="order.procedure.deliveryCategory" />
+              {deliveryData.delivery_info.delivery_category}
+            </TitleSpan>
+          </DeliveryInfo>
+          <DeliverySchedule>
+            <IntlMessages id="order.procedure.deliverySchedule" />
+            {deliveryData.delivery_schedule}
+          </DeliverySchedule>
+          <ButtonWrapper>
+          <SpecifyDateButton>
+            <IntlMessages id="order.procedure.specifyDate"/>
+          </SpecifyDateButton>
+          </ButtonWrapper>
+          <OrderItem>
+            <OrderItemUl>
+              <OrderItemli>
+                  <ItemImage />
+                  カットソー<br />
+                  ミニ裏毛五分袖ワイドＴシャツ<br />
+                  <IntlMessages id="order.procedure.itemColor" />ライトシルバーグレー<br />
+                  <IntlMessages id="order.procedure.itemSize" />S<br />
+                  <IntlMessages id="order.procedure.itemNumber" />1<br />
+                  <IntlMessages id="order.procedure.taxIn" />2,980
+                  <IntlMessages id="order.procedure.yen" />
+              </OrderItemli>
+              <OrderItemli>
+                  カットソー<br />
+                  スムースハイネックワンピース<br />
+                  <IntlMessages id="order.procedure.itemColor" />チャコールグレー<br />
+                  <IntlMessages id="order.procedure.itemSize" />S<br />
+                  <IntlMessages id="order.procedure.itemNumber" />1<br />
+                  <IntlMessages id="order.procedure.taxIn" />3,000
+                  <IntlMessages id="order.procedure.yen" />
+                  <IntlMessages id="order.procedure.arrow" />
+                  <IntlMessages id="order.procedure.taxIn" />2,903
+                  <IntlMessages id="order.procedure.yen" /><br />
+                  <IntlMessages id="order.procedure.timeLimitedPrice" />
+              </OrderItemli>
+            </OrderItemUl>
+          </OrderItem>
+        </DeliveryStyle>
+      </DeliveryWrapper>
+    );
+    } return null;
 };
-    
+
 export default Delivery;
