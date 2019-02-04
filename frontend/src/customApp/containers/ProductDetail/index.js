@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import actions from "../../redux/product_detail/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 
 class Index extends Component {
   componentDidMount() {

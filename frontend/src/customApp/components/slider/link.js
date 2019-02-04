@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link as ReactRouterLink } from "../form/link";
+import { Link as ReactRouterLink } from "../shared/form/link";
 
 class Link extends Component {
   state = {
