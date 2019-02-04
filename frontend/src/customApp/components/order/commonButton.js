@@ -13,10 +13,9 @@ const StyledCommonButton = styled.button`
   background-color: inherit;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0px 1px 3px 0px rgba(88, 88, 88, 0.3) ;
+  box-shadow: 0px 1px 3px 0px rgba(88, 88, 88, 0.3);
 
   :hover {
-    
   }
 
   :focus {

@@ -11,7 +11,8 @@ import UserData from "../../components/order/userData";
 import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
 import BillFooter from "../../components/order/billFooter";
-import BillDetails from "../../components/order/billDetails"
+import BillDetails from "../../components/order/billDetails";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -57,23 +58,22 @@ class Index extends Component {
       // react-router
       history
     } = this.props;
-    console.log(entities);
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title>
-            ご注文手続き
+            <IntlMessages id="order.procedure.title" />
           </Title>
-          <UserData userData={entities.user_data}/>
-          <Gift giftData={entities.gift}/>
-          <Delivery deliveryData={entities.delivery}/>
-          <BillDetails />
+          <UserData userData={entities.user_data} />
+          <Gift giftData={entities.gift} />
+          <Delivery deliveryData={entities.delivery} />
+          <BillDetails billDetails={entities.bill_detail} />
           <BillFooter />
         </ContentLayout>
       </ContentAreaLayout>
     );
   }
-};
+}
 
 const mapStateToProps = state => {
   return state.Order.List.toJS();

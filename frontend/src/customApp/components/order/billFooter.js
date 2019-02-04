@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import CommonButton from "./commonButton";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BillButtons = styled.div`
   display: flex;
@@ -10,8 +10,7 @@ const BillButtons = styled.div`
   font-size: 12px;
 `;
 
-const BackButton = styled(CommonButton)`
-`;
+const BackButton = styled(CommonButton)``;
 
 const BackOrderConfirmButton = styled(CommonButton)`
   background-color: #7f0019;
@@ -23,12 +22,12 @@ const BillFooter = () => {
     <BillButtons>
       <Link to="#">
         <BackButton>
-          <IntlMessages id="order.procedure.backPage"/>
+          <IntlMessages id="order.procedure.backPage" />
         </BackButton>
       </Link>
       <Link to="#">
         <BackOrderConfirmButton>
-          <IntlMessages id="order.procedure.backOrderConfirm"/>
+          <IntlMessages id="order.procedure.backOrderConfirm" />
         </BackOrderConfirmButton>
       </Link>
     </BillButtons>

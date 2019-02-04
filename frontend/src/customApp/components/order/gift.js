@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Checkbox, Select } from 'antd';
+import { Checkbox, Select } from "antd";
 import CommonButton from "./commonButton";
 
 const GiftWrapper = styled.div`
   padding: 16px;
   margin-top: 30px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 `;
 
 const GiftStyle = styled.div`
   padding: 16px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
-const GiftTitle= styled.h1`
+const GiftTitle = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
@@ -39,15 +39,6 @@ const GiftCheckbox = styled(Checkbox)`
   }
 `;
 
-const GiftSelect = styled(Select)`
-`;
-
-const Option = Select.Option;
-
-const handleChange = (value)=>{
-  console.log(`selected ${value}`);
-};
-
 const SpecifiedResult = styled.div`
   margin-top: 20px;
   font-size: 13px;
@@ -66,47 +57,47 @@ const SpecifyMessageButton = styled(CommonButton)`
   font-size: 12px;
 `;
 
-const Gift = ({giftData}) => {
-  if(giftData){
+const Option = Select.Option;
+
+const Gift = ({ giftData }) => {
+  if (giftData) {
     return (
       <GiftWrapper>
         <GiftStyle>
           <GiftTitle>
-            <IntlMessages id="order.procedure.GiftWrapping"/>
+            <IntlMessages id="order.procedure.GiftWrapping" />
           </GiftTitle>
           <GiftCheckboxArea>
             <GiftCheckbox>
-              <IntlMessages id="order.procedure.useGiftWrapping"/>
+              <IntlMessages id="order.procedure.useGiftWrapping" />
             </GiftCheckbox>
           </GiftCheckboxArea>
-          <GiftSelect
-            style={{ width: 250 }}
-            onChange={handleChange}
-          >
+          <Select style={{ width: 250 }}>
             <Option value="まとめて包装する">
-              <IntlMessages id="order.procedure.toPackTogether"/>
+              <IntlMessages id="order.procedure.toPackTogether" />
             </Option>
             <Option value="個々に包装する">
-              <IntlMessages id="order.procedure.toWrapIndividually"/>
+              <IntlMessages id="order.procedure.toWrapIndividually" />
             </Option>
-          </GiftSelect>
+          </Select>
           <SpecifiedResult>
             <StyledSpan>
-              <IntlMessages id="order.procedure.japaneseGiftWapping"/>
+              <IntlMessages id="order.procedure.japaneseGiftWapping" />
               {giftData.wapping_state}
             </StyledSpan>
-              <IntlMessages id="order.procedure.GiftMessage"/>
-              {giftData.message_state}
+            <IntlMessages id="order.procedure.GiftMessage" />
+            {giftData.message_state}
           </SpecifiedResult>
           <ButtonArea>
             <SpecifyMessageButton>
-              <IntlMessages id="order.procedure.specifyMessage"/>
+              <IntlMessages id="order.procedure.specifyMessage" />
             </SpecifyMessageButton>
           </ButtonArea>
         </GiftStyle>
       </GiftWrapper>
     );
-    } return null;
+  }
+  return null;
 };
 
 export default Gift;

@@ -1,18 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import OrderDeliveryImage1 from "../../../image/order/order_procedure/img-order-delivery-1.png";
 import OrderDeliveryImage2 from "../../../image/order/order_procedure/img-order-delivery-2.png";
 import CommonButton from "./commonButton";
+import { Row, Col } from "antd";
+import { Link } from "react-router-dom";
 
 const DeliveryWrapper = styled.div`
   padding: 0 16px 16px 16px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 `;
 
 const DeliveryStyle = styled.div`
   padding: 16px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
@@ -56,66 +58,102 @@ const OrderItemli = styled.li`
   border-top: 1px solid rgb(153, 153, 153);
 `;
 
-const images = [OrderDeliveryImage1, OrderDeliveryImage2];
-
 const ItemImage = styled.img`
-  width: 34px;
-  height: 21px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 `;
 
-const Delivery = ({deliveryData}) => {
-  if(deliveryData){
+const ItemData = styled.p`
+  margin-bottom: 4px;
+`;
+
+const StyledRow = styled(Row)`
+  width: 100%;
+  display: flex;
+`;
+
+const images = {
+  OrderDeliveryImage1: OrderDeliveryImage1,
+  OrderDeliveryImage2: OrderDeliveryImage2
+};
+
+const Delivery = ({ deliveryData }) => {
+  console.log(deliveryData);
+  if (deliveryData) {
     return (
       <DeliveryWrapper>
         <DeliveryStyle>
           <DeliveryInfo>
             <IntlMessages id="order.procedure.deliveryFlight" />
-            {deliveryData.delivery_info.delivery_flight}
+            <span>{deliveryData.count}</span>
             <TitleSpan>
               <IntlMessages id="order.procedure.deliveryCategory" />
-              {deliveryData.delivery_info.delivery_category}
+              <span>{deliveryData.category}</span>
             </TitleSpan>
           </DeliveryInfo>
           <DeliverySchedule>
             <IntlMessages id="order.procedure.deliverySchedule" />
-            {deliveryData.delivery_schedule}
+            <span>{deliveryData.schedule}</span>
           </DeliverySchedule>
           <ButtonWrapper>
-          <SpecifyDateButton>
-            <IntlMessages id="order.procedure.specifyDate"/>
-          </SpecifyDateButton>
+            <SpecifyDateButton>
+              <IntlMessages id="order.procedure.specifyDate" />
+            </SpecifyDateButton>
           </ButtonWrapper>
           <OrderItem>
             <OrderItemUl>
-              <OrderItemli>
-                  <ItemImage />
-                  カットソー<br />
-                  ミニ裏毛五分袖ワイドＴシャツ<br />
-                  <IntlMessages id="order.procedure.itemColor" />ライトシルバーグレー<br />
-                  <IntlMessages id="order.procedure.itemSize" />S<br />
-                  <IntlMessages id="order.procedure.itemNumber" />1<br />
-                  <IntlMessages id="order.procedure.taxIn" />2,980
-                  <IntlMessages id="order.procedure.yen" />
-              </OrderItemli>
-              <OrderItemli>
-                  カットソー<br />
-                  スムースハイネックワンピース<br />
-                  <IntlMessages id="order.procedure.itemColor" />チャコールグレー<br />
-                  <IntlMessages id="order.procedure.itemSize" />S<br />
-                  <IntlMessages id="order.procedure.itemNumber" />1<br />
-                  <IntlMessages id="order.procedure.taxIn" />3,000
-                  <IntlMessages id="order.procedure.yen" />
-                  <IntlMessages id="order.procedure.arrow" />
-                  <IntlMessages id="order.procedure.taxIn" />2,903
-                  <IntlMessages id="order.procedure.yen" /><br />
-                  <IntlMessages id="order.procedure.timeLimitedPrice" />
-              </OrderItemli>
+              {deliveryData.items &&
+                deliveryData.items.map((item, index) => {
+                  return (
+                    <OrderItemli key={index}>
+                      <StyledRow>
+                        <Col span={8}>
+                          <Link to="#">
+                            <ItemImage src={images[item.img]} />
+                          </Link>
+                        </Col>
+                        <Col span={15} offset={1}>
+                          <ItemData>{item.type}</ItemData>
+                          <ItemData>{item.name}</ItemData>
+                          <ItemData>
+                            <IntlMessages id="order.procedure.itemColor" />
+                            {item.color}
+                          </ItemData>
+                          <ItemData>
+                            <IntlMessages id="order.procedure.itemSize" />
+                            {item.size}
+                          </ItemData>
+                          <ItemData>
+                            <IntlMessages id="order.procedure.itemNumber" />
+                            {item.number}
+                          </ItemData>
+                          <IntlMessages id="order.procedure.taxIn" />
+                          {item.price}
+                          <IntlMessages id="order.procedure.yen" />
+                          {item.discount ? (
+                            <Fragment>
+                              <IntlMessages id="order.procedure.arrow" />
+                              <IntlMessages id="order.procedure.taxIn" />
+                              <span>{item.discount_price}</span>
+                              <IntlMessages id="order.procedure.yen" />
+                              <ItemData>
+                                <IntlMessages id="order.procedure.timeLimitedPrice" />
+                              </ItemData>
+                            </Fragment>
+                          ) : null}
+                        </Col>
+                      </StyledRow>
+                    </OrderItemli>
+                  );
+                })}
             </OrderItemUl>
           </OrderItem>
         </DeliveryStyle>
       </DeliveryWrapper>
     );
-    } return null;
+  }
+  return null;
 };
 
 export default Delivery;

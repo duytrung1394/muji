@@ -1,8 +1,8 @@
-import React,{Component,createRef} from "react";
+import React, { Component, createRef } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Radio, Input, Checkbox } from 'antd';
-import {Link} from "react-router-dom";
+import { Radio, Input, Checkbox } from "antd";
+import { Link } from "react-router-dom";
 
 const BillContent = styled.div`
   padding: 16px;
@@ -32,75 +32,72 @@ const CheackBoxArea = styled.div`
 `;
 
 const radioStyle = {
-  display: 'block',
-  height: '30px',
-  lineHeight: '30px',
+  display: "block",
+  height: "30px",
+  lineHeight: "30px"
 };
 
 const InputStyle = {
-  width: '100px',
-  marginLeft: '10px'
+  width: "100px",
+  marginLeft: "10px"
 };
 
 const StyledRadio = styled(Radio)`
-  & span .ant-radio-inner{
+  & span .ant-radio-inner {
     border-color: #7f0019;
-    :after{
+    :after {
       background-color: #7f0019;
       border-color: #7f0019;
       height: 10px;
       width: 10px;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
     }
   }
 `;
 
 const RadioGroup = Radio.Group;
 
-let aaa = true;
-
-class BillItems extends Component{
-  constructor(props){
+class BillItems extends Component {
+  constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       value: 1,
-      disableFlg: true,
-    }
+      disableFlg: true
+    };
     this.inputRef = createRef();
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({
-      value: e.target.value,
+      value: e.target.value
     });
-  }
+  };
 
-  resetValue = ()=>{
-    this.inputRef.current.input.value = "";
-  }
+  resetValue = () => {
+    if (this.props.resetFlg) {
+      this.inputRef.current.input.value = "";
+    }
+  };
 
-  changeFlg = ()=>{
+  changeFlg = () => {
     this.setState({
       disableFlg: !this.state.disableFlg
-    })
+    });
     this.resetValue();
-  }
+  };
 
-  render(){
-    const {
-      title,
-      labelName,
-      usedBy,
-      useItemUnit
-    } = this.props;
+  render() {
+    const { title, labelName, usedBy, useItemUnit, billDetail } = this.props;
 
-    return(
+    const { possession, input_flg } = billDetail;
+
+    return (
       <BillContent>
         <div>
           <BillTitles>
-            {title}
+            <IntlMessages id={title} />
           </BillTitles>
           <Link to="#">
             <DetailLink>
@@ -109,12 +106,17 @@ class BillItems extends Component{
           </Link>
         </div>
         <CheackBoxArea>
-          <Checkbox onChange={() => {this.changeFlg()}}>
-            <IntlMessages id={labelName}/><br />
+          <Checkbox
+            onChange={() => {
+              this.changeFlg();
+            }}
+          >
+            <IntlMessages id={labelName} />
+            <br />
             <IntlMessages id="order.procedure.leftBracket" />
-            <IntlMessages id={usedBy}/>
-              <span>3000</span>
-            <IntlMessages id={useItemUnit}/>
+            <IntlMessages id={usedBy} />
+            <span>{possession}</span>
+            <IntlMessages id={useItemUnit} />
             <IntlMessages id="order.procedure.rightBracket" />
           </Checkbox>
         </CheackBoxArea>
@@ -125,22 +127,21 @@ class BillItems extends Component{
             disabled={this.state.disableFlg}
           >
             <StyledRadio style={radioStyle} value={1} onClick={this.resetValue}>
-              <IntlMessages id="order.procedure.useAll"/>
+              <IntlMessages id="order.procedure.useAll" />
             </StyledRadio>
             <StyledRadio style={radioStyle} value={2}>
-              <IntlMessages id="order.procedure.usePart"/>
-              {aaa ?
-                  this.state.value === 2 && this.state.disableFlg === false ?
-                  <Input style={InputStyle} ref={this.inputRef}/>
-                  :
+              <IntlMessages id="order.procedure.usePart" />
+              {input_flg ? (
+                this.state.value === 2 && this.state.disableFlg === false ? (
+                  <Input style={InputStyle} ref={this.inputRef} />
+                ) : (
                   <Input style={InputStyle} ref={this.inputRef} disabled />
-                :
-                null
-              }
+                )
+              ) : null}
             </StyledRadio>
           </RadioGroup>
         </div>
-    </BillContent>
+      </BillContent>
     );
   }
 }

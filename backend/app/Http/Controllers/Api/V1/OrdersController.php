@@ -127,43 +127,53 @@ class OrdersController extends Controller
                 'street_address' => '〒 123 - 4567 東京都渋谷区1-2-3',
                 'phone_number' => '01 - 2345 - 6789',
                 'orderer_name' => '無印　花子',
-            ],  
-            'gift' => [  
+            ],
+            'gift' => [
+                'gift_flg' => true,
                 'wapping_state' => '指定なし',
                 'message_state' => '指定なし',
             ],
             'delivery' => [
-                'delivery_info' => [
-                    'delivery_flight' => '1',
-                    'delivery_category' => '小物',
-                ],
-                'delivery_schedule' => '2019年10月30日（火）通常便',
-                'items' => [    
+                'count' => '1',
+                'category' => '小物',
+                'schedule' => '2019年10月30日（火）通常便',
+                'items' => [
                     [
-                        'clothes_type' => 'カットソー',
-                        'item_name' => 'ミニ裏毛五分袖ワイドＴシャツ',
-                        'item_color' => 'ライトシルバーグレー',
-                        'item_size' => 'S',
-                        'item_number' => '1',
-                        'item_price' => '2,980',
-                        'img_src' => 'img-order-delivery-1.png',
+                        'type' => 'カットソー',
+                        'name' => 'ミニ裏毛五分袖ワイドＴシャツ',
+                        'color' => 'ライトシルバーグレー',
+                        'size' => 'S',
+                        'number' => '1',
+                        'price' => '2,980',
+                        'img' => 'OrderDeliveryImage1',
+                        'discount' => false,
                     ],
                     [
-                        'clothes_type' => 'カットソー',
-                        'item_name' => 'スムースハイネックワンピース',
-                        'item_color' => 'チャコールグレー',
-                        'item_size' => 'S',
-                        'item_number' => '1',
-                        'item_before_cut_price' => '3,000',
-                        'item_price' => '2,903',
-                        'img_src' => 'img-order-delivery-2.png',
+                        'type' => 'カットソー',
+                        'name' => 'スムースハイネックワンピース',
+                        'color' => 'チャコールグレー',
+                        'size' => 'S',
+                        'number' => '1',
+                        'discount_price' => '3,000',
+                        'price' => '2,903',
+                        'img' => 'OrderDeliveryImage2',
+                        'discount' => true,
                     ],
                 ]
             ],
             'bill_detail' => [
-                'holding_points' => '3000',
-                'holding_coins' => '3000',
-                'account' => '3000',
+                'points' => [
+                    'possessions' => '3000',
+                    'input_flg' => true
+                ],
+                'coins' => [
+                    'possessions' => '3000',
+                    'input_flg' => true
+                ],
+                'account' => [
+                    'possessions' => '3000',
+                    'input_flg' => false
+                ]
             ],
             'billing_summary' => [
                 'products_subtotal' => '7,960',

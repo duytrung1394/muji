@@ -36,19 +36,19 @@ const PaymentMethod = () => {
   return (
     <PaymentDiv>
       <PaymentTitles>
-        <IntlMessages id="order.procedure.paymentMethod"/>
+        <IntlMessages id="order.procedure.paymentMethod" />
       </PaymentTitles>
       <p>
-        <IntlMessages id="order.procedure.cleditCard"/>
+        <IntlMessages id="order.procedure.cleditCard" />
       </p>
-      <IntlMessages id="order.procedure.lastFourDigits"/>
+      <IntlMessages id="order.procedure.lastFourDigits" />
       <span>1234</span>
-      <VisaImage src={visaImage}/>
+      <VisaImage src={visaImage} />
       <ChangeButton>
-        <IntlMessages id="order.procedure.change"/>
+        <IntlMessages id="order.procedure.change" />
       </ChangeButton>
     </PaymentDiv>
   );
 };
-    
+
 export default PaymentMethod;
