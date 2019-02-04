@@ -19,7 +19,7 @@ export default {
   CustomerAddress,
   CustomerReview,
   Donation,
-  ProductDetail,
   Order,
-  Lottery
+  Lottery,
+  ProductDetail
 };

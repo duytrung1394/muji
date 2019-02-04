@@ -21,8 +21,8 @@ export default function* devSaga() {
     customerAddressSagas(),
     customerReviewSagas(),
     donationSagas(),
-    productDetailSagas(),
     orderSagas(),
-    lotterySagas()
+    lotterySagas(),
+    productDetailSagas()
   ]);
 }
