@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
-import OrderDeliveryImage1 from "../../../image/order/order_procedure/img-order-delivery-1.png";
-import OrderDeliveryImage2 from "../../../image/order/order_procedure/img-order-delivery-2.png";
-import CommonButton from "./commonButton";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import OrderDeliveryImage1 from "../../../../image/order/order_procedure/img-order-delivery-1.png";
+import OrderDeliveryImage2 from "../../../../image/order/order_procedure/img-order-delivery-2.png";
+import CommonButton from "../commonButton";
 import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const DeliveryWrapper = styled.div`
   padding: 0 16px 16px 16px;
@@ -18,9 +18,16 @@ const DeliveryStyle = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
+const DeliveryTitles = styled.h2`
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: rgb(88, 88, 88);
+`;
+
 const DeliveryInfo = styled.h1`
   font-size: 15px;
-  font-weight: 600;
   color: rgb(88, 88, 88);
   margin-bottom: 0;
 `;
@@ -32,16 +39,6 @@ const TitleSpan = styled.span`
 const DeliverySchedule = styled.div`
   font-size: 13px;
   margin: 12px 0 30px 0;
-`;
-
-const ButtonWrapper = styled.div`
-  text-align: center;
-`;
-
-const SpecifyDateButton = styled(CommonButton)`
-  width: 300px;
-  font-size: 12px;
-  text-align: center;
 `;
 
 const OrderItem = styled.div`
@@ -56,11 +53,11 @@ const OrderItemUl = styled.ul`
 const OrderItemli = styled.li`
   padding: 10px;
   border-top: 1px solid rgb(153, 153, 153);
+  overflow: hidden;
 `;
 
 const ItemImage = styled.img`
   width: 100%;
-  height: 100%;
   cursor: pointer;
 `;
 
@@ -73,6 +70,10 @@ const StyledRow = styled(Row)`
   display: flex;
 `;
 
+const linkStyle = {
+  display: "block",
+}
+
 const images = {
   OrderDeliveryImage1: OrderDeliveryImage1,
   OrderDeliveryImage2: OrderDeliveryImage2
@@ -83,23 +84,20 @@ const Delivery = ({ deliveryData }) => {
     return (
       <DeliveryWrapper>
         <DeliveryStyle>
-          <DeliveryInfo>
-            <IntlMessages id="order.procedure.deliveryFlight" />
+            <DeliveryTitles>
+              <IntlMessages id="order.confirm.contentConfirmation" />
+            </DeliveryTitles>
+            <DeliveryInfo>
+            <IntlMessages id="order.confirm.deliveryService" />
             <span>{deliveryData.count}</span>
             <TitleSpan>
-              <IntlMessages id="order.procedure.deliveryCategory" />
+              <IntlMessages id="order.confirm.deliveryCategory" />
               <span>{deliveryData.category}</span>
             </TitleSpan>
           </DeliveryInfo>
           <DeliverySchedule>
-            <IntlMessages id="order.procedure.deliverySchedule" />
-            <span>{deliveryData.schedule}</span>
+            <IntlMessages id="order.confirm.notSpecified" />
           </DeliverySchedule>
-          <ButtonWrapper>
-            <SpecifyDateButton>
-              <IntlMessages id="order.procedure.specifyDate" />
-            </SpecifyDateButton>
-          </ButtonWrapper>
           <OrderItem>
             <OrderItemUl>
               {deliveryData.items &&
@@ -108,9 +106,9 @@ const Delivery = ({ deliveryData }) => {
                     <OrderItemli key={index}>
                       <StyledRow>
                         <Col span={8}>
-                          <Link to="#">
+                          <NavLink to="#" style={linkStyle}>
                             <ItemImage src={images[item.img]} />
-                          </Link>
+                          </NavLink>
                         </Col>
                         <Col span={15} offset={1}>
                           <ItemData>{item.type}</ItemData>

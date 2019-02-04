@@ -202,7 +202,7 @@ const routes = [
     )
   },
   {
-    path: "/orders/:order_code",
+    path: "/store/cust/order/confirmation",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/show")
