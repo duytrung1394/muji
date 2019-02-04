@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
-const FavoriteTitle = styled.h2`
+const Title = styled.h2`
   width: 100%;
   margin: 0;
   line-height: 16px;
@@ -28,9 +28,8 @@ const SubscriptionOrderInfo = styled.ul`
 `;
 
 const OrderInfo = styled.li`
-  width: 73%;
   list-style-type: none;
-  list-style; none;
+  list-style: none;
 `;
 
 const OrderAddress = styled.li`
@@ -50,25 +49,25 @@ const OrderAddress = styled.li`
 `;
 
 const OrderWarning = styled.li`
+  width: 100%;
+  margin-top: 13px;
+  font-size: 12px;
   color: rgb(139, 26, 39);
   list-style-type: none;
   list-style: none;
-  font-size: ;
 `;
 
 const ItemHeader = ({ item }) => {
   const { item_name, order_warning } = item;
   return (
     <ItemHeaderWrapper>
-      <FavoriteTitle>{item_name}</FavoriteTitle>
+      <Title>{item_name}</Title>
       {order_warning ? (
-        <SubscriptionOrderInfo>
-          <OrderWarning>
-            <IntlMessages
-              id={`order.subscription.warning.code${order_warning}`}
-            />
-          </OrderWarning>
-        </SubscriptionOrderInfo>
+        <OrderWarning>
+          <IntlMessages
+            id={`order.subscription.warning.code${order_warning}`}
+          />
+        </OrderWarning>
       ) : (
         <SubscriptionOrderInfo>
           <OrderInfo>

@@ -545,7 +545,7 @@
   "order.subscription.label.nextTime": "次回お届け日：",
   "order.subscription.label.num": "個数：",
   "order.subscription.name": "定期購入",
-  "order.subscription.num": "{num}個",
+  "order.subscription.quantity": "{num}個",
   "order.subscription.price": "税込{price}円",
   "order.subscription.resume": "再開する",
   "order.subscription.skip": "次回をスキップ",
