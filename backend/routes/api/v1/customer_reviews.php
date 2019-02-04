@@ -15,6 +15,14 @@ $router->get('/api/v1/customer-reviews', [
 ]);
 
 /**
+ * 一部取得
+ */
+$router->get('/api/v1/customer-reviews/{itemCode}/{commentCode}', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@getReportMock',
+]);
+
+/**
  * ユーザ別一覧取得
  */
 $router->get('/api/v1/customer-reviews/user', [
@@ -28,6 +36,15 @@ $router->get('/api/v1/customer-reviews/user', [
 $router->get('/api/v1/customer-reviews/following', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerReviewsController@indexByFollowing',
+
+]);
+
+/**
+ * 商品別一覧取得
+ */
+$router->get('/api/v1/customer-reviews/item', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CustomerReviewsController@indexByItem',
 ]);
 
 /**
@@ -36,20 +53,12 @@ $router->get('/api/v1/customer-reviews/following', [
  $router->get('/api/v1/customer-reviews/create', [
      'middleware'    => [],
      'uses'          => 'Api\V1\CustomerReviewsController@create',
- ]);
- 
-/**
- * 更新
- */
-$router->put('/api/v1/customer-reviews/{taskCode}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@update',
 ]);
 
 /**
- * 削除
+ * 詳細
  */
-$router->delete('/api/v1/customer-reviews', [
+$router->get('/api/v1/customer-reviews/{reviewCode}', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@destroy',
+    'uses'          => 'Api\V1\CustomerReviewsController@show',
 ]);

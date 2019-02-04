@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Spin, Form, Input, Button } from "antd";
 import actions from "../../redux/fruit/entity/actions";
 import { injectIntl } from "react-intl";
-import { ContentAreaLayout } from "../../components/panel/contentLayout";
+import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 
 class NewEntity extends Component {
   state = {
