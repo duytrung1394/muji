@@ -1,6 +1,7 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
+import searchSagas from "./search/sagas";
 import donationSagas from "./donation/sagas";
 import lotterySagas from "./lottery/sagas";
 import orderSagas from "./order/sagas";
@@ -21,6 +22,7 @@ export default function* devSaga() {
     customerReviewSagas(),
     donationSagas(),
     orderSagas(),
-    lotterySagas()
+    lotterySagas(),
+    searchSagas()
   ]);
 }
