@@ -62,6 +62,13 @@ const routes = [
     )
   },
   {
+    path: "/store/review/clipped",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/CustomerReview/indexClipped")
+    )
+  },
+  {
     path: "/store/review/item/:item_code",
     exact: true,
     component: asyncComponent(() =>
