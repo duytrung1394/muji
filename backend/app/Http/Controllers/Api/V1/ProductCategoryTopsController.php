@@ -49,14 +49,16 @@ class ProductCategoryTopsController extends Controller
                 'back_ground_image' => 'https://www.muji.com/jp/img/store/section/promotion/T10000.jpg',
                 'items' => [
                     [
-                        'img' => 'https://img.muji.net/img/item/4550002557768_95.jpg',
-                        'name' => 'ウールシルク洗えるクルーネックセーター　婦人M・オートミール',
-                        'price' => '2,990'
+                        'img' => 'https://img.muji.net/img/item/4550002674885_95.jpg',
+                        'material' => 'モダールコットンスムース',
+                        'name' => 'ハイネックロングワンピース',
+                        'price' => '3,990'
                     ],
                     [
-                        'img' => 'https://img.muji.net/img/item/4550002802899_95.jpg',
-                        'name' => '起毛ストレッチピケイージーワイドパンツ　婦人M・キャメル',
-                        'price' => '5,990'
+                        'img' => 'https://img.muji.net/img/item/4550002003296_95.jpg',
+                        'material' => 'オーガニックコットン',
+                        'name' => 'フランネルワンピース',
+                        'price' => '3,990'
                     ]
                 ]
             ],
