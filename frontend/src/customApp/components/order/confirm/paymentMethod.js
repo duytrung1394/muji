@@ -8,6 +8,7 @@ const PaymentTitles = styled.h2`
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 16px;
+  color: rgb(88, 88, 88);
 `;
 
 const PaymentDiv = styled.div`
@@ -28,12 +29,12 @@ const PaymentMethod = () => {
   return (
     <PaymentDiv>
       <PaymentTitles>
-        <IntlMessages id="order.procedure.paymentMethod" />
+        <IntlMessages id="order.confirm.paymentMethod" />
       </PaymentTitles>
       <p>
-        <IntlMessages id="order.procedure.cleditCard" />
+        <IntlMessages id="order.confirm.cleditCard" />
       </p>
-      <IntlMessages id="order.procedure.lastFourDigits" />
+      <IntlMessages id="order.confirm.lastFourDigits" />
       <span>1234</span>
       <VisaImage src={visaImage} />
     </PaymentDiv>

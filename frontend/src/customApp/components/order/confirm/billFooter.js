@@ -22,12 +22,12 @@ const BillFooter = () => {
     <BillButtons>
       <Link to="#">
         <BackButton>
-          <IntlMessages id="order.procedure.backPage" />
+          <IntlMessages id="order.confirm.backPage" />
         </BackButton>
       </Link>
       <Link to="#">
         <BackOrderConfirmButton>
-          <IntlMessages id="order.procedure.backOrderConfirm" />
+          <IntlMessages id="order.confirm.orderEnter" />
         </BackOrderConfirmButton>
       </Link>
     </BillButtons>

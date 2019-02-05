@@ -8,7 +8,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import UserData from "../../components/order/userData";
+import UserData from "../../components/order/confirm/userData";
 import Gift from "../../components/order/confirm/gift";
 import Delivery from "../../components/order/confirm/delivery";
 import BillFooter from "../../components/order/confirm/billFooter";
@@ -53,9 +53,9 @@ class Show extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title>
-            <IntlMessages id="order.procedure.title" />
+            <IntlMessages id="order.confirm.title" />
           </Title>
-          <IntlMessages id="order.confirm.notice"/>
+          <IntlMessages id="order.confirm.notice" />
           <UserData userData={entities.user_data} />
           <Gift />
           <Delivery deliveryData={entities.delivery} />

@@ -124,7 +124,8 @@ class OrdersController extends Controller
             // 'description' => 'description_' . $code,
             'user_data' => [
                 'addressee_name' => '無印　花子',
-                'street_address' => '〒 123 - 4567 東京都渋谷区1-2-3',
+                'street_address' => '123 - 4567',
+                'address' => '東京都渋谷区1-2-3',
                 'phone_number' => '01 - 2345 - 6789',
                 'orderer_name' => '無印　花子',
             ],

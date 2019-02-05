@@ -18,20 +18,20 @@ const GiftTitle = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
-  margin-bottom: 0;
+  margin-bottom: 16px;
 `;
 
 const Gift = () => {
-    return (
-      <GiftWrapper>
-        <GiftStyle>
-          <GiftTitle>
-            <IntlMessages id="order.confirm.GiftWrapping" />
-          </GiftTitle>
-          <IntlMessages id="order.confirm.dontWant" />
-        </GiftStyle>
-      </GiftWrapper>
-    );
+  return (
+    <GiftWrapper>
+      <GiftStyle>
+        <GiftTitle>
+          <IntlMessages id="order.confirm.GiftWrapping" />
+        </GiftTitle>
+        <IntlMessages id="order.confirm.dontWant" />
+      </GiftStyle>
+    </GiftWrapper>
+  );
 };
 
 export default Gift;
