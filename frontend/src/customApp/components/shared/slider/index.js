@@ -63,4 +63,4 @@ const Slider = props => {
 
 export default Slider;
 
-export { Link };
+export { defaultSettings, Link };
