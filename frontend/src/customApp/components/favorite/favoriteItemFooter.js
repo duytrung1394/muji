@@ -1,11 +1,12 @@
 import { Modal, message } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import {
-  ItemFooter,
-  ItemFooterButton
-} from "../shared/tabSlider/tabSliderItem";
+import TabSliderItemFooter from "../shared/tabSlider/itemFooter";
+// import {
+//   ItemFooter,
+//   ItemFooterButton
+// } from "../shared/tabSlider/tabSliderItem";
 
 const DeleteModalButton = styled.p`
   max-width: 300px;
@@ -82,6 +83,7 @@ class FavoriteItemFooter extends Component {
   }
 
   modalOpen = () => {
+    console.log(this.state);
     this.setState({ deleteModalVisible: true });
   };
 
@@ -94,56 +96,18 @@ class FavoriteItemFooter extends Component {
     this.setState({ deleteModalVisible: false });
   };
 
-  ItemFooterDeleteButton = () => {
-    return (
-      <ItemFooterButton
-        text={
-          <IntlMessages
-            id="favorite.delete"
-            onClick={this.modalOpen}
-            value={true}
-          />
-        }
-      />
-    );
-  };
-
   render() {
-    const { type } = this.props;
-    switch (type) {
-      case 1:
-        return (
-          <ItemFooter>
-            <ItemFooterButton
-              text={<IntlMessages id="favorite.delete" />}
-              onClick={this.modalOpen}
-            />
-            <ItemFooterButton text={<IntlMessages id="favorite.add" />} />
-            <DeleteModal
-              visible={this.state.deleteModalVisible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-            />
-          </ItemFooter>
-        );
-      case 2:
-      case 3:
-        return (
-          <ItemFooter>
-            <ItemFooterButton
-              text={<IntlMessages id="favorite.delete" />}
-              onClick={this.modalOpen}
-            />
-            <DeleteModal
-              visible={this.state.deleteModalVisible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-            />
-          </ItemFooter>
-        );
-      default:
-        return null;
-    }
+    const { actions } = this.props;
+    return (
+      <Fragment>
+        <TabSliderItemFooter actions={actions} />
+        <DeleteModal
+          visible={this.state.deleteModalVisible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        />
+      </Fragment>
+    );
   }
 }
 

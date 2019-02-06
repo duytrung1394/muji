@@ -57,36 +57,7 @@ const Tabs = styled.ul`
   }
 `;
 
-export const TabSlider = props => {
-  const { tabList, children } = props;
-  const defaultSettings = {
-    dots: true,
-    appendDots: dots => <Tabs>{dots}</Tabs>,
-    customPaging: i => (
-      <Link to={"#"} key={i}>
-        <IntlMessages id={tabList[i]} />
-      </Link>
-    ),
-    infinite: false,
-    speed: 500,
-    initialSlide: 0
-  };
-
-  return (
-    <SliderWrapper {...defaultSettings} {...props}>
-      {children &&
-        children.map((child, index) => {
-          return (
-            <div key={index}>
-              {child.props.children && child.props.children}
-            </div>
-          );
-        })}
-    </SliderWrapper>
-  );
-};
-
-export const TabPanel = styled.div`
+const TabPanel = styled.div`
   & {
     float: left;
     list-style: none;
@@ -95,7 +66,6 @@ export const TabPanel = styled.div`
 
     max-width: 1590px;
     margin: 10px auto 0;
-    padding: 0 50px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -111,3 +81,28 @@ export const TabPanel = styled.div`
     }
   }
 `;
+
+export const TabSlider = props => {
+  const { tabNameIds, children } = props;
+  const defaultSettings = {
+    dots: true,
+    appendDots: dots => <Tabs>{dots}</Tabs>,
+    customPaging: i => (
+      <Link to={"#"} key={i}>
+        <IntlMessages id={tabNameIds[i]} />
+      </Link>
+    ),
+    infinite: false,
+    speed: 500,
+    initialSlide: 0
+  };
+
+  return (
+    <SliderWrapper {...defaultSettings} {...props}>
+      {children &&
+        children.map((child, index) => {
+          return <TabPanel key={index}>{child}</TabPanel>;
+        })}
+    </SliderWrapper>
+  );
+};

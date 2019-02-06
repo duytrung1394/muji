@@ -1,31 +1,61 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
-import {
-  ItemMain,
-  ItemImage,
-  ItemDescribeList,
-  ItemDescribe,
-  EllipsisButton,
-  PopoverContent,
-  PopoverContentWrapper,
-  DescribePriceWrapper,
-  DescribePricePresent,
-  DescribePriceArrow,
-  DescribeDiscount
-} from "../shared/tabSlider/tabSliderItem";
+import styled from "styled-components";
 
-import imgArticle1 from "../../../image/favorite/article/img-favorite-slide-3-1.png";
-import imgArticle2 from "../../../image/favorite/article/img-favorite-slide-3-2.png";
-import imgEvent1 from "../../../image/favorite/event/img-favorite-slide-2.png";
-import imgProduct1 from "../../../image/favorite/product/img-favorite-slide-1.png";
+export const DescribePriceWrapper = styled.li`
+  display: flex;
+  flex-wrap: wrap;
 
-const images = {
-  "img-favorite-slide-1.png": imgProduct1,
-  "img-favorite-slide-2.png": imgEvent1,
-  "img-favorite-slide-3-1.png": imgArticle1,
-  "img-favorite-slide-3-2.png": imgArticle2
-};
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(0, 0, 0, 0.65);
+    white-space: nowrap;
+  }
+`;
+
+export const DescribeList = styled.ul`
+  margin-left: 15px;
+  margin-bottom: 0px;
+  width: calc(80% - 15px);
+  padding: 0;
+  list-style: none;
+  line-height: 20px;
+`;
+
+export const Describe = styled.li`
+  line-height: 20px;
+
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(0, 0, 0, 0.65);
+  }
+`;
+
+export const DescribePricePresent = styled.span`
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(139, 26, 39);
+    font-weight: 600;
+  }
+`;
+
+export const DescribePriceArrow = styled.span`
+  margin: 0 5px;
+`;
+
+export const DescribeDiscount = styled.span`
+  font-size: 10px;
+
+  a,
+  a:hover,
+  a:focus {
+    color: rgb(0, 0, 0, 0.65);
+  }
+`;
 
 const dateSuffix = type => {
   switch (type) {
@@ -51,16 +81,6 @@ class FavoriteItemMain extends Component {
     this.setState({ popoverVisible: visible });
   };
 
-  favoriteItemPopover = (
-    <PopoverContentWrapper>
-      <PopoverContent>
-        <Link to={"#"} draggable={false}>
-          <IntlMessages id={"favorite.addDeriveryList"} />
-        </Link>
-      </PopoverContent>
-    </PopoverContentWrapper>
-  );
-
   render() {
     const { item } = this.props;
 
@@ -79,50 +99,34 @@ class FavoriteItemMain extends Component {
     const imgUrl = jan_code ? "/store/cmdty/detail/" + jan_code : id;
 
     return (
-      <ItemMain>
-        <ItemImage src={images[img_src]} to={imgUrl} />
-        <ItemDescribeList>
-          <ItemDescribe>
-            <DescribePriceWrapper>
-              {item_price_present ? (
-                <Link to={"#"} style={{ textDecoration: "line-through" }}>
-                  {item_price}
-                </Link>
-              ) : (
-                <Link to={"#"}>{item_price}</Link>
-              )}
-              {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
-              {item_price_present && (
-                <DescribePricePresent>
-                  <Link to={"#"}>{item_price_present}</Link>
-                </DescribePricePresent>
-              )}
-            </DescribePriceWrapper>
-          </ItemDescribe>
-          <ItemDescribe>
-            <DescribeDiscount>
-              <Link to={"#"}>{item_discount}</Link>
-            </DescribeDiscount>
-          </ItemDescribe>
-          <ItemDescribe>
-            <Link to={"#"}>{caption}</Link>
-          </ItemDescribe>
-          <ItemDescribe>
-            {order_date}
-            <IntlMessages id={dateSuffix(favorite_type)} />
-          </ItemDescribe>
-        </ItemDescribeList>
+      <DescribeList>
+        <DescribePriceWrapper>
+          {item_price_present ? (
+            <Link to={"#"} style={{ textDecoration: "line-through" }}>
+              {item_price}
+            </Link>
+          ) : (
+            <Link to={"#"}>{item_price}</Link>
+          )}
+          {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
+          {item_price_present && (
+            <DescribePricePresent>
+              <Link to={"#"}>{item_price_present}</Link>
+            </DescribePricePresent>
+          )}
+        </DescribePriceWrapper>
+        <Describe>
+          <DescribeDiscount>
+            <Link to={"#"}>{item_discount}</Link>
+          </DescribeDiscount>
+        </Describe>
+        <Describe>{caption}</Describe>
 
-        {favorite_type === 1 && (
-          <EllipsisButton
-            placement="topRight"
-            content={this.favoriteItemPopover}
-            trigger="click"
-            onVisibleChange={this.handleVisibleChange}
-            visible={this.state.popoverVisible}
-          />
-        )}
-      </ItemMain>
+        <Describe>
+          {order_date}
+          <IntlMessages id={dateSuffix(favorite_type)} />
+        </Describe>
+      </DescribeList>
     );
   }
 }
