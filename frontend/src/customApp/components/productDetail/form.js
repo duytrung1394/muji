@@ -4,10 +4,10 @@ import { Col } from "antd";
 import Price from "./form/price";
 import Color from "./form/color";
 import Size from "./form/size";
-import Quantity from "./form/quantity";
 import { CartButton, BuyNowButton } from "./form/buttons";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "../shared/form/link";
+import Quantity from "../shared/form/quantity";
 
 const DetailName = styled.p`
   color: #999;
@@ -81,8 +81,25 @@ class Form extends Component {
     entity: this.props.entity,
     currentColor: "",
     currentSize: "",
-    quantity: 0
+    min: 0,
+    max: Infinity,
+    quantity: 1,
   };
+
+  componentWillMount =()=>{
+    this.setState({quantity : 
+      this.state.quantity < this.state.min ? this.state.min : this.state.quantity })
+    this.setState({quantity : 
+      this.state.quantity > this.state.max ? this.state.max : this.state.quantity })
+  };
+
+  componentWillReceiveProps = (nextProps)=>{
+    if(nextProps.entity.quantity_data){
+      this.setState({min : nextProps.entity.quantity_data.min})
+      this.setState({max : nextProps.entity.quantity_data.max})
+      this.setState({quantity : nextProps.entity.quantity_data.quantity})
+    }
+  }
 
   updateEntity = (keyName, value) => {
     const entity = {
@@ -114,24 +131,12 @@ class Form extends Component {
     });
   };
 
-  addQuantity = () => {
-    this.setState({
-      quantity: this.state.quantity + 1
-    });
-  };
-
-  minusQuantity = () => {
-    if (this.state.quantity > 0) {
-      this.setState({
-        quantity: this.state.quantity - 1
-      });
-    }
-    null;
-  };
+  changeQuantity = num => {
+    this.setState( { quantity: num });
+ }
 
   render() {
     const { entity } = this.props;
-
     if (
       !entity.material ||
       !entity.color_list ||
@@ -176,10 +181,11 @@ class Form extends Component {
           currentSize={this.state.currentSize}
           sizeChange={this.sizeChange}
         />
-        <Quantity
-          quantity={this.state.quantity}
-          minusQuantity={this.minusQuantity}
-          addQuantity={this.addQuantity}
+        <Quantity 
+          value={this.state.quantity}
+          min={this.state.min}
+          max={this.state.max}
+          changeHandler={this.changeQuantity}
         />
         <ButtonsBox>
           <CartButton onClick={this.submit} />
