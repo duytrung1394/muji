@@ -39,7 +39,7 @@ class Index extends Component {
   render() {
     const { entity, fetching } = this.props;
 
-    //仮データ
+    //仮データ 商品、読み物、サービスの検索結果
     const searchItems = [
       {
         title: "商品1",
@@ -48,7 +48,19 @@ class Index extends Component {
           "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
       },
       {
+        title: "イベント1",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
         title: "商品2",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "読み物1",
         description: "MIJI HOTEL",
         img_src:
           "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
@@ -70,21 +82,10 @@ class Index extends Component {
         description: "MIJI HOTEL",
         img_src:
           "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-      },
-      {
-        title: "商品6",
-        description: "MIJI HOTEL",
-        img_src:
-          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-      },
-      {
-        title: "商品",
-        description: "MIJI HOTEL",
-        img_src:
-          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
       }
     ];
 
+    // 仮データ　店舗の検索結果
     const searchStores = [
       {
         title: "MUJI新宿",
@@ -107,15 +108,29 @@ class Index extends Component {
         opening:
           "11:00～21:30 ※営業時間は平日11:00～21:30、土日祝日は10:30～21:30となります。",
         holiday: ""
+      },
+      {
+        title: "ルミネ新宿",
+        address: "東京都新宿区新宿3-38-2　ルミネ新宿2　6Ｆ",
+        number: "03-5325-5971",
+        opening:
+          "11:00～21:30 ※営業時間は平日11:00～21:30、土日祝日は10:30～21:30となります。",
+        holiday: ""
       }
     ];
+
+    // 仮データ　検索ワード
+    const keyword = "新宿";
+
+    // 仮データ　検索結果件数
+    const itemCount = 3;
 
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <SearchHeader keyword="新宿" />
-          <SearchNavigationList active="3" />
-          <Counta total={3} first={1} end={3} />
+          <SearchHeader keyword={keyword} />
+          <SearchNavigationList active={3} />
+          <Counta total={itemCount} first={1} end={itemCount} />
           <SearchStoreList items={searchStores} />
           <SearchOtherHeader />
           <SearchItemImageList items={searchItems} />

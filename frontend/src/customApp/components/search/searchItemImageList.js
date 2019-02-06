@@ -4,11 +4,17 @@ import { Card, Carousel } from "antd";
 import styled from "styled-components";
 
 const ItemImageListWrapper = styled.div`
+  padding: 2px;
   width: 100%;
-  height: 330px;
+  overflow: auto;
+
+  div {
+    height: 350px;
+  }
 
   .ant-card-grid {
     width: 95%;
+    height: 90%;
     max-width: 240px;
     margin: 20px 0 0;
     padding: 0;
@@ -57,7 +63,7 @@ const SearchItemImageList = props => {
   return (
     <ItemImageListWrapper>
       <Carousel
-        slidesToShow={5}
+        slidesToShow={4.5}
         dots={false}
         swipeToSlide={true}
         swipe={true}

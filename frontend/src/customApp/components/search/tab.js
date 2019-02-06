@@ -60,7 +60,7 @@ const SearchNavigationList = ({ active }) => {
   return (
     <NavigationItemList>
       {SearchNavigations.map((item, index) => {
-        if (index.toString() === active) {
+        if (index === active) {
           return (
             <NavigationItemActive>
               <Link to={SearchNavigationUrls[index]} key={index}>

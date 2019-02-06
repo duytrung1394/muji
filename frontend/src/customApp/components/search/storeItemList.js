@@ -5,8 +5,9 @@ import styled from "styled-components";
 
 const StoreListWrapper = styled.div`
   margin-bottom: 20px;
+  padding: 2px;
   width: 100%;
-  height: 220px;
+  overflow: auto;
 
   div {
     line-height: 20px;
@@ -17,13 +18,23 @@ const StoreListWrapper = styled.div`
 
   .ant-card-grid {
     width: calc((100% - 60px) / 3);
-    height: 90%;
-    margin: 20px 0 0 20px;
+    min-height: 200px;
+    margin: 20px 20px 0 0;
     padding: 0;
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.5);
     background-color: #fff;
   }
   .ant-card-grid:hover {
+  }
+  @media only screen and (max-width: 980px) {
+    .ant-card-grid {
+      width: calc((100% - 60px) / 2);
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .ant-card-grid {
+      width: calc((100% - 60px));
+    }
   }
 
   h3 {
@@ -57,10 +68,10 @@ const SearchStoreList = props => {
                 {item.title && <h3>{item.title}</h3>}
                 <div>
                   <ul>
-                    {item.address && <li>住所：{item.address}</li>}
-                    {item.number && <li>電話番号：{item.number}</li>}
-                    {item.opening && <li>営業時間：{item.opening}</li>}
-                    {item.holiday && <li>店休日：{item.holiday}</li>}
+                    <li>住所：{item.address && item.address}</li>
+                    <li>電話番号：{item.number && item.number}</li>
+                    <li>営業時間：{item.opening && item.opening}</li>
+                    <li>店休日：{item.holiday && item.holiday}</li>
                   </ul>
                 </div>
               </Link>
