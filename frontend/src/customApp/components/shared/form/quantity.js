@@ -40,31 +40,30 @@ class Quantity extends Component {
 
   plus = () => {
     if (this.state.sum < this.state.max) {
+      const num = this.state.sum + 1 ;
       this.setState({ sum: this.state.sum + 1 });
+      this.props.changeHandler(num);
     }
-    null;
-  };
-
-  minus = () => {
-    if (this.state.sum > this.state.min) {
-      this.setState({ sum: this.state.sum - 1 });
-    }
-    null;
-  };
-
-  changeHundler =(e)=>{
-    this.setState({ sum: Number(e.target.value)})
-  };
-
-  componentDidUpdate (){
-    this.props.changeHundler(this.state.sum);
   }
+
+  minus = ()=>{
+    if (this.state.sum > this.state.min) {
+      const num = this.state.sum + 1 ;
+      this.setState({ sum: this.state.sum - 1 });
+      this.props.changeHandler(num);
+    }
+  };
+
+  changeHandler = (e)=>{
+    this.setState({ sum: Number(e.target.value)})
+    this.props.changeHandler(this.state.sum);
+  };
 
   render() {
     return (
       <QuantityBox>
         <CommonButton value="-" action={this.minus} />
-        <Sum value={this.state.sum} onChange={(e) => this.changeHundler(e)} />
+        <Sum value={this.state.sum} onChange={(e) => this.changeHandler(e)} />
         <CommonButton value="+" action={this.plus} />
       </QuantityBox>
     );
