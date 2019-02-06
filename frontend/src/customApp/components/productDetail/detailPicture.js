@@ -38,7 +38,7 @@ const StyledSlider = styled(Slider)`
 const FavImage = ({ favFlg, handleChangeFavFlg }) => {
   return (
     <span>
-        <FavImg src={favFlg ? favActive : fav} onClick={handleChangeFavFlg} />
+      <FavImg src={favFlg ? favActive : fav} onClick={handleChangeFavFlg} />
     </span>
   );
 };

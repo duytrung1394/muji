@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import { Col } from "antd";
+import { Col, Icon } from "antd";
 import Price from "./form/price";
 import Color from "./form/color";
 import Size from "./form/size";
-import { CartButton, BuyNowButton } from "./form/buttons";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "../shared/form/link";
 import Quantity from "../shared/form/quantity";
+import { OutlineButton } from "../shared/form/button";
 
 const DetailName = styled.p`
   color: #999;
@@ -48,9 +48,21 @@ const LinkStyle = styled.span`
   font-size: 13px;
 `;
 
+const ButtonIcon = styled(Icon)`
+  font-size: 20px;
+  margin-right: 16px;
+`;
+
 const ButtonsBox = styled.div`
   width: 300px;
   margin: 24px auto 0;
+`;
+
+const StyledButton = styled(OutlineButton)`
+  margin-top: 16px;
+  span {
+    vetical-align: top;
+  }
 `;
 
 const Info = ({ description }) => {
@@ -83,23 +95,31 @@ class Form extends Component {
     currentSize: "",
     min: 0,
     max: Infinity,
-    quantity: 1,
+    quantity: 1
   };
 
-  componentWillMount =()=>{
-    this.setState({quantity : 
-      this.state.quantity < this.state.min ? this.state.min : this.state.quantity })
-    this.setState({quantity : 
-      this.state.quantity > this.state.max ? this.state.max : this.state.quantity })
+  componentWillMount = () => {
+    this.setState({
+      quantity:
+        this.state.quantity < this.state.min
+          ? this.state.min
+          : this.state.quantity
+    });
+    this.setState({
+      quantity:
+        this.state.quantity > this.state.max
+          ? this.state.max
+          : this.state.quantity
+    });
   };
 
-  componentWillReceiveProps = (nextProps)=>{
-    if(nextProps.entity.quantity_data){
-      this.setState({min : nextProps.entity.quantity_data.min})
-      this.setState({max : nextProps.entity.quantity_data.max})
-      this.setState({quantity : nextProps.entity.quantity_data.quantity})
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.entity.quantity_data) {
+      this.setState({ min: nextProps.entity.quantity_data.min });
+      this.setState({ max: nextProps.entity.quantity_data.max });
+      this.setState({ quantity: nextProps.entity.quantity_data.quantity });
     }
-  }
+  };
 
   updateEntity = (keyName, value) => {
     const entity = {
@@ -132,8 +152,8 @@ class Form extends Component {
   };
 
   changeQuantity = num => {
-    this.setState( { quantity: num });
- }
+    this.setState({ quantity: num });
+  };
 
   render() {
     const { entity } = this.props;
@@ -181,15 +201,21 @@ class Form extends Component {
           currentSize={this.state.currentSize}
           sizeChange={this.sizeChange}
         />
-        <Quantity 
+        <Quantity
           value={this.state.quantity}
           min={this.state.min}
           max={this.state.max}
           changeHandler={this.changeQuantity}
         />
         <ButtonsBox>
-          <CartButton onClick={this.submit} />
-          <BuyNowButton onClick={this.requestHandler} />
+          <StyledButton color="#7f0019" reverse={true} onClick={this.submit}>
+            <ButtonIcon type="shopping-cart" />
+            <IntlMessages id="rest.cart" />
+          </StyledButton>
+          <StyledButton color="#7f0019" onClick={this.requestHandler}>
+            <ButtonIcon type="select" />
+            <IntlMessages id="rest.buyNow" />
+          </StyledButton>
         </ButtonsBox>
       </Col>
     );
