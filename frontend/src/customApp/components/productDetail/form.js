@@ -33,9 +33,7 @@ const DetailList = styled.ul`
   padding: 0;
 `;
 const StoreJanCode = styled.li`
-  span {
-    font-size: 10px;
-  }
+  font-size: 10px;
 `;
 const DistributionFee = styled.li`
   margin-top: 5px;
@@ -72,7 +70,7 @@ const Info = ({ description }) => {
         })}
       </DetailText>
       <SeeMore>
-        <IntlMessages id="rest.seeMore" />
+        <IntlMessages id="productDetail.seeMore" />
       </SeeMore>
     </Fragment>
   );
@@ -152,9 +150,7 @@ class Form extends Component {
         <DetailList>
           <Price price={entity.price} priceKindList={entity.priceKindList} />
           <StoreJanCode>
-            <span>
-              <IntlMessages id="productDetail.itemNumber" />
-            </span>
+            <IntlMessages id="productDetail.itemNumber" />
             <span> {entity.storeJanCode}</span>
           </StoreJanCode>
           <DistributionFee>

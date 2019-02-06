@@ -49,7 +49,7 @@ class Index extends Component {
     });
   };
 
-  changeFlg = () => {
+  handleChangeFavFlg = () => {
     this.setState({
       favFlg: !this.state.favFlg
     });
@@ -68,9 +68,9 @@ class Index extends Component {
           <ContentHeader links={entity.links} />
           <Row>
             <DetailPicture
-              entity={entity}
+              images={entity.images}
               favFlg={this.state.favFlg}
-              changeFlg={this.changeFlg}
+              handleChangeFavFlg={this.handleChangeFavFlg}
             />
             <Form entity={entity} />
           </Row>

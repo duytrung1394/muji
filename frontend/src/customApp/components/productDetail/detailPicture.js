@@ -35,20 +35,16 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
-const FavImage = ({ favFlg, changeFlg }) => {
+const FavImage = ({ favFlg, handleChangeFavFlg }) => {
   return (
     <span>
-      {favFlg ? (
-        <FavImg src={favActive} onClick={changeFlg} />
-      ) : (
-        <FavImg src={fav} onClick={changeFlg} />
-      )}
+        <FavImg src={favFlg ? favActive : fav} onClick={handleChangeFavFlg} />
     </span>
   );
 };
 
-const DetailPicture = ({ favFlg, changeFlg, entity }) => {
-  if (!entity.images) {
+const DetailPicture = ({ favFlg, handleChangeFavFlg, images }) => {
+  if (!images) {
     return null;
   }
   return (
@@ -60,14 +56,14 @@ const DetailPicture = ({ favFlg, changeFlg, entity }) => {
         slidesToShow={1}
         responsive={[]}
       >
-        {entity.images.map((productImage, index) => {
+        {images.map((productImage, index) => {
           return <img key={index} src={productImage.url} />;
         })}
       </StyledSlider>
       <ShowItemList onClick={this.showModal}>
         <IntlMessages id="productDetail.attentionItemList" />
       </ShowItemList>
-      <FavImage favFlg={favFlg} changeFlg={changeFlg} />
+      <FavImage favFlg={favFlg} handleChangeFavFlg={handleChangeFavFlg} />
     </PictureCol>
   );
 };

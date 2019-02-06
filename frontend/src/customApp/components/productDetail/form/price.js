@@ -57,7 +57,7 @@ const Detail = ({ price, priceKindList }) => {
         <li>
           <strike>
             <Span>
-              <IntlMessages id="rest.taxIncluded" />
+              <IntlMessages id="productDetail.taxIncluded" />
               <LargePrice>
                 {price.oldPrices[0].oldPrice.toLocaleString()}
               </LargePrice>
@@ -66,16 +66,16 @@ const Detail = ({ price, priceKindList }) => {
           </strike>
           <StyledIcon type="arrow-right" />
           <Seal>
-            <IntlMessages id="rest.taxIncluded" />
+            <IntlMessages id="productDetail.taxIncluded" />
             <SealPrice>{price.basicPrice.toLocaleString()}</SealPrice>
-            <IntlMessages id="rest.priceCurrency" />
+            <IntlMessages id="productDetail.yen" />
           </Seal>
         </li>
       ) : (
         <li>
-          <IntlMessages id="rest.taxIncluded" />
+          <IntlMessages id="productDetail.taxIncluded" />
           <SealPrice>{price.basicPrice}</SealPrice>
-          <IntlMessages id="rest.priceCurrency" />
+          <IntlMessages id="productDetail.yen" />
         </li>
       )}
       <li>
