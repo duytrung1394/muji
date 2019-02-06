@@ -41,22 +41,23 @@ class Quantity extends Component {
   plus = () => {
     if (this.state.sum < this.state.max) {
       const num = this.state.sum + 1;
-      this.setState({ sum: this.state.sum + 1 });
+      this.setState({ sum: num });
       this.props.changeHandler(num);
     }
   };
 
   minus = () => {
     if (this.state.sum > this.state.min) {
-      const num = this.state.sum + 1;
-      this.setState({ sum: this.state.sum - 1 });
+      const num = this.state.sum - 1;
+      this.setState({ sum: num });
       this.props.changeHandler(num);
     }
   };
 
   changeHandler = e => {
-    this.setState({ sum: Number(e.target.value) });
-    this.props.changeHandler(this.state.sum);
+    const num = Number(e.target.value);
+    this.setState({ sum: num });
+    this.props.changeHandler(num);
   };
 
   render() {
