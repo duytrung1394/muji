@@ -97,9 +97,9 @@ class FavoritesController extends Controller
         }
 
         return [
-            $product,
-            $event,
-            $article
+            'products' => $product,
+            'events' => $event,
+            'articles' => $article
         ];
     }
 }

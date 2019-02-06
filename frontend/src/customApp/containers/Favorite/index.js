@@ -2,15 +2,12 @@ import { connect } from "react-redux";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { Spin } from "antd";
-import {
-  TabSlider,
-  TabPanel
-} from "../../components/shared/tabSlider/tabSlider";
+import { Spin, message, Modal } from "antd";
+import { TabSlider } from "../../components/shared/tabSlider";
 import actions from "../../redux/favorite/list/actions";
 import FavoriteItem from "../../components/favorite/favoriteItem";
 import IntlMessages from "../../../components/utility/intlMessages";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -23,11 +20,13 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-const tabList = [
+const tabNameIds = [
   "favorite.tab.product",
   "favorite.tab.event",
   "favorite.tab.article"
 ];
+
+const itemKeys = ["products", "events", "articles"];
 
 const ItemBox = styled.div`
   display: flex;
@@ -50,13 +49,91 @@ const DeliveryList = styled.div`
   }
 `;
 
+const DeleteModalButton = styled.p`
+  max-width: 300px;
+  margin: 20px auto 0;
+  text-align: center;
+
+  button {
+    border: 1px solid rgb(127, 0, 25);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+
+  button,
+  button:hover,
+  button:focus {
+    color: rgb(127, 0, 25);
+    text-decoration: none;
+  }
+`;
+
+const DeleteConfirmMessage = styled.p`
+  text-align: center;
+`;
+
+const DeleteModalWrapper = styled(Modal)`
+  && {
+    top: 50%;
+    padding-bottom: 0;
+    margin-top: -100px;
+  }
+
+  .ant-modal-content {
+    width: 100%;
+
+    & .ant-modal-body {
+      padding: 16px;
+    }
+  }
+`;
+
+const DeleteModal = ({ visible, onOk, onCancel }) => {
+  return (
+    <DeleteModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <DeleteConfirmMessage>
+        <IntlMessages id="favorite.deleteConfirm" />
+      </DeleteConfirmMessage>
+      <DeleteModalButton>
+        <button to={"#"} onClick={onOk}>
+          <IntlMessages id="favorite.delete" />
+        </button>
+      </DeleteModalButton>
+    </DeleteModalWrapper>
+  );
+};
+
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeys: []
+      selectedKeys: [],
+      deleteModalVisible: false
     };
   }
+
+  modalOpen = () => {
+    this.setState({ deleteModalVisible: true });
+    console.log(this.state.deleteModalVisible);
+  };
+
+  handleOk = () => {
+    message.info("削除");
+    this.setState({ deleteModalVisible: false });
+  };
+
+  handleCancel = () => {
+    this.setState({ deleteModalVisible: false });
+  };
 
   // React methods
   componentDidMount() {
@@ -80,7 +157,8 @@ class Index extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
@@ -89,11 +167,29 @@ class Index extends Component {
           <IntlMessages id="favorite.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <TabSlider tabList={tabList}>
-            {entities.map((entity, index) => {
+          <TabSlider tabNameIds={tabNameIds}>
+            {itemKeys.map((itemKey, index) => {
+              let popoverActions = [];
+              let footerActions = [];
+
+              footerActions.push({
+                name: formatMessage({ id: "favorite.delete" }),
+                onClick: this.modalOpen
+              });
+
+              if (itemKey === "products") {
+                popoverActions.push({
+                  name: formatMessage({ id: "favorite.addDeriveryList" })
+                });
+                footerActions.push({
+                  name: formatMessage({ id: "favorite.add" }),
+                  to: "/"
+                });
+              }
+
               return (
-                <TabPanel key={index}>
-                  {index === 0 && (
+                <Fragment key={index}>
+                  {itemKey === "products" && (
                     <DeliveryList>
                       <Link to={"#"} draggable={false}>
                         <IntlMessages id="favorite.deriveryList" />
@@ -101,14 +197,29 @@ class Index extends Component {
                     </DeliveryList>
                   )}
                   <ItemBox>
-                    {entity.map((item, index) => {
-                      return <FavoriteItem item={item} key={index} />;
-                    })}
+                    {entities[itemKey] &&
+                      entities[itemKey].map((item, index) => {
+                        return (
+                          <Fragment key={index}>
+                            <FavoriteItem
+                              item={item}
+                              popoverActions={popoverActions}
+                              footerActions={footerActions}
+                            />
+                          </Fragment>
+                        );
+                      })}
                   </ItemBox>
-                </TabPanel>
+                </Fragment>
               );
             })}
           </TabSlider>
+          <DeleteModal
+            visible={this.state.deleteModalVisible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            component={this}
+          />
         </Spin>
       </ContentAreaLayout>
     );

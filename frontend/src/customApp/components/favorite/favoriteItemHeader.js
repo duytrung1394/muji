@@ -1,5 +1,4 @@
-import { ItemHeader } from "../shared/tabSlider/tabSliderItem";
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 const FavoriteHeadline = styled.div`
@@ -21,10 +20,10 @@ const FavoriteTitle = styled.h2`
 const FavoriteItemHeader = ({ item }) => {
   const { headline, item_name } = item;
   return (
-    <ItemHeader>
+    <Fragment>
       <FavoriteHeadline>{headline}</FavoriteHeadline>
       <FavoriteTitle>{item_name}</FavoriteTitle>
-    </ItemHeader>
+    </Fragment>
   );
 };
 

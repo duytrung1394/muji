@@ -1,26 +1,44 @@
-import { Item } from "../shared/tabSlider/tabSliderItem";
-import ItemFooter from "./favoriteItemFooter";
-import ItemHeader from "./favoriteItemHeader";
-import ItemMain from "./favoriteItemMain";
-import React, { Component } from "react";
+import React from "react";
+import FavoriteItemHeader from "./favoriteItemHeader";
+import FavoriteItemMain from "./favoriteItemMain";
 
-class FavoriteItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+import TabSliderItem from "../shared/tabSlider/item";
+import TabSliderItemHeader from "../shared/tabSlider/itemHeader";
+import TabSliderItemMain from "../shared/tabSlider/itemMain";
+import TabSliderItemFooter from "../shared/tabSlider/itemFooter";
 
-  render() {
-    const { item } = this.props;
-    const { favorite_type } = item;
+import imgArticle1 from "../../../image/favorite/article/img-favorite-slide-3-1.png";
+import imgArticle2 from "../../../image/favorite/article/img-favorite-slide-3-2.png";
+import imgEvent1 from "../../../image/favorite/event/img-favorite-slide-2.png";
+import imgProduct1 from "../../../image/favorite/product/img-favorite-slide-1.png";
 
-    return (
-      <Item>
-        <ItemHeader item={item} />
-        <ItemMain item={item} />
-        <ItemFooter type={favorite_type} />
-      </Item>
-    );
-  }
-}
+const images = {
+  "img-favorite-slide-1.png": imgProduct1,
+  "img-favorite-slide-2.png": imgEvent1,
+  "img-favorite-slide-3-1.png": imgArticle1,
+  "img-favorite-slide-3-2.png": imgArticle2
+};
+
+const FavoriteItem = ({ item, popoverActions, footerActions }) => {
+  const imgUrl = item.jan_code
+    ? "/store/cmdty/detail/" + item.jan_code
+    : item.id;
+  return (
+    <TabSliderItem
+      header={
+        <TabSliderItemHeader content={<FavoriteItemHeader item={item} />} />
+      }
+      main={
+        <TabSliderItemMain
+          content={<FavoriteItemMain item={item} />}
+          img={images[item.img_src]}
+          imgUrl={imgUrl}
+          actions={popoverActions}
+        />
+      }
+      footer={<TabSliderItemFooter actions={footerActions} />}
+    />
+  );
+};
 
 export default FavoriteItem;
