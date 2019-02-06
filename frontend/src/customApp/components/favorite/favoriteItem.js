@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import FavoriteItemHeader from "./favoriteItemHeader";
 import FavoriteItemMain from "./favoriteItemMain";
 
@@ -20,6 +20,9 @@ const images = {
 };
 
 const FavoriteItem = ({ item, popoverActions, footerActions }) => {
+  const imgUrl = item.jan_code
+    ? "/store/cmdty/detail/" + item.jan_code
+    : item.id;
   return (
     <TabSliderItem
       header={
@@ -29,6 +32,7 @@ const FavoriteItem = ({ item, popoverActions, footerActions }) => {
         <TabSliderItemMain
           content={<FavoriteItemMain item={item} />}
           img={images[item.img_src]}
+          imgUrl={imgUrl}
           actions={popoverActions}
         />
       }

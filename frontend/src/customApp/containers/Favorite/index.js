@@ -78,11 +78,9 @@ const DeleteConfirmMessage = styled.p`
 
 const DeleteModalWrapper = styled(Modal)`
   && {
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    top: 50%;
+    padding-bottom: 0;
+    margin-top: -100px;
   }
 
   .ant-modal-content {
@@ -125,6 +123,7 @@ class Index extends Component {
 
   modalOpen = () => {
     this.setState({ deleteModalVisible: true });
+    console.log(this.state.deleteModalVisible);
   };
 
   handleOk = () => {
@@ -158,7 +157,8 @@ class Index extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
@@ -169,27 +169,26 @@ class Index extends Component {
         <Spin size="large" spinning={fetching}>
           <TabSlider tabNameIds={tabNameIds}>
             {itemKeys.map((itemKey, index) => {
-              /* バックエンドのデータ形式を変更 */
-
               let popoverActions = [];
               let footerActions = [];
 
-              footerActions.push({ name: "削除する", onClick: this.modalOpen });
+              footerActions.push({
+                name: formatMessage({ id: "favorite.delete" }),
+                onClick: this.modalOpen
+              });
 
               if (itemKey === "products") {
                 popoverActions.push({
-                  name: "配送リストに追加",
-                  onClick: null
+                  name: formatMessage({ id: "favorite.addDeriveryList" })
                 });
                 footerActions.push({
-                  name: "お買い物かごに追加する",
-                  onClick: null
+                  name: formatMessage({ id: "favorite.add" }),
+                  to: "/"
                 });
               }
 
               return (
                 <Fragment key={index}>
-                  {/* 省略 */}
                   {itemKey === "products" && (
                     <DeliveryList>
                       <Link to={"#"} draggable={false}>
@@ -219,6 +218,7 @@ class Index extends Component {
             visible={this.state.deleteModalVisible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
+            component={this}
           />
         </Spin>
       </ContentAreaLayout>

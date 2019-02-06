@@ -85,10 +85,7 @@ class FavoriteItemMain extends Component {
     const { item } = this.props;
 
     const {
-      id,
-      jan_code,
       favorite_type,
-      img_src,
       item_price,
       item_price_present,
       item_discount,
@@ -96,28 +93,36 @@ class FavoriteItemMain extends Component {
       caption
     } = item;
 
-    const imgUrl = jan_code ? "/store/cmdty/detail/" + jan_code : id;
-
     return (
       <DescribeList>
         <DescribePriceWrapper>
           {item_price_present ? (
-            <Link to={"#"} style={{ textDecoration: "line-through" }}>
+            <Link
+              to={"#"}
+              style={{ textDecoration: "line-through" }}
+              draggable={false}
+            >
               {item_price}
             </Link>
           ) : (
-            <Link to={"#"}>{item_price}</Link>
+            <Link to={"#"} draggable={false}>
+              {item_price}
+            </Link>
           )}
           {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
           {item_price_present && (
             <DescribePricePresent>
-              <Link to={"#"}>{item_price_present}</Link>
+              <Link to={"#"} draggable={false}>
+                {item_price_present}
+              </Link>
             </DescribePricePresent>
           )}
         </DescribePriceWrapper>
         <Describe>
           <DescribeDiscount>
-            <Link to={"#"}>{item_discount}</Link>
+            <Link to={"#"} draggable={false}>
+              {item_discount}
+            </Link>
           </DescribeDiscount>
         </Describe>
         <Describe>{caption}</Describe>

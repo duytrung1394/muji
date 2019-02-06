@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon, Popover } from "antd";
-import { Link } from "react-router-dom";;
+import Link from "../../slider/link";
 
 const EllipsisButtonWrapper = styled.div`
   width: 49px;
@@ -68,7 +68,6 @@ const PopoverContent = styled.li`
   }
 `;
 
-/* actionsはオブジェクト配列，map使ってポップアップメニューを生成する */
 const actionsList = actions => {
   return (
     <PopoverContentWrapper>
@@ -87,7 +86,6 @@ const actionsList = actions => {
 
 const ActionListButton = ({ actions = [] }) => {
   if (actions.length === 0) {
-    /* アクションが無い場合は表示しない */
     return null;
   }
 
@@ -140,7 +138,6 @@ const ItemMain = ({ content, img, imgUrl = "#", actions }) => {
         </Link>
       </ItemImage>
       {content}
-      {/* アクションボタンは position:absolute で右下に置いておく */}
       <ActionListButton actions={actions} />
     </ItemMainStyle>
   );
