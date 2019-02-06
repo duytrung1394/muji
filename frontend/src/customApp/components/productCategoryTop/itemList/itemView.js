@@ -9,7 +9,7 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 
 const itemStyleParams = `
   border-radius: 4px;
-  box-shadow: 0 1px 3px 0 #585858;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
   margin: 10px;
   text-align: center;
   img {

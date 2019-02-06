@@ -22,7 +22,7 @@ const ItemTitle = styled.div`
 `;
 
 const LinkBoxShadow = styled(Link)`
-  box-shadow: 0 1px 3px 0 #585858;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
   border-radius: 4px;
   width: 100%;
   margin-bottom: 10px;
