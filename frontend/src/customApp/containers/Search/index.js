@@ -9,7 +9,10 @@ import ContentHeader from "../../components/shared/header/contentHeader";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import SearchNavigationList from "../../components/search/tab";
 import SearchHeader from "../../components/search/header";
-import SearchItem from "../../components/search/slideitem";
+import SearchOtherHeader from "../../components/search/otherHeader";
+import SearchItemImageList from "../../components/search/searchItemImageList";
+import Counta from "../../components/search/counta";
+import SearchStoreList from "../../components/search/storeItemList";
 
 class Index extends Component {
   constructor(props) {
@@ -37,29 +40,86 @@ class Index extends Component {
     const { entity, fetching } = this.props;
 
     //仮データ
-    const searchItems = [{
-      title : "タルトタタン1",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン2",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン3",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン4",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン5",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン6",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    },{
-        title : "タルトタタン7",description : "MIJI HOTEL", img_src : "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-    }];
+    const searchItems = [
+      {
+        title: "商品1",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品2",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品3",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品4",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品5",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品6",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      },
+      {
+        title: "商品",
+        description: "MIJI HOTEL",
+        img_src:
+          "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+      }
+    ];
+
+    const searchStores = [
+      {
+        title: "MUJI新宿",
+        address: "東京都新宿区新宿3-15-3　新宿ピカデリー　B1～2F",
+        number: "03-5367-2710",
+        opening: "11:00〜21:00",
+        holiday: ""
+      },
+      {
+        title: "新宿",
+        address: "東京都新宿区新宿3-17-1　いさみやビル　B1～3F",
+        number: "03-3350-8271",
+        opening: "11:00～21:00",
+        holiday: ""
+      },
+      {
+        title: "ルミネ新宿",
+        address: "東京都新宿区新宿3-38-2　ルミネ新宿2　6Ｆ",
+        number: "03-5325-5971",
+        opening:
+          "11:00～21:30 ※営業時間は平日11:00～21:30、土日祝日は10:30～21:30となります。",
+        holiday: ""
+      }
+    ];
 
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <SearchHeader keyword="新宿" />
           <SearchNavigationList active="3" />
-            <h1>3件中 1 〜 3件を表示</h1>
-          <SearchItem searchItems={searchItems} />
+          <Counta total={3} first={1} end={3} />
+          <SearchStoreList items={searchStores} />
+          <SearchOtherHeader />
+          <SearchItemImageList items={searchItems} />
+          <SearchStoreList items={searchStores} />
         </Spin>
       </ContentAreaLayout>
     );

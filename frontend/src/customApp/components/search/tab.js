@@ -9,6 +9,10 @@ const NavigationItemList = styled.ul`
   background: #f2f2f2;
   color: #585858;
   font-size: 12px;
+
+  a:hover {
+    color: #585858;
+  }
 `;
 
 const NavigationItem = styled.li`
@@ -28,6 +32,10 @@ const NavigationItemActive = styled.li`
   background: #7f0019;
   color: #ddd;
   font-weight: bold;
+
+  a:hover {
+    color: #ddd;
+  }
 `;
 
 const NavigationItemLavel = styled.a`
@@ -52,22 +60,22 @@ const SearchNavigationList = ({ active }) => {
   return (
     <NavigationItemList>
       {SearchNavigations.map((item, index) => {
-        if(index.toString() === active){
-            return (
-                <NavigationItemActive>
-                    <Link to={SearchNavigationUrls[index]} key={index}>
-                        <NavigationItemLavelActive>{item}</NavigationItemLavelActive>
-                    </Link>
-                </NavigationItemActive>
-            );
-        }else {
-            return (
-                <NavigationItem>
-                    <Link to={SearchNavigationUrls[index]} key={index}>
-                        <NavigationItemLavel>{item}</NavigationItemLavel>
-                    </Link>
-                </NavigationItem>
-            );
+        if (index.toString() === active) {
+          return (
+            <NavigationItemActive>
+              <Link to={SearchNavigationUrls[index]} key={index}>
+                <NavigationItemLavelActive>{item}</NavigationItemLavelActive>
+              </Link>
+            </NavigationItemActive>
+          );
+        } else {
+          return (
+            <NavigationItem>
+              <Link to={SearchNavigationUrls[index]} key={index}>
+                <NavigationItemLavel>{item}</NavigationItemLavel>
+              </Link>
+            </NavigationItem>
+          );
         }
       })}
     </NavigationItemList>
