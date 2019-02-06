@@ -137,7 +137,10 @@ class OrdersController extends Controller
             'delivery' => [
                 'count' => '1',
                 'category' => '小物',
-                'schedule' => '2019年10月30日（火）通常便',
+                'year' => '2019',
+                'month' => '10',
+                'day' => '30',
+                'day_of_the_week' => '火',
                 'items' => [
                     [
                         'type' => 'カットソー',

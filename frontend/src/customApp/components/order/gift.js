@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Checkbox, Select } from "antd";
@@ -24,19 +24,12 @@ const GiftTitle = styled.h1`
 `;
 
 const GiftCheckboxArea = styled.div`
-  margin: 20px 0;
-`;
-
-const GiftCheckbox = styled(Checkbox)`
-  && {
-    font-size: 13px;
+& label {
+  & .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #7f0019;
+    border-color: #7f0019;
   }
-  .ant-checkbox-inner {
-    border: 2px solid #999;
-  }
-  .ant-checkbox-checked {
-    border: 2px solid #7f0119;
-  }
+}
 `;
 
 const SpecifiedResult = styled.div`
@@ -59,6 +52,8 @@ const SpecifyMessageButton = styled(CommonButton)`
 
 const Option = Select.Option;
 
+let flg = false;
+
 const Gift = ({ giftData }) => {
   if (giftData) {
     return (
@@ -68,31 +63,41 @@ const Gift = ({ giftData }) => {
             <IntlMessages id="order.procedure.GiftWrapping" />
           </GiftTitle>
           <GiftCheckboxArea>
-            <GiftCheckbox>
+            <Checkbox>
               <IntlMessages id="order.procedure.useGiftWrapping" />
-            </GiftCheckbox>
+            </Checkbox>
           </GiftCheckboxArea>
-          <Select style={{ width: 250 }}>
-            <Option value="まとめて包装する">
-              <IntlMessages id="order.procedure.toPackTogether" />
-            </Option>
-            <Option value="個々に包装する">
-              <IntlMessages id="order.procedure.toWrapIndividually" />
-            </Option>
-          </Select>
-          <SpecifiedResult>
-            <StyledSpan>
-              <IntlMessages id="order.procedure.japaneseGiftWapping" />
-              {giftData.wapping_state}
-            </StyledSpan>
-            <IntlMessages id="order.procedure.GiftMessage" />
-            {giftData.message_state}
-          </SpecifiedResult>
-          <ButtonArea>
-            <SpecifyMessageButton>
-              <IntlMessages id="order.procedure.specifyMessage" />
-            </SpecifyMessageButton>
-          </ButtonArea>
+          { flg ? 
+          <Fragment>
+            <Select style={{ width: 250 }}>
+              <Option value="まとめて包装する">
+                <IntlMessages id="order.procedure.toPackTogether" />
+              </Option>
+              <Option value="個々に包装する">
+                <IntlMessages id="order.procedure.toWrapIndividually" />
+              </Option>
+            </Select>
+            <SpecifiedResult>
+              <p>
+                <StyledSpan>
+                  <IntlMessages id="order.procedure.japaneseGiftWapping" />
+                  {giftData.wapping_state}
+                </StyledSpan>
+              </p>
+              <p>
+                <IntlMessages id="order.procedure.GiftMessage" />
+                {giftData.message_state}
+              </p>
+            </SpecifiedResult>
+            <ButtonArea>
+              <SpecifyMessageButton>
+                <IntlMessages id="order.procedure.specifyMessage" />
+              </SpecifyMessageButton>
+            </ButtonArea>
+          </Fragment>
+          :
+          null
+          }
         </GiftStyle>
       </GiftWrapper>
     );

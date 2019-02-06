@@ -91,8 +91,7 @@ class BillItems extends Component {
   render() {
     const { title, labelName, usedBy, useItemUnit, billDetail } = this.props;
 
-    const { possession, input_flg } = billDetail;
-
+    const { possessions , input_flg } = billDetail;
     return (
       <BillContent>
         <div>
@@ -115,7 +114,7 @@ class BillItems extends Component {
             <br />
             <IntlMessages id="order.procedure.leftBracket" />
             <IntlMessages id={usedBy} />
-            <span>{possession}</span>
+            <span>{possessions}</span>
             <IntlMessages id={useItemUnit} />
             <IntlMessages id="order.procedure.rightBracket" />
           </Checkbox>

@@ -1,11 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import OrderDeliveryImage1 from "../../../image/order/order_procedure/img-order-delivery-1.png";
-import OrderDeliveryImage2 from "../../../image/order/order_procedure/img-order-delivery-2.png";
+import OrderItem from "./orderItem";
 import CommonButton from "./commonButton";
-import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
 
 const DeliveryWrapper = styled.div`
   padding: 0 16px 16px 16px;
@@ -18,11 +15,16 @@ const DeliveryStyle = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
+const DeliveryDiv = styled.div`
+  position: relative;
+`;
+
 const DeliveryInfo = styled.h1`
+  display: inline-block;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 16px;
   color: rgb(88, 88, 88);
-  margin-bottom: 0;
 `;
 
 const TitleSpan = styled.span`
@@ -34,125 +36,69 @@ const DeliverySchedule = styled.div`
   margin: 12px 0 30px 0;
 `;
 
-const ButtonWrapper = styled.div`
-  text-align: center;
-`;
-
-const SpecifyDateButton = styled(CommonButton)`
-  width: 300px;
-  font-size: 12px;
-  text-align: center;
-`;
-
-const OrderItem = styled.div`
+const OrderItems = styled.div`
   margin-top: 30px;
 `;
 
-const OrderItemUl = styled.ul`
+const OrderItemList = styled.ul`
   list-style: none;
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
 `;
 
-const OrderItemli = styled.li`
-  padding: 10px;
-  border-top: 1px solid rgb(153, 153, 153);
+const ChangeButton = styled(CommonButton)`
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 100px;
 `;
 
-const ItemImage = styled.img`
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-`;
 
-const ItemData = styled.p`
-  margin-bottom: 4px;
-`;
-
-const StyledRow = styled(Row)`
-  width: 100%;
-  display: flex;
-`;
-
-const images = {
-  OrderDeliveryImage1: OrderDeliveryImage1,
-  OrderDeliveryImage2: OrderDeliveryImage2
-};
 
 const Delivery = ({ deliveryData }) => {
   if (deliveryData) {
     return (
       <DeliveryWrapper>
         <DeliveryStyle>
-          <DeliveryInfo>
-            <IntlMessages id="order.procedure.deliveryFlight" />
-            <span>{deliveryData.count}</span>
-            <TitleSpan>
-              <IntlMessages id="order.procedure.deliveryCategory" />
-              <span>{deliveryData.category}</span>
-            </TitleSpan>
-          </DeliveryInfo>
-          <DeliverySchedule>
-            <IntlMessages id="order.procedure.deliverySchedule" />
-            <span>{deliveryData.schedule}</span>
-          </DeliverySchedule>
-          <ButtonWrapper>
-            <SpecifyDateButton>
-              <IntlMessages id="order.procedure.specifyDate" />
-            </SpecifyDateButton>
-          </ButtonWrapper>
-          <OrderItem>
-            <OrderItemUl>
+          <DeliveryDiv>
+            <DeliveryInfo>
+              <IntlMessages id="order.confirm.deliveryService" />
+              <span>{deliveryData.count}</span>
+              <TitleSpan>
+                <IntlMessages id="order.confirm.deliveryCategory" />
+                <span>{deliveryData.category}</span>
+              </TitleSpan>
+            </DeliveryInfo>
+            <DeliverySchedule>
+              <IntlMessages id="order.procedure.deliverySchedule" />
+              <span>{deliveryData.year}</span>
+              <IntlMessages id="order.procedure.year" />
+              <span>{deliveryData.month}</span>
+              <IntlMessages id="order.procedure.month" />
+              <span>{deliveryData.day}</span>
+              <IntlMessages id="order.procedure.day" />
+              <IntlMessages id="order.procedure.leftBracket" />
+              <span>{deliveryData.day_of_the_week}</span>
+              <IntlMessages id="order.procedure.rightBracket" />
+              <IntlMessages id="order.procedure.regular_delivery" />
+            </DeliverySchedule>
+            <ChangeButton>
+              <IntlMessages id="order.procedure.change" />
+            </ChangeButton>
+          </DeliveryDiv>
+          <OrderItems>
+            <OrderItemList>
               {deliveryData.items &&
                 deliveryData.items.map((item, index) => {
-                  return (
-                    <OrderItemli key={index}>
-                      <StyledRow>
-                        <Col span={8}>
-                          <Link to="#">
-                            <ItemImage src={images[item.img]} />
-                          </Link>
-                        </Col>
-                        <Col span={15} offset={1}>
-                          <ItemData>{item.type}</ItemData>
-                          <ItemData>{item.name}</ItemData>
-                          <ItemData>
-                            <IntlMessages id="order.procedure.itemColor" />
-                            {item.color}
-                          </ItemData>
-                          <ItemData>
-                            <IntlMessages id="order.procedure.itemSize" />
-                            {item.size}
-                          </ItemData>
-                          <ItemData>
-                            <IntlMessages id="order.procedure.itemNumber" />
-                            {item.number}
-                          </ItemData>
-                          <IntlMessages id="order.procedure.taxIn" />
-                          {item.price}
-                          <IntlMessages id="order.procedure.yen" />
-                          {item.discount ? (
-                            <Fragment>
-                              <IntlMessages id="order.procedure.arrow" />
-                              <IntlMessages id="order.procedure.taxIn" />
-                              <span>{item.discount_price}</span>
-                              <IntlMessages id="order.procedure.yen" />
-                              <ItemData>
-                                <IntlMessages id="order.procedure.timeLimitedPrice" />
-                              </ItemData>
-                            </Fragment>
-                          ) : null}
-                        </Col>
-                      </StyledRow>
-                    </OrderItemli>
-                  );
+                  return <OrderItem item={item} key={index} />;
                 })}
-            </OrderItemUl>
-          </OrderItem>
+            </OrderItemList>
+          </OrderItems>
         </DeliveryStyle>
       </DeliveryWrapper>
     );
   }
   return null;
-};
+}
 
 export default Delivery;
