@@ -11,8 +11,9 @@ const BillContents = styled.div`
   background-color: #f2f2f2;
 `;
 
-const BillDetail = ({ billDetails }) => {
-  if (billDetails) {
+const BillDetail = ({ billDetails, billingSummary }) => {
+  if (billDetails && billingSummary) {
+    console.log(billingSummary);
     return (
       <BillContents>
         <BillItems
@@ -39,7 +40,7 @@ const BillDetail = ({ billDetails }) => {
           billDetail={billDetails.account}
           resetFlg={false}
         />
-        <BillingSummary />
+        <BillingSummary billingSummary={billingSummary} />
         <PaymentMethod />
       </BillContents>
     );

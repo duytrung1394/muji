@@ -67,7 +67,10 @@ class Index extends Component {
           <UserData userData={entities.user_data} />
           <Gift giftData={entities.gift} />
           <Delivery deliveryData={entities.delivery} />
-          <BillDetails billDetails={entities.bill_detail} />
+          <BillDetails
+            billDetails={entities.bill_detail}
+            billingSummary={entities.billing_summary}
+          />
           <BillFooter />
         </ContentLayout>
       </ContentAreaLayout>

@@ -31,6 +31,11 @@ const CheackBoxArea = styled.div`
   }
 `;
 
+const Prossession = styled.p`
+  font-size: 13px;
+  padding-left: 24px;
+`;
+
 const radioStyle = {
   display: "block",
   height: "30px",
@@ -91,7 +96,7 @@ class BillItems extends Component {
   render() {
     const { title, labelName, usedBy, useItemUnit, billDetail } = this.props;
 
-    const { possessions , input_flg } = billDetail;
+    const { possessions, input_flg } = billDetail;
     return (
       <BillContent>
         <div>
@@ -111,12 +116,13 @@ class BillItems extends Component {
             }}
           >
             <IntlMessages id={labelName} />
-            <br />
-            <IntlMessages id="order.procedure.leftBracket" />
-            <IntlMessages id={usedBy} />
-            <span>{possessions}</span>
-            <IntlMessages id={useItemUnit} />
-            <IntlMessages id="order.procedure.rightBracket" />
+            <Prossession>
+              <IntlMessages id="order.procedure.leftBracket" />
+              <IntlMessages id={usedBy} />
+              <span>{possessions}</span>
+              <IntlMessages id={useItemUnit} />
+              <IntlMessages id="order.procedure.rightBracket" />
+            </Prossession>
           </Checkbox>
         </CheackBoxArea>
         <div>

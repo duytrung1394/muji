@@ -123,7 +123,7 @@ const OrderItem = ({ item }) => {
             </DiscountPrice>
             <LimitedSeal>
               <DiscountPrice>
-                <IntlMessages id="order.procedure.timeLimitedPrice"/>
+                <IntlMessages id="order.procedure.timeLimitedPrice" />
               </DiscountPrice>
             </LimitedSeal>
           </Fragment>

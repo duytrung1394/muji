@@ -46,14 +46,13 @@ const OrderItemList = styled.ul`
   margin: 0;
 `;
 
-const ChangeButton = styled(CommonButton)`
+const FixDateButton = styled(CommonButton)`
   position: absolute;
+  font-size: 12px;
   bottom: 12px;
   right: 12px;
-  width: 100px;
+  width: 144px;
 `;
-
-
 
 const Delivery = ({ deliveryData }) => {
   if (deliveryData) {
@@ -82,9 +81,9 @@ const Delivery = ({ deliveryData }) => {
               <IntlMessages id="order.procedure.rightBracket" />
               <IntlMessages id="order.procedure.regular_delivery" />
             </DeliverySchedule>
-            <ChangeButton>
-              <IntlMessages id="order.procedure.change" />
-            </ChangeButton>
+            <FixDateButton>
+              <IntlMessages id="order.procedure.specifyDate" />
+            </FixDateButton>
           </DeliveryDiv>
           <OrderItems>
             <OrderItemList>
@@ -99,6 +98,6 @@ const Delivery = ({ deliveryData }) => {
     );
   }
   return null;
-}
+};
 
 export default Delivery;

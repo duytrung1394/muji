@@ -50,11 +50,11 @@ const DataList = styled.ul`
 
 const ChangeButton = styled(CommonButton)`
   position: absolute;
+  font-size: 12px;
   bottom: 12px;
   right: 12px;
   width: 100px;
 `;
-
 
 const UserData = ({ userData }) => {
   if (userData) {
@@ -91,9 +91,9 @@ const UserData = ({ userData }) => {
             {userData.addressee_name}
             <IntlMessages id="order.confirm.esq" />
           </UserName>
-            <ChangeButton>
-              <IntlMessages id="order.procedure.change" />
-            </ChangeButton>
+          <ChangeButton>
+            <IntlMessages id="order.procedure.change" />
+          </ChangeButton>
         </DataDiv>
       </UserInformation>
     );

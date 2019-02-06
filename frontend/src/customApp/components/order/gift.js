@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Checkbox, Select } from "antd";
@@ -20,16 +20,17 @@ const GiftTitle = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
-  margin-bottom: 0;
+  margin-bottom: 16px;
 `;
 
 const GiftCheckboxArea = styled.div`
-& label {
-  & .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #7f0019;
-    border-color: #7f0019;
+  margin-bottom: 16px;
+  & label {
+    & .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #7f0019;
+      border-color: #7f0019;
+    }
   }
-}
 `;
 
 const SpecifiedResult = styled.div`
@@ -52,57 +53,76 @@ const SpecifyMessageButton = styled(CommonButton)`
 
 const Option = Select.Option;
 
-let flg = false;
-
-const Gift = ({ giftData }) => {
-  if (giftData) {
-    return (
-      <GiftWrapper>
-        <GiftStyle>
-          <GiftTitle>
-            <IntlMessages id="order.procedure.GiftWrapping" />
-          </GiftTitle>
-          <GiftCheckboxArea>
-            <Checkbox>
-              <IntlMessages id="order.procedure.useGiftWrapping" />
-            </Checkbox>
-          </GiftCheckboxArea>
-          { flg ? 
-          <Fragment>
-            <Select style={{ width: 250 }}>
-              <Option value="まとめて包装する">
-                <IntlMessages id="order.procedure.toPackTogether" />
-              </Option>
-              <Option value="個々に包装する">
-                <IntlMessages id="order.procedure.toWrapIndividually" />
-              </Option>
-            </Select>
-            <SpecifiedResult>
-              <p>
-                <StyledSpan>
-                  <IntlMessages id="order.procedure.japaneseGiftWapping" />
-                  {giftData.wapping_state}
-                </StyledSpan>
-              </p>
-              <p>
-                <IntlMessages id="order.procedure.GiftMessage" />
-                {giftData.message_state}
-              </p>
-            </SpecifiedResult>
-            <ButtonArea>
-              <SpecifyMessageButton>
-                <IntlMessages id="order.procedure.specifyMessage" />
-              </SpecifyMessageButton>
-            </ButtonArea>
-          </Fragment>
-          :
-          null
-          }
-        </GiftStyle>
-      </GiftWrapper>
-    );
+class Gift extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      useGiftFlg: false
+    };
   }
-  return null;
-};
+
+  changeFlg = () => {
+    this.setState({
+      useGiftFlg: !this.state.useGiftFlg
+    });
+  };
+
+  render() {
+    const { giftData } = this.props;
+    if (giftData) {
+      return (
+        <GiftWrapper>
+          <GiftStyle>
+            <GiftTitle>
+              <IntlMessages id="order.procedure.GiftWrapping" />
+            </GiftTitle>
+            <GiftCheckboxArea>
+              <Checkbox
+                onChange={() => {
+                  this.changeFlg();
+                }}
+              >
+                <IntlMessages id="order.procedure.useGiftWrapping" />
+              </Checkbox>
+            </GiftCheckboxArea>
+            {this.state.useGiftFlg ? (
+              <Fragment>
+                <Select
+                  defaultValue={giftData.packTogether}
+                  style={{ width: 250 }}
+                >
+                  <Option value={giftData.packTogether}>
+                    <IntlMessages id="order.procedure.toPackTogether" />
+                  </Option>
+                  <Option value={giftData.packIndividual}>
+                    <IntlMessages id="order.procedure.toWrapIndividually" />
+                  </Option>
+                </Select>
+                <SpecifiedResult>
+                  <p>
+                    <StyledSpan>
+                      <IntlMessages id="order.procedure.japaneseGiftWapping" />
+                      {giftData.wapping_state}
+                    </StyledSpan>
+                  </p>
+                  <p>
+                    <IntlMessages id="order.procedure.GiftMessage" />
+                    {giftData.message_state}
+                  </p>
+                </SpecifiedResult>
+                <ButtonArea>
+                  <SpecifyMessageButton>
+                    <IntlMessages id="order.procedure.specifyMessage" />
+                  </SpecifyMessageButton>
+                </ButtonArea>
+              </Fragment>
+            ) : null}
+          </GiftStyle>
+        </GiftWrapper>
+      );
+    }
+    return null;
+  }
+}
 
 export default Gift;

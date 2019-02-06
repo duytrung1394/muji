@@ -133,6 +133,8 @@ class OrdersController extends Controller
                 'gift_flg' => true,
                 'wapping_state' => '指定なし',
                 'message_state' => '指定なし',
+                'packTogether' => 'まとめて包装する',
+                'packIndividual' => '個々に包装する',
             ],
             'delivery' => [
                 'count' => '1',

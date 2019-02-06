@@ -43,18 +43,22 @@ const PaymentConfirm = styled.span`
 `;
 
 const LargePrice = styled.span`
-  font-size: 16px;
+  font-size: 15px;
   padding: 0 4px;
 `;
 
 const BillPrices = styled.span`
+  font-size: 12px;
   padding: 0 4px;
 `;
 
-const BillingSummary = () => {
+const CustomItems = {
+  marginBottom: "4px"
+};
+
+const BillingSummary = ({ billingSummary }) => {
   return (
-    
-<BillSummaryDiv>
+    <BillSummaryDiv>
       <BillSummaryTitles>
         <IntlMessages id="order.confirm.billContent" />
       </BillSummaryTitles>
@@ -63,50 +67,46 @@ const BillingSummary = () => {
           <IntlMessages id="order.confirm.productsSubtotal" />
           <AmountOfMoney>
             <IntlMessages id="order.confirm.taxIn" />
-            <LargePrice>7,960</LargePrice>
+            <LargePrice>{billingSummary.products_subtotal}</LargePrice>
+            <IntlMessages id="order.confirm.yen" />
+          </AmountOfMoney>
+        </BillSummaryItems>
+        <BillSummaryItems style={CustomItems}>
+          <IntlMessages id="order.confirm.incidentalService" />
+          <AmountOfMoney>
+            <IntlMessages id="order.confirm.taxIn" />
+            <BillPrices>{billingSummary.incidental_service}</BillPrices>
             <IntlMessages id="order.confirm.yen" />
           </AmountOfMoney>
         </BillSummaryItems>
         <BillSummaryItems>
-          <div>
-            <IntlMessages id="order.confirm.incidentalService" />
-            <AmountOfMoney>
-              <IntlMessages id="order.confirm.taxIn" />
-              <BillPrices>0</BillPrices>
-              <IntlMessages id="order.confirm.yen" />
-            </AmountOfMoney>
-          </div>
-          <div>
-            <IntlMessages id="order.confirm.deliveryFee" />
-            <AmountOfMoney>
-              <IntlMessages id="order.confirm.taxIn" />
-              <BillPrices>980</BillPrices>
-              <IntlMessages id="order.confirm.yen" />
-            </AmountOfMoney>
-          </div>
+          <IntlMessages id="order.confirm.deliveryFee" />
+          <AmountOfMoney>
+            <IntlMessages id="order.confirm.taxIn" />
+            <BillPrices>{billingSummary.delivery_fee}</BillPrices>
+            <IntlMessages id="order.confirm.yen" />
+          </AmountOfMoney>
         </BillSummaryItems>
-        <BillSummaryItems>
+        <BillSummaryItems style={CustomItems}>
           <IntlMessages id="order.procedure.mujiShoppingPoint" />
           <AmountOfMoney>
-            <BillPrices>-3,000</BillPrices>
+            <BillPrices>{billingSummary.muji_shopping_ponts}</BillPrices>
             <IntlMessages id="order.procedure.point" />
           </AmountOfMoney>
         </BillSummaryItems>
+        <BillSummaryItems style={CustomItems}>
+          <IntlMessages id="order.confirm.mujiCoin" />
+          <AmountOfMoney>
+            <BillPrices>{billingSummary.muji_coins}</BillPrices>
+            <IntlMessages id="order.confirm.coin" />
+          </AmountOfMoney>
+        </BillSummaryItems>
         <BillSummaryItems>
-          <div>
-            <IntlMessages id="order.confirm.mujiCoin" />
-            <AmountOfMoney>
-              <BillPrices>-3,000</BillPrices>
-              <IntlMessages id="order.confirm.coin" />
-            </AmountOfMoney>
-          </div>
-          <div>
-            <IntlMessages id="order.confirm.partonerSales" />
-            <AmountOfMoney>
-              <BillPrices>-2,000</BillPrices>
-              <IntlMessages id="order.confirm.yen" />
-            </AmountOfMoney>
-          </div>
+          <IntlMessages id="order.confirm.partonerSales" />
+          <AmountOfMoney>
+            <BillPrices>{billingSummary.partoner_sales}</BillPrices>
+            <IntlMessages id="order.confirm.yen" />
+          </AmountOfMoney>
         </BillSummaryItems>
         <BillSummaryItems>
           <PaymentConfirm>
@@ -114,13 +114,12 @@ const BillingSummary = () => {
           </PaymentConfirm>
           <AmountOfMoney>
             <IntlMessages id="order.procedure.taxIn" />
-            <LargePrice>450</LargePrice>
+            <LargePrice>{billingSummary.payment_confirm}</LargePrice>
             <IntlMessages id="order.procedure.yen" />
           </AmountOfMoney>
         </BillSummaryItems>
       </BillSummaryList>
     </BillSummaryDiv>
-
   );
 };
 

@@ -27,6 +27,7 @@ const VisaImage = styled.img`
 
 const ChangeButton = styled(CommonButton)`
   position: absolute;
+  font-size: 12px;
   bottom: 12px;
   right: 12px;
   width: 100px;

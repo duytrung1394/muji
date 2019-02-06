@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 const BillButtons = styled.div`
   display: flex;
   justify-content: space-around;
+`;
+
+const BackButton = styled(CommonButton)`
   font-size: 12px;
 `;
 
-const BackButton = styled(CommonButton)``;
-
 const BackOrderConfirmButton = styled(CommonButton)`
+  font-size: 12px;
   background-color: #7f0019;
   color: #fff;
 `;
