@@ -58,58 +58,58 @@ const routes = [
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/index")
+      require("./customApp/containers/CustomerReview/history")
     )
   },
-  {
-    path: "/store/review/clipped",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexClipped")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByProduct")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code/post",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/new")
-    )
-  },
-  {
-    path: "/store/review/report/:item_code/:comment_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/report")
-    )
-  },
-  {
-    path: "/store/review/detail/:review_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/show")
-    )
-  },
-  {
-    path: "/store/review/user/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByUser")
-    )
-  },
-  {
-    path: "/store/review/following/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByFollowing")
-    )
-  },
+  // {
+  //   path: "/store/review/clipped",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/indexClipped")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/item/:item_code",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/indexByProduct")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/item/:item_code/post",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/new")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/report/:item_code/:comment_code",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/report")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/detail/:review_code",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/show")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/user/",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/indexByUser")
+  //   )
+  // },
+  // {
+  //   path: "/store/review/following/",
+  //   exact: true,
+  //   component: asyncComponent(() =>
+  //     require("./customApp/containers/CustomerReview/indexByFollowing")
+  //   )
+  // },
   {
     path: "/store/cmdty/donation",
     exact: true,
