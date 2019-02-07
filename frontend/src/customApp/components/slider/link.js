@@ -18,7 +18,7 @@ class Link extends Component {
       this.state.mouseDownY !== e.clientY
     ) {
       e.preventDefault();
-    } else if (this.props.onClick !== null) {
+    } else if (this.props.onClick) {
       this.props.onClick();
     }
   };
