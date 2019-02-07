@@ -57,96 +57,75 @@ const DescribeDiscount = styled.span`
   }
 `;
 
-class ItemMain extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      popoverVisible: false,
-      stopModalVisible: false
-    };
-  }
+const ItemMain = ({ item }) => {
+  const {
+    item_price,
+    item_price_present,
+    item_discount,
+    quantity,
+    order_frequency,
+    caption
+  } = item;
 
-  render() {
-    const { item } = this.props;
-
-    const {
-      id,
-      jan_code,
-      img_src,
-      item_price,
-      item_price_present,
-      item_discount,
-      quantity,
-      order_frequency,
-      cancel_type,
-      caption
-    } = item;
-
-    return (
-        <DescribeList>
-          <Describe>
-            <IntlMessages id="order.subscription.label.frequency" />
+  return (
+    <DescribeList>
+      <Describe>
+        <IntlMessages id="order.subscription.label.frequency" />
+        <IntlMessages
+          id="order.subscription.frequency"
+          values={{
+            frequency: order_frequency
+          }}
+        />
+      </Describe>
+      <Describe>
+        <IntlMessages id="order.subscription.label.num" />
+        <IntlMessages
+          id="order.subscription.quantity"
+          values={{
+            num: quantity
+          }}
+        />
+      </Describe>
+      <DescribePriceWrapper>
+        {item_price && (
+          <Link
+            to={"#"}
+            style={item_price_present && { textDecoration: "line-through" }}
+            draggable={false}
+          >
             <IntlMessages
-              id="order.subscription.frequency"
+              id="order.subscription.price"
               values={{
-                frequency: order_frequency
+                price: item_price
               }}
             />
-          </Describe>
-          <Describe>
-            <IntlMessages id="order.subscription.label.num" />
-            <IntlMessages
-              id="order.subscription.quantity"
-              values={{
-                num: quantity
-              }}
-            />
-          </Describe>
-          <DescribePriceWrapper>
-            {item_price_present ? (
-              <Link to={"#"} style={{ textDecoration: "line-through" }}>
-                <IntlMessages
-                  id="order.subscription.price"
-                  values={{
-                    price: item_price
-                  }}
-                />
-              </Link>
-            ) : (
-              <Link to={"#"}>
-                <IntlMessages
-                  id="order.subscription.price"
-                  values={{
-                    price: item_price
-                  }}
-                />
-              </Link>
-            )}
-            {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
-            {item_price_present && (
-              <DescribePricePresent>
-                <Link to={"#"}>
-                  <IntlMessages
-                    id="order.subscription.price"
-                    values={{
-                      price: item_price_present
-                    }}
-                  />
-                </Link>
-              </DescribePricePresent>
-            )}
-          </DescribePriceWrapper>
-          <Describe>
-            <DescribeDiscount>
-              <Link to={"#"}>{item_discount}</Link>
-            </DescribeDiscount>
-          </Describe>
-          <Describe>
-            <Link to={"#"}>{caption}</Link>
-          </Describe>
-        </DescribeList>
-    );
-  }
-}
+          </Link>
+        )}
+        {item_price_present && <DescribePriceArrow>→</DescribePriceArrow>}
+        {item_price_present && (
+          <DescribePricePresent>
+            <Link to={"#"}>
+              <IntlMessages
+                id="order.subscription.price"
+                values={{
+                  price: item_price_present
+                }}
+              />
+            </Link>
+          </DescribePricePresent>
+        )}
+      </DescribePriceWrapper>
+      <Describe>
+        <DescribeDiscount>
+          <Link to={"#"}>{item_discount}</Link>
+        </DescribeDiscount>
+      </Describe>
+      <Describe>
+        <Link to={"#"}>{caption}</Link>
+      </Describe>
+    </DescribeList>
+  );
+};
 
 export default ItemMain;

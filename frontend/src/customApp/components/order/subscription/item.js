@@ -8,25 +8,12 @@ import TabSliderItemFooter from "../../shared/tabSlider/itemFooter";
 import SubscriptionHeader from "../../order/subscription/itemHeader";
 import SubscriptionItemMain from "../../order/subscription/itemMain";
 
-
 import imgSubscription1 from "../../../../image/order/subscription/img-subscription-pro-1.png";
 const images = {
   "img-subscription-pro-1.png": imgSubscription1
 };
 
-// import imgArticle1 from "../../../image/favorite/article/img-favorite-slide-3-1.png";
-// import imgArticle2 from "../../../image/favorite/article/img-favorite-slide-3-2.png";
-// import imgEvent1 from "../../../image/favorite/event/img-favorite-slide-2.png";
-// import imgProduct1 from "../../../image/favorite/product/img-favorite-slide-1.png";
-
-// const images = {
-//   "img-favorite-slide-1.png": imgProduct1,
-//   "img-favorite-slide-2.png": imgEvent1,
-//   "img-favorite-slide-3-1.png": imgArticle1,
-//   "img-favorite-slide-3-2.png": imgArticle2
-// };
-
-const FavoriteItem = ({ item, popoverActions, footerActions }) => {
+const Item = ({ item, popoverActions, footerActions }) => {
   const imgUrl = item.jan_code
     ? "/store/cmdty/detail/" + item.jan_code
     : item.id;
@@ -48,4 +35,4 @@ const FavoriteItem = ({ item, popoverActions, footerActions }) => {
   );
 };
 
-export default FavoriteItem;
+export default Item;

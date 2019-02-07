@@ -7,7 +7,7 @@ import SubscriptionItem from "../../components/order/subscription/item";
 import styled from "styled-components";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { TabSlider } from "../../components/shared/tabSlider";
-import { Spin } from "antd";
+import { Spin, message, Modal } from "antd";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -32,14 +32,123 @@ const ItemBox = styled.div`
   padding: 0 50px;
 `;
 
+const ModalButton = styled.p`
+  max-width: 300px;
+  margin: 20px auto 0;
+  text-align: center;
+
+  button {
+    border: 1px solid rgb(127, 0, 25);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+
+  button,
+  button:hover,
+  button:focus {
+    color: rgb(127, 0, 25);
+    text-decoration: none;
+  }
+`;
+
+const ConfirmMessage = styled.p`
+  text-align: center;
+`;
+
+const ModalWrapper = styled(Modal)`
+  && {
+    top: 50%;
+    padding-bottom: 0;
+    margin-top: -100px;
+  }
+
+  .ant-modal-content {
+    width: 100%;
+
+    & .ant-modal-body {
+      padding: 16px;
+    }
+  }
+`;
+
+const DeleteModal = ({ visible, onOk, onCancel }) => {
+  return (
+    <ModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <ConfirmMessage>
+        <IntlMessages id="order.subscription.deleteConfirm" />
+      </ConfirmMessage>
+      <ModalButton>
+        <button to={"#"} onClick={onOk}>
+          <IntlMessages id="order.subscription.delete" />
+        </button>
+      </ModalButton>
+    </ModalWrapper>
+  );
+};
+
+const StopModal = ({ visible, onOk, onCancel }) => {
+  return (
+    <ModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <ConfirmMessage>
+        <IntlMessages id="order.subscription.stopConfirm" />
+      </ConfirmMessage>
+      <ModalButton>
+        <button to={"#"} onClick={onOk}>
+          <IntlMessages id="order.subscription.stop" />
+        </button>
+      </ModalButton>
+    </ModalWrapper>
+  );
+};
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeys: []
+      selectedKeys: [],
+      deleteModalVisible: false
     };
   }
+
+  modalOpen = () => {
+    this.setState({ deleteModalVisible: true });
+  };
+
+  handleOk = () => {
+    message.info("削除");
+    this.setState({ deleteModalVisible: false });
+  };
+
+  handleCancel = () => {
+    this.setState({ deleteModalVisible: false });
+  };
+
+  stopModalOpen = () => {
+    this.setState({ stopModalVisible: true });
+  };
+
+  stopModalHandleOk = () => {
+    message.info("停止");
+    this.setState({ stopModalVisible: false });
+  };
+
+  stopModalHandleCancel = () => {
+    this.setState({ stopModalVisible: false });
+  };
 
   // React methods
   componentDidMount() {
@@ -72,7 +181,8 @@ class Index extends Component {
 
               if (itemKey === "continue") {
                 popoverActions.push({
-                  name: formatMessage({ id: "order.subscription.ellipsisButton.stop" })
+                  name: formatMessage({ id: "order.subscription.stop" }),
+                  onClick: this.stopModalOpen
                 });
                 footerActions.push({
                   name: formatMessage({ id: "order.subscription.skip" })
@@ -82,7 +192,8 @@ class Index extends Component {
                 });
               } else if (itemKey === "stopped") {
                 footerActions.push({
-                  name: formatMessage({ id: "order.subscription.delete" })
+                  name: formatMessage({ id: "order.subscription.delete" }),
+                  onClick: this.modalOpen
                 });
                 footerActions.push({
                   name: formatMessage({ id: "order.subscription.resume" })
@@ -108,6 +219,18 @@ class Index extends Component {
               );
             })}
           </TabSlider>
+          <DeleteModal
+            visible={this.state.deleteModalVisible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            component={this}
+          />
+          <StopModal
+            visible={this.state.stopModalVisible}
+            onOk={this.stopModalHandleOk}
+            onCancel={this.stopModalHandleCancel}
+            component={this}
+          />
         </Spin>
       </ContentAreaLayout>
     );

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
@@ -39,12 +38,6 @@ const OrderAddress = styled.li`
   text-overflow: ellipsis;
   list-style-type: none;
   list-style: none;
-
-  a,
-  a:hover,
-  a:focus {
-    color: rgb(96, 179, 250);
-  }
 `;
 
 const OrderWarning = styled.li`
@@ -74,7 +67,7 @@ const ItemHeader = ({ item }) => {
             {item.order_date}
           </OrderInfo>
           <OrderAddress>
-            <Link to={"#"}>{item.order_address}</Link>
+            <span>{item.order_address}</span>
           </OrderAddress>
         </SubscriptionOrderInfo>
       )}
