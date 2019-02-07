@@ -91,9 +91,9 @@ class ProductDetailsController extends Controller
                 ],
             ],
             'quantity_data' => [
-                'quantity' => '3',
-                'max' => '10',
-                'min' => '1',
+                'quantity' => 3,
+                'max' => 10,
+                'min' => 1,
             ],
             // TODO: 以下 サンプルデータ（QA26-商品詳細画面-20190118 .xlsx）について疑問点をQAに記述 : 回答にあわせ調整 or 本API対応が必要 2019/1/30
             "deliveryDivision" => "TH",

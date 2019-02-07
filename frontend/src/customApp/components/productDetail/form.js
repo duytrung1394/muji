@@ -60,8 +60,8 @@ const ButtonsBox = styled.div`
 
 const StyledButton = styled(OutlineButton)`
   margin-top: 16px;
-  span {
-    vetical-align: top;
+  & > span {
+    vertical-align: middle;
   }
 `;
 
@@ -99,25 +99,33 @@ class Form extends Component {
   };
 
   componentWillMount = () => {
-    this.setState({
-      quantity:
-        this.state.quantity < this.state.min
-          ? this.state.min
-          : this.state.quantity
-    });
-    this.setState({
-      quantity:
-        this.state.quantity > this.state.max
-          ? this.state.max
-          : this.state.quantity
+    this.setState(() => {
+      return (
+        {
+          quantity:
+            this.state.quantity < this.state.min
+              ? this.state.min
+              : this.state.quantity
+        },
+        {
+          quantity:
+            this.state.quantity > this.state.max
+              ? this.state.max
+              : this.state.quantity
+        }
+      );
     });
   };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.entity.quantity_data) {
-      this.setState({ min: nextProps.entity.quantity_data.min });
-      this.setState({ max: nextProps.entity.quantity_data.max });
-      this.setState({ quantity: nextProps.entity.quantity_data.quantity });
+      this.setState(() => {
+        return (
+          { min: nextProps.entity.quantity_data.min },
+          { max: nextProps.entity.quantity_data.max },
+          { quantity: nextProps.entity.quantity_data.quantity }
+        );
+      });
     }
   };
 
@@ -208,13 +216,17 @@ class Form extends Component {
           changeHandler={this.changeQuantity}
         />
         <ButtonsBox>
-          <StyledButton color="#7f0019" reverse={true} onClick={this.submit}>
-            <ButtonIcon type="shopping-cart" />
-            <IntlMessages id="rest.cart" />
+          <StyledButton color="#7f0019" reverse="true" onClick={this.submit}>
+            <span>
+              <ButtonIcon type="shopping-cart" />
+              <IntlMessages id="productDetail.cart" />
+            </span>
           </StyledButton>
           <StyledButton color="#7f0019" onClick={this.requestHandler}>
-            <ButtonIcon type="select" />
-            <IntlMessages id="rest.buyNow" />
+            <span>
+              <ButtonIcon type="select" />
+              <IntlMessages id="productDetail.buy" />
+            </span>
           </StyledButton>
         </ButtonsBox>
       </Col>
