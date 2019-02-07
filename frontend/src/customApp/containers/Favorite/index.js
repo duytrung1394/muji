@@ -123,7 +123,6 @@ class Index extends Component {
 
   modalOpen = () => {
     this.setState({ deleteModalVisible: true });
-    console.log(this.state.deleteModalVisible);
   };
 
   handleOk = () => {
@@ -182,8 +181,7 @@ class Index extends Component {
                   name: formatMessage({ id: "favorite.addDeriveryList" })
                 });
                 footerActions.push({
-                  name: formatMessage({ id: "favorite.add" }),
-                  to: "/"
+                  name: formatMessage({ id: "favorite.add" })
                 });
               }
 
@@ -205,6 +203,7 @@ class Index extends Component {
                               item={item}
                               popoverActions={popoverActions}
                               footerActions={footerActions}
+                              itemKey={itemKey}
                             />
                           </Fragment>
                         );

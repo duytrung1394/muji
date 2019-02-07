@@ -13,7 +13,6 @@ class FavoritesController extends Controller
     public function index(Request $request)
     {
         return [
-            // 'data'  => $this->getMultiMockData( (int)$request->input('page') ),
             'data' => $this->getProductMock(),
             'total' => 200,
         ];
@@ -30,10 +29,9 @@ class FavoritesController extends Controller
             'item_color' => 'カラー：マスタード',
             'item_size' => 'サイズ：S',
             'item_num' => '個数：1個',
-            'item_price' => '税込495円',
-            'item_price_present' => '税込480円',
+            'item_price' => 495,
+            'item_price_present' => 480,
             'item_discount' => '10%OFF',
-            'favorite_type' => 1,
             'img_src' => 'img-favorite-slide-1.png'
         ];
 
@@ -47,8 +45,7 @@ class FavoritesController extends Controller
             'item_color' => '',
             'item_size' => '',
             'item_num' => '',
-            'item_price' => '税込380円',
-            'favorite_type' => 2,
+            'item_price' => 380,
             'img_src' => 'img-favorite-slide-2.png'
         ];
 
@@ -64,7 +61,6 @@ class FavoritesController extends Controller
             'item_size' => '',
             'item_num' => '',
             'item_price' => '',
-            'favorite_type' => 3,
             'img_src' => 'img-favorite-slide-3-1.png'
         ];
 
@@ -78,7 +74,6 @@ class FavoritesController extends Controller
             'caption' => '今年の4月に、MUJI BOOKSから『日本の布　1』が発売されました...',
             'item_num' => '',
             'item_price' => '',
-            'favorite_type' => 3,
             'img_src' => 'img-favorite-slide-3-2.png',
         ];
 
