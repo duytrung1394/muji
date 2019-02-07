@@ -5,7 +5,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import actions from "../../redux/order/list/actions";
+import actions from "../../redux/order/entity/actions";
 import { injectIntl } from "react-intl";
 import UserData from "../../components/order/userData";
 import Gift from "../../components/order/gift";
@@ -52,7 +52,7 @@ class Index extends Component {
     const {
       // types
       total,
-      entities,
+      entity,
       fetching,
       destroying,
       // react-router
@@ -64,12 +64,12 @@ class Index extends Component {
           <Title>
             <IntlMessages id="order.procedure.title" />
           </Title>
-          <UserData userData={entities.user_data} />
-          <Gift giftData={entities.gift} />
-          <Delivery deliveryData={entities.delivery} />
+          <UserData userData={entity.user_data} />
+          <Gift giftData={entity.gift} />
+          <Delivery deliveryData={entity.delivery} />
           <BillDetails
-            billDetails={entities.bill_detail}
-            billingSummary={entities.billing_summary}
+            billDetails={entity.bill_detail}
+            billingSummary={entity.billing_summary}
           />
           <BillFooter />
         </ContentLayout>
@@ -79,7 +79,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Order.List.toJS();
+  return state.Order.Entity.toJS();
 };
 
 const actionCreators = {

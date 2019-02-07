@@ -188,21 +188,21 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/orders",
+    path: "/store/order/index",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/index")
     )
   },
   {
-    path: "/store/cust/order/itemlist",
+    path: "/store/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
     )
   },
   {
-    path: "/store/cust/order/confirmation",
+    path: "/store/order/confirmation",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/show")
