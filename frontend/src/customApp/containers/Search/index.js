@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/search/list/actions";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
 import { Spin } from "antd";
-import ContentHeader from "../../components/shared/header/contentHeader";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import SearchNavigationList from "../../components/search/tab";
 import SearchHeader from "../../components/search/header";
@@ -37,7 +34,7 @@ class Index extends Component {
 
   // React.render
   render() {
-    const { entity, fetching } = this.props;
+    const { fetching } = this.props;
 
     //仮データ 商品、読み物、サービスの検索結果
     const searchItems = [

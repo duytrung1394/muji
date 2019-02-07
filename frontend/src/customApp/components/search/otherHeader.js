@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const SearchOtherHeaderH1 = styled.h1`
@@ -11,8 +10,12 @@ const SearchOtherHeaderH1 = styled.h1`
   font-weight: normal;
 `;
 
-const SearchOtherHeader = ({}) => {
-  return <SearchOtherHeaderH1>店舗以外の検索結果</SearchOtherHeaderH1>;
+const SearchOtherHeader = () => {
+  return (
+    <SearchOtherHeaderH1>
+      <IntlMessages id="search.store.other" />
+    </SearchOtherHeaderH1>
+  );
 };
 
 export default SearchOtherHeader;

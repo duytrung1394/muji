@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const SearchHeaderH1 = styled.h1`
@@ -15,7 +14,17 @@ const SearchHeaderH1 = styled.h1`
 `;
 
 const SearchHeader = ({ keyword }) => {
-  return <SearchHeaderH1>「{keyword}」の検索結果</SearchHeaderH1>;
+  return (
+    <SearchHeaderH1>
+      {" "}
+      <IntlMessages
+        id="search.header"
+        values={{
+          keyword: keyword
+        }}
+      />
+    </SearchHeaderH1>
+  );
 };
 
 export default SearchHeader;

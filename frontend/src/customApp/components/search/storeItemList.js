@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Carousel } from "antd";
+import { Card } from "antd";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const StoreListWrapper = styled.div`
   margin-bottom: 20px;
@@ -68,10 +69,22 @@ const SearchStoreList = props => {
                 {item.title && <h3>{item.title}</h3>}
                 <div>
                   <ul>
-                    <li>住所：{item.address && item.address}</li>
-                    <li>電話番号：{item.number && item.number}</li>
-                    <li>営業時間：{item.opening && item.opening}</li>
-                    <li>店休日：{item.holiday && item.holiday}</li>
+                    <li>
+                      <IntlMessages id="search.address" />：{item.address &&
+                        item.address}
+                    </li>
+                    <li>
+                      <IntlMessages id="search.number" />：{item.number &&
+                        item.number}
+                    </li>
+                    <li>
+                      <IntlMessages id="search.opening" />：{item.opening &&
+                        item.opening}
+                    </li>
+                    <li>
+                      <IntlMessages id="search.holiday" />：{item.holiday &&
+                        item.holiday}
+                    </li>
                   </ul>
                 </div>
               </Link>

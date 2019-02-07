@@ -216,7 +216,7 @@ const routes = [
     )
   },
   {
-    path: "/store/store/searchStore",
+    path: "/store/search/store",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Search/index")
