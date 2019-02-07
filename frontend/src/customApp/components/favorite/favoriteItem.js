@@ -19,7 +19,7 @@ const images = {
   "img-favorite-slide-3-2.png": imgArticle2
 };
 
-const FavoriteItem = ({ item, popoverActions, footerActions }) => {
+const FavoriteItem = ({ item, popoverActions, footerActions, itemKey }) => {
   const imgUrl = item.jan_code
     ? "/store/cmdty/detail/" + item.jan_code
     : item.id;
@@ -30,7 +30,7 @@ const FavoriteItem = ({ item, popoverActions, footerActions }) => {
       }
       main={
         <TabSliderItemMain
-          content={<FavoriteItemMain item={item} />}
+          content={<FavoriteItemMain item={item} itemKey={itemKey} />}
           img={images[item.img_src]}
           imgUrl={imgUrl}
           actions={popoverActions}
