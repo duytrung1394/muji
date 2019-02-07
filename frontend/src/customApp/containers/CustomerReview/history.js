@@ -10,6 +10,8 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import Title from "../../components/review/title";
 import ListToolbar from "../../components/review/listToolbar";
+import List from "../../components/review/list";
+import Review from "../../components/review/review";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -56,6 +58,8 @@ class History extends Component {
         <ContentLayout>
           <Title />
           <ListToolbar />
+          <List />
+          <Review />
         </ContentLayout>
       </ContentAreaLayout>
     );
