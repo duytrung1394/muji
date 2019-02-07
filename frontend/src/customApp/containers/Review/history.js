@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/customer_review/list/actions";
+import actions from "../../redux/review/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
@@ -68,7 +68,7 @@ class History extends Component {
 };
 
 const mapStateToProps = state => {
-  return state.CustomerReview.List.toJS();
+  return state.Review.List.toJS();
 };
 
 const actionCreators = {

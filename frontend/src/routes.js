@@ -58,7 +58,7 @@ const routes = [
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/history")
+      require("./customApp/containers/Review/history")
     )
   },
   {
@@ -173,19 +173,5 @@ const routes = [
       require("./customApp/containers/Order/indexStoreReserve")
     )
   },
-  {
-    path: "/reviews",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Review/index")
-    )
-  },
-  {
-    path: "/reviews/:review_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Review/show")
-    )
-  }
 ];
 export default routes;
