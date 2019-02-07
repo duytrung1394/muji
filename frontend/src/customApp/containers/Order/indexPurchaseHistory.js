@@ -19,7 +19,7 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-class Index extends Component {
+class IndexPurchaseHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +29,7 @@ class Index extends Component {
 
   // React methods
   componentDidMount() {
-    this.props.fetchRequest();
+    this.props.fetchRequest("");
   }
 
   // React.render
@@ -77,4 +77,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Index);
+export default enhance(IndexPurchaseHistory);

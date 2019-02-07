@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
 import { Spin } from "antd";
 import styled from "styled-components";
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import ReviewItem from "../../components/customerReview/list/reviewItem";
 import Header from "../../components/customerReview/list/header";
+import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
 import ReviewButton from "../../components/customerReview/list/reviewButton";
 import { parse } from "query-string";
 
@@ -65,7 +65,11 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Header profile={profile} sort={[]} />
+          <Header
+            profile={<ReviewUserProfile entity={profile} />}
+            sort={[]}
+            listStyle={{ backgroundColor: "#eee" }}
+          />
         </ContentLayout>
         <ContentLayout>
           <Spin

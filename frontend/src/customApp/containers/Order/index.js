@@ -36,16 +36,8 @@ class Index extends Component {
 
   // React methods
   componentDidMount() {
-    this.fetchRequest(this.props);
+    this.props.fetchRequest("");
   }
-
-  fetchRequest = props => {
-    // ページングもケースバイケースなのでコンポーネント毎に実装する
-    props.fetchRequest({
-      page: 1,
-      filters: JSON.stringify(props.filters || [])
-    });
-  };
 
   // React.render
   render() {
