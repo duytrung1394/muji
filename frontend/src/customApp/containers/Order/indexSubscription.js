@@ -1,16 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
+import SubscriptionItem from "../../components/order/subscription/item";
 import styled from "styled-components";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
+import { TabSlider } from "../../components/shared/tabSlider";
 import { Spin } from "antd";
-import {
-  TabSlider,
-  TabPanel
-} from "../../components/shared/tabSlider/tabSlider";
-import SubscriptionItem from "../../components/order/subscription/item";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -22,16 +19,19 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-const tabList = [
+const tabNameIds = [
   "order.subscription.tab.continue",
-  "order.subscription.tab.stop"
+  "order.subscription.tab.stopped"
 ];
+
+const itemKeys = ["continue", "stopped"];
 
 const ItemBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 0 50px;
 `;
+
 
 class Index extends Component {
   constructor(props) {
@@ -55,7 +55,8 @@ class Index extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
@@ -64,16 +65,46 @@ class Index extends Component {
           <IntlMessages id="order.subscription.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <TabSlider tabList={tabList}>
-            {entities.map((entity, index) => {
+          <TabSlider tabNameIds={tabNameIds}>
+            {itemKeys.map((itemKey, index) => {
+              let popoverActions = [];
+              let footerActions = [];
+
+              if (itemKey === "continue") {
+                popoverActions.push({
+                  name: formatMessage({ id: "order.subscription.ellipsisButton.stop" })
+                });
+                footerActions.push({
+                  name: formatMessage({ id: "order.subscription.skip" })
+                });
+                footerActions.push({
+                  name: formatMessage({ id: "order.subscription.change" })
+                });
+              } else if (itemKey === "stopped") {
+                footerActions.push({
+                  name: formatMessage({ id: "order.subscription.delete" })
+                });
+                footerActions.push({
+                  name: formatMessage({ id: "order.subscription.resume" })
+                });
+              }
+
               return (
-                <TabPanel key={index}>
+                <Fragment key={index}>
                   <ItemBox>
-                    {entity.map((item, index) => {
-                      return <SubscriptionItem item={item} key={index} />;
-                    })}
+                    {entities[itemKey] &&
+                      entities[itemKey].map((item, index) => {
+                        return (
+                          <SubscriptionItem
+                            key={index}
+                            item={item}
+                            popoverActions={popoverActions}
+                            footerActions={footerActions}
+                          />
+                        );
+                      })}
                   </ItemBox>
-                </TabPanel>
+                </Fragment>
               );
             })}
           </TabSlider>

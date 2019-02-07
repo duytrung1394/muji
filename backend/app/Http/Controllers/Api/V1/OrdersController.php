@@ -205,7 +205,7 @@ class OrdersController extends Controller
     private function getMockDataSubscription()
     {
         return [
-            [
+            'continue' => [
                 [
                     'jan_code' => '4550002678944',
                     'order_date' => '2018/11/23',
@@ -275,7 +275,7 @@ class OrdersController extends Controller
                     'img_src' => 'img-subscription-pro-1.png',
                 ]
             ],
-            [
+            'stopped' => [
                 [
                     'jan_code' => '4550002678944',
                     'order_date' => '2018/11/23',

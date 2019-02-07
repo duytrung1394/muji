@@ -550,7 +550,7 @@
   "order.subscription.resume": "再開する",
   "order.subscription.skip": "次回をスキップ",
   "order.subscription.tab.continue": "定期購入継続中",
-  "order.subscription.tab.stop": "定期購入停止中",
+  "order.subscription.tab.stopped": "定期購入停止中",
   "order.subscription.warning.code1": "MUJIコインが不足しているため停止中です",
   "orderHistory.attributes.name": "名称",
   "orderHistory.attributes.order_history_code": "注文履歴コード",

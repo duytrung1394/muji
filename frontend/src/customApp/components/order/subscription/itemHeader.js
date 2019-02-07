@@ -1,6 +1,5 @@
-import { ItemHeader as ItemHeaderWrapper } from "../../shared/tabSlider/tabSliderItem";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
@@ -60,7 +59,7 @@ const OrderWarning = styled.li`
 const ItemHeader = ({ item }) => {
   const { item_name, order_warning } = item;
   return (
-    <ItemHeaderWrapper>
+    <Fragment>
       <Title>{item_name}</Title>
       {order_warning ? (
         <OrderWarning>
@@ -79,7 +78,7 @@ const ItemHeader = ({ item }) => {
           </OrderAddress>
         </SubscriptionOrderInfo>
       )}
-    </ItemHeaderWrapper>
+    </Fragment>
   );
 };
 
