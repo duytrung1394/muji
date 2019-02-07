@@ -16,7 +16,6 @@ const SearchHeaderH1 = styled.h1`
 const SearchHeader = ({ keyword }) => {
   return (
     <SearchHeaderH1>
-      {" "}
       <IntlMessages
         id="search.header"
         values={{

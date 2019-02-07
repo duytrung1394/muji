@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const SearchOtherHeaderH1 = styled.h1`
+const SearchOtherHeaderH2 = styled.h2`
   line-height: 1;
   margin: 20px 0 0;
   color: #585858;
@@ -12,9 +12,9 @@ const SearchOtherHeaderH1 = styled.h1`
 
 const SearchOtherHeader = () => {
   return (
-    <SearchOtherHeaderH1>
+    <SearchOtherHeaderH2>
       <IntlMessages id="search.store.other" />
-    </SearchOtherHeaderH1>
+    </SearchOtherHeaderH2>
   );
 };
 

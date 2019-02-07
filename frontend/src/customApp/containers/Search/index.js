@@ -8,7 +8,7 @@ import SearchNavigationList from "../../components/search/tab";
 import SearchHeader from "../../components/search/header";
 import SearchOtherHeader from "../../components/search/otherHeader";
 import SearchItemImageList from "../../components/search/searchItemImageList";
-import Counta from "../../components/search/counta";
+import PageRange from "../../components/search/pageRangeText";
 import SearchStoreList from "../../components/search/storeItemList";
 
 class Index extends Component {
@@ -127,7 +127,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <SearchHeader keyword={keyword} />
           <SearchNavigationList active={3} />
-          <Counta total={itemCount} first={1} end={itemCount} />
+          <PageRange total={itemCount} first={1} end={itemCount} />
           <SearchStoreList items={searchStores} />
           <SearchOtherHeader />
           <SearchItemImageList items={searchItems} />

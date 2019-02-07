@@ -634,7 +634,7 @@
   "search.opening": "営業時間",
   "search.holiday": "店休日",
   "search.header": "「{keyword}」の検索結果",
-  "search.counta": "{total} 件中 {from} 〜 {to}件目 を表示",
+  "search.pageRangeText": "{total} 件中 {from} 〜 {to}件目 を表示",
   "search.store.other": "店舗以外の検索結果",
   "shuffle.descriptionFive": "Backbone.js becomes a thing",
   "shuffle.descriptionFour": "First underscore.js commit",

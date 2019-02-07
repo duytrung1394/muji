@@ -2,24 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const CountaText = styled.h1`
+const PageRangeText = styled.p`
   color: #000;
   font-size: 12px;
 `;
 
-const Counta = ({ total, first, end }) => {
+const PageRange = ({ total, first, end }) => {
   return (
-    <CountaText>
+    <PageRangeText>
       <IntlMessages
-        id="search.counta"
+        id="search.pageRangeText"
         values={{
           total: total,
           from: first,
           to: end
         }}
       />
-    </CountaText>
+    </PageRangeText>
   );
 };
 
-export default Counta;
+export default PageRange;
