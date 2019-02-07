@@ -27,7 +27,7 @@ const BillFooter = () => {
           <IntlMessages id="order.procedure.backPage" />
         </BackButton>
       </Link>
-      <Link to="#">
+      <Link to="/store/order/confirmation">
         <BackOrderConfirmButton>
           <IntlMessages id="order.procedure.backOrderConfirm" />
         </BackOrderConfirmButton>
