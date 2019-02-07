@@ -60,7 +60,8 @@ const ButtonsBox = styled.div`
 
 const StyledButton = styled(OutlineButton)`
   margin-top: 16px;
-  span, i {
+  span,
+  i {
     vertical-align: middle;
   }
 `;
