@@ -53,6 +53,7 @@ class History extends Component {
   render() {
     const { entities, fetching, fetched, destroying } = this.props;
 
+    console.log("entities");
     return (
       <ContentAreaLayout>
         <ContentLayout>

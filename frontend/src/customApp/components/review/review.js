@@ -1,16 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Rate,Icon,Popover } from 'antd';
+import { Rate,Icon,Popover,Row,Col } from 'antd';
+// import imgReview1 from "../../../../image/review/img-review-history-07.png";
+// import imgReview2 from "../../../../image/review/img-review-history-01.png";
+// import imgReview3 from "../../../../image/review/img-review-history-02.png";
+// import imgReview4 from "../../../../image/review/img-review-history-03.png";
+// import imgReview5 from "../../../../image/review/img-review-history-06.png";
+
+// const images = {
+//   "img-review-history-07.png": imgReview1,
+//   "img-review-history-01.png": imgReview2,
+//   "img-review-history-02.png": imgReview3,
+//   "img-review-history-03.png": imgReview4,
+//   "img-review-history-06.png": imgReview5,
+// };
 
 const ReviewWrapper = styled.div`
+  background-color: rgb(242, 242, 242);
+  padding: 20px;
+  margin-top: 20px;
+`;
+
+const ReviewItemArea = styled(Row)`
+border-top: 1px solid rgb(153, 153, 153);
+border-bottom: 1px solid rgb(153, 153, 153);
+`;
+
+const ItemImg = styled(Col)`
   background-color: rgb(255, 255, 255);
 `;
 
-const ReviewItemContents = styled.div`
-  padding: 10px;
-  border-top: 1px solid rgb(153, 153, 153);
-  border-bottom: 1px solid rgb(153, 153, 153);
+const ItemInfo = styled(Col)`
+  background-color: rgb(255, 255, 255);
 `;
 
 const ItemType = styled.span`
@@ -22,13 +44,11 @@ const ItemName = styled.p`
   color: rgb(88, 88, 88);
 `;
 
-const ReviewContents = styled.ul`
-  list-style: none;
-  position: relative;
-  padding-left: 0;
+const ReviewContentsArea = styled.div`
+  background-color: rgb(255, 255, 255);
 `;
 
-const ReviewContentsTitle = styled.li`
+const ReviewContentsTitle = styled.h2`
   font-size: 15px;
 `;
 
@@ -38,18 +58,15 @@ const ReviewContentsRate = styled(Rate)`
   }
 `;
 
-const PostDate = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 5px;
-  font-size: 13px;
+const PostDate = styled.span`
+  float: right;
 `;
 
-const Evaluation = styled.li`
+const Evaluation = styled.p`
   font-size: 11px;
 `;
 
-const PurchaseSize = styled.li`
+const PurchaseSize = styled.p`
   font-size: 12px;
 `;
 
@@ -61,16 +78,16 @@ const UserHeight = styled.span`
   margin-left: 20px;
 `;
 
-const ReviewComment = styled.li`
+const ReviewComment = styled.p`
   font-size: 12px;
   color: rgb(0, 0, 0);
 `;
 
-const ReviewCommentDetails = styled.li`
+const ReviewCommentDetails = styled.p`
   font-size: 11px;
 `;
 
-const CommentsLink = styled.a`
+const CommentLink = styled.a`
   text-decoration: none;
   color: rgb(96, 179, 250);
 `;
@@ -85,6 +102,22 @@ const TextStyle = styled.span`
   font-size: 12px;
 `;
 
+const HelpfulCount = styled.p`
+`;
+
+const ReviewDeleteIconArea = styled.div`
+  position: relative;
+  cursor: pointer;
+`; 
+
+const ReviewDeleteIcon = styled(Icon)`
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: gray;
+`;
+
 const PopoverMessage = styled.span`
   font-size: 12px;
   a {
@@ -95,35 +128,25 @@ const PopoverMessage = styled.span`
   }
 `;
 
-const PopIcon = styled.li`
-  font-size: 40px;
-  color: gray;
-  position: absolute;
-  top: 190px;
-  right: 10px;
-  cursor: pointer;
-`;
-
 const Review = () => {
   return (
     <ReviewWrapper>
-      <ReviewItemContents>
-        {/* <img
-          src={`https://img.muji.net/img/item/${entity.jancode}_180.jpg`}
-          alt="itemImage"
-          width="60"
-          height="60"
-        /> */}
-        <ItemType>モダールコットン</ItemType>
-        <ItemName>ムースハイネックワンピース</ItemName>
-      </ReviewItemContents>
-      <div>
-        <ReviewContents>
+      <ReviewItemArea>
+        <ItemImg span={4}>
+        img
+          {/* <img src={images[ReviewItem.img_src]} alt="" /> */}
+        </ItemImg>
+        <ItemInfo span={20}>
+          <ItemType>モダールコットン</ItemType>
+          <ItemName>ムースハイネックワンピース</ItemName>
+        </ItemInfo>
+      </ReviewItemArea>
+      <ReviewContentsArea>
           <ReviewContentsTitle>
             <IntlMessages id="review.reviewContentsTitle" />
           </ReviewContentsTitle>
-          <li><ReviewContentsRate disabled defaultValue={4} /></li>
-          <li><PostDate>2018/10/20</PostDate></li>
+          <ReviewContentsRate disabled defaultValue={4} />
+          <PostDate>2018/10/20</PostDate>
           <Evaluation>
             <IntlMessages id="review.fiveStarsEvaluation" />4
           </Evaluation>
@@ -133,12 +156,18 @@ const Review = () => {
           </PurchaseSize>
           <ReviewComment>思ったより、、</ReviewComment>
           <ReviewCommentDetails>とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。</ReviewCommentDetails>
-          <li><span>img</span></li>
-          <li><span>img</span></li>
-          <li><span>img</span></li>
-          <li><CommentsLink href="#"><StyledIcon type="message" /><TextStyle>0件のコメント</TextStyle></CommentsLink></li>
-          <li><StyledIcon type="like" /><TextStyle>0人が役にたったと考えています</TextStyle></li>
-          <PopIcon>
+          <span>img  </span>
+          <span>img  </span>
+          <span>img  </span>
+          
+
+          <div>
+          <CommentLink href="#"><StyledIcon type="message" /><TextStyle>0件のコメント</TextStyle></CommentLink>
+          <HelpfulCount><StyledIcon type="like" /><TextStyle>0人が役にたったと考えています</TextStyle></HelpfulCount>
+          </div>
+
+
+          <ReviewDeleteIconArea>
             <Popover
               placement="topRight"
               content={
@@ -150,11 +179,12 @@ const Review = () => {
               }
               trigger="click"
             > 
-              <Icon type="ellipsis" />
+              <ReviewDeleteIcon type="ellipsis" />
             </Popover> 
-          </PopIcon>
-        </ReviewContents>
-      </div>
+          </ReviewDeleteIconArea>
+
+
+          </ReviewContentsArea>    
     </ReviewWrapper>
   );
 };

@@ -12,13 +12,13 @@ const TotalReviewCount = styled.div`
   color: rgb(0, 0, 0);
 `;
 
-const BreadcrumbArea = styled.div`
+const ReviewBreadcrumbArea = styled.div`
   background-color: rgb(242, 242, 242);
   padding: 16px;
 `;
 
 const ReviewBreadcrumb = styled(Breadcrumb)`
-  && {
+  &&& {
     font-size: 11px;
     color: rgb(96, 179, 250);
   }
@@ -40,12 +40,12 @@ const ListToolbar = () => {
         <IntlMessages id="review.matter" />
         {/* 全10件 */}
       </TotalReviewCount>
-      <BreadcrumbArea> 
+      <ReviewBreadcrumbArea> 
         <ReviewBreadcrumb>
           <BoldSpan>
             <Breadcrumb.Item>
               <a href="#">
-                <IntlMessages id="review.sortByNewestPost" />
+              <BoldSpan><IntlMessages id="review.sortByNewestPost" /></BoldSpan>
               </a>
             </Breadcrumb.Item>
           </BoldSpan>
@@ -65,7 +65,7 @@ const ListToolbar = () => {
             </a>
           </Breadcrumb.Item>
         </ReviewBreadcrumb>
-      </BreadcrumbArea>
+      </ReviewBreadcrumbArea>
     </ListToolbarWrapper>
   );
 };
