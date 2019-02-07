@@ -60,7 +60,7 @@ const ButtonsBox = styled.div`
 
 const StyledButton = styled(OutlineButton)`
   margin-top: 16px;
-  & > span {
+  span, i {
     vertical-align: middle;
   }
 `;
@@ -99,32 +99,22 @@ class Form extends Component {
   };
 
   componentWillMount = () => {
-    this.setState(() => {
-      return (
-        {
-          quantity:
-            this.state.quantity < this.state.min
-              ? this.state.min
-              : this.state.quantity
-        },
-        {
-          quantity:
-            this.state.quantity > this.state.max
-              ? this.state.max
-              : this.state.quantity
-        }
-      );
+    this.setState({
+      quantity:
+        this.state.quantity < this.state.min
+          ? this.state.min
+          : this.state.quantity > this.state.max
+            ? this.state.max
+            : this.state.quantity
     });
   };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.entity.quantity_data) {
-      this.setState(() => {
-        return (
-          { min: nextProps.entity.quantity_data.min },
-          { max: nextProps.entity.quantity_data.max },
-          { quantity: nextProps.entity.quantity_data.quantity }
-        );
+      this.setState({
+        min: nextProps.entity.quantity_data.min,
+        max: nextProps.entity.quantity_data.max,
+        quantity: nextProps.entity.quantity_data.quantity
       });
     }
   };
