@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon, Popover } from "antd";
 import Link from "../../slider/link";
@@ -68,13 +68,19 @@ const PopoverContent = styled.li`
   }
 `;
 
-const actionsList = actions => {
+const actionsList = (actions, hidePopover) => {
   return (
     <PopoverContentWrapper>
       {actions.map((action, index) => {
         return (
           <PopoverContent key={index}>
-            <Link to={"#"} onClick={action.onClick}>
+            <Link
+              to={"#"}
+              onClick={() => {
+                hidePopover();
+                action.onClick();
+              }}
+            >
               {action.name}
             </Link>
           </PopoverContent>
@@ -84,25 +90,40 @@ const actionsList = actions => {
   );
 };
 
-const ActionListButton = ({ actions = [] }) => {
-  if (actions.length === 0) {
-    return null;
-  }
+class ActionListButton extends Component {
+  state = {
+    visible: false
+  };
+  hidePopover = () => {
+    this.setState({ visible: false });
+  };
+  handleVisibleChange = visible => {
+    this.setState({ visible });
+  };
+  render() {
+    const { actions = []} = this.props;
 
-  return (
-    <EllipsisButtonWrapper>
-      <Popover
-        placement="topRight"
-        content={actionsList(actions)}
-        trigger="click"
-      >
-        <Ellipsis>
-          <Icon type="ellipsis" />
-        </Ellipsis>
-      </Popover>
-    </EllipsisButtonWrapper>
-  );
-};
+    if (actions.length === 0) {
+      return null;
+    }
+
+    return (
+      <EllipsisButtonWrapper>
+        <Popover
+          placement="topRight"
+          content={actionsList(actions, this.hidePopover)}
+          trigger="click"
+          visible={this.state.visible}
+          onVisibleChange={this.handleVisibleChange}
+        >
+          <Ellipsis>
+            <Icon type="ellipsis" />
+          </Ellipsis>
+        </Popover>
+      </EllipsisButtonWrapper>
+    );
+  }
+}
 
 const ItemMainStyle = styled.div`
   position: relative;
