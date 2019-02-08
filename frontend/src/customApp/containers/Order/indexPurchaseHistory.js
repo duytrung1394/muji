@@ -5,9 +5,9 @@ import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PurchaseSort from "../../components/order/purchase/sort";
-import PurchaseItemList from "../../components/order/purchase/itemList";
 import { Spin } from "antd";
 import styled from "styled-components";
+import PurchaseItem from "../../components/order/purchase/item";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -17,6 +17,20 @@ const Title = styled.h1`
   letter-spacing: 0.25px;
   margin: 30px 0px 0px;
   padding: 0 50px;
+`;
+
+const ItemListWrapper = styled.div`
+  float: left;
+  list-style: none;
+  position: relative;
+  width: 100%;
+
+  max-width: 1590px;
+  margin: 10px auto 0;
+  padding: 0 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 `;
 
 class Index extends Component {
@@ -41,7 +55,8 @@ class Index extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
@@ -51,7 +66,68 @@ class Index extends Component {
             <IntlMessages id="order.purchaseHistory.name" />
           </Title>
           <PurchaseSort />
-          <PurchaseItemList purchaseItemList={entities} />
+          <ItemListWrapper>
+            {entities.map((item, index) => {
+              let popoverActions = [];
+              let footerActions = [];
+
+              popoverActions.push({
+                name: formatMessage({
+                  id: "order.purchaseHistory.ellipsisButton.review"
+                })
+              });
+              popoverActions.push({
+                name: formatMessage({
+                  id: "order.purchaseHistory.ellipsisButton.favorite"
+                })
+              });
+              popoverActions.push({
+                name: formatMessage({
+                  id: "order.purchaseHistory.ellipsisButton.maintenanceParts"
+                })
+              });
+
+              switch (item.cancel_type) {
+                case 1:
+                  footerActions.push({
+                    name: formatMessage({
+                      id: "order.purchaseHistory.cancel"
+                    })
+                  });
+                  break;
+                case 2:
+                  footerActions.push({
+                    name: formatMessage({
+                      id: "order.purchaseHistory.returnProduct"
+                    }),
+                    disabled: true
+                  });
+                  break;
+                case 3:
+                  footerActions.push({
+                    name: formatMessage({
+                      id: "order.purchaseHistory.returnProduct"
+                    })
+                  });
+                  break;
+              }
+
+              footerActions.push({
+                name: formatMessage({
+                  id: "order.purchaseHistory.itemDetails"
+                })
+              });
+
+              return (
+                <PurchaseItem
+                  key={index}
+                  item={item}
+                  popoverActions={popoverActions}
+                  footerActions={footerActions}
+                />
+              );
+            })}
+          </ItemListWrapper>
         </LayoutWrapper>
       </Spin>
     );
