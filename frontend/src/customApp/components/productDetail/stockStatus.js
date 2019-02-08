@@ -1,8 +1,9 @@
-import React from "react";
-import { Col, Row } from "antd";
+import React,{Component} from "react";
+import { Modal } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
+import ItemStockModal from "./modal/itemStockModal"
 
 const StockTitle = styled.span`
   font-size: 14px;
@@ -66,11 +67,40 @@ const FindButtonStyle = {
   marginTop: "16px"
 };
 
+const ModalBodyStyle = {
+  paddingTop : "0px",
+}
+
+const StyledModal = styled(Modal)`
+  .ant-modal-header{
+    border-bottom: none;
+  }
+`;
+
 const CommonButton = props => {
   return <StyledButton {...props}>{props.children}</StyledButton>;
 };
 
-const StockStatus = () => {
+class StockStatus extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      visible: false
+    }
+  }
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  render(){
   return (
     <Base>
       <StoresStock>
@@ -98,13 +128,23 @@ const StockStatus = () => {
           </StoreData>
         </StoreDataList>
         <FindStore>
-          <CommonButton style={FindButtonStyle}>
+          <CommonButton style={FindButtonStyle} onClick={this.showModal}>
             <IntlMessages id="productDetail.findStoreWithInventory" />
           </CommonButton>
         </FindStore>
+        <StyledModal
+          title="店舗在庫状況"
+          visible={this.state.visible}
+          footer={null}
+          onCancel={this.handleCancel}
+          width={600}
+          bodyStyle={ModalBodyStyle}
+        >
+          <ItemStockModal />
+        </StyledModal>
       </StoresStock>
     </Base>
   );
 };
-
+}
 export default StockStatus;
