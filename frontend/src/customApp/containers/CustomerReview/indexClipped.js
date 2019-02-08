@@ -2,20 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/customer_review/list/actions";
 import { injectIntl } from "react-intl";
+import IntlMessages from "../../../components/utility/intlMessages";
 import { Spin } from "antd";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import ReviewItem from "../../components/customerReview/list/reviewItem";
+import ClippedItem from "../../components/customerReview/list/clippedItem";
+import ClippedButton from "../../components/customerReview/list/clippedButton";
 import Header from "../../components/customerReview/list/header";
-import ReviewUserProfile from "../../components/customerReview/list/reviewUserProfile";
-import ReviewButton from "../../components/customerReview/list/reviewButton";
-import { parse } from "query-string";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
+`;
+
+const StyledH1 = styled.h1`
+  font-size: 25px;
+  font-weight: bold;
 `;
 
 const ItemsList = styled.ul`
@@ -23,7 +27,7 @@ const ItemsList = styled.ul`
   padding: 0;
 `;
 
-class Index extends Component {
+class IndexClipped extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,19 +36,16 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRequest(this.getFetchRequestParams());
+    if (this.getEntityLength() <= 0) {
+      this.props.fetchRequest("");
+    }
   }
 
   seeMore = () => {
-    this.props.fetchRequest(this.getFetchRequestParams());
-  };
-
-  getFetchRequestParams = () => {
-    return {
-      ...parse(this.props.location.search),
+    this.props.fetchRequest({
       offset: this.getEntityLength(),
       length: 5
-    };
+    });
   };
 
   getEntityLength = () => {
@@ -61,14 +62,17 @@ class Index extends Component {
 
   render() {
     const { entities, fetching, fetched, destroying } = this.props;
-    const profile = [];
+
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Header
-            profile={<ReviewUserProfile entity={profile} />}
+            title={
+              <StyledH1>
+                <IntlMessages id="customerReview.list.clippedTitle" />
+              </StyledH1>
+            }
             sort={[]}
-            listStyle={{ backgroundColor: "#eee" }}
           />
         </ContentLayout>
         <ContentLayout>
@@ -80,7 +84,7 @@ class Index extends Component {
               <ItemsList>
                 {entities &&
                   entities.map((entity, index) => (
-                    <ReviewItem entity={entity} key={index} />
+                    <ClippedItem entity={entity} key={index} />
                   ))}
               </ItemsList>
             ) : null}
@@ -88,7 +92,7 @@ class Index extends Component {
         </ContentLayout>
         <ContentLayout>
           <Spin spinning={fetching && !this.isFirstFetching()} size="large">
-            {this.hasMore() && <ReviewButton seeMore={this.seeMore} />}
+            {this.hasMore() && <ClippedButton seeMore={this.seeMore} />}
           </Spin>
         </ContentLayout>
       </ContentAreaLayout>
@@ -101,7 +105,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetchByUser.request,
+  fetchRequest: actions.fetch.request,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
@@ -115,4 +119,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Index);
+export default enhance(IndexClipped);

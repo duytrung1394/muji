@@ -134,7 +134,6 @@ class OrdersController extends Controller
      */
     private function getMockDataStoreReserve()
     {
-
         $sample1 = [
             'jan_code' => '4550002678944',
             'order_state' => '取り置き完了(2018/12/08迄)',

@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Spin } from "antd";
-import actions from "../../redux/donation_top/entity/actions";
+import actions from "../../redux/donation/entity/actions";
 import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import TotalPrice from "../../components/donationTop/payment/totalPrice";
-import Form from "../../components/donationTop/payment/form";
+import TotalPrice from "../../components/donation/payment/totalPrice";
+import Form from "../../components/donation/payment/form";
 
 const PaymentHeader = styled.div`
   h1 {
@@ -78,7 +78,7 @@ class Payment extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.DonationTop.Entity.toJS();
+  return state.Donation.Entity.toJS();
 };
 
 const actionCreators = {

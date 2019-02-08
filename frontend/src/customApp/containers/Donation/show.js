@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/donation_top/entity/actions";
+import actions from "../../redux/donation/entity/actions";
 import { injectIntl } from "react-intl";
 import ContentHeader from "../../components/shared/header/contentHeader";
 import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import Form from "../../components/donationTop/show/form";
-import Guide from "../../components/donationTop/show/guide";
-import Others from "../../components/donationTop/show/others";
-import Summary from "../../components/donationTop/show/summary";
-import Includes from "../../components/donationTop/show/includes";
+import Form from "../../components/donation/show/form";
+import Guide from "../../components/donation/show/guide";
+import Others from "../../components/donation/show/others";
+import Summary from "../../components/donation/show/summary";
+import Includes from "../../components/donation/show/includes";
 
 class Show extends Component {
   componentDidMount() {
@@ -58,7 +58,7 @@ class Show extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.DonationTop.Entity.toJS();
+  return state.Donation.Entity.toJS();
 };
 
 const { request, cleanup } = actions.update;
