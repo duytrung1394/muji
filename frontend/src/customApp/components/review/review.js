@@ -78,12 +78,12 @@ const UserHeight = styled.span`
   margin-left: 20px;
 `;
 
-const ReviewComment = styled.p`
+const ReviewTitle = styled.p`
   font-size: 12px;
   color: rgb(0, 0, 0);
 `;
 
-const ReviewCommentDetails = styled.p`
+const ReviewComment = styled.p`
   font-size: 11px;
 `;
 
@@ -128,7 +128,8 @@ const PopoverMessage = styled.span`
   }
 `;
 
-const Review = () => {
+const Review = ({entities}) => {
+console.log(entities);
   return (
     <ReviewWrapper>
       <ReviewItemArea>
@@ -154,8 +155,8 @@ const Review = () => {
             <IntlMessages id="review.purchaseSize" /><StyledSpan>M</StyledSpan>
             <UserHeight>身長：<StyledSpan>165cm</StyledSpan></UserHeight>
           </PurchaseSize>
-          <ReviewComment>思ったより、、</ReviewComment>
-          <ReviewCommentDetails>とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。</ReviewCommentDetails>
+          <ReviewTitle>思ったより、、</ReviewTitle>
+          <ReviewComment>とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。</ReviewComment>
           <span>img  </span>
           <span>img  </span>
           <span>img  </span>

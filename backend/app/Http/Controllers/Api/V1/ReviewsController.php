@@ -49,124 +49,42 @@ class ReviewsController extends Controller
      */
     private function getMockData($index)
     {
-        switch ($index % 6){
-        case 0:
+        // switch ($index % 6){
+        // case 0:
             return [
-                'customer_review_code' => $index,
-                'product' => 'オーガニックコットンフランネルスタンドカラーシャツ',
-                'jancode' => '4550002750077',
-                'title' => 'シルエット良好！',
-                'star' => 4,
-                'upload_date' => '1分前',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => 'スタントカラーを定番のカラーシャツと同じサイズ感で着れるものが欲しかったのでありがたい一品。ネイビーもほしいです。胴回りのシルエットがトレンド感あって素敵です。',
-                'evaluations_comment_count' => 0,
-                'count_helpful' => 0,
-                'images'=>[
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
+                'total_review_count' => '10',
+                'reviews' => [
+                    [
+                        'item_img' => 'img-review-history-07.png',
+                        'type' => 'モダールコットン',
+                        'name' => 'ムースハイネックワンピース',
+                        'date' => '2018/10/20',
+                        'evaluation_count' => '4',
+                        'size' => 'M',
+                        'height' => '165cm',
+                        'review_title' => '思ったより、、',
+                        'review_comment' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
+                        'img1' => 'img-review-history-01.png',
+                        'img2' => 'img-review-history-02.png',
+                        'img3' => 'img-review-history-03.png',
+                        'total_comment' => '0',
+                        'total_useful' => '0',
+                    ],
+                    [
+                        'item_img' => 'img-review-history-06.png',
+                        'type' => '麻綿平織',
+                        'name' => 'ソファ',
+                        'date' => '2018/08/15',
+                        'evaluation_count' => '5',
+                        'review_title' => '大変良い',
+                        'review_comment' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
+                        'total_comment' => '0',
+                        'total_useful' => '0',
+                    ],
                 ],
-                'tag_imgs' => [],
-                'comments' => $this->getCommentsMockData(),
-            ];
-        case 1:
-            return [
-                'customer_review_code' => $index,
-                'product' => 'ベーコンとチーズのキッシュ',
-                'jancode' => '4550182028072',
-                'title' => 'キッシュ美味しい！！',
-                'star' => 3,
-                'upload_date' => '1時間前',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-                'evaluations_comment_count' => 0,
-                'count_helpful' => 2,
-                'images'=>[
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11c9ae5e.jpg'],
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11ccde18.jpg'],
-                    [ 'img_src'=>'https://review-api.muji.com/_var/images/review-comment/31167/5c05d11cdfcb6.jpg'],
-                ],
-                'tag_imgs' => [
-                    '4550182028072',
-                    '4550182028072',
-                    '4550182028072',
-                    '4550182028072',
-                    '4550182028072'
-                ],
-                'comments' => $this->getCommentsMockData(),
-            ];
-        case 2:
-            return [
-                'customer_review_code' => $index,
-                'product' => 'チキンとほうれん草のキッシュ',
-                'jancode' => '4550182028065',
-                'title' => '気軽に解凍キッシュ',
-                'star' => 3,
-                'upload_date' => '1時間前',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => '気軽に解凍して食べられるキッシュなので、時間のない時に重宝します。食のサポート品として冷凍庫に入れておいています。',
-                'evaluations_comment_count' => 0,
-                'count_helpful' => 0,
-                'images'=>[],
-                'tag_imgs' => [],
-                'comments' => [],
-            ];
-        case 3:
-            return [
-                'customer_review_code' => $index,
-                'product' => 'オレンジピールクランチチョコ',
-                'jancode' => '4550002873684',
-                'title' => 'オレンジピールクランチチョコ、Goodです！',
-                'star' => 4,
-                'upload_date' => '2時間前',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => 'コーヒーと一緒にいただいて、気分リフレッシュに最適です。ブレイクにぴったり',
-                'evaluations_comment_count' => 0,
-                'count_helpful' => 0,
-                'images'=>[],
-                'tag_imgs' => [],
-                'comments' => $this->getCommentsMockData(),
-            ];
-        case 4:
-            return [
-                'customer_review_code' => $index,
-                'product' => 'ポケットコイルスプリングマットレス・シングル',
-                'jancode' => '4548718094844',
-                'title' => '使ってます',
-                'star' => 4,
-                'upload_date' => '2時間前',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => '数年前に同タイプのアイテムを購入して使っています。ずっと調子がよいです。',
-                'evaluations_comment_count' => 0,
-                'count_helpful' => 0,
-                'tag_imgs' => [],
-                'comments' => $this->getCommentsMockData(),
-            ];
-        case 5:
-            return [
-                'customer_review_code' => $index,
-                'product' => '無選別　おこげせんべい',
-                'jancode' => '4547315318926',
-                'title' => 'かみごたえ満点',
-                'star' => 5,
-                'upload_date' => '2018/11/13',
-                'review_count' => '9',
-                'rating_count' => '6',
-                'detail_comment' => '堅くてたくさん噛めてよいです。かみごたえもある上に味もほどよい塩加減。おいしいです。全店舗に置いてほしいくらいです！',
-                'evaluations_comment_count' => 1,
-                'count_helpful' => 100,
-                'images' => [],
-                'tag_imgs' => [],
-                'comments' => $this->getCommentsMockData(),
-            ];
-        default:
-            return [];
+            ];    
+        // default:
+        //     return [];
         }
     }
 }
