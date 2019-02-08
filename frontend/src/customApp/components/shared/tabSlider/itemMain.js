@@ -101,7 +101,7 @@ class ActionListButton extends Component {
     this.setState({ visible });
   };
   render() {
-    const { actions = []} = this.props;
+    const { actions = [] } = this.props;
 
     if (actions.length === 0) {
       return null;
