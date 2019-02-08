@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
-import { injectIntl, FormattedMessage } from "react-intl";
+import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import { TabSlider } from "../../components/shared/tabSlider";
 import actions from "../../redux/order/list/actions";

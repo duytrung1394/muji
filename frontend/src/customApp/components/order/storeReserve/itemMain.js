@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Link from "../../slider/link";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 
@@ -81,13 +81,15 @@ class ItemMain extends Component {
       <DescribeList>
         <Describe>{item_name}</Describe>
         <Describe>
-          <IntlMessages id="order.storeReserve.label.quantity" />
-          <IntlMessages
-            id="order.storeReserve.quantity"
-            values={{
-              num: quantity
-            }}
-          />
+          <Link to={"#"}>
+            <IntlMessages id="order.storeReserve.label.quantity" />
+            <IntlMessages
+              id="order.storeReserve.quantity"
+              values={{
+                num: quantity
+              }}
+            />
+          </Link>
         </Describe>
         <DescribePriceWrapper>
           {item_price_present ? (

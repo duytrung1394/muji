@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "antd";
-import { Link } from "react-router-dom";
+import Link from "../../slider/link";
 
 const ItemFooterButtonWrapper = styled.li`
   width: 100%;
