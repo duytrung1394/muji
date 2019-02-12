@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import { Col, Modal, Button, Carousel } from "antd";
+import { Col } from "antd";
 import fav from "../../../image/cmdty/detail/ico-fob-heart.png";
 import favActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
-import Slider, { Link } from "../shared/slider";
+import Slider from "../shared/slider";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const PictureCol = styled(Col)`
@@ -31,26 +31,26 @@ const StyledSlider = styled(Slider)`
   .slick-dots {
     position: absolute;
     bottom: 16px;
-    li{
-      & button{
-        :before{
+    li {
+      & button {
+        :before {
           font-size: 12px;
           color: #e8e8e7;
           opacity: 1;
         }
-        :hover{
+        :hover {
           color: #797979;
           opacity: 0.5;
         }
       }
     }
-    .slick-active{
-      & button{
-      :before{
-        color: #797979;
-        opacity: 0.5;
+    .slick-active {
+      & button {
+        :before {
+          color: #797979;
+          opacity: 0.5;
+        }
       }
-    }
     }
   }
 `;

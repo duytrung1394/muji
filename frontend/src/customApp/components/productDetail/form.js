@@ -9,6 +9,8 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "../shared/form/link";
 import Quantity from "../shared/form/quantity";
 import { OutlineButton } from "../shared/form/button";
+import buyNowIcon from "../../../image/cmdty/detail/ico-buy-now.png";
+import cartIcon from "../../../image/cmdty/detail/ico-cart.png";
 
 const DetailName = styled.p`
   color: #999;
@@ -41,9 +43,14 @@ const LinkStyle = styled.span`
   font-size: 13px;
 `;
 
-const ButtonIcon = styled(Icon)`
-  font-size: 20px;
+const ButtonIcon = styled.img`
+  width: 15px;
+  height: 20px;
   margin-right: 16px;
+`;
+
+const CartButtonIcon = styled(ButtonIcon)`
+  width: 22px;
 `;
 
 const ButtonsBox = styled.div`
@@ -69,23 +76,13 @@ class Form extends Component {
     quantity: 1
   };
 
-  componentWillMount = () => {
-    this.setState({
-      quantity:
-        this.state.quantity < this.state.min
-          ? this.state.min
-          : this.state.quantity > this.state.max
-            ? this.state.max
-            : this.state.quantity
-    });
-  };
-
   componentWillReceiveProps = nextProps => {
     if (nextProps.entity.quantity_data) {
+      let { quantity, max, min } = nextProps.entity.quantity_data;
       this.setState({
-        min: nextProps.entity.quantity_data.min,
-        max: nextProps.entity.quantity_data.max,
-        quantity: nextProps.entity.quantity_data.quantity
+        min: min,
+        max: max,
+        quantity: quantity < min ? min : quantity > max ? max : quantity
       });
     }
   };
@@ -179,13 +176,13 @@ class Form extends Component {
         <ButtonsBox>
           <StyledButton color="#7f0019" reverse="true" onClick={this.submit}>
             <span>
-              <ButtonIcon type="shopping-cart" />
+              <CartButtonIcon src={cartIcon} />
               <IntlMessages id="productDetail.cart" />
             </span>
           </StyledButton>
           <StyledButton color="#7f0019" onClick={this.requestHandler}>
             <span>
-              <ButtonIcon type="select" />
+              <ButtonIcon src={buyNowIcon} />
               <IntlMessages id="productDetail.buy" />
             </span>
           </StyledButton>

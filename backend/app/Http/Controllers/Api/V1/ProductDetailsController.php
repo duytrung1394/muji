@@ -91,7 +91,7 @@ class ProductDetailsController extends Controller
                 ],
             ],
             'quantity_data' => [
-                'quantity' => 3,
+                'quantity' => 100,
                 'max' => 10,
                 'min' => 1,
             ],

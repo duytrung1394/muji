@@ -40,11 +40,11 @@ const Span = styled.span`
 
 const OriginalValue = styled(Span)`
   position: relative;
-  &:before{
+  &:before {
     border-top: 1px solid #595959;
     width: 80px;
     display: block;
-    content:"";
+    content: "";
     margin-top: -2.5px;
     position: absolute;
     top: 50%;
@@ -78,7 +78,7 @@ const Detail = ({ price, priceKindList }) => {
               </LargePrice>
               <IntlMessages id="productDetail.yen" />
             </OriginalValue>
-            </span>
+          </span>
           <StyledIcon type="arrow-right" />
           <Seal>
             <IntlMessages id="productDetail.taxIncluded" />
