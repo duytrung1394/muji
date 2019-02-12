@@ -26,9 +26,7 @@ class History extends Component {
   }
 
   componentDidMount() {
-    if (this.getEntityLength() <= 0) {
-      this.props.fetchRequest("");
-    }
+    this.props.fetchRequest("");
   }
 
   seeMore = () => {
@@ -52,15 +50,14 @@ class History extends Component {
 
   render() {
     const { entities, fetching, fetched, destroying } = this.props;
-
-    console.log("entities");
+    console.log(entities.total_review_count);
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title />
-          <ListToolbar />
+          <ListToolbar ToolbarItems={entities.total_review_count} />
           <List />
-          <Review />
+          <Review reviews={entities.reviews} />
         </ContentLayout>
       </ContentAreaLayout>
     );
