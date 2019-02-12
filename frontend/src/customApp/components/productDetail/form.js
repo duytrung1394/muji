@@ -4,6 +4,7 @@ import { Col, Icon } from "antd";
 import Price from "./form/price";
 import Color from "./form/color";
 import Size from "./form/size";
+import Info from "./form/info";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "../shared/form/link";
 import Quantity from "../shared/form/quantity";
@@ -18,14 +19,6 @@ const DetailName = styled.p`
 
 const ItemName = styled.h2`
   font-size: 19px;
-`;
-
-const SeeMore = styled.a`
-  font-size: 12px;
-`;
-
-const DetailText = styled.p`
-  font-size: 13px;
 `;
 
 const DetailList = styled.ul`
@@ -65,29 +58,6 @@ const StyledButton = styled(OutlineButton)`
     vertical-align: middle;
   }
 `;
-
-const Info = ({ description }) => {
-  const delimiter = "。";
-  const descriptionLines = description.split(delimiter);
-  return (
-    <Fragment>
-      <DetailText>
-        {descriptionLines.map((line, index) => {
-          return (
-            <span key={index}>
-              {line}
-              {descriptionLines.length - 1 > index && delimiter}
-              <br />
-            </span>
-          );
-        })}
-      </DetailText>
-      <SeeMore>
-        <IntlMessages id="productDetail.seeMore" />
-      </SeeMore>
-    </Fragment>
-  );
-};
 
 class Form extends Component {
   state = {

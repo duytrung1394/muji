@@ -23,14 +23,34 @@ const FavImg = styled.img`
 
 const ShowItemList = styled.a`
   position: absolute;
-  bottom: -30px;
+  bottom: 16px;
   left: 10px;
 `;
 
 const StyledSlider = styled(Slider)`
   .slick-dots {
-    & button {
-      color: #fff;
+    position: absolute;
+    bottom: 16px;
+    li{
+      & button{
+        :before{
+          font-size: 12px;
+          color: #e8e8e7;
+          opacity: 1;
+        }
+        :hover{
+          color: #797979;
+          opacity: 0.5;
+        }
+      }
+    }
+    .slick-active{
+      & button{
+      :before{
+        color: #797979;
+        opacity: 0.5;
+      }
+    }
     }
   }
 `;

@@ -668,7 +668,8 @@ class ProductDetailsController extends Controller
                     "sizeLabel" => "婦人ＸＳ"
                 ]
             ],
-            "webCatalogDescription" => "ストレッチ糸を加えて編み立て、着やすく、動きやすく仕上げました。柔らかさとほどよいフィット感が特長です。",
+            "webCatalogDescription" => "ストレッチ糸を加えて編み立て、着やすく、動きやすく仕上げました。柔らかさとほどよいフィット感が特長です。
+                                        ストレッチ糸を加えて編み立て、着やすく、動きやすく仕上げました。柔らかさとほどよいフィット感が特長です。",
             "yahooPayment" => true,
         ];
 

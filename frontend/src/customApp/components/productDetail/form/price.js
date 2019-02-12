@@ -11,12 +11,13 @@ const LargePrice = styled.span`
 
 const Seal = styled.span`
   font-size: 13px;
-  color: #7f0019;
+  color: #8b1a27;
 `;
 
 const SealPrice = styled.span`
   font-size: 18px;
   margin: 0 4px;
+  font-weight: bold;
 `;
 
 const StyledIcon = styled(Icon)`
@@ -37,6 +38,20 @@ const Span = styled.span`
   font-size: 10px;
 `;
 
+const OriginalValue = styled(Span)`
+  position: relative;
+  &:before{
+    border-top: 1px solid #595959;
+    width: 80px;
+    display: block;
+    content:"";
+    margin-top: -2.5px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+  }
+`;
+
 const Detail = ({ price, priceKindList }) => {
   let startDate = null;
   if (priceKindList.length > 0 && priceKindList[0].bannerInfo) {
@@ -55,15 +70,15 @@ const Detail = ({ price, priceKindList }) => {
       </li>
       {price.oldPrices ? (
         <li>
-          <strike>
-            <Span>
+          <span>
+            <OriginalValue>
               <IntlMessages id="productDetail.taxIncluded" />
               <LargePrice>
                 {price.oldPrices[0].oldPrice.toLocaleString()}
               </LargePrice>
               <IntlMessages id="productDetail.yen" />
-            </Span>
-          </strike>
+            </OriginalValue>
+            </span>
           <StyledIcon type="arrow-right" />
           <Seal>
             <IntlMessages id="productDetail.taxIncluded" />
