@@ -102,9 +102,11 @@ const ItemList = props => {
             <div key={index}>
               <GroupHeader>
                 <h1>{group.group_name}</h1>
-                <Link to="">
-                  <img className="next" src={eventLink} />
-                </Link>
+                {group.link && (
+                  <Link to={group.link}>
+                    <img className="next" src={eventLink} />
+                  </Link>
+                )}
               </GroupHeader>
               <Slider>
                 {group.items.map((item, index) => {
