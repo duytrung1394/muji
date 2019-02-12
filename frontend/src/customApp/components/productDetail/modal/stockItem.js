@@ -30,27 +30,16 @@ const StyledRow = styled(Row)`
 
 const ItemName = styled.p`
   font-size: 13px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 `;
 
 const ItemType = styled.span`
   color: rgb(153, 153, 153);
 `;
 
-const FixedPrice = styled.span`
-  color: rgb(153, 153, 153);
-`;
-
-const OverLine = styled.span`
-  text-decoration: line-through;
-`;
-
 const ItemPrice = styled.span`
-  font-size: 15px;
-`;
-
-const DiscountPrice = styled.span`
-  color: rgb(139, 26, 39);
+  font-size: 16px;
+  padding: 0 6px;
 `;
 
 const TotalPrice = styled.span`
@@ -64,49 +53,45 @@ const linkStyle = {
   display: "block"
 };
 
-const StockItem = () => {
+const images = {
+  itemImg: StockItemImg1
+};
+
+const StockItem = ({ itemData }) => {
   return (
     <StockListItem>
       <StyledRow>
         <Col span={8}>
           <NavLink to="#" style={linkStyle}>
-            {/* <ItemImage src={images[item.img]} /> */}
-            <ItemImage src={StockItemImg1} />
+            <ItemImage src={images[itemData.item_img]} />
           </NavLink>
         </Col>
         <Col span={15} offset={1}>
           <ItemData>
-            {/* <ItemType>{item.type}</ItemType> */}
-            <ItemType>オーガニッククコットン</ItemType>
+            <ItemType>{itemData.type}</ItemType>
           </ItemData>
-          {/* <ItemName>{item.name}</ItemName> */}
-          <ItemName>ミニ裏毛五分袖ワイドTシャツ</ItemName>
+          <ItemName>{itemData.name}</ItemName>
           <ItemData>
             <IntlMessages id="productDetail.color" />
-            {/* {item.color} */}
-            ライトグレー
+            {itemData.color}
           </ItemData>
           <ItemData>
             <IntlMessages id="productDetail.size" />
-            {/* {item.size} */}
-            s
+            {itemData.size}
           </ItemData>
           <ItemData>
             <IntlMessages id="productDetail.number" />
-            {/* {item.number} */}
-            1
+            {itemData.number}
           </ItemData>
         </Col>
       </StyledRow>
       <TotalPrice>
-          <IntlMessages id="productDetail.texIn" />
-          <ItemPrice>2,980</ItemPrice>
-          {/* <ItemPrice>{item.price}</ItemPrice> */}
-          <IntlMessages id="productDetail.yen" />
+        <IntlMessages id="productDetail.texIn" />
+        <ItemPrice>{itemData.price}</ItemPrice>
+        <IntlMessages id="productDetail.yen" />
       </TotalPrice>
     </StockListItem>
   );
 };
 
 export default StockItem;
-

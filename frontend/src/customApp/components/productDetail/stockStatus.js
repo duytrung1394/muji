@@ -1,9 +1,9 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { Modal } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
-import ItemStockModal from "./modal/itemStockModal"
+import ItemStockModal from "./modal/itemStockModal";
 
 const StockTitle = styled.span`
   font-size: 14px;
@@ -68,11 +68,11 @@ const FindButtonStyle = {
 };
 
 const ModalBodyStyle = {
-  paddingTop : "0px",
-}
+  paddingTop: "0px"
+};
 
 const StyledModal = styled(Modal)`
-  .ant-modal-header{
+  .ant-modal-header {
     border-bottom: none;
   }
 `;
@@ -81,70 +81,70 @@ const CommonButton = props => {
   return <StyledButton {...props}>{props.children}</StyledButton>;
 };
 
-class StockStatus extends Component{
-  constructor(props){
-    super(props)
-    this.state={
+class StockStatus extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       visible: false
-    }
+    };
   }
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
-  }
+  };
 
-  handleCancel = (e) => {
+  handleCancel = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
+  };
+  render() {
+    return (
+      <Base>
+        <StoresStock>
+          <p>
+            <StockTitle>
+              <IntlMessages id="productDetail.stockState" />
+            </StockTitle>
+            <span>
+              <Link to="#">
+                <IntlMessages id="productDetail.storeSettings" />
+              </Link>
+            </span>
+          </p>
+          <StoreDataList>
+            {/* map */}
+            <StoreData>
+              <span>新宿</span>
+              <span>あり</span>
+              <CommonButton>店舗で取置</CommonButton>
+            </StoreData>
+            <StoreData>
+              <span>有楽町</span>
+              <span>なし</span>
+              <CommonButton>店舗で取置</CommonButton>
+            </StoreData>
+          </StoreDataList>
+          <FindStore>
+            <CommonButton style={FindButtonStyle} onClick={this.showModal}>
+              <IntlMessages id="productDetail.findStoreWithInventory" />
+            </CommonButton>
+          </FindStore>
+          <StyledModal
+            title="店舗在庫状況"
+            visible={this.state.visible}
+            footer={null}
+            onCancel={this.handleCancel}
+            width={600}
+            bodyStyle={ModalBodyStyle}
+          >
+            <ItemStockModal modalData={this.props.entity.modal_data} />
+          </StyledModal>
+        </StoresStock>
+      </Base>
+    );
   }
-  render(){
-  return (
-    <Base>
-      <StoresStock>
-        <p>
-          <StockTitle>
-            <IntlMessages id="productDetail.stockState" />
-          </StockTitle>
-          <span>
-            <Link to="#">
-              <IntlMessages id="productDetail.storeSettings" />
-            </Link>
-          </span>
-        </p>
-        <StoreDataList>
-          {/* map */}
-          <StoreData>
-            <span>新宿</span>
-            <span>あり</span>
-            <CommonButton>店舗で取置</CommonButton>
-          </StoreData>
-          <StoreData>
-            <span>有楽町</span>
-            <span>なし</span>
-            <CommonButton>店舗で取置</CommonButton>
-          </StoreData>
-        </StoreDataList>
-        <FindStore>
-          <CommonButton style={FindButtonStyle} onClick={this.showModal}>
-            <IntlMessages id="productDetail.findStoreWithInventory" />
-          </CommonButton>
-        </FindStore>
-        <StyledModal
-          title="店舗在庫状況"
-          visible={this.state.visible}
-          footer={null}
-          onCancel={this.handleCancel}
-          width={600}
-          bodyStyle={ModalBodyStyle}
-        >
-          <ItemStockModal />
-        </StyledModal>
-      </StoresStock>
-    </Base>
-  );
-};
 }
 export default StockStatus;

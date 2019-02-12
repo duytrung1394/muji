@@ -18,12 +18,10 @@ class Index extends Component {
       fetching
     } = this.props;
 
-    console.log(entity)
-
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-          <StockStatus />
+          <StockStatus entity={entity} />
         </Spin>
       </ContentAreaLayout>
     );
