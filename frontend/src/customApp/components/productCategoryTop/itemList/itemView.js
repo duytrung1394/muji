@@ -86,13 +86,18 @@ const colLayout = {
 };
 
 class ItemView extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.jancode !== nextProps.jancode) {
+      this.setState({
+        currentJancode: nextProps.jancode,
+        nostock: nextProps.nostock
+      });
+    }
+  }
+
   state = {
-    currentJancode: this.props.swatches
-      ? this.props.swatches[0].jancode
-      : this.props.jancode,
-    nostock: this.props.swatches
-      ? this.props.swatches[0].nostock
-      : this.props.nostock
+    currentJancode: this.props.jancode,
+    nostock: this.props.nostock
   };
 
   changeSwatch = (jancode, nostock) => {

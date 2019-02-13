@@ -526,6 +526,8 @@ class ProductCategoryTopsController extends Controller
             $material = 'オーガニックコットン';
         }
         $item = [
+            'jancode' => '4550002032364',
+            'nostock' => false,
             'title' => $title,
             'material' => $material,
             'price' => 2903,
