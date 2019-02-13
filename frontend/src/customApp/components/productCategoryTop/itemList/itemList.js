@@ -106,7 +106,7 @@ const ItemList = props => {
                   <h1>{group.group_name}</h1>
                   {group.link && (
                     <Link to={group.link}>
-                      <img src={eventLink} />
+                      <img src={eventLink} alt="" />
                     </Link>
                   )}
                 </GroupHeader>

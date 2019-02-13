@@ -70,11 +70,6 @@ const NewPriceValue = styled(PriceValue)`
   }
 `;
 
-const priceTaxLabel = <IntlMessages id="productCategoryTop.label.priceTax" />;
-const priceCurrencyLabel = (
-  <IntlMessages id="productCategoryTop.label.priceCurrency" />
-);
-
 const Stock = styled.div`
   margin: 10px 10px 0;
   border: ${props => (props.noStock ? "1px solid #999" : "none")};
@@ -151,14 +146,18 @@ class ItemView extends Component {
         />
         <Price>
           <PriceValue isOldPrice={new_price}>
-            {priceTaxLabel} <span className="price">{price}</span>
-            {priceCurrencyLabel}
+            <IntlMessages
+              id="productCategoryTop.price"
+              values={{ price: <span className="price">{price}</span> }}
+            />
           </PriceValue>
           {new_price && (
             <NewPriceValue>
               <span className="arrow">→</span>
-              {priceTaxLabel} <span className="price">{new_price}</span>
-              {priceCurrencyLabel}
+              <IntlMessages
+                id="productCategoryTop.price"
+                values={{ price: <span className="price">{new_price}</span> }}
+              />
             </NewPriceValue>
           )}
         </Price>
