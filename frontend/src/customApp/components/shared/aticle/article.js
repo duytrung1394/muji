@@ -1,7 +1,9 @@
+import React from "react";
 import styled from "styled-components";
-import { Col,Row } from "antd";
+import { Col, Row } from "antd";
+import CategoryItems from "./categoryItemList";
 
-export const CategoryName = styled.h1`
+const CategoryName = styled.h1`
   font-size: 36px;
   margin-bottom:4%;
   font-family: serif;
@@ -30,7 +32,7 @@ export const CategoryName = styled.h1`
   }
 `;
 
-export const StyledRow = styled(Row)`
+const StyledRow = styled(Row)`
     font-size: 14px;
     background: linear-gradient(#fafafa, #f6f6f6);
     width: 100%;
@@ -39,7 +41,7 @@ export const StyledRow = styled(Row)`
     overflow:hidden;
 `;
 
-export const CategoryDiscription = styled.p`
+const CategoryDiscription = styled.p`
   font-size: 16px;
   font-family: serif;
   line-height: 2.1;
@@ -55,8 +57,7 @@ export const CategoryDiscription = styled.p`
   }
 `;
 
-export const FigureCol = styled(Col)` 
-
+const FigureCol = styled(Col)`
   & figure {
     margin:0;
   }
@@ -76,7 +77,6 @@ export const FigureCol = styled(Col)`
 
 export const ArticleWrapper = styled.div`
   margin:0 0 30px;
-  
 
   .ant-col-10 {
     float:right;
@@ -96,7 +96,7 @@ export const ArticleWrapper = styled.div`
     }
 
     .article-list{
-        clear:both;
+      clear:both;
     }
 
     .ant-row > div{
@@ -143,3 +143,28 @@ export const ArticleWrapper = styled.div`
     }
   }
 `;
+
+const Article = ({ article }) => {
+  return (
+    <ArticleWrapper>
+      {article && (
+        <StyledRow>
+          <FigureCol span={10}>
+            <figure>
+              <img src={article.back_ground_image} />
+            </figure>
+          </FigureCol>
+          <Col md={{ span: 14 }} xl={{ span: 14 }}>
+            <CategoryName>{article.title}</CategoryName>
+          </Col>
+          <Col className="article-list" xl={{ span: 14 }}>
+            <CategoryDiscription>{article.description}</CategoryDiscription>
+            <CategoryItems items={article.items} />
+          </Col>
+        </StyledRow>
+      )}
+    </ArticleWrapper>
+  );
+};
+
+export default Article;
