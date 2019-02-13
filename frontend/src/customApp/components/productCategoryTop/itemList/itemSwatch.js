@@ -99,7 +99,7 @@ class ItemSwatch extends Component {
   };
 
   render() {
-    if (!this.props.swatchs) {
+    if (!this.props.swatches) {
       return null;
     }
 
