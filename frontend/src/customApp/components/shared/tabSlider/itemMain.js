@@ -68,7 +68,7 @@ const PopoverContent = styled.li`
   }
 `;
 
-const actionsList = (actions, hidePopover) => {
+const ActionsList = ({ actions, hidePopover }) => {
   return (
     <PopoverContentWrapper>
       {actions.map((action, index) => {
@@ -111,7 +111,9 @@ class ActionListButton extends Component {
       <EllipsisButtonWrapper>
         <Popover
           placement="topRight"
-          content={actionsList(actions, this.hidePopover)}
+          content={
+            <ActionsList actions={actions} hidePopover={this.hidePopover} />
+          }
           trigger="click"
           visible={this.state.visible}
           onVisibleChange={this.handleVisibleChange}
