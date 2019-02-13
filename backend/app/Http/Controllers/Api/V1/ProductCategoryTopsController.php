@@ -320,8 +320,33 @@ class ProductCategoryTopsController extends Controller
             'rankings' => null,
             'innerCategories' => [
                 [
-                    'img_src' => 'https://img.muji.net/img/item/4550002677299_01_180.jpg',
-                    'title' => 'ジャケット・コート',
+                    'img_src' => 'https://www.muji.net/img/item/4548718121328_180.jpg',
+                    'title' => 'スタッキングシェルフ',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4547315874903_180.jpg',
+                    'title' => 'オーク材収納',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4547315256976_180.jpg',
+                    'title' => 'スタッキングキャ…',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4549738749844_180.jpg',
+                    'title' => '薄型ラック',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4548718355792_180.jpg',
+                    'title' => 'パイン材収納',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4934761362458_180.jpg',
+                    'title' => 'オークユニットシェ…',
                     'sectionCode' => '',
                 ],
             ],
