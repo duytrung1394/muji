@@ -4,6 +4,7 @@ import { Row, Col } from "antd";
 import styled from "styled-components";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import Preamble from "./preamble";
 
 const PageWrapper = styled.div`
   scroll-behavior: smooth;
@@ -80,20 +81,11 @@ const CategoriesInPage = ({ categories, groups }) => (
       {categories.map((category, index) => {
         return (
           <CategoryWrapper id={category.code} key={index}>
-            <Row type="flex" gutter={32}>
-              <Col {...colContentLayout}>
-                <Title>{category.title}</Title>
-                <Description>{category.description}</Description>
-                <LinkWrapper>
-                  <Link to="">
-                    <IntlMessages id="productCategoryTop.link.viewDetail" />
-                  </Link>
-                </LinkWrapper>
-              </Col>
-              <Col {...colImageLayout}>
-                <img src={category.img} style={{ width: "100%" }} />
-              </Col>
-            </Row>
+            <Preamble
+              title={category.title}
+              description={category.description}
+              img={category.img}
+            />
             {groups.map((group, index) => {
               if (group.category_code_in_page !== category.code) {
                 return null;

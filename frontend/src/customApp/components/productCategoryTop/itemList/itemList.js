@@ -9,6 +9,7 @@ import CategoriesInPage from "./categoriesInPage";
 import Slider from "../../shared/slider";
 import { Link } from "../../shared/form/link";
 import eventLink from "../../../../image/event/ico-event-link.png";
+import Preamble from "./preamble";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -100,14 +101,23 @@ const ItemList = props => {
         groups.map((group, index) => {
           return (
             <div key={index}>
-              <GroupHeader>
-                <h1>{group.group_name}</h1>
-                {group.link && (
-                  <Link to={group.link}>
-                    <img className="next" src={eventLink} />
-                  </Link>
-                )}
-              </GroupHeader>
+              {!group.description && (
+                <GroupHeader>
+                  <h1>{group.group_name}</h1>
+                  {group.link && (
+                    <Link to={group.link}>
+                      <img src={eventLink} />
+                    </Link>
+                  )}
+                </GroupHeader>
+              )}
+              {group.description && (
+                <Preamble
+                  title={group.group_name}
+                  description={group.description}
+                  img={group.img}
+                />
+              )}
               <Slider>
                 {group.items.map((item, index) => {
                   return (
