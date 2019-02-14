@@ -62,33 +62,42 @@ const ItemImageListWrapper = styled.div`
 `;
 
 const ProductImg = styled.img`
-      margin-bottom: 5px;
-      border: solid 1px #f0f0f0;
-      width: 100%;
-      transition: filter 0.2s ease;
-      filter: brightness(0.85);
+  margin-bottom: 5px;
+  border: solid 1px #f0f0f0;
+  width: 100%;
+  transition: filter 0.2s ease;
+  filter: brightness(0.85);
 `;
 
-
 const ProductItemList = props => {
-    return (
-        <ItemImageListWrapper>
-                {props.items &&
-                props.items.map((item, index) => {
-                    return (
-                            <Card.Grid key={index}>
-                                <Link to="">
-                                    <ProductImg src={item.img_src} alt="" />
-                                    {item.material && <p>{item.material}</p>}
-                                    {item.name && <h3>{item.name}</h3>}
-                                    <ProductSize min={item.size_min} max={item.size_max} />
-                                    <ColorSwatch color_imgs={item.colors} />
-                                    <ProductPrice price={item.price} discount={item.discount} />
-                                </Link>
-                            </Card.Grid>
-                    );
-                })}
-        </ItemImageListWrapper>
-    );
+  return (
+    <ItemImageListWrapper>
+      {props.categories &&
+        props.categories.map((category, index) => {
+          return (
+            <div key={index}>
+              <h3>{category.title}</h3>
+              {category.items.map((item, index2) => {
+                return (
+                  <Card.Grid key={index2}>
+                    <Link to="">
+                      <ProductImg src={item.img_src} alt="" />
+                      {item.material && <p>{item.material}</p>}
+                      {item.name && <h3>{item.name}</h3>}
+                      <ProductSize min={item.size_min} max={item.size_max} />
+                      <ColorSwatch color_imgs={item.colors} />
+                      <ProductPrice
+                        price={item.price}
+                        discount={item.discount}
+                      />
+                    </Link>
+                  </Card.Grid>
+                );
+              })}
+            </div>
+          );
+        })}
+    </ItemImageListWrapper>
+  );
 };
 export default ProductItemList;

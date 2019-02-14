@@ -222,12 +222,12 @@ const routes = [
       require("./customApp/containers/Order/indexStoreReserve")
     )
   },
-    {
-        path: "/store/search/cmdty",
-        exact: true,
-        component: asyncComponent(() =>
-            require("./customApp/containers/Search/indexItem")
-        )
-    }
+  {
+    path: "/store/search/cmdty",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexItem")
+    )
+  }
 ];
 export default routes;

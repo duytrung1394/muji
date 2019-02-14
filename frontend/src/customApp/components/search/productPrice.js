@@ -2,56 +2,67 @@ import React from "react";
 import styled from "styled-components";
 
 const ProductPriceWrapper = styled.div`
-padding: 10px 0;
+  padding: 10px 0;
   font-size: 11px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic", YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic",
+    YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
   color: #000;
   text-align: center;
 `;
 
 const Num = styled.span`
-padding: 0 3px;
+  padding: 0 3px;
   font-size: 11px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic", YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic",
+    YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
 `;
 
 const Del = styled.del`
-display: inline;
+  display: inline;
   text-decoration: line-through;
   color: #999;
 `;
 
 const Arrow = styled.del`
- margin : 0 5px;
- text-decoration: none;
- color: #999;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #999;
 `;
 
 const Ins = styled.ins`
- display: inline;
-  color: #8B1A27;
+  display: inline;
+  color: #8b1a27;
   text-decoration: none;
 `;
 
 const InsNum = styled.span`
- color: #8B1A27;
+  color: #8b1a27;
 `;
 
 const ProductPrice = props => (
-    <ProductPriceWrapper>
-        {(() => {
-            if (props.discount) {
-                return (
-                    <span><Del> 税込{props.price.toLocaleString()}円</Del><Arrow>→</Arrow><Ins>税込<InsNum>{props.discount.toLocaleString()}</InsNum>円</Ins></span>
-                );
-            }else {
-                return(
-                    <span>税込<Num>{props.price.toLocaleString()}</Num>円</span>
-                );
-            }
-        })()}
-    </ProductPriceWrapper>
-
+  <ProductPriceWrapper>
+    {(() => {
+      if (props.discount) {
+        return (
+          <span>
+            <Del> 税込{props.price.toLocaleString()}円</Del>
+            <Arrow>→</Arrow>
+            <Ins>
+              税込<InsNum>{props.discount.toLocaleString()}</InsNum>円
+            </Ins>
+          </span>
+        );
+      } else {
+        return (
+          <span>
+            税込<Num>{props.price.toLocaleString()}</Num>円
+          </span>
+        );
+      }
+    })()}
+  </ProductPriceWrapper>
 );
 
 export default ProductPrice;
