@@ -10,6 +10,9 @@ const actions = createActions({
       },
       FETCH_PURCHASE_HISTORY: {
         REQUEST: undefined
+      },
+      FETCH_SUBSCRIPTION: {
+        REQUEST: undefined
       }
     }
   }
