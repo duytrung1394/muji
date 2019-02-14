@@ -152,49 +152,61 @@ class OrdersController extends Controller
             'order_state' => '取り置き完了(2018/12/08迄)',
             'store_name' => '西武池袋店',
             'item_name' => 'オーガニックコットンスムース編み五分袖Tシャツ',
-            'item_num' => '個数：1個',
-            'item_price' => '税込645円',
+            'quantity' => 1,
+            'item_price' => 645,
+            'item_price_present' => 545,
+            'item_discount' => '10%OFF',
             'cancel_button_disabled' => false,
             'cancel_type' => 2,
             'img_src' => 'img-reserve-1.png',
         ];
+
         $sample2 = [
-            'jan_code' => '4550002269258',
+            'jan_code' => '4550002678944',
             'order_state' => '取り置き依頼中',
             'store_name' => '西武池袋店',
             'item_name' => 'オーガニックコットンVネック半袖シャツ',
-            'item_num' => '個数：1個',
-            'item_price' => '税込495円',
+            'quantity' => 1,
+            'item_price' => 495,
             'cancel_button_disabled' => false,
             'cancel_type' => 1,
             'img_src' => 'img-reserve-2.png',
         ];
-        $sampleRepeat = [
-            'jan_code' => '4934761179179',
+
+        $sample3 = [
+            'jan_code' => '4550002678944',
             'order_state' => 'キャンセル済み',
             'store_name' => '西武池袋店',
             'item_name' => 'ステンレスユニットシェルフ・ステンレス追加棚',
-            'item_num' => '個数：1個',
-            'item_price' => '税込495円',
+            'quantity' => 1,
+            'item_price' => 495,
             'cancel_button_disabled' => false,
             'cancel_type' => 3,
             'img_src' => 'img-reserve-3.png',
         ];
 
-        $allReserves = [$sample1,$sample2];
-        for ($i = 0; $i < 8; $i++){
-            $allReserves[] = $sampleRepeat;
+        $all = [];
+        $complete = [];
+        $request = [];
+
+        for ($i = 0; $i < 7; $i++) {
+            $complete[] = $sample1;
+            $all[] = $sample1;
         }
-        
+
+        for ($i = 0; $i < 7; $i++) {
+            $request[] = $sample2;
+            $all[] = $sample2;
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $all[] = $sample3;
+        }
+
         return [
-            $allReserves,
-            [
-                $sample1,
-                $sample2,
-            ],
-            [
-                $sampleRepeat,
-            ]
+            'all' => $all,
+            'complete' => $complete,
+            'request' => $request
         ];
     }
 

@@ -11,11 +11,10 @@ const ItemListWrapper = styled.div`
   ${mediaQuery.greaterThan("sm")`
     margin-left: 15px;
     margin-right: 15px;
-  `}
-  ${mediaQuery.greaterThan("md")`
+  `} ${mediaQuery.greaterThan("md")`
     margin-left: 30px;
     margin-right: 30px;
-  `}
+  `};
 `;
 
 const ItemList = ({ purchaseItemList }) => {

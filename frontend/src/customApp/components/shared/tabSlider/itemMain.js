@@ -69,7 +69,6 @@ const PopoverContent = styled.li`
 `;
 
 const ActionsList = ({ actions, hidePopover }) => {
-  console.log(actions);
   return (
     <PopoverContentWrapper>
       {actions.map((action, index) => {

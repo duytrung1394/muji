@@ -1,30 +1,48 @@
 import React from "react";
-import { Col, Row } from "antd";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { BaseContentLayout } from "../../components/shared/panel/contentLayout";
+import Slider, { Link } from "../shared/slider";
 
-const PopularityRankingTitle = styled.h1`
-  font-size: 25px;
-  padding: 10px;
-`;
-
-const RankingWrapper = styled.div`
-  display: flex;
-  overflow-x: scroll;
-`;
-
-const StyledCol = styled(Col)`
+const StyledLink = styled(Link)`
+  display: inline-block;
   border-radius: 4px;
-  box-shadow: 0 1px 3px 0 #585858;
-  margin: 10px;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
+
+  .ranking-item-image {
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+  }
+
+  & > div {
+    padding: 10px;
+
+    .ranking-item-material {
+      color: #999;
+      font-size: 11px;
+      padding-bottom: 5px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+
+    .ranking-item-title {
+      min-height: 40px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      color: #000;
+      font-size: 12px;
+    }
+  }
 `;
 
 const Badge = styled.span`
   position: absolute;
-  left: 8px;
-  top: 8px;
+  left: 18px;
+  top: 18px;
   min-width: 16px;
   min-height: 12px;
   border-radius: 50%;
@@ -38,28 +56,33 @@ const Badge = styled.span`
   font-family: sans-serif;
 `;
 
-const ItemImage = styled.img`
-  border-radius: 4px 4px 0 0;
-  width: 100%;
+const RankingItemStyle = styled.div`
+  display: inline-block;
+  position: relative;
+  padding: 10px;
 `;
 
-const ItemMaterial = styled.div`
-  color: #999;
-  font-size: 11px;
-  padding: 5px 10px;
-`;
-const ItemTitle = styled.div`
-  color: #000;
-  font-size: 12px;
-  padding: 5px 10px 10px;
-`;
-
-const colLayout = {
-  xs: 8,
-  sm: 8,
-  md: 6,
-  xl: 5
+const RankingItem = ({ badgeNum, ranking }) => {
+  return (
+    <RankingItemStyle>
+      <StyledLink to="">
+        <img className="ranking-item-image" src={ranking.img} />
+        <div>
+          <div className="ranking-item-material">{ranking.material}</div>
+          <div className="ranking-item-title">{ranking.title}</div>
+        </div>
+      </StyledLink>
+      <Badge>{badgeNum}</Badge>
+    </RankingItemStyle>
+  );
 };
+
+const PopularityRankingTitle = styled.h1`
+  font-size: 25px;
+  padding: 10px;
+`;
+
+const customSliderSettings = {};
 
 const PopularityRanking = ({ rankings }) => {
   if (!rankings) {
@@ -71,20 +94,13 @@ const PopularityRanking = ({ rankings }) => {
       <PopularityRankingTitle>
         <IntlMessages id="productCategoryTop.popularityRanking.title" />
       </PopularityRankingTitle>
-      <RankingWrapper>
+      <Slider {...customSliderSettings}>
         {rankings.map((ranking, index) => {
           return (
-            <StyledCol key={index} {...colLayout}>
-              <Link to="">
-                <ItemImage src={ranking.img} />
-                <Badge>{index + 1}</Badge>
-                <ItemMaterial>{ranking.material}</ItemMaterial>
-                <ItemTitle>{ranking.title}</ItemTitle>
-              </Link>
-            </StyledCol>
+            <RankingItem key={index} badgeNum={index + 1} ranking={ranking} />
           );
         })}
-      </RankingWrapper>
+      </Slider>
     </BaseContentLayout>
   );
 };

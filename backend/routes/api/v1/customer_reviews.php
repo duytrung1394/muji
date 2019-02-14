@@ -62,19 +62,3 @@ $router->get('/api/v1/customer-reviews/{reviewCode}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CustomerReviewsController@show',
 ]);
-
-/**
- * 更新
- */
-$router->put('/api/v1/customer-reviews/{taskCode}', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@update',
-]);
-
-/**
- * 削除
- */
-$router->delete('/api/v1/customer-reviews', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\CustomerReviewsController@destroy',
-]);
