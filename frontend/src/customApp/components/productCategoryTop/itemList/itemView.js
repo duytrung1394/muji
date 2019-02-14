@@ -86,11 +86,11 @@ const colLayout = {
 };
 
 class ItemView extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (this.props.jancode !== nextProps.jancode) {
+  componentDidUpdate(prevProps) {
+    if (this.props.jancode !== prevProps.jancode) {
       this.setState({
-        currentJancode: nextProps.jancode,
-        nostock: nextProps.nostock
+        currentJancode: this.props.jancode,
+        nostock: this.props.nostock
       });
     }
   }
