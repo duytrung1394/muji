@@ -38,14 +38,14 @@ const NavigationItemActive = styled.li`
   }
 `;
 
-const NavigationItemLavel = styled.a`
+const NavigationItemLavel = styled.span`
   display: inline-block;
   width: 100%;
   line-height: 40px;
   color: #585858;
 `;
 
-const NavigationItemLavelActive = styled.a`
+const NavigationItemLavelActive = styled.span`
   display: inline-block;
   width: 100%;
   line-height: 40px;
