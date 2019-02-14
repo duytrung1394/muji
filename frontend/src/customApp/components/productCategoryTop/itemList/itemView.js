@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "../../slider";
+import { Link } from "../../shared/slider";
 import styled from "styled-components";
 import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
