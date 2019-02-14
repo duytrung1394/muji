@@ -69,6 +69,7 @@ const PopoverContent = styled.li`
 `;
 
 const ActionsList = ({ actions, hidePopover }) => {
+  console.log(actions);
   return (
     <PopoverContentWrapper>
       {actions.map((action, index) => {
@@ -76,10 +77,13 @@ const ActionsList = ({ actions, hidePopover }) => {
           <PopoverContent key={index}>
             <Link
               to={"#"}
-              onClick={() => {
-                hidePopover();
-                action.onClick();
-              }}
+              onClick={
+                action.onClick &&
+                (() => {
+                  hidePopover();
+                  action.onClick();
+                })
+              }
             >
               {action.name}
             </Link>
