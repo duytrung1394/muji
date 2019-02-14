@@ -64,8 +64,8 @@ const SearchStoreList = props => {
       {props.items &&
         props.items.map((item, index) => {
           return (
-              <Link to="" key={index}>
-            <Card.Grid>
+            <Link to="" key={index}>
+              <Card.Grid>
                 {item.title && <h3>{item.title}</h3>}
                 <div>
                   <ul>
@@ -87,8 +87,8 @@ const SearchStoreList = props => {
                     </li>
                   </ul>
                 </div>
-            </Card.Grid>
-              </Link>
+              </Card.Grid>
+            </Link>
           );
         })}
     </StoreListWrapper>

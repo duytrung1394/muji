@@ -74,15 +74,14 @@ const SearchItemImageList = props => {
           props.items.map((item, index) => {
             return (
               <div key={index}>
-                  <Link to="">
-                <Card.Grid>
+                <Link to="">
+                  <Card.Grid>
                     <img src={item.img_src} alt="" />
 
                     {item.description && <p>{item.description}</p>}
                     {item.title && <h3>{item.title}</h3>}
-
-                </Card.Grid>
-                  </Link>
+                  </Card.Grid>
+                </Link>
               </div>
             );
           })}

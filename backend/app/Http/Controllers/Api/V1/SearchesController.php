@@ -86,7 +86,7 @@ private function getMockData($code, $keyword)
                 'address' => "東京都新宿区新宿3-15-3　新宿ピカデリー　B1～2F",
                 'number' => "03-5367-2710",
                 'opening' => "11:00〜21:00",
-                'holiday' => ""
+                'holiday' => "水曜日"
             ],
             [
                 'title' => "MUJI新宿",
