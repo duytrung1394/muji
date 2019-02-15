@@ -61,8 +61,7 @@ const StyledPanel = styled(Collapse.Panel)`
   }
 `;
 
-const TestList = ({ storeData }) => {
-  console.log(storeData);
+const StoreList = ({ storeData }) => {
   return (
     <PrefecturalDiv>
       <PrefecturalTitle>
@@ -88,4 +87,4 @@ const TestList = ({ storeData }) => {
   );
 };
 
-export default TestList;
+export default StoreList;

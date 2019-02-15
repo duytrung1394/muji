@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/product_detail/entity/actions";
 import { injectIntl } from "react-intl";
-import { Spin, Row } from "antd";
+import { Spin, Row, Col, Modal } from "antd";
 import ContentAreaLayout from "../../components/shared/panel/contentLayout";
 import DetailPicture from "../../components/productDetail/detailPicture";
 import Form from "../../components/productDetail/form";
 import ContentHeader from "../../components/shared/header/contentHeader";
 import StockStatus from "../../components/productDetail/stockStatus";
+import styled from "styled-components";
 
-import { Modal } from "antd";
+const PictureCol = styled(Col)`
+  max-height: 700px;
+  position: relative;
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -63,18 +67,24 @@ class Index extends Component {
       fetching
     } = this.props;
 
+    console.log(entity);
+
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <ContentHeader links={entity.links} />
           <Row>
-            <DetailPicture
-              images={entity.images}
-              favFlg={this.state.favFlg}
-              handleChangeFavFlg={this.handleChangeFavFlg}
-            />
-            <Form entity={entity} />
-            <StockStatus entity={entity} />
+            <PictureCol span={12}>
+              <DetailPicture
+                images={entity.images}
+                favFlg={this.state.favFlg}
+                handleChangeFavFlg={this.handleChangeFavFlg}
+              />
+            </PictureCol>
+            <Col span={11} offset={1}>
+              <Form entity={entity} />
+              <StockStatus entity={entity} />
+            </Col>
           </Row>
         </Spin>
         <Modal

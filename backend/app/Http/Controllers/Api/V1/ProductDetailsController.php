@@ -90,6 +90,17 @@ class ProductDetailsController extends Controller
                     'value' => 'XXL',
                 ],
             ],
+            // TODO:正式パラーメタ対応  以下は 店舗在庫状況 用のサンプルデータ
+            'store_stock_list' => [
+                [
+                    'name' => '新宿',
+                    'state' => 'あり'
+                ],
+                [
+                    'name' => '有楽町',
+                    'state' => 'なし'
+                ]
+            ],
             // TODO:正式パラーメタ対応  以下は EC-PD-014 店舗在庫状況_モーダル 用のサンプルデータ
             'modal_data' => [
                 'item_data' => [
