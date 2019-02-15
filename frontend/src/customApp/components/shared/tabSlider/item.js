@@ -23,9 +23,11 @@ const ItemStyle = styled.div`
   }
 `;
 
-const TabSliderItem = ({ header, main, footer }) => {
+const TabSliderItem = props => {
+  const { header, main, footer } = props;
+
   return (
-    <ItemStyle>
+    <ItemStyle {...props}>
       {header}
       {main}
       {footer}

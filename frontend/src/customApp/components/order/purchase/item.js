@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import TabSliderItem from "../../shared/tabSlider/item";
 import TabSliderItemHeader from "../../shared/tabSlider/itemHeader";
@@ -20,12 +21,17 @@ const images = {
   "img-purchase-history-4.png": imgPurchaseHistory4
 };
 
+const StyledTabSliderItem = styled(TabSliderItem)`
+  width: auto;
+  margin-right: 0;
+`;
+
 const PurchaseItem = ({ item, popoverActions, footerActions }) => {
   const imgUrl = item.jan_code
     ? "/store/cmdty/detail/" + item.jan_code
     : item.id;
   return (
-    <TabSliderItem
+    <StyledTabSliderItem
       header={<TabSliderItemHeader content={<PurchaseHeader item={item} />} />}
       main={
         <TabSliderItemMain

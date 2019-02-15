@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PurchaseSort from "../../components/order/purchase/sort";
-import { Spin } from "antd";
+import { Spin, Row, Col } from "antd";
 import styled from "styled-components";
 import PurchaseItem from "../../components/order/purchase/item";
 
@@ -20,17 +20,7 @@ const Title = styled.h1`
 `;
 
 const ItemListWrapper = styled.div`
-  float: left;
-  list-style: none;
-  position: relative;
-  width: 100%;
-
-  max-width: 1590px;
-  margin: 10px auto 0;
   padding: 0 50px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
 `;
 
 class Index extends Component {
@@ -67,66 +57,69 @@ class Index extends Component {
           </Title>
           <PurchaseSort />
           <ItemListWrapper>
-            {entities.map((item, index) => {
-              let popoverActions = [];
-              let footerActions = [];
+            <Row gutter={{ xs: 0, sm: 16 }}>
+              {entities.map((item, index) => {
+                let popoverActions = [];
+                let footerActions = [];
 
-              popoverActions.push({
-                name: formatMessage({
-                  id: "order.purchaseHistory.ellipsisButton.review"
-                })
-              });
-              popoverActions.push({
-                name: formatMessage({
-                  id: "order.purchaseHistory.ellipsisButton.favorite"
-                })
-              });
-              popoverActions.push({
-                name: formatMessage({
-                  id: "order.purchaseHistory.ellipsisButton.maintenanceParts"
-                })
-              });
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.review"
+                  })
+                });
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.favorite"
+                  })
+                });
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.maintenanceParts"
+                  })
+                });
 
-              switch (item.cancel_type) {
-                case 1:
-                  footerActions.push({
-                    name: formatMessage({
-                      id: "order.purchaseHistory.cancel"
-                    })
-                  });
-                  break;
-                case 2:
-                  footerActions.push({
-                    name: formatMessage({
-                      id: "order.purchaseHistory.returnProduct"
-                    }),
-                    disabled: true
-                  });
-                  break;
-                case 3:
-                  footerActions.push({
-                    name: formatMessage({
-                      id: "order.purchaseHistory.returnProduct"
-                    })
-                  });
-                  break;
-              }
+                switch (item.cancel_type) {
+                  case 1:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.cancel"
+                      })
+                    });
+                    break;
+                  case 2:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.returnProduct"
+                      }),
+                      disabled: true
+                    });
+                    break;
+                  case 3:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.returnProduct"
+                      })
+                    });
+                    break;
+                }
 
-              footerActions.push({
-                name: formatMessage({
-                  id: "order.purchaseHistory.itemDetails"
-                })
-              });
+                footerActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.itemDetails"
+                  })
+                });
 
-              return (
-                <PurchaseItem
-                  key={index}
-                  item={item}
-                  popoverActions={popoverActions}
-                  footerActions={footerActions}
-                />
-              );
-            })}
+                return (
+                  <Col key={index} lg={8} md={12} xs={24}>
+                    <PurchaseItem
+                      item={item}
+                      popoverActions={popoverActions}
+                      footerActions={footerActions}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
           </ItemListWrapper>
         </LayoutWrapper>
       </Spin>
