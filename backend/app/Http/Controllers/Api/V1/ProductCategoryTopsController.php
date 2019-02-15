@@ -367,9 +367,9 @@ class ProductCategoryTopsController extends Controller
                     'sectionCode' => '',
                 ],
                 [
-                    'img_src' => 'https://www.muji.net/img/item/4547315874903_180.jpg',
-                    'title' => 'オーク材収納',
-                    'sectionCode' => '',
+                    'img_src' => 'https://www.muji.net/img/item/4547315961603_180.jpg',
+                    'title' => 'ステンレスユニットシェルフ',
+                    'sectionCode' => 'S02601',
                 ],
                 [
                     'img_src' => 'https://www.muji.net/img/item/4547315256976_180.jpg',
@@ -393,6 +393,41 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'categories_in_page' => null,
+        ],
+        'S02601' => [
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
+                ],
+                [
+                    'path' => '/store/cmdty/section/T20003',
+                    'name' => '収納家具',
+                ],
+                [
+                    'path' => '/store/cmdty/section/S20003',
+                    'name' => 'シェルフ',
+                ],
+            ],
+            'category_title' => "ステンレスユニットシェルフ",
+            'article' => [
+                'description' =>"幅や高さ、素材の違い棚板を組み合わせて完成させます。ステンレス製で水まわりにも活躍するシェルフです。",
+                'back_ground_image' => 'https://img.muji.net/img/item/4549337236486_03_400.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => null,
+            'categories_in_page' => [
+                [
+                    'title' => 'ステンレスユニットシェルフ',
+                    'subtitle' => '基本セット',
+                    'code' => 'product-stainless-basic',
+                ],
+                [
+                    'title' => 'ステンレスユニットシェルフ',
+                    'subtitle' => '帆立',
+                    'code' => 'product-scallop',
+                ],
+            ],
         ],
     ];
 
@@ -505,6 +540,24 @@ class ProductCategoryTopsController extends Controller
                         'description' => '天然の”節”の表情が楽しめるパイン村。',
                         'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
                         'total'      => 123,
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                ];
+            case "S02601":
+                return [
+                    [
+                        'group_name' => 'オーク材棚セット',
+                        'category_code_in_page' => 'product-stainless-basic',
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'ウォールナット材棚セット',
+                        'category_code_in_page' => 'product-stainless-basic',
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => '',
+                        'category_code_in_page' => 'product-scallop',
                         'items'      => $this->getMockItemDataListForShelf(),
                     ],
                 ];
