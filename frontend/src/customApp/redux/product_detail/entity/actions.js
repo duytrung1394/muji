@@ -3,7 +3,9 @@ import restActions from "../../shared/entity/actions";
 
 const actions = createActions({
   PRODUCT_DETAIL: {
-    ENTITY: restActions
+    ENTITY: {
+      ...restActions
+    }
   }
 });
 

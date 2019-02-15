@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "../../form/link";
+import { Link } from "../../shared/form/link";
 import { Icon, Rate, Popover } from "antd";
 import ReviewImageList from "./reviewImageList";
 

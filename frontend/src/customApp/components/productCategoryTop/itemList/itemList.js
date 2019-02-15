@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import ContentPanel from "../../panel/contentPanel";
-import LargeButton from "../../form/largeButton";
+import ContentPanel from "../../shared/panel/contentPanel";
+import LargeButton from "../../shared/form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import CategoriesInPage from "./categoriesInPage";
+import Slider from "../../shared/slider";
+import { Link } from "../../shared/form/link";
+import eventLink from "../../../../image/event/ico-event-link.png";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -23,63 +27,102 @@ const ContentPanelWrapper = styled(ContentPanel)`
       max-width: 500px;
     }
   }
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    height: inherit;
+  }
 `;
 
-const GroupName = styled.h1`
-  border-bottom: 2px solid;
-  width: fit-content;
-  margin: 0 auto 40px;
+const GroupHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  a img {
+    height: 32px;
+  }
 `;
 
-const ItemName = styled.span`
-  padding: 0 10px;
+const StyledLargeButton = styled(LargeButton)`
+  border-radius: 30px;
+  border: 1px solid #999;
+  background: #999;
+  color: #fafafa;
+  padding: 14px 0;
+  :hover {
+    color: #ffffff;
+  }
 `;
 
 const SeeMoreButton = props => (
-  <LargeButton>
+  <StyledLargeButton>
     <IntlMessages id="productCategoryTop.button.seeMore" />
-  </LargeButton>
+  </StyledLargeButton>
 );
 
-const NameWithItemCountButtonWrapper = styled.div`
+const ItemCountButtonWrapper = styled.div`
   text-align: center;
-  margin-bottom: 40px;
+  margin: 30px 0 40px 0;
 `;
 
-const NameWithItemCountButton = props => (
-  <LargeButton {...props}>
+const Separator = styled.span`
+  padding: 0 10px;
+  :after {
+    content: "|";
+  }
+`;
+
+const ItemCountButton = props => (
+  <StyledLargeButton {...props}>
+    <IntlMessages id="productCategoryTop.button.showList" />
+    <Separator />
     <IntlMessages
-      id="productCategoryTop.button.nameWithItemCount"
-      values={{ name: <ItemName>{props.name}</ItemName>, count: props.count }}
+      id="productCategoryTop.button.itemCount"
+      values={{ count: props.count }}
     />
-  </LargeButton>
+  </StyledLargeButton>
 );
 
 const ItemList = props => {
-  const { total, groups } = props;
+  const { total, groups, categories_in_page } = props;
 
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader total={total} />}
-      actions={[<SeeMoreButton />]}
+      actions={categories_in_page ? [] : [<SeeMoreButton />]}
     >
-      {groups &&
+      {!categories_in_page &&
+        groups &&
         groups.map((group, index) => {
           return (
             <div key={index}>
-              <GroupName>{group.group_name}</GroupName>
-              {group.items.map((item, index) => {
-                return <ItemView {...item} key={index} />;
-              })}
-              <NameWithItemCountButtonWrapper>
-                <NameWithItemCountButton
-                  name={<ItemName>{group.group_name}</ItemName>}
-                  count={group.total}
-                />
-              </NameWithItemCountButtonWrapper>
+              <GroupHeader>
+                <h1>{group.group_name}</h1>
+                <Link to="">
+                  <img className="next" src={eventLink} />
+                </Link>
+              </GroupHeader>
+              <Slider>
+                {group.items.map((item, index) => {
+                  return (
+                    <ItemView isSlideScroll={true} {...item} key={index} />
+                  );
+                })}
+              </Slider>
+              <ItemCountButtonWrapper>
+                <ItemCountButton name={group.group_name} count={group.total} />
+              </ItemCountButtonWrapper>
             </div>
           );
         })}
+
+      {categories_in_page && (
+        <CategoriesInPage categories={categories_in_page} groups={groups} />
+      )}
     </ContentPanelWrapper>
   );
 };

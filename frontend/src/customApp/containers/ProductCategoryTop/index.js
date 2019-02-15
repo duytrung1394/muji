@@ -1,18 +1,39 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
-import ContentHeader from "../../components/header/contentHeader";
+import ContentHeader from "../../components/shared/header/contentHeader";
 import Article from "../../components/productCategoryTop/article";
 import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
-import ContentAreaLayout from "../../components/panel/contentLayout";
+import ContentAreaLayout from "../../components/shared/panel/contentLayout";
+import Campaign from "../../components/productCategoryTop/campaign";
 
 class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest(this.props.match.params.category_code);
+    this.setState({ currentCode: this.props.match.params.category_code });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.match.params.category_code !==
+      nextProps.match.params.category_code
+    ) {
+      this.props.fetchRequest(nextProps.match.params.category_code);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.match.params.category_code !==
+      prevProps.match.params.category_code
+    ) {
+      document.querySelector("#content").scrollIntoView();
+    }
   }
 
   render() {
@@ -29,6 +50,7 @@ class Index extends Component {
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
           <CategoryList innerCategories={entity.innerCategories} />
+          <Campaign campaigns={entity.campaigns} />
           <ItemList {...entity} />
         </Spin>
       </ContentAreaLayout>
@@ -50,7 +72,8 @@ const enhance = C => {
     actionCreators
   )(C);
   const injected = injectIntl(connected, { withRef: true });
-  return injected;
+  const injectedWithRouter = withRouter(injected);
+  return injectedWithRouter;
 };
 
 export default enhance(Index);
