@@ -50,6 +50,10 @@ require_once 'api/v1/lotteries.php';
 // /api/v1/orders
 require_once 'api/v1/orders.php';
 
+
+// /api/v1/favorites
+require_once 'api/v1/favorites.php';
+
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
 

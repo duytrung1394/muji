@@ -7,7 +7,7 @@ import Slider, { Link } from "../shared/slider";
 const StyledLink = styled(Link)`
   display: inline-block;
   border-radius: 4px;
-  box-shadow: 0 1px 3px 0 #585858;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
 
   .ranking-item-image {
     border-radius: 4px 4px 0 0;

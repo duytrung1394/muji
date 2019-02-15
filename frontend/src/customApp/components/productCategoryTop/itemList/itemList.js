@@ -5,7 +5,10 @@ import LargeButton from "../../shared/form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import CategoriesInPage from "./categoriesInPage";
 import Slider from "../../shared/slider";
+import { Link } from "../../shared/form/link";
+import eventLink from "../../../../image/event/ico-event-link.png";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -24,11 +27,24 @@ const ContentPanelWrapper = styled(ContentPanel)`
       max-width: 500px;
     }
   }
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    height: inherit;
+  }
 `;
 
-const GroupName = styled.h1`
-  font-size: 19px;
-  font-weight: bold;
+const GroupHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  a img {
+    height: 32px;
+  }
 `;
 
 const StyledLargeButton = styled(LargeButton)`
@@ -72,21 +88,29 @@ const ItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { total, groups } = props;
+  const { total, groups, categories_in_page } = props;
 
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader total={total} />}
-      actions={[<SeeMoreButton />]}
+      actions={categories_in_page ? [] : [<SeeMoreButton />]}
     >
-      {groups &&
+      {!categories_in_page &&
+        groups &&
         groups.map((group, index) => {
           return (
             <div key={index}>
-              <GroupName>{group.group_name}</GroupName>
+              <GroupHeader>
+                <h1>{group.group_name}</h1>
+                <Link to="">
+                  <img className="next" src={eventLink} />
+                </Link>
+              </GroupHeader>
               <Slider>
                 {group.items.map((item, index) => {
-                  return <ItemView {...item} key={index} />;
+                  return (
+                    <ItemView isSlideScroll={true} {...item} key={index} />
+                  );
                 })}
               </Slider>
               <ItemCountButtonWrapper>
@@ -95,6 +119,10 @@ const ItemList = props => {
             </div>
           );
         })}
+
+      {categories_in_page && (
+        <CategoriesInPage categories={categories_in_page} groups={groups} />
+      )}
     </ContentPanelWrapper>
   );
 };

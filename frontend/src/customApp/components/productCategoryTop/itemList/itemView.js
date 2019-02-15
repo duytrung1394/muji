@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "../../shared/slider";
 import styled from "styled-components";
+import { Col } from "antd";
 import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
 import SizeRange from "./sizeRange";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
-const Item = styled.div`
+const itemStyleParams = `
   border-radius: 4px;
-  box-shadow: 0 1px 3px 0 #585858;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
   margin: 10px;
   text-align: center;
   img {
     width: 100%;
   }
   position: relative;
-}
- &&{
-  float: none;
-  display: inline-block;
-  vertical-align: top;
-}
-  
+
+  && {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+  }
+`;
+
+const ItemDiv = styled.div`
+  ${itemStyleParams};
+`;
+
+const ItemCol = styled(Col)`
+  ${itemStyleParams};
 `;
 
 const Title = styled.div`
@@ -67,6 +75,21 @@ const priceCurrencyLabel = (
   <IntlMessages id="productCategoryTop.label.priceCurrency" />
 );
 
+const Stock = styled.div`
+  margin: 10px 10px 0;
+  border: ${props => (props.noStock ? "1px solid #999" : "none")};
+  font-size: 12px;
+  color: #585858;
+`;
+
+const colLayout = {
+  xs: 10,
+  sm: 10,
+  md: 6,
+  lg: 6,
+  xl: 5
+};
+
 class ItemView extends Component {
   state = {
     currentJancode: this.props.swatches[0].jancode,
@@ -89,18 +112,30 @@ class ItemView extends Component {
       new_price,
       tags,
       minSize,
-      maxSize
+      maxSize,
+      isSlideScroll
     } = this.props;
     const image = `https://img.muji.net/img/item/${
       this.state.currentJancode
     }_400.jpg`;
+    let Item = ItemCol;
+    if (isSlideScroll) {
+      Item = ItemDiv;
+    }
     return (
-      <Item>
+      <Item {...colLayout}>
         <Link to="">
           <div>
             <img src={image} alt="" />
           </div>
           <ItemTag tags={tags} nostock={this.state.nostock} />
+          <Stock noStock={this.state.nostock}>
+            {this.state.nostock ? (
+              <IntlMessages id="productCategoryTop.stock.noStock" />
+            ) : (
+              "\u00A0"
+            )}
+          </Stock>
           <Material>{material}</Material>
           <Title>{title}</Title>
         </Link>
