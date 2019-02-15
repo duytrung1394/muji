@@ -52,101 +52,36 @@ const NavigationItemLavelActive = styled.span`
   color: #ddd;
 `;
 
+const menus = ["item", "article", "service", "store"];
+
+const link = ["", "", "", ""];
+
 const SearchNavigationList = ({ active }) => {
   return (
     <NavigationItemList>
-      {(() => {
-        if (0 === active) {
+      {menus.map((menu, index) => {
+        if (index === active) {
           return (
-            <NavigationItemActive>
-              <Link to="" key={0}>
+            <NavigationItemActive key={index}>
+              <Link to={link[index]}>
                 <NavigationItemLavelActive>
-                  <IntlMessages id="search.item.title" />
+                  <IntlMessages id={"search." + menu + ".title"} />
                 </NavigationItemLavelActive>
               </Link>
             </NavigationItemActive>
           );
         } else {
           return (
-            <NavigationItem>
-              <Link to="" key={0}>
+            <NavigationItem key={index}>
+              <Link to={link[index]}>
                 <NavigationItemLavel>
-                  <IntlMessages id="search.item.title" />
+                  <IntlMessages id={"search." + menu + ".title"} />
                 </NavigationItemLavel>
               </Link>
             </NavigationItem>
           );
         }
-      })()}
-      {(() => {
-        if (1 === active) {
-          return (
-            <NavigationItemActive>
-              <Link to="" key={1}>
-                <NavigationItemLavelActive>
-                  <IntlMessages id="search.article.title" />
-                </NavigationItemLavelActive>
-              </Link>
-            </NavigationItemActive>
-          );
-        } else {
-          return (
-            <NavigationItem>
-              <Link to="" key={1}>
-                <NavigationItemLavel>
-                  <IntlMessages id="search.article.title" />
-                </NavigationItemLavel>
-              </Link>
-            </NavigationItem>
-          );
-        }
-      })()}
-      {(() => {
-        if (2 === active) {
-          return (
-            <NavigationItemActive>
-              <Link to="" key={2}>
-                <NavigationItemLavelActive>
-                  <IntlMessages id="search.service.title" />
-                </NavigationItemLavelActive>
-              </Link>
-            </NavigationItemActive>
-          );
-        } else {
-          return (
-            <NavigationItem>
-              <Link to="" key={2}>
-                <NavigationItemLavel>
-                  <IntlMessages id="search.service.title" />
-                </NavigationItemLavel>
-              </Link>
-            </NavigationItem>
-          );
-        }
-      })()}
-      {(() => {
-        if (3 === active) {
-          return (
-            <NavigationItemActive>
-              <Link to="" key={3}>
-                <NavigationItemLavelActive>
-                  <IntlMessages id="search.store.title" />
-                </NavigationItemLavelActive>
-              </Link>
-            </NavigationItemActive>
-          );
-        } else {
-          return (
-            <NavigationItem>
-              <Link to="" key={3}>
-                <NavigationItemLavel>
-                  <IntlMessages id="search.store.title" />
-                </NavigationItemLavel>
-              </Link>
-            </NavigationItem>
-          );
-        }
-      })()}
+      })}
     </NavigationItemList>
   );
 };

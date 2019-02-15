@@ -70,20 +70,16 @@ const SearchStoreList = props => {
                 <div>
                   <ul>
                     <li>
-                      <IntlMessages id="search.address" />：{item.address &&
-                        item.address}
+                      <IntlMessages id="search.address" />：{item.address}
                     </li>
                     <li>
-                      <IntlMessages id="search.number" />：{item.number &&
-                        item.number}
+                      <IntlMessages id="search.number" />：{item.number}
                     </li>
                     <li>
-                      <IntlMessages id="search.opening" />：{item.opening &&
-                        item.opening}
+                      <IntlMessages id="search.opening" />：{item.opening}
                     </li>
                     <li>
-                      <IntlMessages id="search.holiday" />：{item.holiday &&
-                        item.holiday}
+                      <IntlMessages id="search.holiday" />：{item.holiday}
                     </li>
                   </ul>
                 </div>

@@ -23,6 +23,5 @@ export default {
   Order,
   Lottery,
   Search,
-  Favorite,
-  Lottery
+  Favorite
 };

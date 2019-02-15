@@ -25,7 +25,6 @@ export default function* devSaga() {
     orderSagas(),
     lotterySagas(),
     searchSagas(),
-    favoriteSagas(),
-    lotterySagas()
+    favoriteSagas()
   ]);
 }
