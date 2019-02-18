@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
+import ContentPanel from "../shared/panel/contentPanel";
 import SelectPrefecture from "../form/selectPrefecture";
 import { isServer, BrowserOnly } from "../../../helpers/ssr";
 

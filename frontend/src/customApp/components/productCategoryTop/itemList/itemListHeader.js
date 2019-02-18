@@ -5,6 +5,7 @@ import Filter from "./filter";
 import IntlMessages from "../../../../components/utility/intlMessages";
 
 const ItemListHeaderWrapper = styled.div`
+  justify-content: space-between;
   display: flex;
   width: 100%;
   border-bottom: 1px solid #ebebeb;
@@ -60,15 +61,18 @@ const SortLink = ({ sortKey, direction, children }) => {
 
 const ItemListHeader = props => (
   <ItemListHeaderWrapper>
-    {sortLinkList.map(sortLink => (
-      <SortLinkWrapper key={sortLink.sortKey}>
-        <SortLink {...sortLink}>
-          <IntlMessages
-            id={`productCategoryTop.label.sort.${sortLink.sortKey}`}
-          />
-        </SortLink>
-      </SortLinkWrapper>
-    ))}
+    <div>
+      {sortLinkList.map(sortLink => (
+        <SortLinkWrapper key={sortLink.sortKey}>
+          <SortLink {...sortLink}>
+            <IntlMessages
+              id={`productCategoryTop.label.sort.${sortLink.sortKey}`}
+            />
+          </SortLink>
+        </SortLinkWrapper>
+      ))}
+    </div>
+    <Filter />
   </ItemListHeaderWrapper>
 );
 

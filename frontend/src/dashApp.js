@@ -7,9 +7,9 @@ import routes from "./routes";
 import AppLocale from "./languageProvider";
 import Boot from "./redux/boot";
 import Hoc from "./hoc";
-import Sider from "./customApp/components/sider/Sider";
-import Header from "./customApp/components/header/Header";
-import Footer from "./customApp/components/footer/Footer";
+import Sider from "./customApp/components/shared/sider/sider";
+import Header from "./customApp/components/shared/header/header";
+import Footer from "./customApp/components/shared/footer/footer";
 
 const { Content } = Layout;
 

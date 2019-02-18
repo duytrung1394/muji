@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import ContentPanel from "../../panel/contentPanel";
-import LargeButton from "../../form/largeButton";
+import ContentPanel from "../../shared/panel/contentPanel";
+import LargeButton from "../../shared/form/largeButton";
 import ItemListHeader from "./itemListHeader";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import CategoriesInPage from "./categoriesInPage";
+import Slider from "../../shared/slider";
+import { Link } from "../../shared/form/link";
+import eventLink from "../../../../image/event/ico-event-link.png";
+import Preamble from "./preamble";
 
 const ContentPanelWrapper = styled(ContentPanel)`
   .ant-card-head {
@@ -23,20 +28,24 @@ const ContentPanelWrapper = styled(ContentPanel)`
       max-width: 500px;
     }
   }
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    height: inherit;
+  }
 `;
 
-const GroupName = styled.h1`
-  font-size: 19px;
-  font-weight: bold;
-`;
-
-const ItemName = styled.span`
-  padding: 0 10px;
-`;
-
-const ItemViewWrapper = styled.div`
+const GroupHeader = styled.div`
   display: flex;
-  overflow-x: scroll;
+  justify-content: space-between;
+  h1 {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  a img {
+    height: 32px;
+  }
 `;
 
 const StyledLargeButton = styled(LargeButton)`
@@ -80,29 +89,52 @@ const ItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { total, groups } = props;
+  const { total, groups, categories_in_page } = props;
 
   return (
     <ContentPanelWrapper
       extra={<ItemListHeader total={total} />}
-      actions={[<SeeMoreButton />]}
+      actions={categories_in_page ? [] : [<SeeMoreButton />]}
     >
-      {groups &&
+      {!categories_in_page &&
+        groups &&
         groups.map((group, index) => {
           return (
             <div key={index}>
-              <GroupName>{group.group_name}</GroupName>
-              <ItemViewWrapper>
+              {!group.description && (
+                <GroupHeader>
+                  <h1>{group.group_name}</h1>
+                  {group.link && (
+                    <Link to={group.link}>
+                      <img src={eventLink} alt="" />
+                    </Link>
+                  )}
+                </GroupHeader>
+              )}
+              {group.description && (
+                <Preamble
+                  title={group.group_name}
+                  description={group.description}
+                  img={group.img}
+                />
+              )}
+              <Slider>
                 {group.items.map((item, index) => {
-                  return <ItemView {...item} key={index} />;
+                  return (
+                    <ItemView isSlideScroll={true} {...item} key={index} />
+                  );
                 })}
-              </ItemViewWrapper>
+              </Slider>
               <ItemCountButtonWrapper>
                 <ItemCountButton name={group.group_name} count={group.total} />
               </ItemCountButtonWrapper>
             </div>
           );
         })}
+
+      {categories_in_page && (
+        <CategoriesInPage categories={categories_in_page} groups={groups} />
+      )}
     </ContentPanelWrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ContentPanel from "../panel/contentPanel";
+import ContentPanel from "../shared/panel/contentPanel";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ImportantNoticeWrapper from "./importantNotice.style";
 

@@ -44,10 +44,10 @@ Docker 環境から立ち上げている場合、 `docker-compose.yml` 内で fr
   - `e2e` 以下で `yarn install` を実行してcypressを入れます
 3. ターミナルを2つ開きます
   - `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8080` です。
-  - `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `3000` です。
+  - `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
 4. lumenの環境ファイルを作成します
   - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
-5. ブラウザから localhost:3000 にアクセスするとReactの画面が出るので開発できます。
+5. ブラウザから localhost:4000 にアクセスするとReactの画面が出るので開発できます。
 
 ## コミット前のコードフォーマット
 
