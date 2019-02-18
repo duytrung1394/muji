@@ -23,7 +23,7 @@ const NavigationItem = styled.li`
     color: ${props => (props.isActive ? "#ddd" : "#585858")};
   }
 
-  span {
+  span.label {
     display: inline-block;
     width: 100%;
     line-height: 40px;
@@ -45,7 +45,7 @@ const SearchNavigationList = ({ active }) => {
         return (
           <NavigationItem isActive={active === index} key={index}>
             <Link to={menu.link}>
-              <span>
+              <span className="label">
                 <IntlMessages id={"search." + menu.name + ".title"} />
               </span>
             </Link>
