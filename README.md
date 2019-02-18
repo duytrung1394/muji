@@ -219,6 +219,9 @@ docker-compose -f production.yml run --rm frontend yarn build
 docker-compose -f production.yml up -d frontend
 ```
 
+開発時は `yarn build` した状態で `source .env` などで環境変数を設定し、 `frontend` 以下で `REACT_APP_ENV=$REACT_APP_ENV yarn serve` を実行する形でもOKです。
+（ `REACT_APP_ENV` がなぜかsourceした.envのものは反映されないため）
+
 4. Nginxを立ち上げます。
 
 ポートの都合上、ローカルとサーバーで立ち上げるものが異なります。
