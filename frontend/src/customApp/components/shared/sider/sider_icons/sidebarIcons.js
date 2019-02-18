@@ -24,4 +24,6 @@ const sidebarIcons = {
   sidebarIcon12: sidebarIcon12
 };
 
-export default sidebarIcons;
+export {
+  sidebarIcons
+};
