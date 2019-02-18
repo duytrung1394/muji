@@ -9,7 +9,8 @@ const renderer = require("./serverRenderer");
 
 app.use(renderer);
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
+  // `yarn dev` の場合向け
   const webpack = require("webpack");
   const webpackDevMiddleware = require("webpack-dev-middleware");
 

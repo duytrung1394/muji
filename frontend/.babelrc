@@ -10,61 +10,13 @@
     "react"
   ],
   "plugins": [
+    "css-modules-transform",
+    "import-static-files",
     [
       "transform-runtime", {
         "polyfill": false,
         "regenerator": true
-      }
+      },
     ]
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        "css-modules-transform",
-        [
-          "import-static-files", 
-          {
-            "baseDir": "/static",
-            "baseUri": "http://localhost:3000"
-          }
-        ]
-      ]
-    },
-    "preview": {
-      "plugins": [
-        "css-modules-transform",
-        [
-          "import-static-files", 
-          {
-            "baseDir": "/static",
-            "baseUri": "https://muji-ec.xenophy.info"
-          }
-        ]
-      ]
-    },
-    "release": {
-      "plugins": [
-        "css-modules-transform",
-        [
-          "import-static-files", 
-          {
-            "baseDir": "/static",
-            "baseUri": "https://muji-ec-release.xenophy.info"
-          }
-        ]
-      ]
-    },
-    "production": {
-      "plugins": [
-        "css-modules-transform",
-        [
-          "import-static-files", 
-          {
-            "baseDir": "/static",
-            "baseUri": "https://changeit.production.muji.example.com"
-          }
-        ]
-      ]
-    }
-  }
+  ]
 }

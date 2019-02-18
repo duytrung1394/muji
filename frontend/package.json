@@ -117,9 +117,9 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "dev": "NODE_ENV=development REACT_APP_ENV=development babel-watch src/server",
-    "build": "NODE_ENV=production react-app-rewired --max_old_space_size=8192 build",
-    "serve": "NODE_ENV=production babel-node src/server",
+    "dev": "NODE_ENV=development babel-watch src/server",
+    "build": "react-app-rewired --max_old_space_size=8192 build",
+    "serve": "babel-node src/server",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   }

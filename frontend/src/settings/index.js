@@ -1,17 +1,16 @@
 import { isServer } from "../helpers/ssr";
 
-const apiUrl = {
+const apiUrlDefault = "http://backend:8080;"
+
+const apiUrls = {
   release: {
-    ssr: "http://backend:8080",
     browser: "https://muji-ec-release.xenophy.info",
   },
   preview: {
-    ssr: "http://backend:8080",
     browser: "https://muji-ec.xenophy.info",
   },
   // ローカルでサーバーに近い動かし方をするとき向け
   local: {
-    ssr: "http://backend:8080",
     browser: "http://localhost:8000",
   },
   // yarn dev で動かす場合向け
@@ -21,12 +20,12 @@ const apiUrl = {
   }
 };
 
-const env = isServer() ? "ssr" : "browser";
+const currentEnv = isServer() ? "ssr" : "browser";
 
-const react_app_env = process.env.REACT_APP_ENV;
+const env = process.env.REACT_APP_ENV || process.env.NODE_ENV;
 
 const settings = {
-  apiUrl: apiUrl[react_app_env][env],
+  apiUrl: apiUrls[env][currentEnv] || apiUrlDefault,
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
 
