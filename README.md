@@ -243,3 +243,10 @@ docker-compose -f production.yml up -d nginx
 - プレビュー向けのSSL対応
 - プレビュー向けのBASIC認証対応
 
+### 環境変数の取り扱いの指針
+
+- ビルド時に環境変数を反映させるため `yarn build` はサーバー上で行う
+- 基本的に環境の切り替えには環境変数 `NODE_ENV` を用いる
+  - ただし、原則としてソースに分岐を記載するより、環境変数を埋め込む形が望ましい
+- APIのURLは環境変数で渡す。 SSR用が `API_SERVER` , ブラウザ用が `API_BROWSER`
+- 使う環境変数が増えたときには config-overrides.js で `transform-inline-environment-variables` を用いて変換しているので、ここに設定を追加する

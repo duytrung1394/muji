@@ -35,15 +35,7 @@ module.exports = function override(config, env) {
   })(config, env);
 
   config.devtool = (env === "development");
-
-  // ビルドに含む環境変数のみに絞り込む
-  // config = rewireDefinePlugin(config, env, {
-  //   "process.env": {
-  //     NODE_ENV: process.env.NODE_ENV,
-  //     API_SERVER: process.env.API_SERVER,
-  //     API_BROWSER: process.env.API_BROWSER,
-  //   },
-  // });
+  
 
   return config;
 };
