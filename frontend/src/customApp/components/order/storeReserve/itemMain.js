@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Link from "../../slider/link";
+import Link from "../../shared/slider/link";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 
