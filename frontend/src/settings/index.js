@@ -1,31 +1,14 @@
 import { isServer } from "../helpers/ssr";
 
-const apiUrlDefault = "http://backend:8080;"
-
-const apiUrls = {
-  release: {
-    browser: "https://muji-ec-release.xenophy.info",
-  },
-  preview: {
-    browser: "https://muji-ec.xenophy.info",
-  },
-  // ローカルでサーバーに近い動かし方をするとき向け
-  local: {
-    browser: "http://localhost:8000",
-  },
-  // yarn dev で動かす場合向け
-  development: {
-    ssr: "http://localhost:8081",
-    browser: "http://localhost:8081",
-  }
-};
-
-const currentEnv = isServer() ? "ssr" : "browser";
-
-const env = process.env.REACT_APP_ENV || process.env.NODE_ENV;
+let apiUrl;
+if( isServer() ){
+  apiUrl = process.env.API_SERVER;
+} else {
+  apiUrl = process.env.API_BROWSER;
+}
 
 const settings = {
-  apiUrl: apiUrls[env][currentEnv] || apiUrlDefault,
+  apiUrl,
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
 

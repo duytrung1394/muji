@@ -11,12 +11,12 @@
   ],
   "plugins": [
     "css-modules-transform",
-    "import-static-files",
-    [
-      "transform-runtime", {
-        "polyfill": false,
-        "regenerator": true
-      },
-    ]
+    ["import-static-files", {
+      "hash": true,
+    }],
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }],
   ]
 }
