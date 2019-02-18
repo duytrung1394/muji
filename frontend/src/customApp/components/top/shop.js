@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import IntlMessages from "../../../components/utility/intlMessages";
 import ContentPanel from "../shared/panel/contentPanel";
-import SelectPrefecture from "../form/selectPrefecture";
+import SelectPrefecture from "../shared/form/selectPrefecture";
 import { isServer, BrowserOnly } from "../../../helpers/ssr";
 
 const mapStyle = { position: "relative", width: "100%", height: "250px" };
