@@ -147,7 +147,7 @@ const Sider = () => {
                 key: `menu-${index}`,
                 menu,
                 menuindex: index,
-                ...this.props
+                ...(this || {}).props
               });
             } else {
               return null;
