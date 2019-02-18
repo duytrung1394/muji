@@ -99,6 +99,10 @@ class ItemSwatch extends Component {
   };
 
   render() {
+    if (!this.props.swatches) {
+      return null;
+    }
+
     return (
       <Row type="flex" align="middle" justify="center">
         <this.Swatches />

@@ -186,56 +186,20 @@ class ProductCategoryTopsController extends Controller
                 [
                     'group_name' => 'セーター',
                     'total'      => 321,
-                    'items'      => [
-                        $this->getMockItemData(1,3),
-                        $this->getMockItemData(1,4, ['new']),
-                        $this->getMockItemData(1,5, ['discount']),
-                        $this->getMockItemData(1,6, ['early']),
-                        $this->getMockItemData(1,7, ['new', 'discount', 'early']),
-                        $this->getMockItemData(1,8),
-                        $this->getMockItemData(1,9),
-                        $this->getMockItemData(1,10),
-                        $this->getMockItemData(1,11),
-                        $this->getMockItemData(1,12),
-                        $this->getMockItemData(1,13),
-                        $this->getMockItemData(1,14),
-                    ],
+                    'link' => '#',
+                    'items' => $this->getMockItemDataListForWoman(),
                 ],
                 [
                     'group_name' => 'セーター2',
                     'total'      => 123,
-                    'items'      => [
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                    ],
+                    'link' => '#',
+                    'items' => $this->getMockItemDataListForWoman(),
                 ],
                 [
                     'group_name' => 'セーター3',
                     'total'      => 123,
-                    'items'      => [
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                        $this->getMockItemData(1,4),
-                    ],
+                    'link' => '#',
+                    'items' => $this->getMockItemDataListForWoman(),
                 ],
             ],
             'items' => [],
@@ -244,10 +208,32 @@ class ProductCategoryTopsController extends Controller
 
     /**
      * 商品リスト(第2階層)
+     *
+     * $categoryCode が S10003 は 婦人ウェア→カットソー(最階層: 記事リンク(categories_in_page)が存在する).
+     * $categoryCode が S20003 は 収納家具→シェルフ(中階層: 記事リンクはカラ).
      */
     private function getMockDataSecond($categoryCode)
     {
         return [
+            'links' => $this->mockDataSecond[$categoryCode]['links'],
+            'category_code'  => $categoryCode,
+            'category_title' => $this->mockDataSecond[$categoryCode]['category_title'],
+            'article' => $this->mockDataSecond[$categoryCode]['article'],
+            'rankings' => $this->mockDataSecond[$categoryCode]['rankings'],
+            'innerCategories' => $this->mockDataSecond[$categoryCode]['innerCategories'],
+            'categories_in_page' => $this->mockDataSecond[$categoryCode]['categories_in_page'],
+            'sort_type' => 'group',
+            'total' => 550,
+            'groups' => $this->getMockGroups($categoryCode),
+            'items' => [],
+        ];
+    }
+
+    /**
+     * 商品リスト(第2階層)データ.
+     */
+    private $mockDataSecond = [
+        'S10003' => [
             'links' => [
                 [
                     'path' => '/store',
@@ -258,7 +244,6 @@ class ProductCategoryTopsController extends Controller
                     'name' => '婦人ウェア',
                 ],
             ],
-            'category_code'  => $categoryCode,
             'category_title' => "カットソー",
             'article' => [
                 'title' =>"首まわりを丈夫にしました。",
@@ -299,6 +284,7 @@ class ProductCategoryTopsController extends Controller
                     'img' => '//img.muji.net/img/item/4550002558239_1260.jpg'
                 ]
             ],
+            'innerCategories' => null,
             'categories_in_page' => [
                 [
                     'title' => 'オーガニックコットンTシャツ',
@@ -313,75 +299,225 @@ class ProductCategoryTopsController extends Controller
                     'img' => 'https://img.muji.net/img/item/4550002388942_05_400.jpg',
                 ],
             ],
-            'sort_type'      => 'group',
-            'total'          => 550,
-            'groups' => [
+        ],
+        'S20003' => [
+            'links' => [
                 [
-                    'group_name' => '半袖・タンクトップ',
-                    'category_code_in_page' => 'product-t-shirt',
-                    'total'      => 321,
-                    'items'      => [
-                        $this->getMockItemData(2,3),
-                        $this->getMockItemData(2,4, ['new']),
-                        $this->getMockItemData(2,5, ['discount']),
-                        $this->getMockItemData(2,6, ['early']),
-                        $this->getMockItemData(2,7, ['new', 'discount', 'early']),
-                        $this->getMockItemData(2,8),
-                        $this->getMockItemData(2,9),
-                        $this->getMockItemData(2,10),
-                        $this->getMockItemData(2,11),
-                        $this->getMockItemData(2,12),
-                        $this->getMockItemData(2,13),
-                        $this->getMockItemData(2,14),
-                    ],
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
                 ],
                 [
-                    'group_name' => '半袖',
-                    'category_code_in_page' => 'product-t-shirt',
-                    'total'      => 123,
-                    'items'      => [
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                    ],
-                ],
-                [
-                    'group_name' => '半袖',
-                    'category_code_in_page' => 'product-uv-cut',
-                    'total'      => 123,
-                    'items'      => [
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                        $this->getMockItemData(2,4),
-                    ],
+                    'path' => '/store/cmdty/section/T20000',
+                    'name' => '収納家具',
                 ],
             ],
-            'items' => [],
+            'category_title' => "シェルフ",
+            'article' => [
+                'title' =>"約120品目の家具の価格を見直しました。",
+                'description' =>"収納用品やユニットシェルフ、収納ベットなどの価格を見直しました。生産工程を点検し、品質はそのままにさらにお求めやすい価格を実現。",
+                'back_ground_image' => 'https://img.muji.net/img/item/4548718708710_08_1260.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => [
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4548718121328_180.jpg',
+                    'title' => 'スタッキングシェルフ',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4547315874903_180.jpg',
+                    'title' => 'オーク材収納',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4547315256976_180.jpg',
+                    'title' => 'スタッキングキャ…',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4549738749844_180.jpg',
+                    'title' => '薄型ラック',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4548718355792_180.jpg',
+                    'title' => 'パイン材収納',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4934761362458_180.jpg',
+                    'title' => 'オークユニットシェ…',
+                    'sectionCode' => '',
+                ],
+            ],
+            'categories_in_page' => null,
+        ],
+    ];
+
+    /**
+     * モックデータ: カテゴリコードに合わせたグループデータ.
+     *
+     * S20003のときはシェルフ用. それ以外は婦人ウェア用.
+     */
+    private function getMockGroups($categoryCode = "")
+    {
+        if ($categoryCode === "S20003") {
+            return [
+                [
+                    'group_name' => 'スタッキングシェルフ',
+                    'category_code_in_page' => 'product-stacking-shelf',
+                    'description' => 'タテにヨコにも自由に拡張。正方形、ワイドタイプ、オープンタイプで組み合わせ可能。',
+                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                    'total'      => 321,
+                    'items'      => $this->getMockItemDataListForShelf(),
+                ],
+                [
+                    'group_name' => 'ステンレスユニットシェルフ',
+                    'category_code_in_page' => 'product-stainless-shelf',
+                    'description' => '錆びにくいステンレスを使用したユニットシェラフ',
+                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                    'total'      => 123,
+                    'items'      => $this->getMockItemDataListForShelf(),
+                ],
+                [
+                    'group_name' => 'スチールユニットシェルフ',
+                    'category_code_in_page' => 'product-steel-shelf',
+                    'description' => '豊富なオプションを自由に組み合わせることができるユニットシェルフ。',
+                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                    'total'      => 123,
+                    'items'      => $this->getMockItemDataListForShelf(),
+                ],
+                [
+                    'group_name' => 'パイン材ユニットシェルフ',
+                    'category_code_in_page' => 'product-pine-wood-shelf',
+                    'description' => '天然の”節”の表情が楽しめるパイン村。',
+                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                    'total'      => 123,
+                    'items'      => $this->getMockItemDataListForShelf(),
+                ],
+            ];
+        }
+
+        return [
+            [
+                'group_name' => '半袖・タンクトップ',
+                'category_code_in_page' => 'product-t-shirt',
+                'total'      => 321,
+                'items'      => $this->getMockItemDataListForWoman(),
+            ],
+            [
+                'group_name' => '半袖',
+                'category_code_in_page' => 'product-t-shirt',
+                'total'      => 123,
+                'items'      => $this->getMockItemDataListForWoman(),
+            ],
+            [
+                'group_name' => '半袖',
+                'category_code_in_page' => 'product-uv-cut',
+                'total'      => 123,
+                'items'      => $this->getMockItemDataListForWoman(),
+            ],
         ];
     }
-    
+
     /**
-     * モックデータ: アイテム.
+     * モックデータ: 婦人ウェア用アイテムリスト.
      */
-    private function getMockItemData($level, $swatchNumber, $tags=[])
+    private function getMockItemDataListForWoman()
+    {
+        return [
+            $this->getMockItemDataForWoman(1,3),
+            $this->getMockItemDataForWoman(1,4, ['new']),
+            $this->getMockItemDataForWoman(1,5, ['discount']),
+            $this->getMockItemDataForWoman(1,6, ['early']),
+            $this->getMockItemDataForWoman(1,7, ['new', 'discount', 'early']),
+            $this->getMockItemDataForWoman(1,8),
+            $this->getMockItemDataForWoman(1,9),
+            $this->getMockItemDataForWoman(1,10),
+            $this->getMockItemDataForWoman(1,11),
+            $this->getMockItemDataForWoman(1,12),
+            $this->getMockItemDataForWoman(1,13),
+            $this->getMockItemDataForWoman(1,14),
+        ];
+    }
+
+    /**
+     * モックデータ: シェルフ用アイテムリスト.
+     */
+    private function getMockItemDataListForShelf()
+    {
+        return [
+            [
+                'jancode' => '4549337263970',
+                'nostock' => false,
+                'title' => '3段x2列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => true,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4549337263635',
+                'nostock' => false,
+                'title' => '3段x3列・オーク材',
+                'material' => 'スタッキングシェルフ',
+                'price' => 26990,
+                'tags' => [],
+            ],
+        ];
+    }
+
+    /**
+     * モックデータ: 婦人ウェア用アイテム.
+     */
+    private function getMockItemDataForWoman($level, $swatchNumber, $tags=[])
     {
         $title = 'タートルネックセーター';
         $material = 'ウールシルク洗える';
@@ -390,6 +526,8 @@ class ProductCategoryTopsController extends Controller
             $material = 'オーガニックコットン';
         }
         $item = [
+            'jancode' => '4550002032364',
+            'nostock' => false,
             'title' => $title,
             'material' => $material,
             'price' => 2903,

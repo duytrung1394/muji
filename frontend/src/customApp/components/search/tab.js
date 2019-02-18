@@ -16,35 +16,40 @@ const NavigationItem = styled.li`
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background: ${props => (props.isActive ? '#7f0019' : 'none')};
-  font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
+  background: ${props => (props.isActive ? "#7f0019" : "none")};
+  font-weight: ${props => (props.isActive ? "bold" : "normal")};
 
   a:hover {
-    color: ${props => (props.isActive ? '#ddd' : '#585858')};
+    color: ${props => (props.isActive ? "#ddd" : "#585858")};
   }
-  
-  span{
+
+  span {
     display: inline-block;
     width: 100%;
     line-height: 40px;
-    color: ${props => (props.isActive ? '#ddd' : '#585858')};
+    color: ${props => (props.isActive ? "#ddd" : "#585858")};
   }
 `;
 
-const menus = [{name: "item", link : ""}, {name: "article", link : ""}, {name: "service", link : ""}, {name: "store", link : ""}];
+const menus = [
+  { name: "item", link: "" },
+  { name: "article", link: "" },
+  { name: "service", link: "" },
+  { name: "store", link: "" }
+];
 
 const SearchNavigationList = ({ active }) => {
   return (
     <NavigationItemList>
       {menus.map((menu, index) => {
-        return(
-            <NavigationItem isActive={active === index} key={index}>
-              <Link to={menu.link}>
-                <span>
-                  <IntlMessages id={"search." + menu.name + ".title"} />
-                </span>
-              </Link>
-            </NavigationItem>
+        return (
+          <NavigationItem isActive={active === index} key={index}>
+            <Link to={menu.link}>
+              <span>
+                <IntlMessages id={"search." + menu.name + ".title"} />
+              </span>
+            </Link>
+          </NavigationItem>
         );
       })}
     </NavigationItemList>
