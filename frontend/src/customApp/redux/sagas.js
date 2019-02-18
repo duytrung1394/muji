@@ -23,8 +23,8 @@ export default function* devSaga() {
     customerReviewSagas(),
     donationSagas(),
     orderSagas(),
-    lotterySagas(),
+    favoriteSagas(),
     searchSagas(),
-    favoriteSagas()
+    lotterySagas()
   ]);
 }

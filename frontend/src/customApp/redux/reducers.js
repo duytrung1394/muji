@@ -21,7 +21,7 @@ export default {
   CustomerReview,
   Donation,
   Order,
-  Lottery,
+  Favorite,
   Search,
-  Favorite
+  Lottery
 };
