@@ -146,8 +146,7 @@ const Sider = () => {
               return React.createElement(menuTypes[menu.type], {
                 key: `menu-${index}`,
                 menu,
-                menuindex: index,
-                ...(this || {}).props
+                menuindex: index
               });
             } else {
               return null;
