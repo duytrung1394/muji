@@ -23,12 +23,12 @@ const UserData = () => {
   return (
     <StyledDiv>
       <Link to={`/store/review/user`}>
-      <UserIcon
-        src={"https://www.muji.com/jp/store/review/img/avatar_default.png"}
-      />
-      <StyledSpan>
-        <IntlMessages id="customerReview.list.name" />
-      </StyledSpan>
+        <UserIcon
+          src={"https://www.muji.com/jp/store/review/img/avatar_default.png"}
+        />
+        <StyledSpan>
+          <IntlMessages id="customerReview.list.name" />
+        </StyledSpan>
       </Link>
     </StyledDiv>
   );

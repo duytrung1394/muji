@@ -50,19 +50,18 @@ class History extends Component {
 
   render() {
     const { entities, fetching, fetched, destroying } = this.props;
-    console.log(entities.total_review_count);
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title />
           <ListToolbar ToolbarItems={entities.total_review_count} />
-          <List />
+          {/* <List /> */}
           <Review reviews={entities.reviews} />
         </ContentLayout>
       </ContentAreaLayout>
     );
   }
-};
+}
 
 const mapStateToProps = state => {
   return state.Review.List.toJS();

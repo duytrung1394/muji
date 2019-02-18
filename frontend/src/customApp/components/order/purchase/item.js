@@ -25,7 +25,7 @@ const PurchaseItemWrapper = styled.section`
   font-size: 12px;
   ${mediaQuery.greaterThan("sm")`
     margin-bottom: 10px;
-  `}
+  `};
 `;
 
 const PurchaseHistoryTitle = styled.h2`

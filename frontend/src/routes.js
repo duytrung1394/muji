@@ -172,6 +172,6 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexStoreReserve")
     )
-  },
+  }
 ];
 export default routes;

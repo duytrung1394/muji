@@ -39,12 +39,14 @@ const ListToolbar = ({ ToolbarItems }) => {
         {ToolbarItems}
         <IntlMessages id="review.matter" />
       </TotalReviewCount>
-      <ReviewBreadcrumbArea> 
+      <ReviewBreadcrumbArea>
         <ReviewBreadcrumb>
           <BoldSpan>
             <Breadcrumb.Item>
               <a href="#">
-              <BoldSpan><IntlMessages id="review.sortByNewestPost" /></BoldSpan>
+                <BoldSpan>
+                  <IntlMessages id="review.sortByNewestPost" />
+                </BoldSpan>
               </a>
             </Breadcrumb.Item>
           </BoldSpan>
@@ -68,5 +70,5 @@ const ListToolbar = ({ ToolbarItems }) => {
     </ListToolbarWrapper>
   );
 };
-  
+
 export default ListToolbar;

@@ -21,9 +21,8 @@ export default Title;
 //     <div>
 //       {titles &&
 //         titles.map((title) => {
-//             <TitleArea>{title}</TitleArea> 
+//             <TitleArea>{title}</TitleArea>
 //         }
 //     </div>
 //   );
 // };
-  
