@@ -26,7 +26,8 @@ const ItemFooterButtonWrapper = styled.li`
 
   a,
   a:hover,
-  a:focus {
+  a:focus,
+  a:active {
     color: rgba(0, 0, 0, 0.65);
   }
 
@@ -46,15 +47,10 @@ const ItemFooterButtonWrapper = styled.li`
   }
 `;
 
-/* 
-アクションを子コンポーネントで指定し，その情報をもとにこちらでコンポーネントを生成する
-必要に応じてActionコンポーネントは拡張していく
-*/
-
-const Action = ({ name, onClick }) => {
+const Action = ({ name, onClick = null, to = "#" }) => {
   return (
     <ItemFooterButtonWrapper>
-      <Link to={"#"} onClick={onClick}>
+      <Link to={to} onClick={onClick} draggable={false}>
         {name}
       </Link>
       <Icon type="right" />
@@ -78,7 +74,12 @@ const ItemFooter = ({ actions = [] }) => {
     <ItemFooterStyle>
       {actions.map((action, index) => {
         return (
-          <Action key={index} name={action.name} onClick={action.onClick} />
+          <Action
+            key={index}
+            name={action.name}
+            onClick={action.onClick}
+            to={action.to}
+          />
         );
       })}
     </ItemFooterStyle>

@@ -97,11 +97,19 @@ export const TabSlider = props => {
     initialSlide: 0
   };
 
+  const focusReset = () => {
+    document.activeElement.blur();
+  };
+
   return (
     <SliderWrapper {...defaultSettings} {...props}>
       {children &&
         children.map((child, index) => {
-          return <TabPanel key={index}>{child}</TabPanel>;
+          return (
+            <TabPanel onClick={focusReset} key={index}>
+              {child}
+            </TabPanel>
+          );
         })}
     </SliderWrapper>
   );

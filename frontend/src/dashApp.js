@@ -20,14 +20,14 @@ const DashApp = () => (
     <BrowserRouter>
       <Layout style={{ height: "100%" }}>
         <Header isLoggedIn={false} />
-        <Layout>
+        <Layout hasSider={true}>
           <Sider />
-          <Layout>
-            <Content id="content" style={{ position: "relative" }}>
+          <Content id="content" style={{ position: "relative" }}>
+            <Layout>
               <Routes />
-            </Content>
-            <Footer />
-          </Layout>
+              <Footer />
+            </Layout>
+          </Content>
         </Layout>
       </Layout>
     </BrowserRouter>
