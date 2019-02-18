@@ -78,8 +78,8 @@ const SearchItemImageList = props => {
                   <Card.Grid>
                     <img src={item.img_src} alt="" />
 
-                    {<p>{item.description}</p>}
-                    {<h3>{item.title}</h3>}
+                    <p>{item.description}</p>
+                    <h3>{item.title}</h3>
                   </Card.Grid>
                 </Link>
               </div>

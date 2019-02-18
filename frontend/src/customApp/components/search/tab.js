@@ -7,12 +7,7 @@ const NavigationItemList = styled.ul`
   display: flex;
   border-bottom: 4px solid #7f0019;
   background: #f2f2f2;
-  color: #585858;
   font-size: 12px;
-
-  a:hover {
-    color: #585858;
-  }
 `;
 
 const NavigationItem = styled.li`
@@ -21,66 +16,36 @@ const NavigationItem = styled.li`
   height: 40px;
   line-height: 40px;
   text-align: center;
-`;
-
-const NavigationItemActive = styled.li`
-  list-style: none;
-  width: 25%;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  background: #7f0019;
-  color: #ddd;
-  font-weight: bold;
+  background: ${props => (props.isActive ? '#7f0019' : 'none')};
+  font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
 
   a:hover {
-    color: #ddd;
+    color: ${props => (props.isActive ? '#ddd' : '#585858')};
+  }
+  
+  span{
+    display: inline-block;
+    width: 100%;
+    line-height: 40px;
+    color: ${props => (props.isActive ? '#ddd' : '#585858')};
   }
 `;
 
-const NavigationItemLavel = styled.span`
-  display: inline-block;
-  width: 100%;
-  line-height: 40px;
-  color: #585858;
-`;
-
-const NavigationItemLavelActive = styled.span`
-  display: inline-block;
-  width: 100%;
-  line-height: 40px;
-  color: #ddd;
-`;
-
-const menus = ["item", "article", "service", "store"];
-
-const link = ["", "", "", ""];
+const menus = [{name: "item", link : ""}, {name: "article", link : ""}, {name: "service", link : ""}, {name: "store", link : ""}];
 
 const SearchNavigationList = ({ active }) => {
   return (
     <NavigationItemList>
       {menus.map((menu, index) => {
-        if (index === active) {
-          return (
-            <NavigationItemActive key={index}>
-              <Link to={link[index]}>
-                <NavigationItemLavelActive>
-                  <IntlMessages id={"search." + menu + ".title"} />
-                </NavigationItemLavelActive>
-              </Link>
-            </NavigationItemActive>
-          );
-        } else {
-          return (
-            <NavigationItem key={index}>
-              <Link to={link[index]}>
-                <NavigationItemLavel>
-                  <IntlMessages id={"search." + menu + ".title"} />
-                </NavigationItemLavel>
+        return(
+            <NavigationItem isActive={active === index} key={index}>
+              <Link to={menu.link}>
+                <span>
+                  <IntlMessages id={"search." + menu.name + ".title"} />
+                </span>
               </Link>
             </NavigationItem>
-          );
-        }
+        );
       })}
     </NavigationItemList>
   );
