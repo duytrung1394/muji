@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon, Popover } from "antd";
-import Link from "../../slider/link";
+import Link from "../../shared/slider/link";
 
 const EllipsisButtonWrapper = styled.div`
   width: 49px;
@@ -68,14 +68,22 @@ const PopoverContent = styled.li`
   }
 `;
 
-/* actionsはオブジェクト配列，map使ってポップアップメニューを生成する */
-const actionsList = actions => {
+const ActionsList = ({ actions, hidePopover }) => {
   return (
     <PopoverContentWrapper>
       {actions.map((action, index) => {
         return (
           <PopoverContent key={index}>
-            <Link to={"#"} onClick={action.onClick}>
+            <Link
+              to={"#"}
+              onClick={
+                action.onClick &&
+                (() => {
+                  hidePopover();
+                  action.onClick();
+                })
+              }
+            >
               {action.name}
             </Link>
           </PopoverContent>
@@ -85,26 +93,42 @@ const actionsList = actions => {
   );
 };
 
-const ActionListButton = ({ actions = [] }) => {
-  if (actions.length === 0) {
-    /* アクションが無い場合は表示しない */
-    return null;
-  }
+class ActionListButton extends Component {
+  state = {
+    visible: false
+  };
+  hidePopover = () => {
+    this.setState({ visible: false });
+  };
+  handleVisibleChange = visible => {
+    this.setState({ visible });
+  };
+  render() {
+    const { actions = [] } = this.props;
 
-  return (
-    <EllipsisButtonWrapper>
-      <Popover
-        placement="topRight"
-        content={actionsList(actions)}
-        trigger="click"
-      >
-        <Ellipsis>
-          <Icon type="ellipsis" />
-        </Ellipsis>
-      </Popover>
-    </EllipsisButtonWrapper>
-  );
-};
+    if (actions.length === 0) {
+      return null;
+    }
+
+    return (
+      <EllipsisButtonWrapper>
+        <Popover
+          placement="topRight"
+          content={
+            <ActionsList actions={actions} hidePopover={this.hidePopover} />
+          }
+          trigger="click"
+          visible={this.state.visible}
+          onVisibleChange={this.handleVisibleChange}
+        >
+          <Ellipsis>
+            <Icon type="ellipsis" />
+          </Ellipsis>
+        </Popover>
+      </EllipsisButtonWrapper>
+    );
+  }
+}
 
 const ItemMainStyle = styled.div`
   position: relative;
@@ -140,7 +164,6 @@ const ItemMain = ({ content, img, imgUrl = "#", actions }) => {
         </Link>
       </ItemImage>
       {content}
-      {/* アクションボタンは position:absolute で右下に置いておく */}
       <ActionListButton actions={actions} />
     </ItemMainStyle>
   );
