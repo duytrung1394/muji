@@ -75,7 +75,7 @@ const RateStar = styled(Rate)`
   && {
     font-size: 11px;
     margin-top: 9px;
-    color: #BA0D0D;
+    color: #ba0d0d;
   }
 `;
 
@@ -151,8 +151,7 @@ const CommentIcon = styled.img`
   margin-right: 10px;
 `;
 
-const GoodIcon = styled(CommentIcon)`
-`;
+const GoodIcon = styled(CommentIcon)``;
 
 const StyledSpan = styled.span`
   font-size: 12px;
@@ -202,13 +201,13 @@ const Review = ({ review, imageIndex }) => {
                 <Title>
                   <IntlMessages id="review.reviewTitle" />
                 </Title>
-                <RateStar disabled defaultValue={4} />
+                <RateStar disabled defaultValue={review.evaluation_count} />
                 <PostedDate>{review.date}</PostedDate>
                 <StarCounter>
                   <IntlMessages id="review.fiveStarsEvaluation" />
                   {review.evaluation_count}
                 </StarCounter>
-                {review.buyerInfo.size && review.buyerInfo.height ?
+                {review.buyerInfo.size && review.buyerInfo.height ? (
                   <BuyerInfo>
                     <PurchaseSize>
                       <IntlMessages id="review.purchaseSize" />
@@ -220,8 +219,7 @@ const Review = ({ review, imageIndex }) => {
                       <IntlMessages id="review.cm" />
                     </Height>
                   </BuyerInfo>
-                : null
-                }
+                ) : null}
                 <ReviewTitle>{review.review_title}</ReviewTitle>
                 <ReviewText>{review.review_comment}</ReviewText>
                 {review.images &&

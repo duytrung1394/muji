@@ -21,7 +21,6 @@ const ReviewBreadcrumbArea = styled.div`
 const ReviewBreadcrumb = styled(Breadcrumb)`
   &&& {
     font-size: 11px;
-    color: rgb(96, 179, 250);
   }
 `;
 
