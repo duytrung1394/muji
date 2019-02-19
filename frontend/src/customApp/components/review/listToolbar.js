@@ -5,6 +5,7 @@ import { Breadcrumb } from "antd";
 
 const ListToolbarWrapper = styled.div`
   font-size: 12px;
+  margin-bottom: 20px;
 `;
 
 const TotalReviewCount = styled.div`

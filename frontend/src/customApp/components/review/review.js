@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Rate, Popover, Modal } from "antd";
+import { Rate, Popover } from "antd";
 import imgReview1 from "../../../image/review/img-review-history-07.png";
 import imgReview2 from "../../../image/review/img-review-history-01.png";
 import imgReview3 from "../../../image/review/img-review-history-02.png";
@@ -16,15 +16,15 @@ const itemImages = [imgReview1, imgReview5];
 
 const imagesUrl = [imgReview2, imgReview3, imgReview4];
 
-const ReviewDiv = styled.div`
+const ReviewWrapperWrapper = styled.div`
   background-color: rgb(242, 242, 242);
   padding: 16px;
-  margin: 20px 0;
 `;
 
 const ReviewWrapper = styled.div`
   background-color: rgb(255, 255, 255);
   padding: 15px;
+  box-shadow: rgba(153, 153, 153, 0.5) 0px 1px 3px 1px;
 `;
 
 const ItemArea = styled.div`
@@ -181,103 +181,100 @@ const DeleteReview = styled.a`
   }
 `;
 
-const Review = ({ ReviewItems }) => {
-  if (ReviewItems) {
+const Review = ({ review, imageIndex }) => {
+  if (review) {
     return (
-      <ReviewDiv>
+      <ReviewWrapperWrapper>
         <ReviewWrapper>
-          {ReviewItems &&
-            ReviewItems.map((ReviewItems, image) => {
-              return (
-                <Fragment>
-                  <ItemArea>
-                    <Img span={4}>
-                      <img src={itemImages[image]} />
-                    </Img>
-                    <Info span={20}>
-                      <Type>{ReviewItems.type}</Type>
-                      <Name>{ReviewItems.name}</Name>
-                    </Info>
-                  </ItemArea>
-                  <ReviewInfoWrapper>
-                    <ReviewInfoArea>
-                      <Title>
-                        <IntlMessages id="review.reviewTitle" />
-                      </Title>
-                      <RateStar disabled defaultValue={4} />
-                      <PostedDate>{ReviewItems.date}</PostedDate>
-                      <StarCounter>
-                        <IntlMessages id="review.fiveStarsEvaluation" />
-                        {ReviewItems.evaluation_count}
-                      </StarCounter>
-                      {/* {ReviewItems.buyerInfo &&
-                        ReviewItems.buyerInfo.map((size, height) => {
-                          return (
-                            <BuyerInfo>
-                              <PurchaseSize>
-                                <IntlMessages id="review.purchaseSize" />
-                                <Span>{size}</Span>
-                              </PurchaseSize>
-                              <Height>
-                                <IntlMessages id="review.height" />
-                                <Span>{height}</Span>
-                                <IntlMessages id="review.cm" />
-                              </Height>
-                            </BuyerInfo>
-                          );
-                        }
-                      )} */}
-                      <ReviewTitle>{ReviewItems.review_title}</ReviewTitle>
-                      <ReviewText>{ReviewItems.review_comment}</ReviewText>
+          <Fragment>
+            <ItemArea>
+              <Img span={4}>
+                <img src={itemImages[imageIndex]} />
+              </Img>
+              <Info span={20}>
+                <Type>{review.type}</Type>
+                <Name>{review.name}</Name>
+              </Info>
+            </ItemArea>
+            <ReviewInfoWrapper>
+              <ReviewInfoArea>
+                <Title>
+                  <IntlMessages id="review.reviewTitle" />
+                </Title>
+                <RateStar disabled defaultValue={4} />
+                <PostedDate>{review.date}</PostedDate>
+                <StarCounter>
+                  <IntlMessages id="review.fiveStarsEvaluation" />
+                  {review.evaluation_count}
+                </StarCounter>
 
-                      {ReviewItems.images &&
-                        ReviewItems.images.map((image, index) => {
-                          return (
-                            <ReviewImagesArea>
-                              <ReviewImages key={index}>
-                                <img src={imagesUrl[image]} />
-                              </ReviewImages>
-                            </ReviewImagesArea>
-                          );
-                        })}
-                      <CountArea>
-                        <CommentCount>
-                          <CommentLink to={"#"}>
-                            <CommentIcon src={commentIcon} />
-                            <StyledSpan>
-                              {ReviewItems.total_comment}
-                              <IntlMessages id="review.commentCount" />
-                            </StyledSpan>
-                          </CommentLink>
-                        </CommentCount>
-                        <UsefulCount>
-                          <GoodIcon src={goodIcon} />
-                          <StyledSpan>
-                            {ReviewItems.total_useful}
-                            <IntlMessages id="review.usefulCount" />
-                          </StyledSpan>
-                        </UsefulCount>
-                      </CountArea>
-                      <DeleteButton>
-                        <Popover
-                          placement="topRight"
-                          content={
-                            <DeleteReview>
-                              <IntlMessages id="review.reviewDelite" />
-                            </DeleteReview>
-                          }
-                          trigger="click"
-                        >
-                          <ButtonIcon src={bottonIcon} />
-                        </Popover>
-                      </DeleteButton>
-                    </ReviewInfoArea>
-                  </ReviewInfoWrapper>
-                </Fragment>
-              );
-            })}
+                {/* {review.buyerInfo &&
+                  review.buyerInfo.map((size, height) => {
+                    return (
+                      <BuyerInfo>
+                        <PurchaseSize>
+                          <IntlMessages id="review.purchaseSize" />
+                          <Span>{size}</Span>
+                        </PurchaseSize>
+                        <Height>
+                          <IntlMessages id="review.height" />
+                          <Span>{height}</Span>
+                          <IntlMessages id="review.cm" />
+                        </Height>
+                      </BuyerInfo>
+                    );
+                  }
+                )} */}
+                
+                <ReviewTitle>{review.review_title}</ReviewTitle>
+                <ReviewText>{review.review_comment}</ReviewText>
+
+                {review.images &&
+                  review.images.map((image, index) => {
+                    return (
+                      <ReviewImagesArea>
+                        <ReviewImages key={index}>
+                          <img src={imagesUrl[image]} />
+                        </ReviewImages>
+                      </ReviewImagesArea>
+                    );
+                  })}
+                <CountArea>
+                  <CommentCount>
+                    <CommentLink to={"#"}>
+                      <CommentIcon src={commentIcon} />
+                      <StyledSpan>
+                        {review.total_comment}
+                        <IntlMessages id="review.commentCount" />
+                      </StyledSpan>
+                    </CommentLink>
+                  </CommentCount>
+                  <UsefulCount>
+                    <GoodIcon src={goodIcon} />
+                    <StyledSpan>
+                      {review.total_useful}
+                      <IntlMessages id="review.usefulCount" />
+                    </StyledSpan>
+                  </UsefulCount>
+                </CountArea>
+                <DeleteButton>
+                  <Popover
+                    placement="topRight"
+                    content={
+                      <DeleteReview>
+                        <IntlMessages id="review.reviewDelite" />
+                      </DeleteReview>
+                    }
+                    trigger="click"
+                  >
+                    <ButtonIcon src={bottonIcon} />
+                  </Popover>
+                </DeleteButton>
+              </ReviewInfoArea>
+            </ReviewInfoWrapper>
+          </Fragment>
         </ReviewWrapper>
-      </ReviewDiv>
+      </ReviewWrapperWrapper>
     );
   }
   return null;
