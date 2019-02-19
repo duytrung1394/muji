@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon, Popover } from "antd";
-import Link from "../../slider/link";
+import Link from "../../shared/slider/link";
 
 const EllipsisButtonWrapper = styled.div`
   width: 49px;
