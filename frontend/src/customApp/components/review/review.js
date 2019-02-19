@@ -8,13 +8,18 @@ import imgReview2 from "../../../image/review/img-review-history-01.png";
 import imgReview3 from "../../../image/review/img-review-history-02.png";
 import imgReview4 from "../../../image/review/img-review-history-03.png";
 import imgReview5 from "../../../image/review/img-review-history-06.png";
+import iconImg1 from "../../../image/review/img-review-history-04.png";
+import iconImg2 from "../../../image/review/img-review-history-05.png";
+import ButtonImg from "../../../image/review/btn-comment-set.png";
 
 const itemImages = [imgReview1, imgReview5];
 
 const imagesUrl = [imgReview2, imgReview3, imgReview4];
 
+const iconImages = [iconImg1, iconImg2];
+
 const ReviewWrapper = styled.div`
-  margin-top: 20px;
+  padding: 16px;
 `;
 
 const ItemArea = styled.div`
@@ -166,12 +171,12 @@ const DeleteReview = styled.a`
   }
 `;
 
-const Review = ({ reviews }) => {
-  if (reviews) {
+const Review = ({ ReviewItems }) => {
+  if (ReviewItems) {
     return (
       <ReviewWrapper>
-        {reviews &&
-          reviews.map((review, image, num) => {
+        {ReviewItems &&
+          ReviewItems.map((ReviewItems, image) => {
             return (
               <Fragment>
                 <ItemArea>
@@ -179,8 +184,8 @@ const Review = ({ reviews }) => {
                     <img src={itemImages[image]} />
                   </Img>
                   <Info span={20}>
-                    <Type>{review.type}</Type>
-                    <Name>{review.name}</Name>
+                    <Type>{ReviewItems.type}</Type>
+                    <Name>{ReviewItems.name}</Name>
                   </Info>
                 </ItemArea>
                 <ReviewInfoWrapper>
@@ -189,27 +194,33 @@ const Review = ({ reviews }) => {
                       <IntlMessages id="review.reviewTitle" />
                     </Title>
                     <RateStar disabled defaultValue={4} />
-                    <PostedDate>{review.date}</PostedDate>
+                    <PostedDate>{ReviewItems.date}</PostedDate>
                     <StarCounter>
                       <IntlMessages id="review.fiveStarsEvaluation" />
-                      {review.evaluation_count}
+                      {ReviewItems.evaluation_count}
                     </StarCounter>
-                    <BuyerInfo>
-                      <PurchaseSize>
-                        <IntlMessages id="review.purchaseSize" />
-                        <Span>{review.size}</Span>
-                      </PurchaseSize>
-                      <Height>
-                        <IntlMessages id="review.height" />
-                        <Span>{review.height}</Span>
-                        <IntlMessages id="review.cm" />
-                      </Height>
-                    </BuyerInfo>
-                    <ReviewTitle>{review.review_title}</ReviewTitle>
-                    <ReviewText>{review.review_comment}</ReviewText>
+                    {/* {ReviewItems.buyerInfo &&
+                      ReviewItems.buyerInfo.map((size, height) => {
+                        return (
+                          <BuyerInfo>
+                            <PurchaseSize>
+                              <IntlMessages id="review.purchaseSize" />
+                              <Span>{size}</Span>
+                            </PurchaseSize>
+                            <Height>
+                              <IntlMessages id="review.height" />
+                              <Span>{height}</Span>
+                              <IntlMessages id="review.cm" />
+                            </Height>
+                          </BuyerInfo>
+                        );
+                      }
+                    )} */}
+                    <ReviewTitle>{ReviewItems.review_title}</ReviewTitle>
+                    <ReviewText>{ReviewItems.review_comment}</ReviewText>
 
-                    {review.images &&
-                      review.images.map((image, index) => {
+                    {ReviewItems.images &&
+                      ReviewItems.images.map((image, index) => {
                         return (
                           <ReviewImagesArea>
                             <ReviewImages key={index}>
@@ -223,7 +234,7 @@ const Review = ({ reviews }) => {
                         <CommentLink to={"#"}>
                           <StyledIcon type="message" />
                           <StyledSpan>
-                            {review.total_comment}
+                            {ReviewItems.total_comment}
                             <IntlMessages id="review.commentCount" />
                           </StyledSpan>
                         </CommentLink>
@@ -231,7 +242,7 @@ const Review = ({ reviews }) => {
                       <UsefulCount>
                         <StyledIcon type="like" />
                         <StyledSpan>
-                          {review.total_useful}
+                          {ReviewItems.total_useful}
                           <IntlMessages id="review.usefulCount" />
                         </StyledSpan>
                       </UsefulCount>
@@ -259,88 +270,5 @@ const Review = ({ reviews }) => {
   }
   return null;
 };
-
-// const Review = ({ reviews }) => {
-//   if( reviews ) {
-//     return (
-//       <ReviewWrapper>
-//         {reviews && reviews.map((review, image, num)=>{
-//           return(
-//           	<Fragment>
-// 							<ReviewItemArea>
-// 								<ItemImg span={4}>
-// 									<img src={itemImages[image]} />
-// 								</ItemImg>
-// 								<ItemInfo span={20}>
-// 									<ItemType>{review.type}</ItemType>
-// 									<ItemName>{review.name}</ItemName>
-// 								</ItemInfo>
-// 							</ReviewItemArea>
-//         			<ReviewContentsArea>
-//             		<ReviewContentsTitle>
-//               		<IntlMessages id="review.reviewContentsTitle" />
-//             		</ReviewContentsTitle>
-//             		<ReviewContentsRate disabled defaultValue={4} />
-//             		<PostDate>{review.date}</PostDate>
-//             		<Evaluation>
-//               		<IntlMessages id="review.fiveStarsEvaluation" />
-//               		{review.evaluation_count}
-//             		</Evaluation>
-//             		<PurchaseSize>
-//               		<IntlMessages id="review.purchaseSize" /><StyledSpan>{review.size}</StyledSpan>
-//             			<UserHeight>
-//               			<IntlMessages id="review.height" /><StyledSpan>{review.height}</StyledSpan>
-//               			<IntlMessages id="review.cm" />
-//             			</UserHeight>
-//             		</PurchaseSize>
-//             		<ReviewTitle>{review.review_title}</ReviewTitle>
-//             		<ReviewComment>{review.review_comment}</ReviewComment>
-//               	{review.images && review.images.map((image,index)=>{
-//                 	return(
-//                   	<ImageArea key={index}>
-//                     	<img src={imagesUrl[image]}/>
-//                   	</ImageArea>
-//                 	)
-//               	})
-//           }
-// 					<div>
-// 						<CommentLink href="#">
-// 							<StyledIcon type="message" />
-// 							<TextStyle>
-// 								{review.total_comment}
-// 								<IntlMessages id="review.commentCount" />
-// 							</TextStyle>
-// 						</CommentLink>
-//             <HelpfulCount>
-// 							<StyledIcon type="like" />
-// 							<TextStyle>
-// 								{review.total_useful}
-// 								<IntlMessages id="review.usefulCount" />
-// 							</TextStyle>
-//             </HelpfulCount>
-// 					</div>
-//             <ReviewDeleteIconArea>
-//               <Popover
-// 								placement="topRight"
-//                 content={
-//                 <PopoverMessage>
-//                   <a href="#">
-//                   	<IntlMessages id="review.reviewDelite" />
-//                 	</a>
-//                 </PopoverMessage>
-//                 }
-//                 trigger="click"
-//               >
-//               <ReviewDeleteIcon type="ellipsis" />
-//               </Popover>
-//             	</ReviewDeleteIconArea>
-//             </ReviewContentsArea>
-//             </Fragment>
-//             )
-//           })}
-//       </ReviewWrapper>
-//     );
-//   } return null
-// };
 
 export default Review;

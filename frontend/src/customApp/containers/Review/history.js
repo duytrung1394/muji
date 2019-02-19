@@ -11,7 +11,6 @@ import {
 import Title from "../../components/review/title";
 import ListToolbar from "../../components/review/listToolbar";
 import List from "../../components/review/list";
-import Review from "../../components/review/review";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -55,8 +54,7 @@ class History extends Component {
         <ContentLayout>
           <Title />
           <ListToolbar ToolbarItems={entities.total_review_count} />
-          {/* <List /> */}
-          <Review reviews={entities.reviews} />
+          <List entities={entities} />
         </ContentLayout>
       </ContentAreaLayout>
     );

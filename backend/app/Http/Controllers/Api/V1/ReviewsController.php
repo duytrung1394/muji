@@ -52,8 +52,10 @@ class ReviewsController extends Controller
                     'name' => 'ムースハイネックワンピース',
                     'date' => '2018/10/20',
                     'evaluation_count' => '4',
-                    'size' => 'M',
-                    'height' => '165',
+                    'buyerInfo' => [
+                        'size' => 'M',
+                        'height' => '165'
+                    ],
                     'review_title' => '思ったより、、',
                     'review_comment' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
                     'images' => [
