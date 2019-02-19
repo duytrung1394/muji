@@ -7,14 +7,13 @@ import ColorSwatch from "../../components/search/colorSwatch";
 import ProductPrice from "../../components/search/productPrice";
 
 const ItemImageListWrapper = styled.div`
-  padding: 2px;
   width: 100%;
   overflow: auto;
   
   .ant-card-grid {
     width: calc((100% - 60px) / 4);
     max-width: 300px;
-    margin: 20px 10px 0;
+    margin: 20px 10px;
     padding: 0 0 15px 0;
     
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
@@ -55,10 +54,6 @@ const ItemImageListWrapper = styled.div`
     .ant-card-grid {
       width: calc((100% - 60px));
     }
-  
-  .ant-card-grid:hover {
-  }
-  
 `;
 
 const ProductImg = styled.img`
@@ -69,34 +64,29 @@ const ProductImg = styled.img`
   filter: brightness(0.85);
 `;
 
-const ProductItemList = props => {
+const ProductItemList = ({ productList }) => {
   return (
     <ItemImageListWrapper>
-      {props.categories &&
-        props.categories.map((category, index) => {
-          return (
-            <div key={index}>
-              <h3>{category.title}</h3>
-              {category.items.map((item, index2) => {
-                return (
-                  <Card.Grid key={index2}>
-                    <Link to="">
-                      <ProductImg src={item.img_src} alt="" />
-                      {item.material && <p>{item.material}</p>}
-                      {item.name && <h3>{item.name}</h3>}
-                      <ProductSize min={item.size_min} max={item.size_max} />
-                      <ColorSwatch color_imgs={item.colors} />
-                      <ProductPrice
-                        price={item.price}
-                        discount={item.discount}
-                      />
-                    </Link>
-                  </Card.Grid>
-                );
-              })}
-            </div>
-          );
-        })}
+      {productList.map((item, index2) => {
+        return (
+          <Card.Grid key={index2}>
+            <Link to="">
+              <ProductImg src={item.image_url} alt="" />
+              <p>{item.material}</p>
+              <h3>{item.itemName}</h3>
+              <ProductSize
+                sizeList={item.jancodeChildList.map(child => child.size_code)}
+              />
+              <ColorSwatch
+                colorNames={item.jancodeChildList.map(
+                  child => child.stockPriorityItemColor
+                )}
+              />
+              <ProductPrice priceList={item.price} />
+            </Link>
+          </Card.Grid>
+        );
+      })}
     </ItemImageListWrapper>
   );
 };

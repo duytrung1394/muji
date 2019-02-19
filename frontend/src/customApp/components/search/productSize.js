@@ -26,12 +26,24 @@ const CenterSpan = styled.span`
   color: #999;
 `;
 
-const ProductSize = props => (
-  <ProductSizeWrapper>
-    <SizeSpan> {props.min}</SizeSpan>
-    <CenterSpan>〜</CenterSpan>
-    <SizeSpan>{props.max}</SizeSpan>
-  </ProductSizeWrapper>
-);
+const sizeLabels = { 0: "S", 1: "M", 2: "L", 3: "XL" }; //size_codeとサイズのラベルの関連づけは不明（確認中）
+
+const ProductSize = ({ sizeList }) => {
+  if (sizeList.length === 1) {
+    return (
+      <ProductSizeWrapper>
+        <SizeSpan>{sizeLabels[sizeList[0]]}</SizeSpan>
+      </ProductSizeWrapper>
+    );
+  } else {
+    return (
+      <ProductSizeWrapper>
+        <SizeSpan>{sizeLabels[Math.min.apply(null, sizeList)]}</SizeSpan>
+        <CenterSpan>〜</CenterSpan>
+        <SizeSpan>{sizeLabels[Math.max.apply(null, sizeList)]}</SizeSpan>
+      </ProductSizeWrapper>
+    );
+  }
+};
 
 export default ProductSize;

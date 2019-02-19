@@ -41,23 +41,23 @@ const InsNum = styled.span`
   color: #8b1a27;
 `;
 
-const ProductPrice = props => (
+const ProductPrice = ({ priceList }) => (
   <ProductPriceWrapper>
     {(() => {
-      if (props.discount) {
+      if (priceList[0].hasPrePrice) {
         return (
           <span>
-            <Del> 税込{props.price.toLocaleString()}円</Del>
+            <Del> 税込{priceList[0].cancelPrice.toLocaleString()}円</Del>
             <Arrow>→</Arrow>
             <Ins>
-              税込<InsNum>{props.discount.toLocaleString()}</InsNum>円
+              税込<InsNum>{priceList[0].viewPrice.toLocaleString()}</InsNum>円
             </Ins>
           </span>
         );
       } else {
         return (
           <span>
-            税込<Num>{props.price.toLocaleString()}</Num>円
+            税込<Num>{priceList[0].viewPrice.toLocaleString()}</Num>円
           </span>
         );
       }

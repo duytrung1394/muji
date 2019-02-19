@@ -9,7 +9,8 @@ import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 //import SearchOtherHeader from "../../components/search/otherHeader";
 //import SearchItemImageList from "../../components/search/searchItemImageList";
 //import PageRange from "../../components/search/pageRangeText";
-import SearchProductList from "../../components/search/productItemList";
+import ProductTagList from "../../components/search/productTagList";
+import TopicList from "../../components/search/topicList";
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,28 @@ class Index extends Component {
   // React.render
   render() {
     const { fetching } = this.props;
+    const topics = [
+      {
+        topicName: "婦人定番白シャツ",
+        topicUrl: "",
+        image_url: "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+      },
+      {
+        topicName: "商品1",
+        topicUrl: "",
+        image_url: "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+      },
+      {
+        topicName: "商品1",
+        topicUrl: "",
+        image_url: "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+      },
+      {
+        topicName: "商品1",
+        topicUrl: "",
+        image_url: "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+      }
+    ];
     //仮データ 店舗、読み物、サービスの検索結果
     const searchItems = [
       {
@@ -77,80 +100,122 @@ class Index extends Component {
       }
     ];
     // 仮データ　商品の検索結果
-    const searchProducts = [
-      {
-        title: "紳士ウェア - シャツ",
-        items: [
-          {
-            material: "オーガニックコットン",
-            name: "ストレッチブロード形態安定シャツ",
-            size_min: "S",
-            size_max: "XL",
-            colors: [
-              "https://placehold.jp/34x34.png",
-              "https://placehold.jp/34x34.png"
-            ],
-            price: 2990,
-            discount: 2490,
-            img_src:
-              "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-          },
-          {
-            material: "オーガニックコットン",
-            name: "ストレッチブロード形態安定シャツ",
-            size_min: "S",
-            size_max: "XL",
-            colors: [
-              "https://placehold.jp/34x34.png",
-              "https://placehold.jp/34x34.png"
-            ],
-            price: 2990,
-            discount: 2490,
-            img_src:
-              "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-          },
-          {
-            material: "オーガニックコットン",
-            name: "ストレッチブロード形態安定シャツ",
-            size_min: "S",
-            size_max: "XL",
-            colors: [
-              "https://placehold.jp/34x34.png",
-              "https://placehold.jp/34x34.png"
-            ],
-            price: 2990,
-            img_src:
-              "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-          },
-          {
-            material: "オーガニックコットン",
-            name: "ストレッチブロード形態安定シャツ",
-            size_min: "S",
-            size_max: "XL",
-            colors: [
-              "https://placehold.jp/34x34.png",
-              "https://placehold.jp/34x34.png"
-            ],
-            price: 2990,
-            img_src:
-              "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-          },
-          {
-            material: "オーガニックコットン",
-            name: "ストレッチブロード形態安定シャツ",
-            size_min: "S",
-            size_max: "XL",
-            colors: [
-              "https://placehold.jp/34x34.png",
-              "https://placehold.jp/34x34.png"
-            ],
-            price: 2990,
-            img_src:
-              "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
-          }
-        ]
-      }
-    ];
+    const searchProducts = {
+      searchTagResultList: [
+        {
+          itemCount: 10,
+          tagName: "紳士ウェア - シャツ",
+          searchResultProductList: [
+            {
+              material: "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+              itemName: "ストレッチブロード形態安定シャツ",
+              hasNewIcon: true,
+              hasReserveItemIcon: false,
+
+              jancodeChildList: [
+                {
+                  size_code: 0, // S
+                  stockPriorityItemColor: "ローズ" //https://placehold.jp/34x34.png},
+                },
+                {
+                  size_code: 3, // XL?
+                  stockPriorityItemColor: "ブルー" //https://placehold.jp/34x34.png},
+                }
+              ],
+              price: [
+                {
+                  hasPrePrice: true,
+                  cancelPrice: 2990,
+                  viewPrice: 1990,
+                  discountPrice: 990
+                }
+              ],
+              image_url:
+                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+            },
+            {
+              material: "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+              itemName: "ストレッチブロード形態安定シャツ",
+              hasNewIcon: true,
+              hasReserveItemIcon: false,
+
+              jancodeChildList: [
+                {
+                  size_code: 0, // S
+                  stockPriorityItemColor: "ローズ" //https://placehold.jp/34x34.png},
+                }
+              ],
+              price: [
+                {
+                  hasPrePrice: false,
+                  cancelPrice: 0,
+                  viewPrice: 1990,
+                  discountPrice: 990
+                }
+              ],
+              image_url:
+                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+            }
+          ]
+        },
+        {
+          itemCount: 1,
+          tagName: "紳士ウェア - シャツ2",
+          searchResultProductList: [
+            {
+              material: "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+              itemName: "ストレッチブロード形態安定シャツ",
+              hasNewIcon: true,
+              hasReserveItemIcon: false,
+
+              jancodeChildList: [
+                {
+                  size_code: 0, // S
+                  stockPriorityItemColor: "ローズ" //https://placehold.jp/34x34.png},
+                },
+                {
+                  size_code: 3, // XL?
+                  stockPriorityItemColor: "ブルー" //https://placehold.jp/34x34.png},
+                }
+              ],
+              price: [
+                {
+                  hasPrePrice: true,
+                  cancelPrice: 2990,
+                  viewPrice: 1990,
+                  discountPrice: 990
+                }
+              ],
+              image_url:
+                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+            },
+            {
+              material: "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+              itemName: "ストレッチブロード形態安定シャツ",
+              hasNewIcon: true,
+              hasReserveItemIcon: false,
+
+              jancodeChildList: [
+                {
+                  size_code: 0, // S
+                  stockPriorityItemColor: "ローズ" //https://placehold.jp/34x34.png},
+                }
+              ],
+              price: [
+                {
+                  hasPrePrice: false,
+                  cancelPrice: 0,
+                  viewPrice: 1990,
+                  discountPrice: 990
+                }
+              ],
+              image_url:
+                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+            }
+          ]
+        }
+      ]
+    };
     // 仮データ　検索ワード
     const keyword = "シャツ";
     // 仮データ　検索結果件数
@@ -158,7 +223,8 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={false} size="large">
-          <SearchProductList categories={searchProducts} />
+          <TopicList topicList={topics} />
+          <ProductTagList tags={searchProducts.searchTagResultList} />
         </Spin>
       </ContentAreaLayout>
     );

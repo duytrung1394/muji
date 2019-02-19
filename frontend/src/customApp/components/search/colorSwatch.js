@@ -40,18 +40,28 @@ const Mark = styled.span`
   }
 `;
 
-const ColorSwatch = props => (
+const colorImgList = {
+  ローズ: "https://placehold.jp/34x34.png", //色名と色の画像がどう関連付いているのかは不明（確認中）
+  ブルー: "https://placehold.jp/34x34.png"
+};
+
+const ColorSwatch = ({ colorNames }) => (
   <ColorSwatchWrapper>
-    {props.color_imgs &&
-      props.color_imgs.map((item, index) => {
+    {colorNames.map((colorName, index) => {
+      if (index < 4) {
         return (
           <li key={index}>
             <Mark>
-              <img src={item} />
+              <img src={colorImgList[colorName]} />
             </Mark>
           </li>
         );
-      })}
+      } else if (index === 4) {
+        return <span>他{colorNames.length}色</span>;
+      } else {
+        return null;
+      }
+    })}
   </ColorSwatchWrapper>
 );
 
