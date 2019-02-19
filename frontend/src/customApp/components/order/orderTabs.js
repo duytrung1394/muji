@@ -45,7 +45,6 @@ const SliderTabs = styled.ul`
         }
       }
     }
-
     .slick-active {
       border-bottom: solid 2px rgb(127, 0, 25);
       a,
@@ -56,7 +55,14 @@ const SliderTabs = styled.ul`
   }
 `;
 
-const OrderTabs = ({ itemList, tabList }) => {
+const ItemList = ({ itemType, itemList }) => {
+  switch (itemType) {
+    default:
+      return <StoreReserveItemList itemList={itemList} />;
+  }
+};
+
+const OrderTabs = ({ itemList, tabList, itemType }) => {
   const defaultSettings = {
     dots: true,
     appendDots: dots => <SliderTabs>{dots}</SliderTabs>,
@@ -73,7 +79,7 @@ const OrderTabs = ({ itemList, tabList }) => {
   return (
     <SliderWrapper {...defaultSettings}>
       {itemList.map((item, index) => {
-        return <StoreReserveItemList itemList={item} key={index} />;
+        return <ItemList itemList={item} itemType={itemType} key={index} />;
       })}
     </SliderWrapper>
   );
