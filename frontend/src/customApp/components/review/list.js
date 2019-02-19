@@ -17,7 +17,7 @@ const List = ({ entities }) => {
     <div>
       {reviews &&
         reviews.map((review, index) => {
-          return <Review review={review} imageIndex={index} />
+          return <Review key={index} review={review} imageIndex={index} />
         }
       )}
     </div>

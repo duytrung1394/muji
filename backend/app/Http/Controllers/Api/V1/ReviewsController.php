@@ -72,6 +72,10 @@ class ReviewsController extends Controller
                     'name' => 'ソファ',
                     'date' => '2018/08/15',
                     'evaluation_count' => '5',
+                    'buyerInfo' => [
+                        'size' => '',
+                        'height' => ''
+                    ],
                     'review_title' => '大変良い',
                     'review_comment' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
                     'total_comment' => '0',

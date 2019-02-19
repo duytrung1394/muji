@@ -42,15 +42,13 @@ const ListToolbar = ({ ToolbarItems }) => {
       </TotalReviewCount>
       <ReviewBreadcrumbArea>
         <ReviewBreadcrumb>
-          <BoldSpan>
-            <Breadcrumb.Item>
-              <a href="#">
-                <BoldSpan>
-                  <IntlMessages id="review.sortByNewestPost" />
-                </BoldSpan>
-              </a>
-            </Breadcrumb.Item>
-          </BoldSpan>
+          <Breadcrumb.Item>
+            <a href="#">
+              <BoldSpan>
+                <IntlMessages id="review.sortByNewestPost" />
+              </BoldSpan>
+            </a>
+          </Breadcrumb.Item>
           <Breadcrumb.Item>
             <a href="#">
               <IntlMessages id="review.numberUseful" />

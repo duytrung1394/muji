@@ -57,7 +57,7 @@ const Name = styled.p`
 `;
 
 const ReviewInfoWrapper = styled.div`
-  margin: 0 30px;
+  margin: 0 16px;
   padding: 10px 0;
 `;
 
@@ -183,6 +183,7 @@ const DeleteReview = styled.a`
 
 const Review = ({ review, imageIndex }) => {
   if (review) {
+    console.log(review);
     return (
       <ReviewWrapperWrapper>
         <ReviewWrapper>
@@ -207,33 +208,27 @@ const Review = ({ review, imageIndex }) => {
                   <IntlMessages id="review.fiveStarsEvaluation" />
                   {review.evaluation_count}
                 </StarCounter>
-
-                {/* {review.buyerInfo &&
-                  review.buyerInfo.map((size, height) => {
-                    return (
-                      <BuyerInfo>
-                        <PurchaseSize>
-                          <IntlMessages id="review.purchaseSize" />
-                          <Span>{size}</Span>
-                        </PurchaseSize>
-                        <Height>
-                          <IntlMessages id="review.height" />
-                          <Span>{height}</Span>
-                          <IntlMessages id="review.cm" />
-                        </Height>
-                      </BuyerInfo>
-                    );
-                  }
-                )} */}
-                
+                {review.buyerInfo.size && review.buyerInfo.height ?
+                  <BuyerInfo>
+                    <PurchaseSize>
+                      <IntlMessages id="review.purchaseSize" />
+                      <Span>{review.buyerInfo.size}</Span>
+                    </PurchaseSize>
+                    <Height>
+                      <IntlMessages id="review.height" />
+                      <Span>{review.buyerInfo.height}</Span>
+                      <IntlMessages id="review.cm" />
+                    </Height>
+                  </BuyerInfo>
+                : null
+                }
                 <ReviewTitle>{review.review_title}</ReviewTitle>
                 <ReviewText>{review.review_comment}</ReviewText>
-
                 {review.images &&
                   review.images.map((image, index) => {
                     return (
-                      <ReviewImagesArea>
-                        <ReviewImages key={index}>
+                      <ReviewImagesArea key={index}>
+                        <ReviewImages>
                           <img src={imagesUrl[image]} />
                         </ReviewImages>
                       </ReviewImagesArea>
