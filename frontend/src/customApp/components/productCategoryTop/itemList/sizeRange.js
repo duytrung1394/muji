@@ -14,6 +14,10 @@ const Size = styled.span`
 `;
 
 const SizeRange = ({ minSize, maxSize }) => {
+  if (!minSize && !maxSize) {
+    return null;
+  }
+
   return (
     <Range>
       <Size>{minSize}</Size> 〜 <Size>{maxSize}</Size>
