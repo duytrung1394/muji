@@ -92,6 +92,7 @@ class Index extends Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return state.Delivery.List.toJS();
 };

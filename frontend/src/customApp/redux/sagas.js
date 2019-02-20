@@ -12,6 +12,8 @@ import productCategoryTopSagas from "./product_category_top/sagas";
 import topSagas from "./top/sagas";
 import httpbinSagas from "./httpbin/sagas";
 import fruitSagas from "./fruit/sagas";
+import deliverySagas from "./delivery/sagas";
+
 export default function* devSaga() {
   yield all([
     taskSagas(),
@@ -25,6 +27,7 @@ export default function* devSaga() {
     orderSagas(),
     favoriteSagas(),
     searchSagas(),
-    lotterySagas()
+    lotterySagas(),
+    deliverySagas()
   ]);
 }
