@@ -1,12 +1,13 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/order/list/actions";
-import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
-import Tabs from "../../components/order/orderTabs";
-import styled from "styled-components";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
+import { injectIntl } from "react-intl";
 import { Spin } from "antd";
+import { TabSlider } from "../../components/shared/tabSlider";
+import actions from "../../redux/order/list/actions";
+import StoreReserveItem from "../../components/order/storeReserve/item";
+import IntlMessages from "../../../components/utility/intlMessages";
+import React, { Component, Fragment } from "react";
+import styled from "styled-components";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -18,13 +19,21 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-const tabList = [
+const tabNameIds = [
   "order.storeReserve.tab.all",
   "order.storeReserve.tab.complete",
   "order.storeReserve.tab.request"
 ];
 
-class IndexStoreReserve extends Component {
+const ItemBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 50px;
+`;
+
+const itemKeys = ["all", "complete", "request"];
+
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +55,8 @@ class IndexStoreReserve extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
@@ -55,7 +65,64 @@ class IndexStoreReserve extends Component {
           <IntlMessages id="order.storeReserve.name" />
         </Title>
         <Spin size="large" spinning={fetching}>
-          <Tabs itemList={entities} tabList={tabList} />
+          <TabSlider tabNameIds={tabNameIds}>
+            {itemKeys.map(itemKey => {
+              return (
+                <Fragment>
+                  <ItemBox>
+                    {entities[itemKey] &&
+                      entities[itemKey].map((item, index) => {
+                        let popoverActions = [];
+                        let footerActions = [];
+
+                        switch (item.cancel_type) {
+                          case 1:
+                            footerActions.push({
+                              name: formatMessage({
+                                id: "order.storeReserve.cancel"
+                              })
+                            });
+                            break;
+                          case 2:
+                            footerActions.push({
+                              name: formatMessage({
+                                id: "order.storeReserve.cancel"
+                              })
+                            });
+                            footerActions.push({
+                              name: formatMessage({
+                                id: "order.storeReserve.extend"
+                              })
+                            });
+                            break;
+                          case 3:
+                            footerActions.push({
+                              name: formatMessage({
+                                id: "order.storeReserve.delete"
+                              })
+                            });
+                            footerActions.push({
+                              name: formatMessage({
+                                id: "order.storeReserve.reStoreReserve"
+                              })
+                            });
+                            break;
+                        }
+
+                        return (
+                          <StoreReserveItem
+                            item={item}
+                            key={index}
+                            popoverActions={popoverActions}
+                            footerActions={footerActions}
+                          />
+                        );
+                      })}
+                  </ItemBox>
+                </Fragment>
+              );
+            })}
+          </TabSlider>
         </Spin>
       </ContentAreaLayout>
     );

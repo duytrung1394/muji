@@ -226,7 +226,28 @@ const routes = [
     path: "/store/order/confirmation",
     exact: true,
     component: asyncComponent(() =>
+      require("./customApp/containers/Order/show")
+    )
+  },
+  {
+    path: "/store/cust/favorite",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Favorite/index")
+    )
+  },
+  {
+    path: "/store/cust/order/storeReserve",
+    exact: true,
+    component: asyncComponent(() =>
       require("./customApp/containers/Order/indexStoreReserve")
+    )
+  },
+  {
+    path: "/store/cust/order/subscription",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexSubscription")
     )
   }
 ];
