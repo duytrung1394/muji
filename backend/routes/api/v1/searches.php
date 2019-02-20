@@ -7,7 +7,7 @@ if (empty($router)) {
 // {{{ /api/v1/searches
 
 /**
- * 一覧取得
+ * フリーワード検索（店舗）一覧取得
  */
 $router->get('/api/v1/searches', [
     'middleware'    => [],
@@ -15,7 +15,7 @@ $router->get('/api/v1/searches', [
 ]);
 
 /**
- * 一覧取得
+ * フリーワード検索（商品）一覧取得
  */
 $router->get('/api/v1/searches/item', [
     'middleware'    => [],

@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Carousel } from "antd";
+import { Card } from "antd";
 import styled from "styled-components";
-import ProductSize from "../../components/search/productSize";
-import ColorSwatch from "../../components/search/colorSwatch";
-import ProductPrice from "../../components/search/productPrice";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const TopicListWrapper = styled.div`
   width: 100%;
@@ -55,17 +53,20 @@ const TopicImg = styled.img`
 const TopicList = props => {
   return (
     <TopicListWrapper>
-        <h3>特集</h3>
-      {props.topicList && props.topicList.map((item, index2) => {
-        return (
-          <Card.Grid key={index2}>
-            <Link to={item.topicUrl}>
-              <TopicImg src={item.image_url} alt="" />
-              <h3>{item.topicName}</h3>
-            </Link>
-          </Card.Grid>
-        );
-      })}
+      <h3>
+        <IntlMessages id="search.topic.title" />
+      </h3>
+      {props.topicList &&
+        props.topicList.map((item, index2) => {
+          return (
+            <Card.Grid key={index2}>
+              <Link to={item.topicUrl}>
+                <TopicImg src={item.image_url} alt="" />
+                <h3>{item.topicName}</h3>
+              </Link>
+            </Card.Grid>
+          );
+        })}
     </TopicListWrapper>
   );
 };

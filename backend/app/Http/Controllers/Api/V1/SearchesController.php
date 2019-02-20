@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 class SearchesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * フリーワード検索（店舗）取得.
      *
      * @return Response
      */
@@ -18,6 +18,11 @@ class SearchesController extends Controller
         ];
     }
 
+    /**
+     * フリーワード検索（商品）取得.
+     *
+     * @return Response
+     */
     public function indexItem(Request $request)
     {
         return [
@@ -27,7 +32,7 @@ class SearchesController extends Controller
     }
 
     /**
-     * モックデータ取得用．
+     * モックデータ（店舗）取得用．
      *
      * @return array
      */
@@ -44,7 +49,7 @@ class SearchesController extends Controller
     }
 
     /**
-     * モックデータを生成して取得
+     * モックデータ（店舗）を生成して取得
      */
     private function getMockStoreData($code, $keyword)
     {
@@ -144,7 +149,7 @@ class SearchesController extends Controller
     }
 
     /**
-     * モックデータ取得用．
+     * モックデータ（商品）取得用．
      *
      * @return array
      */
@@ -161,7 +166,7 @@ class SearchesController extends Controller
     }
 
     /**
-     * モックデータを生成して取得
+     * モックデータ（商品）を生成して取得
      */
     private function getMockItemData($code, $keyword)
     {
@@ -195,7 +200,7 @@ class SearchesController extends Controller
                     'tagName' => "紳士ウェア - シャツ",
                     'searchResultProductList' => [
                         [
-                            "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                            "material" => "オーガニックコットン",
                             "itemName" => "ストレッチブロード形態安定シャツ",
                             "hasNewIcon" => true,
                             "hasReserveItemIcon" => false,
@@ -203,7 +208,7 @@ class SearchesController extends Controller
                             "jancodeChildList" => [
                                 [
                                     "size_code" => 0, // S
-                                    "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                    "stockPriorityItemColor" => "ローズ"
                                 ]
                             ],
                             "price" => [
@@ -218,7 +223,7 @@ class SearchesController extends Controller
                                 "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                         ],
                         [
-                            "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                            "material" => "オーガニックコットン",
                             "itemName" => "ストレッチブロード形態安定シャツ",
                             "hasNewIcon" => true,
                             "hasReserveItemIcon" => false,
@@ -226,11 +231,27 @@ class SearchesController extends Controller
                             "jancodeChildList" => [
                                 [
                                     "size_code" => 0, // S
-                                    "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                    "stockPriorityItemColor" => "ローズ"
                                 ],
                                 [
                                     "size_code" => 3, // XL
-                                    "stockPriorityItemColor" => "ブルー" //https://placehold.jp/34x34.png},
+                                    "stockPriorityItemColor" => "ブルー"
+                                ],
+                                [
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "size_code" => 3, // XL
+                                    "stockPriorityItemColor" => "ブルー"
+                                ],
+                                [
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "size_code" => 3, // XL
+                                    "stockPriorityItemColor" => "ブルー"
                                 ]
                             ],
                             "price" => [
@@ -251,7 +272,7 @@ class SearchesController extends Controller
                     'tagName' => "紳士ウェア - シャツ",
                     'searchResultProductList' => [
                         [
-                             "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                             "material" => "オーガニックコットン",
                              "itemName" => "ストレッチブロード形態安定シャツ",
                              "hasNewIcon" => true,
                              "hasReserveItemIcon" => false,
@@ -259,11 +280,11 @@ class SearchesController extends Controller
                              "jancodeChildList" => [
                                  [
                                      "size_code" => 0, // S
-                                     "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                     "stockPriorityItemColor" => "ローズ"
                                  ],
                                  [
                                      "size_code" => 2, // XL
-                                     "stockPriorityItemColor" => "ブルー" //https://placehold.jp/34x34.png},
+                                     "stockPriorityItemColor" => "ブルー"
                                  ]
                               ],
                              "price" => [

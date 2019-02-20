@@ -4,9 +4,6 @@ import styled from "styled-components";
 const ProductSizeWrapper = styled.div`
   margin-top: 10px;
   padding: 0 15px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
-    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic",
-    YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
   display: flex;
   align-items: center;
 `;
@@ -26,7 +23,7 @@ const CenterSpan = styled.span`
   color: #999;
 `;
 
-const sizeLabels = { 0: "S", 1: "M", 2: "L", 3: "XL" }; //size_codeとサイズのラベルの関連づけは不明（確認中）
+const sizeLabels = { 0: "S", 1: "M", 2: "L", 3: "XL" };
 
 const ProductSize = ({ sizeList }) => {
   if (sizeList.length === 1) {

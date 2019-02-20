@@ -43,7 +43,7 @@ class Index extends Component {
           <SearchNavigationList active={3} />
           <PageRange total={total} first={1} end={total} />
           <SearchStoreList items={entities.searchStores} />
-          <SearchOtherHeader />
+          <SearchOtherHeader title="store" />
           <SearchItemImageList items={entities.searchItems} />
           <SearchStoreList items={entities.searchStores} />
         </Spin>

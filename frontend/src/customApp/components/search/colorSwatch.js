@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ColorSwatchWrapper = styled.ul`
   display: flex;
@@ -15,6 +16,11 @@ const ColorSwatchWrapper = styled.ul`
     padding: 0 4px 0 0;
     box-shadow: none;
     list-style: none;
+
+    span {
+      color: #585858;
+      font-size: 9px;
+    }
   }
   li:nth-child(n + 5):last-child {
     display: block;
@@ -52,12 +58,23 @@ const ColorSwatch = ({ colorNames }) => (
         return (
           <li key={index}>
             <Mark>
-              <img src={colorImgList[colorName]} />
+              <img src={colorImgList[colorName]} alt={colorName} />
             </Mark>
           </li>
         );
       } else if (index === 4) {
-        return <span>他{colorNames.length}色</span>;
+        return (
+          <li key={index}>
+            <span>
+              <IntlMessages
+                id="search.item.otherColor"
+                values={{
+                  count: colorNames.length - 4
+                }}
+              />
+            </span>
+          </li>
+        );
       } else {
         return null;
       }

@@ -1,22 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
 
 const ProductPriceWrapper = styled.div`
   padding: 10px 0;
   font-size: 11px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
-    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic",
-    YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
   color: #000;
   text-align: center;
-`;
-
-const Num = styled.span`
-  padding: 0 3px;
-  font-size: 11px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3",
-    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "Yu Gothic",
-    YuGothic, Meiryo, メイリオ, "MS PGothic", Osaka, arial, sans-serif;
 `;
 
 const Del = styled.del`
@@ -37,27 +27,40 @@ const Ins = styled.ins`
   text-decoration: none;
 `;
 
-const InsNum = styled.span`
-  color: #8b1a27;
-`;
-
 const ProductPrice = ({ priceList }) => (
   <ProductPriceWrapper>
     {(() => {
       if (priceList[0].hasPrePrice) {
         return (
           <span>
-            <Del> 税込{priceList[0].cancelPrice.toLocaleString()}円</Del>
+            <Del>
+              <IntlMessages
+                id="search.item.price"
+                values={{
+                  price: priceList[0].cancelPrice.toLocaleString()
+                }}
+              />
+            </Del>
             <Arrow>→</Arrow>
             <Ins>
-              税込<InsNum>{priceList[0].viewPrice.toLocaleString()}</InsNum>円
+              <IntlMessages
+                id="search.item.price"
+                values={{
+                  price: priceList[0].viewPrice.toLocaleString()
+                }}
+              />
             </Ins>
           </span>
         );
       } else {
         return (
           <span>
-            税込<Num>{priceList[0].viewPrice.toLocaleString()}</Num>円
+            <IntlMessages
+              id="search.item.price"
+              values={{
+                price: priceList[0].viewPrice.toLocaleString()
+              }}
+            />
           </span>
         );
       }

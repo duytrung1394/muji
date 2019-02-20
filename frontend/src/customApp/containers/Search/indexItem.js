@@ -41,7 +41,7 @@ class Index extends Component {
           <PageRange total={total} first={1} end={total} />
           <TopicList topicList={entities.topics} />
           <ProductTagList tags={entities.searchTagResultList} />
-          <SearchOtherHeader />
+          <SearchOtherHeader title="item" />
           <SearchItemImageList items={entities.searchOtherResults} />
           <ProductTagList tags={entities.searchTagResultList} />
         </Spin>
