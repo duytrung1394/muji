@@ -23,9 +23,9 @@ const DashApp = () => (
         <Layout hasSider={true}>
           <Sider />
           <Content id="content" style={{ position: "relative" }}>
+            <Routes />
             <Layout>
-              <Routes />
-              <Footer />
+              <Footer />            
             </Layout>
           </Content>
         </Layout>
