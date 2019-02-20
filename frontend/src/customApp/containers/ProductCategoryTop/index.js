@@ -5,7 +5,7 @@ import actions from "../../redux/product_category_top/entity/actions";
 import { injectIntl } from "react-intl";
 import { Spin } from "antd";
 import ContentHeader from "../../components/shared/header/contentHeader";
-import Article from "../../components/productCategoryTop/article";
+import Article from "../../components/shared/aticle/article";
 import PopularityRanking from "../../components/productCategoryTop/popularityRanking";
 import ItemList from "../../components/productCategoryTop/itemList/itemList";
 import CategoryList from "../../components/productCategoryTop/categoryList/categoryList";
@@ -32,7 +32,7 @@ class Index extends Component {
       this.props.match.params.category_code !==
       prevProps.match.params.category_code
     ) {
-      document.querySelector("#content").scrollIntoView();
+      this.top.scrollIntoView({ behavior: "smooth" });
     }
   }
 
@@ -45,6 +45,7 @@ class Index extends Component {
 
     return (
       <ContentAreaLayout>
+        <a ref={ref => (this.top = ref)} />
         <Spin spinning={fetching} size="large">
           <ContentHeader title={entity.category_title} links={entity.links} />
           <Article article={entity.article} />

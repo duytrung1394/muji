@@ -83,6 +83,10 @@ const Title = ({ material, name }) => (
 const CategoryItems = props => {
   const { items } = props;
 
+  if (!items) {
+    return null;
+  }
+
   return (
     <StyledList
       itemLayout="horizontal"
