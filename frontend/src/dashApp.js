@@ -23,10 +23,8 @@ const DashApp = () => (
         <Layout hasSider={true}>
           <Sider />
           <Content id="content" style={{ position: "relative" }}>
-            <Layout>
-              <Routes />
-              <Footer />
-            </Layout>
+            <Routes />
+            <Footer />
           </Content>
         </Layout>
       </Layout>

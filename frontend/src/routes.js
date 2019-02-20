@@ -230,18 +230,25 @@ const routes = [
     )
   },
   {
-        path: "/store/cust/order/subscription",
-        exact: true,
-        component: asyncComponent(() =>
-            require("./customApp/containers/Order/indexSubscription")
-        )
+    path: "/store/cust/order/subscription",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexSubscription")
+    )
   },
-    {
-        path: "/store/search/cmdty",
-        exact: true,
-        component: asyncComponent(() =>
-            require("./customApp/containers/Search/indexItem")
-        )
-    }
+  {
+    path: "/store/search/store",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/index")
+    )
+  },
+  {
+    path: "/store/search/cmdty",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexItem")
+    )
+  }
 ];
 export default routes;
