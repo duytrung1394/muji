@@ -242,6 +242,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexSubscription")
     )
+  },
+  {
+    path: "/accounts",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/index")
+    )
+  },
+  {
+    path: "/accounts/:account_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/show")
+    )
   }
 ];
 export default routes;
