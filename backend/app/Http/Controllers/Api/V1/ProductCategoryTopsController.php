@@ -42,6 +42,23 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'category_code'  => $categoryCode,
+            'category_title' => $this->mockDataFirst[$categoryCode]['category_title'],
+            'article' => $this->mockDataFirst[$categoryCode]['article'],
+            'rankings' => $this->mockDataFirst[$categoryCode]['rankings'],
+            'innerCategories' => $this->mockDataFirst[$categoryCode]['innerCategories'],
+            'campaigns' => $this->getMockDataCampaigns($categoryCode),
+            'sort_type' => 'group',
+            'total' => 550,
+            'groups' => $this->getMockGroups($categoryCode),
+            'items' => [],
+        ];
+    }
+
+    /**
+     * 商品リスト(第1階層)データ.
+     */
+    private $mockDataFirst = [
+        'T10000' => [
             'category_title' => "婦人ウェア",
             'article' => [
                 'title' =>"家で洗えるウールシルク",
@@ -166,43 +183,68 @@ class ProductCategoryTopsController extends Controller
                     'sectionCode' => '',
                 ]
             ],
-            'campaigns' => [
+        ],
+        'T20003' => [
+            'category_title' => "収納家具",
+            'article' => [
+                'title' =>"価格を見直しました",
+                'description' =>"収納用品やユニットシェルフなどの価格を見直しました。生産工程を点検し、品質はそのままにさらにお求めやすい価格を実現しています。",
+                'back_ground_image' => 'https://www.muji.com/jp/img/store/section/promotion/s2000316_1080.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => [
                 [
-                    'title' => 'ネット限定 | 先行予約（秋冬）',
+                    'img_src' => 'https://www.muji.net/img/item/4548718121328_180.jpg',
+                    'title' => 'スタッキングシェルフ',
+                    'sectionCode' => '',
                 ],
                 [
-                    'title' => '伝統から学んだ、暮らしの服。',
+                    'img_src' => 'https://www.muji.net/img/item/4547315874903_180.jpg',
+                    'title' => 'オーク材収納',
+                    'sectionCode' => '',
                 ],
                 [
-                    'title' => '人と自然 ー直線栽ちの服ー',
+                    'img_src' => 'https://www.muji.net/img/item/4547315256976_180.jpg',
+                    'title' => 'スタッキングキャ…',
+                    'sectionCode' => '',
                 ],
                 [
-                    'title' => '日本の布作りの旅（後編）',
+                    'img_src' => 'https://www.muji.net/img/item/4549738749844_180.jpg',
+                    'title' => '薄型ラック',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4548718355792_180.jpg',
+                    'title' => 'パイン材収納',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://www.muji.net/img/item/4934761362458_180.jpg',
+                    'title' => 'オークユニットシェ…',
+                    'sectionCode' => '',
                 ],
             ],
-            'sort_type'      => 'group',
-            'total'          => 550,
-            'groups' => [
-                [
-                    'group_name' => 'セーター',
-                    'total'      => 321,
-                    'link' => '#',
-                    'items' => $this->getMockItemDataListForWoman(),
-                ],
-                [
-                    'group_name' => 'セーター2',
-                    'total'      => 123,
-                    'link' => '#',
-                    'items' => $this->getMockItemDataListForWoman(),
-                ],
-                [
-                    'group_name' => 'セーター3',
-                    'total'      => 123,
-                    'link' => '#',
-                    'items' => $this->getMockItemDataListForWoman(),
-                ],
+        ],
+    ];
+
+    /**
+     * 特集.
+     */
+    private function getMockDataCampaigns($categoryCode)
+    {
+        return [
+            [
+                'title' => 'ネット限定 | 先行予約（秋冬）',
             ],
-            'items' => [],
+            [
+                'title' => '伝統から学んだ、暮らしの服。',
+            ],
+            [
+                'title' => '人と自然 ー直線栽ちの服ー',
+            ],
+            [
+                'title' => '日本の布作りの旅（後編）',
+            ],
         ];
     }
 
@@ -307,7 +349,7 @@ class ProductCategoryTopsController extends Controller
                     'name' => '無印良品トップ',
                 ],
                 [
-                    'path' => '/store/cmdty/section/T20000',
+                    'path' => '/store/cmdty/section/T20003',
                     'name' => '収納家具',
                 ],
             ],
@@ -361,63 +403,114 @@ class ProductCategoryTopsController extends Controller
      */
     private function getMockGroups($categoryCode = "")
     {
-        if ($categoryCode === "S20003") {
-            return [
-                [
-                    'group_name' => 'スタッキングシェルフ',
-                    'category_code_in_page' => 'product-stacking-shelf',
-                    'description' => 'タテにヨコにも自由に拡張。正方形、ワイドタイプ、オープンタイプで組み合わせ可能。',
-                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                    'total'      => 321,
-                    'items'      => $this->getMockItemDataListForShelf(),
-                ],
-                [
-                    'group_name' => 'ステンレスユニットシェルフ',
-                    'category_code_in_page' => 'product-stainless-shelf',
-                    'description' => '錆びにくいステンレスを使用したユニットシェラフ',
-                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                    'total'      => 123,
-                    'items'      => $this->getMockItemDataListForShelf(),
-                ],
-                [
-                    'group_name' => 'スチールユニットシェルフ',
-                    'category_code_in_page' => 'product-steel-shelf',
-                    'description' => '豊富なオプションを自由に組み合わせることができるユニットシェルフ。',
-                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                    'total'      => 123,
-                    'items'      => $this->getMockItemDataListForShelf(),
-                ],
-                [
-                    'group_name' => 'パイン材ユニットシェルフ',
-                    'category_code_in_page' => 'product-pine-wood-shelf',
-                    'description' => '天然の”節”の表情が楽しめるパイン村。',
-                    'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                    'total'      => 123,
-                    'items'      => $this->getMockItemDataListForShelf(),
-                ],
-            ];
+        switch ($categoryCode) {
+            case "T10000":
+                return [
+                    [
+                        'group_name' => '半袖・タンクトップ',
+                        'category_code_in_page' => 'product-t-shirt',
+                        'total' => 321,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                    [
+                        'group_name' => '半袖',
+                        'category_code_in_page' => 'product-t-shirt',
+                        'total' => 123,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                    [
+                        'group_name' => '半袖',
+                        'category_code_in_page' => 'product-uv-cut',
+                        'total' => 123,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                ];
+            case "T20003":
+                return [
+                    [
+                        'group_name' => 'シェルフ',
+                        'category_code_in_page' => 'product-shelf',
+                        'total' => 66,
+                        'link' => '/store/cmdty/section/S20003',
+                        'items'=> $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'キャビネット',
+                        'category_code_in_page' => 'product-cabinet',
+                        'total' => 31,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'ラック',
+                        'category_code_in_page' => 'product-rack',
+                        'total' => 25,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForShelf(),
+                    ],
+                ];
+            case "S10003":
+                return [
+                    [
+                        'group_name' => '半袖・タンクトップ',
+                        'category_code_in_page' => 'product-t-shirt',
+                        'total' => 321,
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                    [
+                        'group_name' => '半袖',
+                        'category_code_in_page' => 'product-t-shirt',
+                        'total' => 123,
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                    [
+                        'group_name' => '半袖',
+                        'category_code_in_page' => 'product-uv-cut',
+                        'total' => 123,
+                        'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                ];
+            case "S20003":
+                return [
+                    [
+                        'group_name' => 'スタッキングシェルフ',
+                        'category_code_in_page' => 'product-stacking-shelf',
+                        'description' => 'タテにヨコにも自由に拡張。正方形、ワイドタイプ、オープンタイプで組み合わせ可能。',
+                        'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                        'total'      => 321,
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'ステンレスユニットシェルフ',
+                        'category_code_in_page' => 'product-stainless-shelf',
+                        'description' => '錆びにくいステンレスを使用したユニットシェラフ',
+                        'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                        'total'      => 123,
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'スチールユニットシェルフ',
+                        'category_code_in_page' => 'product-steel-shelf',
+                        'description' => '豊富なオプションを自由に組み合わせることができるユニットシェルフ。',
+                        'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                        'total'      => 123,
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                    [
+                        'group_name' => 'パイン材ユニットシェルフ',
+                        'category_code_in_page' => 'product-pine-wood-shelf',
+                        'description' => '天然の”節”の表情が楽しめるパイン村。',
+                        'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
+                        'total'      => 123,
+                        'items'      => $this->getMockItemDataListForShelf(),
+                    ],
+                ];
+            default:
+                return [];
         }
-
-        return [
-            [
-                'group_name' => '半袖・タンクトップ',
-                'category_code_in_page' => 'product-t-shirt',
-                'total'      => 321,
-                'items'      => $this->getMockItemDataListForWoman(),
-            ],
-            [
-                'group_name' => '半袖',
-                'category_code_in_page' => 'product-t-shirt',
-                'total'      => 123,
-                'items'      => $this->getMockItemDataListForWoman(),
-            ],
-            [
-                'group_name' => '半袖',
-                'category_code_in_page' => 'product-uv-cut',
-                'total'      => 123,
-                'items'      => $this->getMockItemDataListForWoman(),
-            ],
-        ];
     }
 
     /**
