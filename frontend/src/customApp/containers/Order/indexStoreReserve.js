@@ -148,4 +148,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(IndexStoreReserve);
+export default enhance(Index);
