@@ -3,7 +3,12 @@ import restActions from "../../shared/list/actions";
 
 const actions = createActions({
   SEARCH: {
-    LIST: restActions
+    LIST: {
+      ...restActions,
+      FETCH_ITEM: {
+        REQUEST: undefined
+      }
+    }
   }
 });
 

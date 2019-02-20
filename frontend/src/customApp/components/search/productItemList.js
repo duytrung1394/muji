@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Carousel } from "antd";
+import { Card } from "antd";
 import styled from "styled-components";
 import ProductSize from "../../components/search/productSize";
 import ColorSwatch from "../../components/search/colorSwatch";
@@ -13,7 +13,7 @@ const ItemImageListWrapper = styled.div`
   .ant-card-grid {
     width: calc((100% - 60px) / 4);
     max-width: 300px;
-    margin: 20px 10px;
+    margin: 10px 20px 20px 0;
     padding: 0 0 15px 0;
     
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);

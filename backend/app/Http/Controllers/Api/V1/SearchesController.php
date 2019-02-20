@@ -13,7 +13,15 @@ class SearchesController extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMultiMockData( (int)$request->input('page'), $request->input('keyword') ),
+            'data'  => $this->getMultiMockStoreData( (int)$request->input('page'), $request->input('keyword') ),
+            'total' => 4,
+        ];
+    }
+
+    public function indexItem(Request $request)
+    {
+        return [
+            'data'  => $this->getMultiMockItemData( (int)$request->input('page'), $request->input('keyword') ),
             'total' => 4,
         ];
     }
@@ -23,13 +31,13 @@ class SearchesController extends Controller
      *
      * @return array
      */
-    private function getMultiMockData($page = 1, $keyword)
+    private function getMultiMockStoreData($page = 1, $keyword)
     {
         $data = [];
         $start = ((int) $page - 1) * 10;
 
         for ($i = 0; $i < 10; $i++) {
-            $data = $this->getMockData('search_code' . ($i + $start ), $keyword);
+            $data = $this->getMockStoreData('search_code' . ($i + $start ), $keyword);
         }
 
         return $data;
@@ -38,7 +46,7 @@ class SearchesController extends Controller
     /**
      * モックデータを生成して取得
      */
-    private function getMockData($code, $keyword)
+    private function getMockStoreData($code, $keyword)
     {
         return [
             'keyword' => $keyword,
@@ -109,8 +117,206 @@ class SearchesController extends Controller
                     'opening' => "11:00〜21:00",
                     'holiday' => ""
                 ]
+            ],
+            'topics' => [
+                [
+                    'topicName' => "婦人定番白シャツ",
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+                ],
+                [
+                    'topicName' => "婦人定番白シャツ",
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+                ],
+                [
+                    'topicName' => "婦人定番白シャツ",
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+                ],
+                [
+                    'topicName' => "婦人定番白シャツ",
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg"
+                ]
             ]
+        ];
+    }
 
+    /**
+     * モックデータ取得用．
+     *
+     * @return array
+     */
+    private function getMultiMockItemData($page = 1, $keyword)
+    {
+        $data = [];
+        $start = ((int) $page - 1) * 10;
+
+        for ($i = 0; $i < 10; $i++) {
+            $data = $this->getMockItemData('search_code' . ($i + $start ), $keyword);
+        }
+
+        return $data;
+    }
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getMockItemData($code, $keyword)
+    {
+        return [
+            'keyword' => $keyword,
+            'topics' => [
+                [
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
+                    'topicName' => "婦人定番白シャツ"
+                ],
+                [
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
+                    'topicName' => "婦人定番白シャツ"
+                ],
+                [
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
+                    'topicName' => "婦人定番白シャツ"
+                ],
+                [
+                    'topicUrl' => "",
+                    'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
+                    'topicName' => "婦人定番白シャツ"
+                ]
+            ],
+            'searchTagResultList' => [
+                [
+                    'itemCount' => 10,
+                    'tagName' => "紳士ウェア - シャツ",
+                    'searchResultProductList' => [
+                        [
+                            "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => true,
+                            "hasReserveItemIcon" => false,
+
+                            "jancodeChildList" => [
+                                [
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => true,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ],
+                        [
+                            "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => true,
+                            "hasReserveItemIcon" => false,
+
+                            "jancodeChildList" => [
+                                [
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                ],
+                                [
+                                    "size_code" => 3, // XL
+                                    "stockPriorityItemColor" => "ブルー" //https://placehold.jp/34x34.png},
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => false,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ]
+                    ]
+                ],
+                [
+                    'itemCount' => 10,
+                    'tagName' => "紳士ウェア - シャツ",
+                    'searchResultProductList' => [
+                        [
+                             "material" => "オーガニックコットン", // 見出しが入るらしいが詳細不明（確認中）
+                             "itemName" => "ストレッチブロード形態安定シャツ",
+                             "hasNewIcon" => true,
+                             "hasReserveItemIcon" => false,
+
+                             "jancodeChildList" => [
+                                 [
+                                     "size_code" => 0, // S
+                                     "stockPriorityItemColor" => "ローズ" //https://placehold.jp/34x34.png},
+                                 ],
+                                 [
+                                     "size_code" => 2, // XL
+                                     "stockPriorityItemColor" => "ブルー" //https://placehold.jp/34x34.png},
+                                 ]
+                              ],
+                             "price" => [
+                                  [
+                                      "hasPrePrice" => false,
+                                      "cancelPrice" => 2990,
+                                      "viewPrice" => 1990,
+                                      "discountPrice" => 990
+                                  ]
+                             ],
+                             "image_url" =>
+                                 "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ]
+                    ]
+                ]
+            ],
+            'searchOtherResults'   => [
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ]
+            ],
         ];
     }
 }

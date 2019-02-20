@@ -13,7 +13,7 @@ const TopicListWrapper = styled.div`
   .ant-card-grid {
     width: calc((100% - 60px) / 4);
     max-width: 300px;
-    margin: 20px 10px;
+    margin: 10px 20px 20px 0;
     padding: 0;
 
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
@@ -52,10 +52,11 @@ const TopicImg = styled.img`
   filter: brightness(0.85);
 `;
 
-const TopicList = ({ topicList }) => {
+const TopicList = props => {
   return (
     <TopicListWrapper>
-      {topicList.map((item, index2) => {
+        <h3>特集</h3>
+      {props.topicList && props.topicList.map((item, index2) => {
         return (
           <Card.Grid key={index2}>
             <Link to={item.topicUrl}>
