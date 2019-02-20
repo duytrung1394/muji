@@ -24,7 +24,6 @@ export default function* devSaga() {
     customerReviewSagas(),
     donationSagas(),
     orderSagas(),
-    lotterySagas(),
     productDetailSagas(),
     favoriteSagas(),
     searchSagas(),
