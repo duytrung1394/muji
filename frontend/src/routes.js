@@ -244,14 +244,14 @@ const routes = [
     )
   },
   {
-    path: "/accounts",
+    path: "/store/accounts",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/index")
     )
   },
   {
-    path: "/accounts/:account_code",
+    path: "/store/accounts/:account_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/show")

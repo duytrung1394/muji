@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/account/list/actions";
+import styled from "styled-components";
 import { injectIntl } from "react-intl";
-import LayoutWrapper from "../../../components/utility/layoutWrapper";
-import Table from "../../../components/uielements/table";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/shared/panel/contentLayout";
+import ContentsWrapper from "../../components/account/contentsWrapper";
+import Contents from "../../components/account/contents";
+
+const AreaLayout = styled(ContentAreaLayout)`
+  max-width: 732px;
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -11,83 +20,27 @@ class Index extends Component {
     this.state = {
       selectedKeys: []
     };
-
   }
 
-  // React methods
   componentDidMount() {
-    this.fetchRequest(this.props);
+    this.props.fetchRequest("");
   }
 
-  fetchRequest = props => {
-    // ページングもケースバイケースなのでコンポーネント毎に実装する
-    props.fetchRequest({
-      page: 1,
-      filters: JSON.stringify(props.filters || [])
-    });
-  };
-
-  // React.render
   render() {
-    const {
-      // types
-      total,
-      entities,
-      fetching,
-      destroying,
-      // react-router
-      history
-    } = this.props;
+    const { entities } = this.props;
 
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name"
-      },
-    ];
-
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
-    };
-
-    const pagination = {
-      defaultCurrent: 1,
-      total: total,
-      onChange: page => {
-        let url;
-        if (page === 1) {
-          url = '/accounts';
-        } else {
-          url = `/accounts/page/${page}`;
-        }
-        history.push(url);
-      }
-    };
+    if (entities.length <= 0) {
+      return null;
+    }
 
     return (
-      <LayoutWrapper>
-        <div className="isoLayoutContent">
-          <Table
-            rowKey="id"
-            dataSource={entities}
-            columns={columns}
-            rowSelection={rowSelection}
-            loading={fetching || destroying}
-            pagination={pagination}
-          />
-        </div>
-      </LayoutWrapper>
+      <AreaLayout>
+        <BaseContentLayout>
+          <ContentsWrapper>
+            <Contents entities={entities} />
+          </ContentsWrapper>
+        </BaseContentLayout>
+      </AreaLayout>
     );
   }
 }
@@ -102,10 +55,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);
