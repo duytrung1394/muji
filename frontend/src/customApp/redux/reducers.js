@@ -22,7 +22,6 @@ export default {
   CustomerReview,
   Donation,
   Order,
-  Lottery,
   ProductDetail,
   Favorite,
   Search,
