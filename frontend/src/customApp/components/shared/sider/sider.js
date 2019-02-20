@@ -55,7 +55,7 @@ const MenuItem = styled(Menu.Item)`
 
 class GroupMenu extends Component {
   render() {
-    const { menu, menuIndex } = this.props;
+    const { menu, menuindex } = this.props;
     return (
       <LayoutGroupMenu
         title={
@@ -69,7 +69,7 @@ class GroupMenu extends Component {
         {menu.items &&
           menu.items.map((item, index) => {
             return (
-              <MenuItem key={`menu-item-${menuIndex}-${index}`}>
+              <MenuItem key={`menu-item-${menuindex}-${index}`}>
                 <Link to={item.url}>{item.title}</Link>
               </MenuItem>
             );
@@ -146,7 +146,7 @@ const Sider = () => {
               return React.createElement(menuTypes[menu.type], {
                 key: `menu-${index}`,
                 menu,
-                menuIndex: index,
+                menuindex: index,
                 ...this.props
               });
             } else {
