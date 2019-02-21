@@ -41,6 +41,7 @@ const CategoriesInPage = ({ categories, groups }) => (
         return (
           <a href={`#${category.code}`} key={index}>
             {category.title}
+            {category.subtitle}
             <IntlMessages id="productCategoryTop.link.underArrow" />
           </a>
         );
@@ -53,6 +54,7 @@ const CategoriesInPage = ({ categories, groups }) => (
           <CategoryWrapper id={category.code} key={index}>
             <Preamble
               title={category.title}
+              subtitle={category.subtitle}
               description={category.description}
               img={category.img}
             />
