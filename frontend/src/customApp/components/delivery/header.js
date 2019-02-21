@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 
+const HeaderWrapper = styled.div`
+  margin-bottom: 30px;
+`;
+
 const Title = styled.h1`
   font-size: 24px;
   color: rgb(0, 0, 0);
@@ -9,6 +13,7 @@ const Title = styled.h1`
 
 const Note = styled.p`
   font-size: 11px;
+  margin-bottom: 5px; 
 `;
 
 const CancelLink = styled.a`
@@ -22,7 +27,7 @@ const CancelLink = styled.a`
 
 const Header = () => {
   return (
-    <div>
+    <HeaderWrapper>
       <Title>
         <IntlMessages id="delivery.list.title" />
       </Title>
@@ -32,7 +37,7 @@ const Header = () => {
       <CancelLink>
         <IntlMessages id="delivery.list.cancel" />
       </CancelLink>
-    </div>
+    </HeaderWrapper>
   );
 };
 

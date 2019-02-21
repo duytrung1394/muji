@@ -9,6 +9,7 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import Header from "../../components/delivery/header";
+import AddressItem from "../../components/delivery/addressItem";
 
 class Index extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <BaseContentLayout>
           <Header />
+          <AddressItem />
         </BaseContentLayout>
       </ContentAreaLayout>
     );
