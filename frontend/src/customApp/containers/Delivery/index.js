@@ -10,6 +10,12 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import Header from "../../components/delivery/header";
 import AddressItem from "../../components/delivery/addressItem";
+import Button from "../../components/delivery/button";
+
+const AddButton = styled(Button)`
+  width: 298px;
+  height: 38px;
+`;
 
 class Index extends Component {
   constructor(props) {
@@ -37,11 +43,15 @@ class Index extends Component {
       history
     } = this.props;
 
+  console.log(entities);
     return (
       <ContentAreaLayout>
         <BaseContentLayout>
           <Header />
-          <AddressItem />
+          <AddressItem addressItem={entities.addresses} />
+          <AddButton>
+            <IntlMessages id="delivery.list.add" />
+          </AddButton>
         </BaseContentLayout>
       </ContentAreaLayout>
     );
