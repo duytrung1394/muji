@@ -1,11 +1,18 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Button from "./button";
 import DeleteLink from "./deleteLink";
 
 const Wrapper = styled.div`
+  padding: 16px;
+  background: rgb(242, 242, 242);
+`;
+
+const AddressItemArea = styled.div`
+  padding: 16px;
   color: rgb(88, 88, 88);
+  background: #fff;
 `;
 
 const Title = styled.h2`
@@ -14,43 +21,95 @@ const Title = styled.h2`
 `;
 
 const AddressArea = styled.div`
+  padding: 16px;
   border-top: 1px solid #666;
 `;
 
 const Address = styled.ul`
   list-style: none;
   padding-left: 0;
+  margin-bottom: 0;
+  position: relative;
+`;
+
+const Name = styled.li`
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+const ZipCode = styled.li`
+  font-size: 11px;
+  margin-bottom: 10px;
+`;
+
+const Address1 = styled.li`
+  font-size: 11px;
+`;
+
+const Address2 = styled.li`
+  font-size: 11px;
+  margin-bottom: 10px;
+`;
+
+const Tel = styled.li`
+  font-size: 11px;
+  margin-bottom: 10px;
+`;
+
+const Note = styled.li`
+  font-size: 11px;
 `;
 
 const ChangeButton = styled(Button)`
   width: 97px;
   height: 38px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `; 
 
 const AddressItem = ({ addressItem }) => {
-console.log(addressItem);
   return (
     <Wrapper>
-      <Title>
-        <IntlMessages id="delivery.addressItem.title" /> 
-      </Title>
-      <AddressArea>
-        <Address>
-          <li>名前<IntlMessages id="delivery.addressItem.esq" /></li>
-          <li><IntlMessages id="delivery.addressItem.postalSign" />郵便番号</li>
-          <li>住所1</li>
-          <li>住所2</li>
-          <li><IntlMessages id="delivery.addressItem.tel" />電話番号</li>
-          <li>
-            ↓(addressBookNoが0の時だけ反映する)<br />
-            <IntlMessages id="delivery.addressItem.note" />
-          </li>
-          <ChangeButton>
-            <IntlMessages id="delivery.addressItem.change" />
-          </ChangeButton>
-          <DeleteLink />
-        </Address>
-      </AddressArea>
+      <AddressItemArea>
+        <Title>
+          <IntlMessages id="delivery.addressItem.title" /> 
+        </Title>
+        {addressItem.map((item, index) => {
+          return (
+            <AddressArea key={index}>
+              <Address>
+                <DeleteLink />
+                <Name>
+                  {item.name}
+                  <IntlMessages id="delivery.addressItem.esq" />
+                </Name>
+                <ZipCode>
+                  <IntlMessages id="delivery.addressItem.postalSign" />
+                  {item.zipCode}
+                </ZipCode>
+                <Address1>
+                  {item.address1}
+                </Address1>
+                <Address2>
+                  {item.address2}
+                </Address2>
+                <Tel>
+                  <IntlMessages id="delivery.addressItem.tel" />
+                  {item.tel}
+                </Tel>
+                <Note>
+                  <IntlMessages id="delivery.addressItem.note" />
+                </Note>
+                <ChangeButton>
+                  <IntlMessages id="delivery.addressItem.change" />
+                </ChangeButton>
+              </Address>
+            </AddressArea>
+          );
+        })}
+      </AddressItemArea>
     </Wrapper>
   );
 };

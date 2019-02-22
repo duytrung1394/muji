@@ -1,27 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 
-const LinkWrapper = styled.div`
-  float: right;
+const Wrapper = styled.div`
+  position: relative;
 `;
 
 const StyledLink = styled.a`
   font-size: 12px;
+  font-weight: bold;
   color: rgb(96, 179, 250);
+  position: absolute;
+  top: 0;
+  right: 0;
   :hover {
-    color: rgb(96, 179, 250);
+    color: rgb(96, 179, 250); 
   }
 `; 
 
 const DeleteLink = () => (
-  <LinkWrapper>
-    ↓(addressBookNoが0の時以外に反映する)<br />
+  <Wrapper>
     <StyledLink>
       <IntlMessages id="delivery.deleteLink.delete" />
     </StyledLink>
-  </LinkWrapper>
+  </Wrapper>
 );
 
 export default DeleteLink;

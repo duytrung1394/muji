@@ -12,6 +12,15 @@ import Header from "../../components/delivery/header";
 import AddressItem from "../../components/delivery/addressItem";
 import Button from "../../components/delivery/button";
 
+const ContentLayout = styled(BaseContentLayout)`
+  max-width: 700px;
+`;
+
+const ButtonArea = styled.div`
+  margin: 30px auto;
+  text-align: center;
+`;
+
 const AddButton = styled(Button)`
   width: 298px;
   height: 38px;
@@ -43,15 +52,20 @@ class Index extends Component {
       history
     } = this.props;
 
+    if(entities.length <= 0) {
+      return null;
+    }
     return (
       <ContentAreaLayout>
-        <BaseContentLayout>
+        <ContentLayout>
           <Header />
           <AddressItem addressItem={entities.addresses} />
-          <AddButton>
-            <IntlMessages id="delivery.list.add" />
-          </AddButton>
-        </BaseContentLayout>
+          <ButtonArea>
+            <AddButton>
+              <IntlMessages id="delivery.list.add" />
+            </AddButton>
+          </ButtonArea>
+        </ContentLayout>
       </ContentAreaLayout>
     );
   }

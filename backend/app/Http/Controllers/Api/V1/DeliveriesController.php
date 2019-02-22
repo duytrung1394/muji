@@ -129,8 +129,8 @@ class DeliveriesController extends Controller
                     // 'addressBookNo' => $addressBookNo,
                     'name' => '無印 計子',
                     'zipCode' => '123-4567',
-                    'address1' => '東京都千代田区丸の内2-7-2-1',
-                    'address2' => '西武池袋本店別館1～2Ｆ',
+                    'address1' => '東京都千代田区丸の内2-7-2',
+                    'address2' => '丸の内ＪＰタワー3Ｆ',
                     'tel' => '01 - 2345 - 6789'
                 ],
             ],
