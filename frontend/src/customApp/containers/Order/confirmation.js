@@ -4,6 +4,7 @@ import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
+import { Spin } from "antd";
 import {
   ContentAreaLayout,
   BaseContentLayout
@@ -26,7 +27,7 @@ const Title = styled.h1`
   letter-spacing: 0.25px;
 `;
 
-class Show extends Component {
+class Confirmation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +48,11 @@ class Show extends Component {
   };
 
   render() {
-    const { entities } = this.props;
+    const { entities, fetching } = this.props;
+
+    if (entities.length <= 0) {
+      return <Spin spinning={fetching} size="large" />;
+    }
 
     return (
       <ContentAreaLayout>
@@ -86,4 +91,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(Show);
+export default enhance(Confirmation);

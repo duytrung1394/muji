@@ -20,7 +20,7 @@ const BackOrderConfirmButton = styled(CommonButton)`
 const BillFooter = () => {
   return (
     <BillButtons>
-      <Link to="#">
+      <Link to="/store/order/index">
         <BackButton>
           <IntlMessages id="order.confirm.backPage" />
         </BackButton>

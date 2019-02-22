@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { Spin } from "antd";
 import {
   ContentAreaLayout,
   BaseContentLayout
@@ -50,6 +51,11 @@ class Index extends Component {
       // react-router
       history
     } = this.props;
+
+    if (Object.keys(entity).length <= 0) {
+      return <Spin spinning={fetching} size="large" />;
+    }
+
     return (
       <ContentAreaLayout>
         <ContentLayout>

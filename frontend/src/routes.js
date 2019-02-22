@@ -226,7 +226,7 @@ const routes = [
     path: "/store/order/confirmation",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/Order/show")
+      require("./customApp/containers/Order/confirmation")
     )
   },
   {
