@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 
-class SearchesController extends Controller
+class SearchController extends Controller
 {
     /**
      * フリーワード検索（店舗）取得.
@@ -174,22 +174,22 @@ class SearchesController extends Controller
             'keyword' => $keyword,
             'topics' => [
                 [
-                    'topicUrl' => "",
+                    'topicId' => 1,
                     'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
                     'topicName' => "婦人定番白シャツ"
                 ],
                 [
-                    'topicUrl' => "",
+                    'topicId' => 2,
                     'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
                     'topicName' => "婦人定番白シャツ"
                 ],
                 [
-                    'topicUrl' => "",
+                    'topicId' => 3,
                     'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
                     'topicName' => "婦人定番白シャツ"
                 ],
                 [
-                    'topicUrl' => "",
+                    'topicId' => 4,
                     'image_url' => "https://www.muji.com/jp/img/store/panel/s000051065_640.jpg",
                     'topicName' => "婦人定番白シャツ"
                 ]
@@ -200,6 +200,8 @@ class SearchesController extends Controller
                     'tagName' => "紳士ウェア - シャツ",
                     'searchResultProductList' => [
                         [
+                            'jancode' => '4550002032364',
+                            'nostock' => false,
                             "material" => "オーガニックコットン",
                             "itemName" => "ストレッチブロード形態安定シャツ",
                             "hasNewIcon" => true,
@@ -207,6 +209,8 @@ class SearchesController extends Controller
 
                             "jancodeChildList" => [
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 0, // S
                                     "stockPriorityItemColor" => "ローズ"
                                 ]
@@ -223,6 +227,8 @@ class SearchesController extends Controller
                                 "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                         ],
                         [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
                             "material" => "オーガニックコットン",
                             "itemName" => "ストレッチブロード形態安定シャツ",
                             "hasNewIcon" => true,
@@ -230,26 +236,38 @@ class SearchesController extends Controller
 
                             "jancodeChildList" => [
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 0, // S
                                     "stockPriorityItemColor" => "ローズ"
                                 ],
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 3, // XL
                                     "stockPriorityItemColor" => "ブルー"
                                 ],
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 0, // S
                                     "stockPriorityItemColor" => "ローズ"
                                 ],
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 3, // XL
                                     "stockPriorityItemColor" => "ブルー"
                                 ],
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 0, // S
                                     "stockPriorityItemColor" => "ローズ"
                                 ],
                                 [
+                                    "stockPriorityItemJancode" => '4550002032364',
+                                    "stockPriorityItemStock" => true,
                                     "size_code" => 3, // XL
                                     "stockPriorityItemColor" => "ブルー"
                                 ]
@@ -272,17 +290,23 @@ class SearchesController extends Controller
                     'tagName' => "紳士ウェア - シャツ",
                     'searchResultProductList' => [
                         [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
                              "material" => "オーガニックコットン",
                              "itemName" => "ストレッチブロード形態安定シャツ",
-                             "hasNewIcon" => true,
-                             "hasReserveItemIcon" => false,
+                             "hasNewIcon" => false,
+                             "hasReserveItemIcon" => true,
 
                              "jancodeChildList" => [
                                  [
+                                     "stockPriorityItemJancode" => '4549337263635',
+                                     "stockPriorityItemStock" => true,
                                      "size_code" => 0, // S
                                      "stockPriorityItemColor" => "ローズ"
                                  ],
                                  [
+                                     "stockPriorityItemJancode" => '4549337263635',
+                                     "stockPriorityItemStock" => true,
                                      "size_code" => 2, // XL
                                      "stockPriorityItemColor" => "ブルー"
                                  ]
@@ -297,42 +321,181 @@ class SearchesController extends Controller
                              ],
                              "image_url" =>
                                  "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ],
+                        [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
+                            "material" => "オーガニックコットン",
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => false,
+                            "hasReserveItemIcon" => true,
+
+                            "jancodeChildList" => [
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 2, // XL
+                                    "stockPriorityItemColor" => "ブルー"
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => false,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ],
+                        [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
+                            "material" => "オーガニックコットン",
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => false,
+                            "hasReserveItemIcon" => true,
+
+                            "jancodeChildList" => [
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 2, // XL
+                                    "stockPriorityItemColor" => "ブルー"
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => false,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ],
+                        [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
+                            "material" => "オーガニックコットン",
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => false,
+                            "hasReserveItemIcon" => true,
+
+                            "jancodeChildList" => [
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 2, // XL
+                                    "stockPriorityItemColor" => "ブルー"
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => false,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                        ],
+                        [
+                            'jancode' => '4549337263635',
+                            'nostock' => false,
+                            "material" => "オーガニックコットン",
+                            "itemName" => "ストレッチブロード形態安定シャツ",
+                            "hasNewIcon" => false,
+                            "hasReserveItemIcon" => true,
+
+                            "jancodeChildList" => [
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 0, // S
+                                    "stockPriorityItemColor" => "ローズ"
+                                ],
+                                [
+                                    "stockPriorityItemJancode" => '4549337263635',
+                                    "stockPriorityItemStock" => true,
+                                    "size_code" => 2, // XL
+                                    "stockPriorityItemColor" => "ブルー"
+                                ]
+                            ],
+                            "price" => [
+                                [
+                                    "hasPrePrice" => false,
+                                    "cancelPrice" => 2990,
+                                    "viewPrice" => 1990,
+                                    "discountPrice" => 990
+                                ]
+                            ],
+                            "image_url" =>
+                                "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                         ]
                     ]
                 ]
             ],
             'searchOtherResults'   => [
                 [
+                    'id' => 1,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 2,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 3,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 4,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 5,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 6,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ],
                 [
+                    'id' => 7,
                     'title' => "商品1",
                     'description' => "MIJI HOTEL",
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"

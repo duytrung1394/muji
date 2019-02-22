@@ -1,15 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Carousel } from "antd";
+import { Card } from "antd";
+import Slider from "../shared/slider";
 import styled from "styled-components";
 
 const ItemImageListWrapper = styled.div`
   padding: 2px;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
 
   div {
     height: 350px;
+  }
+
+  .slick-track {
+    display: flex;
+  }
+  .slick-slide {
+    height: inherit;
   }
 
   .ant-card-grid {
@@ -30,8 +38,6 @@ const ItemImageListWrapper = styled.div`
       filter: brightness(0.85);
     }
   }
-  .ant-card-grid:hover {
-  }
 
   p {
     display: block;
@@ -50,9 +56,6 @@ const ItemImageListWrapper = styled.div`
     min-height: 35px;
     overflow: hidden;
     color: #585858;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     word-break: break-all;
     font-weight: normal;
     font-size: 12px;
@@ -62,19 +65,12 @@ const ItemImageListWrapper = styled.div`
 const SearchItemImageList = props => {
   return (
     <ItemImageListWrapper>
-      <Carousel
-        slidesToShow={4.5}
-        dots={false}
-        swipeToSlide={true}
-        swipe={true}
-        draggable={true}
-        infinite={false}
-      >
+      <Slider>
         {props.items &&
           props.items.map((item, index) => {
             return (
               <div key={index}>
-                <Link to="">
+                <Link to={"/store/cmdty/" + item.id}>
                   <Card.Grid>
                     <img src={item.img_src} alt="" />
 
@@ -85,7 +81,7 @@ const SearchItemImageList = props => {
               </div>
             );
           })}
-      </Carousel>
+      </Slider>
     </ItemImageListWrapper>
   );
 };

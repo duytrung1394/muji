@@ -4,8 +4,8 @@ import restAllSaga from "../../shared/list/saga_generator";
 import { takeEvery, put, call } from "redux-saga/effects";
 import authActions from "../../../../redux/auth/actions";
 
-const api = RESTListApi("searches", "codes");
-const listItemApi = RESTListApi("searches/item", "codes");
+const api = RESTListApi("search/stores", "codes");
+const listItemApi = RESTListApi("search/items", "codes");
 
 const getListItemFunction = function*({ payload }) {
   try {

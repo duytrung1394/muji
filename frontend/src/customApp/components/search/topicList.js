@@ -9,9 +9,8 @@ const TopicListWrapper = styled.div`
   overflow: auto;
 
   .ant-card-grid {
-    width: calc((100% - 60px) / 4);
-    max-width: 300px;
-    margin: 10px 20px 20px 0;
+    width: calc((100% - 90px) / 4);
+    margin: 10px 30px 20px 0;
     padding: 0;
 
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
@@ -50,23 +49,31 @@ const TopicImg = styled.img`
   filter: brightness(0.85);
 `;
 
+const ItemDiv = styled.div`
+  .ant-card-grid:nth-child(4n) {
+    margin-right: 0;
+  }
+`;
+
 const TopicList = props => {
   return (
     <TopicListWrapper>
       <h3>
         <IntlMessages id="search.topic.title" />
       </h3>
-      {props.topicList &&
-        props.topicList.map((item, index2) => {
-          return (
-            <Card.Grid key={index2}>
-              <Link to={item.topicUrl}>
-                <TopicImg src={item.image_url} alt="" />
-                <h3>{item.topicName}</h3>
-              </Link>
-            </Card.Grid>
-          );
-        })}
+      <ItemDiv>
+        {props.topicList &&
+          props.topicList.map((item, index2) => {
+            return (
+              <Card.Grid key={index2}>
+                <Link to={"/store/topic/" + item.topicId}>
+                  <TopicImg src={item.image_url} alt="" />
+                  <h3>{item.topicName}</h3>
+                </Link>
+              </Card.Grid>
+            );
+          })}
+      </ItemDiv>
     </TopicListWrapper>
   );
 };

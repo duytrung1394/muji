@@ -1,89 +1,73 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Card } from "antd";
 import styled from "styled-components";
-import ProductSize from "../../components/search/productSize";
-import ColorSwatch from "../../components/search/colorSwatch";
-import ProductPrice from "../../components/search/productPrice";
+import ItemView from "../../components/productCategoryTop/itemList/itemView";
 
 const ItemImageListWrapper = styled.div`
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
 
-  .ant-card-grid {
-    width: calc((100% - 60px) / 4);
-    max-width: 300px;
-    margin: 10px 20px 20px 0;
-    padding: 0 0 15px 0;
-
-    box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
-    border-radius: 4px;
-    overflow: hidden;
-
-    p {
-      display: block;
-      margin: 0;
-      padding: 5px 10px;
-      line-height: 15px;
-      font-size: 11px;
-      color: #999;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    h3 {
-      padding: 0 10px;
-      min-height: 35px;
-      overflow: hidden;
-      color: #585858;
-      display: -webkit-box;
-      word-break: break-all;
-      font-weight: normal;
-      font-size: 12px;
-    }
+  div.ant-col-xs-10 {
+    width: calc((100% - 90px) / 4);
+    margin: 10px 30px 20px 0;
   }
-
-  @media only screen and (max-width: 980px) {
-    .ant-card-grid {
-      width: calc((100% - 60px) / 2);
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    .ant-card-grid {
-      width: calc((100% - 60px));
-    }
+  div.ant-col-xs-10:nth-child(4n) {
+    margin-right: 0;
   }
 `;
 
-const ProductImg = styled.img`
-  margin-bottom: 5px;
-  border: solid 1px #f0f0f0;
-  width: 100%;
-  transition: filter 0.2s ease;
-  filter: brightness(0.85);
-`;
+const sizeLabels = { 0: "S", 1: "M", 2: "L", 3: "XL" };
 
 const ProductItemList = ({ productList }) => {
   return (
     <ItemImageListWrapper>
       {productList.map((item, index) => {
+        let tags = [];
+        if (item.hasNewIcon) {
+          tags.push("new");
+        }
+        if (item.hasReserveItemIcon) {
+          tags.push("early");
+        }
+        if (item.isMarkdown) {
+          tags.push("sale");
+        }
         return (
-          <Link to="" key={index}>
-            <Card.Grid>
-              <ProductImg src={item.image_url} alt="" />
-              <p>{item.material}</p>
-              <h3>{item.itemName}</h3>
-              <ProductSize
-                sizeList={item.jancodeChildList.map(child => child.size_code)}
-              />
-              <ColorSwatch
-                colorNames={item.jancodeChildList.map(
-                  child => child.stockPriorityItemColor
-                )}
-              />
-              <ProductPrice priceList={item.price} />
-            </Card.Grid>
-          </Link>
+          <ItemView
+            jancode={item.jancode}
+            nostock={item.nostock}
+            swatches={item.jancodeChildList.map(item => ({
+              jancode: item.stockPriorityItemJancode,
+              nostock: item.stockPriorityItemStock
+            }))}
+            title={item.itemName}
+            material={item.material}
+            price={
+              item.price[0].hasPrePrice
+                ? item.price[0].cancelPrice
+                : item.price[0].viewPrice
+            }
+            new_price={
+              item.price[0].hasPrePrice ? item.price[0].viewPrice : null
+            }
+            tags={tags}
+            minSize={
+              sizeLabels[
+                Math.min.apply(
+                  null,
+                  item.jancodeChildList.map(child => child.size_code)
+                )
+              ]
+            }
+            maxSize={
+              sizeLabels[
+                Math.max.apply(
+                  null,
+                  item.jancodeChildList.map(child => child.size_code)
+                )
+              ]
+            }
+            isSlideScroll={false}
+          />
         );
       })}
     </ItemImageListWrapper>
