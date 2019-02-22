@@ -13,7 +13,7 @@ class DeliveriesController extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMultiMockData( (int)$request->input('page') ),
+            'data'  => $this->getMockData(),
             'total' => 200,
         ];
     }
@@ -92,7 +92,7 @@ class DeliveriesController extends Controller
     /**
      * モックデータを生成して取得
      */
-    private function getMockData($code)
+    private function getMockData()
     {
         return [
             // 'delivery_code'   => $code,

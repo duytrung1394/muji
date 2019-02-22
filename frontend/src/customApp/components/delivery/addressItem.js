@@ -27,7 +27,8 @@ const ChangeButton = styled(Button)`
   height: 38px;
 `; 
 
-const AddressItem = () => {
+const AddressItem = ({ addressItem }) => {
+console.log(addressItem);
   return (
     <Wrapper>
       <Title>

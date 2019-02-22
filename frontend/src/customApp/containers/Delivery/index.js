@@ -28,7 +28,7 @@ class Index extends Component {
 
   // React methods
   componentDidMount() {
-    this.props.fetchRequest();
+    this.props.fetchRequest("");
   }
 
   // React.render
@@ -43,7 +43,6 @@ class Index extends Component {
       history
     } = this.props;
 
-  console.log(entities);
     return (
       <ContentAreaLayout>
         <BaseContentLayout>
