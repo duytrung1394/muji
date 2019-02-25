@@ -28,32 +28,18 @@ export const Button = props => (
   <StyledButton {...props}>{props.children}</StyledButton>
 );
 
-const getBackgroundColor = props => {
-  const color = props.color ? props.color : "#fff";
-  return props.reverse ? color : "#fff";
-};
+const baseColor = "#585858";
+const reverseColor = "#fff";
 
-const getColor = props => {
-  const color = props.color ? props.color : "#585858";
-  return props.reverse ? "fff" : color;
-};
-
-export const OutlineButton = styled(AntdButton)`
-  width: 300px;
-  span {
-    vertical-align: bottom;
-  }
+export const OutlineButton = styled(Button)`
   &&& {
-    display: inline-block;
-    height: 44px;
-    background-color: ${getBackgroundColor};
-    color: ${getColor};
-    border: 1px solid ${getColor};
+    background-color: ${props =>
+    props.reverse ? props.color || reverseColor : reverseColor};
+    color: ${props =>
+    props.reverse ? reverseColor : props.color || baseColor};
+    border: 1px solid ${props => props.color || baseColor};
     border-radius: 25px;
     font-size: 12px;
-    :hover {
-      border-color: ${getColor};
-    }
   }
   &.ant-btn-clicked:after {
     content: "";
