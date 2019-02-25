@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "../../components/shared/slider";
 import { Card } from "antd";
 import Slider from "../shared/slider";
 import styled from "styled-components";

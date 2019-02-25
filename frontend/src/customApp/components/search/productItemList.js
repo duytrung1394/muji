@@ -33,6 +33,7 @@ const ProductItemList = ({ productList }) => {
         }
         return (
           <ItemView
+            key={index}
             jancode={item.jancode}
             nostock={item.nostock}
             swatches={item.jancodeChildList.map(item => ({
