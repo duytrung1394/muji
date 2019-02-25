@@ -2,16 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/account/list/actions";
 import styled from "styled-components";
+import { Spin } from "antd";
 import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import ContentsWrapper from "../../components/account/contentsWrapper";
-import Contents from "../../components/account/contents";
+import ContentsWrapper from "../../components/account/memberguide/contentsWrapper";
+import Contents from "../../components/account/memberguide/contents";
 
 const AreaLayout = styled(ContentAreaLayout)`
   max-width: 732px;
+`;
+
+const LoadingSpin = styled.div`
+  text-align: center;
+  padding: 30px 50px;
 `;
 
 class Index extends Component {
@@ -30,7 +36,11 @@ class Index extends Component {
     const { entities } = this.props;
 
     if (entities.length <= 0) {
-      return null;
+      return (
+        <LoadingSpin>
+          <Spin size="large" />
+        </LoadingSpin>
+      );
     }
 
     return (

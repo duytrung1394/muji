@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Link } from "../../components/shared/form/link";
+import { Link } from "../../shared/form/link";
 import { Row, Col } from "antd";
 
-import Img10 from "../../../image/account/lst-memberguide-10.png";
+import Img10 from "../../../../image/account/lst-memberguide-10.png";
 
 const MemberGuidePassportCaption = styled.h2`
   color: #585858;

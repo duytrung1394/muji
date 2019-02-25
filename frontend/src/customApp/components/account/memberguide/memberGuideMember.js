@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 
-import Img1 from "../../../image/account/lst-memberguide-01.png";
-import Img2 from "../../../image/account/lst-memberguide-02.png";
-import Img3 from "../../../image/account/lst-memberguide-03.png";
-import Img4 from "../../../image/account/lst-memberguide-04.png";
-import Img5 from "../../../image/account/lst-memberguide-05.png";
-import Img6 from "../../../image/account/lst-memberguide-06.png";
-import Img7 from "../../../image/account/lst-memberguide-07.png";
-import Img8 from "../../../image/account/lst-memberguide-08.png";
-import Img9 from "../../../image/account/lst-memberguide-09.png";
+import Img1 from "../../../../image/account/lst-memberguide-01.png";
+import Img2 from "../../../../image/account/lst-memberguide-02.png";
+import Img3 from "../../../../image/account/lst-memberguide-03.png";
+import Img4 from "../../../../image/account/lst-memberguide-04.png";
+import Img5 from "../../../../image/account/lst-memberguide-05.png";
+import Img6 from "../../../../image/account/lst-memberguide-06.png";
+import Img7 from "../../../../image/account/lst-memberguide-07.png";
+import Img8 from "../../../../image/account/lst-memberguide-08.png";
+import Img9 from "../../../../image/account/lst-memberguide-09.png";
 
 const MemberGuideMemberCaption = styled.h2`
   color: #585858;

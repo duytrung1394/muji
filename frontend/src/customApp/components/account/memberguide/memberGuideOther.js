@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 
-import disc from "../../../image/account/ico-disc-style.png";
+import disc from "../../../../image/account/ico-disc-style.png";
 
 const MemberGuideOtherCaption = styled.h2`
   color: #585858;

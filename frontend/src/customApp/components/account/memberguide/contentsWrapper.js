@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Link } from "../shared/form/link";
-import IntlMessages from "../../../components/utility/intlMessages";
-import CommonButton from "./button";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import CommonButton from "../button";
 
 const MemberGuideHeadTitle = styled.h1`
   color: #000;
