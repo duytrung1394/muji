@@ -19,60 +19,6 @@ class DeliveriesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  string   $deliveryCode
-     * @return Response
-     */
-    public function show($deliveryCode)
-    {
-        return [
-            'item' => $this->getMockdata($deliveryCode),
-        ];
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  string   $camelCase(pkName)
-     * @return Response
-     */
-    public function update(Request $request, $deliveryCode)
-    {
-        return [
-            'data' => [],
-        ];
-    }
-
-    /**
-     * Remove some resources from storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function destroy(Request $request)
-    {
-        return [
-            'data'  => [],
-            'count' => 1,
-        ];
-    }
-
-    /**
      * モックデータ取得用．
      *
      * @return array

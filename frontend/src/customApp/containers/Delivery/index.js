@@ -32,7 +32,6 @@ class Index extends Component {
     this.state = {
       selectedKeys: []
     };
-
   }
 
   // React methods
@@ -52,7 +51,7 @@ class Index extends Component {
       history
     } = this.props;
 
-    if(entities.length <= 0) {
+    if (entities.length <= 0) {
       return null;
     }
     return (
@@ -81,10 +80,13 @@ const actionCreators = {
   destroyCleanup: actions.destroy.cleanup
 };
 
-const enhance = (C) => {
-  const connected = connect(mapStateToProps, actionCreators)(C);
-  const injected = injectIntl(connected, {withRef: true})
-  return injected
-}
+const enhance = C => {
+  const connected = connect(
+    mapStateToProps,
+    actionCreators
+  )(C);
+  const injected = injectIntl(connected, { withRef: true });
+  return injected;
+};
 
 export default enhance(Index);

@@ -13,7 +13,7 @@ const Title = styled.h1`
 
 const Note = styled.p`
   font-size: 11px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 `;
 
 const CancelLink = styled.a`

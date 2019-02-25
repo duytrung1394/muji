@@ -14,9 +14,9 @@ const StyledLink = styled.a`
   top: 0;
   right: 0;
   :hover {
-    color: rgb(96, 179, 250); 
+    color: rgb(96, 179, 250);
   }
-`; 
+`;
 
 const DeleteLink = () => (
   <Wrapper>

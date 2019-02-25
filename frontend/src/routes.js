@@ -249,6 +249,6 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Delivery/index")
     )
-  },
+  }
 ];
 export default routes;
