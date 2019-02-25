@@ -379,4 +379,16 @@ class OrdersController extends Controller
             ]
         ];
     }
+
+    /**
+     * カートの保存(注文)
+     *
+     * @return Response
+     */
+    public function saveShoppingCart(Request $request)
+    {
+        return [
+            'orderCode' => "1234567890",
+        ];
+    }
 }

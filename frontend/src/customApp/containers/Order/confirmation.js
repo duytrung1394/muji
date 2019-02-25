@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/order/list/actions";
+import actions from "../../redux/order/entity/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
@@ -28,16 +28,14 @@ const Title = styled.h1`
 `;
 
 class Confirmation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
+  componentDidMount() {
+    if (!this.props.orderCode) {
+      // reload
+      this.props.history.push(this.getBackPath());
+    }
   }
 
-  componentDidMount() {
-    this.fetchRequest(this.props);
-  }
+  getBackPath = () => `/store/order/index`;
 
   fetchRequest = props => {
     // ページングもケースバイケースなのでコンポーネント毎に実装する
@@ -48,9 +46,9 @@ class Confirmation extends Component {
   };
 
   render() {
-    const { entities, fetching } = this.props;
+    const { entity, fetching } = this.props;
 
-    if (entities.length <= 0) {
+    if (Object.keys(entity).length <= 0) {
       return <Spin spinning={fetching} size="large" />;
     }
 
@@ -61,10 +59,10 @@ class Confirmation extends Component {
             <IntlMessages id="order.confirm.title" />
           </Title>
           <IntlMessages id="order.confirm.notice" />
-          <UserData userData={entities.user_data} />
+          <UserData userData={entity.user_data} />
           <Gift />
-          <Delivery deliveryData={entities.delivery} />
-          <BillDetails billDetails={entities.bill_detail} />
+          <Delivery deliveryData={entity.delivery} />
+          <BillDetails billDetails={entity.bill_detail} />
           <BillFooter />
         </ContentLayout>
       </ContentAreaLayout>
@@ -73,7 +71,7 @@ class Confirmation extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.Order.List.toJS();
+  return state.Order.Entity.toJS();
 };
 
 const actionCreators = {

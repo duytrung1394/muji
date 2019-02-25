@@ -13,7 +13,6 @@ const BillContents = styled.div`
 
 const BillDetail = ({ billDetails, billingSummary }) => {
   if (billDetails && billingSummary) {
-    console.log(billingSummary);
     return (
       <BillContents>
         <BillItems

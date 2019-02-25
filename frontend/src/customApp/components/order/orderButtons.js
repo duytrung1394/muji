@@ -4,7 +4,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import CommonButton from "./commonButton";
 import { Link } from "react-router-dom";
 
-const BillButtons = styled.div`
+const OrderButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
 `;
@@ -19,21 +19,19 @@ const BackOrderConfirmButton = styled(CommonButton)`
   color: #fff;
 `;
 
-const BillFooter = () => {
+const OrderButtons = ({ submit }) => {
   return (
-    <BillButtons>
+    <OrderButtonContainer>
       <Link to="#">
         <BackButton>
           <IntlMessages id="order.procedure.backPage" />
         </BackButton>
       </Link>
-      <Link to="/store/order/confirmation">
-        <BackOrderConfirmButton>
-          <IntlMessages id="order.procedure.backOrderConfirm" />
-        </BackOrderConfirmButton>
-      </Link>
-    </BillButtons>
+      <BackOrderConfirmButton onClick={submit}>
+        <IntlMessages id="order.procedure.backOrderConfirm" />
+      </BackOrderConfirmButton>
+    </OrderButtonContainer>
   );
 };
 
-export default BillFooter;
+export default OrderButtons;

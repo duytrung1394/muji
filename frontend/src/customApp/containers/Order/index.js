@@ -11,7 +11,7 @@ import { injectIntl } from "react-intl";
 import Delivery from "../../components/order/delivery";
 import Gift from "../../components/order/gift";
 import OrderItemList from "../../components/order/orderItemList";
-import BillFooter from "../../components/order/billFooter";
+import OrderButtons from "../../components/order/orderButtons";
 import BillDetails from "../../components/order/billDetails";
 import Title from "../../components/order/title";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -32,6 +32,18 @@ class Index extends Component {
   componentDidMount() {
     this.props.fetchRequest("");
   }
+
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    if (this.props.savedCart) {
+      this.props.saveCartCleanup();
+      this.props.history.push("/store/order/confirmation");
+    }
+  }
+
+  submit = () => {
+    // TODO: Add API Parameter
+    this.props.saveCartRequest();
+  };
 
   // React.render
   render() {
@@ -60,7 +72,7 @@ class Index extends Component {
             billDetails={entity.bill_detail}
             billingSummary={entity.billing_summary}
           />
-          <BillFooter />
+          <OrderButtons submit={this.submit} />
         </ContentLayout>
       </ContentAreaLayout>
     );
@@ -73,6 +85,8 @@ const mapStateToProps = state => {
 
 const actionCreators = {
   fetchRequest: actions.fetch.request,
+  saveCartRequest: actions.saveCart.request,
+  saveCartCleanup: actions.saveCart.cleanup,
   destroyRequest: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };
