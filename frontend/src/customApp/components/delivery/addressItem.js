@@ -80,7 +80,9 @@ const AddressItem = ({ addressItem }) => {
           return (
             <AddressArea key={index}>
               <Address>
-                <DeleteLink />
+                {index != 0 ? (
+                  <DeleteLink />
+                ) : null}
                 <Name>
                   {item.name}
                   <IntlMessages id="delivery.addressItem.esq" />
@@ -99,9 +101,11 @@ const AddressItem = ({ addressItem }) => {
                   <IntlMessages id="delivery.addressItem.tel" />
                   {item.tel}
                 </Tel>
-                <Note>
+                {index == 0 ? (
+                  <Note>
                   <IntlMessages id="delivery.addressItem.note" />
                 </Note>
+                ) : null}
                 <ChangeButton>
                   <IntlMessages id="delivery.addressItem.change" />
                 </ChangeButton>

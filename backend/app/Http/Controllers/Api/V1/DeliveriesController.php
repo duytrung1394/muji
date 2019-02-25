@@ -95,22 +95,8 @@ class DeliveriesController extends Controller
     private function getMockData()
     {
         return [
-            // 'delivery_code'   => $code,
-            // 'name'        => 'name_' . $code,
-            // 'description' => 'description_' . $code,
-
-            // 'addressBookNo' => $addressBookNo,
-            // 'name' => $addressBookNo === 0 ? "無印　花子" : "良品　計子",
-            // 'name_memo' => $addressBookNo === 0 ? "ムジルシ　リョウタ" : "リョウヒン　ケイコ",
-            // 'zip_code' => "170-8424",
-            // 'address1' => "東京都",
-            // 'address2' => "豊島区",
-            // 'address3' => "東池袋４ー２６ー３",
-            // 'address4' => $addressBookNo === 0 ? "ムジ・ネットビル７Ｆ 無印良品様方" : "無印良品ビル無印良品ビル無印良品ビル１０",
-            // 'tel' => "03-3989-4191",
             'addresses' => [
                 [
-                    // 'addressBookNo' => $addressBookNo,
                     'name' => '無印　花子',
                     'zipCode' => '123-4567',
                     'address1' => '東京都渋谷区宇田川町21-1',
@@ -118,7 +104,6 @@ class DeliveriesController extends Controller
                     'tel' => '01 - 2345 - 6789' 
                 ],
                 [
-                    // 'addressBookNo' => $addressBookNo,
                     'name' => '無印 良太',
                     'zipCode' => '123-4567',
                     'address1' => '東京都豊島区南池袋1-28-1',
@@ -126,7 +111,20 @@ class DeliveriesController extends Controller
                     'tel' => '01 - 2345 - 6789'
                 ],
                 [
-                    // 'addressBookNo' => $addressBookNo,
+                    'name' => '無印 計子',
+                    'zipCode' => '123-4567',
+                    'address1' => '東京都千代田区丸の内2-7-2',
+                    'address2' => '丸の内ＪＰタワー3Ｆ',
+                    'tel' => '01 - 2345 - 6789'
+                ],
+                [
+                    'name' => '無印 良太',
+                    'zipCode' => '123-4567',
+                    'address1' => '東京都豊島区南池袋1-28-1',
+                    'address2' => '西武池袋本店別館1～2Ｆ',
+                    'tel' => '01 - 2345 - 6789'
+                ],
+                [
                     'name' => '無印 計子',
                     'zipCode' => '123-4567',
                     'address1' => '東京都千代田区丸の内2-7-2',
