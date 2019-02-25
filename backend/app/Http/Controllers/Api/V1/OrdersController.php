@@ -79,30 +79,31 @@ class OrdersController extends Controller
     private function getMockData()
     {
         return [
-            // 'order_code'   => $code,
-            // 'name'        => 'name_' . $code,
-            // 'description' => 'description_' . $code,
-            'user_data' => [
-                'addressee_name' => '無印　花子',
-                'street_address' => '123 - 4567',
-                'address' => '東京都渋谷区1-2-3',
-                'phone_number' => '01 - 2345 - 6789',
-                'orderer_name' => '無印　花子',
-            ],
-            'gift' => [
-                'gift_flg' => true,
-                'wapping_state' => '指定なし',
-                'message_state' => '指定なし',
-                'packTogether' => 'まとめて包装する',
-                'packIndividual' => '個々に包装する',
-            ],
             'delivery' => [
-                'count' => '1',
-                'category' => '小物',
+                'name' => '無印　花子',
+                'address' => [
+                    'addressee_name' => '無印　花子',
+                    'street_address' => '123 - 4567',
+                    'address' => '東京都渋谷区1-2-3',
+                    'phone_number' => '01 - 2345 - 6789',
+                    'orderer_name' => '無印　花子',
+                ],
+                'gift' => [
+                    'gift_flg' => true,
+                    'wapping_state' => '指定なし',
+                    'message_state' => '指定なし',
+                    'packTogether' => 'まとめて包装する',
+                    'packIndividual' => '個々に包装する',
+                ],
+                'deliveryCount' => '1',
+                'deliveryDivision' => '小物',
                 'year' => '2019',
                 'month' => '10',
                 'day' => '30',
                 'day_of_the_week' => '火',
+            ],
+            'order' => [
+                'total' => 2,
                 'items' => [
                     [
                         'type' => 'カットソー',

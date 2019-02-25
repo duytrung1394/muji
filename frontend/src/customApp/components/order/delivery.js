@@ -1,103 +1,102 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import OrderItem from "./orderItem";
 import CommonButton from "./commonButton";
 
-const DeliveryWrapper = styled.div`
-  padding: 0 16px 16px 16px;
+const UserInformation = styled.div`
+  padding: 16px;
+  margin-top: 20px;
   background-color: #f2f2f2;
+  display: flex;
+  color: rgb(88, 88, 88);
+  & div:nth-child(1) {
+    margin-right: 16px;
+  }
 `;
 
-const DeliveryStyle = styled.div`
-  padding: 16px;
+const DataDiv = styled.div`
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
-`;
-
-const DeliveryDiv = styled.div`
+  flex: 1;
+  width: 300px;
   position: relative;
+  &&& {
+    padding: 16px;
+  }
 `;
 
-const DeliveryInfo = styled.h1`
-  display: inline-block;
+const UserInfomationTitles = styled.h1`
   font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
   color: rgb(88, 88, 88);
 `;
 
-const TitleSpan = styled.span`
-  margin-left: 20px;
-`;
-
-const DeliverySchedule = styled.div`
+const UserName = styled.h2`
   font-size: 13px;
-  margin: 12px 0 30px 0;
 `;
 
-const OrderItems = styled.div`
-  margin-top: 30px;
+const DataItem = styled.li`
+  font-size: 13px;
+  margin-bottom: 4px;
 `;
 
-const OrderItemList = styled.ul`
-  list-style: none;
+const DataList = styled.ul`
+  font-size: 13px;
   padding: 0;
   margin: 0;
+  list-style: none;
 `;
 
-const FixDateButton = styled(CommonButton)`
+const ChangeButton = styled(CommonButton)`
   position: absolute;
   font-size: 12px;
   bottom: 12px;
   right: 12px;
-  width: 144px;
+  width: 100px;
 `;
 
-const Delivery = ({ deliveryData }) => {
-  if (deliveryData) {
-    return (
-      <DeliveryWrapper>
-        <DeliveryStyle>
-          <DeliveryDiv>
-            <DeliveryInfo>
-              <IntlMessages id="order.confirm.deliveryService" />
-              <span>{deliveryData.count}</span>
-              <TitleSpan>
-                <IntlMessages id="order.confirm.deliveryCategory" />
-                <span>{deliveryData.category}</span>
-              </TitleSpan>
-            </DeliveryInfo>
-            <DeliverySchedule>
-              <IntlMessages id="order.procedure.deliverySchedule" />
-              <span>{deliveryData.year}</span>
-              <IntlMessages id="order.procedure.year" />
-              <span>{deliveryData.month}</span>
-              <IntlMessages id="order.procedure.month" />
-              <span>{deliveryData.day}</span>
-              <IntlMessages id="order.procedure.day" />
-              <IntlMessages id="order.procedure.leftBracket" />
-              <span>{deliveryData.day_of_the_week}</span>
-              <IntlMessages id="order.procedure.rightBracket" />
-              <IntlMessages id="order.procedure.regular_delivery" />
-            </DeliverySchedule>
-            <FixDateButton>
-              <IntlMessages id="order.procedure.specifyDate" />
-            </FixDateButton>
-          </DeliveryDiv>
-          <OrderItems>
-            <OrderItemList>
-              {deliveryData.items &&
-                deliveryData.items.map((item, index) => {
-                  return <OrderItem item={item} key={index} />;
-                })}
-            </OrderItemList>
-          </OrderItems>
-        </DeliveryStyle>
-      </DeliveryWrapper>
-    );
-  }
-  return null;
+const UserData = ({ delivery }) => {
+  const { address } = delivery;
+  return (
+    <UserInformation>
+      <DataDiv>
+        <UserInfomationTitles>
+          <IntlMessages id="order.confirm.addressee" />
+        </UserInfomationTitles>
+        <UserName>
+          {address.addressee_name}
+          <IntlMessages id="order.confirm.esq" />
+        </UserName>
+        <DataList>
+          <DataItem>
+            <IntlMessages id="order.confirm.postMark" />
+            {address.street_address}
+          </DataItem>
+          <DataItem>{address.address}</DataItem>
+          <DataItem>
+            <IntlMessages id="order.confirm.telephone" />
+            {address.phone_number}
+          </DataItem>
+        </DataList>
+        <ChangeButton>
+          <IntlMessages id="order.procedure.change" />
+        </ChangeButton>
+      </DataDiv>
+      <DataDiv>
+        <UserInfomationTitles>
+          <IntlMessages id="order.confirm.orderData" />
+        </UserInfomationTitles>
+        <UserName>
+          {delivery.name}
+          <IntlMessages id="order.confirm.esq" />
+        </UserName>
+        <ChangeButton>
+          <IntlMessages id="order.procedure.change" />
+        </ChangeButton>
+      </DataDiv>
+    </UserInformation>
+  );
 };
 
-export default Delivery;
+export default UserData;

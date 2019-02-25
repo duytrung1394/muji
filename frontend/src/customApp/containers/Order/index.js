@@ -8,9 +8,9 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import actions from "../../redux/order/entity/actions";
 import { injectIntl } from "react-intl";
-import UserData from "../../components/order/userData";
-import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
+import Gift from "../../components/order/gift";
+import OrderItemList from "../../components/order/orderItemList";
 import BillFooter from "../../components/order/billFooter";
 import BillDetails from "../../components/order/billDetails";
 import Title from "../../components/order/title";
@@ -53,9 +53,9 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.procedure.title" />} />
-          <UserData userData={entity.user_data} />
-          <Gift giftData={entity.gift} />
-          <Delivery deliveryData={entity.delivery} />
+          <Delivery delivery={entity.delivery} />
+          <Gift giftData={entity.delivery.gift} />
+          <OrderItemList order={entity.order} delivery={entity.delivery} />
           <BillDetails
             billDetails={entity.bill_detail}
             billingSummary={entity.billing_summary}
