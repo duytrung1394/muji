@@ -13,18 +13,11 @@ import Gift from "../../components/order/gift";
 import Delivery from "../../components/order/delivery";
 import BillFooter from "../../components/order/billFooter";
 import BillDetails from "../../components/order/billDetails";
+import Title from "../../components/order/title";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
-`;
-
-const Title = styled.h1`
-  line-height: 19px;
-  width: 100%;
-  color: rgb(0, 0, 0);
-  font-size: 19px;
-  letter-spacing: 0.25px;
 `;
 
 class Index extends Component {
@@ -59,9 +52,7 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Title>
-            <IntlMessages id="order.procedure.title" />
-          </Title>
+          <Title title={<IntlMessages id="order.procedure.title" />} />
           <UserData userData={entity.user_data} />
           <Gift giftData={entity.gift} />
           <Delivery deliveryData={entity.delivery} />
