@@ -247,7 +247,7 @@ const routes = [
     path: "/store/delivery/list",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/Delivery/index")
+      require("./customApp/containers/Delivery/list")
     )
   }
 ];
