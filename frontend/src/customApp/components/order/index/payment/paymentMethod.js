@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
-import visaImage from "../../../image/order/order_procedure/img-confirm-visa.png";
-import CommonButton from "./commonButton";
+import IntlMessages from "../../../../../components/utility/intlMessages";
+import visaImage from "../../../../../image/order/order_procedure/img-confirm-visa.png";
+import CommonButton from "../../commonButton";
 
 const PaymentTitles = styled.h2`
   display: inline-block;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
-import CommonButton from "./commonButton";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import CommonButton from "../commonButton";
 import { Link } from "react-router-dom";
 
 const OrderButtonContainer = styled.div`
@@ -13,13 +13,14 @@ const BackButton = styled(CommonButton)`
   font-size: 12px;
 `;
 
-const BackOrderConfirmButton = styled(CommonButton)`
+const SubmitButton = styled(CommonButton)`
   font-size: 12px;
   background-color: #7f0019;
   color: #fff;
 `;
 
 const OrderButtons = ({ submit, backPath }) => {
+  const { title, handleSubmit } = submit;
   return (
     <OrderButtonContainer>
       <Link to={backPath}>
@@ -27,9 +28,7 @@ const OrderButtons = ({ submit, backPath }) => {
           <IntlMessages id="order.procedure.backPage" />
         </BackButton>
       </Link>
-      <BackOrderConfirmButton onClick={submit}>
-        <IntlMessages id="order.procedure.backOrderConfirm" />
-      </BackOrderConfirmButton>
+      <SubmitButton onClick={handleSubmit}>{title}</SubmitButton>
     </OrderButtonContainer>
   );
 };

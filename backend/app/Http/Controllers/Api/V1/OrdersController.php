@@ -13,8 +13,31 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMockData(),
-            'total' => 200,
+            'data'  => $this->getMockData()
+        ];
+    }
+
+    /**
+     * カートの保存(注文)
+     *
+     * @return Response
+     */
+    public function saveShoppingCart(Request $request)
+    {
+        return [
+            'orderCode' => "1234567890",
+        ];
+    }
+
+    /**
+     * 注文の確認
+     *
+     * @return Response
+     */
+    public function confirm(Request $request)
+    {
+        return [
+            'data'  => $this->getMockConfirmationData()
         ];
     }
 
@@ -83,10 +106,13 @@ class OrdersController extends Controller
                 'name' => '無印　花子',
                 'address' => [
                     'addressee_name' => '無印　花子',
-                    'street_address' => '123 - 4567',
-                    'address' => '東京都渋谷区1-2-3',
-                    'phone_number' => '01 - 2345 - 6789',
-                    'orderer_name' => '無印　花子',
+                    'zipCode' => '123 - 4567',
+                    'address1' => '東京都',
+                    'address2' => '渋谷区',
+                    'address3' => '1-2-3',
+                    'address4' => '',
+                    'telNo' => '01 - 2345 - 6789',
+                    'name' => '無印　花子',
                 ],
                 'gift' => [
                     'gift_flg' => true,
@@ -102,7 +128,7 @@ class OrdersController extends Controller
                 'day' => '30',
                 'day_of_the_week' => '火',
             ],
-            'order' => [
+            'orders' => [
                 'total' => 2,
                 'items' => [
                     [
@@ -128,21 +154,21 @@ class OrdersController extends Controller
                     ],
                 ]
             ],
-            'bill_detail' => [
+            'paymentDetails' => [
                 'points' => [
                     'possessions' => '3000',
-                    'input_flg' => true
+                    'inputFlg' => true
                 ],
                 'coins' => [
                     'possessions' => '3000',
-                    'input_flg' => true
+                    'inputFlg' => true
                 ],
                 'account' => [
                     'possessions' => '3000',
-                    'input_flg' => false
+                    'inputFlg' => false
                 ]
             ],
-            'billing_summary' => [
+            'paymentSummary' => [
                 'products_subtotal' => '7,960',
                 'incidental_service' => '0',
                 'delivery_fee' => '980',
@@ -381,14 +407,13 @@ class OrdersController extends Controller
     }
 
     /**
-     * カートの保存(注文)
-     *
+     * 注文手続き確認データ取得
+     * 注文手続き入力時と同じものをMockとして使用
+     *　
      * @return Response
      */
-    public function saveShoppingCart(Request $request)
+    private function getMockConfirmationData()
     {
-        return [
-            'orderCode' => "1234567890",
-        ];
+        return $this->getMockData();
     }
 }

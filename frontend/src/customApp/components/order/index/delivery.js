@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
-import CommonButton from "./commonButton";
+import IntlMessages from "../../../../components/utility/intlMessages";
+import CommonButton from "../commonButton";
 
-const UserInformation = styled.div`
+const DeliveryInformation = styled.div`
   padding: 16px;
   margin-top: 20px;
   background-color: #f2f2f2;
@@ -25,14 +25,14 @@ const DataDiv = styled.div`
   }
 `;
 
-const UserInfomationTitles = styled.h1`
+const DeliveryInfomationTitles = styled.h1`
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 20px;
   color: rgb(88, 88, 88);
 `;
 
-const UserName = styled.h2`
+const Name = styled.h2`
   font-size: 13px;
 `;
 
@@ -56,47 +56,56 @@ const ChangeButton = styled(CommonButton)`
   width: 100px;
 `;
 
-const UserData = ({ delivery }) => {
+const Delivery = ({ delivery, unable }) => {
   const { address } = delivery;
   return (
-    <UserInformation>
+    <DeliveryInformation>
       <DataDiv>
-        <UserInfomationTitles>
+        <DeliveryInfomationTitles>
           <IntlMessages id="order.confirm.addressee" />
-        </UserInfomationTitles>
-        <UserName>
-          {address.addressee_name}
+        </DeliveryInfomationTitles>
+        <Name>
+          {address.name}
           <IntlMessages id="order.confirm.esq" />
-        </UserName>
+        </Name>
         <DataList>
           <DataItem>
             <IntlMessages id="order.confirm.postMark" />
-            {address.street_address}
+            {address.zipCode}
           </DataItem>
-          <DataItem>{address.address}</DataItem>
+          <DataItem>
+            {address.address1 +
+              address.address2 +
+              address.address3 +
+              address.address4}
+          </DataItem>
           <DataItem>
             <IntlMessages id="order.confirm.telephone" />
-            {address.phone_number}
+            {address.telNo}
           </DataItem>
         </DataList>
-        <ChangeButton>
-          <IntlMessages id="order.procedure.change" />
-        </ChangeButton>
+        {!unable && (
+          <ChangeButton>
+            <IntlMessages id="order.procedure.change" />
+          </ChangeButton>
+        )}
       </DataDiv>
       <DataDiv>
-        <UserInfomationTitles>
+        <DeliveryInfomationTitles>
           <IntlMessages id="order.confirm.orderData" />
-        </UserInfomationTitles>
-        <UserName>
+        </DeliveryInfomationTitles>
+        <Name>
           {delivery.name}
           <IntlMessages id="order.confirm.esq" />
-        </UserName>
-        <ChangeButton>
-          <IntlMessages id="order.procedure.change" />
-        </ChangeButton>
+        </Name>
+        {!unable && (
+          <ChangeButton>
+            <IntlMessages id="order.procedure.change" />
+          </ChangeButton>
+        )}
       </DataDiv>
-    </UserInformation>
+    </DeliveryInformation>
   );
 };
 
-export default UserData;
+export default Delivery;

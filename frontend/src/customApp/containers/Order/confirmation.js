@@ -9,11 +9,12 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import UserData from "../../components/order/confirm/userData";
-import Gift from "../../components/order/confirm/gift";
-import Delivery from "../../components/order/confirm/delivery";
-import OrderButtons from "../../components/order/orderButtons";
-import BillDetails from "../../components/order/confirm/billDetails";
+import Delivery from "../../components/order/index/delivery";
+import Gift from "../../components/order/index/gift";
+import ContentsBox from "../../components/order/index/contentsBox";
+import OrderItemList from "../../components/order/index/orderItemList";
+import OrderButtons from "../../components/order/index/orderButtons";
+import PaymentDetails from "../../components/order/index/payment/paymentDetails";
 import Title from "../../components/order/title";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -26,20 +27,13 @@ class Confirmation extends Component {
       // reload
       this.props.history.push(this.getBackPath());
     }
+    this.props.confirmOrderRequest("");
   }
 
   getBackPath = () => `/store/order/index`;
 
   submit = () => {
     // TODO: API Request
-  };
-
-  fetchRequest = props => {
-    // ページングもケースバイケースなのでコンポーネント毎に実装する
-    props.fetchRequest({
-      page: 1,
-      filters: JSON.stringify(props.filters || [])
-    });
   };
 
   render() {
@@ -49,16 +43,29 @@ class Confirmation extends Component {
       return <Spin spinning={fetching} size="large" />;
     }
 
+    const submitInfo = {
+      title: <IntlMessages id="order.confirm.orderEnter" />,
+      handleSubmit: this.submit
+    };
+
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.confirm.title" />} />
           <IntlMessages id="order.confirm.notice" />
-          <UserData userData={entity.user_data} />
-          <Gift />
-          <Delivery deliveryData={entity.delivery} />
-          <BillDetails billDetails={entity.bill_detail} />
-          <OrderButtons submit={this.submit} backPath={this.getBackPath()}/>
+          <Delivery delivery={entity.delivery} unable={true} />
+          <ContentsBox>
+            <Gift giftData={entity.delivery.gift} unable={true} />
+            <OrderItemList
+              orders={entity.orders}
+              delivery={entity.delivery}
+              unable={true}
+            />
+          </ContentsBox>
+          <ContentsBox>
+            <PaymentDetails entity={entity} />
+          </ContentsBox>
+          <OrderButtons submit={submitInfo} backPath={this.getBackPath()} />
         </ContentLayout>
       </ContentAreaLayout>
     );
@@ -70,7 +77,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
+  confirmOrderRequest: actions.confirmOrder.request,
   destroy: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

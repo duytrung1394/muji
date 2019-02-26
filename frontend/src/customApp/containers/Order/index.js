@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Spin } from "antd";
@@ -8,11 +8,12 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import actions from "../../redux/order/entity/actions";
 import { injectIntl } from "react-intl";
-import Delivery from "../../components/order/delivery";
-import Gift from "../../components/order/gift";
-import OrderItemList from "../../components/order/orderItemList";
-import OrderButtons from "../../components/order/orderButtons";
-import BillDetails from "../../components/order/billDetails";
+import Delivery from "../../components/order/index/delivery";
+import Gift from "../../components/order/index/gift";
+import ContentsBox from "../../components/order/index/contentsBox";
+import OrderItemList from "../../components/order/index/orderItemList";
+import OrderButtons from "../../components/order/index/orderButtons";
+import PaymentDetails from "../../components/order/index/payment/paymentDetails";
 import Title from "../../components/order/title";
 import IntlMessages from "../../../components/utility/intlMessages";
 
@@ -24,7 +25,24 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeys: []
+      selectedKeys: [],
+      paymentOptions: {
+        shoppingPoints: {
+          value: 1,
+          disableFlg: true,
+          inputRef: createRef()
+        },
+        coins: {
+          value: 1,
+          disableFlg: true,
+          inputRef: createRef()
+        },
+        partnerSales: {
+          value: 1,
+          disableFlg: true,
+          inputRef: createRef()
+        }
+      }
     };
   }
 
@@ -40,8 +58,32 @@ class Index extends Component {
     }
   }
 
+  onChangePaymentOption = e => {
+    let paymentOptions = this.state.paymentOptions;
+    paymentOptions[e.target.name].value = e.target.value;
+    this.setState({
+      paymentOptions: paymentOptions
+    });
+  };
+
+  resetPaymentOptionValue = (optionKey, resetFlg) => {
+    if (resetFlg) {
+      this.state.paymentOptions[optionKey].inputRef.current.input.value = "";
+    }
+  };
+
+  changeFlg = (optionKey, resetFlg) => {
+    let paymentOptions = this.state.paymentOptions;
+    paymentOptions[optionKey].disableFlg = !paymentOptions[optionKey]
+      .disableFlg;
+    this.setState({
+      paymentOptions: paymentOptions
+    });
+    this.resetPaymentOptionValue(optionKey, resetFlg);
+  };
+
   submit = () => {
-    // TODO: Add API Parameter
+    // TODO: Add saveShoppingCart API Parameter
     this.props.saveCartRequest();
   };
 
@@ -60,18 +102,32 @@ class Index extends Component {
       return <Spin spinning={fetching} size="large" />;
     }
 
+    const submitInfo = {
+      title: <IntlMessages id="order.procedure.orderConfirm" />,
+      handleSubmit: this.submit
+    };
+
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.procedure.title" />} />
           <Delivery delivery={entity.delivery} />
-          <Gift giftData={entity.delivery.gift} />
-          <OrderItemList order={entity.order} delivery={entity.delivery} />
-          <BillDetails
-            billDetails={entity.bill_detail}
-            billingSummary={entity.billing_summary}
-          />
-          <OrderButtons submit={this.submit} backPath={"#"}/>
+          <ContentsBox>
+            <Gift giftData={entity.delivery.gift} />
+            <OrderItemList orders={entity.orders} delivery={entity.delivery} />
+          </ContentsBox>
+          <ContentsBox>
+            <PaymentDetails
+              entity={entity}
+              paymentOptions={this.state.paymentOptions}
+              optionHandler={{
+                onChange: this.onChangePaymentOption,
+                resetValue: this.resetPaymentOptionValue,
+                changeFlg: this.changeFlg
+              }}
+            />
+          </ContentsBox>
+          <OrderButtons submit={submitInfo} backPath={"#"} />
         </ContentLayout>
       </ContentAreaLayout>
     );
