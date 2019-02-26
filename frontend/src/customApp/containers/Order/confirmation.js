@@ -12,19 +12,12 @@ import {
 import UserData from "../../components/order/confirm/userData";
 import Gift from "../../components/order/confirm/gift";
 import Delivery from "../../components/order/confirm/delivery";
-import BillFooter from "../../components/order/confirm/billFooter";
+import OrderButtons from "../../components/order/orderButtons";
 import BillDetails from "../../components/order/confirm/billDetails";
+import Title from "../../components/order/title";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
-`;
-
-const Title = styled.h1`
-  line-height: 19px;
-  width: 100%;
-  color: rgb(0, 0, 0);
-  font-size: 19px;
-  letter-spacing: 0.25px;
 `;
 
 class Confirmation extends Component {
@@ -36,6 +29,10 @@ class Confirmation extends Component {
   }
 
   getBackPath = () => `/store/order/index`;
+
+  submit = () => {
+    // TODO: API Request
+  };
 
   fetchRequest = props => {
     // ページングもケースバイケースなのでコンポーネント毎に実装する
@@ -55,15 +52,13 @@ class Confirmation extends Component {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-          <Title>
-            <IntlMessages id="order.confirm.title" />
-          </Title>
+          <Title title={<IntlMessages id="order.confirm.title" />} />
           <IntlMessages id="order.confirm.notice" />
           <UserData userData={entity.user_data} />
           <Gift />
           <Delivery deliveryData={entity.delivery} />
           <BillDetails billDetails={entity.bill_detail} />
-          <BillFooter />
+          <OrderButtons submit={this.submit} backPath={this.getBackPath()}/>
         </ContentLayout>
       </ContentAreaLayout>
     );

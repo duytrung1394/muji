@@ -19,10 +19,10 @@ const BackOrderConfirmButton = styled(CommonButton)`
   color: #fff;
 `;
 
-const OrderButtons = ({ submit }) => {
+const OrderButtons = ({ submit, backPath }) => {
   return (
     <OrderButtonContainer>
-      <Link to="#">
+      <Link to={backPath}>
         <BackButton>
           <IntlMessages id="order.procedure.backPage" />
         </BackButton>

@@ -49,7 +49,6 @@ class Index extends Component {
   render() {
     const {
       // types
-      total,
       entity,
       fetching,
       destroying,
@@ -72,7 +71,7 @@ class Index extends Component {
             billDetails={entity.bill_detail}
             billingSummary={entity.billing_summary}
           />
-          <OrderButtons submit={this.submit} />
+          <OrderButtons submit={this.submit} backPath={"#"}/>
         </ContentLayout>
       </ContentAreaLayout>
     );
