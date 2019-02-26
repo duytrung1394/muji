@@ -18,6 +18,7 @@ else
     export DIS_SSL=
 fi
 
+rm -rf /etc/nginx/conf.d/default.conf
 envsubst '$$HOST $$EN_SSL $$DIS_SSL $$DIS_BASIC' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
 nginx -g 'daemon off;'
