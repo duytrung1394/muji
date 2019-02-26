@@ -58,7 +58,9 @@ module.exports = shipit => {
       }
     }
 
-    await dc('build')
+    await dc('build backend')
+    await dc('build frontend')
+    await dc('build nginx')
 
     console.log('backend 環境整備開始')
     await runComposeCommands([
