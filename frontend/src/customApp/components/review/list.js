@@ -8,12 +8,14 @@ const ListWrapper = styled.div`
 `;
 
 const List = ({ entities }) => {
-  const { reviews } = entities;
+  const { itemDetail } = entities;
   return (
     <ListWrapper>
-      {reviews &&
-        reviews.map((review, index) => {
-          return <Review key={index} review={review} imageIndex={index} />;
+      {itemDetail &&
+        itemDetail.map((itemDetail, index) => {
+          return (
+            <Review key={index} itemDetail={itemDetail} imageIndex={index} />
+          );
         })}
     </ListWrapper>
   );

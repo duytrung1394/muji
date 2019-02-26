@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../redux/review/list/actions";
 import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
 import {
   ContentAreaLayout,
@@ -53,7 +52,7 @@ class History extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title />
-          <ListToolbar ToolbarItems={entities.total_review_count} />
+          <ListToolbar totalReviewCount={entities.totalReviewCount} />
           <List entities={entities} />
         </ContentLayout>
       </ContentAreaLayout>

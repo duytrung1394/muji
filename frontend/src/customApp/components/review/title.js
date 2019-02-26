@@ -15,14 +15,3 @@ const Title = () => {
 };
 
 export default Title;
-
-// const Title = ({ titles }) => {
-//   return (
-//     <div>
-//       {titles &&
-//         titles.map((title) => {
-//             <TitleArea>{title}</TitleArea>
-//         }
-//     </div>
-//   );
-// };

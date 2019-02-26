@@ -16,11 +16,6 @@ const itemImages = [imgReview1, imgReview5];
 
 const imagesUrl = [imgReview2, imgReview3, imgReview4];
 
-const ReviewWrapperWrapper = styled.div`
-  background-color: rgb(242, 242, 242);
-  padding: 16px;
-`;
-
 const ReviewWrapper = styled.div`
   background-color: rgb(255, 255, 255);
   padding: 15px;
@@ -34,7 +29,7 @@ const ItemArea = styled.div`
   padding: 10px 14px;
 `;
 
-const Img = styled.div`
+const ItemImg = styled.div`
   display: inline-block;
   img {
     width: 90px;
@@ -42,17 +37,17 @@ const Img = styled.div`
   }
 `;
 
-const Info = styled.div`
+const ItemInfo = styled.div`
   display: inline-block;
   margin-left: 10px;
 `;
 
-const Type = styled.span`
+const MaterialName = styled.span`
   font-size: 11px;
   color: rgb(153, 153, 153);
 `;
 
-const Name = styled.p`
+const ItemName = styled.p`
   font-size: 13px;
   color: rgb(88, 88, 88);
 `;
@@ -68,7 +63,7 @@ const ReviewInfoArea = styled.ul`
   margin-bottom: 0;
 `;
 
-const Title = styled.li`
+const ReviewTitle = styled.li`
   font-size: 15px;
 `;
 
@@ -90,7 +85,7 @@ const StarCounter = styled.li`
   margin-top: 9px;
 `;
 
-const BuyerInfo = styled.li`
+const WearInfo = styled.li`
   font-size: 12px;
   margin-top: 15px;
 `;
@@ -105,13 +100,13 @@ const Height = styled.span`
   margin-left: 20px;
 `;
 
-const ReviewTitle = styled.li`
+const Title = styled.li`
   font-size: 12px;
   color: rgb(0, 0, 0);
   margin: 15px 0;
 `;
 
-const ReviewText = styled.li`
+const Description = styled.li`
   font-size: 11px;
   margin-bottom: 10px;
 `;
@@ -181,50 +176,48 @@ const DeleteReview = styled.a`
   }
 `;
 
-const Review = ({ review, imageIndex }) => {
-  if (review) {
-    console.log(review);
+const Review = ({ itemDetail, imageIndex }) => {
+  if (itemDetail) {
     return (
-      // <ReviewWrapperWrapper>
       <ReviewWrapper>
         <Fragment>
           <ItemArea>
-            <Img span={4}>
+            <ItemImg span={4}>
               <img src={itemImages[imageIndex]} />
-            </Img>
-            <Info span={20}>
-              <Type>{review.type}</Type>
-              <Name>{review.name}</Name>
-            </Info>
+            </ItemImg>
+            <ItemInfo span={20}>
+              <MaterialName>{itemDetail.materialName}</MaterialName>
+              <ItemName>{itemDetail.itemName}</ItemName>
+            </ItemInfo>
           </ItemArea>
           <ReviewInfoWrapper>
             <ReviewInfoArea>
-              <Title>
+              <ReviewTitle>
                 <IntlMessages id="review.reviewTitle" />
-              </Title>
-              <RateStar disabled defaultValue={review.evaluation_count} />
-              <PostedDate>{review.date}</PostedDate>
+              </ReviewTitle>
+              <RateStar disabled defaultValue={itemDetail.evaluationCount} />
+              <PostedDate>{itemDetail.date}</PostedDate>
               <StarCounter>
                 <IntlMessages id="review.fiveStarsEvaluation" />
-                {review.evaluation_count}
+                {itemDetail.evaluationCount}
               </StarCounter>
-              {review.buyerInfo.size && review.buyerInfo.height ? (
-                <BuyerInfo>
+              {itemDetail.wearInfo.size && itemDetail.wearInfo.height ? (
+                <WearInfo>
                   <PurchaseSize>
                     <IntlMessages id="review.purchaseSize" />
-                    <Span>{review.buyerInfo.size}</Span>
+                    <Span>{itemDetail.wearInfo.size}</Span>
                   </PurchaseSize>
                   <Height>
                     <IntlMessages id="review.height" />
-                    <Span>{review.buyerInfo.height}</Span>
+                    <Span>{itemDetail.wearInfo.height}</Span>
                     <IntlMessages id="review.cm" />
                   </Height>
-                </BuyerInfo>
+                </WearInfo>
               ) : null}
-              <ReviewTitle>{review.review_title}</ReviewTitle>
-              <ReviewText>{review.review_comment}</ReviewText>
-              {review.images &&
-                review.images.map((image, index) => {
+              <Title>{itemDetail.webCatalogTitle}</Title>
+              <Description>{itemDetail.webCatalogDescription}</Description>
+              {itemDetail.images &&
+                itemDetail.images.map((image, index) => {
                   return (
                     <ReviewImagesArea key={index}>
                       <ReviewImages>
@@ -238,16 +231,16 @@ const Review = ({ review, imageIndex }) => {
                   <CommentLink to={"#"}>
                     <CommentIcon src={commentIcon} />
                     <StyledSpan>
-                      {review.total_comment}
-                      <IntlMessages id="review.commentCount" />
+                      {itemDetail.totalComment}
+                      <IntlMessages id="review.totalComment" />
                     </StyledSpan>
                   </CommentLink>
                 </CommentCount>
                 <UsefulCount>
                   <GoodIcon src={goodIcon} />
                   <StyledSpan>
-                    {review.total_useful}
-                    <IntlMessages id="review.usefulCount" />
+                    {itemDetail.totalUseful}
+                    <IntlMessages id="review.totalUseful" />
                   </StyledSpan>
                 </UsefulCount>
               </CountArea>
@@ -268,7 +261,6 @@ const Review = ({ review, imageIndex }) => {
           </ReviewInfoWrapper>
         </Fragment>
       </ReviewWrapper>
-      // </ReviewWrapperWrapper>
     );
   }
   return null;

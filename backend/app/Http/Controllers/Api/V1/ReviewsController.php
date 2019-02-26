@@ -44,44 +44,92 @@ class ReviewsController extends Controller
     private function getMockData($index = null)
     {
         return [
-            'total_review_count' => '10',
-            'reviews' => [
+            'totalReviewCount' => '10',
+            'itemDetail' => [
                 [
-                    'item_img' => 'img-review-history-07.png',
-                    'type' => 'モダールコットン',
-                    'name' => 'ムースハイネックワンピース',
+                    'janCode' => '4550002674885',
+                    'materialName' => 'モダールコットン',
+                    'itemName' => 'ムースハイネックワンピース',
+                    'itemImg' => 'img-review-history-07.png',
                     'date' => '2018/10/20',
-                    'evaluation_count' => '4',
-                    'buyerInfo' => [
+                    'evaluationCount' => '4',
+                    'wearInfo' => [
                         'size' => 'M',
                         'height' => '165'
                     ],
-                    'review_title' => '思ったより、、',
-                    'review_comment' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
+                    'webCatalogTitle' => '思ったより、、',
+                    'webCatalogDescription' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
                     'images' => [
                         '0',
                         '1',
                         '2'
                     ],
-                    'total_comment' => '0',
-                    'total_useful' => '0',
+                    'totalComment' => '0',
+                    'totalUseful' => '0',
                 ],
                 [
-                    'item_img' => 'img-review-history-06.png',
-                    'type' => '麻綿平織',
-                    'name' => 'ソファ',
+                    'janCode' => '4549738369950',
+                    'materialName' => '麻綿平織',
+                    'itemName' => 'ソファ',
+                    'itemImg' => 'img-review-history-06.png',
                     'date' => '2018/08/15',
-                    'evaluation_count' => '5',
-                    'buyerInfo' => [
+                    'evaluationCount' => '5',
+                    'wearInfo' => [
                         'size' => '',
                         'height' => ''
                     ],
-                    'review_title' => '大変良い',
-                    'review_comment' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
-                    'total_comment' => '0',
-                    'total_useful' => '0',
+                    'webCatalogTitle' => '大変良い',
+                    'webCatalogDescription' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
+                    'totalComment' => '0',
+                    'totalUseful' => '0',
                 ]
             ]
         ];
     }
+    // /**
+    //  * モックデータを生成して取得
+    //  */
+    // private function getMockData($index = null)
+    // {
+    //     return [
+    //         'totalReviewCount' => '10',
+    //         'reviews' => [
+    //             [
+    //                 'itemImg' => 'img-review-history-07.png',
+    //                 'type' => 'モダールコットン',
+    //                 'name' => 'ムースハイネックワンピース',
+    //                 'date' => '2018/10/20',
+    //                 'evaluationCount' => '4',
+    //                 'wearInfo' => [
+    //                     'size' => 'M',
+    //                     'height' => '165'
+    //                 ],
+    //                 'reviewTitle' => '思ったより、、',
+    //                 'reviewComment' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
+    //                 'images' => [
+    //                     '0',
+    //                     '1',
+    //                     '2'
+    //                 ],
+    //                 'totalComment' => '0',
+    //                 'totalUseful' => '0',
+    //             ],
+    //             [
+    //                 'itemImg' => 'img-review-history-06.png',
+    //                 'type' => '麻綿平織',
+    //                 'name' => 'ソファ',
+    //                 'date' => '2018/08/15',
+    //                 'evaluationCount' => '5',
+    //                 'wearInfo' => [
+    //                     'size' => '',
+    //                     'height' => ''
+    //                 ],
+    //                 'reviewTitle' => '大変良い',
+    //                 'reviewComment' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
+    //                 'totalComment' => '0',
+    //                 'totalUseful' => '0',
+    //             ]
+    //         ]
+    //     ];
+    // }
 }

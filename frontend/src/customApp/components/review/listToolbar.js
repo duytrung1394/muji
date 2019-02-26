@@ -31,12 +31,12 @@ const BoldSpan = styled.span`
   }
 `;
 
-const ListToolbar = ({ ToolbarItems }) => {
+const ListToolbar = ({ totalReviewCount }) => {
   return (
     <ListToolbarWrapper>
       <TotalReviewCount>
         <IntlMessages id="review.all" />
-        {ToolbarItems}
+        {totalReviewCount}
         <IntlMessages id="review.matter" />
       </TotalReviewCount>
       <ReviewBreadcrumbArea>
