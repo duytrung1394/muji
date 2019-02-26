@@ -1,16 +1,17 @@
 version: "3.1"
 services:
   nginx: &nginx
-    image: nginx:1.15
+    build: nginx
     restart: always
     volumes:
+      - ./nginx/entrypoint.sh:/entrypoint.sh
       - ./nginx/nginx-template.conf:/etc/nginx/conf.d/default.conf.template
       - ./frontend/build/static:/usr/share/nginx/html/static
       - ./nginx/robots.txt:/usr/share/nginx/html/robots.txt
     ports:
       - "80:80"
       - "443:443"
-    command: /bin/sh -c "envsubst '$$HOST $$EN_SSL $$DIS_SSL $$DIS_BASIC' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    command: "sh /entrypoint.sh"
     env_file:
       - .env
   nginx_local:
