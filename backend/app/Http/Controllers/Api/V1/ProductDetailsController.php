@@ -112,10 +112,10 @@ class ProductDetailsController extends Controller
                     'number' => '1',
                     'price' => '2,980'
                 ],
-                'store_data' => [
+                'prefectures_data' => [
                     [
                         'area' => '東京23区内',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -136,7 +136,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '東京２３区外',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -157,7 +157,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '千葉県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -178,7 +178,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '神奈川県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -199,7 +199,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '山梨県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -220,7 +220,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '長野県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -241,7 +241,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '静岡県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'
@@ -262,7 +262,7 @@ class ProductDetailsController extends Controller
                     ],
                     [
                         'area' => '愛知県',
-                        'store_details' => [
+                        'prefecture_details' => [
                             [
                                 'name' => '新宿',
                                 'stock' => 'あり'

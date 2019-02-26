@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import StockItemImg1 from "../../../../image/product_detail/img-stock-item1.png";
 import { Row, Col } from "antd";
 import { NavLink } from "react-router-dom";
 
-const StockListItem = styled.div`
+const StockItemDetail = styled.div`
   padding: 10px;
   border-top: 1px solid rgb(153, 153, 153);
   border-bottom: 1px solid rgb(153, 153, 153);
@@ -57,9 +57,9 @@ const images = {
   itemImg: StockItemImg1
 };
 
-const StockItem = ({ itemData }) => {
+const ItemDetail = ({ itemData }) => {
   return (
-    <StockListItem>
+    <StockItemDetail>
       <StyledRow>
         <Col span={8}>
           <NavLink to="#" style={linkStyle}>
@@ -90,8 +90,8 @@ const StockItem = ({ itemData }) => {
         <ItemPrice>{itemData.price}</ItemPrice>
         <IntlMessages id="productDetail.yen" />
       </TotalPrice>
-    </StockListItem>
+    </StockItemDetail>
   );
 };
 
-export default StockItem;
+export default ItemDetail;

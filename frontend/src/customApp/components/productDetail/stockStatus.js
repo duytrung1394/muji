@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Modal } from "antd";
 import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
@@ -83,16 +82,6 @@ const ReserveButtonStyle = {
   lineHeight: "1.5"
 };
 
-const StyledModal = styled(Modal)`
-  .ant-modal-header {
-    border-bottom: none;
-  }
-`;
-
-const ModalBodyStyle = {
-  paddingTop: "0px"
-};
-
 class StockStatus extends Component {
   constructor(props) {
     super(props);
@@ -106,12 +95,12 @@ class StockStatus extends Component {
     });
   };
 
-  handleCancel = e => {
-    console.log(e);
+  handleCancel = () => {
     this.setState({
       visible: false
     });
   };
+
   render() {
     const { modal_data, store_stock_list } = this.props.entity;
     return (
@@ -148,16 +137,11 @@ class StockStatus extends Component {
               <IntlMessages id="productDetail.findStoreWithInventory" />
             </StyledButton>
           </FindStore>
-          <StyledModal
-            title="店舗在庫状況"
+          <ItemStockModal
+            modalData={modal_data}
             visible={this.state.visible}
-            footer={null}
-            onCancel={this.handleCancel}
-            width={600}
-            bodyStyle={ModalBodyStyle}
-          >
-            <ItemStockModal modalData={modal_data} />
-          </StyledModal>
+            handleCancel={this.handleCancel}
+          />
         </StoresStock>
       </Base>
     );

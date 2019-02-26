@@ -40,15 +40,13 @@ class Index extends Component {
     });
   };
 
-  handleOk = e => {
-    console.log(e);
+  handleOk = () => {
     this.setState({
       visible: false
     });
   };
 
-  handleCancel = e => {
-    console.log(e);
+  handleCancel = () => {
     this.setState({
       visible: false
     });
@@ -67,7 +65,9 @@ class Index extends Component {
       fetching
     } = this.props;
 
-    console.log(entity);
+    if (Object.keys(entity).length <= 0) {
+      return null;
+    }
 
     return (
       <ContentAreaLayout>

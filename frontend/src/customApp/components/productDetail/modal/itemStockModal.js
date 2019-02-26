@@ -1,12 +1,31 @@
 import React, { Component } from "react";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import StockItem from "./stockItem";
+import { Modal } from "antd";
+import ItemDetail from "./ItemDetail";
 import Notices from "./notices";
-import NearByStore from "./nearByStore";
-import StoreList from "./storeList";
+import StoreSearchByMap from "./storeSearchByMap";
+import StoreSearchByList from "./storeSearchByList";
 import styled from "styled-components";
 
-const StockModal = styled.div`
+const StyledModal = styled(Modal)`
+  height: 90%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  overflow: scroll;
+  .ant-modal-header {
+    border-bottom: none;
+  }
+`;
+
+const ModalBodyStyle = {
+  paddingTop: "0px"
+};
+
+const StockModalContents = styled.div`
   overflow: hidden;
 `;
 
@@ -16,27 +35,27 @@ const ToTop = styled.a`
   font-size: 12px;
 `;
 
-class ItemStockModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false
-    };
-  }
-
-  render() {
-    const { item_data, store_data } = this.props.modalData;
-    return (
-      <StockModal>
-        <StockItem itemData={item_data} />
+const ItemStockModal = props => {
+  const { item_data, prefectures_data } = props.modalData;
+  return (
+    <StyledModal
+      title={<IntlMessages id="productDetail.StoreInventorySituation" />}
+      visible={props.visible}
+      footer={null}
+      onCancel={props.handleCancel}
+      width={600}
+      bodyStyle={ModalBodyStyle}
+    >
+      <StockModalContents>
+        <ItemDetail itemData={item_data} />
         <Notices />
-        <NearByStore />
-        <StoreList storeData={store_data} />
-        <ToTop href="http://localhost:4000/store/cmdty/detail/4550002684822#rcDialogTitle0">
+        <StoreSearchByMap />
+        <StoreSearchByList prefectures={prefectures_data} />
+        <ToTop href="/store/cmdty/detail/4550002684822#rcDialogTitle0">
           <IntlMessages id="productDetail.toTop" />
         </ToTop>
-      </StockModal>
-    );
-  }
-}
+      </StockModalContents>
+    </StyledModal>
+  );
+};
 export default ItemStockModal;

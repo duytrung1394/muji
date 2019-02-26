@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 import { Collapse } from "antd";
 import ListItems from "./listItems";
 
-const StoreLists = styled.div`
+const Prefectures = styled.div`
   margin: 0;
   padding: 0;
   display: flex;
@@ -26,11 +26,11 @@ const ListCol = styled.div`
   }
 `;
 
-const PrefecturalDiv = styled.div`
+const StoreSearchDiv = styled.div`
   padding: 8px 0;
 `;
 
-const PrefecturalTitle = styled.h1`
+const StoreSearchTitle = styled.h3`
   font-size: 15px;
   padding: 8px 0;
 `;
@@ -61,30 +61,33 @@ const StyledPanel = styled(Collapse.Panel)`
   }
 `;
 
-const StoreList = ({ storeData }) => {
+const PrefectureList = ({ prefecture }) => {
   return (
-    <PrefecturalDiv>
-      <PrefecturalTitle>
-        <IntlMessages id="productDetail.searchByPrefectural" />
-      </PrefecturalTitle>
-      <StoreLists>
-        {storeData.map((store, index) => {
-          console.log(store);
-          return (
-            <ListCol key={index}>
-              <StyledCollapse bordered={false}>
-                {
-                  <StyledPanel header={store.area} key={index}>
-                    <ListItems storeData={store.store_details} />
-                  </StyledPanel>
-                }
-              </StyledCollapse>
-            </ListCol>
-          );
-        })}
-      </StoreLists>
-    </PrefecturalDiv>
+    <ListCol>
+      <StyledCollapse bordered={false}>
+        {
+          <StyledPanel header={prefecture.area}>
+            <ListItems prefectureDetails={prefecture.prefecture_details} />
+          </StyledPanel>
+        }
+      </StyledCollapse>
+    </ListCol>
   );
 };
 
-export default StoreList;
+const StoreSearchByList = ({ prefectures }) => {
+  return (
+    <StoreSearchDiv>
+      <StoreSearchTitle>
+        <IntlMessages id="productDetail.searchByPrefectural" />
+      </StoreSearchTitle>
+      <Prefectures>
+        {prefectures.map((prefecture, index) => {
+          return <PrefectureList prefecture={prefecture} key={index} />;
+        })}
+      </Prefectures>
+    </StoreSearchDiv>
+  );
+};
+
+export default StoreSearchByList;

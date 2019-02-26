@@ -20,10 +20,10 @@ const StoreDetailData = styled.span`
   width: 50%;
 `;
 
-const ListItem = ({ storeData }) => {
+const ListItems = ({ prefectureDetails }) => {
   return (
     <Fragment>
-      {storeData.map((stock, index) => {
+      {prefectureDetails.map((stock, index) => {
         return (
           <li key={index}>
             <StoreLink>
@@ -37,4 +37,4 @@ const ListItem = ({ storeData }) => {
   );
 };
 
-export default ListItem;
+export default ListItems;
