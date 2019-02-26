@@ -4613,6 +4613,10 @@ yeoman-generator@^2.0.1:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
+yesno@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/yesno/-/yesno-0.2.0.tgz#acc6c6b57b5ef88279a83cd394be9dc5d2317b7a"
+
 yo@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/yo/-/yo-2.0.3.tgz#3cc8d711e6db5172365d877231681409aec308f1"
