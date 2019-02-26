@@ -249,13 +249,6 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
     )
-  },
-  {
-    path: "/store/accounts/:account_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/Account/show")
-    )
   }
 ];
 export default routes;

@@ -67,36 +67,88 @@ const MemberGuideMemberTips = styled.p`
   margin-bottom: 0;
 `;
 
-const ListImages = {
-  src1: Img1,
-  src2: Img2,
-  src3: Img3,
-  src4: Img4,
-  src5: Img5,
-  src6: Img6,
-  src7: Img7,
-  src8: Img8,
-  src9: Img9
-};
+const guideListData = [
+  {
+    src: Img1,
+    sub: "account.memberRegistrationGuideSub1",
+    title: "account.memberRegistrationGuideTitle1",
+    description: "account.memberRegistrationGuideDescription1"
+  },
+  {
+    src: Img2,
+    sub: "account.memberRegistrationGuideSub2",
+    title: "account.memberRegistrationGuideTitle2",
+    description: "account.memberRegistrationGuideDescription2"
+  },
+  {
+    src: Img3,
+    sub: "account.memberRegistrationGuideSub3",
+    title: "account.memberRegistrationGuideTitle3",
+    description: "account.memberRegistrationGuideDescription3"
+  },
+  {
+    src: Img4,
+    sub: "account.memberRegistrationGuideSub4",
+    title: "account.memberRegistrationGuideTitle4",
+    description: "account.memberRegistrationGuideDescription4"
+  },
+  {
+    src: Img5,
+    sub: "account.memberRegistrationGuideSub5",
+    title: "account.memberRegistrationGuideTitle5",
+    description: "account.memberRegistrationGuideDescription5"
+  },
+  {
+    src: Img6,
+    sub: "account.memberRegistrationGuideSub6",
+    title: "account.memberRegistrationGuideTitle6",
+    description: "account.memberRegistrationGuideDescription6"
+  },
+  {
+    src: Img7,
+    sub: "account.memberRegistrationGuideSub7",
+    title: "account.memberRegistrationGuideTitle7",
+    description: "account.memberRegistrationGuideDescription7"
+  },
+  {
+    src: Img8,
+    sub: "account.memberRegistrationGuideSub8",
+    title: "account.memberRegistrationGuideTitle8",
+    description: "account.memberRegistrationGuideDescription8"
+  },
+  {
+    src: Img9,
+    sub: "account.memberRegistrationGuideSub9",
+    title: "account.memberRegistrationGuideTitle9",
+    description: "account.memberRegistrationGuideDescription9"
+  }
+];
 
-const MemberGuideMemberListItem = ({ ItemData }) => {
+const MemberGuideMemberListItem = ({ guideItemData }) => {
+  const { src, sub, title, description } = guideItemData;
   return (
     <MemberListItem>
       <MemberListItemRow>
         <Col span={7}>
-          <MemberItemImage src={ListImages[ItemData.src]} />
+          <MemberItemImage src={src} />
         </Col>
         <Col span={16} offset={1}>
-          <MemberListItemSub>{ItemData.sub}</MemberListItemSub>
-          <MemberListItemTitle>{ItemData.title}</MemberListItemTitle>
-          <MemberListItemText>{ItemData.text}</MemberListItemText>
+          <MemberListItemSub>
+            <IntlMessages id={sub} />
+          </MemberListItemSub>
+          <MemberListItemTitle>
+            <IntlMessages id={title} />
+          </MemberListItemTitle>
+          <MemberListItemText>
+            <IntlMessages id={description} />
+          </MemberListItemText>
         </Col>
       </MemberListItemRow>
     </MemberListItem>
   );
 };
 
-const MemberGuideMember = ({ ListData }) => {
+const MemberGuideMember = () => {
   return (
     <Fragment>
       <MemberGuideMemberCaption>
@@ -109,8 +161,11 @@ const MemberGuideMember = ({ ListData }) => {
         <IntlMessages id="account.memberGuideMemberHeadText" />
       </MemberGuideMemberText>
       <MemberGuideMemberList>
-        {ListData.map((itemData, index) => (
-          <MemberGuideMemberListItem ItemData={itemData} key={index} />
+        {guideListData.map((guideItemData, index) => (
+          <MemberGuideMemberListItem
+            guideItemData={guideItemData}
+            key={index}
+          />
         ))}
       </MemberGuideMemberList>
       <MemberGuideMemberTips>

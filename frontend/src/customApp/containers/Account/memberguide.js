@@ -8,8 +8,9 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import ContentsWrapper from "../../components/account/memberguide/contentsWrapper";
-import Contents from "../../components/account/memberguide/contents";
+import IntlMessages from "../../../components/utility/intlMessages";
+import RegistrationButton from "../../components/account/memberguide/registrationButtons";
+import MemberGuide from "../../components/account/memberguide/memberGuide";
 
 const AreaLayout = styled(ContentAreaLayout)`
   max-width: 732px;
@@ -19,6 +20,37 @@ const LoadingSpin = styled.div`
   text-align: center;
   padding: 30px 50px;
 `;
+
+const MemberGuideHeadTitle = styled.h1`
+  color: #000;
+  font-size: 19px;
+  letter-spacing: 0.25px;
+  margin-top: 30px;
+`;
+
+const MemberGuideHeadDescription = styled.p`
+  color: #585858;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  line-height: 19px;
+  margin: 20px 0 0;
+`;
+
+const MemberGuideTitle = () => {
+  return (
+    <MemberGuideHeadTitle>
+      <IntlMessages id="account.memberGuideHeadTitle" />
+    </MemberGuideHeadTitle>
+  );
+};
+
+const MemberGuideDescription = () => {
+  return (
+    <MemberGuideHeadDescription>
+      <IntlMessages id="account.memberGuideHeadText" />
+    </MemberGuideHeadDescription>
+  );
+};
 
 class Index extends Component {
   constructor(props) {
@@ -46,9 +78,11 @@ class Index extends Component {
     return (
       <AreaLayout>
         <BaseContentLayout>
-          <ContentsWrapper>
-            <Contents entities={entities} />
-          </ContentsWrapper>
+          <MemberGuideTitle />
+          <MemberGuideDescription />
+          <RegistrationButton />
+          <MemberGuide entities={entities} />
+          <RegistrationButton />
         </BaseContentLayout>
       </AreaLayout>
     );
