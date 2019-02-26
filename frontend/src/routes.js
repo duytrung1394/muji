@@ -249,6 +249,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Delivery/list")
     )
-  }
+  },
+  {
+    path: "/store/delivery/add",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Add/index")
+    )
+  },
 ];
 export default routes;
