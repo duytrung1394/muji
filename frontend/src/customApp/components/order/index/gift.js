@@ -6,6 +6,7 @@ import CommonButton from "../commonButton";
 
 const GiftWrapper = styled.div`
   padding: 16px;
+  margin-bottom: 16px;
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
@@ -69,16 +70,20 @@ class Gift extends Component {
           <GiftTitle>
             <IntlMessages id="order.procedure.GiftWrapping" />
           </GiftTitle>
-          <GiftCheckboxArea>
-            <Checkbox
-              onChange={() => {
-                this.changeFlg();
-              }}
-            >
-              <IntlMessages id="order.procedure.useGiftWrapping" />
-            </Checkbox>
-          </GiftCheckboxArea>
-          {this.state.useGiftFlg ? (
+          {!unable ? (
+            <GiftCheckboxArea>
+              <Checkbox
+                onChange={() => {
+                  this.changeFlg();
+                }}
+              >
+                <IntlMessages id="order.procedure.useGiftWrapping" />
+              </Checkbox>
+            </GiftCheckboxArea>
+          ) : (
+            <IntlMessages id="order.confirm.dontWant" />
+          )}
+          {!unable && this.state.useGiftFlg ? (
             <Fragment>
               <Select
                 defaultValue={giftData.packTogether}

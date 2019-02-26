@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import ContentsBox from "./contentsBox";
 import CommonButton from "../commonButton";
 
-const DeliveryInformation = styled.div`
-  padding: 16px;
-  margin-top: 20px;
-  background-color: #f2f2f2;
+const DeliveryContentsBox = styled(ContentsBox)`
   display: flex;
   color: rgb(88, 88, 88);
   & div:nth-child(1) {
@@ -59,7 +57,7 @@ const ChangeButton = styled(CommonButton)`
 const Delivery = ({ delivery, unable }) => {
   const { address } = delivery;
   return (
-    <DeliveryInformation>
+    <DeliveryContentsBox>
       <DataDiv>
         <DeliveryInfomationTitles>
           <IntlMessages id="order.confirm.addressee" />
@@ -104,7 +102,7 @@ const Delivery = ({ delivery, unable }) => {
           </ChangeButton>
         )}
       </DataDiv>
-    </DeliveryInformation>
+    </DeliveryContentsBox>
   );
 };
 

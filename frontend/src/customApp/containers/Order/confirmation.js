@@ -14,7 +14,8 @@ import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
 import OrderItemList from "../../components/order/index/orderItemList";
 import OrderButtons from "../../components/order/index/orderButtons";
-import PaymentDetails from "../../components/order/index/payment/paymentDetails";
+import PaymentSummary from "../../components/order/index/payment/paymentSummary";
+import PaymentMethod from "../../components/order/index/payment/paymentMethod";
 import Title from "../../components/order/title";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -63,7 +64,8 @@ class Confirmation extends Component {
             />
           </ContentsBox>
           <ContentsBox>
-            <PaymentDetails entity={entity} />
+            <PaymentSummary summary={entity.paymentSummary} />
+            <PaymentMethod unable={true} />
           </ContentsBox>
           <OrderButtons submit={submitInfo} backPath={this.getBackPath()} />
         </ContentLayout>

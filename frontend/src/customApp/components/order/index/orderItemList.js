@@ -1,15 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import OrderItem from "./orderItem";
 import CommonButton from "../commonButton";
 
-// const DeliveryWrapper = styled.div`
-//   padding: 0 16px 16px 16px;
-//   background-color: #f2f2f2;
-// `;
-
-const DeliveryWrapper = styled.div`
+const OrderItemListWrapper = styled.div`
   padding: 16px;
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
@@ -21,9 +16,8 @@ const DeliveryDiv = styled.div`
 
 const DeliveryInfo = styled.h1`
   display: inline-block;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: ${props => (props.fontSize ? props.fontSize : "15px")};
+  font-weight: ${props => (props.fontWeight ? props.fontWeight : "700")};
   color: rgb(88, 88, 88);
 `;
 
@@ -31,16 +25,16 @@ const TitleSpan = styled.span`
   margin-left: 20px;
 `;
 
-const DeliverySchedule = styled.div`
+const DeliveryStatus = styled.div`
   font-size: 13px;
-  margin: 12px 0 30px 0;
+  margin: 12px 0 5px 0;
 `;
 
 const OrderItems = styled.div`
   margin-top: 30px;
 `;
 
-const OrderItemListWrapper = styled.ul`
+const ListWrapper = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -56,17 +50,34 @@ const FixDateButton = styled(CommonButton)`
 
 const OrderItemList = ({ orders, delivery, unable }) => {
   return (
-    <DeliveryWrapper>
+    <OrderItemListWrapper>
       <DeliveryDiv>
-        <DeliveryInfo>
-          <IntlMessages id="order.confirm.deliveryService" />
-          <span>{delivery.deliveryCount}</span>
-          <TitleSpan>
-            <IntlMessages id="order.confirm.deliveryCategory" />
-            <span>{delivery.deliveryDivision}</span>
-          </TitleSpan>
-        </DeliveryInfo>
-        <DeliverySchedule>
+        {!unable && (
+          <DeliveryInfo>
+            <IntlMessages id="order.confirm.deliveryService" />
+            <span>{delivery.deliveryCount}</span>
+            <TitleSpan>
+              <IntlMessages id="order.confirm.deliveryCategory" />
+              <span>{delivery.deliveryDivision}</span>
+            </TitleSpan>
+          </DeliveryInfo>
+        )}
+        {unable && (
+          <Fragment>
+            <DeliveryInfo>
+              <IntlMessages id="order.confirm.orderListTitle" />
+            </DeliveryInfo>
+            <DeliveryStatus>
+              <IntlMessages id="order.confirm.deliveryService" />
+              <span>{delivery.deliveryCount}</span>
+              <TitleSpan>
+                <IntlMessages id="order.confirm.deliveryCategory" />
+                <span>{delivery.deliveryDivision}</span>
+              </TitleSpan>
+            </DeliveryStatus>
+          </Fragment>
+        )}
+        <DeliveryStatus>
           <IntlMessages id="order.procedure.deliverySchedule" />
           <span>{delivery.year}</span>
           <IntlMessages id="order.procedure.year" />
@@ -78,7 +89,7 @@ const OrderItemList = ({ orders, delivery, unable }) => {
           <span>{delivery.day_of_the_week}</span>
           <IntlMessages id="order.procedure.rightBracket" />
           <IntlMessages id="order.procedure.regular_delivery" />
-        </DeliverySchedule>
+        </DeliveryStatus>
         {!unable && (
           <FixDateButton>
             <IntlMessages id="order.procedure.specifyDate" />
@@ -86,14 +97,14 @@ const OrderItemList = ({ orders, delivery, unable }) => {
         )}
       </DeliveryDiv>
       <OrderItems>
-        <OrderItemListWrapper>
+        <ListWrapper>
           {orders.items &&
             orders.items.map((item, index) => {
               return <OrderItem item={item} key={index} />;
             })}
-        </OrderItemListWrapper>
+        </ListWrapper>
       </OrderItems>
-    </DeliveryWrapper>
+    </OrderItemListWrapper>
   );
 };
 

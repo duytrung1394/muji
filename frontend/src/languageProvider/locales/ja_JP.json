@@ -622,6 +622,7 @@
   "order.procedure.backPage": "戻る",
   "order.procedure.orderConfirm": "ご注文内容の確認に進む",
   "order.confirm.title": "ご注文内容確認",
+  "order.confirm.orderListTitle": "ご注文内容",
   "order.confirm.notice": "ご注文内容をご確認の上、変更がなければ「ご注文を確定する」を押してください。",
   "order.confirm.dontWant": "希望しない",
   "order.confirm.deliveryService": "配送便 :",

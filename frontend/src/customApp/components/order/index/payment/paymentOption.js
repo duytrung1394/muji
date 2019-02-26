@@ -1,10 +1,10 @@
-import React, { Component, createRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 import { Radio, Input, Checkbox } from "antd";
 import { Link } from "react-router-dom";
 
-const PaymentContent = styled.div`
+const OptionContent = styled.div`
   padding: 16px;
   margin-bottom: 16px;
   background-color: #fff;
@@ -64,7 +64,7 @@ const StyledRadio = styled(Radio)`
 
 const RadioGroup = Radio.Group;
 
-const PaymentOptions = props => {
+const PaymentOption = props => {
   const {
     title,
     labelName,
@@ -80,7 +80,7 @@ const PaymentOptions = props => {
   const { onChange, resetValue, changeFlg } = optionHandler;
 
   return (
-    <PaymentContent>
+    <OptionContent>
       <div>
         <PaymentTitles>
           <IntlMessages id={title} />
@@ -134,8 +134,8 @@ const PaymentOptions = props => {
           </StyledRadio>
         </RadioGroup>
       </div>
-    </PaymentContent>
+    </OptionContent>
   );
 };
 
-export default PaymentOptions;
+export default PaymentOption;

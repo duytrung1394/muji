@@ -13,7 +13,9 @@ import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
 import OrderItemList from "../../components/order/index/orderItemList";
 import OrderButtons from "../../components/order/index/orderButtons";
-import PaymentDetails from "../../components/order/index/payment/paymentDetails";
+import PaymentOptionList from "../../components/order/index/payment/paymentOptionList";
+import PaymentSummary from "../../components/order/index/payment/paymentSummary";
+import PaymentMethod from "../../components/order/index/payment/paymentMethod";
 import Title from "../../components/order/title";
 import IntlMessages from "../../../components/utility/intlMessages";
 
@@ -116,8 +118,8 @@ class Index extends Component {
             <OrderItemList orders={entity.orders} delivery={entity.delivery} />
           </ContentsBox>
           <ContentsBox>
-            <PaymentDetails
-              entity={entity}
+            <PaymentOptionList
+              paymentDetails={entity.paymentDetails}
               paymentOptions={this.state.paymentOptions}
               optionHandler={{
                 onChange: this.onChangePaymentOption,
@@ -125,6 +127,8 @@ class Index extends Component {
                 changeFlg: this.changeFlg
               }}
             />
+            <PaymentSummary summary={entity.paymentSummary} />
+            <PaymentMethod />
           </ContentsBox>
           <OrderButtons submit={submitInfo} backPath={"#"} />
         </ContentLayout>
