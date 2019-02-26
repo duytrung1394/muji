@@ -200,7 +200,14 @@ PORT=80 yarn serve-preview
 
 内容は `.env.sample-local` を参考にしてください。
 
-2. 以下のコマンドでbackend(Lumen)を立ち上げます
+2. SSL向けの設定(※SSLを使う場合のみ)
+
+`nginx/certs` 直下に以下のSSL向けの2ファイルを配置
+
+- `server.crt` サーバ証明書（サーバ証明書に中間CA証明書を連結したもの）
+- `server.key` (秘密鍵)
+
+3. 以下のコマンドでbackend(Lumen)を立ち上げます
 
 ```
 docker-compose -f production.yml run --rm backend composer install
@@ -210,7 +217,7 @@ docker-compose -f production.yml run --rm backend php artisan db:seed
 docker-compose -f production.yml up -d backend
 ```
 
-3. 以下のコマンドでfrontend向けのスクリプトをビルドし、frontendを立ち上げます
+4. 以下のコマンドでfrontend向けのスクリプトをビルドし、frontendを立ち上げます
 
 
 ```
@@ -222,7 +229,7 @@ docker-compose -f production.yml up -d frontend
 開発時は `yarn build` した状態で `source .env` などで環境変数を設定し、 `frontend` 以下で `REACT_APP_ENV=$REACT_APP_ENV yarn serve` を実行する形でもOKです。
 （ `REACT_APP_ENV` がなぜかsourceした.envのものは反映されないため）
 
-4. Nginxを立ち上げます。
+5. Nginxを立ち上げます。
 
 ポートの都合上、ローカルとサーバーで立ち上げるものが異なります。
 

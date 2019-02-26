@@ -10,4 +10,13 @@ else
     cat /etc/nginx/.htpasswd
 fi
 
+if [ "1" == "$USE_SSL" ]; then
+    export EN_SSL=
+    export DIS_SSL=#
+else
+    export EN_SSL=#
+    export DIS_SSL=
+fi
+
+
 nginx -g 'daemon off;'
