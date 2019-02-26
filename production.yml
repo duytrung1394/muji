@@ -15,10 +15,16 @@ services:
     command: "sh /entrypoint.sh"
     env_file:
       - .env
+    depends_on:
+      - backend
+      - frontend
+  # ローカル開発でnginxの動作検証をするための設定
   nginx_local:
     <<: *nginx
     ports:
       - "8000:80"
+    # ローカル開発時にはdepends_onが邪魔になりがちなので
+    depends_on: []
   # APIサーバー
   backend:
     build: backend
