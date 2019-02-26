@@ -33,7 +33,7 @@ module.exports = shipit => {
     const localRev = await shipit.local(`git rev-parse ${branch}`)
     const originRev = await shipit.local(`git rev-parse origin/${branch}`)
     if( localRev.stdout !== originRev.stdout ){
-      const result = await yesno.askAsync('ローカルの最新コミットがGitの最新版と異なるようです。 デプロイをこのまま実行しますか？', true);
+      const result = await yesno.askAsync('ローカルの最新コミットがGitの最新版と異なるようです。 デプロイをこのまま実行しますか？ (y/n)', true);
       if(result === false){
         throw "Noが選択されました";
       }
