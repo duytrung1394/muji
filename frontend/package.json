@@ -101,9 +101,7 @@
     "styled-theme": "^0.3.3",
     "transit-immutable-js": "^0.7.0",
     "transit-js": "^0.8.861",
-    "uppy": "0.18.0"
-  },
-  "devDependencies": {
+    "uppy": "0.18.0",
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-watch": "^2.0.7",
@@ -114,7 +112,7 @@
     "leaflet-routing-machine": "^3.2.5",
     "leaflet.markercluster": "^1.0.6",
     "react-app-rewired": "^1.4.0",
-    "redux-mock-store": "^1.2.3"
+    "redux-mock-store": "^1.2.3" 
   },
   "scripts": {
     "start": "react-app-rewired start",
