@@ -192,63 +192,65 @@ PORT=80 yarn serve-preview
 また、 /static 以下は単にディレクトリ内を配信しているだけなので、
 フロントにnginx等を置く場合は直接配信することも可能です。
 
-## リリースサーバーでの動かし方
+## プレビューサーバーでの動かし方
 
-※リリースサーバーと同等の環境をローカルで動かす場合も含みます
+※この方法は小規模な確認向けの単一サーバーでの動作を想定しています。
+本番環境を想定した内容ではありませんので、本番環境ではこの内容は参考までにお願いします。
 
-1. 直下に `.env` ファイルを作成します。
+1. リポジトリを配置する
+
+`/home/admin/muji-ec` に 本リポジトリを `git clone` します。
+
+※ディレクトリを変更する場合は後述の `shipitfile.js` で `cwd` を指定してください。
+
+2. 直下に `.env` ファイルを作成する
 
 内容は `.env.sample-local` を参考にしてください。
 
-2. SSL向けの設定(※SSLを使う場合のみ)
+尚 .env を用いる事で以下の設定が必要/可能です。
+
+- NODE_ENV の設定
+- SSRおよびブラウザ側からAPIアクセスするホスト名(プロトコルとポートを含む)の指定
+- BASIC認証を使用するか否か、およびその認証情報の設定
+- SSLを使用するか否か(certsは後述のように配置が必要)
+
+3. SSL向けの設定(※SSLを使う場合のみ)
 
 `nginx/certs` 直下に以下のSSL向けの2ファイルを配置
 
 - `server.crt` サーバ証明書（サーバ証明書に中間CA証明書を連結したもの）
 - `server.key` (秘密鍵)
 
-3. 以下のコマンドでbackend(Lumen)を立ち上げます
+4. shipitの整備
+
+`shiptfile.js` がshipitのデプロイ用ファイルなので、devに倣って各項目を設定する。
+
+- cwd でデプロイ先のディレクトリが指定できる
+- servers では複数のデプロイ先を指定できる。 ロードバランシングしている場合などに使用可能。
+
+参考:
+
+- shipit: https://github.com/shipitjs/shipit
+
+5. デプロイの実行
+
+以下 `dev` をそれぞれの環境設定名に読み替え。
+
+リポジトリ直下で以下を実行
 
 ```
-docker-compose -f production.yml run --rm backend composer install
-docker-compose -f production.yml run --rm backend php artisan migrate:refresh
-docker-compose -f production.yml run --rm backend composer dump-autoload
-docker-compose -f production.yml run --rm backend php artisan db:seed
-docker-compose -f production.yml up -d backend
+yarn
+npx shipit dev deploy
 ```
 
-4. 以下のコマンドでfrontend向けのスクリプトをビルドし、frontendを立ち上げます
-
-
-```
-docker-compose -f production.yml run --rm frontend yarn install
-docker-compose -f production.yml run --rm frontend yarn build
-docker-compose -f production.yml up -d frontend
-```
-
-開発時は `yarn build` した状態で `source .env` などで環境変数を設定し、 `frontend` 以下で `REACT_APP_ENV=$REACT_APP_ENV yarn serve` を実行する形でもOKです。
-（ `REACT_APP_ENV` がなぜかsourceした.envのものは反映されないため）
-
-5. Nginxを立ち上げます。
-
-ポートの都合上、ローカルとサーバーで立ち上げるものが異なります。
+Windows環境等直接yarn/npmが入っていない環境からはbuilderインスタンスを用いて以下のように実行できるはず。
+ただしssh接続等が未検証。 id_rsa をbuilderに共有する必要があると思われる。
 
 ```
-# ローカル
-docker-compose -f production.yml up -d nginx_local
-# http://localhost:8000 にアクセス
+docker-compose run --rm builder yarn
+docker-compose run --rm builder npx shipit dev deploy
 ```
 
-```
-# (プレビュー)サーバー
-docker-compose -f production.yml up -d nginx
-# そのサーバーにアクセス
-```
-
-※ 未実現事項は以下の通り
-
-- プレビュー向けのSSL対応
-- プレビュー向けのBASIC認証対応
 
 ### 環境変数の取り扱いの指針
 
