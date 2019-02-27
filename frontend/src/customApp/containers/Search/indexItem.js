@@ -9,8 +9,8 @@ import SearchHeader from "../../components/search/header";
 import SearchOtherHeader from "../../components/search/otherHeader";
 import SearchItemImageList from "../../components/search/searchItemImageList";
 import PageRangeText from "../../components/search/pageRangeText";
-import SearchEventList from "../../components/search/eventItemList";
-import SearchServiceList from "../../components/search/serviceItemList";
+import ProductTagList from "../../components/search/productTagList";
+import TopicList from "../../components/search/topicList";
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -24,9 +24,9 @@ class Index extends Component {
   }
   fetchRequest = props => {
     props.fetchRequest({
-       page: 1,
-     filters: JSON.stringify(props.filters || []),
-        keyword: "コーヒー"
+      page: 1,
+      filters: JSON.stringify(props.filters || []),
+      keyword: "シャツ"
     });
   };
   // React.render
@@ -36,14 +36,14 @@ class Index extends Component {
     return (
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
-            <SearchHeader keyword={entities.keyword} />
-            <SearchNavigationList active={0} />
-            <PageRangeText total={total} first={1} end={total} />
-
-            <SearchEventList items={entities.searchEvents} />
-            <SearchOtherHeader title="item" />
-            <SearchItemImageList items={entities.searchOtherResults} />
-            <SearchServiceList items={entities.searchServices} />
+          <SearchHeader keyword={entities.keyword} />
+          <SearchNavigationList active={0} />
+          <PageRangeText total={total} first={1} end={total} />
+          <TopicList topicList={entities.topics} />
+          <ProductTagList tags={entities.searchTagResultList} />
+          <SearchOtherHeader title="item" />
+          <SearchItemImageList items={entities.searchOtherResults} />
+          <ProductTagList tags={entities.searchTagResultList} />
         </Spin>
       </ContentAreaLayout>
     );
@@ -51,10 +51,9 @@ class Index extends Component {
 }
 const mapStateToProps = state => {
   return state.Search.List.toJS();
-  return {};
 };
 const actionCreators = {
-  fetchRequest: actions.fetchService.request
+  fetchRequest: actions.fetchItem.request
 };
 const enhance = C => {
   const connected = connect(

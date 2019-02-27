@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import styled from "styled-components";
+import IntlMessages from "../../../components/utility/intlMessages";
+
 const ServiceItemListWrapper = styled.div`
   padding: 2px;
   width: 100%;
@@ -61,10 +63,15 @@ const SearchServiceList = props => {
           return (
             <Card.Grid key={index}>
               <Link to="">
-                <img src={item.img_src} alt="" />
-                {item.title && <h3>{item.title}</h3>}
-                {item.description ? <p>{item.description}</p> : <p>　</p>}
-                {item.price && <p>税込{item.price}円</p>}
+                <img src={item.image_url} alt="" />
+                <h3>{item.serviceName}</h3>
+                <p>{item.description}</p>
+                  <p>
+                <IntlMessages
+                    id="productCategoryTop.price"
+                    values={{ price: {item.price} }}
+                />
+                  </p>
               </Link>
             </Card.Grid>
           );

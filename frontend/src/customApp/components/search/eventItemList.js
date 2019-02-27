@@ -62,10 +62,10 @@ const SearchEventList = props => {
           return (
             <Card.Grid key={index}>
               <Link to="">
-                <img src={item.img_src} alt="" />
-                {item.place && <p>{item.place}</p>}
-                {item.name && <h3>{item.name}</h3>}
-                {item.date ? <h3>{item.date}</h3> : <h3>　</h3>}
+                <img src={item.image_url} alt="" />
+                <p>{item.place}</p>
+                <h3>{item.eventName}</h3>
+                <h3>{item.date}</h3>
               </Link>
             </Card.Grid>
           );
