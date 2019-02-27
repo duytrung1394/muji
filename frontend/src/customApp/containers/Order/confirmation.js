@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import actions from "../../redux/order/entity/actions";
 import { injectIntl } from "react-intl";
-import IntlMessages from "../../../components/utility/intlMessages";
-import styled from "styled-components";
 import { Spin } from "antd";
+import styled from "styled-components";
+import actions from "../../redux/order/entity/actions";
+import IntlMessages from "../../../components/utility/intlMessages";
 import {
   ContentAreaLayout,
   BaseContentLayout

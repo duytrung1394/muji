@@ -1,13 +1,14 @@
 import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import { injectIntl } from "react-intl";
 import { Spin } from "antd";
+import styled from "styled-components";
+import actions from "../../redux/order/entity/actions";
+import IntlMessages from "../../../components/utility/intlMessages";
 import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import actions from "../../redux/order/entity/actions";
-import { injectIntl } from "react-intl";
 import Delivery from "../../components/order/index/delivery";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
@@ -17,7 +18,6 @@ import PaymentOptionList from "../../components/order/index/payment/paymentOptio
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
 import PaymentMethod from "../../components/order/index/payment/paymentMethod";
 import Title from "../../components/order/title";
-import IntlMessages from "../../../components/utility/intlMessages";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
