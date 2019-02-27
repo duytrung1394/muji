@@ -128,7 +128,7 @@ class ItemView extends Component {
     }
     return (
       <Item {...colLayout}>
-        <Link to="">
+        <Link to={"/store/cmdty/" + this.state.currentJancode}>
           <div>
             <img src={image} alt="" />
           </div>

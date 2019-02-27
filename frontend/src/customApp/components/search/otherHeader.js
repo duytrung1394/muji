@@ -10,10 +10,10 @@ const SearchOtherHeaderH2 = styled.h2`
   font-weight: normal;
 `;
 
-const SearchOtherHeader = () => {
+const SearchOtherHeader = props => {
   return (
     <SearchOtherHeaderH2>
-      <IntlMessages id="search.store.other" />
+      <IntlMessages id={"search." + props.title + ".other"} />
     </SearchOtherHeaderH2>
   );
 };
