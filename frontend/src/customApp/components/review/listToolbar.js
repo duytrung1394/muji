@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Breadcrumb } from "antd";
+import { Link } from "react-router-dom";
 
 const ListToolbarWrapper = styled.div`
   font-size: 12px;
@@ -42,26 +43,26 @@ const ListToolbar = ({ totalReviewCount }) => {
       <ReviewBreadcrumbArea>
         <ReviewBreadcrumb>
           <Breadcrumb.Item>
-            <a href="#">
+            <Link to={"#"}>
               <BoldSpan>
                 <IntlMessages id="review.sortByNewestPost" />
               </BoldSpan>
-            </a>
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="#">
+            <Link to={"#"}>
               <IntlMessages id="review.numberUseful" />
-            </a>
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="#">
+            <Link to={"#"}>
               <IntlMessages id="review.aLotOfStars" />
-            </a>
+            </Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="#">
+            <Link to={"#"}>
               <IntlMessages id="review.lessNumberOfStars" />
-            </a>
+            </Link>
           </Breadcrumb.Item>
         </ReviewBreadcrumb>
       </ReviewBreadcrumbArea>

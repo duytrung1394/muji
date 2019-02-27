@@ -52,7 +52,7 @@ class ReviewsController extends Controller
                     'itemName' => 'ムースハイネックワンピース',
                     'itemImg' => 'img-review-history-07.png',
                     'date' => '2018/10/20',
-                    'evaluationCount' => '4',
+                    'evaluationCount' => 4,
                     'wearInfo' => [
                         'size' => 'M',
                         'height' => '165'
@@ -73,7 +73,7 @@ class ReviewsController extends Controller
                     'itemName' => 'ソファ',
                     'itemImg' => 'img-review-history-06.png',
                     'date' => '2018/08/15',
-                    'evaluationCount' => '5',
+                    'evaluationCount' => 5,
                     'wearInfo' => [
                         'size' => '',
                         'height' => ''
