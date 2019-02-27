@@ -13,6 +13,7 @@ const FormArea = styled.ul`
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  width: 50%;
 `;
 
 const FormItem = styled.li`
@@ -27,31 +28,25 @@ const Label = styled.h2`
 const StyledInput = styled(Input)`
   box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px 0px;
   && {
-    width: 300px;
+    width: 95px;
     height: 40px;
     font-size: 13px;
   }
 `;
 
-const NameForm = () => (
+const TelForm = () => (
   <Container>
     <StyledForm>
       <FormArea>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.name" />
+            <IntlMessages id="delivery.add.form.tel" />
           </Label>
-          <StyledInput placeholder="無印太郎" />
-        </FormItem>
-        <FormItem>
-          <Label>
-            <IntlMessages id="delivery.add.form.nameKana" />
-          </Label>
-          <StyledInput placeholder="ムジルシタロウ" />
+          <StyledInput placeholder="0339894191" />
         </FormItem>
       </FormArea>
     </StyledForm>
   </Container>
 );
 
-export default NameForm;
+export default TelForm;

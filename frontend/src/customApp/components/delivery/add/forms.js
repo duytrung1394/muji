@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import NameForm from "./nameForm";
+import AddressForm from "./addressForm";
+import TelForm from "./telForm";
 
 const StyledForms = styled.div`
   background: rgb(242, 242, 242);
@@ -11,6 +13,8 @@ const StyledForms = styled.div`
 const Forms = () => (
   <StyledForms>
     <NameForm />
+    <AddressForm />
+    <TelForm />
   </StyledForms>
 );
 
