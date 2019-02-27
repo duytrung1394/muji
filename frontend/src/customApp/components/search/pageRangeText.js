@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import { Row, Col } from "antd";
 import IntlMessages from "../../../components/utility/intlMessages";
 import Filter from "../../components/productCategoryTop/itemList/filter";
 
-const Bar = styled.div`
-  display: flex;
-  justify-content: space-between;
+const StyledRow = styled(Row)`
+  margin-bottom: 10px;
 `;
 
-const PageRangeText = styled.p`
+const StyledCol = styled(Col)`
   color: #000;
   font-size: 12px;
 `;
 
-const PageRange = ({ total, first, end }) => {
+const PageRangeText = ({ total, first, end }) => {
   return (
-    <Bar>
-      <PageRangeText>
+    <StyledRow type="flex" justify="space-between" align="middle">
+      <StyledCol>
         <IntlMessages
           id="search.pageRangeText"
           values={{
@@ -25,10 +25,12 @@ const PageRange = ({ total, first, end }) => {
             to: end
           }}
         />
-      </PageRangeText>
-      <Filter />
-    </Bar>
+      </StyledCol>
+      <Col>
+        <Filter />
+      </Col>
+    </StyledRow>
   );
 };
 
-export default PageRange;
+export default PageRangeText;

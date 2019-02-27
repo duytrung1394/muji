@@ -8,7 +8,7 @@ import SearchNavigationList from "../../components/search/tab";
 import SearchHeader from "../../components/search/header";
 import SearchOtherHeader from "../../components/search/otherHeader";
 import SearchItemImageList from "../../components/search/searchItemImageList";
-import PageRange from "../../components/search/pageRangeText";
+import PageRangeText from "../../components/search/pageRangeText";
 import ProductTagList from "../../components/search/productTagList";
 import TopicList from "../../components/search/topicList";
 class Index extends Component {
@@ -38,7 +38,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <SearchHeader keyword={entities.keyword} />
           <SearchNavigationList active={0} />
-          <PageRange total={total} first={1} end={total} />
+          <PageRangeText total={total} first={1} end={total} />
           <TopicList topicList={entities.topics} />
           <ProductTagList tags={entities.searchTagResultList} />
           <SearchOtherHeader title="item" />
