@@ -124,6 +124,10 @@
       "img": "sidebarIcon4",
       "items": [
         {
+          "title": "収納家具",
+          "url": "/store/cmdty/section/T20003"
+        },
+        {
           "title": "ユニットシェルフ",
           "url": ""
         },
@@ -153,7 +157,7 @@
         },
         {
           "title": "ソファ",
-          "url": ""
+          "url": "/store/cmdty/section/T20001"
         },
         {
           "title": "ラグ・クッション・スリッパ",

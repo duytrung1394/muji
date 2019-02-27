@@ -19,18 +19,19 @@ export const DashAppLayout = (props) => (
   <Layout style={{ height: '100%' }}>
     <Header />
     {/* 注: Siderを子要素に持つ場合 hasSider オプションをつけないとSSRの時にサイドバーのレイアウトが崩れてしまう */}
-    <Layout hasSider style={{ height: "100%" }}>
+    <Layout hasSider={true}>
       <Sider />
       <Layout>
         <Content id="content" style={{ position: "relative" }}>
           { props.children }
         </Content>
-        <Footer />
+        <Layout>
+      <Footer />
+    </Layout>
       </Layout>
     </Layout>
   </Layout>
 );
-
 
 const DashApp = () => (
   <Hoc>
