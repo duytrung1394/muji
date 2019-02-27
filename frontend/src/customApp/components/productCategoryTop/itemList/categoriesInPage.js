@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ItemView from "./itemView";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import Preamble from "./preamble";
+import LargeButton from "../../shared/form/largeButton";
 
 const PageWrapper = styled.div`
   scroll-behavior: smooth;
@@ -34,6 +35,23 @@ const ItemViewWrapper = styled(Row)`
   text-align: center;
 `;
 
+const CombineOptionButtonWrapper = styled.div`
+  margin-top: 25px;
+  text-align: center;
+`;
+
+const CombineOptionButton = styled(LargeButton)`
+  border-radius: 30px;
+  border: 1px solid #585858;
+  background: #fff;
+  color: #585858;
+  padding: 14px 0;
+  font-size: 12px;
+  :hover {
+    color: #585858;
+  }
+`;
+
 const CategoriesInPage = ({ categories, groups }) => (
   <div style={{ scrollBehavior: "smooth" }}>
     <Nav>
@@ -41,6 +59,7 @@ const CategoriesInPage = ({ categories, groups }) => (
         return (
           <a href={`#${category.code}`} key={index}>
             {category.title}
+            {category.subtitle}
             <IntlMessages id="productCategoryTop.link.underArrow" />
           </a>
         );
@@ -53,6 +72,7 @@ const CategoriesInPage = ({ categories, groups }) => (
           <CategoryWrapper id={category.code} key={index}>
             <Preamble
               title={category.title}
+              subtitle={category.subtitle}
               description={category.description}
               img={category.img}
             />
@@ -70,6 +90,13 @@ const CategoriesInPage = ({ categories, groups }) => (
                       );
                     })}
                   </ItemViewWrapper>
+                  {group.combine_option && (
+                    <CombineOptionButtonWrapper>
+                      <CombineOptionButton>
+                        <IntlMessages id="productCategoryTop.button.combineOption" />
+                      </CombineOptionButton>
+                    </CombineOptionButtonWrapper>
+                  )}
                 </div>
               );
             })}
