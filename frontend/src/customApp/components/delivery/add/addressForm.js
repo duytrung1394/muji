@@ -48,6 +48,7 @@ const AutofillButton = styled(Button)`
   box-shadow: none;
   border: none;
   cursor: pointer;
+  outline: none;
   & span {
     padding: 0;
   }

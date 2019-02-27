@@ -32,6 +32,7 @@ const NextButton = styled(Button)`
   border: 1px solid rgb(127, 0, 25);
   background: rgb(127, 0, 25);
   cursor: pointer;
+  outline: none;
 `;
 
 const Forms = () => (
