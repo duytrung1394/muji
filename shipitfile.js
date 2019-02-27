@@ -62,7 +62,7 @@ module.exports = shipit => {
   })
 
   shipit.blTask('deploy:backend', async () => {
-    console.log('backend 環境整備開始')
+    shipit.log('backend 環境整備開始')
     await dc('build backend')
     await runComposeCommands([
       'run --rm backend composer install',
@@ -71,27 +71,27 @@ module.exports = shipit => {
       'run --rm backend php artisan db:seed',
       'up -d backend',
     ])
-    console.log('backend 立ち上げ完了')
+    shipit.log('backend 立ち上げ完了')
   })
 
   shipit.blTask('deploy:frontend', async () => {
-    console.log('frontend 環境整備開始')
+    shipit.log('frontend 環境整備開始')
     await dc('build frontend')
     await runComposeCommands([
       'run --rm frontend yarn install',
       'run --rm frontend yarn build',
       'up -d frontend',
     ])
-    console.log('frontend 立ち上げ完了')
+    shipit.log('frontend 立ち上げ完了')
   })
 
   shipit.blTask('deploy:nginx', async () => {
-    console.log('nginx 立ち上げ開始')
+    shipit.log('nginx 立ち上げ開始')
     await dc('build nginx')
     await runComposeCommands([
       'up -d nginx',
     ])
-    console.log('nginx 立ち上げ完了')
+    shipit.log('nginx 立ち上げ完了')
   })
 
   shipit.task('deploy', async () => {
