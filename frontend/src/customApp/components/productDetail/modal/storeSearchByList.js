@@ -38,6 +38,18 @@ const StoreSearchTitle = styled.h3`
 const StyledCollapse = styled(Collapse)`
   .ant-collapse-item {
     border-top: #d9d9d9;
+    .ant-collapse-header[aria-expanded="true"] {
+      .arrow {
+        transform: rotate(180deg) !important;
+      }
+    }
+    .ant-collapse-header {
+      .arrow {
+        &:before {
+          content: "\\E61D" !important;
+        }
+      }
+    }
   }
 `;
 

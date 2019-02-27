@@ -8,7 +8,7 @@ import StoreSearchByList from "./storeSearchByList";
 import styled from "styled-components";
 
 const StyledModal = styled(Modal)`
-  height: 90%;
+  max-height: 90vh;
   top: 0;
   bottom: 0;
   left: 0;
@@ -18,6 +18,13 @@ const StyledModal = styled(Modal)`
   overflow: scroll;
   .ant-modal-header {
     border-bottom: none;
+  }
+  .ant-modal-close {
+    color: #333;
+    font-weight: 600;
+    .ant-modal-close-x {
+      font-size: 12px;
+    }
   }
 `;
 
