@@ -23,9 +23,28 @@ module.exports = shipit => {
     // }
   });
 
-  shipit.task('deploy', async () => {
+  const r = async (cmd) => {
+    // cwd(カレントディレクトリ)オプションを常に渡すために関数で包む
     const {
       cwd,
+    } = shipit.config;
+
+    await shipit.remote(cmd, {cwd})
+  }
+
+  // docker-compose での実行をつつむ
+  const dc = async (dc_cmd) => {
+    await r(`docker-compose -f production.yml  ${dc_cmd}`)
+  }
+
+  const runComposeCommands = async (commands) => {
+    for(let cmd of commands) {
+      await dc(cmd)
+    }
+  }
+
+  shipit.blTask('deploy:git', async () => {
+    const {
       branch,
     } = shipit.config;
 
@@ -38,31 +57,13 @@ module.exports = shipit => {
         throw "Noが選択されました";
       }
     }
-
-    const r = async (cmd) => {
-      // cwd(カレントディレクトリ)オプションを常に渡すために関数で包む
-      await shipit.remote(cmd, {cwd})
-    }
-
     await r(`git checkout ${branch}`)
     await r('git pull')
-    
-    // docker-compose での実行をつつむ
-    const dc = async (dc_cmd) => {
-      await r(`docker-compose -f production.yml  ${dc_cmd}`)
-    }
+  })
 
-    const runComposeCommands = async (commands) => {
-      for(let cmd of commands) {
-        await dc(cmd)
-      }
-    }
-
-    await dc('build backend')
-    await dc('build frontend')
-    await dc('build nginx')
-
+  shipit.blTask('deploy:backend', async () => {
     console.log('backend 環境整備開始')
+    await dc('build backend')
     await runComposeCommands([
       'run --rm backend composer install',
       'run --rm backend php artisan migrate:refresh',
@@ -71,20 +72,39 @@ module.exports = shipit => {
       'up -d backend',
     ])
     console.log('backend 立ち上げ完了')
+  })
 
+  shipit.blTask('deploy:frontend', async () => {
     console.log('frontend 環境整備開始')
+    await dc('build frontend')
     await runComposeCommands([
       'run --rm frontend yarn install',
       'run --rm frontend yarn build',
       'up -d frontend',
     ])
     console.log('frontend 立ち上げ完了')
+  })
 
+  shipit.blTask('deploy:nginx', async () => {
     console.log('nginx 立ち上げ開始')
+    await dc('build nginx')
     await runComposeCommands([
       'up -d nginx',
     ])
     console.log('nginx 立ち上げ完了')
+  })
+
+  shipit.task('deploy', async () => {
+    shipit.start('deploy:git')
+    shipit.start('deploy:frontend')
   });
+
+  shipit.task('deploy:all', async () => {
+    shipit.start('deploy:git')
+    shipit.start('deploy:backend')
+    shipit.start('deploy:frontend')
+    shipit.start('deploy:nginx')
+  })
+
 
 }

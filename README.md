@@ -208,7 +208,10 @@ docker-compose run --rm develop yarn scaffold
 
 ```
 yarn
+# frontendだけ更新する場合
 npx shipit dev deploy
+# backend, nginx も再起動する場合
+npx shipit dev deploy:all
 ```
 
 Windows環境等直接yarn/npmが入っていない環境からはbuilderインスタンスを用いて以下のように実行できるはず。
