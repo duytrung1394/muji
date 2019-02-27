@@ -1,11 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
-
-const Container = styled.div`
-  background-color: #fff;
-`;
+import Button from "../button";
 
 const StyledForm = styled(Form)``;
 
@@ -36,6 +33,23 @@ const ZipCodeInput = styled(Input)`
     width: 88px;
     height: 40px;
     font-size: 13px;
+    border: 1px solid rgb(153, 153, 153);
+  }
+`;
+
+const AutofillButton = styled(Button)`
+  width: 90px;
+  height: 40px;
+  font-weight: lighter;
+  line-height: 40px;
+  margin-left: 20px;
+  background-color: rgb(153, 153, 153);
+  color: rgb(255, 255, 255);
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  & span {
+    padding: 0;
   }
 `;
 
@@ -51,11 +65,12 @@ const StyledInput = styled(Input)`
     width: 300px;
     height: 40px;
     font-size: 13px;
+    border: 1px solid rgb(153, 153, 153);
   }
 `;
 
 const AddressForm = () => (
-  <Container>
+  <Fragment>
     <StyledForm>
       <FormArea>
         <FormItem>
@@ -66,6 +81,9 @@ const AddressForm = () => (
             <IntlMessages id="label.zipCode" />
           </ZipCode>
           <ZipCodeInput placeholder="1708424" />
+          <AutofillButton>
+            <IntlMessages id="delivery.button.autofill" />
+          </AutofillButton>
           <Description>
             <IntlMessages id="delivery.add.form.zipCode.description1" />
             <IntlMessages id="delivery.add.form.zipCode.description2" />
@@ -100,7 +118,7 @@ const AddressForm = () => (
         </FormItem>
       </FormArea>
     </StyledForm>
-  </Container>
+  </Fragment>
 );
 
 export default AddressForm;

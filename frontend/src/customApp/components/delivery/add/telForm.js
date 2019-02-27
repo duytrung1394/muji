@@ -1,11 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
-
-const Container = styled.div`
-  background-color: #fff;
-`;
 
 const StyledForm = styled(Form)``;
 
@@ -31,11 +27,12 @@ const StyledInput = styled(Input)`
     width: 95px;
     height: 40px;
     font-size: 13px;
+    border: 1px solid rgb(153, 153, 153);
   }
 `;
 
 const TelForm = () => (
-  <Container>
+  <Fragment>
     <StyledForm>
       <FormArea>
         <FormItem>
@@ -46,7 +43,7 @@ const TelForm = () => (
         </FormItem>
       </FormArea>
     </StyledForm>
-  </Container>
+  </Fragment>
 );
 
 export default TelForm;
