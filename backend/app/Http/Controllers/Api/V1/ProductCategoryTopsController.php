@@ -184,6 +184,42 @@ class ProductCategoryTopsController extends Controller
                 ]
             ],
         ],
+        'T20001' => [
+            'category_title' => "ソファ",
+            'article' => [
+                'title' =>"くつろぎの形に合わせて、自由に変形するソファ",
+                'description' =>"伸びにくく改良したニット地を使用し、生地の違いで異なる座り心地が楽しめます。大きさは、通常サイズ、45×45の2種類からお選びいただけます。",
+                'back_ground_image' => 'https:////www.muji.com/jp/img/store/panel/fit4_1k.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => [
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => 'フェザー・ポケットコイル',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => 'フェザー・ポケットコイル',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => 'フェザー・ポケットコイル',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => 'フェザー・ポケットコイル',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => 'フェザー・ポケットコイル',
+                    'sectionCode' => '',
+                ],
+            ],
+        ],
         'T20003' => [
             'category_title' => "収納家具",
             'article' => [
@@ -342,6 +378,71 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
         ],
+        'S20001' => [
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
+                ],
+                [
+                    'path' => '/store/cmdty/section/T20001',
+                    'name' => 'ソファ',
+                ],
+            ],
+            'category_title' => "フェザークッションソファ",
+            'article' => [
+                'title' =>"フェザークッションソファ｜座り心地が選べます。",
+                'description' => null,
+                'back_ground_image' => 'https://img.muji.net/img/item/4550182011463_1260.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => [
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => '3シーター',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => '2.5シーター',
+                    'sectionCode' => 'S02601',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002405014_180.jpg',
+                    'title' => '2シーター',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4549337154681_180.jpg',
+                    'title' => 'カバー',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4550002529406_180.jpg',
+                    'title' => '脚',
+                    'sectionCode' => '',
+                ],
+                [
+                    'img_src' => 'https://img.muji.net/img/item/4548076580706_180.jpg',
+                    'title' => 'ヘッドレスト',
+                    'sectionCode' => '',
+                ],
+            ],
+            'categories_in_page' => [
+                [
+                    'title' => '3シーター',
+                    'code' => 'product-3-seater',
+                ],
+                [
+                    'title' => '2.5シーター',
+                    'code' => 'product-2-5-seater',
+                ],
+                [
+                    'title' => '2シーター',
+                    'code' => 'product-2-seater',
+                ],
+            ],
+        ],
         'S20003' => [
             'links' => [
                 [
@@ -463,6 +564,30 @@ class ProductCategoryTopsController extends Controller
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                 ];
+            case "T20001":
+                return [
+                    [
+                        'group_name' => 'フェザークッションソファ',
+                        'category_code_in_page' => 'product-feather-sofa',
+                        'total' => 66,
+                        'link' => '/store/cmdty/section/S20001',
+                        'items'=> $this->getMockItemDataListForSofa(),
+                    ],
+                    [
+                        'group_name' => 'ソファベンチ',
+                        'category_code_in_page' => 'product-sofa-b',
+                        'total' => 31,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForSofa(),
+                    ],
+                    [
+                        'group_name' => 'ユニットソファ',
+                        'category_code_in_page' => 'product-unit-sofa',
+                        'total' => 25,
+                        'link' => '#',
+                        'items' => $this->getMockItemDataListForSofa(),
+                    ],
+                ];
             case "T20003":
                 return [
                     [
@@ -506,6 +631,27 @@ class ProductCategoryTopsController extends Controller
                         'category_code_in_page' => 'product-uv-cut',
                         'total' => 123,
                         'items' => $this->getMockItemDataListForWoman(),
+                    ],
+                ];
+            case "S20001":
+                return [
+                    [
+                        'category_code_in_page' => 'product-3-seater',
+                        'total' => 66,
+                        'items'=> $this->getMockItemDataListForSofa(),
+                        'combine_option' => '#', 
+                    ],
+                    [
+                        'category_code_in_page' => 'product-2-5-seater',
+                        'total' => 31,
+                        'items' => $this->getMockItemDataListForSofa(),
+                        'combine_option' => '#', 
+                    ],
+                    [
+                        'category_code_in_page' => 'product-2-seater',
+                        'total' => 25,
+                        'items' => $this->getMockItemDataListForSofa(),
+                        'combine_option' => '#', 
                     ],
                 ];
             case "S20003":
@@ -655,6 +801,47 @@ class ProductCategoryTopsController extends Controller
                 'title' => '3段x3列・オーク材',
                 'material' => 'スタッキングシェルフ',
                 'price' => 26990,
+                'tags' => [],
+            ],
+        ];
+    }
+
+    /**
+     * モックデータ: シェルフ用アイテムリスト.
+     */
+    private function getMockItemDataListForSofa()
+    {
+        return [
+            [
+                'jancode' => '4550182011463',
+                'nostock' => false,
+                'title' => 'Xシーター',
+                'material' => 'フェザークッション麻綿平織ソファ',
+                'price' => 57900,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4550182011463',
+                'nostock' => false,
+                'title' => 'Xシーター',
+                'material' => 'フェザークッション綿デニム',
+                'price' => 27900,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4550182011463',
+                'nostock' => false,
+                'title' => 'Xシーター',
+                'material' => 'フェザークッション綿平織ソファ',
+                'price' => 19900,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4550182011463',
+                'nostock' => false,
+                'title' => 'Xシーター',
+                'material' => 'フェザークッション綿ポリエステル変織ソファ',
+                'price' => 27900,
                 'tags' => [],
             ],
         ];

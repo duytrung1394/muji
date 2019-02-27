@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const NavigationItemList = styled.ul`
+  padding: 0;
   display: flex;
   border-bottom: 4px solid #7f0019;
   background: #f2f2f2;
@@ -32,10 +33,10 @@ const NavigationItem = styled.li`
 `;
 
 const menus = [
-  { name: "item", link: "" },
+  { name: "item", link: "/store/search/cmdty" },
   { name: "article", link: "" },
   { name: "service", link: "" },
-  { name: "store", link: "" }
+  { name: "store", link: "/store/search/store" }
 ];
 
 const SearchNavigationList = ({ active }) => {
