@@ -32,6 +32,19 @@ class SearchController extends Controller
     }
 
     /**
+     * フリーワード検索（読み物）取得.
+     *
+     * @return Response
+     */
+    public function indexArticle(Request $request)
+    {
+        return [
+            'data'  => $this->getMultiMockArticleData( (int)$request->input('page'), $request->input('keyword') ),
+            'total' => 4,
+        ];
+    }
+
+    /**
      * モックデータ（店舗）取得用．
      *
      * @return array
@@ -501,6 +514,143 @@ class SearchController extends Controller
                     'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
                 ]
             ],
+        ];
+    }
+
+    /**
+     * モックデータ（読み物）取得用．
+     *
+     * @return array
+     */
+    private function getMultiMockArticleData($page = 1, $keyword)
+    {
+        $data = [];
+        $start = ((int) $page - 1) * 10;
+
+        for ($i = 0; $i < 10; $i++) {
+            $data = $this->getMockArticleData('search_code' . ($i + $start ), $keyword);
+        }
+
+        return $data;
+    }
+
+    /**
+     * モックデータ（読み物）を生成して取得
+     */
+    private function getMockArticleData($code, $keyword)
+    {
+        return [
+            'keyword' => $keyword,
+            'searchArticleCategories' => [
+                [
+                    'categoryTitle' => "MUJIからのお知らせ",
+                    'articles' => [
+                        [
+                            'title' => "タルトタタン",
+                            'header' => "Cafe&Meal MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/9938_20181003124221_8a4b2a4e9b7b41a46f5fd20726e03e53_D.png"
+                        ],
+                        [
+                            'title' => "タルトタタン",
+                            'header' => "Cafe&Meal MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/9938_20181003124221_8a4b2a4e9b7b41a46f5fd20726e03e53_D.png"
+                        ],
+                        [
+                            'title' => "タルトタタン",
+                            'header' => "Cafe&Meal MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/9938_20181003124221_8a4b2a4e9b7b41a46f5fd20726e03e53_D.png"
+                        ],
+                        [
+                            'title' => "タルトタタン",
+                            'header' => "Cafe&Meal MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/9938_20181003124221_8a4b2a4e9b7b41a46f5fd20726e03e53_D.png"
+                        ],
+                        [
+                            'title' => "タルトタタン",
+                            'header' => "Cafe&Meal MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/9938_20181003124221_8a4b2a4e9b7b41a46f5fd20726e03e53_D.png"
+                        ]
+                    ]
+                ],
+                [
+                    'categoryTitle' => "Found MUJI",
+                    'articles' => [
+                        [
+                            'title' => "No.287　茶館",
+                            'header' => "Found MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/8994_20180801130427_a36fbc8d3b16c9b2b3009010e3331498_D.jpg"
+                        ],
+                        [
+                            'title' => "No.287　茶館",
+                            'header' => "Found MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/8994_20180801130427_a36fbc8d3b16c9b2b3009010e3331498_D.jpg"
+                        ],
+                        [
+                            'title' => "No.287　茶館",
+                            'header' => "Found MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/8994_20180801130427_a36fbc8d3b16c9b2b3009010e3331498_D.jpg"
+                        ],
+                        [
+                            'title' => "No.287　茶館",
+                            'header' => "Found MUJI",
+                            'date' => "2018/11/21",
+                            'image_url' => "http://img.muji.net/passport/img/app/news/8994_20180801130427_a36fbc8d3b16c9b2b3009010e3331498_D.jpg"
+                        ]
+                    ]
+                ]
+            ],
+            'searchOtherResults'   => [
+                [
+                    'id' => 1,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 2,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 3,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 4,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 5,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 6,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ],
+                [
+                    'id' => 7,
+                    'title' => "商品1",
+                    'description' => "MIJI HOTEL",
+                    'img_src' => "//img.muji.net/passport/img/app/news/10129_20181016092503_6a41a18ba19658f227c11239e3836a39_D.jpg"
+                ]
+            ]
         ];
     }
 }

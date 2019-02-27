@@ -12,7 +12,10 @@ const reducer = handleActions(
         ...restReducer,
         FETCH_ITEM: {
           REQUEST: fetchRequest
-        }
+        },
+          FETCH_ARTICLE: {
+              REQUEST: fetchRequest
+          }
       }
     }
   },
