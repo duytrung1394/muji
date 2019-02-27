@@ -13,9 +13,9 @@ const reducer = handleActions(
         FETCH_ITEM: {
           REQUEST: fetchRequest
         },
-          FETCH_SERVICE: {
-              REQUEST: fetchRequest
-          }
+        FETCH_SERVICE: {
+          REQUEST: fetchRequest
+        }
       }
     }
   },

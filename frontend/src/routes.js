@@ -250,12 +250,12 @@ const routes = [
       require("./customApp/containers/Search/indexItem")
     )
   },
-    {
-        path: "/store/search/service",
-        exact: true,
-        component: asyncComponent(() =>
-            require("./customApp/containers/Search/indexService")
-        )
-    }
+  {
+    path: "/store/search/service",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexService")
+    )
+  }
 ];
 export default routes;

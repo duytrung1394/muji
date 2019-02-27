@@ -34,9 +34,9 @@ const reverseColor = "#fff";
 export const OutlineButton = styled(Button)`
   &&& {
     background-color: ${props =>
-    props.reverse ? props.color || reverseColor : reverseColor};
+      props.reverse ? props.color || reverseColor : reverseColor};
     color: ${props =>
-    props.reverse ? reverseColor : props.color || baseColor};
+      props.reverse ? reverseColor : props.color || baseColor};
     border: 1px solid ${props => props.color || baseColor};
     border-radius: 25px;
     font-size: 12px;

@@ -10,9 +10,8 @@ const ServiceItemListWrapper = styled.div`
   overflow: hidden;
 
   .ant-card-grid {
-    width: calc((100% - 100px) / 4);
-    max-width: 320px;
-    margin: 20px 10px 0;
+    width: calc((100% - 90px) / 4);
+    margin: 10px 30px 20px 0;
     padding: 0 0 15px 0;
     box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
     border-radius: 4px;
@@ -22,6 +21,26 @@ const ServiceItemListWrapper = styled.div`
       transition: filter 0.2s ease;
       filter: brightness(0.85);
       border-radius: 4px 4px 0 0;
+    }
+    p {
+      display: block;
+      margin: 0;
+      padding: 0 10px;
+      line-height: 15px;
+      font-size: 11px;
+      color: #999;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    h3 {
+      padding: 10px;
+      color: #585858;
+      font-weight: normal;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   @media only screen and (max-width: 980px) {
@@ -34,44 +53,27 @@ const ServiceItemListWrapper = styled.div`
       width: calc((100% - 100px));
     }
   }
-  p {
-    display: block;
-    margin: 0;
-    padding: 0 10px;
-    line-height: 15px;
-    font-size: 11px;
-    color: #999;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  h3 {
-    padding: 10px;
-    color: #585858;
-    font-weight: normal;
-    font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 `;
 const SearchServiceList = props => {
   return (
     <ServiceItemListWrapper>
+      <h3>
+        <IntlMessages id="search.storeService.title" />
+      </h3>
       {props.items &&
         props.items.map((item, index) => {
           return (
             <Card.Grid key={index}>
-              <Link to="">
+              <Link to={"/store/service/" + item.serviceId}>
                 <img src={item.image_url} alt="" />
                 <h3>{item.serviceName}</h3>
-                <p>{item.description}</p>
-                  <p>
-                <IntlMessages
+                {item.description ? <p>{item.description}</p> : <p>　</p>}
+                <p>
+                  <IntlMessages
                     id="productCategoryTop.price"
-                    values={{ price: {item.price} }}
-                />
-                  </p>
+                    values={{ price: item.price }}
+                  />
+                </p>
               </Link>
             </Card.Grid>
           );

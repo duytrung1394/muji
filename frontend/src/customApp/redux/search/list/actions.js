@@ -8,9 +8,9 @@ const actions = createActions({
       FETCH_ITEM: {
         REQUEST: undefined
       },
-        FETCH_SERVICE: {
-            REQUEST: undefined
-        }
+      FETCH_SERVICE: {
+        REQUEST: undefined
+      }
     }
   }
 });
