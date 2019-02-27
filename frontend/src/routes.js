@@ -167,10 +167,38 @@ const routes = [
     )
   },
   {
+    path: "/store/cust/favorite",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Favorite/index")
+    )
+  },
+  {
     path: "/store/cust/order/storeReserve",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexStoreReserve")
+    )
+  },
+  {
+    path: "/store/cust/order/subscription",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/indexSubscription")
+    )
+  },
+  {
+    path: "/store/search/store",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/index")
+    )
+  },
+  {
+    path: "/store/search/cmdty",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexItem")
     )
   }
 ];

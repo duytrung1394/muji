@@ -9,10 +9,19 @@ const StyledList = styled(List)`
     margin: 3% 0;
   }
 
+  &&& {
+    .ant-list-item {
+      border-top: 1px solid #999;
+    }
+    .ant-list-item:last-child {
+      border-bottom: 1px solid #999;
+    }
+  }
+
   .ant-avatar {
     border-radius: 0px;
-    width: 50px;
-    height: 50px;
+    width: 63px;
+    height: 63px;
   }
 
   @media screen and (max-width: 1300px) {
@@ -29,17 +38,8 @@ const StyledList = styled(List)`
 `;
 
 const StyledMeta = styled(List.Item.Meta)`
-  .ant-list-item-meta-title {
-    color: rgba(0, 0, 0, 0.55);
-  }
-
-  .ant-list-item-meta-title:hover {
-    color: rgba(0, 0, 0, 0.55);
-  }
-
   .ant-list-item-meta-description {
-    font-weight: bold;
-    color: #333;
+    color: #585858;
   }
 
   .ant-list-item-meta-description:before {
@@ -63,8 +63,29 @@ const StyledMeta = styled(List.Item.Meta)`
   }
 `;
 
+const Material = styled.div`
+  color: #999;
+  font-size: 11px;
+`;
+
+const Name = styled.div`
+  color: #585858;
+  font-size: 15px;
+`;
+
+const Title = ({ material, name }) => (
+  <div>
+    <Material>{material}</Material>
+    <Name>{name}</Name>
+  </div>
+);
+
 const CategoryItems = props => {
   const { items } = props;
+
+  if (!items) {
+    return null;
+  }
 
   return (
     <StyledList
@@ -75,7 +96,7 @@ const CategoryItems = props => {
           <a href="">
             <StyledMeta
               avatar={<Avatar src={item.img} />}
-              title={item.name}
+              title={<Title material={item.material} name={item.name} />}
               description={item.price}
             />
           </a>

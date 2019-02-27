@@ -8,7 +8,7 @@ const StyledCol = styled(Col)`
 `;
 
 const LinkBoxShadow = styled(Link)`
-  box-shadow: 0 1px 3px 0 #585858;
+  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
   border-radius: 4px;
   width: 100%;
   margin-bottom: 10px;
@@ -49,7 +49,7 @@ const CategoryList = ({ innerCategories }) => {
         innerCategories.map((item, index) => {
           return (
             <StyledCol {...colLayout} key={index}>
-              <LinkBoxShadow to="">
+              <LinkBoxShadow to={`/store/cmdty/section/${item.sectionCode}`}>
                 <Image src={item.img_src} alt="" />
                 {item.title && <Title>{item.title}</Title>}
               </LinkBoxShadow>
