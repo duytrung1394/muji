@@ -25,7 +25,7 @@ const DashApp = () => (
           <Content id="content" style={{ position: "relative" }}>
             <Routes />
             <Layout>
-              <Footer />            
+              <Footer />
             </Layout>
           </Content>
         </Layout>
