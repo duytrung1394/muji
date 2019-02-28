@@ -16,6 +16,7 @@ const ContentLayout = styled(BaseContentLayout)`
 
 const Title = styled.h1`
   font-size: 24px;
+  color: rgb(0, 0, 0);
   margin-bottom: 0;
 `;
 

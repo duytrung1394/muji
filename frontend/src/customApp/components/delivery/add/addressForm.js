@@ -18,6 +18,8 @@ const FormItem = styled.li`
 `;
 
 const Label = styled.h2`
+  color: rgb(88, 88, 88);
+  letter-spacing: 0.54px;
   font-size: 13px;
   font-weight: bold;
 `;
@@ -32,6 +34,7 @@ const ZipCodeInput = styled(Input)`
   && {
     width: 88px;
     height: 40px;
+    padding: 8px;
     font-size: 13px;
     border: 1px solid rgb(153, 153, 153);
   }
@@ -56,6 +59,8 @@ const AutofillButton = styled(Button)`
 
 const Description = styled.p`
   font-size: 11px;
+  text-align: justify;
+  line-height: 15px;
   margin-bottom: 0;
   margin-top: 8px;
 `;
@@ -65,6 +70,7 @@ const StyledInput = styled(Input)`
   && {
     width: 300px;
     height: 40px;
+    padding: 8px;
     font-size: 13px;
     border: 1px solid rgb(153, 153, 153);
   }

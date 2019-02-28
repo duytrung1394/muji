@@ -17,6 +17,8 @@ const FormItem = styled.li`
 `;
 
 const Label = styled.h2`
+  color: rgb(88, 88, 88);
+  letter-spacing: 0.54px;
   font-size: 13px;
   font-weight: bold;
 `;
@@ -26,6 +28,7 @@ const StyledInput = styled(Input)`
   && {
     width: 95px;
     height: 40px;
+    padding: 8px;
     font-size: 13px;
     border: 1px solid rgb(153, 153, 153);
   }
