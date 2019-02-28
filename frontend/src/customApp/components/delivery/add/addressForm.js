@@ -76,7 +76,10 @@ const AddressForm = () => (
       <FormArea>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.zipCode" />
+            <IntlMessages 
+              id="delivery.add.form.zipCode"
+              values={{ require: <IntlMessages id="delivery.add.form.require" /> }}
+            />
           </Label>
           <ZipCode>
             <IntlMessages id="label.zipCode" />
@@ -92,25 +95,37 @@ const AddressForm = () => (
         </FormItem>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.address1" />
+            <IntlMessages 
+              id="delivery.add.form.address1"
+              values={{ require: <IntlMessages id="delivery.add.form.require" /> }}
+            />
           </Label>
           <StyledInput placeholder="東京都豊島区" />
         </FormItem>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.address2" />
+            <IntlMessages 
+              id="delivery.add.form.address2"
+              values={{ require: <IntlMessages id="delivery.add.form.require" /> }}
+            />
           </Label>
           <StyledInput placeholder="東池袋" />
         </FormItem>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.address3" />
+            <IntlMessages 
+              id="delivery.add.form.address3"
+              values={{ require: <IntlMessages id="delivery.add.form.require" /> }}
+            />
           </Label>
           <StyledInput placeholder="4-26-3" />
         </FormItem>
         <FormItem>
           <Label>
-            <IntlMessages id="delivery.add.form.address4" />
+            <IntlMessages 
+              id="delivery.add.form.address4"
+              values={{ require: <IntlMessages id="delivery.add.form.require" /> }}
+            />
           </Label>
           <StyledInput placeholder="部屋番号がある場合は入力が必須となります" />
           <Description>

@@ -147,6 +147,7 @@
   "delivery.add.form.address.description": "部屋番号までご入力ください。",
   "delivery.add.form.name": "氏名{require}",
   "delivery.add.form.nameKana": "フリガナ{require}",
+  "delivery.add.form.require": "（必須）",
   "delivery.add.form.tel": "日中に連絡可能な電話番号{require}",
   "delivery.add.form.zipCode": "郵便番号{require}",
   "delivery.add.form.zipCode.description1": "郵便番号を入力して「住所自動入力」ボタンを押してください。",
