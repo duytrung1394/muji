@@ -44,19 +44,19 @@ const MemberGuideDescription = () => {
   );
 };
 
-const Index = ()=> {
-    return (
-      <AreaLayout>
-        <BaseContentLayout>
-          <MemberGuideTitle />
-          <MemberGuideDescription />
-          <RegistrationButton />
-          <MemberGuide />
-          <RegistrationButton />
-        </BaseContentLayout>
-      </AreaLayout>
-    );
-}
+const Index = () => {
+  return (
+    <AreaLayout>
+      <BaseContentLayout>
+        <MemberGuideTitle />
+        <MemberGuideDescription />
+        <RegistrationButton />
+        <MemberGuide />
+        <RegistrationButton />
+      </BaseContentLayout>
+    </AreaLayout>
+  );
+};
 
 const enhance = C => {
   const injected = injectIntl(C, { withRef: true });
