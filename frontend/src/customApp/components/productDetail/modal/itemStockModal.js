@@ -18,12 +18,25 @@ const StyledModal = styled(Modal)`
   overflow: scroll;
   .ant-modal-header {
     border-bottom: none;
+    .ant-modal-title {
+      span {
+        font-weight: bold;
+      }
+    }
   }
-  .ant-modal-close {
-    color: #333;
-    font-weight: 600;
-    .ant-modal-close-x {
-      font-size: 12px;
+  .ant-modal-content {
+    .ant-modal-close {
+      color: #333;
+      font-weight: 600;
+      .ant-modal-close-x {
+        font-size: 12px;
+        i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }
+      }
     }
   }
 `;

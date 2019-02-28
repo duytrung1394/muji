@@ -1,7 +1,7 @@
 import React from "react";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
-import { Collapse } from "antd";
+import { Collapse, Icon } from "antd";
 import ListItems from "./listItems";
 
 const Prefectures = styled.div`
@@ -36,38 +36,30 @@ const StoreSearchTitle = styled.h3`
 `;
 
 const StyledCollapse = styled(Collapse)`
-  .ant-collapse-item {
+  &.ant-collapse > .ant-collapse-item {
     border-top: #d9d9d9;
-    .ant-collapse-header[aria-expanded="true"] {
-      .arrow {
-        transform: rotate(180deg) !important;
-      }
-    }
-    .ant-collapse-header {
-      .arrow {
-        &:before {
-          content: "\\E61D" !important;
-        }
+    > .ant-collapse-header {
+      padding-left: 0;
+      > i {
+        right: 12px;
+        left: initial;
       }
     }
   }
 `;
 
 const StyledPanel = styled(Collapse.Panel)`
-  &&& .ant-collapse-header {
-    padding-left: 12px;
-    & .arrow {
-      left: auto;
-      right: 12px;
-    }
+  .ant-collapse-header {
+    padding-left: 0px;
   }
-  && .ant-collapse-content {
+  .ant-collapse-content {
     padding: 0px;
-  }
-  &&& .ant-collapse-content-box {
-    li {
-      &:nth-child(even) {
-        background-color: #f2f2f2;
+    .ant-collapse-content-box {
+      padding: 0 0 16px;
+      li {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
       }
     }
   }
@@ -76,7 +68,12 @@ const StyledPanel = styled(Collapse.Panel)`
 const PrefectureList = ({ prefecture }) => {
   return (
     <ListCol>
-      <StyledCollapse bordered={false}>
+      <StyledCollapse
+        bordered={false}
+        expandIcon={({ isActive }) => (
+          <Icon type="up" rotate={isActive ? 180 : 0} />
+        )}
+      >
         {
           <StyledPanel header={prefecture.area}>
             <ListItems prefectureDetails={prefecture.prefecture_details} />

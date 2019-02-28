@@ -135,7 +135,7 @@ class ProductDetailsController extends Controller
                         ]
                     ],
                     [
-                        'area' => '東京２３区外',
+                        'area' => '東京23区外',
                         'prefecture_details' => [
                             [
                                 'name' => '新宿',
