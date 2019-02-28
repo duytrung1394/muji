@@ -8,9 +8,15 @@ const actions = createActions({
       FETCH_ITEM: {
         REQUEST: undefined
       },
+<<<<<<< HEAD
         FETCH_ARTICLE: {
             REQUEST: undefined
         }
+=======
+      FETCH_SERVICE: {
+        REQUEST: undefined
+      }
+>>>>>>> develop
     }
   }
 });

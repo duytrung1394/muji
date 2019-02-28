@@ -30,3 +30,11 @@ $router->get('/api/v1/search/articles', [
     'uses'          => 'Api\V1\SearchController@indexArticle',
 ]);
 
+/**
+ * フリーワード検索（サービス）一覧取得
+ */
+$router->get('/api/v1/search/services', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\SearchController@indexService',
+]);
+

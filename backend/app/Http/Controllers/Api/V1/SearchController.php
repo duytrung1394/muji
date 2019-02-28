@@ -40,7 +40,20 @@ class SearchController extends Controller
     {
         return [
             'data'  => $this->getMultiMockArticleData( (int)$request->input('page'), $request->input('keyword') ),
-            'total' => 4,
+            'total' => 4
+        ];
+    }
+
+    /*
+     * フリーワード検索（サービス）取得.
+     *
+     * @return Response
+     */
+    public function indexService(Request $request)
+    {
+        return [
+            'data'  => $this->getMultiMockServiceData( (int)$request->input('page'), $request->input('keyword') ),
+            'total' => 4
         ];
     }
 
@@ -605,6 +618,71 @@ class SearchController extends Controller
                             'image_url' => "http://img.muji.net/passport/img/app/news/8994_20180801130427_a36fbc8d3b16c9b2b3009010e3331498_D.jpg"
                         ]
                     ]
+                 ]
+             ]
+        ];
+    }
+
+    /**
+     * モックデータ（サービス）取得用．
+     *
+     * @return array
+     */
+    private function getMultiMockServiceData($page = 1, $keyword)
+    {
+        $data = [];
+        $start = ((int) $page - 1) * 10;
+
+        for ($i = 0; $i < 10; $i++) {
+            $data = $this->getMockServiceData('search_code' . ($i + $start ), $keyword);
+        }
+
+        return $data;
+    }
+
+    /**
+     * モックデータ（サービス）を生成して取得
+     */
+    private function getMockServiceData($code, $keyword)
+    {
+        return [
+            'keyword' => $keyword,
+            'searchEvents' => [
+                [
+                    'eventId' => 1,
+                    'image_url' => "http://img.muji.net/passport/img/app/news/10127_20181015191830_dfdc807430e1c7eb5301b6263e08b97a_D.jpg",
+                    'eventName' => "初めてのハンドドリップワークショップ",
+                    'place' => "天神大名",
+                    'date' => "2018/1/11"
+                ],
+                [
+                    'eventId' => 2,
+                    'image_url' => "http://img.muji.net/passport/img/app/news/10130_20181016092721_7f7de3ab0d44516d1d5065aee2d7d190_D.jpg",
+                    'eventName' => "冬至に作ろう！かぼちゃの簡単カフェ風ランチプレート",
+                    'place' => "天神大名",
+                    'date' => "2018/1/11"
+                ],
+                [
+                    'eventId' => 3,
+                    'image_url' => "http://img.muji.net/passport/img/app/news/10127_20181015191830_dfdc807430e1c7eb5301b6263e08b97a_D.jpg",
+                    'eventName' => "初めてのハンドドリップワークショップ",
+                    'place' => "天神大名",
+                    'date' => "2018/1/11"
+                ]
+            ],
+            'searchServices' => [
+                [
+                    'serviceId' => 1,
+                    'image_url' => "http://img.muji.net/passport/img/app/news/10131_20181016093215_eb923aea1cbbae5036cf3feed59733de_D.jpg",
+                    'serviceName' => "コーヒーフロート",
+                    'description' => "7大アレルゲン：乳",
+                    'price' => 280
+                ],
+                [
+                    'serviceId' => 2,
+                    'image_url' => "http://img.muji.net/passport/img/app/news/10131_20181016093215_eb923aea1cbbae5036cf3feed59733de_D.jpg",
+                    'serviceName' => "ブレンドコーヒーホット",
+                    'price' => 280
                 ]
             ],
             'searchOtherResults'   => [

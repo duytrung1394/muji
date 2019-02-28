@@ -48,7 +48,7 @@ require_once 'api/v1/lotteries.php';
 require_once 'api/v1/orders.php';
 
 // /api/v1/searches
-require_once 'api/v1/searches.php';
+require_once 'api/v1/search.php';
 
 // /api/v1/favorites
 require_once 'api/v1/favorites.php';

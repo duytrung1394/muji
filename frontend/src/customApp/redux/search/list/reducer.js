@@ -13,9 +13,15 @@ const reducer = handleActions(
         FETCH_ITEM: {
           REQUEST: fetchRequest
         },
+<<<<<<< HEAD
           FETCH_ARTICLE: {
               REQUEST: fetchRequest
           }
+=======
+        FETCH_SERVICE: {
+          REQUEST: fetchRequest
+        }
+>>>>>>> develop
       }
     }
   },
