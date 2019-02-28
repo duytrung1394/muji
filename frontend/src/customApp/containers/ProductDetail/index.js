@@ -73,7 +73,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <ContentHeader links={entity.links} />
-          <Row>
+          <Row type="flex">
             <PictureCol span={12}>
               <DetailPicture
                 images={entity.images}
