@@ -60,22 +60,22 @@ const ArticleItemListWrapper = styled.div`
   }
 `;
 const ArticleItemList = props => {
-    return (
-        <ArticleItemListWrapper>
-            {props.articles &&
-            props.articles.map((item, index) => {
-                return (
-                    <Card.Grid key={index}>
-                        <Link to={"/store/event/" + item.articleId}>
-                            <img src={item.image_url} alt="" />
-                            <p>{item.header}</p>
-                            <h3>{item.title}</h3>
-                            <h3>{item.date}</h3>
-                        </Link>
-                    </Card.Grid>
-                );
-            })}
-        </ArticleItemListWrapper>
-    );
+  return (
+    <ArticleItemListWrapper>
+      {props.articles &&
+        props.articles.map((item, index) => {
+          return (
+            <Card.Grid key={index}>
+              <Link to={"/store/article/" + item.articleId}>
+                <img src={item.image_url} alt="" />
+                <p>{item.header}</p>
+                <h3>{item.title}</h3>
+                <h3>{item.date}</h3>
+              </Link>
+            </Card.Grid>
+          );
+        })}
+    </ArticleItemListWrapper>
+  );
 };
 export default ArticleItemList;
