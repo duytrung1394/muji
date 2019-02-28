@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Link } from "../../shared/form/link";
 import { Row, Col } from "antd";
+
+import IntlMessages from "../../../../components/utility/intlMessages";
+import { Link } from "../../shared/form/link";
 
 import Img10 from "../../../../image/account/lst-memberguide-10.png";
 
@@ -50,39 +52,39 @@ const ToMujiPassport = styled(Link)`
   font-weight: bold;
 `;
 
-const ListImages = {
-  src10: Img10
-};
-
-const MemberGuidePassportListItem = ({ ItemData }) => {
+const MemberGuidePassportListItem = () => {
   return (
     <PassportListItem>
       <PassportListItemRow>
         <Col span={7}>
-          <PassportItemImage src={ListImages[ItemData.src]} />
+          <PassportItemImage src={Img10} />
         </Col>
         <Col span={16} offset={1}>
-          <PassportListItemText>{ItemData.text}</PassportListItemText>
+          <PassportListItemText>
+            <IntlMessages id="account.memberGuideMemberPassportDescription" />
+          </PassportListItemText>
         </Col>
       </PassportListItemRow>
     </PassportListItem>
   );
 };
 
-const MemberGuidePassport = ({ Passport }) => {
-  const { caption, list, texts, link_text } = Passport;
+const MemberGuidePassport = () => {
   return (
     <Fragment>
-      <MemberGuidePassportCaption>{caption}</MemberGuidePassportCaption>
+      <MemberGuidePassportCaption>
+        <IntlMessages id="account.memberGuideMemberPassportCaption" />
+      </MemberGuidePassportCaption>
       <MemberGuidePassportList>
-        {list.map((itemData, index) => (
-          <MemberGuidePassportListItem ItemData={itemData} key={index} />
-        ))}
+        <MemberGuidePassportListItem />
       </MemberGuidePassportList>
-      {texts.map((text, index) => (
-        <MemberGuidePassportText key={index}>{text}</MemberGuidePassportText>
-      ))}
-      <ToMujiPassport to="#">{link_text}</ToMujiPassport>
+      <MemberGuidePassportText>
+        <IntlMessages id="account.memberGuideMemberPassportText1" />
+        <IntlMessages id="account.memberGuideMemberPassportText2" />
+      </MemberGuidePassportText>
+      <ToMujiPassport to="#">
+        <IntlMessages id="account.memberGuideMemberPassportLinkText" />
+      </ToMujiPassport>
     </Fragment>
   );
 };

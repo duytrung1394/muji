@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
+
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 import Img1 from "../../../../image/account/lst-memberguide-01.png";
 import Img2 from "../../../../image/account/lst-memberguide-02.png";

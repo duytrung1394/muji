@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 
+import IntlMessages from "../../../../components/utility/intlMessages";
+
 import disc from "../../../../image/account/ico-disc-style.png";
 
 const MemberGuideOtherCaption = styled.h2`
@@ -48,16 +50,29 @@ const MemberGuideOtherItem = styled.li`
   }
 `;
 
-const MemberGuideOther = ({ Other }) => {
-  const { caption, title, text, list } = Other;
+const listTexts = [
+  "account.memberGuideMemberOtherListText1",
+  "account.memberGuideMemberOtherListText2",
+  "account.memberGuideMemberOtherListText3"
+];
+
+const MemberGuideOther = () => {
   return (
     <Fragment>
-      <MemberGuideOtherCaption>{caption}</MemberGuideOtherCaption>
-      <MemberGuideOtherTitle>{title}</MemberGuideOtherTitle>
-      <MemberGuideOtherText>{text}</MemberGuideOtherText>
+      <MemberGuideOtherCaption>
+        <IntlMessages id="account.memberGuideMemberOtherListCaption" />
+      </MemberGuideOtherCaption>
+      <MemberGuideOtherTitle>
+        <IntlMessages id="account.memberGuideMemberOtherListTitle" />
+      </MemberGuideOtherTitle>
+      <MemberGuideOtherText>
+        <IntlMessages id="account.memberGuideMemberOtherListDescription" />
+      </MemberGuideOtherText>
       <MemberGuideOtherList>
-        {list.map((item, index) => (
-          <MemberGuideOtherItem key={index}>{item}</MemberGuideOtherItem>
+        {listTexts.map((text, index) => (
+          <MemberGuideOtherItem key={index}>
+            <IntlMessages id={text} />
+          </MemberGuideOtherItem>
         ))}
       </MemberGuideOtherList>
     </Fragment>

@@ -20,18 +20,17 @@ const ContentBaseLayout = styled.div`
   }
 `;
 
-const Contents = ({ entities }) => {
-  const { memberguide_list, passport, other } = entities;
+const Contents = () => {
   return (
     <MemberGuideContents>
       <ContentBaseLayout>
-        <MemberGuideMember ListData={memberguide_list} />
+        <MemberGuideMember />
       </ContentBaseLayout>
       <ContentBaseLayout>
-        <MemberGuidePassport Passport={passport} />
+        <MemberGuidePassport />
       </ContentBaseLayout>
       <ContentBaseLayout>
-        <MemberGuideOther Other={other} />
+        <MemberGuideOther />
       </ContentBaseLayout>
     </MemberGuideContents>
   );
