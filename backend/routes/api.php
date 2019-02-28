@@ -53,10 +53,6 @@ require_once 'api/v1/searches.php';
 // /api/v1/favorites
 require_once 'api/v1/favorites.php';
 
-
-// /api/v1/accounts
-require_once 'api/v1/accounts.php';
-
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。
 
