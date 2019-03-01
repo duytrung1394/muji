@@ -256,6 +256,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
     )
+  },
+  {
+    path: "/store/search/service",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexService")
+    )
   }
 ];
 export default routes;
