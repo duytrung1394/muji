@@ -27,3 +27,26 @@ const StyledButton = styled(AntdButton)`
 export const Button = props => (
   <StyledButton {...props}>{props.children}</StyledButton>
 );
+
+const baseColor = "#585858";
+const reverseColor = "#fff";
+
+export const OutlineButton = styled(Button)`
+  &&& {
+    ${({ width = "300px", height = "40px", color, reverse = false }) => ({
+      width,
+      height,
+      backgroundColor: reverse ? color || reverseColor : reverseColor,
+      color: reverse ? reverseColor : color || baseColor,
+      borderColor: color || baseColor
+    })};
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 25px;
+    font-size: 12px;
+  }
+  &.ant-btn-clicked:after {
+    content: "";
+    border: none;
+  }
+`;

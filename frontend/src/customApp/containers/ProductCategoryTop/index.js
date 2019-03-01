@@ -32,7 +32,7 @@ class Index extends Component {
       this.props.match.params.category_code !==
       prevProps.match.params.category_code
     ) {
-      document.querySelector("#content").scrollIntoView();
+      this.top.scrollIntoView({ behavior: "smooth" });
     }
   }
 
@@ -45,6 +45,7 @@ class Index extends Component {
 
     return (
       <ContentAreaLayout>
+        <a ref={ref => (this.top = ref)} />
         <Spin spinning={fetching} size="large">
           <ContentHeader title={entity.category_title} links={entity.links} />
           <Article article={entity.article} />
