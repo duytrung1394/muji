@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import { Col, Icon } from "antd";
 import Price from "./form/price";
 import Color from "./form/color";
 import Size from "./form/size";
@@ -134,7 +133,7 @@ class Form extends Component {
     }
 
     return (
-      <Col span={11} offset={1}>
+      <Fragment>
         <DetailName>{entity.material}</DetailName>
         <ItemName>{entity.itemName}</ItemName>
         <Info description={entity.webCatalogDescription} />
@@ -187,7 +186,7 @@ class Form extends Component {
             </span>
           </StyledButton>
         </ButtonsBox>
-      </Col>
+      </Fragment>
     );
   }
 }

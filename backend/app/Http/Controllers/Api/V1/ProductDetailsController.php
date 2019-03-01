@@ -90,6 +90,199 @@ class ProductDetailsController extends Controller
                     'value' => 'XXL',
                 ],
             ],
+            // TODO:正式パラーメタ対応  以下は 店舗在庫状況 用のサンプルデータ
+            'store_stock_list' => [
+                [
+                    'name' => '新宿',
+                    'state' => 'あり'
+                ],
+                [
+                    'name' => '有楽町',
+                    'state' => 'なし'
+                ]
+            ],
+            // TODO:正式パラーメタ対応  以下は EC-PD-014 店舗在庫状況_モーダル 用のサンプルデータ
+            'modal_data' => [
+                'item_data' => [
+                    'item_img' => 'itemImg',
+                    'type' => 'オーガニックコットン',
+                    'name' => 'ミニ裏毛五分袖ワイドTシャツ',
+                    'color' => 'ライトシルバーグレー',
+                    'size' => 's',
+                    'number' => '1',
+                    'price' => '2,980'
+                ],
+                'prefectures_data' => [
+                    [
+                        'area' => '東京23区内',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '東京23区外',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '千葉県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]  
+                    ],
+                    [
+                        'area' => '神奈川県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '山梨県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '長野県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '静岡県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                    [
+                        'area' => '愛知県',
+                        'prefecture_details' => [
+                            [
+                                'name' => '新宿',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '池袋西武',
+                                'stock' => 'あり'
+                            ],
+                            [
+                                'name' => '中野マルイ',
+                                'stock' => 'わずか'
+                            ]
+                        ]
+                    ],
+                ],
+            ],
             'quantity_data' => [
                 'quantity' => 100,
                 'max' => 10,

@@ -1,15 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Col } from "antd";
 import fav from "../../../image/cmdty/detail/ico-fob-heart.png";
 import favActive from "../../../image/cmdty/detail/ico-fob-heart-active.png";
 import Slider from "../shared/slider";
 import IntlMessages from "../../../components/utility/intlMessages";
-
-const PictureCol = styled(Col)`
-  max-height: 700px;
-  position: relative;
-`;
 
 const FavImg = styled.img`
   position: absolute;
@@ -68,7 +62,7 @@ const DetailPicture = ({ favFlg, handleChangeFavFlg, images }) => {
     return null;
   }
   return (
-    <PictureCol span={12}>
+    <Fragment>
       <StyledSlider
         dots={true}
         infinite={true}
@@ -84,7 +78,7 @@ const DetailPicture = ({ favFlg, handleChangeFavFlg, images }) => {
         <IntlMessages id="productDetail.attentionItemList" />
       </ShowItemList>
       <FavImage favFlg={favFlg} handleChangeFavFlg={handleChangeFavFlg} />
-    </PictureCol>
+    </Fragment>
   );
 };
 
