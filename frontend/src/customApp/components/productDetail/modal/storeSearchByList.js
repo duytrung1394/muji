@@ -2,48 +2,19 @@ import React from "react";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import styled from "styled-components";
 import { Collapse, Icon } from "antd";
+import { Row, Col } from "antd";
 import ListItems from "./listItems";
 
-const Prefectures = styled.div`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  & {
-    > div {
-      :nth-of-type(-n + 2) {
-        border-top: 1px solid #d9d9d9;
-      }
-    }
-  }
-`;
-
-const ListCol = styled.div`
-  width: 48%;
-  margin: 0 auto;
-  &:last-child {
-    margin-left: 13.797;
-  }
-`;
-
-const StoreSearchDiv = styled.div`
-  padding: 8px 0;
-`;
-
-const StoreSearchTitle = styled.h3`
-  font-size: 15px;
-  padding: 8px 0;
+const PrefectureListCol = styled(Col)`
+  padding: 0 10px;
 `;
 
 const StyledCollapse = styled(Collapse)`
-  &.ant-collapse > .ant-collapse-item {
-    border-top: #d9d9d9;
-    > .ant-collapse-header {
-      padding-left: 0;
-      > i {
-        right: 12px;
-        left: initial;
-      }
+  &&& .ant-collapse-header {
+    padding-left: 0;
+    > i {
+      right: 12px;
+      left: initial;
     }
   }
 `;
@@ -67,11 +38,11 @@ const StyledPanel = styled(Collapse.Panel)`
 
 const PrefectureList = ({ prefecture }) => {
   return (
-    <ListCol>
+    <PrefectureListCol xs={12}>
       <StyledCollapse
         bordered={false}
         expandIcon={({ isActive }) => (
-          <Icon type="up" rotate={isActive ? 180 : 0} />
+          <Icon type="up" rotate={isActive ? 0 : 180} />
         )}
       >
         {
@@ -80,22 +51,39 @@ const PrefectureList = ({ prefecture }) => {
           </StyledPanel>
         }
       </StyledCollapse>
-    </ListCol>
+    </PrefectureListCol>
   );
 };
 
+const StyledStoreSearchByList = styled.div`
+  padding: 8px 0;
+`;
+
+const StoreSearchTitle = styled.h3`
+  font-size: 15px;
+  padding: 8px 0;
+`;
+
+const PrefectureListRow = styled(Row)`
+  > div:nth-of-type(-n + 2) {
+    .ant-collapse-item {
+      border-top: 1px solid #d9d9d9;
+    }
+  }
+`;
+
 const StoreSearchByList = ({ prefectures }) => {
   return (
-    <StoreSearchDiv>
+    <StyledStoreSearchByList>
       <StoreSearchTitle>
         <IntlMessages id="productDetail.searchByPrefectural" />
       </StoreSearchTitle>
-      <Prefectures>
+      <PrefectureListRow>
         {prefectures.map((prefecture, index) => {
           return <PrefectureList prefecture={prefecture} key={index} />;
         })}
-      </Prefectures>
-    </StoreSearchDiv>
+      </PrefectureListRow>
+    </StyledStoreSearchByList>
   );
 };
 
