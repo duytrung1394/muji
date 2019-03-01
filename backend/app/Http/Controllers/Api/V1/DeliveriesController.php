@@ -40,41 +40,57 @@ class DeliveriesController extends Controller
      */
     private function getMockData()
     {
+        $addressId = 1;
         return [
             [
-                'name' => '無印　花子',
+                'addressId' => $addressId,
+                'naming' => '無印　花子',
                 'zipCode' => '123-4567',
-                'address1' => '東京都渋谷区宇田川町21-1',
-                'address2' => '渋谷西武パーキング館　Ｂ1Ｆ',
-                'tel' => '01 - 2345 - 6789' 
+                'address1' => '東京都',
+                'address2' => '渋谷区',
+                'address3' => '宇田川町21-1',
+                'address4' => '渋谷西武パーキング館　Ｂ1Ｆ',
+                'telNo' => '01 - 2345 - 6789' 
             ],
             [
-                'name' => '無印 良太',
+                'addressId' => $addressId,
+                'naming' => '無印 良太',
                 'zipCode' => '123-4567',
-                'address1' => '東京都豊島区南池袋1-28-1',
-                'address2' => '西武池袋本店別館1～2Ｆ',
-                'tel' => '01 - 2345 - 6789'
+                'address1' => '東京都',
+                'address2' => '豊島区',
+                'address3' => '南池袋1-28-1',
+                'address4' => '西武池袋本店別館1～2Ｆ',
+                'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'name' => '無印 計子',
+                'addressId' => $addressId,
+                'naming' => '無印 計子',
                 'zipCode' => '123-4567',
-                'address1' => '東京都千代田区丸の内2-7-2',
-                'address2' => '丸の内ＪＰタワー3Ｆ',
-                'tel' => '01 - 2345 - 6789'
+                'address1' => '東京都',
+                'address2' => '千代田区',
+                'address3' => '丸の内2-7-2',
+                'address4' => '丸の内ＪＰタワー3Ｆ',
+                'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'name' => '無印 良太',
+                'addressId' => $addressId,
+                'naming' => '無印 良太',
                 'zipCode' => '123-4567',
-                'address1' => '東京都豊島区南池袋1-28-1',
-                'address2' => '西武池袋本店別館1～2Ｆ',
-                'tel' => '01 - 2345 - 6789'
+                'address1' => '東京都',
+                'address2' => '豊島区',
+                'address3' => '南池袋1-28-1',
+                'address4' => '西武池袋本店別館1～2Ｆ',
+                'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'name' => '無印 計子',
+                'addressId' => $addressId,
+                'naming' => '無印 計子',
                 'zipCode' => '123-4567',
-                'address1' => '東京都千代田区丸の内2-7-2',
-                'address2' => '丸の内ＪＰタワー3Ｆ',
-                'tel' => '01 - 2345 - 6789'
+                'address1' => '東京都',
+                'address2' => '千代田区',
+                'address3' => '丸の内2-7-2',
+                'address4' => '丸の内ＪＰタワー3Ｆ',
+                'telNo' => '01 - 2345 - 6789'
             ],
         ];
     }

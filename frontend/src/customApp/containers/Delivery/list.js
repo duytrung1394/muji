@@ -8,9 +8,10 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
+import { Spin } from "antd";
 import Header from "../../components/delivery/header";
 import AddressItem from "../../components/delivery/addressItem";
-import Button from "../../components/delivery/button";
+import { OutlineButton } from "../../../customApp/components/shared/form/button";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 700px;
@@ -21,22 +22,19 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const AddButton = styled(Button)`
-  width: 298px;
-  height: 38px;
+const AddButton = styled(OutlineButton)`
+  &&& {
+    border-color: rgb(153, 153, 153);
+    border-radius: 20px;
+    box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px;
+    padding: 10px;
+  }
 `;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
-
   // React methods
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest();
   }
 
   // React.render
@@ -56,15 +54,17 @@ class Index extends Component {
     }
     return (
       <ContentAreaLayout>
-        <ContentLayout>
-          <Header />
-          <AddressItem entities={entities} />
-          <ButtonArea>
-            <AddButton>
-              <IntlMessages id="delivery.list.add" />
-            </AddButton>
-          </ButtonArea>
-        </ContentLayout>
+        <Spin spinning={fetching} size="large">
+          <ContentLayout>
+            <Header />
+            <AddressItem entities={entities} />
+            <ButtonArea>
+              <AddButton>
+                <IntlMessages id="delivery.list.add" />
+              </AddButton>
+            </ButtonArea>
+          </ContentLayout>
+        </Spin>
       </ContentAreaLayout>
     );
   }
