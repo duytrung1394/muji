@@ -9,12 +9,20 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
+const RegistrationButton = styled(OutlineButton)`
+  max-width: 300px;
+  width: 100%;
+  &&{
+    height: 40px;
+  }
+`;
+
 const RegistrationButtons = () => {
   return (
     <ButtonArea>
-      <OutlineButton color="#7f0119" reverse>
+      <RegistrationButton color="#7f0119" reverse>
         <IntlMessages id="account.memberRegistration" />
-      </OutlineButton>
+      </RegistrationButton>
     </ButtonArea>
   );
 };
