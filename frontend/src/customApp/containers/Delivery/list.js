@@ -58,7 +58,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Header />
-          <AddressItem addressItem={entities.addresses} />
+          <AddressItem entities={entities} />
           <ButtonArea>
             <AddButton>
               <IntlMessages id="delivery.list.add" />

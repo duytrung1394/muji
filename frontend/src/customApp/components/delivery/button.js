@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   font-weight: 400;
   text-align: center;
   padding: 0;
+  outline: none;
   span {
     padding: 10px;
   }

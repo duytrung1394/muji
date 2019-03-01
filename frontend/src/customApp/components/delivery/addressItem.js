@@ -110,7 +110,7 @@ class AddressItem extends Component {
   };
 
   render() {
-    const { addressItem } = this.props;
+    const { entities } = this.props;
     return (
       <Content>
         <BaseContent>
@@ -118,7 +118,7 @@ class AddressItem extends Component {
             <IntlMessages id="delivery.addressItem.title" />
           </Title>
           <AddressBox>
-            {addressItem.map((item, index) => {
+            {entities.map((item, index) => {
               return (
                 <StyledLi key={index} seeMore={this.state.isSeeMore}>
                   <Address>
