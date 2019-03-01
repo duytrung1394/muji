@@ -48,11 +48,11 @@ const FixDateButton = styled(CommonButton)`
   width: 144px;
 `;
 
-const OrderItemList = ({ orders, delivery, unable }) => {
+const OrderItemList = ({ orders, delivery, isConfirm }) => {
   return (
     <OrderItemListWrapper>
       <DeliveryDiv>
-        {!unable && (
+        {!isConfirm && (
           <DeliveryInfo>
             <IntlMessages id="order.confirm.deliveryService" />
             <span>{delivery.deliveryCount}</span>
@@ -62,7 +62,7 @@ const OrderItemList = ({ orders, delivery, unable }) => {
             </TitleSpan>
           </DeliveryInfo>
         )}
-        {unable && (
+        {isConfirm && (
           <Fragment>
             <DeliveryInfo>
               <IntlMessages id="order.confirm.orderListTitle" />
@@ -90,7 +90,7 @@ const OrderItemList = ({ orders, delivery, unable }) => {
           <IntlMessages id="order.procedure.rightBracket" />
           <IntlMessages id="order.procedure.regular_delivery" />
         </DeliveryStatus>
-        {!unable && (
+        {!isConfirm && (
           <FixDateButton>
             <IntlMessages id="order.procedure.specifyDate" />
           </FixDateButton>

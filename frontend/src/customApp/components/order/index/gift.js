@@ -63,14 +63,14 @@ class Gift extends Component {
   };
 
   render() {
-    const { giftData, unable } = this.props;
+    const { giftData, isConfirm } = this.props;
     if (giftData) {
       return (
         <GiftWrapper>
           <GiftTitle>
             <IntlMessages id="order.procedure.GiftWrapping" />
           </GiftTitle>
-          {!unable ? (
+          {!isConfirm ? (
             <GiftCheckboxArea>
               <Checkbox
                 onChange={() => {
@@ -83,7 +83,7 @@ class Gift extends Component {
           ) : (
             <IntlMessages id="order.confirm.dontWant" />
           )}
-          {!unable && this.state.useGiftFlg ? (
+          {!isConfirm && this.state.useGiftFlg ? (
             <Fragment>
               <Select
                 defaultValue={giftData.packTogether}

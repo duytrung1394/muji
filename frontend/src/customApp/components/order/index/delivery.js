@@ -1,25 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import ContentsBox from "./contentsBox";
 import CommonButton from "../commonButton";
+import { Row, Col } from "antd";
 
-const DeliveryContentsBox = styled(ContentsBox)`
-  display: flex;
+const colContentLayout = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  xl: 12
+};
+
+const StyledRow = styled(Row)`
+  overflow: hidden;
   color: rgb(88, 88, 88);
-  & div:nth-child(1) {
-    margin-right: 16px;
-  }
+  background-color: #f2f2f2;
+  padding: 16px 16px 0px;
 `;
 
-const DataDiv = styled.div`
+const StyledCol = styled(Col)`
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
-  flex: 1;
-  width: 300px;
-  position: relative;
+
   &&& {
+    max-height: 200px;
+    height: 100%;
     padding: 16px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -54,11 +61,11 @@ const ChangeButton = styled(CommonButton)`
   width: 100px;
 `;
 
-const Delivery = ({ delivery, unable }) => {
+const Delivery = ({ delivery, isConfirm }) => {
   const { address } = delivery;
   return (
-    <DeliveryContentsBox>
-      <DataDiv>
+    <StyledRow>
+      <StyledCol {...colContentLayout}>
         <DeliveryInfomationTitles>
           <IntlMessages id="order.confirm.addressee" />
         </DeliveryInfomationTitles>
@@ -82,13 +89,13 @@ const Delivery = ({ delivery, unable }) => {
             {address.telNo}
           </DataItem>
         </DataList>
-        {!unable && (
+        {!isConfirm && (
           <ChangeButton>
             <IntlMessages id="order.procedure.change" />
           </ChangeButton>
         )}
-      </DataDiv>
-      <DataDiv>
+      </StyledCol>
+      <StyledCol {...colContentLayout}>
         <DeliveryInfomationTitles>
           <IntlMessages id="order.confirm.orderData" />
         </DeliveryInfomationTitles>
@@ -96,14 +103,18 @@ const Delivery = ({ delivery, unable }) => {
           {delivery.name}
           <IntlMessages id="order.confirm.esq" />
         </Name>
-        {!unable && (
+        {!isConfirm && (
           <ChangeButton>
             <IntlMessages id="order.procedure.change" />
           </ChangeButton>
         )}
-      </DataDiv>
-    </DeliveryContentsBox>
+      </StyledCol>
+    </StyledRow>
   );
+};
+
+const Address = () => {
+  return null;
 };
 
 export default Delivery;

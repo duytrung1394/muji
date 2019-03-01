@@ -54,18 +54,18 @@ class Confirmation extends Component {
         <ContentLayout>
           <Title title={<IntlMessages id="order.confirm.title" />} />
           <IntlMessages id="order.confirm.notice" />
-          <Delivery delivery={entity.delivery} unable={true} />
+          <Delivery delivery={entity.delivery} isConfirm={true} />
           <ContentsBox>
-            <Gift giftData={entity.delivery.gift} unable={true} />
+            <Gift giftData={entity.delivery.gift} isConfirm={true} />
             <OrderItemList
               orders={entity.orders}
               delivery={entity.delivery}
-              unable={true}
+              isConfirm={true}
             />
           </ContentsBox>
           <ContentsBox>
             <PaymentSummary summary={entity.paymentSummary} />
-            <PaymentMethod unable={true} />
+            <PaymentMethod isConfirm={true} />
           </ContentsBox>
           <OrderButtons submit={submitInfo} backPath={this.getBackPath()} />
         </ContentLayout>

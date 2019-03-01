@@ -112,7 +112,9 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.procedure.title" />} />
-          <Delivery delivery={entity.delivery} />
+          <ContentsBox>
+            <Delivery delivery={entity.delivery} />
+          </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
             <OrderItemList orders={entity.orders} delivery={entity.delivery} />

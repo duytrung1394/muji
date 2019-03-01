@@ -33,7 +33,7 @@ const ChangeButton = styled(CommonButton)`
   width: 100px;
 `;
 
-const PaymentMethod = ({ unable }) => {
+const PaymentMethod = ({ isConfirm }) => {
   return (
     <PaymentDiv>
       <PaymentTitles>
@@ -45,7 +45,7 @@ const PaymentMethod = ({ unable }) => {
       <IntlMessages id="order.procedure.lastFourDigits" />
       <span>1234</span>
       <VisaImage src={visaImage} />
-      {!unable && (
+      {!isConfirm && (
         <ChangeButton>
           <IntlMessages id="order.procedure.change" />
         </ChangeButton>
