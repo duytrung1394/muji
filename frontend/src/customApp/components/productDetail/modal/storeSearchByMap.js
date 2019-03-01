@@ -38,10 +38,10 @@ const MapOfNearbyStores = () => {
   );
 };
 
-const SearchNearbyStoresButton = ({ changeShowMap }) => {
+const SearchNearbyStoresButton = ({ onClick }) => {
   return (
     <SearchForCurrentLocation>
-      <OutlineButton onClick={() => changeShowMap()}>
+      <OutlineButton onClick={() => onClick()}>
         <IntlMessages id="productDetail.searchFromCurrentLocation" />
       </OutlineButton>
     </SearchForCurrentLocation>
@@ -66,7 +66,7 @@ class StoreSearchByMap extends Component {
         {this.state.showMap ? (
           <MapOfNearbyStores />
         ) : (
-          <SearchNearbyStoresButton changeShowMap={this.changeShowMap} />
+          <SearchNearbyStoresButton onClick={this.changeShowMap} />
         )}
       </StoreSearchByMapDiv>
     );

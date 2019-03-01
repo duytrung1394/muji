@@ -3,29 +3,22 @@ import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import StockItemImg1 from "../../../../image/product_detail/img-stock-item1.png";
 import { Row, Col } from "antd";
-import { NavLink } from "react-router-dom";
 
-const StockItemDetail = styled.div`
+const StyledItemDetail = styled.div`
   padding: 10px;
   border-top: 1px solid rgb(153, 153, 153);
   border-bottom: 1px solid rgb(153, 153, 153);
   overflow: hidden;
   position: relative;
-`;
 
-const ItemImage = styled.img`
-  width: 100%;
-  cursor: pointer;
+  img.item-image {
+    width: 100%;
+  }
 `;
 
 const ItemData = styled.p`
   margin-bottom: 4px;
   font-size: 11px;
-`;
-
-const StyledRow = styled(Row)`
-  width: 100%;
-  display: flex;
 `;
 
 const ItemName = styled.p`
@@ -44,14 +37,10 @@ const ItemPrice = styled.span`
 
 const TotalPrice = styled.span`
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 6px;
+  right: 6px;
   font-size: 11px;
 `;
-
-const linkStyle = {
-  display: "block"
-};
 
 const images = {
   itemImg: StockItemImg1
@@ -59,12 +48,10 @@ const images = {
 
 const ItemDetail = ({ itemData }) => {
   return (
-    <StockItemDetail>
-      <StyledRow>
+    <StyledItemDetail>
+      <Row type="flex">
         <Col span={8}>
-          <NavLink to="#" style={linkStyle}>
-            <ItemImage src={images[itemData.item_img]} />
-          </NavLink>
+          <img className="item-image" src={images[itemData.item_img]} />
         </Col>
         <Col span={15} offset={1}>
           <ItemData>
@@ -83,14 +70,17 @@ const ItemDetail = ({ itemData }) => {
             <IntlMessages id="productDetail.number" />
             {itemData.number}
           </ItemData>
+          <TotalPrice>
+            <IntlMessages
+              id="productDetail.priceTaxIncluded"
+              values={{
+                price: <ItemPrice>{itemData.price}</ItemPrice>
+              }}
+            />
+          </TotalPrice>
         </Col>
-      </StyledRow>
-      <TotalPrice>
-        <IntlMessages id="productDetail.texIn" />
-        <ItemPrice>{itemData.price}</ItemPrice>
-        <IntlMessages id="productDetail.yen" />
-      </TotalPrice>
-    </StockItemDetail>
+      </Row>
+    </StyledItemDetail>
   );
 };
 

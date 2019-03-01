@@ -681,7 +681,7 @@
   "productDetail.storeSearchByMap": "お近くの店舗",
   "productDetail.storeSettings": "店舗設定",
   "productDetail.taxIncluded": "税込",
-  "productDetail.texIn": "税込",
+  "productDetail.priceTaxIncluded": "税込 {price} 円",
   "productDetail.toTop": "先頭へ",
   "productDetail.unableToAcceptStore": "店舗受け取り不可",
   "productDetail.yen": "円",
