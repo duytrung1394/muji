@@ -1,21 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import CommonButton from "../commonButton";
 import { Row, Col } from "antd";
 
-const colContentLayout = {
-  xs: 24,
-  sm: 24,
-  md: 12,
-  xl: 12
-};
-
 const StyledRow = styled(Row)`
   overflow: hidden;
   color: rgb(88, 88, 88);
   background-color: #f2f2f2;
-  padding: 16px 16px 0px;
 `;
 
 const StyledCol = styled(Col)`
@@ -27,10 +19,11 @@ const StyledCol = styled(Col)`
     height: 100%;
     padding: 16px;
     margin-bottom: 16px;
+    width: 49%;
   }
 `;
 
-const DeliveryInfomationTitles = styled.h1`
+const Title = styled.h1`
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -61,60 +54,79 @@ const ChangeButton = styled(CommonButton)`
   width: 100px;
 `;
 
+const colContentLayout = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  xl: 12
+};
+
 const Delivery = ({ delivery, isConfirm }) => {
-  const { address } = delivery;
   return (
-    <StyledRow>
+    <StyledRow justify="space-between" type="flex">
       <StyledCol {...colContentLayout}>
-        <DeliveryInfomationTitles>
-          <IntlMessages id="order.confirm.addressee" />
-        </DeliveryInfomationTitles>
-        <Name>
-          {address.name}
-          <IntlMessages id="order.confirm.esq" />
-        </Name>
-        <DataList>
-          <DataItem>
-            <IntlMessages id="order.confirm.postMark" />
-            {address.zipCode}
-          </DataItem>
-          <DataItem>
-            {address.address1 +
-              address.address2 +
-              address.address3 +
-              address.address4}
-          </DataItem>
-          <DataItem>
-            <IntlMessages id="order.confirm.telephone" />
-            {address.telNo}
-          </DataItem>
-        </DataList>
-        {!isConfirm && (
-          <ChangeButton>
-            <IntlMessages id="order.procedure.change" />
-          </ChangeButton>
-        )}
+        <Address delivery={delivery} isConfirm={isConfirm} />
       </StyledCol>
       <StyledCol {...colContentLayout}>
-        <DeliveryInfomationTitles>
-          <IntlMessages id="order.confirm.orderData" />
-        </DeliveryInfomationTitles>
-        <Name>
-          {delivery.name}
-          <IntlMessages id="order.confirm.esq" />
-        </Name>
-        {!isConfirm && (
-          <ChangeButton>
-            <IntlMessages id="order.procedure.change" />
-          </ChangeButton>
-        )}
+        <Orderer delivery={delivery} isConfirm={isConfirm} />
       </StyledCol>
     </StyledRow>
   );
 };
 
-const Address = () => {
-  return null;
+const Address = ({ delivery, isConfirm }) => {
+  const { address } = delivery;
+  return (
+    <Fragment>
+      <Title>
+        <IntlMessages id="order.confirm.addressee" />
+      </Title>
+      <Name>
+        {address.name}
+        <IntlMessages id="order.confirm.esq" />
+      </Name>
+      <DataList>
+        <DataItem>
+          <IntlMessages id="order.confirm.postMark" />
+          {address.zipCode}
+        </DataItem>
+        <DataItem>
+          {address.address1 +
+            address.address2 +
+            address.address3 +
+            address.address4}
+        </DataItem>
+        <DataItem>
+          <IntlMessages id="order.confirm.telephone" />
+          {address.telNo}
+        </DataItem>
+      </DataList>
+      {!isConfirm && (
+        <ChangeButton>
+          <IntlMessages id="order.procedure.change" />
+        </ChangeButton>
+      )}
+    </Fragment>
+  );
+};
+
+const Orderer = ({ delivery, isConfirm }) => {
+  return (
+    <Fragment>
+      <Title>
+        <IntlMessages id="order.confirm.orderData" />
+      </Title>
+      <Name>
+        {delivery.name}
+        <IntlMessages id="order.confirm.esq" />
+      </Name>
+      {!isConfirm && (
+        <ChangeButton>
+          <IntlMessages id="order.procedure.change" />
+        </ChangeButton>
+      )}
+    </Fragment>
+  );
 };
 
 export default Delivery;
