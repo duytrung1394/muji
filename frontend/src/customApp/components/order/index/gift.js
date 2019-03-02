@@ -11,7 +11,7 @@ const GiftWrapper = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
-const GiftTitle = styled.h1`
+const Title = styled.h1`
   font-size: 15px;
   font-weight: 600;
   color: rgb(88, 88, 88);
@@ -31,10 +31,6 @@ const GiftCheckboxArea = styled.div`
 const SpecifiedResult = styled.div`
   margin-top: 20px;
   font-size: 13px;
-`;
-
-const StyledSpan = styled.span`
-  padding-right: 30px;
 `;
 
 const ButtonArea = styled.div`
@@ -67,59 +63,62 @@ class Gift extends Component {
     if (giftData) {
       return (
         <GiftWrapper>
-          <GiftTitle>
+          <Title>
             <IntlMessages id="order.procedure.GiftWrapping" />
-          </GiftTitle>
-          {!isConfirm ? (
-            <GiftCheckboxArea>
-              <Checkbox
-                onChange={() => {
-                  this.changeFlg();
-                }}
-              >
-                <IntlMessages id="order.procedure.useGiftWrapping" />
-              </Checkbox>
-            </GiftCheckboxArea>
-          ) : (
+          </Title>
+          {isConfirm ? (
             <IntlMessages id="order.confirm.dontWant" />
-          )}
-          {!isConfirm && this.state.useGiftFlg ? (
+          ) : (
             <Fragment>
-              <Select
-                defaultValue={giftData.packTogether}
-                style={{ width: 250 }}
-              >
-                <Option value={giftData.packTogether}>
-                  <IntlMessages id="order.procedure.toPackTogether" />
-                </Option>
-                <Option value={giftData.packIndividual}>
-                  <IntlMessages id="order.procedure.toWrapIndividually" />
-                </Option>
-              </Select>
-              <SpecifiedResult>
-                <p>
-                  <StyledSpan>
-                    <IntlMessages id="order.procedure.japaneseGiftWapping" />
-                    {giftData.wapping_state}
-                  </StyledSpan>
-                </p>
-                <p>
-                  <IntlMessages id="order.procedure.GiftMessage" />
-                  {giftData.message_state}
-                </p>
-              </SpecifiedResult>
-              <ButtonArea>
-                <SpecifyMessageButton>
-                  <IntlMessages id="order.procedure.specifyMessage" />
-                </SpecifyMessageButton>
-              </ButtonArea>
+              <GiftCheckboxArea>
+                <Checkbox
+                  onChange={() => {
+                    this.changeFlg();
+                  }}
+                >
+                  <IntlMessages id="order.procedure.useGiftWrapping" />
+                </Checkbox>
+              </GiftCheckboxArea>
+              {this.state.useGiftFlg && (
+                <GiftWrappingSettings giftData={giftData} />
+              )}
             </Fragment>
-          ) : null}
+          )}
         </GiftWrapper>
       );
     }
     return null;
   }
 }
+
+const GiftWrappingSettings = ({ giftData }) => {
+  return (
+    <Fragment>
+      <Select defaultValue={giftData.packTogether} style={{ width: 250 }}>
+        <Option value={giftData.packTogether}>
+          <IntlMessages id="order.procedure.toPackTogether" />
+        </Option>
+        <Option value={giftData.packIndividual}>
+          <IntlMessages id="order.procedure.toWrapIndividually" />
+        </Option>
+      </Select>
+      <SpecifiedResult>
+        <p>
+          <IntlMessages id="order.procedure.japaneseGiftWapping" />
+          {giftData.wapping_state}
+        </p>
+        <p>
+          <IntlMessages id="order.procedure.GiftMessage" />
+          {giftData.message_state}
+        </p>
+      </SpecifiedResult>
+      <ButtonArea>
+        <SpecifyMessageButton>
+          <IntlMessages id="order.procedure.specifyMessage" />
+        </SpecifyMessageButton>
+      </ButtonArea>
+    </Fragment>
+  );
+};
 
 export default Gift;
