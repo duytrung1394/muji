@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../../components/utility/intlMessages";
-import OrderDeliveryImage1 from "../../../../image/order/order_procedure/img-order-delivery-1.png";
-import OrderDeliveryImage2 from "../../../../image/order/order_procedure/img-order-delivery-2.png";
+import IntlMessages from "../../../../../components/utility/intlMessages";
+import OrderDeliveryImage1 from "../../../../../image/order/order_procedure/img-order-delivery-1.png";
+import OrderDeliveryImage2 from "../../../../../image/order/order_procedure/img-order-delivery-2.png";
 import { Row, Col } from "antd";
 import { NavLink } from "react-router-dom";
 
@@ -83,14 +83,16 @@ const OrderItem = ({ item }) => {
       <StyledRow>
         <Col span={8}>
           <NavLink to="#" style={linkStyle}>
-            <ItemImage src={images[item.img]} />
+            <ItemImage
+              src={`https://img.muji.net/img/item/${item.janCode}_400.jpg`}
+            />
           </NavLink>
         </Col>
         <Col span={15} offset={1}>
           <ItemData>
             <ItemType>{item.type}</ItemType>
           </ItemData>
-          <ItemName>{item.name}</ItemName>
+          <ItemName>{item.itemName}</ItemName>
           <ItemData>
             <IntlMessages id="order.confirm.color" />
             {item.color}

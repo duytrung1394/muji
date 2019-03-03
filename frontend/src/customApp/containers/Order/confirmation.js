@@ -12,7 +12,7 @@ import {
 import Delivery from "../../components/order/index/delivery";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
-import OrderItemList from "../../components/order/index/orderItemList";
+import OrderList from "../../components/order/index/orderList";
 import OrderButtons from "../../components/order/index/orderButtons";
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
 import PaymentMethod from "../../components/order/index/payment/paymentMethod";
@@ -54,14 +54,12 @@ class Confirmation extends Component {
         <ContentLayout>
           <Title title={<IntlMessages id="order.confirm.title" />} />
           <IntlMessages id="order.confirm.notice" />
-          <Delivery delivery={entity.delivery} isConfirm={true} />
+          <ContentsBox>
+            <Delivery delivery={entity.delivery} isConfirm={true} />
+          </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} isConfirm={true} />
-            <OrderItemList
-              orders={entity.orders}
-              delivery={entity.delivery}
-              isConfirm={true}
-            />
+            <OrderList entity={entity} isConfirm={true} />
           </ContentsBox>
           <ContentsBox>
             <PaymentSummary summary={entity.paymentSummary} />

@@ -12,7 +12,7 @@ import {
 import Delivery from "../../components/order/index/delivery";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
-import OrderItemList from "../../components/order/index/orderItemList";
+import OrderList from "../../components/order/index/orderList";
 import OrderButtons from "../../components/order/index/orderButtons";
 import PaymentOptionList from "../../components/order/index/payment/paymentOptionList";
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
@@ -117,7 +117,7 @@ class Index extends Component {
           </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
-            <OrderItemList orders={entity.orders} delivery={entity.delivery} />
+            <OrderList entity={entity} />
           </ContentsBox>
           <ContentsBox>
             <PaymentOptionList

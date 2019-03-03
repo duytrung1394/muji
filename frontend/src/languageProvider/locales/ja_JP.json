@@ -621,6 +621,8 @@
   "order.procedure.change": "変更",
   "order.procedure.backPage": "戻る",
   "order.procedure.orderConfirm": "ご注文内容の確認に進む",
+  "order.procedure.preparationDiscription": "ご注文から商品の準備まで、{term}ほどお時間をいただきます。",
+  "order.procedure.supplementaryMatter": "※ 店舗に在庫がある場合は、受け取り可能日が早まることがあります",
   "order.confirm.title": "ご注文内容確認",
   "order.confirm.orderListTitle": "ご注文内容",
   "order.confirm.notice": "ご注文内容をご確認の上、変更がなければ「ご注文を確定する」を押してください。",

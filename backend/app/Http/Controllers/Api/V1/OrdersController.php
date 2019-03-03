@@ -121,37 +121,57 @@ class OrdersController extends Controller
                     'packTogether' => 'まとめて包装する',
                     'packIndividual' => '個々に包装する',
                 ],
-                'deliveryCount' => '1',
-                'deliveryDivision' => '小物',
-                'year' => '2019',
-                'month' => '10',
-                'day' => '30',
-                'day_of_the_week' => '火',
             ],
             'orders' => [
-                'total' => 2,
-                'items' => [
-                    [
-                        'type' => 'カットソー',
-                        'name' => 'ミニ裏毛五分袖ワイドＴシャツ',
-                        'color' => 'ライトシルバーグレー',
-                        'size' => 'S',
-                        'number' => '1',
-                        'price' => '2,980',
-                        'img' => 'OrderDeliveryImage1',
-                        'discount' => false,
+                [
+                    'orderNumber' => '1',
+                    'deliveryInfo' => [
+                        'deliveryCount' => '1',
+                        'deliveryDivision' => '小物',
                     ],
-                    [
-                        'type' => 'カットソー',
-                        'name' => 'スムースハイネックワンピース',
-                        'color' => 'チャコールグレー',
-                        'size' => 'S',
-                        'number' => '1',
-                        'discount_price' => '3,000',
-                        'price' => '2,903',
-                        'img' => 'OrderDeliveryImage2',
-                        'discount' => true,
+                    'items' => [
+                        [
+                            'janCode' => '4550002959029',
+                            'type' => 'カットソー',
+                            'itemName' => 'ミニ裏毛五分袖ワイドＴシャツ',
+                            'color' => 'ライトシルバーグレー',
+                            'size' => 'S',
+                            'number' => '1',
+                            'price' => '2,980',
+                            'img' => 'OrderDeliveryImage1',
+                            'discount' => false,
+                        ],
+                        [
+                            'janCode' => '4550002661052',
+                            'type' => 'カットソー',
+                            'itemName' => 'スムースハイネックワンピース',
+                            'color' => 'チャコールグレー',
+                            'size' => 'S',
+                            'number' => '1',
+                            'discount_price' => '3,000',
+                            'price' => '2,903',
+                            'img' => 'OrderDeliveryImage2',
+                            'discount' => true,
+                        ],
+                    ]
+                ],
+                [
+                    'orderNumber' => '2',
+                    'deliveryInfo' => [
+                        'deliveryCount' => '1',
+                        'deliveryDivision' => '小物',
                     ],
+                    'items' => [
+                        [
+                            'janCode' => '4550182109580',
+                            'type' => 'ノート A4',
+                            'itemName' => 'ノート・７ｍｍ横罫　Ａ４・Ａ罫・３０枚・糸綴じ',
+                            'number' => '1',
+                            'price' => '150',
+                            'img' => 'OrderDeliveryImage1',
+                            'discount' => false,
+                        ]
+                    ]
                 ]
             ],
             'paymentDetails' => [

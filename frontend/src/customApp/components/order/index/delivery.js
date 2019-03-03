@@ -18,7 +18,6 @@ const StyledCol = styled(Col)`
     max-height: 200px;
     height: 100%;
     padding: 16px;
-    margin-bottom: 16px;
     width: 49%;
   }
 `;
