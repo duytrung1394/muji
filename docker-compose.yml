@@ -19,6 +19,7 @@ services:
       - ./backend/config/php-ini-overrides.ini:/etc/php/7.2/cli/conf.d/99-overrides.ini
     env_file:
       - ./backend/.env.dev
+  
   frontend:
     build: frontend
     command: "yarn serve"
@@ -28,8 +29,11 @@ services:
       - ./frontend:/usr/src/app
       - backend_cache:/usr/local/share/.cache
       - built_files:/usr/src/app/build
-    env_file:
-      - ./.env
+    environment:
+      NODE_ENV: development
+      API_SERVER: http://backend:8081
+      API_BROWSER: http://localhost:8081
+  
   mariadb:
     image: mariadb:10.3.5
     environment:
@@ -53,14 +57,6 @@ services:
     volumes:
       - .:/builder
 
-  # 本番用のnginx
-  nginx:
-    build: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - built_files:/usr/src/app
 volumes:
   backend_cache:
   built_files:

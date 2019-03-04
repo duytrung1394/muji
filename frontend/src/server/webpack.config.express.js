@@ -1,10 +1,13 @@
 const defaultConfig = require("react-scripts/config/webpack.config.dev");
+const override = require("../../config-overrides");
+
+const overridden = override(defaultConfig, process.env);
 
 const config = {
-  ...defaultConfig,
+  ...overridden,
   output: {
-    ...defaultConfig.output,
-    // yarn build 時とパスを揃えています
+    ...overridden.output,
+    // yarn build 時とパスを揃えます
     filename: "main.js"
   }
 };
