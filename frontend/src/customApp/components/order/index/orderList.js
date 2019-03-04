@@ -67,7 +67,7 @@ const OrderList = ({ orders, isConfirm }) => {
                 index={index}
                 isConfirm={isConfirm}
               />
-              <OrderItemList items={order.items} />
+              <OrderItemList items={order.items} isConfirm={isConfirm} />
             </OrdertWrapper>
           );
         })}
@@ -75,13 +75,13 @@ const OrderList = ({ orders, isConfirm }) => {
   );
 };
 
-const OrderItemList = ({ items }) => {
+const OrderItemList = ({ items, isConfirm }) => {
   return (
     <OrderItems>
       <ListWrapper>
         {items &&
           items.map((item, index) => {
-            return <OrderItem item={item} key={index} />;
+            return <OrderItem item={item} isConfirm={isConfirm} key={index} />;
           })}
       </ListWrapper>
     </OrderItems>

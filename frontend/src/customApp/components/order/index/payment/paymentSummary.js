@@ -66,25 +66,34 @@ const PaymentSummary = ({ summary }) => {
         <SummaryItem>
           <IntlMessages id="order.confirm.productsSubtotal" />
           <AmountOfMoney>
-            <IntlMessages id="order.confirm.taxIn" />
-            <LargePrice>{summary.products_subtotal}</LargePrice>
-            <IntlMessages id="order.confirm.yen" />
+            <IntlMessages
+              id="order.confirm.price"
+              values={{
+                price: summary.products_subtotal
+              }}
+            />
           </AmountOfMoney>
         </SummaryItem>
         <SummaryItem style={CustomItems}>
           <IntlMessages id="order.confirm.incidentalService" />
           <AmountOfMoney>
-            <IntlMessages id="order.confirm.taxIn" />
-            <Price>{summary.incidental_service}</Price>
-            <IntlMessages id="order.confirm.yen" />
+            <IntlMessages
+              id="order.confirm.price"
+              values={{
+                price: summary.incidental_service
+              }}
+            />
           </AmountOfMoney>
         </SummaryItem>
         <SummaryItem>
           <IntlMessages id="order.confirm.deliveryFee" />
           <AmountOfMoney>
-            <IntlMessages id="order.confirm.taxIn" />
-            <Price>{summary.delivery_fee}</Price>
-            <IntlMessages id="order.confirm.yen" />
+            <IntlMessages
+              id="order.confirm.price"
+              values={{
+                price: summary.delivery_fee
+              }}
+            />
           </AmountOfMoney>
         </SummaryItem>
         <SummaryItem style={CustomItems}>

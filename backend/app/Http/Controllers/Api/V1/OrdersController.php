@@ -30,18 +30,6 @@ class OrdersController extends Controller
     }
 
     /**
-     * 注文の確認
-     *
-     * @return Response
-     */
-    public function confirm(Request $request)
-    {
-        return [
-            'data'  => $this->getMockConfirmationData()
-        ];
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -186,14 +174,6 @@ class OrdersController extends Controller
                     'possessions' => '5000',
                     'inputFlg' => true
                 ],
-                'coins' => [
-                    'possessions' => '3000',
-                    'inputFlg' => true
-                ],
-                'account' => [
-                    'possessions' => '3000',
-                    'inputFlg' => false
-                ]
             ],
             'paymentSummary' => [
                 'products_subtotal' => '7,960',

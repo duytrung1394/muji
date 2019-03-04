@@ -28,7 +28,6 @@ class Confirmation extends Component {
       // reload
       this.props.history.push(this.getBackPath());
     }
-    this.props.confirmOrderRequest("");
   }
 
   getBackPath = () => `/store/order/index`;
@@ -59,7 +58,7 @@ class Confirmation extends Component {
           </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} isConfirm={true} />
-            <OrderList entity={entity} isConfirm={true} />
+            <OrderList orders={entity.orders} isConfirm={true} />
           </ContentsBox>
           <ContentsBox>
             <PaymentSummary summary={entity.paymentSummary} />
@@ -77,7 +76,6 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  confirmOrderRequest: actions.confirmOrder.request,
   destroy: actions.destroy.request,
   destroyCleanup: actions.destroy.cleanup
 };

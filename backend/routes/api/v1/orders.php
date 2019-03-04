@@ -23,14 +23,6 @@ $router->post('/api/v1/orders/saveShoppingCart', [
 ]);
 
 /**
- * 注文確認
- */
-$router->post('/api/v1/orders/confirm', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\OrdersController@confirm',
-]);
-
-/**
  * 購入履歴一覧取得
  */
 $router->get('/api/v1/orders/purchase-history', [

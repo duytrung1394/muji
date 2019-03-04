@@ -11,32 +11,6 @@ const initState = restInitState.merge(
   })
 );
 
-// POST CONFIRM_ORDER
-const confirmOrderRequest = (state, action) =>
-  state
-    .set("confirmingOrder", true)
-    .set("confirmedOrder", false)
-    .set("confirmOrderError", false);
-
-const confirmOrderSuccess = (state, action) =>
-  state
-    .set("confirmationEntity", action.payload.data)
-    .set("confirmingOrder", false)
-    .set("confirmedOrder", true);
-
-const confirmOrderFailure = (state, action) =>
-  state
-    .set("confirmationEntity", {})
-    .set("confirmingOrder", false)
-    .set("confirmedOrder", false)
-    .set("confirOrderError", true);
-
-const confirmOrderCleanup = (state, action) =>
-  state
-    .set("confirmingOrder", false)
-    .set("confirmedOrder", false)
-    .set("confirOrderError", false);
-
 // POST SAVE_CART
 const saveCartRequest = (state, action) =>
   state
@@ -69,12 +43,6 @@ const reducer = handleActions(
     ORDER: {
       ENTITY: {
         ...restReducer,
-        CONFIRM_ORDER: {
-          REQUEST: confirmOrderRequest,
-          SUCCESS: confirmOrderSuccess,
-          FAILURE: confirmOrderFailure,
-          CLEANUP: confirmOrderCleanup
-        },
         SAVE_CART: {
           REQUEST: saveCartRequest,
           SUCCESS: saveCartSuccess,

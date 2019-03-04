@@ -88,7 +88,7 @@ const linkStyle = {
   display: "block"
 };
 
-const OrderItem = ({ item }) => {
+const OrderItem = ({ item, isConfirm }) => {
   return (
     <Fragment>
       <OrderListItem>
@@ -124,16 +124,22 @@ const OrderItem = ({ item }) => {
             <Fragment>
               <FixedPrice>
                 <OverLine>
-                  <IntlMessages id="order.confirm.taxIn" />
-                  <span>{item.price}</span>
-                  <IntlMessages id="order.confirm.yen" />
+                  <IntlMessages
+                    id="order.confirm.price"
+                    values={{
+                      price: item.price
+                    }}
+                  />
                 </OverLine>
                 <IntlMessages id="order.confirm.arrow" />
               </FixedPrice>
               <DiscountPrice>
-                <IntlMessages id="order.confirm.taxIn" />
-                <ItemPrice>{item.discount_price}</ItemPrice>
-                <IntlMessages id="order.confirm.yen" />
+                <IntlMessages
+                  id="order.confirm.price"
+                  values={{
+                    price: item.discount_price
+                  }}
+                />
               </DiscountPrice>
               <LimitedSeal>
                 <DiscountPrice>
@@ -142,15 +148,16 @@ const OrderItem = ({ item }) => {
               </LimitedSeal>
             </Fragment>
           ) : (
-            <Fragment>
-              <IntlMessages id="order.confirm.taxIn" />
-              <ItemPrice>{item.price}</ItemPrice>
-              <IntlMessages id="order.confirm.yen" />
-            </Fragment>
+            <IntlMessages
+              id="order.confirm.price"
+              values={{
+                price: item.price
+              }}
+            />
           )}
         </TotalPrice>
       </OrderListItem>
-      {item.nostock && <DeleteQuantity />}
+      {!isConfirm && item.nostock && <DeleteQuantity />}
     </Fragment>
   );
 };
