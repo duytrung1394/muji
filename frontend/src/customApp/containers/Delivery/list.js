@@ -10,7 +10,7 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import { Spin } from "antd";
 import Header from "../../components/delivery/header";
-import AddressItem from "../../components/delivery/addressItem";
+import AddressList from "../../components/delivery/addressList";
 import { OutlineButton } from "../../../customApp/components/shared/form/button";
 
 const ContentLayout = styled(BaseContentLayout)`
@@ -57,7 +57,7 @@ class Index extends Component {
         <Spin spinning={fetching} size="large">
           <ContentLayout>
             <Header />
-            <AddressItem entities={entities} />
+            <AddressList entities={entities} />
             <ButtonArea>
               <AddButton>
                 <IntlMessages id="delivery.list.add" />

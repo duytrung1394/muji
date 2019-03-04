@@ -109,7 +109,7 @@ const StyledIcon = styled(Icon)`
   margin-left: 10px;
 `;
 
-class AddressItem extends Component {
+class AddressList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -194,4 +194,4 @@ class AddressItem extends Component {
   }
 }
 
-export default AddressItem;
+export default AddressList;
