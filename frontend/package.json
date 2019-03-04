@@ -115,7 +115,7 @@
     "uppy": "0.18.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "cross-env API_BROWSER=http://localhost:8080 react-app-rewired start",
     "dev": "cross-env API_SERVER=$API_SERVER API_BROWSER=$API_BROWSER NODE_ENV=development babel-watch src/server",
     "build": "react-app-rewired --max_old_space_size=8192 build",
     "serve": "babel-node src/server",

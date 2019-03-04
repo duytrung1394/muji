@@ -34,7 +34,9 @@ module.exports = function override(config, env) {
     javascriptEnabled: true
   })(config, env);
 
-  config.devtool = (env === "development");
+  if(env !== "development"){
+    config.devtool = false;
+  }
   
 
   return config;
