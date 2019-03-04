@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import CommonButton from "../commonButton";
+import { OutlineButton } from "../../shared/form/button";
 import { Row, Col } from "antd";
 
 const StyledRow = styled(Row)`
@@ -45,11 +45,14 @@ const DataList = styled.ul`
   list-style: none;
 `;
 
-const ChangeButton = styled(CommonButton)`
+const ButtonArea = styled.div`
   position: absolute;
-  font-size: 12px;
+  bottom: 0;
+  right: 16px;
+`;
+
+const ChangeButton = styled(OutlineButton)`
   bottom: 12px;
-  right: 12px;
   width: 100px;
 `;
 
@@ -101,9 +104,11 @@ const Address = ({ delivery, isConfirm }) => {
         </DataItem>
       </DataList>
       {!isConfirm && (
-        <ChangeButton>
-          <IntlMessages id="order.procedure.change" />
-        </ChangeButton>
+        <ButtonArea>
+          <ChangeButton>
+            <IntlMessages id="order.procedure.change" />
+          </ChangeButton>
+        </ButtonArea>
       )}
     </Fragment>
   );
@@ -120,9 +125,11 @@ const Orderer = ({ delivery, isConfirm }) => {
         <IntlMessages id="order.confirm.esq" />
       </Name>
       {!isConfirm && (
-        <ChangeButton>
-          <IntlMessages id="order.procedure.change" />
-        </ChangeButton>
+        <ButtonArea>
+          <ChangeButton>
+            <IntlMessages id="order.procedure.change" />
+          </ChangeButton>
+        </ButtonArea>
       )}
     </Fragment>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import CommonButton from "../commonButton";
+import { OutlineButton } from "../../shared/form/button";
 import { Link } from "react-router-dom";
 
 const OrderButtonContainer = styled.div`
@@ -9,14 +9,18 @@ const OrderButtonContainer = styled.div`
   justify-content: space-around;
 `;
 
-const BackButton = styled(CommonButton)`
-  font-size: 12px;
+const BackButton = styled(OutlineButton)`
+  padding: 8px 0 8px;
+  width: 300px;
+  max-width: 300px;
+  height auto;
 `;
 
-const SubmitButton = styled(CommonButton)`
-  font-size: 12px;
-  background-color: #7f0019;
-  color: #fff;
+const SubmitButton = styled(OutlineButton)`
+  padding: 8px 0 8px;
+  width: 300px;
+  max-width: 300px;
+  height auto;
 `;
 
 const OrderButtons = ({ submit, backPath }) => {
@@ -28,7 +32,9 @@ const OrderButtons = ({ submit, backPath }) => {
           <IntlMessages id="order.procedure.backPage" />
         </BackButton>
       </Link>
-      <SubmitButton onClick={handleSubmit}>{title}</SubmitButton>
+      <SubmitButton onClick={handleSubmit} color={"#7f0019"} reverse={1}>
+        {title}
+      </SubmitButton>
     </OrderButtonContainer>
   );
 };

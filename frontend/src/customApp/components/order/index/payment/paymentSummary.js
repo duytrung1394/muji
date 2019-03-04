@@ -90,22 +90,15 @@ const PaymentSummary = ({ summary }) => {
         <SummaryItem style={CustomItems}>
           <IntlMessages id="order.procedure.mujiShoppingPoint" />
           <AmountOfMoney>
-            <Price>{summary.muji_shopping_ponts}</Price>
+            <Price>{summary.muji_shopping_points}</Price>
             <IntlMessages id="order.procedure.point" />
           </AmountOfMoney>
         </SummaryItem>
-        <SummaryItem style={CustomItems}>
-          <IntlMessages id="order.confirm.mujiCoin" />
-          <AmountOfMoney>
-            <Price>{summary.muji_coins}</Price>
-            <IntlMessages id="order.confirm.coin" />
-          </AmountOfMoney>
-        </SummaryItem>
         <SummaryItem>
-          <IntlMessages id="order.confirm.partonerSales" />
+          <IntlMessages id="order.procedure.mujiGiftCard" />
           <AmountOfMoney>
-            <Price>{summary.partoner_sales}</Price>
-            <IntlMessages id="order.confirm.yen" />
+            <Price>{summary.muji_gift_card}</Price>
+            <IntlMessages id="order.currency" />
           </AmountOfMoney>
         </SummaryItem>
         <SummaryItem>

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 import visaImage from "../../../../../image/order/order_procedure/img-confirm-visa.png";
-import CommonButton from "../../commonButton";
+import { OutlineButton } from "../../../shared/form/button";
 
 const PaymentTitles = styled.h2`
   display: inline-block;
@@ -25,9 +25,8 @@ const VisaImage = styled.img`
   margin-left: 8px;
 `;
 
-const ChangeButton = styled(CommonButton)`
+const ChangeButton = styled(OutlineButton)`
   position: absolute;
-  font-size: 12px;
   bottom: 12px;
   right: 12px;
   width: 100px;

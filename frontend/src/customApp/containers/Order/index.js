@@ -28,19 +28,16 @@ class Index extends Component {
     super(props);
     this.state = {
       paymentOptions: {
-        shoppingPoints: {
+        shoppingPoint: {
           value: 1,
           disableFlg: true,
+          inquired: false,
           inputRef: createRef()
         },
-        coins: {
+        giftCard: {
           value: 1,
           disableFlg: true,
-          inputRef: createRef()
-        },
-        partnerSales: {
-          value: 1,
-          disableFlg: true,
+          inquired: false,
           inputRef: createRef()
         }
       }
@@ -67,20 +64,22 @@ class Index extends Component {
     });
   };
 
-  resetPaymentOptionValue = (optionKey, resetFlg) => {
-    if (resetFlg) {
-      this.state.paymentOptions[optionKey].inputRef.current.input.value = "";
-    }
-  };
-
-  changeFlg = (optionKey, resetFlg) => {
+  changeFlg = optionKey => {
     let paymentOptions = this.state.paymentOptions;
     paymentOptions[optionKey].disableFlg = !paymentOptions[optionKey]
       .disableFlg;
+    paymentOptions[optionKey].value = 1;
     this.setState({
       paymentOptions: paymentOptions
     });
-    this.resetPaymentOptionValue(optionKey, resetFlg);
+  };
+
+  onInquiry = optionKey => {
+    let paymentOptions = this.state.paymentOptions;
+    paymentOptions[optionKey].inquired = true;
+    this.setState({
+      paymentOptions: paymentOptions
+    });
   };
 
   submit = () => {
@@ -125,7 +124,7 @@ class Index extends Component {
               paymentOptions={this.state.paymentOptions}
               optionHandler={{
                 onChange: this.onChangePaymentOption,
-                resetValue: this.resetPaymentOptionValue,
+                onInquiry: this.onInquiry,
                 changeFlg: this.changeFlg
               }}
             />

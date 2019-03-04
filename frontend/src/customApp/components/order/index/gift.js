@@ -2,7 +2,7 @@ import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Checkbox, Select } from "antd";
-import CommonButton from "../commonButton";
+import { OutlineButton } from "../../shared/form/button";
 
 const GiftWrapper = styled.div`
   padding: 16px;
@@ -37,9 +37,8 @@ const ButtonArea = styled.div`
   margin-top: 20px;
 `;
 
-const SpecifyMessageButton = styled(CommonButton)`
+const SpecifyMessageButton = styled(OutlineButton)`
   width: 300px;
-  font-size: 12px;
 `;
 
 const Option = Select.Option;

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import OrderItem from "./orderList/orderItem";
-import CommonButton from "../commonButton";
+import { OutlineButton } from "../../shared/form/button";
 
 const OrderListWrapper = styled.div`
   padding: 0px 16px 16px;
@@ -48,8 +48,7 @@ const ButtonArea = styled.div`
   text-align: right;
 `;
 
-const FixDateButton = styled(CommonButton)`
-  font-size: 12px;
+const FixDateButton = styled(OutlineButton)`
   bottom: 12px;
   width: 144px;
 `;
@@ -61,9 +60,10 @@ const OrderList = ({ entity, isConfirm }) => {
       {orders &&
         orders.map((order, index) => {
           return (
-            <OrdertWrapper>
+            <OrdertWrapper key={index}>
               <OrderDelivery
-                deliveryInfo={order.deliveryInfo}
+                order={order}
+                index={index}
                 isConfirm={isConfirm}
               />
               <OrderItemList items={order.items} />
@@ -87,7 +87,8 @@ const OrderItemList = ({ items }) => {
   );
 };
 
-const OrderDelivery = ({ deliveryInfo, isConfirm }) => {
+const OrderDelivery = ({ order, index, isConfirm }) => {
+  const { deliveryInfo } = order;
   return (
     <Fragment>
       {isConfirm && (
@@ -97,7 +98,7 @@ const OrderDelivery = ({ deliveryInfo, isConfirm }) => {
       )}
       <OrderDeliveryHeadLine isLargeFont={!isConfirm}>
         <IntlMessages id="order.confirm.deliveryService" />
-        <span>{deliveryInfo.deliveryCount}</span>
+        <span>{index + 1}</span>
         <HeadLineSpan>
           <IntlMessages id="order.confirm.deliveryCategory" />
           <span>{deliveryInfo.deliveryDivision}</span>

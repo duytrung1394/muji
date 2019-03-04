@@ -148,8 +148,8 @@ class OrdersController extends Controller
                             'color' => 'チャコールグレー',
                             'size' => 'S',
                             'number' => '1',
-                            'discount_price' => '3,000',
-                            'price' => '2,903',
+                            'price' => '3,000',
+                            'discount_price' => '2,903',
                             'img' => 'OrderDeliveryImage2',
                             'discount' => true,
                         ],
@@ -179,6 +179,10 @@ class OrdersController extends Controller
                     'possessions' => '3000',
                     'inputFlg' => true
                 ],
+                'giftCard' => [
+                    'possessions' => '5000',
+                    'inputFlg' => true
+                ],
                 'coins' => [
                     'possessions' => '3000',
                     'inputFlg' => true
@@ -192,9 +196,8 @@ class OrdersController extends Controller
                 'products_subtotal' => '7,960',
                 'incidental_service' => '0',
                 'delivery_fee' => '980',
-                'muji_shopping_points' => '3,000',
-                'muji_coins' => '3,000',
-                'partoner_sales' => '-2,000',
+                'muji_shopping_points' => '-3,000',
+                'muji_gift_card' => '-15,00',
                 'payment_confirm' => '450',
             ],
             'lower_four_digits' => '1234',

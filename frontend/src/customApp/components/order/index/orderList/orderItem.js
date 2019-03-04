@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
-import OrderDeliveryImage1 from "../../../../../image/order/order_procedure/img-order-delivery-1.png";
-import OrderDeliveryImage2 from "../../../../../image/order/order_procedure/img-order-delivery-2.png";
 import { Row, Col } from "antd";
 import { NavLink } from "react-router-dom";
 
@@ -70,11 +68,6 @@ const TotalPrice = styled.div`
 
 const linkStyle = {
   display: "block"
-};
-
-const images = {
-  OrderDeliveryImage1: OrderDeliveryImage1,
-  OrderDeliveryImage2: OrderDeliveryImage2
 };
 
 const OrderItem = ({ item }) => {
