@@ -33,15 +33,11 @@ const reverseColor = "#fff";
 
 export const OutlineButton = styled(Button)`
   &&& {
-    ${({ width = "300px", height = "40px", color, reverse = false }) => ({
-      width,
-      height,
-      backgroundColor: reverse ? color || reverseColor : reverseColor,
-      color: reverse ? reverseColor : color || baseColor,
-      borderColor: color || baseColor
-    })};
-    border-style: solid;
-    border-width: 1px;
+    background-color: ${props =>
+      props.reverse ? props.color || reverseColor : reverseColor};
+    color: ${props =>
+      props.reverse ? reverseColor : props.color || baseColor};
+    border: 1px solid ${props => props.color || baseColor};
     border-radius: 25px;
     font-size: 12px;
   }

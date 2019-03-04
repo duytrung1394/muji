@@ -44,6 +44,9 @@ require_once 'api/v1/customer_addresses.php';
 // /api/v1/donations
 require_once 'api/v1/donations.php';
 
+// /api/v1/deliveries
+require_once 'api/v1/deliveries.php';
+
 // /api/v1/lotteries
 require_once 'api/v1/lotteries.php';
 
