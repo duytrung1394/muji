@@ -44,7 +44,6 @@ const MemberGuideDescription = () => {
   );
 };
 
-
 class Index extends Component {
   render() {
     return (
@@ -59,7 +58,7 @@ class Index extends Component {
       </AreaLayout>
     );
   }
-};
+}
 
 const enhance = C => {
   const injected = injectIntl(C, { withRef: true });
