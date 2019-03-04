@@ -3,7 +3,7 @@ import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 
-const StyledForm = styled(Form)``;
+const FormContainer = styled(Form)``;
 
 const FormArea = styled.ul`
   list-style: none;
@@ -35,7 +35,7 @@ const StyledInput = styled(Input)`
 
 const NameForm = () => (
   <Fragment>
-    <StyledForm>
+    <FormContainer>
       <FormArea>
         <FormItem>
           <Label>
@@ -60,7 +60,7 @@ const NameForm = () => (
           <StyledInput placeholder="ムジルシタロウ" />
         </FormItem>
       </FormArea>
-    </StyledForm>
+    </FormContainer>
   </Fragment>
 );
 

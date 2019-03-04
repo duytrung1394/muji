@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NameForm from "./nameForm";
 import AddressForm from "./addressForm";
 import TelForm from "./telForm";
-import Button from "../button";
+import { OutlineButton } from "../../../../customApp/components/shared/form/button";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
 
@@ -25,15 +25,15 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const NextButton = styled(Button)`
-  width: 298px;
-  height: 38px;
-  font-weight: lighter;
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(127, 0, 25);
-  background: rgb(127, 0, 25);
-  cursor: pointer;
-  outline: none;
+const NextButton = styled(OutlineButton)`
+  &&& {
+    width: 298px;
+    height: 38px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    border: rgb(127, 0, 25);
+    background: rgb(127, 0, 25);
+  }
 `;
 
 const Forms = () => (

@@ -2,9 +2,9 @@ import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
-import Button from "../button";
+import { OutlineButton } from "../../../components/shared/form/button";
 
-const StyledForm = styled(Form)``;
+const FormContainer = styled(Form)``;
 
 const FormArea = styled.ul`
   list-style: none;
@@ -40,20 +40,17 @@ const ZipCodeInput = styled(Input)`
   }
 `;
 
-const AutofillButton = styled(Button)`
-  width: 90px;
-  height: 40px;
-  font-weight: lighter;
-  line-height: 40px;
+const AutofillButton = styled(OutlineButton)`
   margin-left: 20px;
-  background-color: rgb(153, 153, 153);
-  color: rgb(255, 255, 255);
-  box-shadow: none;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  & span {
+  &&& {
+    width: 92px;
+    height: 42px;
+    font-weight: lighter;
+    line-height: 40px;
     padding: 0;
+    background-color: rgb(153, 153, 153);
+    color: rgb(255, 255, 255);
+    border: none;
   }
 `;
 
@@ -83,7 +80,8 @@ class AddressForm extends Component {
       entity: {
         address1: "",
         address2: "",
-        address3: ""
+        address3: "",
+        address4: ""
       },
       ...this.initialZipCodes("")
     };
@@ -104,7 +102,8 @@ class AddressForm extends Component {
         ...this.state.entity,
         address1: "東京都",
         address2: "新宿区",
-        address3: "新宿"
+        address3: "新宿",
+        address4: "3-28-2"
       };
       this.setState({ entity });
     }
@@ -121,7 +120,7 @@ class AddressForm extends Component {
   render() {
     return (
       <Fragment>
-        <StyledForm>
+        <FormContainer>
           <FormArea>
             <FormItem>
               <Label>
@@ -184,7 +183,10 @@ class AddressForm extends Component {
                   }}
                 />
               </Label>
-              <StyledInput placeholder="4-26-3" />
+              <StyledInput
+                placeholder="4-26-3"
+                value={this.state.entity.address4}
+              />
             </FormItem>
             <FormItem>
               <Label>
@@ -201,7 +203,7 @@ class AddressForm extends Component {
               </Description>
             </FormItem>
           </FormArea>
-        </StyledForm>
+        </FormContainer>
       </Fragment>
     );
   }
