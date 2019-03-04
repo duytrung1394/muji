@@ -55,8 +55,7 @@ const FixDateButton = styled(OutlineButton)`
   }
 `;
 
-const OrderList = ({ entity, isConfirm }) => {
-  const { orders } = entity;
+const OrderList = ({ orders, isConfirm }) => {
   return (
     <OrderListWrapper>
       {orders &&

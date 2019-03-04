@@ -132,6 +132,7 @@ class OrdersController extends Controller
                     'items' => [
                         [
                             'janCode' => '4550002959029',
+                            'nostock' => true,
                             'type' => 'カットソー',
                             'itemName' => 'ミニ裏毛五分袖ワイドＴシャツ',
                             'color' => 'ライトシルバーグレー',
@@ -143,6 +144,7 @@ class OrdersController extends Controller
                         ],
                         [
                             'janCode' => '4550002661052',
+                            'nostock' => false,
                             'type' => 'カットソー',
                             'itemName' => 'スムースハイネックワンピース',
                             'color' => 'チャコールグレー',
@@ -164,6 +166,7 @@ class OrdersController extends Controller
                     'items' => [
                         [
                             'janCode' => '4550182109580',
+                            'nostock' => false,
                             'type' => 'ノート A4',
                             'itemName' => 'ノート・７ｍｍ横罫　Ａ４・Ａ罫・３０枚・糸綴じ',
                             'number' => '1',

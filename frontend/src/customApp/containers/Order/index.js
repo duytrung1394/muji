@@ -18,6 +18,7 @@ import PaymentOptionList from "../../components/order/index/payment/paymentOptio
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
 import PaymentMethod from "../../components/order/index/payment/paymentMethod";
 import Title from "../../components/order/title";
+import StcokAlert from "../../components/order/index/stockAlert";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -111,12 +112,13 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.procedure.title" />} />
+          <StcokAlert orders={entity.orders} />
           <ContentsBox>
             <Delivery delivery={entity.delivery} />
           </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
-            <OrderList entity={entity} />
+            <OrderList orders={entity.orders} />
           </ContentsBox>
           <ContentsBox>
             <PaymentOptionList
