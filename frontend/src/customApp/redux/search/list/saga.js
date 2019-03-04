@@ -50,9 +50,7 @@ const getListServiceFunction = function*({ payload }) {
 
 export default function* saga() {
   yield restAllSaga(api, actions);
-  yield takeEvery(
-    actions.fetchItem.request.toString(),
-    getListItemFunction);
+  yield takeEvery(actions.fetchItem.request.toString(), getListItemFunction);
   yield takeEvery(
     actions.fetchArticle.request.toString(),
     getListArticleFunction
