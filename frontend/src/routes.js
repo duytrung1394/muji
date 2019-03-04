@@ -258,10 +258,10 @@ const routes = [
     )
   },
   {
-    path: "/store/accounts/memberguide",
+    path: "/store/search/article",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/Account/memberguide")
+      require("./customApp/containers/Search/indexArticle")
     )
   },
   {
@@ -269,6 +269,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Search/indexService")
+    )
+  },
+  {
+    path: "/store/accounts/memberguide",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/memberguide")
     )
   }
 ];

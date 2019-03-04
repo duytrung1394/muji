@@ -9,7 +9,7 @@ import SearchHeader from "../../components/search/header";
 import SearchOtherHeader from "../../components/search/otherHeader";
 import SearchItemImageList from "../../components/search/searchItemImageList";
 import PageRangeText from "../../components/search/pageRangeText";
-import SearchStoreList from "../../components/search/storeItemList";
+import ArticleCategoryList from "../../components/search/articleCategoryList";
 
 class Index extends Component {
   constructor(props) {
@@ -18,20 +18,17 @@ class Index extends Component {
       selectedKeys: []
     };
   }
-
   // React methods
   componentDidMount() {
     this.fetchRequest(this.props);
   }
-
   fetchRequest = props => {
     props.fetchRequest({
       page: 1,
-      keyword: "新宿",
-      filters: JSON.stringify(props.filters || [])
+      filters: JSON.stringify(props.filters || []),
+      keyword: "コーヒー"
     });
   };
-
   // React.render
   render() {
     const { entities, total, fetching } = this.props;
@@ -40,26 +37,23 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <SearchHeader keyword={entities.keyword} />
-          <SearchNavigationList active={3} />
+          <SearchNavigationList active={1} />
           <PageRangeText total={total} first={1} end={total} />
-          <SearchStoreList items={entities.searchStores} />
-          <SearchOtherHeader title="store" />
-          <SearchItemImageList items={entities.searchItems} />
-          <SearchStoreList items={entities.searchStores} />
+          <ArticleCategoryList categories={entities.searchArticleCategories} />
+          <SearchOtherHeader title="item" />
+          <SearchItemImageList items={entities.searchOtherResults} />
+          <ArticleCategoryList categories={entities.searchArticleCategories} />
         </Spin>
       </ContentAreaLayout>
     );
   }
 }
-
 const mapStateToProps = state => {
   return state.Search.List.toJS();
 };
-
 const actionCreators = {
-  fetchRequest: actions.fetch.request
+  fetchRequest: actions.fetchArticle.request
 };
-
 const enhance = C => {
   const connected = connect(
     mapStateToProps,
@@ -68,5 +62,4 @@ const enhance = C => {
   const injected = injectIntl(connected, { withRef: true });
   return injected;
 };
-
 export default enhance(Index);

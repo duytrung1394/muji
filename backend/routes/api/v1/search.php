@@ -23,6 +23,14 @@ $router->get('/api/v1/search/items', [
 ]);
 
 /**
+ * フリーワード検索（読み物）一覧取得
+ */
+$router->get('/api/v1/search/articles', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\SearchController@indexArticle',
+]);
+
+/**
  * フリーワード検索（サービス）一覧取得
  */
 $router->get('/api/v1/search/services', [
