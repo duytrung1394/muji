@@ -32,6 +32,9 @@ require_once 'api/v1/tops.php';
 // /api/v1/product-category-tops
 require_once 'api/v1/product_category_tops.php';
 
+// /api/v1/product-details
+require_once 'api/v1/product_details.php';
+
 // /api/v1/customer-reviews
 require_once 'api/v1/customer_reviews.php';
 
