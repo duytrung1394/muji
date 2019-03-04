@@ -635,6 +635,8 @@
   "order.procedure.nostockItemSizeLabel": " サイズ : ",
   "order.procedure.nostockItemColorLabel": "カラー : ",
   "order.procedure.stockNumberLabel": "在庫数 : ",
+  "order.procedure.delete": "削除",
+  "order.procedure.laterPurchase": "あとで買う",
   "order.confirm.title": "ご注文内容確認",
   "order.confirm.orderListTitle": "ご注文内容",
   "order.confirm.notice": "ご注文内容をご確認の上、変更がなければ「ご注文を確定する」を押してください。",

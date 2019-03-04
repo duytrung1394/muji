@@ -3,6 +3,7 @@ import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 import { NavLink } from "react-router-dom";
+import { OutlineButton } from "../../../shared/form/button";
 
 const OrderListItem = styled.li`
   padding: 10px;
@@ -66,71 +67,106 @@ const TotalPrice = styled.div`
   font-size: 11px;
 `;
 
+const DeleteQuantityArea = styled.div`
+  margin-top: 16px;
+  margin-bottom: 16px;
+`;
+
+const OrderButtonContainer = styled.div`
+  wdith: 70%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const DeleteButton = styled(OutlineButton)`
+  &&& {
+    width: 100px;
+  }
+`;
+
 const linkStyle = {
   display: "block"
 };
 
 const OrderItem = ({ item }) => {
   return (
-    <OrderListItem>
-      <StyledRow>
-        <Col span={8}>
-          <NavLink to="#" style={linkStyle}>
-            <ItemImage
-              src={`https://img.muji.net/img/item/${item.janCode}_400.jpg`}
-            />
-          </NavLink>
-        </Col>
-        <Col span={15} offset={1}>
-          <ItemData>
-            <ItemType>{item.type}</ItemType>
-          </ItemData>
-          <ItemName>{item.itemName}</ItemName>
-          <ItemData>
-            <IntlMessages id="order.confirm.color" />
-            {item.color}
-          </ItemData>
-          <ItemData>
-            <IntlMessages id="order.confirm.size" />
-            {item.size}
-          </ItemData>
-          <ItemData>
-            <IntlMessages id="order.confirm.itemNumber" />
-            {item.number}
-          </ItemData>
-        </Col>
-      </StyledRow>
-      <TotalPrice>
-        {item.discount ? (
-          <Fragment>
-            <FixedPrice>
-              <OverLine>
-                <IntlMessages id="order.confirm.taxIn" />
-                <span>{item.price}</span>
-                <IntlMessages id="order.confirm.yen" />
-              </OverLine>
-              <IntlMessages id="order.confirm.arrow" />
-            </FixedPrice>
-            <DiscountPrice>
-              <IntlMessages id="order.confirm.taxIn" />
-              <ItemPrice>{item.discount_price}</ItemPrice>
-              <IntlMessages id="order.confirm.yen" />
-            </DiscountPrice>
-            <LimitedSeal>
+    <Fragment>
+      <OrderListItem>
+        <StyledRow>
+          <Col span={8}>
+            <NavLink to="#" style={linkStyle}>
+              <ItemImage
+                src={`https://img.muji.net/img/item/${item.janCode}_400.jpg`}
+              />
+            </NavLink>
+          </Col>
+          <Col span={15} offset={1}>
+            <ItemData>
+              <ItemType>{item.type}</ItemType>
+            </ItemData>
+            <ItemName>{item.itemName}</ItemName>
+            <ItemData>
+              <IntlMessages id="order.confirm.color" />
+              {item.color}
+            </ItemData>
+            <ItemData>
+              <IntlMessages id="order.confirm.size" />
+              {item.size}
+            </ItemData>
+            <ItemData>
+              <IntlMessages id="order.confirm.itemNumber" />
+              {item.number}
+            </ItemData>
+          </Col>
+        </StyledRow>
+        <TotalPrice>
+          {item.discount ? (
+            <Fragment>
+              <FixedPrice>
+                <OverLine>
+                  <IntlMessages id="order.confirm.taxIn" />
+                  <span>{item.price}</span>
+                  <IntlMessages id="order.confirm.yen" />
+                </OverLine>
+                <IntlMessages id="order.confirm.arrow" />
+              </FixedPrice>
               <DiscountPrice>
-                <IntlMessages id="order.procedure.timeLimitedPrice" />
+                <IntlMessages id="order.confirm.taxIn" />
+                <ItemPrice>{item.discount_price}</ItemPrice>
+                <IntlMessages id="order.confirm.yen" />
               </DiscountPrice>
-            </LimitedSeal>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <IntlMessages id="order.confirm.taxIn" />
-            <ItemPrice>{item.price}</ItemPrice>
-            <IntlMessages id="order.confirm.yen" />
-          </Fragment>
-        )}
-      </TotalPrice>
-    </OrderListItem>
+              <LimitedSeal>
+                <DiscountPrice>
+                  <IntlMessages id="order.procedure.timeLimitedPrice" />
+                </DiscountPrice>
+              </LimitedSeal>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <IntlMessages id="order.confirm.taxIn" />
+              <ItemPrice>{item.price}</ItemPrice>
+              <IntlMessages id="order.confirm.yen" />
+            </Fragment>
+          )}
+        </TotalPrice>
+      </OrderListItem>
+      {item.nostock && <DeleteQuantity />}
+    </Fragment>
+  );
+};
+
+const DeleteQuantity = () => {
+  return (
+    <DeleteQuantityArea>
+      <OrderButtonContainer>
+        <DeleteButton>
+          <IntlMessages id="order.procedure.delete" />
+        </DeleteButton>
+        <DeleteButton>
+          <IntlMessages id="order.procedure.laterPurchase" />
+        </DeleteButton>
+      </OrderButtonContainer>
+    </DeleteQuantityArea>
   );
 };
 
