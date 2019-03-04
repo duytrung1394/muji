@@ -2,6 +2,7 @@
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
 import accountSagas from "./account/sagas";
+import productDetailSagas from "./product_detail/sagas";
 import searchSagas from "./search/sagas";
 import favoriteSagas from "./favorite/sagas";
 import donationSagas from "./donation/sagas";
@@ -24,6 +25,7 @@ export default function* devSaga() {
     customerReviewSagas(),
     donationSagas(),
     orderSagas(),
+    productDetailSagas(),
     favoriteSagas(),
     searchSagas(),
     lotterySagas(),

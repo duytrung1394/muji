@@ -55,6 +55,13 @@ const routes = [
     )
   },
   {
+    path: "/store/cmdty/detail/:jan_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductDetail/index")
+    )
+  },
+  {
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
