@@ -156,7 +156,6 @@ class AddressList extends Component {
                       <Address1>{item.address2}</Address1>
                       <Address1>{item.address3}</Address1>
                       <Address2>{item.address4}</Address2>
-
                       <Tel>
                         <IntlMessages id="delivery.addressItem.tel" />
                         {item.telNo}
