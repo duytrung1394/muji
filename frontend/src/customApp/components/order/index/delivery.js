@@ -53,7 +53,9 @@ const ButtonArea = styled.div`
 
 const ChangeButton = styled(OutlineButton)`
   bottom: 12px;
-  width: 100px;
+  &&& {
+    width: 100px;
+  }
 `;
 
 const colContentLayout = {

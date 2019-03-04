@@ -50,7 +50,9 @@ const ButtonArea = styled.div`
 
 const FixDateButton = styled(OutlineButton)`
   bottom: 12px;
-  width: 144px;
+  &&& {
+    width: 144px;
+  }
 `;
 
 const OrderList = ({ entity, isConfirm }) => {

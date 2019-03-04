@@ -29,7 +29,9 @@ const ChangeButton = styled(OutlineButton)`
   position: absolute;
   bottom: 12px;
   right: 12px;
-  width: 100px;
+  &&& {
+    width: 100px;
+  }
 `;
 
 const PaymentMethod = ({ isConfirm }) => {
