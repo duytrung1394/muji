@@ -20,7 +20,7 @@ const ContentBaseLayout = styled.div`
   }
 `;
 
-const Contents = () => {
+const MemberGuide = () => {
   return (
     <MemberGuideContents>
       <ContentBaseLayout>
@@ -36,4 +36,4 @@ const Contents = () => {
   );
 };
 
-export default Contents;
+export default MemberGuide;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { injectIntl } from "react-intl";
 import {
@@ -6,7 +6,7 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
-import RegistrationButton from "../../components/account/memberguide/registrationButtons";
+import RegistrationButtons from "../../components/account/memberguide/registrationButtons";
 import MemberGuide from "../../components/account/memberguide/memberGuide";
 
 const AreaLayout = styled(ContentAreaLayout)`
@@ -44,18 +44,21 @@ const MemberGuideDescription = () => {
   );
 };
 
-const Index = () => {
-  return (
-    <AreaLayout>
-      <BaseContentLayout>
-        <MemberGuideTitle />
-        <MemberGuideDescription />
-        <RegistrationButton />
-        <MemberGuide />
-        <RegistrationButton />
-      </BaseContentLayout>
-    </AreaLayout>
-  );
+
+class Index extends Component {
+  render() {
+    return (
+      <AreaLayout>
+        <BaseContentLayout>
+          <MemberGuideTitle />
+          <MemberGuideDescription />
+          <RegistrationButtons />
+          <MemberGuide />
+          <RegistrationButtons />
+        </BaseContentLayout>
+      </AreaLayout>
+    );
+  }
 };
 
 const enhance = C => {
