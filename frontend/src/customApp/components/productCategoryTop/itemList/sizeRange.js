@@ -18,11 +18,19 @@ const SizeRange = ({ minSize, maxSize }) => {
     return null;
   }
 
-  return (
-    <Range>
-      <Size>{minSize}</Size> 〜 <Size>{maxSize}</Size>
-    </Range>
-  );
+  if (minSize === maxSize) {
+    return (
+      <Range>
+        <Size>{minSize}</Size>
+      </Range>
+    );
+  } else {
+    return (
+      <Range>
+        <Size>{minSize}</Size> 〜 <Size>{maxSize}</Size>
+      </Range>
+    );
+  }
 };
 
 export default SizeRange;
