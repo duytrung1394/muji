@@ -269,13 +269,11 @@ const PaymentInput = props => {
         </StyledRadio>
         <StyledRadio style={radioStyle} value={2}>
           <IntlMessages id="order.procedure.usePart" />
-          {paymentPoints.inputFlg ? (
-            paymentOption.value === 2 ? (
-              <Input style={InputStyle} ref={paymentOption.inputRef} />
-            ) : (
-              <Input style={InputStyle} ref={paymentOption.inputRef} disabled />
-            )
-          ) : null}
+          {paymentOption.value === 2 ? (
+            <Input style={InputStyle} ref={paymentOption.inputRef} />
+          ) : (
+            <Input style={InputStyle} ref={paymentOption.inputRef} disabled />
+          )}
           {optionKey === "shoppingPoint" ? (
             <IntlMessages id="order.procedure.point" />
           ) : (

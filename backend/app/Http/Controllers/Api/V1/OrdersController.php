@@ -167,12 +167,10 @@ class OrdersController extends Controller
             ],
             'paymentDetails' => [
                 'points' => [
-                    'possessions' => '3000',
-                    'inputFlg' => true
+                    'possessions' => '3000'
                 ],
                 'giftCard' => [
-                    'possessions' => '5000',
-                    'inputFlg' => true
+                    'possessions' => '5000'
                 ],
             ],
             'paymentSummary' => [
