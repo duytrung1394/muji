@@ -21,30 +21,9 @@ const Title = styled.h1`
 `;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
-
-  // React methods
-  componentDidMount() {
-    this.props.fetchRequest("");
-  }
 
   // React.render
   render() {
-    const {
-      // types
-      total,
-      entities,
-      fetching,
-      destroying,
-      // react-router
-      history
-    } = this.props;
-
     return (
       <ContentAreaLayout>
         <ContentLayout>
@@ -62,11 +41,7 @@ const mapStateToProps = state => {
   return state.Delivery.Entity.toJS();
 };
 
-const actionCreators = {
-  fetchRequest: actions.fetch.request,
-  destroyRequest: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup
-};
+const actionCreators = {};
 
 const enhance = C => {
   const connected = connect(

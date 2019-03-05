@@ -1,10 +1,8 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 import { OutlineButton } from "../../../components/shared/form/button";
-
-const FormContainer = styled(Form)``;
 
 const FormArea = styled.ul`
   list-style: none;
@@ -83,7 +81,7 @@ class AddressForm extends Component {
         address3: "",
         address4: ""
       },
-      ...this.initialZipCodes("")
+      ...this.initialZipCodes()
     };
   }
 
@@ -119,92 +117,90 @@ class AddressForm extends Component {
 
   render() {
     return (
-      <Fragment>
-        <FormContainer>
-          <FormArea>
-            <FormItem>
-              <Label>
-                <IntlMessages
-                  id="delivery.add.form.zipCode"
-                  values={{
-                    require: <IntlMessages id="delivery.add.form.require" />
-                  }}
-                />
-              </Label>
-              <ZipCode>
-                <IntlMessages id="label.zipCode" />
-              </ZipCode>
-              <ZipCodeInput
-                onChange={e => this.updateState("zip_code_1", e.target.value)}
-                placeholder="1708424"
+      <Form>
+        <FormArea>
+          <FormItem>
+            <Label>
+              <IntlMessages
+                id="delivery.add.form.zipCode"
+                values={{
+                  require: <IntlMessages id="delivery.add.form.require" />
+                }}
               />
-              <AutofillButton onClick={this.getAddress}>
-                <IntlMessages id="delivery.button.autofill" />
-              </AutofillButton>
-              <Description>
-                <IntlMessages id="delivery.add.form.zipCode.description1" />
-                <IntlMessages id="delivery.add.form.zipCode.description2" />
-              </Description>
-            </FormItem>
-            <FormItem>
-              <Label>
-                <IntlMessages
-                  id="delivery.add.form.address1"
-                  values={{
-                    require: <IntlMessages id="delivery.add.form.require" />
-                  }}
-                />
-              </Label>
-              <StyledInput
-                placeholder="東京都豊島区"
-                value={this.state.entity.address1 + this.state.entity.address2}
+            </Label>
+            <ZipCode>
+              <IntlMessages id="label.zipCode" />
+            </ZipCode>
+            <ZipCodeInput
+              onChange={e => this.updateState("zip_code_1", e.target.value)}
+              placeholder="1708424"
+            />
+            <AutofillButton onClick={this.getAddress}>
+              <IntlMessages id="delivery.button.autofill" />
+            </AutofillButton>
+            <Description>
+              <IntlMessages id="delivery.add.form.zipCode.description1" />
+              <IntlMessages id="delivery.add.form.zipCode.description2" />
+            </Description>
+          </FormItem>
+          <FormItem>
+            <Label>
+              <IntlMessages
+                id="delivery.add.form.address1"
+                values={{
+                  require: <IntlMessages id="delivery.add.form.require" />
+                }}
               />
-            </FormItem>
-            <FormItem>
-              <Label>
-                <IntlMessages
-                  id="delivery.add.form.address2"
-                  values={{
-                    require: <IntlMessages id="delivery.add.form.require" />
-                  }}
-                />
-              </Label>
-              <StyledInput
-                placeholder="東池袋"
-                value={this.state.entity.address3}
+            </Label>
+            <StyledInput
+              placeholder="東京都豊島区"
+              value={this.state.entity.address1 + this.state.entity.address2}
+            />
+          </FormItem>
+          <FormItem>
+            <Label>
+              <IntlMessages
+                id="delivery.add.form.address2"
+                values={{
+                  require: <IntlMessages id="delivery.add.form.require" />
+                }}
               />
-            </FormItem>
-            <FormItem>
-              <Label>
-                <IntlMessages
-                  id="delivery.add.form.address3"
-                  values={{
-                    require: <IntlMessages id="delivery.add.form.require" />
-                  }}
-                />
-              </Label>
-              <StyledInput
-                placeholder="4-26-3"
-                value={this.state.entity.address4}
+            </Label>
+            <StyledInput
+              placeholder="東池袋"
+              value={this.state.entity.address3}
+            />
+          </FormItem>
+          <FormItem>
+            <Label>
+              <IntlMessages
+                id="delivery.add.form.address3"
+                values={{
+                  require: <IntlMessages id="delivery.add.form.require" />
+                }}
               />
-            </FormItem>
-            <FormItem>
-              <Label>
-                <IntlMessages
-                  id="delivery.add.form.address4"
-                  values={{
-                    require: <IntlMessages id="delivery.add.form.require" />
-                  }}
-                />
-              </Label>
-              <StyledInput placeholder="部屋番号がある場合は入力が必須となります" />
-              <Description>
-                <IntlMessages id="delivery.add.form.address.description" />
-              </Description>
-            </FormItem>
-          </FormArea>
-        </FormContainer>
-      </Fragment>
+            </Label>
+            <StyledInput
+              placeholder="4-26-3"
+              value={this.state.entity.address4}
+            />
+          </FormItem>
+          <FormItem>
+            <Label>
+              <IntlMessages
+                id="delivery.add.form.address4"
+                values={{
+                  require: <IntlMessages id="delivery.add.form.require" />
+                }}
+              />
+            </Label>
+            <StyledInput placeholder="部屋番号がある場合は入力が必須となります" />
+            <Description>
+              <IntlMessages id="delivery.add.form.address.description" />
+            </Description>
+          </FormItem>
+        </FormArea>
+      </Form>
     );
   }
 }

@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
-
-const FormContainer = styled(Form)``;
 
 const FormArea = styled.ul`
   list-style: none;
@@ -35,23 +33,21 @@ const StyledInput = styled(Input)`
 `;
 
 const TelForm = () => (
-  <Fragment>
-    <FormContainer>
-      <FormArea>
-        <FormItem>
-          <Label>
-            <IntlMessages
-              id="delivery.add.form.tel"
-              values={{
-                require: <IntlMessages id="delivery.add.form.require" />
-              }}
-            />
-          </Label>
-          <StyledInput placeholder="0339894191" />
-        </FormItem>
-      </FormArea>
-    </FormContainer>
-  </Fragment>
+  <Form>
+    <FormArea>
+      <FormItem>
+        <Label>
+          <IntlMessages
+            id="delivery.add.form.tel"
+            values={{
+              require: <IntlMessages id="delivery.add.form.require" />
+            }}
+          />
+        </Label>
+        <StyledInput placeholder="0339894191" />
+      </FormItem>
+    </FormArea>
+  </Form>
 );
 
 export default TelForm;
