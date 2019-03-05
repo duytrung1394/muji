@@ -135,15 +135,11 @@ class AddressList extends Component {
                 <StyledLi key={index} seeMore={this.state.isSeeMore}>
                   <Address
                     isLast={
-                      (this.state.isSeeMore
-                        ? entities.length
-                        : defaultAddressSize) -
-                        1 ==
-                      index
+                      (this.state.isSeeMore ? entities.length : defaultAddressSize) -1 === index
                     }
                   >
                     <li>
-                      {index != 0 ? <DeleteLink /> : null}
+                      {item.mySelf ? null : <DeleteLink />}
                       <Name>
                         {item.naming}
                         <IntlMessages id="delivery.addressItem.esq" />

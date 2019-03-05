@@ -40,10 +40,11 @@ class DeliveriesController extends Controller
      */
     private function getMockData()
     {
-        $addressId = 1;
+        $addressBookId = 1;
         return [
             [
-                'addressId' => $addressId,
+                'mySelf' => true,
+                'addressBookId' => $addressBookId,
                 'naming' => '無印　花子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
@@ -53,7 +54,8 @@ class DeliveriesController extends Controller
                 'telNo' => '01 - 2345 - 6789' 
             ],
             [
-                'addressId' => $addressId,
+                'mySelf' => false,
+                'addressBookId' => $addressBookId,
                 'naming' => '無印 良太',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
@@ -63,7 +65,8 @@ class DeliveriesController extends Controller
                 'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'addressId' => $addressId,
+                'mySelf' => false,
+                'addressBookId' => $addressBookId,
                 'naming' => '無印 計子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
@@ -73,7 +76,8 @@ class DeliveriesController extends Controller
                 'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'addressId' => $addressId,
+                'mySelf' => false,
+                'addressBookId' => $addressBookId,
                 'naming' => '無印 良太',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
@@ -83,7 +87,8 @@ class DeliveriesController extends Controller
                 'telNo' => '01 - 2345 - 6789'
             ],
             [
-                'addressId' => $addressId,
+                'mySelf' => false,
+                'addressBookId' => $addressBookId,
                 'naming' => '無印 計子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
