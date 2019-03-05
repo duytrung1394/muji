@@ -5,13 +5,15 @@ import OrderItem from "./orderList/orderItem";
 import { OutlineButton } from "../../shared/form/button";
 
 const OrderListWrapper = styled.div`
-  padding: 0px 16px 16px;
-  background-color: #fff;
-  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
+  div:not(:last-child) {
+    margin-bottom: 16px;
+  }
 `;
 
 const OrdertWrapper = styled.div`
-  padding-top: 16px;
+  padding: 16px 16px 16px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 `;
 
 const HeadLine = styled.h1`

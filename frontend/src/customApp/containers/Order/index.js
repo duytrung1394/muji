@@ -24,6 +24,10 @@ const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
 `;
 
+const layoutCenterStyle = {
+  textAlign: "center"
+};
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -100,7 +104,13 @@ class Index extends Component {
     } = this.props;
 
     if (Object.keys(entity).length <= 0) {
-      return <Spin spinning={fetching} size="large" />;
+      return (
+        <ContentAreaLayout>
+          <ContentLayout style={layoutCenterStyle}>
+            <Spin size="large" />
+          </ContentLayout>
+        </ContentAreaLayout>
+      );
     }
 
     const submitInfo = {
