@@ -205,6 +205,7 @@
   "delivery.addressItem.tel": "TEL:",
   "delivery.addressItem.title": "登録されているお届け先",
   "delivery.deleteLink.delete": "お届け先の削除",
+  "delivery.deleteLink.deleteConfirm": "このお届け先を一覧から削除しますか？",
   "delivery.list.add": "お届け先の追加",
   "delivery.list.cancel": "ご注文後の変更・追加、一部商品のキャンセルについて",
   "delivery.list.title": "お届け先一覧",
