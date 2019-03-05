@@ -135,7 +135,11 @@ class AddressList extends Component {
                 <StyledLi key={index} seeMore={this.state.isSeeMore}>
                   <Address
                     isLast={
-                      (this.state.isSeeMore ? entities.length : defaultAddressSize) -1 === index
+                      (this.state.isSeeMore
+                        ? entities.length
+                        : defaultAddressSize) -
+                        1 ===
+                      index
                     }
                   >
                     <li>
@@ -156,7 +160,7 @@ class AddressList extends Component {
                         <IntlMessages id="delivery.addressItem.tel" />
                         {item.telNo}
                       </Tel>
-                      {index == 0 ? (
+                      {item.mySelf ? (
                         <Note>
                           <IntlMessages id="delivery.addressItem.note" />
                         </Note>
