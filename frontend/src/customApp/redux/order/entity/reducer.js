@@ -7,7 +7,10 @@ const initState = restInitState.merge(
     orderCode: null,
     savingCart: false,
     savedCart: false,
-    saveCartError: false
+    saveCartError: false,
+    updatingDeliveryOption: false,
+    updatedDeliveryOption: false,
+    updateDeliveryOptionError: false
   })
 );
 
@@ -38,6 +41,28 @@ const saveCartCleanup = (state, action) =>
     .set("savedCart", false)
     .set("saveCartError", false);
 
+const updateDeliveryOptionRequest = (state, action) =>
+  state
+    .set("entity", {})
+    .set("updatingDeliveryOption", true)
+    .set("updatedDeliveryOption", false)
+    .set("updateDeliveryOptionError", false);
+
+const updateDeliveryOptionSuccess = (state, action) =>
+  state.set("updatingDeliveryOption", false).set("updatedDeliveryOption", true);
+
+const updateDeliveryOptionFailure = (state, action) =>
+  state
+    .set("updatingDeliveryOption", false)
+    .set("updatedDeliveryOption", false)
+    .set("updateDeliveryOptionError", true);
+
+const updateDeliveryOptionCleanup = (state, action) =>
+  state
+    .set("updatingDeliveryOption", false)
+    .set("updatedDeliveryOption", false)
+    .set("updateDeliveryOptionError", false);
+
 const reducer = handleActions(
   {
     ORDER: {
@@ -48,6 +73,12 @@ const reducer = handleActions(
           SUCCESS: saveCartSuccess,
           FAILURE: saveCartFailure,
           CLEANUP: saveCartCleanup
+        },
+        UPDATE_DELIVERY_OPTION: {
+          REQUEST: updateDeliveryOptionRequest,
+          SUCCESS: updateDeliveryOptionSuccess,
+          FAILURE: updateDeliveryOptionFailure,
+          CLEANUP: updateDeliveryOptionCleanup
         }
       }
     }
