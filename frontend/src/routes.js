@@ -272,6 +272,13 @@ const routes = [
     )
   },
   {
+    path: "/store/delivery/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/list")
+    )
+  },
+  {
     path: "/store/accounts/memberguide",
     exact: true,
     component: asyncComponent(() =>

@@ -44,9 +44,15 @@ export const OutlineButton = styled(Button)`
     border-width: 1px;
     border-radius: 25px;
     font-size: 12px;
+    box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px;
   }
+
   &.ant-btn-clicked:after {
     content: "";
     border: none;
+  }
+
+  &.ant-btn-two-chinese-chars > *:not(.anticon) {
+    letter-spacing: normal;
   }
 `;
