@@ -1,6 +1,5 @@
 import { createActions } from "redux-actions";
 import restActions from "../../shared/list/actions";
-import req from "../../shared/requestActions";
 
 const actions = createActions({
   CUSTOMER_REVIEW: {
@@ -10,6 +9,9 @@ const actions = createActions({
         REQUEST: undefined
       },
       FETCH_BY_FOLLOWING: {
+        REQUEST: undefined
+      },
+      FETCH_BY_ITEM: {
         REQUEST: undefined
       }
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "antd";
-import { Link } from "react-router-dom";
+import Link from "../../shared/slider/link";
 
 const ItemFooterButtonWrapper = styled.li`
   width: 100%;
@@ -26,7 +26,8 @@ const ItemFooterButtonWrapper = styled.li`
 
   a,
   a:hover,
-  a:focus {
+  a:focus,
+  a:active {
     color: rgba(0, 0, 0, 0.65);
   }
 
@@ -46,27 +47,12 @@ const ItemFooterButtonWrapper = styled.li`
   }
 `;
 
-const DisabledLink = styled.p`
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.4);
-
-  & + i {
-    color: rgba(0, 0, 0, 0.09);
-  }
-`;
-
-const Action = ({ name, onClick, disabled }) => {
+const Action = ({ name, onClick = null, to = "#" }) => {
   return (
     <ItemFooterButtonWrapper>
-      {disabled ? (
-        <DisabledLink to={"#"} draggable={false}>
-          {name}
-        </DisabledLink>
-      ) : (
-        <Link to={"#"} onClick={onClick} draggable={false}>
-          {name}
-        </Link>
-      )}
+      <Link to={to} onClick={onClick} draggable={false}>
+        {name}
+      </Link>
       <Icon type="right" />
     </ItemFooterButtonWrapper>
   );
@@ -92,7 +78,7 @@ const ItemFooter = ({ actions = [] }) => {
             key={index}
             name={action.name}
             onClick={action.onClick}
-            disabled={action.disabled}
+            to={action.to}
           />
         );
       })}

@@ -32,17 +32,29 @@ require_once 'api/v1/tops.php';
 // /api/v1/product-category-tops
 require_once 'api/v1/product_category_tops.php';
 
+// /api/v1/product-details
+require_once 'api/v1/product_details.php';
+
 // /api/v1/customer-reviews
 require_once 'api/v1/customer_reviews.php';
-
-// /api/v1/donation-tops
-require_once 'api/v1/donation_tops.php';
 
 // /api/v1/customer-addresses
 require_once 'api/v1/customer_addresses.php';
 
+// /api/v1/donations
+require_once 'api/v1/donations.php';
+
+// /api/v1/lotteries
+require_once 'api/v1/lotteries.php';
+
 // /api/v1/orders
 require_once 'api/v1/orders.php';
+
+// /api/v1/searches
+require_once 'api/v1/search.php';
+
+// /api/v1/favorites
+require_once 'api/v1/favorites.php';
 
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。

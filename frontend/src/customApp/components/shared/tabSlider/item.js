@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemStyle = styled.div`
-  width: calc((100% - 60px) / 3);
+  // width: calc((100% - 60px) / 3);
   margin: 20px 30px 0 0;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.65);
@@ -23,11 +23,9 @@ const ItemStyle = styled.div`
   }
 `;
 
-const TabSliderItem = props => {
-  const { header, main, footer } = props;
-
+const TabSliderItem = ({ header, main, footer }) => {
   return (
-    <ItemStyle {...props}>
+    <ItemStyle>
       {header}
       {main}
       {footer}

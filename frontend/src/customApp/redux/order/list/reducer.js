@@ -1,21 +1,22 @@
 import { handleActions } from "redux-actions";
 
-import restReducer, { restInitState } from "../../shared/list/reducer";
-
-// GET
-export const fetchRequest = (state, action) =>
-  state
-    .set("doSearch", false)
-    .set("fetching", true)
-    .set("fetched", false)
-    .set("fetchError", false);
+import restReducer, {
+  restInitState,
+  fetchRequest
+} from "../../shared/list/reducer";
 
 const reducer = handleActions(
   {
     ORDER: {
       LIST: {
         ...restReducer,
+        FETCH_STORE_RESERVE: {
+          REQUEST: fetchRequest
+        },
         FETCH_PURCHASE_HISTORY: {
+          REQUEST: fetchRequest
+        },
+        FETCH_SUBSCRIPTION: {
           REQUEST: fetchRequest
         }
       }

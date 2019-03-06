@@ -1,7 +1,7 @@
 import React from "react";
 import IntlMessages from "../../../components/utility/intlMessages";
-import ContentPanel from "../panel/contentPanel";
-import ItemImageList from "../panel/itemImageList";
+import ContentPanel from "../shared/panel/contentPanel";
+import ItemImageList from "../shared/panel/itemImageList";
 import NewItemWrapper from "./newItem.style";
 
 const NewItem = props => {
