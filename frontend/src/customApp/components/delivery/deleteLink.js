@@ -4,7 +4,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
 
-const DeleteModalWrapper = styled.div`
+const ModalWrapper = styled.div`
   position: relative;
 `;
 
@@ -20,13 +20,19 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const DeleteConfirmMessage = styled.p`
+const StyledModal = styled(Modal)`
+  .ant-modal-body {
+    padding: 30px 54px;
+  }
+`;
+
+const DeleteConfirm = styled.p`
   text-align: center;
   font-size: 15px;
   font-weight: bold;
 `;
 
-const DeleteModalButton = styled.p`
+const DeleteButton = styled.p`
   max-width: 300px;
   margin: 20px auto 0;
   text-align: center;
@@ -42,51 +48,88 @@ const DeleteModalButton = styled.p`
   }
 `;
 
+const DeleteCompleteTitle = styled.p`
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+const DeleteCompleteMessage = styled.p`
+  text-align: center;
+  font-size: 12px;
+`;
+
 class DeleteModal extends Component {
-  state= {visible: false}
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      deleteCompleteVisible: false
+    };
+  }
 
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
-  }
+  };
 
-  handleOk = (e) => {
-    console.log(e);
+  handleOk = () => {
     this.setState({
       visible: false,
+      deleteCompleteVisible: true
     });
-  }
+  };
 
-  handleCancel = (e) => {
+  handleCancel = e => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
-  }
+  };
+
+  deleteCompleteHandleCancel = e => {
+    console.log(e);
+    this.setState({
+      deleteCompleteVisible: false
+    });
+  };
 
   render() {
     return (
-      <DeleteModalWrapper>
+      <ModalWrapper>
         <StyledLink to={"#"} onClick={this.showModal}>
           <IntlMessages id="delivery.deleteLink.delete" />
         </StyledLink>
-        <Modal
+        <StyledModal
           visible={this.state.visible}
           onCancel={this.handleCancel}
           footer={null}
           width={600}
         >
-          <DeleteConfirmMessage>
-            <IntlMessages id="delivery.deleteLink.deleteConfirm" />
-          </DeleteConfirmMessage>
-          <DeleteModalButton>
+          <DeleteConfirm>
+            <IntlMessages id="delivery.deleteConfirm" />
+          </DeleteConfirm>
+          <DeleteButton>
             <button to={"#"} onClick={this.handleOk}>
-              <IntlMessages id="favorite.delete" />
+              <IntlMessages id="delivery.delete" />
             </button>
-          </DeleteModalButton>
-        </Modal>
-      </DeleteModalWrapper>
+          </DeleteButton>
+        </StyledModal>
+        <StyledModal
+          visible={this.state.deleteCompleteVisible}
+          onCancel={this.deleteCompleteHandleCancel}
+          footer={null}
+          width={600}
+        >
+          <DeleteCompleteTitle>
+            <IntlMessages id="delivery.deleteComplete" />
+          </DeleteCompleteTitle>
+          <DeleteCompleteMessage>
+            <IntlMessages id="delivery.deleteCompleteMessage" />
+          </DeleteCompleteMessage>
+        </StyledModal>
+      </ModalWrapper>
     );
   }
 }
