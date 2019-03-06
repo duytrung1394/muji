@@ -29,9 +29,6 @@ const ChangeButton = styled(OutlineButton)`
   position: absolute;
   bottom: 12px;
   right: 12px;
-  &&& {
-    width: 100px;
-  }
 `;
 
 const PaymentMethod = ({ isConfirm }) => {
@@ -47,7 +44,7 @@ const PaymentMethod = ({ isConfirm }) => {
       <span>1234</span>
       <VisaImage src={visaImage} />
       {!isConfirm && (
-        <ChangeButton>
+        <ChangeButton width="100px">
           <IntlMessages id="order.procedure.change" />
         </ChangeButton>
       )}

@@ -37,10 +37,6 @@ const ButtonArea = styled.div`
   margin-top: 20px;
 `;
 
-const SpecifyMessageButton = styled(OutlineButton)`
-  width: 300px;
-`;
-
 const Option = Select.Option;
 
 class Gift extends Component {
@@ -112,9 +108,9 @@ const GiftWrappingSettings = ({ giftData }) => {
         </p>
       </SpecifiedResult>
       <ButtonArea>
-        <SpecifyMessageButton>
+        <OutlineButton>
           <IntlMessages id="order.procedure.specifyMessage" />
-        </SpecifyMessageButton>
+        </OutlineButton>
       </ButtonArea>
     </Fragment>
   );

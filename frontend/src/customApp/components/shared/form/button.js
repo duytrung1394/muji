@@ -33,16 +33,26 @@ const reverseColor = "#fff";
 
 export const OutlineButton = styled(Button)`
   &&& {
-    background-color: ${props =>
-    props.reverse ? props.color || reverseColor : reverseColor};
-    color: ${props =>
-    props.reverse ? reverseColor : props.color || baseColor};
-    border: 1px solid ${props => props.color || baseColor};
+    ${({ width = "300px", height = "40px", color, reverse = false }) => ({
+      width,
+      height,
+      backgroundColor: reverse ? color || reverseColor : reverseColor,
+      color: reverse ? reverseColor : color || baseColor,
+      borderColor: color || baseColor
+    })};
+    border-style: solid;
+    border-width: 1px;
     border-radius: 25px;
     font-size: 12px;
+    box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px;
   }
+
   &.ant-btn-clicked:after {
     content: "";
     border: none;
+  }
+
+  &.ant-btn-two-chinese-chars > *:not(.anticon) {
+    letter-spacing: normal;
   }
 `;

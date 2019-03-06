@@ -13,13 +13,13 @@ import Delivery from "../../components/order/index/delivery";
 import Coupon from "../../components/order/index/coupon";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
-import OrderList from "../../components/order/index/orderList";
+import OrderList from "../../components/order/index/orderList/orderList";
 import OrderButtons from "../../components/order/index/orderButtons";
 import PaymentOptionList from "../../components/order/index/payment/paymentOptionList";
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
 import PaymentMethod from "../../components/order/index/payment/paymentMethod";
 import Title from "../../components/order/title";
-import StcokAlert from "../../components/order/index/stockAlert";
+import StockAlert from "../../components/order/index/stockAlert";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 748px;
@@ -123,7 +123,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <ContentLayout>
           <Title title={<IntlMessages id="order.procedure.title" />} />
-          <StcokAlert orders={entity.orders} />
+          <StockAlert orders={entity.orders} />
           <ContentsBox>
             <Delivery delivery={entity.delivery} />
           </ContentsBox>
