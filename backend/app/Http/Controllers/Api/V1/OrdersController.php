@@ -68,6 +68,18 @@ class OrdersController extends Controller
     }
 
     /**
+     * ご注文手続き: 配送オプション更新.
+     *
+     * @return Response
+     */
+    public function updateDeliveryOption(Request $request)
+    {
+        return [
+            'data' => ['derivery_option' => $request->input('delivery_option')],
+        ];
+    }
+
+    /**
      * モックデータ取得用．
      *
      * @return array
@@ -134,6 +146,7 @@ class OrdersController extends Controller
                     'remaining' => '制限なし',
                 ],
             ],
+            'delivery_option' => 'inorder',
             'orders' => [
                 [
                     'orderNumber' => '1',
