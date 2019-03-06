@@ -3,14 +3,13 @@ import restActions from "../../shared/entity/actions";
 import req from "../../shared/requestActions";
 
 const actions = createActions({
-    DONATION: {
+    MILE_SERVICE: {
         ENTITY: {
             ...restActions,
-            DO_GIFTCARD_INQUIRY: { ...req },
-            CONFIRM_DONATION: { ...req },
-            ORDER_DONATION: { ...req }
+            GET_MILE_HISTORY: { ...req },
+            GET_OLD_MILE: { ...req }
         }
-    }
+    },
 });
 
-export default actions.donation.entity;
+export default actions.mileService.entity;
