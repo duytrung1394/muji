@@ -7,6 +7,12 @@ const actions = createActions({
       ...restActions,
       FETCH_ITEM: {
         REQUEST: undefined
+      },
+      FETCH_ARTICLE: {
+        REQUEST: undefined
+      },
+      FETCH_SERVICE: {
+        REQUEST: undefined
       }
     }
   }
