@@ -110,6 +110,30 @@ class OrdersController extends Controller
                     'packIndividual' => '個々に包装する',
                 ],
             ],
+            'coupons' => [
+                [
+                    'giftCode' => '0000000001',
+                    'giftName' => '配送料無料',
+                    'giftEndDate' => '20181222235959',
+                    'activeFlag' => true, 
+                    'giftImageUrl' => 'ImgCoupon1',
+                    'giftDetailUrl' => '#',
+                    'use' => false,
+                    'combined' => true,
+                    'remaining' => '残り1回',
+                ],
+                [
+                    'giftCode' => '0000000002',
+                    'giftName' => '重ねて切るカットソー2点で2,500円',
+                    'giftEndDate' => '20181222235959',
+                    'activeFlag' => false,
+                    'giftImageUrl' => 'ImgCoupon2',
+                    'giftDetailUrl' => '#',
+                    'use' => false,
+                    'combined' => false,
+                    'remaining' => '制限なし',
+                ],
+            ],
             'orders' => [
                 [
                     'orderNumber' => '1',

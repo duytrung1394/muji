@@ -10,6 +10,7 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import Delivery from "../../components/order/index/delivery";
+import Coupon from "../../components/order/index/coupon";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
 import OrderList from "../../components/order/index/orderList";
@@ -125,6 +126,9 @@ class Index extends Component {
           <StcokAlert orders={entity.orders} />
           <ContentsBox>
             <Delivery delivery={entity.delivery} />
+          </ContentsBox>
+          <ContentsBox>
+            <Coupon coupons={entity.coupons} />
           </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
