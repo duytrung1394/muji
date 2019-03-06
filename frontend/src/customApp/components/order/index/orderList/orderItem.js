@@ -4,6 +4,7 @@ import IntlMessages from "../../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 import { NavLink } from "react-router-dom";
 import { OutlineButton } from "../../../shared/form/button";
+import PrivateWorkList from "./privateWorkList";
 
 const OrderListItem = styled.li`
   padding: 10px;
@@ -113,6 +114,7 @@ const OrderItem = ({ item, isConfirm }) => {
               <IntlMessages id="order.confirm.size" />
               {item.size}
             </ItemData>
+            <PrivateWorkList privateWorkItems={item.privateWorkItems} />
             <ItemData>
               <IntlMessages id="order.confirm.itemNumber" />
               {item.number}
