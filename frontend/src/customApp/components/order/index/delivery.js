@@ -11,6 +11,7 @@ const StyledRow = styled(Row)`
 `;
 
 const StyledCol = styled(Col)`
+  position: relative;
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(153, 153, 153, 0.5);
 
@@ -47,15 +48,8 @@ const DataList = styled.ul`
 
 const ButtonArea = styled.div`
   position: absolute;
-  bottom: 0;
   right: 16px;
-`;
-
-const ChangeButton = styled(OutlineButton)`
   bottom: 12px;
-  &&& {
-    width: 100px;
-  }
 `;
 
 const colContentLayout = {
@@ -107,9 +101,9 @@ const Address = ({ delivery, isConfirm }) => {
       </DataList>
       {!isConfirm && (
         <ButtonArea>
-          <ChangeButton>
+          <OutlineButton width="100px">
             <IntlMessages id="order.procedure.change" />
-          </ChangeButton>
+          </OutlineButton>
         </ButtonArea>
       )}
     </Fragment>
@@ -128,9 +122,9 @@ const Orderer = ({ delivery, isConfirm }) => {
       </Name>
       {!isConfirm && (
         <ButtonArea>
-          <ChangeButton>
+          <OutlineButton width="100px">
             <IntlMessages id="order.procedure.change" />
-          </ChangeButton>
+          </OutlineButton>
         </ButtonArea>
       )}
     </Fragment>

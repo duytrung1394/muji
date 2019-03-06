@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../../components/utility/intlMessages";
-import OrderItem from "./orderList/orderItem";
-import { OutlineButton } from "../../shared/form/button";
+import IntlMessages from "../../../../../components/utility/intlMessages";
+import OrderItem from "./orderItem";
+import { OutlineButton } from "../../../shared/form/button";
 
 const OrderListWrapper = styled.div`
   div:not(:last-child) {
@@ -48,13 +48,6 @@ const ListWrapper = styled.ul`
 
 const ButtonArea = styled.div`
   text-align: right;
-`;
-
-const FixDateButton = styled(OutlineButton)`
-  bottom: 12px;
-  &&& {
-    width: 144px;
-  }
 `;
 
 const OrderList = ({ orders, isConfirm }) => {
@@ -120,9 +113,9 @@ const OrderDelivery = ({ order, index, isConfirm }) => {
       </OrderDeliveryDiscription>
       {!isConfirm && (
         <ButtonArea>
-          <FixDateButton>
+          <OutlineButton width="150px">
             <IntlMessages id="order.procedure.specifyDate" />
-          </FixDateButton>
+          </OutlineButton>
         </ButtonArea>
       )}
     </Fragment>

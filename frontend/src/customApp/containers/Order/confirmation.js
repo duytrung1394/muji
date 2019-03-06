@@ -12,7 +12,7 @@ import {
 import Delivery from "../../components/order/index/delivery";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
-import OrderList from "../../components/order/index/orderList";
+import OrderList from "../../components/order/index/orderList/orderList";
 import OrderButtons from "../../components/order/index/orderButtons";
 import PaymentSummary from "../../components/order/index/payment/paymentSummary";
 import PaymentMethod from "../../components/order/index/payment/paymentMethod";

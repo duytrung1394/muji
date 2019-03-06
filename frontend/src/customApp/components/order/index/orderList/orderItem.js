@@ -79,12 +79,6 @@ const OrderButtonContainer = styled.div`
   justify-content: space-around;
 `;
 
-const DeleteButton = styled(OutlineButton)`
-  &&& {
-    width: 100px;
-  }
-`;
-
 const linkStyle = {
   display: "block"
 };
@@ -168,12 +162,12 @@ const DeleteQuantity = () => {
   return (
     <DeleteQuantityArea>
       <OrderButtonContainer>
-        <DeleteButton>
+        <OutlineButton width="100px">
           <IntlMessages id="order.procedure.delete" />
-        </DeleteButton>
-        <DeleteButton>
+        </OutlineButton>
+        <OutlineButton width="100px">
           <IntlMessages id="order.procedure.laterPurchase" />
-        </DeleteButton>
+        </OutlineButton>
       </OrderButtonContainer>
     </DeleteQuantityArea>
   );
