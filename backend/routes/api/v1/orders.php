@@ -15,6 +15,14 @@ $router->get('/api/v1/orders', [
 ]);
 
 /**
+ * カート保存(注文の確認へ)
+ */
+$router->post('/api/v1/orders/saveShoppingCart', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@saveShoppingCart',
+]);
+
+/**
  * 購入履歴一覧取得
  */
 $router->get('/api/v1/orders/purchase-history', [
