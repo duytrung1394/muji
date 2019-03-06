@@ -93,12 +93,6 @@ const ButtonArea = styled.div`
   margin: 30px auto 0;
 `;
 
-const InquiryButton = styled(OutlineButton)`
-  padding: 10px 0 10px;
-  width: 300px;
-  height: auto;
-`;
-
 const CardBalance = styled.dl`
   margin-top: 30px;
   margin-bottom: 0px;
@@ -223,7 +217,7 @@ const MujiCardInput = props => {
         <img src={giftCardImg} />
       </GiftCardImgBox>
       <ButtonArea>
-        <InquiryButton
+        <OutlineButton
           onClick={() => {
             onInquiry(optionKey);
           }}
@@ -231,7 +225,7 @@ const MujiCardInput = props => {
           disabled={paymentOption.inquired}
         >
           <IntlMessages id="order.procedure.inquiry" />
-        </InquiryButton>
+        </OutlineButton>
       </ButtonArea>
       {paymentOption.inquired && (
         <Fragment>

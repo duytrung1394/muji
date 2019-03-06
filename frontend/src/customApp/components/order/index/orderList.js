@@ -50,13 +50,6 @@ const ButtonArea = styled.div`
   text-align: right;
 `;
 
-const FixDateButton = styled(OutlineButton)`
-  bottom: 12px;
-  &&& {
-    width: 144px;
-  }
-`;
-
 const OrderList = ({ orders, isConfirm }) => {
   return (
     <OrderListWrapper>
@@ -120,9 +113,9 @@ const OrderDelivery = ({ order, index, isConfirm }) => {
       </OrderDeliveryDiscription>
       {!isConfirm && (
         <ButtonArea>
-          <FixDateButton>
+          <OutlineButton width="150px">
             <IntlMessages id="order.procedure.specifyDate" />
-          </FixDateButton>
+          </OutlineButton>
         </ButtonArea>
       )}
     </Fragment>
