@@ -51,39 +51,40 @@ const StockAlert = ({ orders }) => {
       return [...previous, ...current];
     });
 
-  return (
-    <Fragment>
-      {alertItems && alertItems.length > 0 ? (
-        <StockAlertWrapper>
-          <IntlMessages id="order.procedure.stockAlert" />
-          <StockAlertHeader>
-            <IntlMessages id="order.procedure.nostockItemTitle" />
-          </StockAlertHeader>
-          <NoStockItemList>
-            {alertItems.map(item => {
-              return (
-                <NoStockItem>
-                  <li>{item.itemName}</li>
-                  <li>
-                    <IntlMessages id="order.procedure.nostockItemColorLabel" />
-                    {item.color}
-                  </li>
-                  <li>
-                    <IntlMessages id="order.procedure.nostockItemSizeLabel" />
-                    {item.size}
-                  </li>
-                  <Stock>
-                    <span>
-                      <IntlMessages id="order.procedure.stockNumberLabel" />0
-                    </span>
-                  </Stock>
-                </NoStockItem>
-              );
-            })}
-          </NoStockItemList>
-        </StockAlertWrapper>
-      ) : null}
-    </Fragment>
-  );
+  if (alertItems && alertItems.length > 0) {
+    return (
+      <StockAlertWrapper>
+        <IntlMessages id="order.procedure.stockAlert" />
+        <StockAlertHeader>
+          <IntlMessages id="order.procedure.nostockItemTitle" />
+        </StockAlertHeader>
+        <NoStockItemList>
+          {alertItems.map(item => {
+            return (
+              <NoStockItem>
+                <li>{item.itemName}</li>
+                <li>
+                  <IntlMessages id="order.procedure.nostockItemColorLabel" />
+                  {item.color}
+                </li>
+                <li>
+                  <IntlMessages id="order.procedure.nostockItemSizeLabel" />
+                  {item.size}
+                </li>
+                <Stock>
+                  <span>
+                    <IntlMessages id="order.procedure.stockNumberLabel" />0
+                  </span>
+                </Stock>
+              </NoStockItem>
+            );
+          })}
+        </NoStockItemList>
+      </StockAlertWrapper>
+    );
+  }
+
+  return null;
 };
+
 export default StockAlert;

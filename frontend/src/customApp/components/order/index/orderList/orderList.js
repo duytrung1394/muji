@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../../components/utility/intlMessages";
-import OrderItem from "./orderList/orderItem";
-import { OutlineButton } from "../../shared/form/button";
+import IntlMessages from "../../../../../components/utility/intlMessages";
+import OrderItem from "./orderItem";
+import { OutlineButton } from "../../../shared/form/button";
 
 const OrderListWrapper = styled.div`
   div:not(:last-child) {
