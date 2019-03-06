@@ -34,8 +34,8 @@ const NavigationItem = styled.li`
 
 const menus = [
   { name: "item", link: "/store/search/cmdty" },
-  { name: "article", link: "" },
-  { name: "service", link: "" },
+  { name: "article", link: "/store/search/article" },
+  { name: "service", link: "/store/search/service" },
   { name: "store", link: "/store/search/store" }
 ];
 

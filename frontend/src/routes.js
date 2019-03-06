@@ -55,6 +55,13 @@ const routes = [
     )
   },
   {
+    path: "/store/cmdty/detail/:jan_code",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/ProductDetail/index")
+    )
+  },
+  {
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
@@ -160,10 +167,24 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/order/itemlist",
+    path: "/store/order/index",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/index")
+    )
+  },
+  {
+    path: "/store/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
+    )
+  },
+  {
+    path: "/store/order/confirmation",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/confirmation")
     )
   },
   {
@@ -199,6 +220,34 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Search/indexItem")
+    )
+  },
+  {
+    path: "/store/search/article",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexArticle")
+    )
+  },
+  {
+    path: "/store/search/service",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexService")
+    )
+  },
+  {
+    path: "/store/delivery/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/list")
+    )
+  },
+  {
+    path: "/store/accounts/memberguide",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/memberguide")
     )
   }
 ];
