@@ -1,7 +1,7 @@
 const defaultConfig = require("react-scripts/config/webpack.config.dev");
 const override = require("../../config-overrides");
 
-const overridden = override(defaultConfig, process.env);
+const overridden = override(defaultConfig, process.env.NODE_ENV);
 
 const config = {
   ...overridden,
