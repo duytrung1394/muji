@@ -82,14 +82,6 @@ const ChangeButton = styled(OutlineButton)`
     bottom: 20px;
     right: 20px;
     width: 97px;
-    height: 38px;
-    border-color: rgb(153, 153, 153);
-    border-radius: 20px;
-    box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px;
-    padding: 10px;
-  }
-  &.ant-btn-two-chinese-chars > *:not(.anticon) {
-    letter-spacing: normal;
   }
 `;
 
@@ -165,7 +157,7 @@ class AddressList extends Component {
                           <IntlMessages id="delivery.addressItem.note" />
                         </Note>
                       ) : null}
-                      <ChangeButton>
+                      <ChangeButton color="rgb(153, 153, 153)" width="100px">
                         <IntlMessages id="delivery.addressItem.change" />
                       </ChangeButton>
                     </li>
