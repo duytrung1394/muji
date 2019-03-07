@@ -13,8 +13,19 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         return [
-            'data'  => $this->getMultiMockData( (int)$request->input('page') ),
-            'total' => 200,
+            'data'  => $this->getMockData()
+        ];
+    }
+
+    /**
+     * カートの保存(注文)
+     *
+     * @return Response
+     */
+    public function saveShoppingCart(Request $request)
+    {
+        return [
+            'orderCode' => "1234567890",
         ];
     }
 
@@ -76,13 +87,102 @@ class OrdersController extends Controller
     /**
      * モックデータを生成して取得
      */
-    private function getMockData($code)
+    private function getMockData()
     {
         return [
-            'order_code'   => $code,
-            'name'        => 'name_' . $code,
-            'description' => 'description_' . $code,
-        ];
+            'delivery' => [
+                'name' => '無印　花子',
+                'address' => [
+                    'addressee_name' => '無印　花子',
+                    'zipCode' => '123 - 4567',
+                    'address1' => '東京都',
+                    'address2' => '渋谷区',
+                    'address3' => '1-2-3',
+                    'address4' => '',
+                    'telNo' => '01 - 2345 - 6789',
+                    'name' => '無印　花子',
+                ],
+                'gift' => [
+                    'gift_flg' => true,
+                    'wapping_state' => '指定なし',
+                    'message_state' => '指定なし',
+                    'packTogether' => 'まとめて包装する',
+                    'packIndividual' => '個々に包装する',
+                ],
+            ],
+            'orders' => [
+                [
+                    'orderNumber' => '1',
+                    'deliveryInfo' => [
+                        'deliveryCount' => '1',
+                        'deliveryDivision' => '小物',
+                    ],
+                    'items' => [
+                        [
+                            'janCode' => '4550002959029',
+                            'nostock' => true,
+                            'type' => 'カットソー',
+                            'itemName' => 'ミニ裏毛五分袖ワイドＴシャツ',
+                            'color' => 'ライトシルバーグレー',
+                            'size' => 'S',
+                            'number' => '1',
+                            'price' => '2,980',
+                            'img' => 'OrderDeliveryImage1',
+                            'discount' => false,
+                        ],
+                        [
+                            'janCode' => '4550002661052',
+                            'nostock' => false,
+                            'type' => 'カットソー',
+                            'itemName' => 'スムースハイネックワンピース',
+                            'color' => 'チャコールグレー',
+                            'size' => 'S',
+                            'number' => '1',
+                            'price' => '3,000',
+                            'discount_price' => '2,903',
+                            'img' => 'OrderDeliveryImage2',
+                            'discount' => true,
+                        ],
+                    ]
+                ],
+                [
+                    'orderNumber' => '2',
+                    'deliveryInfo' => [
+                        'deliveryCount' => '1',
+                        'deliveryDivision' => '小物',
+                    ],
+                    'items' => [
+                        [
+                            'janCode' => '4550182109580',
+                            'nostock' => false,
+                            'type' => 'ノート A4',
+                            'itemName' => 'ノート・７ｍｍ横罫　Ａ４・Ａ罫・３０枚・糸綴じ',
+                            'number' => '1',
+                            'price' => '150',
+                            'img' => 'OrderDeliveryImage1',
+                            'discount' => false,
+                        ]
+                    ]
+                ]
+            ],
+            'paymentDetails' => [
+                'points' => [
+                    'possessions' => '3000'
+                ],
+                'giftCard' => [
+                    'possessions' => '5000'
+                ],
+            ],
+            'paymentSummary' => [
+                'products_subtotal' => '7,960',
+                'incidental_service' => '0',
+                'delivery_fee' => '980',
+                'muji_shopping_points' => '-3,000',
+                'muji_gift_card' => '-15,00',
+                'payment_confirm' => '450',
+            ],
+            'lower_four_digits' => '1234',
+        ];    
     }
 
     private function getPurchaseHistoryMock(){
@@ -312,5 +412,16 @@ class OrdersController extends Controller
                 ]
             ]
         ];
+    }
+
+    /**
+     * 注文手続き確認データ取得
+     * 注文手続き入力時と同じものをMockとして使用
+     *　
+     * @return Response
+     */
+    private function getMockConfirmationData()
+    {
+        return $this->getMockData();
     }
 }

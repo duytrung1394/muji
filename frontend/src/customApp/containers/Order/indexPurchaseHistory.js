@@ -42,7 +42,7 @@ class Index extends Component {
 
   // React methods
   componentDidMount() {
-    this.props.fetchRequest();
+    this.props.fetchRequest("");
   }
 
   // React.render
