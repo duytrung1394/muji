@@ -4,7 +4,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
 
-const ModalWrapper = styled.div`
+const Container = styled.div`
   position: relative;
 `;
 
@@ -24,19 +24,28 @@ const StyledModal = styled(Modal)`
   .ant-modal-body {
     padding: 30px 54px;
   }
+  .ant-modal-close-x {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
-const DeleteConfirm = styled.p`
+const ModalTitle = styled.p`
   text-align: center;
   font-size: 15px;
   font-weight: bold;
+`;
+
+const ModalMessage = styled.p`
+  text-align: center;
+  font-size: 12px;
 `;
 
 const DeleteButton = styled.p`
   max-width: 300px;
   margin: 20px auto 0;
   text-align: center;
-
   button {
     border: 1px solid rgb(153, 153, 153);
     border-radius: 20px;
@@ -48,48 +57,35 @@ const DeleteButton = styled.p`
   }
 `;
 
-const DeleteCompleteTitle = styled.p`
-  text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-`;
-
-const DeleteCompleteMessage = styled.p`
-  text-align: center;
-  font-size: 12px;
-`;
-
-class DeleteModal extends Component {
+class DeleteLink extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
+      deleteConfirmVisible: false,
       deleteCompleteVisible: false
     };
   }
 
   showModal = () => {
     this.setState({
-      visible: true
+      deleteConfirmVisible: true
     });
   };
 
   handleOk = () => {
     this.setState({
-      visible: false,
+      deleteConfirmVisible: false,
       deleteCompleteVisible: true
     });
   };
 
-  handleCancel = e => {
-    console.log(e);
+  handleCancel = () => {
     this.setState({
-      visible: false
+      deleteConfirmVisible: false
     });
   };
 
-  deleteCompleteHandleCancel = e => {
-    console.log(e);
+  handleDeleteCompleteCancel = () => {
     this.setState({
       deleteCompleteVisible: false
     });
@@ -97,19 +93,19 @@ class DeleteModal extends Component {
 
   render() {
     return (
-      <ModalWrapper>
+      <Container>
         <StyledLink to={"#"} onClick={this.showModal}>
-          <IntlMessages id="delivery.deleteLink.delete" />
+          <IntlMessages id="delivery.deleteAddressee" />
         </StyledLink>
         <StyledModal
-          visible={this.state.visible}
+          visible={this.state.deleteConfirmVisible}
           onCancel={this.handleCancel}
           footer={null}
           width={600}
         >
-          <DeleteConfirm>
+          <ModalTitle>
             <IntlMessages id="delivery.deleteConfirm" />
-          </DeleteConfirm>
+          </ModalTitle>
           <DeleteButton>
             <button to={"#"} onClick={this.handleOk}>
               <IntlMessages id="delivery.delete" />
@@ -118,20 +114,20 @@ class DeleteModal extends Component {
         </StyledModal>
         <StyledModal
           visible={this.state.deleteCompleteVisible}
-          onCancel={this.deleteCompleteHandleCancel}
+          onCancel={this.handleDeleteCompleteCancel}
           footer={null}
           width={600}
         >
-          <DeleteCompleteTitle>
+          <ModalTitle>
             <IntlMessages id="delivery.deleteComplete" />
-          </DeleteCompleteTitle>
-          <DeleteCompleteMessage>
+          </ModalTitle>
+          <ModalMessage>
             <IntlMessages id="delivery.deleteCompleteMessage" />
-          </DeleteCompleteMessage>
+          </ModalMessage>
         </StyledModal>
-      </ModalWrapper>
+      </Container>
     );
   }
 }
 
-export default DeleteModal;
+export default DeleteLink;
