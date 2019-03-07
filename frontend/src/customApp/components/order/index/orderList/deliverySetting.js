@@ -6,11 +6,6 @@ import moment from "../../../../util/moment";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 import { OutlineButton } from "../../../shared/form/button";
 
-const DecisionButton = styled(OutlineButton)`
-  color: #7f0019;
-  border-color: #7f0019;
-`;
-
 const ButtonArea = styled.div`
   text-align: right;
 `;
