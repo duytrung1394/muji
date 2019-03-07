@@ -44,18 +44,18 @@ class ReviewsController extends Controller
     private function getMockData($index = null)
     {
         return [
-            'totalReviewCount' => '10',
+            'totalReviews' => 10,
             'itemDetail' => [
                 [
                     'janCode' => '4550002674885',
                     'materialName' => 'モダールコットン',
                     'itemName' => 'ムースハイネックワンピース',
-                    'itemImg' => 'img-review-history-07.png',
-                    'date' => '2018/10/20',
-                    'evaluationCount' => 4,
+                    'itemImages' => 'img1',
+                    'created' => '2018/10/20',
+                    'star' => 4,
                     'wearInfo' => [
                         'size' => 'M',
-                        'height' => '165'
+                        'height' => 165
                     ],
                     'webCatalogTitle' => '思ったより、、',
                     'webCatalogDescription' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
@@ -64,72 +64,26 @@ class ReviewsController extends Controller
                         '1',
                         '2'
                     ],
-                    'totalComment' => '0',
-                    'totalUseful' => '0',
+                    'countComment' => 0,
+                    'countUseful' => 0,
                 ],
                 [
                     'janCode' => '4549738369950',
                     'materialName' => '麻綿平織',
                     'itemName' => 'ソファ',
-                    'itemImg' => 'img-review-history-06.png',
-                    'date' => '2018/08/15',
-                    'evaluationCount' => 5,
+                    'itemImages' => 'img2',
+                    'created' => '2018/08/15',
+                    'star' => 5,
                     'wearInfo' => [
                         'size' => '',
                         'height' => ''
                     ],
                     'webCatalogTitle' => '大変良い',
                     'webCatalogDescription' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
-                    'totalComment' => '0',
-                    'totalUseful' => '0',
+                    'countComment' => 0,
+                    'countUseful' => 0,
                 ]
             ]
         ];
     }
-    // /**
-    //  * モックデータを生成して取得
-    //  */
-    // private function getMockData($index = null)
-    // {
-    //     return [
-    //         'totalReviewCount' => '10',
-    //         'reviews' => [
-    //             [
-    //                 'itemImg' => 'img-review-history-07.png',
-    //                 'type' => 'モダールコットン',
-    //                 'name' => 'ムースハイネックワンピース',
-    //                 'date' => '2018/10/20',
-    //                 'evaluationCount' => '4',
-    //                 'wearInfo' => [
-    //                     'size' => 'M',
-    //                     'height' => '165'
-    //                 ],
-    //                 'reviewTitle' => '思ったより、、',
-    //                 'reviewComment' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
-    //                 'images' => [
-    //                     '0',
-    //                     '1',
-    //                     '2'
-    //                 ],
-    //                 'totalComment' => '0',
-    //                 'totalUseful' => '0',
-    //             ],
-    //             [
-    //                 'itemImg' => 'img-review-history-06.png',
-    //                 'type' => '麻綿平織',
-    //                 'name' => 'ソファ',
-    //                 'date' => '2018/08/15',
-    //                 'evaluationCount' => '5',
-    //                 'wearInfo' => [
-    //                     'size' => '',
-    //                     'height' => ''
-    //                 ],
-    //                 'reviewTitle' => '大変良い',
-    //                 'reviewComment' => '座りごごちがよかった。足が選べるので部屋に合わせることもできるものいい。',
-    //                 'totalComment' => '0',
-    //                 'totalUseful' => '0',
-    //             ]
-    //         ]
-    //     ];
-    // }
 }

@@ -1,73 +1,88 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Breadcrumb } from "antd";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const ListToolbarWrapper = styled.div`
+const Wrapper = styled.div`
   font-size: 12px;
   margin-bottom: 20px;
 `;
 
-const TotalReviewCount = styled.div`
+const DataCount = styled.div`
   margin: 20px 0 10px 0;
   color: rgb(0, 0, 0);
 `;
 
-const ReviewBreadcrumbArea = styled.div`
+const Sort = styled.div`
   background-color: rgb(242, 242, 242);
   padding: 16px;
 `;
 
-const ReviewBreadcrumb = styled(Breadcrumb)`
+const SortBreadcrumb = styled(Breadcrumb)`
   &&& {
     font-size: 11px;
   }
 `;
 
-const BoldSpan = styled.span`
-  &&& {
-    font-weight: bold;
-    color: rgb(88, 88, 88);
-  }
-`;
-
-const ListToolbar = ({ totalReviewCount }) => {
-  return (
-    <ListToolbarWrapper>
-      <TotalReviewCount>
-        <IntlMessages id="review.all" />
-        {totalReviewCount}
-        <IntlMessages id="review.matter" />
-      </TotalReviewCount>
-      <ReviewBreadcrumbArea>
-        <ReviewBreadcrumb>
-          <Breadcrumb.Item>
-            <Link to={"#"}>
-              <BoldSpan>
-                <IntlMessages id="review.sortByNewestPost" />
-              </BoldSpan>
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to={"#"}>
-              <IntlMessages id="review.numberUseful" />
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to={"#"}>
-              <IntlMessages id="review.aLotOfStars" />
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to={"#"}>
-              <IntlMessages id="review.lessNumberOfStars" />
-            </Link>
-          </Breadcrumb.Item>
-        </ReviewBreadcrumb>
-      </ReviewBreadcrumbArea>
-    </ListToolbarWrapper>
-  );
+const currentPageStyle = {
+  color: "rgb(88, 88, 88)",
+  fontweight: "bold",
+  textDecoration: "none"
 };
+
+const intlId = [
+  "review.sort.new",
+  "review.sort.useful",
+  "review.sort.manyStars",
+  "review.sort.fewStars"
+];
+
+class ListToolbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 0
+    };
+  }
+
+  typeClick = index => {
+    this.setState({ currentPage: index });
+  };
+
+  render() {
+    const { totalReviews } = this.props;
+    return (
+      <Wrapper>
+        <DataCount>{totalReviews}</DataCount>
+        <Sort>
+          <SortBreadcrumb>
+            {intlId.map((id, index) => {
+              return (
+                <Breadcrumb.Item key={index}>
+                  {
+                    <NavLink
+                      to={"#"}
+                      style={
+                        this.state.currentPage === index
+                          ? currentPageStyle
+                          : null
+                      }
+                      onClick={() => {
+                        this.typeClick(index);
+                      }}
+                    >
+                      <IntlMessages id={id} />
+                    </NavLink>
+                  }
+                </Breadcrumb.Item>
+              );
+            })}
+          </SortBreadcrumb>
+        </Sort>
+      </Wrapper>
+    );
+  }
+}
 
 export default ListToolbar;

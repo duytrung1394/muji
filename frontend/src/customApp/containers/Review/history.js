@@ -7,6 +7,8 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
+import { Spin } from "antd";
+import IntlMessages from "../../../components/utility/intlMessages";
 import Title from "../../components/review/title";
 import ListToolbar from "../../components/review/listToolbar";
 import List from "../../components/review/list";
@@ -16,15 +18,8 @@ const ContentLayout = styled(BaseContentLayout)`
 `;
 
 class History extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedKeys: []
-    };
-  }
-
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest();
   }
 
   seeMore = () => {
@@ -47,14 +42,23 @@ class History extends Component {
   };
 
   render() {
-    const { entities, fetching, fetched, destroying } = this.props;
+    const { entities, fetching } = this.props;
     return (
       <ContentAreaLayout>
-        <ContentLayout>
-          <Title />
-          <ListToolbar totalReviewCount={entities.totalReviewCount} />
-          <List entities={entities} />
-        </ContentLayout>
+        <Spin spinning={fetching} size="large">
+          <ContentLayout>
+            <Title />
+            <ListToolbar
+              totalReviews={
+                <IntlMessages
+                  id="review.totalReview"
+                  values={{ num: <span>{entities.totalReviews}</span> }}
+                />
+              }
+            />
+            <List entities={entities} />
+          </ContentLayout>
+        </Spin>
       </ContentAreaLayout>
     );
   }
@@ -65,9 +69,7 @@ const mapStateToProps = state => {
 };
 
 const actionCreators = {
-  fetchRequest: actions.fetch.request,
-  destroyRequest: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup
+  fetchRequest: actions.fetch.request
 };
 
 const enhance = C => {
