@@ -4,15 +4,17 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 import { OutlineButton } from "../../../components/shared/form/button";
 
-const FormArea = styled.ul`
+const FormArea = styled.div`
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
   width: 50%;
 `;
 
-const FormItem = styled.li`
-  padding-top: 20px;
+const FormItem = styled(Form.Item)`
+  &.ant-form-item {
+    margin-bottom: 0;
+  }
 `;
 
 const Label = styled.h2`
@@ -79,29 +81,19 @@ class AddressForm extends Component {
         address1: "",
         address2: "",
         address3: "",
-        address4: ""
-      },
-      ...this.initialZipCodes()
+        zipCode: ""
+      }
     };
   }
 
-  initialZipCodes = zip_code => {
-    let codes = ["", ""];
-    if (zip_code) {
-      codes = zip_code.split("-");
-    }
-    return { zip_code_1: codes[0], zip_code_2: codes[1] };
-  };
-
   getAddress = () => {
     // TODO: 本来は外部API呼び出し
-    if (this.state.zip_code_1) {
+    if (this.state.zipCode) {
       const entity = {
         ...this.state.entity,
         address1: "東京都",
         address2: "新宿区",
-        address3: "新宿",
-        address4: "3-28-2"
+        address3: "新宿"
       };
       this.setState({ entity });
     }
@@ -132,7 +124,7 @@ class AddressForm extends Component {
               <IntlMessages id="label.zipCode" />
             </ZipCode>
             <ZipCodeInput
-              onChange={e => this.updateState("zip_code_1", e.target.value)}
+              onChange={e => this.updateState("zipCode", e.target.value)}
               placeholder="1708424"
             />
             <AutofillButton onClick={this.getAddress}>

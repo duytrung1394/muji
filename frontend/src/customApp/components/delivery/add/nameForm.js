@@ -3,14 +3,18 @@ import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 
-const FormArea = styled.ul`
+const FormArea = styled.div`
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  padding-top: 20px;
+  width: 50%;
 `;
 
-const FormItem = styled.li`
-  padding-top: 20px;
+const FormItem = styled(Form.Item)`
+  &.ant-form-item {
+    margin-bottom: 0;
+  }
 `;
 
 const Label = styled.h2`
@@ -21,7 +25,7 @@ const Label = styled.h2`
 `;
 
 const StyledInput = styled(Input)`
-  box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px 0px;
+  box-shadow: rgba(88, 88, 88, 0.3) 0 1px 3px 0;
   && {
     width: 300px;
     height: 40px;

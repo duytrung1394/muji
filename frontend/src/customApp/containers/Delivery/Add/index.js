@@ -21,8 +21,6 @@ const Title = styled.h1`
 `;
 
 class Index extends Component {
-
-  // React.render
   render() {
     return (
       <ContentAreaLayout>
