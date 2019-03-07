@@ -6,17 +6,12 @@ if (empty($router)) {
 
 // {{{ /api/v1/mile-services
 
-$router->get('/api/v1/mile-services/history', [
+$router->get('/api/v1/mile-services/history/{year}', [
     'middleware'    => [],
     'uses'          => 'Api\V1\MileServicesController@history',
 ]);
 
-$router->get('/api/v1/mile-services/account-info', [
+$router->get('/api/v1/mile-services/shopping-point/history', [
     'middleware'    => [],
-    'uses'          => 'Api\V1\MileServicesController@accountInfo',
-]);
-
-$router->get('/api/v1/mile-services/old-mile', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\MileServicesController@oldMile',
+    'uses'          => 'Api\V1\MileServicesController@shoppingPointHistory',
 ]);
