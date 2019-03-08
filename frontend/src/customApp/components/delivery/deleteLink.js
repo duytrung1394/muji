@@ -95,7 +95,7 @@ class DeleteLink extends Component {
     return (
       <Container>
         <StyledLink to={"#"} onClick={this.showModal}>
-          <IntlMessages id="delivery.deleteAddressee" />
+          <IntlMessages id="delivery.deleteLink.delete" />
         </StyledLink>
         <StyledModal
           visible={this.state.deleteConfirmVisible}
