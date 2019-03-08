@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import actions from "../../redux/order/list/actions";
 import { injectIntl } from "react-intl";
 import IntlMessages from "../../../components/utility/intlMessages";
+import LayoutWrapper from "../../../components/utility/layoutWrapper";
 import PurchaseSort from "../../components/order/purchase/sort";
-import PurchaseItemList from "../../components/order/purchase/itemList";
-import { Spin } from "antd";
+import { Spin, Row, Col } from "antd";
 import styled from "styled-components";
-import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
+import PurchaseItem from "../../components/order/purchase/item";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -19,7 +19,15 @@ const Title = styled.h1`
   padding: 0 50px;
 `;
 
-class IndexPurchaseHistory extends Component {
+const ItemListWrapper = styled.div`
+  padding: 0 50px;
+`;
+
+const StyledCol = styled(Col)`
+  display: flex;
+`;
+
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,19 +49,84 @@ class IndexPurchaseHistory extends Component {
       fetching,
       destroying,
       // react-router
-      history
+      history,
+      intl: { formatMessage }
     } = this.props;
 
     return (
-      <ContentAreaLayout>
-        <Title>
-          <IntlMessages id="order.purchaseHistory.name" />
-        </Title>
-        <PurchaseSort />
-        <Spin size="large" spinning={fetching}>
-          <PurchaseItemList purchaseItemList={entities} />
-        </Spin>
-      </ContentAreaLayout>
+      <Spin size="large" spinning={fetching}>
+        <LayoutWrapper>
+          <Title>
+            <IntlMessages id="order.purchaseHistory.name" />
+          </Title>
+          <PurchaseSort />
+          <ItemListWrapper>
+            <Row gutter={{ sm: 30 }} type="flex">
+              {entities.map((item, index) => {
+                let popoverActions = [];
+                let footerActions = [];
+
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.review"
+                  })
+                });
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.favorite"
+                  })
+                });
+                popoverActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.ellipsisButton.maintenanceParts"
+                  })
+                });
+
+                switch (item.cancel_type) {
+                  case 1:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.cancel"
+                      })
+                    });
+                    break;
+                  case 2:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.returnProduct"
+                      }),
+                      disabled: true
+                    });
+                    break;
+                  case 3:
+                    footerActions.push({
+                      name: formatMessage({
+                        id: "order.purchaseHistory.returnProduct"
+                      })
+                    });
+                    break;
+                }
+
+                footerActions.push({
+                  name: formatMessage({
+                    id: "order.purchaseHistory.itemDetails"
+                  })
+                });
+
+                return (
+                  <StyledCol key={index} lg={8} md={12} xs={24}>
+                    <PurchaseItem
+                      item={item}
+                      popoverActions={popoverActions}
+                      footerActions={footerActions}
+                    />
+                  </StyledCol>
+                );
+              })}
+            </Row>
+          </ItemListWrapper>
+        </LayoutWrapper>
+      </Spin>
     );
   }
 }
@@ -77,4 +150,4 @@ const enhance = C => {
   return injected;
 };
 
-export default enhance(IndexPurchaseHistory);
+export default enhance(Index);
