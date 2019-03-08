@@ -5,6 +5,7 @@ import AddressForm from "./addressForm";
 import TelForm from "./telForm";
 import { OutlineButton } from "../../../../customApp/components/shared/form/button";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { Link } from "react-router-dom";
 
 const Conteiner = styled.div`
   background: rgb(242, 242, 242);
@@ -24,17 +25,6 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const NextButton = styled(OutlineButton)`
-  &&& {
-    width: 298px;
-    height: 38px;
-    font-weight: lighter;
-    color: rgb(255, 255, 255);
-    border: rgb(127, 0, 25);
-    background: rgb(127, 0, 25);
-  }
-`;
-
 const Forms = () => (
   <Conteiner>
     <Wrapper>
@@ -42,9 +32,11 @@ const Forms = () => (
       <AddressForm />
       <TelForm />
       <ButtonArea>
-        <NextButton onClick={"#"}>
-          <IntlMessages id="delivery.button.next" />
-        </NextButton>
+        <OutlineButton color="rgb(127, 0, 25)" reverse="true">
+          <Link to={"#"}>
+            <IntlMessages id="delivery.button.next" />
+          </Link>
+        </OutlineButton>
       </ButtonArea>
     </Wrapper>
   </Conteiner>

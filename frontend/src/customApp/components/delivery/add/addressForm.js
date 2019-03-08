@@ -43,14 +43,7 @@ const ZipCodeInput = styled(Input)`
 const AutofillButton = styled(OutlineButton)`
   margin-left: 20px;
   &&& {
-    width: 92px;
-    height: 42px;
-    font-weight: lighter;
-    line-height: 40px;
     padding: 0;
-    background-color: rgb(153, 153, 153);
-    color: rgb(255, 255, 255);
-    border: none;
   }
 `;
 
@@ -127,7 +120,13 @@ class AddressForm extends Component {
               onChange={e => this.updateState("zipCode", e.target.value)}
               placeholder="1708424"
             />
-            <AutofillButton onClick={this.getAddress}>
+            <AutofillButton
+              width="92px"
+              height="42px"
+              color="rgb(153, 153, 153)"
+              reverse="true"
+              onClick={this.getAddress}
+            >
               <IntlMessages id="delivery.button.autofill" />
             </AutofillButton>
             <Description>
