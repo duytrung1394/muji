@@ -17,19 +17,19 @@ const HeaderSpan = styled.span`
   padding: 3px 0;
 `;
 
-const HistoryHeader = (props) => {
-    return (
-        <LayoutHeader>
-            <HeaderPreceding>
-                <IntlMessages id="mileService.page.title" />
-            </HeaderPreceding>
-            <Link to="/store/mileservice/history/previous">
-                <HeaderSpan>
-                    <IntlMessages id="mileService.page.link.previous" />
-                </HeaderSpan>
-            </Link>
-        </LayoutHeader>
-    );
+const HistoryHeader = props => {
+  return (
+    <LayoutHeader>
+      <HeaderPreceding>
+        <IntlMessages id="mileService.page.title" />
+      </HeaderPreceding>
+      <Link to="/store/mileservice/previous_year_history">
+        <HeaderSpan>
+          <IntlMessages id="mileService.page.link.previous" />
+        </HeaderSpan>
+      </Link>
+    </LayoutHeader>
+  );
 };
 
 export default HistoryHeader;

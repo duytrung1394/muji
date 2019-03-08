@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import moment from "moment";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { formatWithWeekDayNameAndTime } from "../../../helpers/utility";
+import {
+  formatWithWeekDayNameAndTime,
+  displayNumberWithCommas
+} from "../../../helpers/utility";
 
 const LayoutSectionSummary = styled.section`
   padding: 16px;
@@ -41,6 +43,17 @@ const ListItem = styled.li`
     padding-bottom: 17px;
   }
 `;
+const ListItemRed = styled.li`
+  color: #7f0019;
+  list-style: none;
+  margin-top: 17px;
+  padding: 0 16px;
+  &:last-child {
+    border-bottom: 1px solid #999;
+    margin-top: 10px;
+    padding-bottom: 17px;
+  }
+`;
 const LayoutMileStage = styled.dl`
   margin-top: 10px;
 `;
@@ -51,7 +64,7 @@ const Paragraph = styled.p`
   margin: 0;
   padding: 0;
 `;
-const Header1 = styled.h1`
+const Title = styled.h1`
   color: #585858;
   font-size: 15px;
   font-weight: bold;
@@ -63,30 +76,23 @@ const HistoryInfoSummary = props => {
   const formated =
     entity.mileExpireDate &&
     formatWithWeekDayNameAndTime(entity.mileExpireDate);
-  const expiredDate =
-    entity.mileExpireDate &&
-    moment(entity.mileExpireDate, "YYYYMMDDHHmmss")
-      .toDate()
-      .getTime();
-  const redColor =
-    expiredDate && expiredDate < new Date().getTime() ? "#7f0019" : "#585858";
   return (
     <LayoutInfo>
       <LayoutSectionSummary>
-        <Header1>
+        <Title>
           <IntlMessages id="mileService.headerSummary.title" />
-        </Header1>
+        </Title>
         <LayoutMileSummary>
           <Paragraph>
             <IntlMessages id="mileService.mileSummary.milesOfCurrentYear" />
-            {entity.old_mile && entity.old_mile.mile}
+            {entity.old_mile && displayNumberWithCommas(entity.old_mile.mile)}
             <IntlMessages id="mileService.mileSummary.mile" />
           </Paragraph>
           <Paragraph>
             <IntlMessages id="mileService.mileSummary.afterThat" />{" "}
-            {entity.nextGiftMile}{" "}
+            {displayNumberWithCommas(entity.nextGiftMile)}{" "}
             <IntlMessages id="mileService.mileSummary.inMiles" />{" "}
-            {entity.nextGiftPoint}{" "}
+            {displayNumberWithCommas(entity.nextGiftPoint)}{" "}
             <IntlMessages id="mileService.mileSummary.havePoint" />
           </Paragraph>
         </LayoutMileSummary>
@@ -95,23 +101,23 @@ const HistoryInfoSummary = props => {
             <IntlMessages id="mileService.mileSummary.savingTime" />
             <IntlMessages id="mileService.mileList.point.duration" />
           </ListItem>
-          <ListItem style={{ color: redColor }}>
+          <ListItemRed>
             ※{entity.nearPointExpireAmount}
             <IntlMessages id="mileService.mileSummary.mileOfTheYear" />
             {formated && formated}
             <IntlMessages id="mileService.mileSummary.expiredAt" />
-          </ListItem>
+          </ListItemRed>
         </LayoutList>
         <LayoutMileStage>
           <Paragraph>
             <IntlMessages id="mileService.mileSummary.savingMiles" />
-            {entity.totalMile}{" "}
+            {displayNumberWithCommas(entity.totalMile)}{" "}
             <IntlMessages id="mileService.mileSummary.mile" />
             <SpanMileStage>{entity.stageName}</SpanMileStage>
           </Paragraph>
           <Paragraph>
             <IntlMessages id="mileService.mileSummary.afterThat" />{" "}
-            {entity.nextGiftMile}{" "}
+            {displayNumberWithCommas(entity.nextStageMile)}{" "}
             <IntlMessages id="mileService.mileSummary.other" />
           </Paragraph>
         </LayoutMileStage>

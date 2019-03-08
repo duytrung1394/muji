@@ -91,3 +91,7 @@ export function formatWithWeekDayNameAndTime(date) {
     dayName = d.toLocaleString(lang, { weekday: "short" });
   return `${year}${month}${day} (${dayName}) ${hour}${minutes}分`;
 }
+
+export function displayNumberWithCommas(number) {
+  return parseInt(number, 10).toLocaleString();
+}

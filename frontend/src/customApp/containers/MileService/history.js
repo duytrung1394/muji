@@ -3,34 +3,38 @@ import { connect } from "react-redux";
 import actions from "../../redux/mile_service/entity/actions";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
+import { Spin } from "antd";
+import {
+  ContentAreaLayout,
+  BaseContentLayout
+} from "../../components/shared/panel/contentLayout";
 import HistoryHeader from "../../components/mileService/mileServiceHeader";
 import HistoryInfoList from "../../components/mileService/mileServiceList";
 import HistoryInfoSummary from "../../components/mileService/mileServiceSummary";
 import HistoryFooter from "../../components/mileService/mileServiceFooter";
 
-const ContentLayout = styled.div`
+const ContentLayout = styled(BaseContentLayout)`
   max-width: 732px;
-  padding: 0 16px 10px;
-  margin: 0 auto;
-  overflow: hidden;
-  color: #585858;
 `;
 
 class History extends Component {
   componentDidMount() {
-    this.props.fetchRequest("history/" + new Date().getFullYear());
+    this.props.fetchRequest("history");
   }
 
   render() {
-    const { entity } = this.props;
-    console.log(entity);
+    const { entity, fetching } = this.props;
     return (
-      <ContentLayout>
-        <HistoryHeader />
-        <HistoryInfoSummary entity={entity} />
-        <HistoryInfoList mile_history={entity.miles} />
-        <HistoryFooter />
-      </ContentLayout>
+      <ContentAreaLayout>
+        <ContentLayout>
+          <Spin spinning={fetching} size="large">
+            <HistoryHeader />
+            <HistoryInfoSummary entity={entity} />
+            <HistoryInfoList miles={entity.miles} />
+            <HistoryFooter />
+          </Spin>
+        </ContentLayout>
+      </ContentAreaLayout>
     );
   }
 }

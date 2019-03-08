@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { formatWithWeekDayName } from "../../../helpers/utility";
+import {
+  formatWithWeekDayName,
+  displayNumberWithCommas
+} from "../../../helpers/utility";
 
 const LayoutSectionList = styled.div`
   padding: 16px;
@@ -46,6 +49,13 @@ const ListItemDD = styled.dd`
   display: inline-block;
   margin: 0;
   padding: 0;
+  color: #585858;
+`;
+const ListItemDDRed = styled.dd`
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  color: #7f0019;
 `;
 const Header1 = styled.h1`
   color: #585858;
@@ -55,7 +65,7 @@ const Header1 = styled.h1`
 `;
 
 const HistoryInfoList = props => {
-  const { mile_history } = props;
+  const { miles } = props;
 
   return (
     <LayoutInfo>
@@ -64,14 +74,10 @@ const HistoryInfoList = props => {
           <IntlMessages id="mileService.mileList.title" />
         </Header1>
         <LayoutList>
-          {mile_history && mile_history.length > 0 ? (
-            mile_history.map((value, index) => {
+          {miles && miles.length > 0 ? (
+            miles.map((mile, index) => {
               const formated =
-                value.mileDate && formatWithWeekDayName(value.mileDate);
-              const redColor =
-                value.mileAmount && parseInt(value.mileAmount) < 0
-                  ? "#7f0019"
-                  : "#585858";
+                mile.mileDate && formatWithWeekDayName(mile.mileDate);
               return (
                 <ListItemInList key={index}>
                   <ListItemDL>
@@ -81,21 +87,34 @@ const HistoryInfoList = props => {
                     <ListItemDD>{formated}</ListItemDD>
                   </ListItemDL>
                   <ListItemDL>
-                    <ListItemDT className="history-info--return">
+                    <ListItemDT>
                       <IntlMessages id="mileService.mileList.usage.content" />
                     </ListItemDT>
-                    <ListItemDD style={{ color: redColor }}>
-                      {value.mileTypeName}@{value.locName}
-                    </ListItemDD>
+                    {mile.mileAmount && parseInt(mile.mileAmount) < 0 ? (
+                      <ListItemDDRed>
+                        {mile.mileTypeName}@{mile.locName}
+                      </ListItemDDRed>
+                    ) : (
+                      <ListItemDD>
+                        {mile.mileTypeName}@{mile.locName}
+                      </ListItemDD>
+                    )}
                   </ListItemDL>
                   <ListItemDL>
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.miles" />
                     </ListItemDT>
-                    <ListItemDD style={{ color: redColor }}>
-                      {value.mileAmount}
-                      <IntlMessages id="mileService.mileSummary.mile" />
-                    </ListItemDD>
+                    {mile.mileAmount && parseInt(mile.mileAmount) < 0 ? (
+                      <ListItemDDRed>
+                        {displayNumberWithCommas(mile.mileAmount)}
+                        <IntlMessages id="mileService.mileSummary.mile" />
+                      </ListItemDDRed>
+                    ) : (
+                      <ListItemDD>
+                        {displayNumberWithCommas(mile.mileAmount)}
+                        <IntlMessages id="mileService.mileSummary.mile" />
+                      </ListItemDD>
+                    )}
                   </ListItemDL>
                 </ListItemInList>
               );

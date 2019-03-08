@@ -6,12 +6,7 @@ if (empty($router)) {
 
 // {{{ /api/v1/mile-services
 
-$router->get('/api/v1/mile-services/history/{year}', [
+$router->get('/api/v1/mile-services/history', [
     'middleware'    => [],
     'uses'          => 'Api\V1\MileServicesController@history',
-]);
-
-$router->get('/api/v1/mile-services/shopping-point/history', [
-    'middleware'    => [],
-    'uses'          => 'Api\V1\MileServicesController@shoppingPointHistory',
 ]);

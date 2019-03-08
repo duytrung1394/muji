@@ -14,8 +14,8 @@ const ParagraphAbout = styled.p`
 const HistoryFooter = props => {
   return (
     <ParagraphAbout>
-      <Link to="/store/mileservice/history/shoppingpoint">
-        <IntlMessages id="mileService.page.link.na" />
+      <Link to="/store/mileservice/shoppingpoint_history">
+        <IntlMessages id="mileService.page.link.shoppingpoint" />
       </Link>
     </ParagraphAbout>
   );
