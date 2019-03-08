@@ -23,11 +23,6 @@ const ItemListWrapper = styled.div`
   padding: 0 50px;
 `;
 
-const StyledRow = styled(Row)`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const StyledCol = styled(Col)`
   display: flex;
 `;
@@ -66,7 +61,7 @@ class Index extends Component {
           </Title>
           <PurchaseSort />
           <ItemListWrapper>
-            <StyledRow gutter={{ sm: 30 }}>
+            <Row gutter={{ sm: 30 }} type="flex">
               {entities.map((item, index) => {
                 let popoverActions = [];
                 let footerActions = [];
@@ -128,7 +123,7 @@ class Index extends Component {
                   </StyledCol>
                 );
               })}
-            </StyledRow>
+            </Row>
           </ItemListWrapper>
         </LayoutWrapper>
       </Spin>
