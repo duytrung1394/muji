@@ -20,7 +20,7 @@ const Title = styled.h1`
 const RadioGroup = styled(Radio.Group)`
   && {
     padding-bottom: 16px;
-    .ant-radio-checked .ant-radio-inner {
+    .ant-radio-inner {
       border-color: #7f0019;
       :after {
         background-color: #7f0019;
