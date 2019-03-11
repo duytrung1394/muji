@@ -95,9 +95,8 @@ const Period = ({ date }) => {
   }
 };
 
-const Tag = styled.div`
-  max-width: 80px;
-  padding: 3px 16px 2px;
+const Tag = styled.span`
+  padding: 4px 16px;
   border: 1px solid #8b1a27;
   color: #8b1a27;
   font-size: 11px;
@@ -135,7 +134,7 @@ const Item = ({ coupon }) => {
   );
 };
 
-const Coupon = ({ useCoupon, coupons }) => {
+const Coupon = ({ coupons }) => {
   if (!coupons || coupons.length === 0) {
     return null;
   }
