@@ -59,9 +59,9 @@ const StockAlert = ({ orders }) => {
           <IntlMessages id="order.procedure.nostockItemTitle" />
         </StockAlertHeader>
         <NoStockItemList>
-          {alertItems.map(item => {
+          {alertItems.map((item, index) => {
             return (
-              <NoStockItem>
+              <NoStockItem key={index}>
                 <li>{item.itemName}</li>
                 <li>
                   <IntlMessages id="order.procedure.nostockItemColorLabel" />

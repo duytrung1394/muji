@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Radio } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
@@ -44,30 +44,38 @@ const Note = styled.div`
   font-size: 12px;
 `;
 
-const DeliveryOption = ({ deliveryOption, updateDeliveryOptionRequest }) => {
-  const onChange = e => {
-    const deliveryOptionValue = e.target.value;
-    updateDeliveryOptionRequest({ delivery_option: deliveryOptionValue });
+class DeliveryOption extends Component {
+  state = {
+    deliveryOption: this.props.deliveryOption
   };
 
-  return (
-    <Box>
-      <Title>
-        <IntlMessages id="order.procedure.deliveryOption.title" />
-      </Title>
-      <RadioGroup value={deliveryOption} onChange={onChange}>
-        <Radio style={radioStyle} value="bulk">
-          <IntlMessages id="order.procedure.deliveryOption.radio.bulk" />
-        </Radio>
-        <Radio style={radioStyle} value="inorder">
-          <IntlMessages id="order.procedure.deliveryOption.radio.inorder" />
-          <Note>
-            <IntlMessages id="order.procedure.deliveryOption.radio.inorder.note" />
-          </Note>
-        </Radio>
-      </RadioGroup>
-    </Box>
-  );
-};
+  onChange = e => {
+    const deliveryOptionValue = e.target.value;
+    // TODO: 配送オプション変更リクエストを送信. その応答で配送情報部分のみ変更可能にする予定。
+    // updateDeliveryOptionRequest({ delivery_option: deliveryOptionValue });
+    this.setState({ deliveryOption: deliveryOptionValue });
+  };
+
+  render() {
+    return (
+      <Box>
+        <Title>
+          <IntlMessages id="order.procedure.deliveryOption.title" />
+        </Title>
+        <RadioGroup value={this.state.deliveryOption} onChange={this.onChange}>
+          <Radio style={radioStyle} value="bulk">
+            <IntlMessages id="order.procedure.deliveryOption.radio.bulk" />
+          </Radio>
+          <Radio style={radioStyle} value="inorder">
+            <IntlMessages id="order.procedure.deliveryOption.radio.inorder" />
+            <Note>
+              <IntlMessages id="order.procedure.deliveryOption.radio.inorder.note" />
+            </Note>
+          </Radio>
+        </RadioGroup>
+      </Box>
+    );
+  }
+}
 
 export default DeliveryOption;
