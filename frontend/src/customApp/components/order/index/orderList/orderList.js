@@ -3,6 +3,7 @@ import styled from "styled-components";
 import IntlMessages from "../../../../../components/utility/intlMessages";
 import OrderItem from "./orderItem";
 import { OutlineButton } from "../../../shared/form/button";
+import DeliverySetting from "./deliverySetting";
 
 const OrderListWrapper = styled.div`
   div:not(:last-child) {
@@ -112,11 +113,16 @@ const OrderDelivery = ({ order, index, isConfirm }) => {
         </p>
       </OrderDeliveryDiscription>
       {!isConfirm && (
-        <ButtonArea>
-          <OutlineButton width="150px">
-            <IntlMessages id="order.procedure.specifyDate" />
-          </OutlineButton>
-        </ButtonArea>
+        <DeliverySetting
+          deliveryTimeAndDatesAttribute={
+            deliveryInfo.deliveryTimeAndDatesAttribute
+          }
+          deliveryTimeAndDates={deliveryInfo.deliveryTimeAndDates}
+          normalDeliveryDate={deliveryInfo.normalDeliveryDate}
+          normalDeliveryTimeNo={deliveryInfo.normalDeliveryTimeNo}
+          hurryDeliveryDate={deliveryInfo.hurryDeliveryDate}
+          slowDeliveryDate={deliveryInfo.slowDeliveryDate}
+        />
       )}
     </Fragment>
   );

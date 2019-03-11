@@ -129,6 +129,11 @@ class OrdersController extends Controller
                     'deliveryInfo' => [
                         'deliveryCount' => '1',
                         'deliveryDivision' => '小物',
+                        'deliveryTimeAndDatesAttribute' => 'SELECT_ENABLE',
+                        'deliveryTimeAndDates' => $this->getDeliveryTimeAndDates(),
+                        'normalDeliveryDate' => '20190306',
+                        'normalDeliveryTimeNo' => '001',
+                        'slowDeliveryDate' => '29190309',
                     ],
                     'items' => [
                         [
@@ -163,6 +168,11 @@ class OrdersController extends Controller
                     'deliveryInfo' => [
                         'deliveryCount' => '1',
                         'deliveryDivision' => '小物',
+                        'deliveryTimeAndDatesAttribute' => 'SELECT_ENABLE',
+                        'deliveryTimeAndDates' => $this->getDeliveryTimeAndDates(),
+                        'normalDeliveryDate' => '20190306',
+                        'normalDeliveryTimeNo' => '001',
+                        'slowDeliveryDate' => '29190309',
                     ],
                     'items' => [
                         [
@@ -436,5 +446,69 @@ class OrdersController extends Controller
     private function getMockConfirmationData()
     {
         return $this->getMockData();
+    }
+
+    /**
+     * モックデータ: お届け日時リスト.
+     */
+    private function getDeliveryTimeAndDates()
+    {
+        $disableTimeNoList = ["004", "006"];
+
+        return [
+            [
+                "deliveryDate" => "20190306",
+                "deliveryTimes" => $this->getDeliveryTimes()
+            ],
+            [
+                "deliveryDate" => "20190307",
+                "deliveryTimes" => $this->getDeliveryTimes()
+            ],
+            [
+                "deliveryDate" => "20190308",
+                "deliveryTimes" => $this->getDeliveryTimes($disableTimeNoList)
+            ],
+        ];
+    }
+
+    /**
+     * モックデータ: お届け時刻リスト.
+     */
+    private function getDeliveryTimes($disableTimeNoList=[])
+    {
+        $times = [
+            [
+                "deliveryStatus" => in_array("001", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "希望無し",
+                "timeNo" => "001"
+            ],
+            [
+                "deliveryStatus" => in_array("002", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "午前中",
+                "timeNo" => "002"
+            ],
+            [
+                "deliveryStatus" => in_array("003", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１４時～１６時",
+                "timeNo" => "003"
+            ],
+            [
+                "deliveryStatus" => in_array("004", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１６時～１８時",
+                "timeNo" => "004"
+            ],
+            [
+                "deliveryStatus" => in_array("005", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１８時～２０時",
+                "timeNo" => "005"
+            ],
+            [
+                "deliveryStatus" => in_array("006", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１９時～２１時",
+                "timeNo" => "006"
+            ],
+        ];
+
+        return $times;
     }
 }
