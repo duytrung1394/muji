@@ -16,18 +16,24 @@ const privateWorkIds = [
   "RUG_LENGTH"
 ];
 
-const StyledPrivateWork = styled.p`
-  margin-bottom: 5px;
+const StyledPrivateWork = styled.div`
+  &&& {
+    margin-bottom: 5px;
+  }
 `;
 
-const WorkDivision = styled.p`
-  margin-bottom: 0px;
-  font-size: 11px;
+const WorkDivision = styled.div`
+  &&& {
+    margin-bottom: 0px;
+    font-size: 11px;
+  }
 `;
 
-const Work = styled.p`
-  margin-bottom: 0px;
-  font-size: 11px;
+const Work = styled.div`
+  &&& {
+    margin-bottom: 0px;
+    font-size: 11px;
+  }
 `;
 
 const PrivateWork = ({ id, works }) => {
