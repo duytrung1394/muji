@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
@@ -183,86 +183,84 @@ const Review = ({ itemDetail }) => {
   if (itemDetail) {
     return (
       <ReviewWrapper>
-        <Fragment>
-          <ItemArea>
-            <ItemImages span={4}>
-              <img src={itemImages[itemDetail.itemImages]} />
-            </ItemImages>
-            <ItemInfo span={20}>
-              <MaterialName>{itemDetail.materialName}</MaterialName>
-              <ItemName>{itemDetail.itemName}</ItemName>
-            </ItemInfo>
-          </ItemArea>
-          <ReviewInfoWrapper>
-            <ReviewInfoArea>
-              <Title>
-                <IntlMessages id="review.review" />
-              </Title>
-              <Star disabled defaultValue={itemDetail.star} />
-              <Created>{itemDetail.created}</Created>
-              <StarMessage>
-                <IntlMessages id="review.starMessage" />
-                {itemDetail.star}
-              </StarMessage>
-              {itemDetail.wearInfo.size && itemDetail.wearInfo.height ? (
-                <WearInfo>
-                  <PurchaseSize>
-                    <IntlMessages id="review.purchaseSize" />
-                    <Span>{itemDetail.wearInfo.size}</Span>
-                  </PurchaseSize>
-                  <Height>
-                    <IntlMessages id="review.height" />
-                    <Span>{itemDetail.wearInfo.height}</Span>
-                    <IntlMessages id="review.cm" />
-                  </Height>
-                </WearInfo>
-              ) : null}
-              <Caption>{itemDetail.webCatalogTitle}</Caption>
-              <Description>{itemDetail.webCatalogDescription}</Description>
-              {itemDetail.images &&
-                itemDetail.images.map((image, index) => {
-                  return (
-                    <ImagesArea key={index}>
-                      <Images>
-                        <img src={imagesUrl[image]} />
-                      </Images>
-                    </ImagesArea>
-                  );
-                })}
-              <CountArea>
-                <CountComment>
-                  <CommentLink to={"#"}>
-                    <CommentIcon src={commentIcon} />
-                    <StyledSpan>
-                      {itemDetail.countComment}
-                      <IntlMessages id="review.countComment" />
-                    </StyledSpan>
-                  </CommentLink>
-                </CountComment>
-                <CountUseful>
-                  <GoodIcon src={goodIcon} />
+        <ItemArea>
+          <ItemImages>
+            <img src={itemImages[itemDetail.itemImages]} />
+          </ItemImages>
+          <ItemInfo>
+            <MaterialName>{itemDetail.materialName}</MaterialName>
+            <ItemName>{itemDetail.itemName}</ItemName>
+          </ItemInfo>
+        </ItemArea>
+        <ReviewInfoWrapper>
+          <ReviewInfoArea>
+            <Title>
+              <IntlMessages id="review.review" />
+            </Title>
+            <Star disabled defaultValue={itemDetail.star} />
+            <Created>{itemDetail.created}</Created>
+            <StarMessage>
+              <IntlMessages id="review.starMessage" />
+              {itemDetail.star}
+            </StarMessage>
+            {itemDetail.wearInfo.size && itemDetail.wearInfo.height ? (
+              <WearInfo>
+                <PurchaseSize>
+                  <IntlMessages id="review.purchaseSize" />
+                  <Span>{itemDetail.wearInfo.size}</Span>
+                </PurchaseSize>
+                <Height>
+                  <IntlMessages id="review.height" />
+                  <Span>{itemDetail.wearInfo.height}</Span>
+                  <IntlMessages id="review.cm" />
+                </Height>
+              </WearInfo>
+            ) : null}
+            <Caption>{itemDetail.webCatalogTitle}</Caption>
+            <Description>{itemDetail.webCatalogDescription}</Description>
+            {itemDetail.images &&
+              itemDetail.images.map((image, index) => {
+                return (
+                  <ImagesArea key={index}>
+                    <Images>
+                      <img src={imagesUrl[image]} />
+                    </Images>
+                  </ImagesArea>
+                );
+              })}
+            <CountArea>
+              <CountComment>
+                <CommentLink to={"#"}>
+                  <CommentIcon src={commentIcon} />
                   <StyledSpan>
-                    {itemDetail.countUseful}
-                    <IntlMessages id="review.countUseful" />
+                    {itemDetail.countComment}
+                    <IntlMessages id="review.countComment" />
                   </StyledSpan>
-                </CountUseful>
-              </CountArea>
-              <DeleteButton>
-                <Popover
-                  placement="topRight"
-                  content={
-                    <DeleteReview>
-                      <IntlMessages id="review.reviewDelite" />
-                    </DeleteReview>
-                  }
-                  trigger="click"
-                >
-                  <ButtonIcon src={bottonIcon} />
-                </Popover>
-              </DeleteButton>
-            </ReviewInfoArea>
-          </ReviewInfoWrapper>
-        </Fragment>
+                </CommentLink>
+              </CountComment>
+              <CountUseful>
+                <GoodIcon src={goodIcon} />
+                <StyledSpan>
+                  {itemDetail.countUseful}
+                  <IntlMessages id="review.countUseful" />
+                </StyledSpan>
+              </CountUseful>
+            </CountArea>
+            <DeleteButton>
+              <Popover
+                placement="topRight"
+                content={
+                  <DeleteReview>
+                    <IntlMessages id="review.reviewDelite" />
+                  </DeleteReview>
+                }
+                trigger="click"
+              >
+                <ButtonIcon src={bottonIcon} />
+              </Popover>
+            </DeleteButton>
+          </ReviewInfoArea>
+        </ReviewInfoWrapper>
       </ReviewWrapper>
     );
   }
