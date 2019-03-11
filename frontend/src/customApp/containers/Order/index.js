@@ -11,6 +11,7 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import Delivery from "../../components/order/index/delivery";
 import DeliveryOption from "../../components/order/index/deliveryOption";
+import Coupon from "../../components/order/index/coupon";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
 import OrderList from "../../components/order/index/orderList/orderList";
@@ -134,6 +135,9 @@ class Index extends Component {
           <StockAlert orders={entity.orders} />
           <ContentsBox>
             <Delivery delivery={entity.delivery} />
+          </ContentsBox>
+          <ContentsBox>
+            <Coupon coupons={entity.coupons} />
           </ContentsBox>
           <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
