@@ -57,7 +57,7 @@ const ListItemDDRed = styled.dd`
   padding: 0;
   color: #7f0019;
 `;
-const Header1 = styled.h1`
+const Title = styled.h1`
   color: #585858;
   font-size: 15px;
   font-weight: bold;
@@ -70,9 +70,9 @@ const HistoryInfoList = props => {
   return (
     <LayoutInfo>
       <LayoutSectionList>
-        <Header1>
+        <Title>
           <IntlMessages id="mileService.mileList.title" />
-        </Header1>
+        </Title>
         <LayoutList>
           {miles && miles.length > 0 ? (
             miles.map((mile, index) => {
