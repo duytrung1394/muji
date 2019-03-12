@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Modal } from "antd";
-import { OutlineButton, LinkStyleButton } from "../shared/form/button";
+import {
+  OutlineButton,
+  LinkStyleButton as BaseLinkStyleButton
+} from "../shared/form/button";
 
 const Container = styled.div`
   position: relative;
 `;
 
-const DeleteLinkStyleButton = styled(LinkStyleButton)`
+const LinkStyleButton = styled(BaseLinkStyleButton)`
   && {
     position: absolute;
     top: -7px;
@@ -27,13 +30,13 @@ const ModalMessage = styled.p`
   font-size: 12px;
 `;
 
-const DeleteButton = styled.p`
+const ModalContent = styled.div`
   max-width: 300px;
   margin: 30px auto 0;
   text-align: center;
 `;
 
-class DeliveryLinkStyleButton extends Component {
+class DeleteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,13 +73,13 @@ class DeliveryLinkStyleButton extends Component {
   render() {
     return (
       <Container>
-        <DeleteLinkStyleButton
+        <LinkStyleButton
           to={"#"}
           onClick={this.showModal}
           color="rgb(96, 179, 250)"
         >
           <IntlMessages id="delivery.deleteLink.delete" />
-        </DeleteLinkStyleButton>
+        </LinkStyleButton>
         <Modal
           visible={this.state.deleteConfirmVisible}
           onCancel={this.handleCancel}
@@ -86,11 +89,11 @@ class DeliveryLinkStyleButton extends Component {
           <ModalTitle>
             <IntlMessages id="delivery.deleteConfirm" />
           </ModalTitle>
-          <DeleteButton>
-            <OutlineButton to={"#"} onClick={this.handleOk}>
+          <ModalContent>
+            <OutlineButton onClick={this.handleOk}>
               <IntlMessages id="delivery.button.delete" />
             </OutlineButton>
-          </DeleteButton>
+          </ModalContent>
         </Modal>
         <Modal
           visible={this.state.deleteCompleteVisible}
@@ -110,4 +113,4 @@ class DeliveryLinkStyleButton extends Component {
   }
 }
 
-export default DeliveryLinkStyleButton;
+export default DeleteButton;
