@@ -106,12 +106,7 @@ class AddressForm extends Component {
         <FormArea>
           <FormItem>
             <Label>
-              <IntlMessages
-                id="delivery.add.form.zipCode"
-                values={{
-                  require: <IntlMessages id="delivery.add.form.require" />
-                }}
-              />
+              <IntlMessages id="delivery.add.form.zipCode" />
             </Label>
             <ZipCode>
               <IntlMessages id="label.zipCode" />
@@ -136,12 +131,7 @@ class AddressForm extends Component {
           </FormItem>
           <FormItem>
             <Label>
-              <IntlMessages
-                id="delivery.add.form.address1"
-                values={{
-                  require: <IntlMessages id="delivery.add.form.require" />
-                }}
-              />
+              <IntlMessages id="delivery.add.form.address1" />
             </Label>
             <StyledInput
               placeholder="東京都豊島区"
@@ -151,11 +141,7 @@ class AddressForm extends Component {
           <FormItem>
             <Label>
               <IntlMessages
-                id="delivery.add.form.address2"
-                values={{
-                  require: <IntlMessages id="delivery.add.form.require" />
-                }}
-              />
+                id="delivery.add.form.address2" />
             </Label>
             <StyledInput
               placeholder="東池袋"
@@ -164,12 +150,7 @@ class AddressForm extends Component {
           </FormItem>
           <FormItem>
             <Label>
-              <IntlMessages
-                id="delivery.add.form.address3"
-                values={{
-                  require: <IntlMessages id="delivery.add.form.require" />
-                }}
-              />
+              <IntlMessages id="delivery.add.form.address3" />
             </Label>
             <StyledInput
               placeholder="4-26-3"
@@ -178,12 +159,7 @@ class AddressForm extends Component {
           </FormItem>
           <FormItem>
             <Label>
-              <IntlMessages
-                id="delivery.add.form.address4"
-                values={{
-                  require: <IntlMessages id="delivery.add.form.require" />
-                }}
-              />
+              <IntlMessages id="delivery.add.form.address4" />
             </Label>
             <StyledInput placeholder="部屋番号がある場合は入力が必須となります" />
             <Description>

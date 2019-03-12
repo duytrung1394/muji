@@ -39,12 +39,7 @@ const TelForm = () => (
     <FormArea>
       <FormItem>
         <Label>
-          <IntlMessages
-            id="delivery.add.form.tel"
-            values={{
-              require: <IntlMessages id="delivery.add.form.require" />
-            }}
-          />
+          <IntlMessages id="delivery.add.form.tel" />
         </Label>
         <StyledInput placeholder="0339894191" />
       </FormItem>

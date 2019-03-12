@@ -40,23 +40,13 @@ const NameForm = () => (
     <FormArea>
       <FormItem>
         <Label>
-          <IntlMessages
-            id="delivery.add.form.name"
-            values={{
-              require: <IntlMessages id="delivery.add.form.require" />
-            }}
-          />
+          <IntlMessages id="delivery.add.form.name" />
         </Label>
         <StyledInput placeholder="無印太郎" />
       </FormItem>
       <FormItem>
         <Label>
-          <IntlMessages
-            id="delivery.add.form.nameKana"
-            values={{
-              require: <IntlMessages id="delivery.add.form.require" />
-            }}
-          />
+          <IntlMessages id="delivery.add.form.nameKana" />
         </Label>
         <StyledInput placeholder="ムジルシタロウ" />
       </FormItem>
