@@ -216,10 +216,24 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/order/itemlist",
+    path: "/store/order/index",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/index")
+    )
+  },
+  {
+    path: "/store/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
+    )
+  },
+  {
+    path: "/store/order/confirmation",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/confirmation")
     )
   },
   {
@@ -258,6 +272,13 @@ const routes = [
     )
   },
   {
+    path: "/store/search/article",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Search/indexArticle")
+    )
+  },
+  {
     path: "/store/search/service",
     exact: true,
     component: asyncComponent(() =>
@@ -276,6 +297,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Delivery/Add/index")
+    )
+  },
+  {
+    path: "/store/accounts/memberguide",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/memberguide")
     )
   }
 ];

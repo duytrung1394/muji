@@ -1,18 +1,20 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 
-const FormContainer = styled(Form)``;
-
-const FormArea = styled.ul`
+const FormArea = styled.div`
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  padding-top: 20px;
+  width: 50%;
 `;
 
-const FormItem = styled.li`
-  padding-top: 20px;
+const FormItem = styled(Form.Item)`
+  &.ant-form-item {
+    margin-bottom: 0;
+  }
 `;
 
 const Label = styled.h2`
@@ -23,7 +25,7 @@ const Label = styled.h2`
 `;
 
 const StyledInput = styled(Input)`
-  box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px 0px;
+  box-shadow: rgba(88, 88, 88, 0.3) 0 1px 3px 0;
   && {
     width: 300px;
     height: 40px;
@@ -34,34 +36,22 @@ const StyledInput = styled(Input)`
 `;
 
 const NameForm = () => (
-  <Fragment>
-    <FormContainer>
-      <FormArea>
-        <FormItem>
-          <Label>
-            <IntlMessages
-              id="delivery.add.form.name"
-              values={{
-                require: <IntlMessages id="delivery.add.form.require" />
-              }}
-            />
-          </Label>
-          <StyledInput placeholder="無印太郎" />
-        </FormItem>
-        <FormItem>
-          <Label>
-            <IntlMessages
-              id="delivery.add.form.nameKana"
-              values={{
-                require: <IntlMessages id="delivery.add.form.require" />
-              }}
-            />
-          </Label>
-          <StyledInput placeholder="ムジルシタロウ" />
-        </FormItem>
-      </FormArea>
-    </FormContainer>
-  </Fragment>
+  <Form>
+    <FormArea>
+      <FormItem>
+        <Label>
+          <IntlMessages id="delivery.add.form.name" />
+        </Label>
+        <StyledInput placeholder="無印太郎" />
+      </FormItem>
+      <FormItem>
+        <Label>
+          <IntlMessages id="delivery.add.form.nameKana" />
+        </Label>
+        <StyledInput placeholder="ムジルシタロウ" />
+      </FormItem>
+    </FormArea>
+  </Form>
 );
 
 export default NameForm;

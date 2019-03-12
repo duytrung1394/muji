@@ -25,17 +25,6 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const NextButton = styled(OutlineButton)`
-  &&& {
-    width: 298px;
-    height: 38px;
-    font-weight: lighter;
-    color: rgb(255, 255, 255);
-    border: rgb(127, 0, 25);
-    background: rgb(127, 0, 25);
-  }
-`;
-
 const Forms = () => (
   <Conteiner>
     <Wrapper>
@@ -43,11 +32,11 @@ const Forms = () => (
       <AddressForm />
       <TelForm />
       <ButtonArea>
-        <Link to={"#"}>
-          <NextButton>
+        <OutlineButton color="rgb(127, 0, 25)" reverse="true">
+          <Link to={"#"}>
             <IntlMessages id="delivery.button.next" />
-          </NextButton>
-        </Link>
+          </Link>
+        </OutlineButton>
       </ButtonArea>
     </Wrapper>
   </Conteiner>
