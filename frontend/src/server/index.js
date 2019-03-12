@@ -52,6 +52,6 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // /static 以下は常に配信
-app.use('/static', express.static('static'));
+app.use("/static", express.static("static"));
 
 app.listen(process.env.PORT || 3000);

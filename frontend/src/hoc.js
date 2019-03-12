@@ -12,22 +12,20 @@ import { isServer } from "./helpers/ssr";
 import { language } from "./settings";
 
 let config, getCurrentLanguage;
-if( isServer() ){
+if (isServer()) {
   // SSR向けにはデフォルトの言語を返すようにだけしておく
   const option = {
     languageId: "japanese",
     locale: "ja",
-    text: "Japanese",
+    text: "Japanese"
     // iconのsvgをimportするの無理なので作り直す必要ありそう
   };
   config = {
     defaultLanguage: language,
-    options: [
-      option
-    ]
+    options: [option]
   };
-  getCurrentLanguage = () => (option);
-}else{
+  getCurrentLanguage = () => option;
+} else {
   const lsConfig = require("./containers/LanguageSwitcher/config");
   config = lsConfig.default;
   getCurrentLanguage = lsConfig.getCurrentLanguage;
@@ -57,9 +55,7 @@ const SimpleHoc = props => (
       locale={currentAppLocale.locale}
       messages={currentAppLocale.messages}
     >
-      <DashAppHolder>
-        {props.children}
-      </DashAppHolder>
+      <DashAppHolder>{props.children}</DashAppHolder>
     </IntlProvider>
   </Provider>
 );

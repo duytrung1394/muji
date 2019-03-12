@@ -15,14 +15,14 @@ const { Content } = Layout;
 
 const Routes = () => renderRoutes(routes);
 
-export const DashAppLayout = (props) => (
-  <Layout style={{ height: '100%' }}>
+export const DashAppLayout = props => (
+  <Layout style={{ height: "100%" }}>
     <Header />
     {/* 注: Siderを子要素に持つ場合 hasSider オプションをつけないとSSRの時にサイドバーのレイアウトが崩れてしまう */}
     <Layout hasSider={true}>
       <Sider />
       <Content id="content" style={{ position: "relative" }}>
-        { props.children }
+        {props.children}
       </Content>
     </Layout>
     <Footer />

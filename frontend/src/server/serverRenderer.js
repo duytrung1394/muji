@@ -12,7 +12,7 @@ import { ServerStyleSheet } from "styled-components";
 
 import routes from "../routes";
 
-import {SimpleHoc as Hoc} from "../hoc";
+import { SimpleHoc as Hoc } from "../hoc";
 
 import { store } from "../redux/store";
 import rootSaga from "../redux/sagas";
@@ -25,9 +25,7 @@ const ssr = async (req, res) => {
   const rootComp = (
     <Hoc>
       <StaticRouter location={req.url} context={{}}>
-        <DashAppLayout>
-          {renderRoutes(routes)}
-        </DashAppLayout>
+        <DashAppLayout>{renderRoutes(routes)}</DashAppLayout>
       </StaticRouter>
     </Hoc>
   );

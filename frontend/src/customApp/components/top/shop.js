@@ -50,13 +50,13 @@ export class Shop extends Component {
   }
 }
 
-const SafeGoogleApiWrapper = (options) => {
-  if( isServer() ){
-    return (component) => component;
-  }else{
-    return (component) => (GoogleApiWrapper(options)(component) );
+const SafeGoogleApiWrapper = options => {
+  if (isServer()) {
+    return component => component;
+  } else {
+    return component => GoogleApiWrapper(options)(component);
   }
-}
+};
 
 export default SafeGoogleApiWrapper({
   // apiKey: "xxxxxx"

@@ -1,7 +1,7 @@
 import { isServer } from "../helpers/ssr";
 
 let apiUrl;
-if( isServer() ){
+if (isServer()) {
   apiUrl = process.env.API_SERVER;
 } else {
   apiUrl = process.env.API_BROWSER;
