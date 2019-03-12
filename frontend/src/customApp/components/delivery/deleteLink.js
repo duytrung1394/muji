@@ -21,17 +21,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledModal = styled(Modal)`
-  .ant-modal-body {
-    padding: 30px 54px;
-  }
-  .ant-modal-close-x {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-`;
-
 const ModalTitle = styled.p`
   text-align: center;
   font-size: 15px;
@@ -45,7 +34,7 @@ const ModalMessage = styled.p`
 
 const DeleteButton = styled.p`
   max-width: 300px;
-  margin: 20px auto 0;
+  margin: 30px auto 0;
   text-align: center;
 `;
 
@@ -89,7 +78,7 @@ class DeleteLink extends Component {
         <StyledLink to={"#"} onClick={this.showModal}>
           <IntlMessages id="delivery.deleteLink.delete" />
         </StyledLink>
-        <StyledModal
+        <Modal
           visible={this.state.deleteConfirmVisible}
           onCancel={this.handleCancel}
           footer={null}
@@ -103,8 +92,8 @@ class DeleteLink extends Component {
               <IntlMessages id="delivery.delete" />
             </OutlineButton>
           </DeleteButton>
-        </StyledModal>
-        <StyledModal
+        </Modal>
+        <Modal
           visible={this.state.deleteCompleteVisible}
           onCancel={this.handleDeleteCompleteCancel}
           footer={null}
@@ -116,7 +105,7 @@ class DeleteLink extends Component {
           <ModalMessage>
             <IntlMessages id="delivery.deleteCompleteMessage" />
           </ModalMessage>
-        </StyledModal>
+        </Modal>
       </Container>
     );
   }
