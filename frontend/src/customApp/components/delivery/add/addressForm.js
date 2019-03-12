@@ -140,8 +140,7 @@ class AddressForm extends Component {
           </FormItem>
           <FormItem>
             <Label>
-              <IntlMessages
-                id="delivery.add.form.address2" />
+              <IntlMessages id="delivery.add.form.address2" />
             </Label>
             <StyledInput
               placeholder="東池袋"
