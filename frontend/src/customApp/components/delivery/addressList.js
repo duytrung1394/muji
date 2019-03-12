@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { OutlineButton } from "../../../customApp/components/shared/form/button";
-import DeleteLink from "./deleteLink";
+import DeleteButton from "./deleteButton";
 import { Icon } from "antd";
 
 const defaultAddressSize = 3;
@@ -135,7 +135,7 @@ class AddressList extends Component {
                     }
                   >
                     <li>
-                      {item.mySelf ? null : <DeleteLink />}
+                      {item.mySelf ? null : <DeleteButton />}
                       <Name>
                         {item.naming}
                         <IntlMessages id="delivery.addressItem.esq" />
