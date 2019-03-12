@@ -3,6 +3,7 @@ import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
+import { OutlineButton } from "../../components/shared/form/button";
 
 const Container = styled.div`
   position: relative;
@@ -46,15 +47,6 @@ const DeleteButton = styled.p`
   max-width: 300px;
   margin: 20px auto 0;
   text-align: center;
-  button {
-    border: 1px solid rgb(153, 153, 153);
-    border-radius: 20px;
-    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
-    font-size: 12px;
-    width: 100%;
-    padding: 10px;
-    outline: none;
-  }
 `;
 
 class DeleteLink extends Component {
@@ -107,9 +99,9 @@ class DeleteLink extends Component {
             <IntlMessages id="delivery.deleteConfirm" />
           </ModalTitle>
           <DeleteButton>
-            <button to={"#"} onClick={this.handleOk}>
+            <OutlineButton to={"#"} onClick={this.handleOk}>
               <IntlMessages id="delivery.delete" />
-            </button>
+            </OutlineButton>
           </DeleteButton>
         </StyledModal>
         <StyledModal
