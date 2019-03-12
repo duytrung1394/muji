@@ -23,9 +23,11 @@ export const DashAppLayout = props => (
       <Sider />
       <Content id="content" style={{ position: "relative" }}>
         {props.children}
+        <Layout>
+          <Footer />
+        </Layout>
       </Content>
     </Layout>
-    <Footer />
   </Layout>
 );
 
