@@ -2,13 +2,14 @@ import { connect } from "react-redux";
 import { ContentAreaLayout } from "../../components/shared/panel/contentLayout";
 import { injectIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { Spin, message, Modal } from "antd";
+import { Spin, Modal } from "antd";
 import { TabSlider } from "../../components/shared/tabSlider";
 import actions from "../../redux/favorite/list/actions";
 import FavoriteItem from "../../components/favorite/favoriteItem";
 import IntlMessages from "../../../components/utility/intlMessages";
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
+import { OutlineButton } from "../../components/shared/form/button";
 
 const Title = styled.h1`
   line-height: 19px;
@@ -49,34 +50,15 @@ const DeliveryList = styled.div`
   }
 `;
 
-const DeleteModalButton = styled.p`
-  max-width: 300px;
-  margin: 20px auto 0;
-  text-align: center;
-
-  button {
-    border: 1px solid rgb(127, 0, 25);
-    border-radius: 20px;
-    box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
-    font-size: 12px;
-    width: 100%;
-    padding: 10px;
-    outline: none;
-  }
-
-  button,
-  button:hover,
-  button:focus {
-    color: rgb(127, 0, 25);
-    text-decoration: none;
-  }
-`;
-
-const DeleteConfirmMessage = styled.p`
+const ModalButton = styled.div`
   text-align: center;
 `;
 
-const DeleteModalWrapper = styled(Modal)`
+const ModalMessage = styled.p`
+  text-align: center;
+`;
+
+const ModalWrapper = styled(Modal)`
   && {
     top: 50%;
     padding-bottom: 0;
@@ -92,23 +74,46 @@ const DeleteModalWrapper = styled(Modal)`
   }
 `;
 
-const DeleteModal = ({ visible, onOk, onCancel }) => {
+const ModalTitle = styled.p`
+  font-weight: bold;
+  text-align: center;
+`;
+
+const DeleteConfirmModal = ({ visible, onOk, onCancel }) => {
   return (
-    <DeleteModalWrapper
+    <ModalWrapper
       visible={visible}
       onCancel={onCancel}
       footer={null}
       width={600}
     >
-      <DeleteConfirmMessage>
-        <IntlMessages id="favorite.deleteConfirm" />
-      </DeleteConfirmMessage>
-      <DeleteModalButton>
-        <button to={"#"} onClick={onOk}>
+      <ModalTitle>
+        <IntlMessages id="favorite.deleteConfirmModal.title" />
+      </ModalTitle>
+      <ModalButton>
+        <OutlineButton to={"#"} onClick={onOk}>
           <IntlMessages id="favorite.delete" />
-        </button>
-      </DeleteModalButton>
-    </DeleteModalWrapper>
+        </OutlineButton>
+      </ModalButton>
+    </ModalWrapper>
+  );
+};
+
+const DeleteCompleteModal = ({ visible, onCancel }) => {
+  return (
+    <ModalWrapper
+      visible={visible}
+      onCancel={onCancel}
+      footer={null}
+      width={600}
+    >
+      <ModalTitle>
+        <IntlMessages id="favorite.deleteCompleteModal.title" />
+      </ModalTitle>
+      <ModalMessage>
+        <IntlMessages id="favorite.deleteCompleteModal.message" />
+      </ModalMessage>
+    </ModalWrapper>
   );
 };
 
@@ -117,21 +122,28 @@ class Index extends Component {
     super(props);
     this.state = {
       selectedKeys: [],
-      deleteModalVisible: false
+      deleteModalVisible: false,
+      deleteCompleteModalVisible: false
     };
   }
 
-  modalOpen = () => {
+  deleteModalOpen = () => {
     this.setState({ deleteModalVisible: true });
   };
 
-  handleOk = () => {
-    message.info("削除");
+  handleDeleteConfirmModalOk = () => {
+    this.setState({
+      deleteModalVisible: false,
+      deleteCompleteModalVisible: true
+    });
+  };
+
+  handleDeleteConfirmModalCancel = () => {
     this.setState({ deleteModalVisible: false });
   };
 
-  handleCancel = () => {
-    this.setState({ deleteModalVisible: false });
+  handleDeleteCompleteModalCancel = () => {
+    this.setState({ deleteCompleteModalVisible: false });
   };
 
   // React methods
@@ -173,7 +185,7 @@ class Index extends Component {
 
               footerActions.push({
                 name: formatMessage({ id: "favorite.delete" }),
-                onClick: this.modalOpen
+                onClick: this.deleteModalOpen
               });
 
               if (itemKey === "products") {
@@ -213,11 +225,14 @@ class Index extends Component {
               );
             })}
           </TabSlider>
-          <DeleteModal
+          <DeleteConfirmModal
             visible={this.state.deleteModalVisible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            component={this}
+            onOk={this.handleDeleteConfirmModalOk}
+            onCancel={this.handleDeleteConfirmModalCancel}
+          />
+          <DeleteCompleteModal
+            visible={this.state.deleteCompleteModalVisible}
+            onCancel={this.handleDeleteCompleteModalCancel}
           />
         </Spin>
       </ContentAreaLayout>

@@ -53,6 +53,9 @@ require_once 'api/v1/lotteries.php';
 // /api/v1/orders
 require_once 'api/v1/orders.php';
 
+// /api/v1/reviews
+require_once 'api/v1/reviews.php';
+
 // /api/v1/searches
 require_once 'api/v1/search.php';
 

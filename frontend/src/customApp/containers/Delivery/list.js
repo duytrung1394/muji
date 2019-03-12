@@ -22,15 +22,6 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const AddButton = styled(OutlineButton)`
-  &&& {
-    border-color: rgb(153, 153, 153);
-    border-radius: 20px;
-    box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px;
-    padding: 10px;
-  }
-`;
-
 class Index extends Component {
   // React methods
   componentDidMount() {
@@ -59,9 +50,9 @@ class Index extends Component {
             <Header />
             <AddressList entities={entities} />
             <ButtonArea>
-              <AddButton>
+              <OutlineButton color="rgb(153, 153, 153)">
                 <IntlMessages id="delivery.list.add" />
-              </AddButton>
+              </OutlineButton>
             </ButtonArea>
           </ContentLayout>
         </Spin>
