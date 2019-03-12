@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { Link } from "react-router-dom";
 import { Modal } from "antd";
-import { OutlineButton } from "../../components/shared/form/button";
+import { OutlineButton, LinkStyleButton } from "../shared/form/button";
 
 const Container = styled.div`
   position: relative;
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 12px;
-  font-weight: bold;
-  color: rgb(96, 179, 250);
-  position: absolute;
-  top: 0;
-  right: 5px;
-  :hover {
-    color: rgb(96, 179, 250);
+const DeleteLinkStyleButton = styled(LinkStyleButton)`
+  && {
+    position: absolute;
+    top: -7px;
+    right: 5px;
   }
 `;
 
@@ -38,7 +33,7 @@ const DeleteButton = styled.p`
   text-align: center;
 `;
 
-class DeleteLink extends Component {
+class DeliveryLinkStyleButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,9 +70,13 @@ class DeleteLink extends Component {
   render() {
     return (
       <Container>
-        <StyledLink to={"#"} onClick={this.showModal}>
+        <DeleteLinkStyleButton
+          to={"#"}
+          onClick={this.showModal}
+          color="rgb(96, 179, 250)"
+        >
           <IntlMessages id="delivery.deleteLink.delete" />
-        </StyledLink>
+        </DeleteLinkStyleButton>
         <Modal
           visible={this.state.deleteConfirmVisible}
           onCancel={this.handleCancel}
@@ -111,4 +110,4 @@ class DeleteLink extends Component {
   }
 }
 
-export default DeleteLink;
+export default DeliveryLinkStyleButton;
