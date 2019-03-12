@@ -8,10 +8,10 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-import HistoryHeader from "../../components/mileService/mileServiceHeader";
-import HistoryInfoList from "../../components/mileService/mileServiceList";
-import HistoryInfoSummary from "../../components/mileService/mileServiceSummary";
-import HistoryFooter from "../../components/mileService/mileServiceFooter";
+import MileServiceHeader from "../../components/mileService/mileServiceHeader";
+import MileServiceList from "../../components/mileService/mileServiceList";
+import MileServiceSummary from "../../components/mileService/mileServiceSummary";
+import MileServiceFooter from "../../components/mileService/mileServiceFooter";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 732px;
@@ -23,15 +23,15 @@ class History extends Component {
   }
 
   render() {
-    const { entity, fetching } = this.props;
+    const { entity, fetching, intl } = this.props;
     return (
       <ContentAreaLayout>
         <ContentLayout>
           <Spin spinning={fetching} size="large">
-            <HistoryHeader />
-            <HistoryInfoSummary entity={entity} />
-            <HistoryInfoList miles={entity.miles} />
-            <HistoryFooter />
+            <MileServiceHeader />
+            <MileServiceSummary entity={entity} intl={intl} />
+            <MileServiceList miles={entity.miles} intl={intl} />
+            <MileServiceFooter />
           </Spin>
         </ContentLayout>
       </ContentAreaLayout>

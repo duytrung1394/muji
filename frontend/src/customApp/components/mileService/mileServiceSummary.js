@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import {
-  formatWithWeekDayNameAndTime,
-  displayNumberWithCommas
-} from "../../../helpers/utility";
+import { displayNumberWithCommas } from "../../../helpers/utility";
+import moment from "../../util/moment";
 
 const LayoutSectionSummary = styled.section`
   padding: 16px;
@@ -12,7 +10,6 @@ const LayoutSectionSummary = styled.section`
   box-shadow: 0 1px 3px 1px rgba(153, 153, 153, 0.5);
 `;
 const LayoutInfo = styled.div`
-  margin: 0;
   border: 0;
   outline: 0;
   font: inherit;
@@ -71,11 +68,13 @@ const Title = styled.h1`
   padding-bottom: 10px;
 `;
 
-const HistoryInfoSummary = props => {
-  const { entity } = props;
+const MileServiceSummary = ({ entity, intl }) => {
+  const dateFormat = intl.formatMessage({
+    id: "mileService.dateFormat.dateAndTime"
+  });
   const formated =
     entity.mileExpireDate &&
-    formatWithWeekDayNameAndTime(entity.mileExpireDate);
+    moment(entity.mileExpireDate, "YYYYMMDDHHmmss").format(dateFormat);
   return (
     <LayoutInfo>
       <LayoutSectionSummary>
@@ -104,7 +103,7 @@ const HistoryInfoSummary = props => {
           <ListItemRed>
             ※{entity.nearPointExpireAmount}
             <IntlMessages id="mileService.mileSummary.mileOfTheYear" />
-            {formated && formated}
+            {formated}
             <IntlMessages id="mileService.mileSummary.expiredAt" />
           </ListItemRed>
         </LayoutList>
@@ -126,4 +125,4 @@ const HistoryInfoSummary = props => {
   );
 };
 
-export default HistoryInfoSummary;
+export default MileServiceSummary;

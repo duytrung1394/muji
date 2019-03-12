@@ -1,5 +1,3 @@
-import moment from "moment";
-
 export function timeDifference(givenTime) {
   givenTime = new Date(givenTime);
   const milliseconds = new Date().getTime() - givenTime.getTime();
@@ -64,32 +62,6 @@ export function stringToInt(value, defValue = 0) {
 export function stringToPosetiveInt(value, defValue = 0) {
   const val = stringToInt(value, defValue);
   return val > -1 ? val : defValue;
-}
-
-export function formatWithWeekDayName(date) {
-  let format = "YYYYMMDDHHmmss";
-  let convert = moment(date, format);
-  let lang = "ja",
-    d = convert.toDate(),
-    year = d.toLocaleString(lang, { year: "numeric" }),
-    month = d.toLocaleString(lang, { month: "short" }),
-    day = d.toLocaleString(lang, { day: "numeric" }),
-    dayName = d.toLocaleString(lang, { weekday: "short" });
-  return `${year}${month}${day} (${dayName})`;
-}
-
-export function formatWithWeekDayNameAndTime(date) {
-  let format = "YYYYMMDDHHmmss";
-  let convert = moment(date, format);
-  let lang = "ja",
-    d = convert.toDate(),
-    year = d.toLocaleString(lang, { year: "numeric" }),
-    month = d.toLocaleString(lang, { month: "short" }),
-    day = d.toLocaleString(lang, { day: "numeric" }),
-    hour = d.toLocaleString(lang, { hour: "numeric" }),
-    minutes = d.toLocaleString(lang, { minute: "numeric" }),
-    dayName = d.toLocaleString(lang, { weekday: "short" });
-  return `${year}${month}${day} (${dayName}) ${hour}${minutes}分`;
 }
 
 export function displayNumberWithCommas(number) {

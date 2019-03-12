@@ -5,13 +5,12 @@ import IntlMessages from "../../../components/utility/intlMessages";
 
 const ParagraphAbout = styled.p`
   margin: 0;
-  padding: 0;
   margin-top: 30px;
   padding: 0 16px;
   font-size: 13px;
 `;
 
-const HistoryFooter = props => {
+const MileServiceFooter = props => {
   return (
     <ParagraphAbout>
       <Link to="/store/mileservice/shoppingpoint_history">
@@ -21,4 +20,4 @@ const HistoryFooter = props => {
   );
 };
 
-export default HistoryFooter;
+export default MileServiceFooter;

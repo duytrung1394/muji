@@ -636,7 +636,8 @@
   "mileService.mileList.point.duration": "2018年3月1日～2019年2月末日",
   "mileService.mileList.usage.duration": "※2018年度に取得したマイルは2019年2月28日（木）23時59分で失効します。",
   "mileService.mileList.point.pointExpiredAt": "※2017年度に取得したマイルは2019年2月28日（火）23時59分で失効しました。",
-
+  "mileService.dateFormat.dateAndTime": "YYYY年M月D日 (ddd) HH時mm分",
+  "mileService.dateFormat.dateAndWeekDay": "YYYY年M月D日 (ddd)", 
   "notes.ChoseColor": "Choose a color for your note",
   "notes.addNote": "Add New Note",
   "notice.notice.title": "お知らせ",

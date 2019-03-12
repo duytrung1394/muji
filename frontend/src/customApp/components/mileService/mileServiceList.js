@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import {
-  formatWithWeekDayName,
-  displayNumberWithCommas
-} from "../../../helpers/utility";
+import { displayNumberWithCommas } from "../../../helpers/utility";
+import moment from "../../util/moment";
 
 const LayoutSectionList = styled.div`
   padding: 16px;
@@ -64,9 +62,11 @@ const Title = styled.h1`
   padding-bottom: 10px;
 `;
 
-const HistoryInfoList = props => {
-  const { miles } = props;
-
+const MileServiceList = ({ miles, intl }) => {
+  const dateFormat = intl.formatMessage({
+    id: "mileService.dateFormat.dateAndWeekDay"
+  });
+  const isValidMileArray = miles && miles.length > 0;
   return (
     <LayoutInfo>
       <LayoutSectionList>
@@ -74,10 +74,13 @@ const HistoryInfoList = props => {
           <IntlMessages id="mileService.mileList.title" />
         </Title>
         <LayoutList>
-          {miles && miles.length > 0 ? (
+          {isValidMileArray ? (
             miles.map((mile, index) => {
               const formated =
-                mile.mileDate && formatWithWeekDayName(mile.mileDate);
+                mile.mileDate &&
+                moment(mile.mileDate, "YYYYMMDDHHmmss").format(dateFormat);
+              const isValidMileAmount =
+                mile.mileAmount && parseInt(mile.mileAmount) > 0;
               return (
                 <ListItemInList key={index}>
                   <ListItemDL>
@@ -90,30 +93,30 @@ const HistoryInfoList = props => {
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.usage.content" />
                     </ListItemDT>
-                    {mile.mileAmount && parseInt(mile.mileAmount) < 0 ? (
-                      <ListItemDDRed>
-                        {mile.mileTypeName}@{mile.locName}
-                      </ListItemDDRed>
-                    ) : (
+                    {isValidMileAmount ? (
                       <ListItemDD>
                         {mile.mileTypeName}@{mile.locName}
                       </ListItemDD>
+                    ) : (
+                      <ListItemDDRed>
+                        {mile.mileTypeName}@{mile.locName}
+                      </ListItemDDRed>
                     )}
                   </ListItemDL>
                   <ListItemDL>
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.miles" />
                     </ListItemDT>
-                    {mile.mileAmount && parseInt(mile.mileAmount) < 0 ? (
-                      <ListItemDDRed>
-                        {displayNumberWithCommas(mile.mileAmount)}
-                        <IntlMessages id="mileService.mileSummary.mile" />
-                      </ListItemDDRed>
-                    ) : (
+                    {isValidMileAmount ? (
                       <ListItemDD>
                         {displayNumberWithCommas(mile.mileAmount)}
                         <IntlMessages id="mileService.mileSummary.mile" />
                       </ListItemDD>
+                    ) : (
+                      <ListItemDDRed>
+                        {displayNumberWithCommas(mile.mileAmount)}
+                        <IntlMessages id="mileService.mileSummary.mile" />
+                      </ListItemDDRed>
                     )}
                   </ListItemDL>
                 </ListItemInList>
@@ -130,4 +133,4 @@ const HistoryInfoList = props => {
   );
 };
 
-export default HistoryInfoList;
+export default MileServiceList;

@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "../../components/shared/form/link";
 import IntlMessages from "../../../components/utility/intlMessages";
+import { Row, Col } from "antd";
 
-const LayoutHeader = styled.div`
-  display: flex;
+const LayoutHeaderWrapper = styled(Row)`
+  display: flex !important;
   justify-content: space-between;
   margin-top: 30px;
   padding: 0 16px;
@@ -12,24 +13,26 @@ const LayoutHeader = styled.div`
 const HeaderPreceding = styled.h1`
   font-size: 19px;
 `;
-const HeaderSpan = styled.span`
-  white-space: nowrap;
-  padding: 3px 0;
+const CustomLink = styled(Link)`
+  float: right;
+  margin-top: 9px;
 `;
 
-const HistoryHeader = props => {
+const MileServiceHeader = props => {
   return (
-    <LayoutHeader>
-      <HeaderPreceding>
-        <IntlMessages id="mileService.page.title" />
-      </HeaderPreceding>
-      <Link to="/store/mileservice/previous_year_history">
-        <HeaderSpan>
+    <LayoutHeaderWrapper>
+      <Col span={12}>
+        <HeaderPreceding>
+          <IntlMessages id="mileService.page.title" />
+        </HeaderPreceding>
+      </Col>
+      <Col span={12}>
+        <CustomLink to="/store/mileservice/previous_year_history">
           <IntlMessages id="mileService.page.link.previous" />
-        </HeaderSpan>
-      </Link>
-    </LayoutHeader>
+        </CustomLink>
+      </Col>
+    </LayoutHeaderWrapper>
   );
 };
 
-export default HistoryHeader;
+export default MileServiceHeader;
