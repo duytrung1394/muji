@@ -73,11 +73,7 @@ class DeleteButton extends Component {
   render() {
     return (
       <Container>
-        <LinkStyleButton
-          to={"#"}
-          onClick={this.showModal}
-          color="rgb(96, 179, 250)"
-        >
+        <LinkStyleButton onClick={this.showModal}>
           <IntlMessages id="delivery.deleteLink.delete" />
         </LinkStyleButton>
         <Modal

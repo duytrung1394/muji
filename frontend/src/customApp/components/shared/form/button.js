@@ -57,14 +57,12 @@ export const OutlineButton = styled(Button)`
   }
 `;
 
+const linkColor = "rgb(96, 179, 250)";
+
 export const LinkStyleButton = styled(Button)`
   &&& {
-    ${({ width = "", height = "", color, reverse = false }) => ({
-      width,
-      height,
-      backgroundColor: reverse ? color || reverseColor : reverseColor,
-      color: reverse ? reverseColor : color || baseColor,
-      borderColor: color || baseColor
+    ${({ color = linkColor }) => ({
+      color
     })};
     font-size: 12px;
     font-weight: bold;
