@@ -88,7 +88,7 @@ class DeliveryLinkStyleButton extends Component {
           </ModalTitle>
           <DeleteButton>
             <OutlineButton to={"#"} onClick={this.handleOk}>
-              <IntlMessages id="delivery.delete" />
+              <IntlMessages id="delivery.button.delete" />
             </OutlineButton>
           </DeleteButton>
         </Modal>

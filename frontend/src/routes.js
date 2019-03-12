@@ -244,6 +244,13 @@ const routes = [
     )
   },
   {
+    path: "/store/delivery/add",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Add/index")
+    )
+  },
+  {
     path: "/store/accounts/memberguide",
     exact: true,
     component: asyncComponent(() =>
