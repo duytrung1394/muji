@@ -12,7 +12,7 @@ class CmsController extends Controller
      */
     public function getCmdtySectionInclude(Request $request, string $sectionCode)
     {
-        return response('<div>include contents sample</div>')->header('Content-Type', 'text/html');
+        return file_get_contents(storage_path('cms/cmdty_section_include.html'));
     }
 
     /**
@@ -22,7 +22,7 @@ class CmsController extends Controller
      */
     public function getCmdtySectionSubsections(Request $request, string $sectionCode)
     {
-        return response('<div>subsections contents sample</div>')->header('Content-Type', 'text/html');
+        return file_get_contents(storage_path('cms/cmdty_section_subsections.html'));
     }
 
     /**
@@ -32,6 +32,16 @@ class CmsController extends Controller
      */
     public function getCmdtyDetailInclude1(Request $request, string $productCode)
     {
-        return response('<div>cmdty detail include1 contents sample</div>')->header('Content-Type', 'text/html');
+        return file_get_contents(storage_path('cms/cmdty_detail_include1.html'));
+    }
+
+    /**
+     * 商品詳細インクルード(エリア2)取得
+     *
+     * @return Response
+     */
+    public function getCmdtyDetailInclude2(Request $request, string $productCode)
+    {
+        return file_get_contents(storage_path('cms/cmdty_detail_include2.html'));
     }
 }
