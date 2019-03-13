@@ -298,6 +298,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
     )
+  },
+  {
+    path: "/account/mujicard_linked",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicard_linked")
+    )
   }
 ];
 export default routes;
