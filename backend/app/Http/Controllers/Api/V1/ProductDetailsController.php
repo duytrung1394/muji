@@ -49,18 +49,26 @@ class ProductDetailsController extends Controller
                 [
                     'title' => 'ライトシルバーグレー',
                     'img' => 'img-color-1.png',
+                    'inventoryStatus' => 'STOCK',
+                    'amount' => 10,
                 ],
                 [
                     'title' => '黒',
                     'img' => 'img-color-2.png',
+                    'inventoryStatus' => 'FEWNESS',
+                    'amount' => 3,
                 ],
                 [
                     'title' => 'ライトシルバーグレー×ボーダー',
                     'img' => 'img-color-3.png',
+                    'inventoryStatus' => 'NONETHANDLING',
+                    'amount' => 0,
                 ],
                 [
                     'title' => 'ライトシルバーグレー×柄',
-                    'img' => 'img-color-4.png',
+                    'img' => 'img-color-4-nostock.png',
+                    'inventoryStatus' => 'NOSTOCK',
+                    'amount' => 0,
                 ],
             ],
             'size_list_select' => 1,
