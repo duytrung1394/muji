@@ -261,7 +261,7 @@ const routes = [
     path: "/account/mujicard_link",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/Account/mujicard_link")
+      require("./customApp/containers/Account/mujicardLink")
     )
   }
 ];
