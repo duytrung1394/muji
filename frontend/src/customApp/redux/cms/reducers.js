@@ -1,58 +1,51 @@
 import { handleActions } from "redux-actions";
+import { combineReducers } from "redux";
 import { Map } from "immutable";
 
 const initState = new Map({
-  // ip: null,
-  contents: '<p>test</p>',
+  contents: "",
   fetching: false,
   fetched: false,
   fetchError: null
 });
 
-const fetchIncludeRequest = (state, action) =>
+const fetchRequest = (state, action) =>
   state
     .set("fetching", true)
     .set("fetched", false)
     .set("fetchError", null);
 
-const fetchIncludeSuccess = (state, action) => 
+const fetchSuccess = (state, action) => 
   state
-    // .set("ip", action.payload.origin)
+    .set("contents", action.payload)
     .set("fetching", false)
     .set("fetched", true);
 
-const fetchIncludeFailure = (state, action) => 
+const fetchFailure = (state, action) => 
   state
-    // .set("ip", undefined)
+    .set("contents", "")
     .set("fetching", false)
     .set("fetchError", true);
 
-const fetchIncludeCleanup = (state, action) =>
+const fetchCleanup = (state, action) =>
   state
-    // .set("ip", undefined)
+    .set("contents", "")
     .set("fetching", false)
     .set("fetched", false)
     .set("fetchError", false);
 
-const reducer = handleActions(
+const cmdtySectionInclude = handleActions(
   {
     CMS: {
       CMDTY: {
         SECTION: {
-          FETCH_INCLUDE: {
-            REQUEST: fetchIncludeRequest,
-            SUCCESS: fetchIncludeSuccess,
-            FAILURE: fetchIncludeFailure,
-            CLEANUP: fetchIncludeCleanup
-          },
-          // FETCH_SUBSECTIONS: {}
-        },
-        DETAIL: {
-          FETCH_INCLUDE1: {
-            REQUEST: fetchIncludeRequest,
-            SUCCESS: fetchIncludeSuccess,
-            FAILURE: fetchIncludeFailure,
-            CLEANUP: fetchIncludeCleanup
+          INCLUDE: {
+            FETCH: {
+              REQUEST: fetchRequest,
+              SUCCESS: fetchSuccess,
+              FAILURE: fetchFailure,
+              CLEANUP: fetchCleanup
+            }
           }
         }
       }
@@ -61,4 +54,56 @@ const reducer = handleActions(
   initState
 );
 
-export default reducer;
+const cmdtyDetailInclude1 = handleActions(
+  {
+    CMS: {
+      CMDTY: {
+        DETAIL: {
+          INCLUDE1: {
+            FETCH: {
+              REQUEST: fetchRequest,
+              SUCCESS: fetchSuccess,
+              FAILURE: fetchFailure,
+              CLEANUP: fetchCleanup
+            }
+          }
+        }
+      }
+    }
+  },
+  initState
+);
+
+const cmdtyDetailInclude2 = handleActions(
+  {
+    CMS: {
+      CMDTY: {
+        DETAIL: {
+          INCLUDE2: {
+            FETCH: {
+              REQUEST: fetchRequest,
+              SUCCESS: fetchSuccess,
+              FAILURE: fetchFailure,
+              CLEANUP: fetchCleanup
+            }
+          }
+        }
+      }
+    }
+  },
+  initState
+);
+
+const reducers = combineReducers({
+  Cmdty: combineReducers({
+    Section: combineReducers({
+      Include: cmdtySectionInclude,
+    }),
+    Detail: combineReducers({
+      Include1: cmdtyDetailInclude1,
+      Include2: cmdtyDetailInclude2,
+    }),
+  })
+});
+
+export default reducers;

@@ -29,3 +29,12 @@ $router->get('/api/v1/cms/store/cmdty/detail/{productCode}/include1', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CmsController@getCmdtyDetailInclude1',
 ]);
+
+// dummy
+/**
+ * 商品詳細インクルード(エリア1)取得
+ */
+$router->get('/api/v1/cms/store/cmdty/detail/{productCode}/include2', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CmsController@getCmdtyDetailInclude1',
+]);

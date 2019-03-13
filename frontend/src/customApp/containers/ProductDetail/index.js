@@ -9,7 +9,7 @@ import Form from "../../components/productDetail/form";
 import ContentHeader from "../../components/shared/header/contentHeader";
 import StockStatus from "../../components/productDetail/stockStatus";
 import styled from "styled-components";
-import { CmdtyDetailCmsContent } from "../../components/cms";
+import { CmsContentCmdtyDetailInclude1 } from "../../components/cms";
 
 const PictureCol = styled(Col)`
   max-height: 700px;
@@ -85,7 +85,7 @@ class Index extends Component {
             <Col span={11} offset={1}>
               <Form entity={entity} />
               <StockStatus entity={entity} />
-              <CmdtyDetailCmsContent />
+              <CmsContentCmdtyDetailInclude1 productCode="T1234567890" />
             </Col>
           </Row>
         </Spin>

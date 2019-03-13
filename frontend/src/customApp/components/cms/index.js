@@ -3,20 +3,22 @@ import { connect } from "react-redux";
 import actions from "../../redux/cms/actions";
 
 class CmsContent extends Component {
+  componentDidMount() {
+    this.props.fetchRequest(this.props.productCode);
+  }
+
   render() {
-    return <div dangerouslySetInnerHTML={{ __html: this.props.contents || '' }}></div>;
+    return <div dangerouslySetInnerHTML={{ __html: this.props.contents || '' }} />;
   }
 }
 
-const CmdtyDetailCmsContent = connect(
-  state => {
-    return state.Cms.toJS();
-  },
+const CmsContentCmdtyDetailInclude1 = connect(
+  state => state.Cms.Cmdty.Detail.Include1.toJS(),
   {
-    fetchRequest: actions.cmdty.detail.fetchInclude1.request
+    fetchRequest: actions.cmdty.detail.include1.fetch.request
   }
 )(CmsContent);
 
 export {
-  CmdtyDetailCmsContent
+  CmsContentCmdtyDetailInclude1
 };

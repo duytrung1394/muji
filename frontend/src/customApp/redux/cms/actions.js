@@ -5,11 +5,20 @@ const actions = createActions({
   CMS: {
     CMDTY: {
       SECTION: {
-        FETCH_INCLUDE: req,
-        // FETCH_SUBSECTIONS: req
+        INCLUDE: {
+          FETCH: req,
+        },
+        // SUBSECTIONS: {
+        //   FETCH: req,
+        // },
       },
       DETAIL: {
-        FETCH_INCLUDE1: req
+        INCLUDE1: {
+          FETCH: req,
+        },
+        INCLUDE2: {
+          FETCH: req,
+        }
       }
     },
   }
