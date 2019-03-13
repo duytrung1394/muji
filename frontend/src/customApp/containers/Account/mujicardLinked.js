@@ -63,33 +63,39 @@ const MujicardLinkedTitle = () => {
     );
 };
 
-
-const MujicardLinked = () => {
-
+class Index extends Component {
+  render() {
     return (
-        <AreaLayout>
-            <BaseContentLayout>
-                <MujicardLinkedTitle />
-                <MujicardLinkedHeadDescription1>
-                    <IntlMessages id="account.mujicardLinkedText1" />
-                </MujicardLinkedHeadDescription1>
-                <MujicardLinkedHeadDescription2>
-                    <IntlMessages id="account.mujicardLinkedText2" />
-                </MujicardLinkedHeadDescription2>
-                <MujicardLinkedHeadDetails>
-                    <a href="#">
-                        <IntlMessages id="account.mujicardLinkedHeadDetails" />
-                    </a>
-                </MujicardLinkedHeadDetails>
-                <ButtonArea>
-                    <OutlineButton color="#7f0119" reverse="true">
-                        <IntlMessages id="account.mujicardLinkedButton" />
-                    </OutlineButton>
-                </ButtonArea>
-            </BaseContentLayout>
-        </AreaLayout>
+      <AreaLayout>
+          <BaseContentLayout>
+              <MujicardLinkedTitle />
+              <MujicardLinkedHeadDescription1>
+                  <IntlMessages id="account.mujicardLinkedText1" />
+              </MujicardLinkedHeadDescription1>
+              <MujicardLinkedHeadDescription2>
+                  <IntlMessages id="account.mujicardLinkedText2" />
+              </MujicardLinkedHeadDescription2>
+              <MujicardLinkedHeadDetails>
+                  <a href="#">
+                      <IntlMessages id="account.mujicardLinkedHeadDetails" />
+                  </a>
+              </MujicardLinkedHeadDetails>
+              <ButtonArea>
+                  <OutlineButton color="#7f0119" reverse="true">
+                      <IntlMessages id="account.mujicardLinkedButton" />
+                  </OutlineButton>
+              </ButtonArea>
+          </BaseContentLayout>
+      </AreaLayout>
     );
-  };
-  
-  export default MujicardLinked;
+  }
+}
+
+const enhance = C => {
+  const injected = injectIntl(C, { withRef: true });
+  return injected;
+};
+
+export default enhance(Index);
+
   
