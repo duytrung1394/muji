@@ -256,6 +256,20 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
     )
+  },
+  {
+    path: "/store/accounts",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/memberguide")
+    )
+  },
+  {
+    path: "/account/mujicard_link",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicard_link")
+    )
   }
 ];
 export default routes;
