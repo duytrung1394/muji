@@ -8,7 +8,9 @@ class CmsContent extends Component {
   }
 
   render() {
-    return <div dangerouslySetInnerHTML={{ __html: this.props.contents || '' }} />;
+    return (
+      <div dangerouslySetInnerHTML={{ __html: this.props.contents || "" }} />
+    );
   }
 }
 
@@ -19,6 +21,4 @@ const CmsContentCmdtyDetailInclude1 = connect(
   }
 )(CmsContent);
 
-export {
-  CmsContentCmdtyDetailInclude1
-};
+export { CmsContentCmdtyDetailInclude1 };

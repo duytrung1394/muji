@@ -15,13 +15,13 @@ const fetchRequest = (state, action) =>
     .set("fetched", false)
     .set("fetchError", null);
 
-const fetchSuccess = (state, action) => 
+const fetchSuccess = (state, action) =>
   state
     .set("contents", action.payload)
     .set("fetching", false)
     .set("fetched", true);
 
-const fetchFailure = (state, action) => 
+const fetchFailure = (state, action) =>
   state
     .set("contents", "")
     .set("fetching", false)
@@ -97,12 +97,12 @@ const cmdtyDetailInclude2 = handleActions(
 const reducers = combineReducers({
   Cmdty: combineReducers({
     Section: combineReducers({
-      Include: cmdtySectionInclude,
+      Include: cmdtySectionInclude
     }),
     Detail: combineReducers({
       Include1: cmdtyDetailInclude1,
-      Include2: cmdtyDetailInclude2,
-    }),
+      Include2: cmdtyDetailInclude2
+    })
   })
 });
 

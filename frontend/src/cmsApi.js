@@ -9,7 +9,7 @@ function getApi(path, option = {}) {
     ...option,
     headers: {
       Accept: "text/html",
-      "content-type": "application/json",
+      "content-type": "application/json"
     }
   });
 }

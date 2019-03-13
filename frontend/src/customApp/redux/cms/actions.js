@@ -6,21 +6,21 @@ const actions = createActions({
     CMDTY: {
       SECTION: {
         INCLUDE: {
-          FETCH: req,
-        },
+          FETCH: req
+        }
         // SUBSECTIONS: {
         //   FETCH: req,
         // },
       },
       DETAIL: {
         INCLUDE1: {
-          FETCH: req,
+          FETCH: req
         },
         INCLUDE2: {
-          FETCH: req,
+          FETCH: req
         }
       }
-    },
+    }
   }
 });
 
