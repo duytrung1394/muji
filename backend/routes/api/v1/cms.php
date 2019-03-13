@@ -21,3 +21,11 @@ $router->get('/api/v1/cms/store/cmdty/section/{sectionCode}/subsections', [
     'middleware'    => [],
     'uses'          => 'Api\V1\CmsController@getCmdtySectionSubsections',
 ]);
+
+/**
+ * 商品詳細インクルード(エリア1)取得
+ */
+$router->get('/api/v1/cms/store/cmdty/detail/{productCode}/include1', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\CmsController@getCmdtyDetailInclude1',
+]);

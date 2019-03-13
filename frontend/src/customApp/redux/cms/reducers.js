@@ -3,6 +3,7 @@ import { Map } from "immutable";
 
 const initState = new Map({
   // ip: null,
+  contents: '<p>test</p>',
   fetching: false,
   fetched: false,
   fetchError: null
@@ -45,10 +46,16 @@ const reducer = handleActions(
             CLEANUP: fetchIncludeCleanup
           },
           // FETCH_SUBSECTIONS: {}
+        },
+        DETAIL: {
+          FETCH_INCLUDE1: {
+            REQUEST: fetchIncludeRequest,
+            SUCCESS: fetchIncludeSuccess,
+            FAILURE: fetchIncludeFailure,
+            CLEANUP: fetchIncludeCleanup
+          }
         }
-      },
-      // DETAIL: {},
-      // ... ,
+      }
     }
   },
   initState

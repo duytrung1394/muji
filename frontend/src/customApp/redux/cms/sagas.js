@@ -14,9 +14,21 @@ function* fetchIncludeSaga({ payload }) {
   }
 }
 
+function* fetchDetailSaga({ payload }) {
+  try {
+    const response = yield call(
+      () => cmsApi.get(`store/cmdty/detail/${payload.productCode}/include1`)
+    );
+    yield put(actions.cmdty.detail.fetchInclude1.success(response.data));
+  } catch (error) {
+    yield put(actions.cmdty.detail.fetchInclude1.failure(error));
+  }
+}
+
 export default function* sagas() {
   yield all([
-    takeEvery(actions.cmdty.section.fetchInclude.request.toString(), fetchIncludeSaga)
+    takeEvery(actions.cmdty.section.fetchInclude.request.toString(), fetchIncludeSaga),
+    takeEvery(actions.cmdty.detail.fetchInclude1.request.toString(), fetchDetailSaga)
     // takeEvery(),
     // takeEvery(),
     // takeEvery(),

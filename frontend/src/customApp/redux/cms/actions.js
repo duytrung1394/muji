@@ -7,10 +7,11 @@ const actions = createActions({
       SECTION: {
         FETCH_INCLUDE: req,
         // FETCH_SUBSECTIONS: req
+      },
+      DETAIL: {
+        FETCH_INCLUDE1: req
       }
     },
-    // DETAIL: {},
-    // ... ,
   }
 });
 

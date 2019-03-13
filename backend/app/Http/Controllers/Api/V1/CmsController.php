@@ -24,4 +24,14 @@ class CmsController extends Controller
     {
         return response('<div>subsections contents sample</div>')->header('Content-Type', 'text/html');
     }
+
+    /**
+     * 商品詳細インクルード(エリア1)取得
+     *
+     * @return Response
+     */
+    public function getCmdtyDetailInclude1(Request $request, string $productCode)
+    {
+        return response('<div>cmdty detail include1 contents sample</div>')->header('Content-Type', 'text/html');
+    }
 }
