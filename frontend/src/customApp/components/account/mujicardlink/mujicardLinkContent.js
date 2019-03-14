@@ -33,12 +33,12 @@ const MujicardLinkContent = () => {
   return (
     <MujicardLinkDescription>
       <MujicardLinkText>
-        <IntlMessages id="account.page.mujicardLink.description_line1" />
+        <IntlMessages id="account.page.mujicardLink.descriptionLine1" />
         <br />
-        <IntlMessages id="account.page.mujicardLink.description_line2" />
+        <IntlMessages id="account.page.mujicardLink.descriptionLine2" />
       </MujicardLinkText>
       <MujicardLinkText1>
-        <IntlMessages id="account.page.mujicardLink.description_line3" />
+        <IntlMessages id="account.page.mujicardLink.descriptionLine3" />
       </MujicardLinkText1>
       <MujicardLinkDetail>
         <Link to="">
