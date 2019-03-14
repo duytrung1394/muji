@@ -56,10 +56,6 @@ const PriceValue = styled.span`
   color: ${props => (props.isOldPrice ? "#999" : "#333")};
   text-decoration: ${props =>
     props.isOldPrice ? "line-through black" : "none"};
-  font-family: "Helvetica", sans-serif;
-  span.price {
-    font-size: ${props => (props.isOldPrice ? "inherit" : "15px")};
-  }
 `;
 
 const NewPriceValue = styled(PriceValue)`
@@ -84,6 +80,8 @@ const colLayout = {
   lg: 6,
   xl: 5
 };
+
+const numberFormatter = new Intl.NumberFormat();
 
 class ItemView extends Component {
   componentDidUpdate(prevProps) {
@@ -153,7 +151,11 @@ class ItemView extends Component {
           <PriceValue isOldPrice={new_price}>
             <IntlMessages
               id="productCategoryTop.price"
-              values={{ price: <span className="price">{price}</span> }}
+              values={{
+                price: (
+                  <span className="price">{numberFormatter.format(price)}</span>
+                )
+              }}
             />
           </PriceValue>
           {new_price && (
@@ -161,7 +163,13 @@ class ItemView extends Component {
               <span className="arrow">→</span>
               <IntlMessages
                 id="productCategoryTop.price"
-                values={{ price: <span className="price">{new_price}</span> }}
+                values={{
+                  price: (
+                    <span className="price">
+                      {numberFormatter.format(new_price)}
+                    </span>
+                  )
+                }}
               />
             </NewPriceValue>
           )}

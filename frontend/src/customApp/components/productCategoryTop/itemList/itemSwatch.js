@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Icon } from "antd";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 
@@ -9,10 +8,6 @@ const Swatch = styled(Col)`
     font-size: 12px;
     cursor: pointer;
     margin: 2px 2px;
-  }
-
-  .anticon {
-    display: block;
   }
 `;
 
@@ -81,7 +76,6 @@ class ItemSwatch extends Component {
         >
           {expanded ? (
             <div>
-              <Icon type="up" theme="outlined" />
               <IntlMessages id="productCategoryTop.itemSwatch.close" />
             </div>
           ) : (
@@ -90,7 +84,6 @@ class ItemSwatch extends Component {
                 id="productCategoryTop.itemSwatch.otherColors"
                 values={{ num: swatches.length - 4 }}
               />
-              <Icon type="down" theme="outlined" />
             </div>
           )}
         </span>
