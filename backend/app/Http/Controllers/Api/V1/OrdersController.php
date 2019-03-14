@@ -171,6 +171,15 @@ class OrdersController extends Controller
                             'price' => '2,980',
                             'img' => 'OrderDeliveryImage1',
                             'discount' => false,
+                            'privateWorkItems' => [
+                                 'HEIGHT' => [
+                                     "仕上がりサイズ：100.0cm",
+                                 ],
+                                 'HEMMING' => [
+                                     "股下仕上がり寸法：61.0cm",
+                                     "裾上げ種類：シングル",
+                                 ],
+                             ],
                         ],
                         [
                             'janCode' => '4550002661052',

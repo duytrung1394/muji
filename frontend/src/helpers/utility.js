@@ -65,5 +65,8 @@ export function stringToPosetiveInt(value, defValue = 0) {
 }
 
 export function displayNumberWithCommas(number) {
+  if (!number) {
+    return 0;
+  }
   return parseInt(number, 10).toLocaleString();
 }

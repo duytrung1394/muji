@@ -56,3 +56,26 @@ export const OutlineButton = styled(Button)`
     letter-spacing: normal;
   }
 `;
+
+const linkColor = "rgb(96, 179, 250)";
+
+export const LinkStyleButton = styled(Button)`
+  &&& {
+    ${({ color = linkColor }) => ({
+      color
+    })};
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+  }
+
+  &.ant-btn-clicked:after {
+    content: "";
+    border: none;
+  }
+
+  &.ant-btn-two-chinese-chars > *:not(.anticon) {
+    letter-spacing: normal;
+  }
+`;

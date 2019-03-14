@@ -5,8 +5,6 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import { Row, Col } from "antd";
 
 const LayoutHeaderWrapper = styled(Row)`
-  display: flex !important;
-  justify-content: space-between;
   margin-top: 30px;
   padding: 0 16px;
 `;
@@ -18,9 +16,9 @@ const CustomLink = styled(Link)`
   margin-top: 9px;
 `;
 
-const MileServiceHeader = props => {
+const MileServiceHeader = () => {
   return (
-    <LayoutHeaderWrapper>
+    <LayoutHeaderWrapper type="flex" justify="space-between">
       <Col span={12}>
         <HeaderPreceding>
           <IntlMessages id="mileService.page.title" />

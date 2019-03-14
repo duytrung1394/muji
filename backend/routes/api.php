@@ -62,9 +62,11 @@ require_once 'api/v1/search.php';
 // /api/v1/favorites
 require_once 'api/v1/favorites.php';
 
-
 // /api/v1/mile-services
 require_once 'api/v1/mile_services.php';
+
+// /api/v1/cms: 仮実装
+require_once 'api/v1/cms.php';
 
 // YEOMAN-INSERT-POINT
 // ↑ジェネレータによる差し込み箇所です。 編集・削除しないでください。

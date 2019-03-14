@@ -11,11 +11,6 @@ const LayoutSectionList = styled.div`
   box-shadow: 0 1px 3px 1px rgba(153, 153, 153, 0.5);
 `;
 const LayoutInfo = styled.div`
-  margin: 0;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  display: block;
   background: #f2f2f2;
   margin-top: 30px;
   padding: 16px;
@@ -23,7 +18,6 @@ const LayoutInfo = styled.div`
 `;
 const LayoutList = styled.ul`
   border-top: 1px solid #999;
-  margin: 0;
   padding: 0;
 `;
 const ListItemInList = styled.li`
@@ -40,20 +34,11 @@ const ListItemDL = styled.dl`
 const ListItemDT = styled.dt`
   font-weight: bold;
   display: inline-block;
-  margin: 0;
-  padding: 0;
 `;
 const ListItemDD = styled.dd`
   display: inline-block;
   margin: 0;
-  padding: 0;
-  color: #585858;
-`;
-const ListItemDDRed = styled.dd`
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  color: #7f0019;
+  color: ${props => (props.isValid ? "#585858" : "#7f0019")};
 `;
 const Title = styled.h1`
   color: #585858;
@@ -80,44 +65,31 @@ const MileServiceList = ({ miles, intl }) => {
                 mile.mileDate &&
                 moment(mile.mileDate, "YYYYMMDDHHmmss").format(dateFormat);
               const isValidMileAmount =
-                mile.mileAmount && parseInt(mile.mileAmount) > 0;
+                mile.mileAmount && parseInt(mile.mileAmount, 10) > 0;
               return (
                 <ListItemInList key={index}>
                   <ListItemDL>
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.dateOfUse" />
                     </ListItemDT>
-                    <ListItemDD>{formated}</ListItemDD>
+                    <ListItemDD isValid={true}>{formated}</ListItemDD>
                   </ListItemDL>
                   <ListItemDL>
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.usage.content" />
                     </ListItemDT>
-                    {isValidMileAmount ? (
-                      <ListItemDD>
-                        {mile.mileTypeName}@{mile.locName}
-                      </ListItemDD>
-                    ) : (
-                      <ListItemDDRed>
-                        {mile.mileTypeName}@{mile.locName}
-                      </ListItemDDRed>
-                    )}
+                    <ListItemDD isValid={isValidMileAmount}>
+                      {mile.mileTypeName}@{mile.locName}
+                    </ListItemDD>
                   </ListItemDL>
                   <ListItemDL>
                     <ListItemDT>
                       <IntlMessages id="mileService.mileList.miles" />
                     </ListItemDT>
-                    {isValidMileAmount ? (
-                      <ListItemDD>
-                        {displayNumberWithCommas(mile.mileAmount)}
-                        <IntlMessages id="mileService.mileSummary.mile" />
-                      </ListItemDD>
-                    ) : (
-                      <ListItemDDRed>
-                        {displayNumberWithCommas(mile.mileAmount)}
-                        <IntlMessages id="mileService.mileSummary.mile" />
-                      </ListItemDDRed>
-                    )}
+                    <ListItemDD isValid={isValidMileAmount}>
+                      {displayNumberWithCommas(mile.mileAmount)}
+                      <IntlMessages id="mileService.mileSummary.mile" />
+                    </ListItemDD>
                   </ListItemDL>
                 </ListItemInList>
               );

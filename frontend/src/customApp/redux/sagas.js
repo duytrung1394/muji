@@ -2,6 +2,7 @@
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
 import mileServiceSagas from "./mile_service/sagas";
+import cmsSagas from "./cms/sagas";
 import reviewSagas from "./review/sagas";
 import accountSagas from "./account/sagas";
 import productDetailSagas from "./product_detail/sagas";
@@ -17,7 +18,6 @@ import topSagas from "./top/sagas";
 import httpbinSagas from "./httpbin/sagas";
 import fruitSagas from "./fruit/sagas";
 import deliverySagas from "./delivery/sagas";
-
 export default function* devSaga() {
   yield all([
     taskSagas(),
@@ -36,6 +36,7 @@ export default function* devSaga() {
     lotterySagas(),
     mileServiceSagas(),
     deliverySagas(),
-    accountSagas()
+    accountSagas(),
+    cmsSagas()
   ]);
 }
