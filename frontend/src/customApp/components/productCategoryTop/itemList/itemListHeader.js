@@ -38,10 +38,6 @@ const sortLinkList = [
   {
     sortKey: "PRICE_IN_VAT",
     direction: "ASC"
-  },
-  {
-    sortKey: "RANKING",
-    direction: "ASC"
   }
 ];
 
