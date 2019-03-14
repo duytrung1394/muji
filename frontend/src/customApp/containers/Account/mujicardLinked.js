@@ -7,6 +7,7 @@ import {
 } from "../../components/shared/panel/contentLayout";
 import IntlMessages from "../../../components/utility/intlMessages";
 import { OutlineButton } from "../../components/shared/form/button";
+import { Link } from "../../components/shared/form/link";
 
 const AreaLayout = styled(ContentAreaLayout)`
   max-width: 732px;
@@ -24,35 +25,28 @@ const MujicardLinkedHeadTitle = styled.h1`
   margin-top: 30px;
 `;
 
-
-const MujicardLinkedHeadDescription1 = styled.p`
+const BaseDescription = styled.p`
   color: #585858;
   margin: 10px 0 0;
+  text-align: justify;
+`;
 
+const MujicardLinkedHeadDescription1 = styled(BaseDescription)`
   line-height: 19px;
   font-size: 13px;
   letter-spacing: .3px;
-  text-align: justify;
 `;
 
-const MujicardLinkedHeadDescription2 = styled.p`
-  color: #585858;
+const MujicardLinkedHeadDescription2 = styled(BaseDescription)`
   letter-spacing: .25px;
   line-height: 15px;
   font-size: 11px;
-  margin: 10px 0 0;
-  text-align: justify;
 `;
 
-
-
-const MujicardLinkedHeadDetails = styled.p`
-  color: #585858;
+const MujicardLinkedHeadDetails = styled(BaseDescription)`
   letter-spacing: .25px;
   line-height: 19px;
   font-size: 12px;
-  margin: 10px 0 0;
-  text-align: justify;
 `;
 
 const MujicardLinkedTitle = () => {
@@ -70,15 +64,15 @@ class Index extends Component {
           <BaseContentLayout>
               <MujicardLinkedTitle />
               <MujicardLinkedHeadDescription1>
-                  <IntlMessages id="account.mujicardLinkedText1" />
+                  <IntlMessages id="account.mujicardLinked.descriptionLine1" />
               </MujicardLinkedHeadDescription1>
               <MujicardLinkedHeadDescription2>
-                  <IntlMessages id="account.mujicardLinkedText2" />
+                  <IntlMessages id="account.mujicardLinked.descriptionLine2" />
               </MujicardLinkedHeadDescription2>
               <MujicardLinkedHeadDetails>
-                  <a href="#">
-                      <IntlMessages id="account.mujicardLinkedHeadDetails" />
-                  </a>
+                <Link to="">
+                  <IntlMessages id="account.mujicardLinkedHeadDetails" />
+                </Link>
               </MujicardLinkedHeadDetails>
               <ButtonArea>
                   <OutlineButton color="#7f0119" reverse="true">
