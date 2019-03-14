@@ -1,28 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 import { OutlineButton } from "../../../components/shared/form/button";
-
-const FormArea = styled.div`
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0;
-  width: 50%;
-`;
-
-const FormItem = styled(Form.Item)`
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
-`;
-
-const Label = styled.h2`
-  color: rgb(88, 88, 88);
-  letter-spacing: 0.54px;
-  font-size: 13px;
-  font-weight: bold;
-`;
 
 const ZipCode = styled.span`
   font-size: 19px;
@@ -47,14 +27,6 @@ const AutofillButton = styled(OutlineButton)`
   }
 `;
 
-const Description = styled.p`
-  font-size: 11px;
-  text-align: justify;
-  line-height: 15px;
-  margin-bottom: 0;
-  margin-top: 8px;
-`;
-
 const StyledInput = styled(Input)`
   box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px 0px;
   && {
@@ -65,6 +37,32 @@ const StyledInput = styled(Input)`
     border: 1px solid rgb(153, 153, 153);
   }
 `;
+
+const ZipCodeForm = ({ handler }) => {
+  const { onChangeZipCode, onClickAutofill } = handler;
+  return (
+    <Fragment>
+      <Form.Item
+        label={<IntlMessages id="delivery.form.label.zipCode" />}
+        extra={<IntlMessages id="delivery.form.zipCode.description" />}
+      >
+        <ZipCode>
+          <IntlMessages id="label.zipCode" />
+        </ZipCode>
+        <ZipCodeInput onChange={onChangeZipCode} placeholder="1708424" />
+        <AutofillButton
+          width="92px"
+          height="42px"
+          color="rgb(153, 153, 153)"
+          reverse="true"
+          onClick={onClickAutofill}
+        >
+          <IntlMessages id="delivery.button.autofill" />
+        </AutofillButton>
+      </Form.Item>
+    </Fragment>
+  );
+};
 
 class AddressForm extends Component {
   constructor(props) {
@@ -79,11 +77,42 @@ class AddressForm extends Component {
     };
   }
 
+  getformItemData = () => {
+    return [
+      {
+        label: <IntlMessages id="delivery.form.label.address1" />,
+        placeholder: "東京都豊島区",
+        address: this.state.entity.address1 + this.state.entity.address2
+      },
+      {
+        label: <IntlMessages id="delivery.form.label.address2" />,
+        placeholder: "東池袋",
+        address: this.state.entity.address3
+      },
+      {
+        label: <IntlMessages id="delivery.form.label.address3" />,
+        placeholder: "4-26-3"
+      },
+      {
+        label: <IntlMessages id="delivery.form.label.address4" />,
+        placeholder: "部屋番号がある場合は入力が必須となります"
+      }
+    ];
+  };
+
+  onChangeZipCode = e => {
+    this.updateState("zipCode", e.target.value);
+  };
+
+  onClickAutofill = () => {
+    this.getAddress();
+  };
+
   getAddress = () => {
-    // TODO: 本来は外部API呼び出し
     if (this.state.zipCode) {
       const entity = {
         ...this.state.entity,
+        zipCode: "",
         address1: "東京都",
         address2: "新宿区",
         address3: "新宿"
@@ -101,72 +130,22 @@ class AddressForm extends Component {
   };
 
   render() {
+    const formItemData2 = this.getformItemData();
     return (
-      <Form>
-        <FormArea>
-          <FormItem>
-            <Label>
-              <IntlMessages id="delivery.add.form.zipCode" />
-            </Label>
-            <ZipCode>
-              <IntlMessages id="label.zipCode" />
-            </ZipCode>
-            <ZipCodeInput
-              onChange={e => this.updateState("zipCode", e.target.value)}
-              placeholder="1708424"
-            />
-            <AutofillButton
-              width="92px"
-              height="42px"
-              color="rgb(153, 153, 153)"
-              reverse="true"
-              onClick={this.getAddress}
-            >
-              <IntlMessages id="delivery.button.autofill" />
-            </AutofillButton>
-            <Description>
-              <IntlMessages id="delivery.add.form.zipCode.description1" />
-              <IntlMessages id="delivery.add.form.zipCode.description2" />
-            </Description>
-          </FormItem>
-          <FormItem>
-            <Label>
-              <IntlMessages id="delivery.add.form.address1" />
-            </Label>
-            <StyledInput
-              placeholder="東京都豊島区"
-              value={this.state.entity.address1 + this.state.entity.address2}
-            />
-          </FormItem>
-          <FormItem>
-            <Label>
-              <IntlMessages id="delivery.add.form.address2" />
-            </Label>
-            <StyledInput
-              placeholder="東池袋"
-              value={this.state.entity.address3}
-            />
-          </FormItem>
-          <FormItem>
-            <Label>
-              <IntlMessages id="delivery.add.form.address3" />
-            </Label>
-            <StyledInput
-              placeholder="4-26-3"
-              value={this.state.entity.address4}
-            />
-          </FormItem>
-          <FormItem>
-            <Label>
-              <IntlMessages id="delivery.add.form.address4" />
-            </Label>
-            <StyledInput placeholder="部屋番号がある場合は入力が必須となります" />
-            <Description>
-              <IntlMessages id="delivery.add.form.address.description" />
-            </Description>
-          </FormItem>
-        </FormArea>
-      </Form>
+      <Fragment>
+        <ZipCodeForm
+          handler={{
+            onChangeZipCode: this.onChangeZipCode,
+            onClickAutofill: this.onClickAutofill
+          }}
+        />
+        {formItemData2.map((item, index) => (
+          <Form.Item key={index}>
+            {item.label}
+            <StyledInput placeholder={item.placeholder} value={item.address} />
+          </Form.Item>
+        ))}
+      </Fragment>
     );
   }
 }
