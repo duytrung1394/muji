@@ -8,28 +8,26 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const WhiteButton = styled(OutlineButton)`
-  color: black !important;
-`;
-
 class MujicardLinkButtons extends Component {
   render() {
     return (
-      <ButtonArea>
-        <OutlineButton
-          color="#7f0119"
-          reverse="true"
-          onClick={this.props.onSubmit}
-        >
-          <IntlMessages id="account.page.mujicardLink.register" />
-        </OutlineButton>
-        <br />
-        <br />
+      <div>
+        <ButtonArea>
+          <OutlineButton
+            color="#7f0119"
+            reverse="true"
+            onClick={this.props.onSubmit}
+          >
+            <IntlMessages id="account.page.mujicardLink.register" />
+          </OutlineButton>
+        </ButtonArea>
 
-        <WhiteButton color="white" reverse="true">
-          <IntlMessages id="account.page.mujicardLink.return" />
-        </WhiteButton>
-      </ButtonArea>
+        <ButtonArea>
+          <OutlineButton>
+          　<IntlMessages id="account.page.mujicardLink.return" />
+          </OutlineButton>
+        </ButtonArea>
+      </div>
     );
   }
 }

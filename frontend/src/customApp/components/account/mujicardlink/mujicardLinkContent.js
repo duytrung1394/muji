@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { Link } from "../../shared/form/link";
 
 const MujicardLinkDescription = styled.div`
   margin-top: 20px;
@@ -32,17 +33,17 @@ const MujicardLinkContent = () => {
   return (
     <MujicardLinkDescription>
       <MujicardLinkText>
-        <IntlMessages id="account.page.mujicardLink.text1" />
+        <IntlMessages id="account.page.mujicardLink.description_line1" />
         <br />
-        <IntlMessages id="account.page.mujicardLink.text2" />
+        <IntlMessages id="account.page.mujicardLink.description_line2" />
       </MujicardLinkText>
       <MujicardLinkText1>
-        <IntlMessages id="account.page.mujicardLink.text3" />
+        <IntlMessages id="account.page.mujicardLink.description_line3" />
       </MujicardLinkText1>
       <MujicardLinkDetail>
-        <a href="#">
+        <Link to="">
           <IntlMessages id="account.page.mujicardLink.detail" />
-        </a>
+        </Link>
       </MujicardLinkDetail>
     </MujicardLinkDescription>
   );
