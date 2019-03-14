@@ -6,6 +6,7 @@ import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
 import SizeRange from "./sizeRange";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { numberFormatter } from "../../../util/numberFormatter";
 
 const itemStyleParams = `
   border-radius: 4px;
@@ -80,8 +81,6 @@ const colLayout = {
   lg: 6,
   xl: 5
 };
-
-const numberFormatter = new Intl.NumberFormat();
 
 class ItemView extends Component {
   componentDidUpdate(prevProps) {
