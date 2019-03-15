@@ -9,7 +9,7 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../../components/shared/panel/contentLayout";
-import Forms from "../../../components/delivery/add/forms";
+import Forms from "../../../components/delivery/forms/forms";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 700px;
