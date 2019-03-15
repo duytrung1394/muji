@@ -99,7 +99,7 @@ const UserName = styled.p`
   margin-bottom: 3px;
 `;
 
-const Main = ({ entity }) => {
+const Main = ({ review }) => {
   return (
     <MainWrapper>
       <Explain>
@@ -109,24 +109,24 @@ const Main = ({ entity }) => {
         <ExplainName>
           <UserName>ユーザー名</UserName>
           <Rate value={5} type={"small"} />
-          <RateText>5つ星のうち{entity.reviews[0].star}</RateText>
+          <RateText>5つ星のうち{review.star}</RateText>
         </ExplainName>
-        <ExplainDate>{entity.reviews[0].created}</ExplainDate>
+        <ExplainDate>{review.created}</ExplainDate>
       </Explain>
       <WearInfo>
-        <Info>購入サイズ：{entity.reviews[0].wearInfo.size}</Info>
-        <Info>身長：{entity.reviews[0].wearInfo.height}cm</Info>
+        <Info>購入サイズ：{review.wearInfo.size}</Info>
+        <Info>身長：{review.wearInfo.height}cm</Info>
       </WearInfo>
       <CommentWrapper>
-        <CommentTitle>{entity.reviews[0].webCatalogTitle}</CommentTitle>
-        <Comment>{entity.reviews[0].webCatalogDescription}</Comment>
+        <CommentTitle>{review.webCatalogTitle}</CommentTitle>
+        <Comment>{review.webCatalogDescription}</Comment>
       </CommentWrapper>
       <CommentLinkWrapper>
         <CommentLink to={"#"} icon={icoComment}>
-          {entity.reviews[0].countComment}件のコメント
+          {review.countComment}件のコメント
         </CommentLink>
         <CommentLink to={"#"} icon={icoReview}>
-          {entity.reviews[0].countUseful}人が役にたったと考えています
+          {review.countUseful}人が役にたったと考えています
         </CommentLink>
       </CommentLinkWrapper>
     </MainWrapper>

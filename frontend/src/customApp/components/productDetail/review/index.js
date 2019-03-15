@@ -17,22 +17,12 @@ const Content = styled.div`
   font-size: 12px;
 `;
 
-const Footer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-`;
-
 const Review = ({ entity }) => {
   return (
     <Base>
       <Content>
         <Header entity={entity} />
-        <Main entity={entity} />
+        <Main review={entity.reviews[0]} />
         <Footer entity={entity} />
       </Content>
     </Base>
