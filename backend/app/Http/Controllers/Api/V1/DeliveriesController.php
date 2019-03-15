@@ -19,6 +19,19 @@ class DeliveriesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  string   $customerAddressCode
+     * @return Response
+     */
+    public function edit($customerCode)
+    {
+        return [
+            'data' => $this->getEditMockData((int)$customerCode),
+        ];
+    }
+
+    /**
      * モックデータ取得用．
      *
      * @return array
@@ -97,6 +110,25 @@ class DeliveriesController extends Controller
                 'address4' => '丸の内ＪＰタワー3Ｆ',
                 'telNo' => '01 - 2345 - 6789'
             ],
+        ];
+    }
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getEditMockData($customerCode)
+    {
+        return [
+            'customerCode' => $customerCode,
+            'naming' => '',
+            'name' => '無印花子',
+            'nameKana' => 'ムジルシハナコ',
+            'zipCode' => '1234567',
+            'address1' => '東京都渋谷区',
+            'address2' => '宇田川町',
+            'address3' => '21-1',
+            'address4' => '渋谷西武パーキング館Ｂ1Ｆ',
+            'telNo' => '0123456789',
         ];
     }
 }
