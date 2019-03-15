@@ -38,7 +38,7 @@ const StyledInput = styled(Input)`
   }
 `;
 
-const ZipCodeForm = ({ handler }) => {
+const ZipCodeForm = ({ handler, value }) => {
   const { onChangeZipCode, onClickAutofill } = handler;
   return (
     <Fragment>
@@ -49,7 +49,7 @@ const ZipCodeForm = ({ handler }) => {
         <ZipCode>
           <IntlMessages id="label.zipCode" />
         </ZipCode>
-        <ZipCodeInput onChange={onChangeZipCode} placeholder="1708424" />
+        <ZipCodeInput onChange={onChangeZipCode} placeholder="1708424" value={value}/>
         <AutofillButton
           width="92px"
           height="42px"
@@ -69,10 +69,7 @@ class AddressForm extends Component {
     super(props);
     this.state = {
       entity: {
-        address1: "",
-        address2: "",
-        address3: "",
-        zipCode: ""
+        ...props.entity
       }
     };
   }
@@ -82,20 +79,22 @@ class AddressForm extends Component {
       {
         label: <IntlMessages id="delivery.form.label.address1" />,
         placeholder: "東京都豊島区",
-        address: this.state.entity.address1 + this.state.entity.address2
+        value: this.state.entity.address1
       },
       {
         label: <IntlMessages id="delivery.form.label.address2" />,
         placeholder: "東池袋",
-        address: this.state.entity.address3
+        value: this.state.entity.address2
       },
       {
         label: <IntlMessages id="delivery.form.label.address3" />,
-        placeholder: "4-26-3"
+        placeholder: "4-26-3",
+        value: this.state.entity.address3
       },
       {
         label: <IntlMessages id="delivery.form.label.address4" />,
-        placeholder: "部屋番号がある場合は入力が必須となります"
+        placeholder: "部屋番号がある場合は入力が必須となります",
+        value: this.state.entity.address4
       }
     ];
   };
@@ -112,10 +111,10 @@ class AddressForm extends Component {
     if (this.state.zipCode) {
       const entity = {
         ...this.state.entity,
-        zipCode: "",
         address1: "東京都",
         address2: "新宿区",
-        address3: "新宿"
+        address3: "新宿",
+        address4: ""
       };
       this.setState({ entity });
     }
@@ -123,14 +122,17 @@ class AddressForm extends Component {
 
   updateState = (keyName, value) => {
     const state = {
-      ...this.state,
+      ...this.state.entity,
       [keyName]: value
     };
-    this.setState(state);
+    
+    this.setState({
+      entity: state
+    });
   };
 
   render() {
-    const formItemData2 = this.getformItemData();
+    const formItemData = this.getformItemData();
     return (
       <Fragment>
         <ZipCodeForm
@@ -138,11 +140,12 @@ class AddressForm extends Component {
             onChangeZipCode: this.onChangeZipCode,
             onClickAutofill: this.onClickAutofill
           }}
+          value={this.state.entity.zipCode}
         />
-        {formItemData2.map((item, index) => (
+        {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} value={item.address} />
+            <StyledInput placeholder={item.placeholder} value={item.value} />
           </Form.Item>
         ))}
       </Fragment>

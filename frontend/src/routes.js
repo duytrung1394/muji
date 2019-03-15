@@ -300,7 +300,7 @@ const routes = [
     )
   },
   {
-    path: "/store/delivery/edit/index",
+    path: "/store/delivery/edit/:addressBookId",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Delivery/Edit/index")

@@ -26,13 +26,13 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const Forms = () => (
+const Forms = ({entity}) => (
   <Conteiner>
     <Wrapper>
       <Form>
-        <NameForm />
-        <AddressForm />
-        <TelForm />
+        <NameForm entity={entity}/>
+        <AddressForm entity={entity}/>
+        <TelForm entity={entity}/>
       </Form>
       <ButtonArea>
         <OutlineButton color="rgb(127, 0, 25)" reverse="true">

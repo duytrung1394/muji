@@ -23,7 +23,7 @@ const Title = styled.h1`
 
 class Index extends Component {
   componentDidMount() {
-    this.props.fetchRequest("");
+    this.props.fetchRequest(this.props.match.params.addressBookId);
   }
 
   render() {
@@ -39,7 +39,7 @@ class Index extends Component {
             <Title>
               <IntlMessages id="delivery.edit.title" />
             </Title>
-            <Forms />
+            <Forms entity={this.props.entity}/>
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>

@@ -14,25 +14,37 @@ const StyledInput = styled(Input)`
   }
 `;
 
-const formItemData = [
-  {
-    label: <IntlMessages id="delivery.form.label.name" />,
-    placeholder: "無印太郎"
-  },
-  {
-    label: <IntlMessages id="delivery.form.label.nameKana" />,
-    placeholder: "ムジルシタロウ"
-  }
-];
-
 class NameForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      entity: props.entity
+    }
+  }  
+
+  getFormItemData = () => {
+    return [
+      {
+        label: <IntlMessages id="delivery.form.label.name" />,
+        placeholder: "無印太郎",
+        value: this.state.entity.name
+      },
+      {
+        label: <IntlMessages id="delivery.form.label.nameKana" />,
+        placeholder: "ムジルシタロウ",
+        value: this.state.entity.nameKana
+      }
+    ];
+  }
+
   render() {
+    const formItemData = this.getFormItemData();
     return (
       <Fragment>
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} />
+            <StyledInput placeholder={item.placeholder} value={item.value}/>
           </Form.Item>
         ))}
       </Fragment>
