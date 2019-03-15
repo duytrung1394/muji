@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Row, Col } from "antd";
 import { Link } from "../../shared/form/link";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import Rate from "./rate";
 
 const RateText = styled.p`
@@ -9,16 +11,9 @@ const RateText = styled.p`
   margin-bottom: 0;
 `;
 
-const HeaderWrapper = styled.div`
-  display: flex;
+const HeaderWrapper = styled(Row)`
   justify-content: space-between;
   align-items: flex-end;
-`;
-
-const Right = styled.div`
-  font-size: 12px;
-  text-align: right;
-  letter-spacing: -1px;
 `;
 
 const Title = styled.p`
@@ -35,23 +30,50 @@ const ReviewNum = styled.span`
 `;
 
 const StyledLink = styled(Link)`
-  color: #60b3fa;
+  font-size: 12px;
+  letter-spacing: -1px;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
+    text-decoration: none;
+  }
 `;
 
 const Header = ({ entity }) => {
   return (
-    <HeaderWrapper>
-      <div>
-        <Title>レビュー</Title>
-        <Rate value={3.4} />
-        <RateText>5つ星のうち{entity.star}</RateText>
-      </div>
-      <Right>
+    <HeaderWrapper type="flex">
+      <Col>
+        <Title>
+          <IntlMessages id="productDetail.review.title" />
+        </Title>
+        <Rate value={entity.star} gutter={4} />
+        <RateText>
+          <IntlMessages
+            id="productDetail.review.starMessage"
+            values={{ rate: entity.star }}
+          />
+        </RateText>
+      </Col>
+      <Col>
         <StyledLink to={"#"}>
-          <ReviewNum>{entity.reviewNum}件</ReviewNum>
-          のカスタマーレビューを見る
+          <IntlMessages
+            id="productDetail.review.seeTotalReview"
+            values={{
+              value: (
+                <ReviewNum>
+                  <IntlMessages
+                    id="productDetail.review.totalReview"
+                    values={{ num: entity.reviewNum }}
+                  />
+                </ReviewNum>
+              )
+            }}
+          />
         </StyledLink>
-      </Right>
+      </Col>
     </HeaderWrapper>
   );
 };

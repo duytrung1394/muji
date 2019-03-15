@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "../../shared/form/link";
 import Rate from "./rate";
+import { Row, Col } from "antd";
 
 import icoReview from "../../../../image/product_detail/review/img-review-history-grey.png";
 import icoComment from "../../../../image/product_detail/review/ico-comment.png";
@@ -20,13 +22,11 @@ const MainWrapper = styled.div`
   border-bottom: 1px solid #999;
 `;
 
-const Explain = styled.div`
-  display: flex;
-  flex-direction: row;
+const Explain = styled(Row)`
   justify-content: space-between;
 `;
 
-const ExplainImg = styled.div`
+const ExplainImg = styled(Col)`
   width: 15%;
   min-width: 40px;
 `;
@@ -36,16 +36,12 @@ const UserImage = styled.img`
   border-radius: 50%;
 `;
 
-const ExplainName = styled.div`
+const ExplainName = styled(Col)`
   width: 46%;
 `;
-const ExplainDate = styled.div`
+const ExplainDate = styled(Col)`
   color: #000;
   font-size: 13px;
-`;
-
-const CommentWrapper = styled.div`
-  margin-top: 10px;
 `;
 
 const Comment = styled.div`
@@ -56,37 +52,44 @@ const Comment = styled.div`
 `;
 
 const CommentTitle = styled.div`
+  margin-top: 10px;
   font-color: #000;
   font-size: 12px;
 `;
 
-const CommentLink = styled(Link)`
+const IconLink = styled(Link)`
+  display: block;
   margin-top: 5px;
   padding-left: 32px;
   background: url(${props => props.icon}) 0 1px no-repeat;
   background-size: contain;
-  color: #60b3fa;
   font-size: 12px;
   font-weight: bold;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
+    text-decoration: none;
+  }
 
   &:first-child {
     margin-top: 13px;
   }
 `;
 
-const WearInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 11px;
-  color: #585858;
-`;
-
-const CommentLinkWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const CommentLink = ({ to, icon, text }) => {
+  return (
+    <IconLink to={to} icon={icon}>
+      {text}
+    </IconLink>
+  );
+};
 
 const Info = styled.p`
+  font-size: 11px;
+  color: #585858;
   margin-top: 5px;
   margin-bottom: 0px;
 `;
@@ -100,35 +103,66 @@ const UserName = styled.p`
 `;
 
 const Main = ({ review }) => {
+  const infoList = [
+    {
+      value: review.wearInfo.size,
+      label: "productDetail.review.info.size"
+    },
+    {
+      value: review.wearInfo.height,
+      label: "productDetail.review.info.height"
+    }
+  ];
+
   return (
     <MainWrapper>
-      <Explain>
+      <Explain type="flex">
         <ExplainImg>
           <UserImage src={userImage} />
         </ExplainImg>
         <ExplainName>
-          <UserName>ユーザー名</UserName>
-          <Rate value={5} type={"small"} />
-          <RateText>5つ星のうち{review.star}</RateText>
+          <UserName>{review.userName}</UserName>
+          <Rate value={review.star} type={"small"} gutter={4} />
+          <RateText>
+            <IntlMessages
+              id="productDetail.review.starMessage"
+              values={{ rate: review.star }}
+            />
+          </RateText>
         </ExplainName>
         <ExplainDate>{review.created}</ExplainDate>
       </Explain>
-      <WearInfo>
-        <Info>購入サイズ：{review.wearInfo.size}</Info>
-        <Info>身長：{review.wearInfo.height}cm</Info>
-      </WearInfo>
-      <CommentWrapper>
-        <CommentTitle>{review.webCatalogTitle}</CommentTitle>
-        <Comment>{review.webCatalogDescription}</Comment>
-      </CommentWrapper>
-      <CommentLinkWrapper>
-        <CommentLink to={"#"} icon={icoComment}>
-          {review.countComment}件のコメント
-        </CommentLink>
-        <CommentLink to={"#"} icon={icoReview}>
-          {review.countUseful}人が役にたったと考えています
-        </CommentLink>
-      </CommentLinkWrapper>
+      {infoList.map((info, index) => {
+        return info.value ? (
+          <Info key={index}>
+            <IntlMessages id={info.label} values={{ value: info.value }} />
+          </Info>
+        ) : null;
+      })}
+      <CommentTitle>{review.webCatalogTitle}</CommentTitle>
+      <Comment>{review.webCatalogDescription}</Comment>
+      <div>
+        <CommentLink
+          to={"#"}
+          icon={icoComment}
+          text={
+            <IntlMessages
+              id="productDetail.review.totalComment"
+              values={{ num: review.countComment }}
+            />
+          }
+        />
+        <CommentLink
+          to={"#"}
+          icon={icoReview}
+          text={
+            <IntlMessages
+              id="productDetail.review.countUseful"
+              values={{ num: review.countUseful }}
+            />
+          }
+        />
+      </div>
     </MainWrapper>
   );
 };

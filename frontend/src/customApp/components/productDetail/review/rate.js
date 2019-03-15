@@ -1,46 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import { Row, Col } from "antd";
 
 import fullStar from "../../../../image/product_detail/review/ico-other-red-fullstar.png";
 import halfStar from "../../../../image/product_detail/review/ico-other-red-halfstar.png";
 import emptyStar from "../../../../image/product_detail/review/ico-other-red-emptystar.png";
 
-const Stars = styled.ul`
-  list-style-type: none;
-  width: inherit;
-  margin: 0;
-  padding: 0;
-`;
-
 const getStarSize = props => {
   switch (props.type) {
     case "small":
       return `
-        max-width: 11px;
+        max-width: calc(11px + ${props.gutter}px);
       `;
     default:
       return `
-        max-width: 15px;
+        max-width: calc(15px + ${props.gutter}px);
       `;
   }
 };
 
-const Star = styled.li`
-  ${props => getStarSize(props)} display: inline-block;
-  vertical-align: top;
-  line-height: 21px;
-  margin-left: 4px;
-
-  &:first-child {
-    margin-left: 0;
-  }
+const Star = styled(Col)`
+  ${props => getStarSize(props)};
 `;
 
 const StarImg = styled.img`
   width: 100%;
 `;
 
-const Rate = ({ value, type }) => {
+const Rate = ({ value, type, gutter }) => {
   let maxStar = 5;
   let unit = 0.5;
   let starValue = Math.round(value / unit) * unit;
@@ -62,15 +49,15 @@ const Rate = ({ value, type }) => {
   }
 
   return (
-    <Stars>
+    <Row type="flex" gutter={gutter}>
       {starList.map((star, index) => {
         return (
-          <Star key={index} type={type}>
+          <Star key={index} type={type} gutter={gutter}>
             {star}
           </Star>
         );
       })}
-    </Stars>
+    </Row>
   );
 };
 
