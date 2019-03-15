@@ -49,7 +49,11 @@ const ZipCodeForm = ({ handler, value }) => {
         <ZipCode>
           <IntlMessages id="label.zipCode" />
         </ZipCode>
-        <ZipCodeInput onChange={onChangeZipCode} placeholder="1708424" value={value}/>
+        <ZipCodeInput
+          onChange={onChangeZipCode}
+          placeholder="1708424"
+          value={value}
+        />
         <AutofillButton
           width="92px"
           height="42px"
@@ -125,7 +129,7 @@ class AddressForm extends Component {
       ...this.state.entity,
       [keyName]: value
     };
-    
+
     this.setState({
       entity: state
     });

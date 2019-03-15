@@ -19,8 +19,8 @@ class NameForm extends Component {
     super(props);
     this.state = {
       entity: props.entity
-    }
-  }  
+    };
+  }
 
   getFormItemData = () => {
     return [
@@ -35,7 +35,7 @@ class NameForm extends Component {
         value: this.state.entity.nameKana
       }
     ];
-  }
+  };
 
   render() {
     const formItemData = this.getFormItemData();
@@ -44,7 +44,7 @@ class NameForm extends Component {
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} value={item.value}/>
+            <StyledInput placeholder={item.placeholder} value={item.value} />
           </Form.Item>
         ))}
       </Fragment>

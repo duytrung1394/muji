@@ -39,7 +39,7 @@ class Index extends Component {
             <Title>
               <IntlMessages id="delivery.edit.title" />
             </Title>
-            <Forms entity={this.props.entity}/>
+            <Forms entity={this.props.entity} />
           </ContentLayout>
         </Spin>
       </ContentAreaLayout>
