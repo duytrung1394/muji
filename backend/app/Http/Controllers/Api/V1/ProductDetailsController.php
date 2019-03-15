@@ -98,6 +98,26 @@ class ProductDetailsController extends Controller
                     'value' => 'XXL',
                 ],
             ],
+            // TODO:以下は レビュー 用のサンプルデータ
+            'reviewInfo' => [
+                'star' => 3.4,
+                'reviewNum' => 3,
+                'reviews' => [
+                    [
+                        'userName' => 'ユーザー名',
+                        'created' => '2018/10/20',
+                        'star' => 5,
+                        'wearInfo' => [
+                            'size' => 'M',
+                            'height' => 165
+                        ],
+                        'webCatalogTitle' => '思ったより、、',
+                        'webCatalogDescription' => 'とても着やすいです。無印のマタニティデニムを合わせるとお腹がすっぽり隠れるので重宝しています。',
+                        'countComment' => 0,
+                        'countUseful' => 0,
+                    ],
+                ]
+            ],
             // TODO:正式パラーメタ対応  以下は 店舗在庫状況 用のサンプルデータ
             'store_stock_list' => [
                 [
