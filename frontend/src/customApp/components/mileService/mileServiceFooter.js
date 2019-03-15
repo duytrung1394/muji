@@ -4,7 +4,7 @@ import { Link } from "../../components/shared/form/link";
 import IntlMessages from "../../../components/utility/intlMessages";
 
 const ParagraphAbout = styled.p`
-  margin: 30px 0 0 0;
+  margin-top: 30px;
   padding: 0 16px;
   font-size: 13px;
 `;

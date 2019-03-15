@@ -10,28 +10,22 @@ const LayoutSectionSummary = styled.section`
   box-shadow: 0 1px 3px 1px rgba(153, 153, 153, 0.5);
 `;
 const LayoutInfo = styled.div`
-  border: 0;
-  outline: 0;
-  font: inherit;
-  display: block;
   background: #f2f2f2;
   margin-top: 30px;
   padding: 16px;
   font-size: 12px;
 `;
 const LayoutMileSummary = styled.div`
-  margin: 0;
   margin-bottom: 20px;
-  padding: 0;
 `;
 const LayoutList = styled.ul`
   border-top: 1px solid #999;
+  list-style: none;
   margin: 0;
   padding: 0;
 `;
 
 const ListItem = styled.li`
-  list-style: none;
   margin-top: 17px;
   padding: 0 16px;
   &:last-child {
@@ -42,7 +36,6 @@ const ListItem = styled.li`
 `;
 const ListItemRed = styled.li`
   color: #7f0019;
-  list-style: none;
   margin-top: 17px;
   padding: 0 16px;
   &:last-child {
@@ -59,7 +52,6 @@ const SpanMileStage = styled.span`
 `;
 const Paragraph = styled.p`
   margin: 0;
-  padding: 0;
 `;
 const Title = styled.h1`
   color: #585858;
@@ -67,6 +59,74 @@ const Title = styled.h1`
   font-weight: bold;
   padding-bottom: 10px;
 `;
+
+const CurrentYear = ({ entity }) => {
+  const { old_mile, nextGiftMile, nextGiftPoint } = entity;
+  return (
+    <LayoutMileSummary>
+      <Paragraph>
+        <IntlMessages id="mileService.mileSummary.milesOfCurrentYear" />
+        {old_mile && displayNumberWithCommas(old_mile.mile)}
+        <IntlMessages id="mileService.mileSummary.mile" />
+      </Paragraph>
+      <Paragraph>
+        <IntlMessages
+          id="mileService.mileSummary.pointsInPoints"
+          values={{
+            mile: displayNumberWithCommas(nextGiftMile),
+            point: displayNumberWithCommas(nextGiftPoint)
+          }}
+        />
+      </Paragraph>
+    </LayoutMileSummary>
+  );
+};
+
+const SavingTime = ({ entity, formated }) => {
+  const { nearPointExpireAmount } = entity;
+  return (
+    <LayoutList>
+      <ListItem>
+        <IntlMessages id="mileService.mileSummary.savingTime" />
+        <IntlMessages id="mileService.mileList.point.duration" />
+      </ListItem>
+      <ListItemRed>
+        <IntlMessages
+          id="mileService.mileSummary.expiredMiles"
+          values={{
+            year: nearPointExpireAmount,
+            period: formated
+          }}
+        />
+      </ListItemRed>
+    </LayoutList>
+  );
+};
+
+const SavingMile = ({ entity }) => {
+  const { totalMile, stageName, nextStageMile } = entity;
+  return (
+    <LayoutMileStage>
+      <Paragraph>
+        <IntlMessages
+          id="mileService.mileSummary.savingMiles"
+          values={{
+            totalMile: displayNumberWithCommas(totalMile)
+          }}
+        />
+        <SpanMileStage>{stageName}</SpanMileStage>
+      </Paragraph>
+      <Paragraph>
+        <IntlMessages
+          id="mileService.mileSummary.pointsInStage"
+          values={{
+            mile: displayNumberWithCommas(nextStageMile)
+          }}
+        />
+      </Paragraph>
+    </LayoutMileStage>
+  );
+};
 
 const MileServiceSummary = ({ entity, intl }) => {
   const dateFormat = intl.formatMessage({
@@ -81,45 +141,9 @@ const MileServiceSummary = ({ entity, intl }) => {
         <Title>
           <IntlMessages id="mileService.headerSummary.title" />
         </Title>
-        <LayoutMileSummary>
-          <Paragraph>
-            <IntlMessages id="mileService.mileSummary.milesOfCurrentYear" />
-            {entity.old_mile && displayNumberWithCommas(entity.old_mile.mile)}
-            <IntlMessages id="mileService.mileSummary.mile" />
-          </Paragraph>
-          <Paragraph>
-            <IntlMessages id="mileService.mileSummary.afterThat" />{" "}
-            {displayNumberWithCommas(entity.nextGiftMile)}{" "}
-            <IntlMessages id="mileService.mileSummary.inMiles" />{" "}
-            {displayNumberWithCommas(entity.nextGiftPoint)}{" "}
-            <IntlMessages id="mileService.mileSummary.havePoint" />
-          </Paragraph>
-        </LayoutMileSummary>
-        <LayoutList>
-          <ListItem>
-            <IntlMessages id="mileService.mileSummary.savingTime" />
-            <IntlMessages id="mileService.mileList.point.duration" />
-          </ListItem>
-          <ListItemRed>
-            ※{entity.nearPointExpireAmount}
-            <IntlMessages id="mileService.mileSummary.mileOfTheYear" />
-            {formated}
-            <IntlMessages id="mileService.mileSummary.expiredAt" />
-          </ListItemRed>
-        </LayoutList>
-        <LayoutMileStage>
-          <Paragraph>
-            <IntlMessages id="mileService.mileSummary.savingMiles" />
-            {displayNumberWithCommas(entity.totalMile)}{" "}
-            <IntlMessages id="mileService.mileSummary.mile" />
-            <SpanMileStage>{entity.stageName}</SpanMileStage>
-          </Paragraph>
-          <Paragraph>
-            <IntlMessages id="mileService.mileSummary.afterThat" />{" "}
-            {displayNumberWithCommas(entity.nextStageMile)}{" "}
-            <IntlMessages id="mileService.mileSummary.other" />
-          </Paragraph>
-        </LayoutMileStage>
+        <CurrentYear entity={entity} />
+        <SavingTime entity={entity} formated={formated} />
+        <SavingMile entity={entity} />
       </LayoutSectionSummary>
     </LayoutInfo>
   );
