@@ -105,6 +105,7 @@ class ProductDetailsController extends Controller
                 'reviews' => [
                     [
                         'userName' => 'ユーザー名',
+                        'userImage' => 'img-user.png',
                         'created' => '2018/10/20',
                         'star' => 5,
                         'wearInfo' => [

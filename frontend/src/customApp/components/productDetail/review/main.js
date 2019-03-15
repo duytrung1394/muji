@@ -9,6 +9,8 @@ import icoReview from "../../../../image/product_detail/review/img-review-histor
 import icoComment from "../../../../image/product_detail/review/ico-comment.png";
 import userImage from "../../../../image/product_detail/review/img-user.png";
 
+const images = { "img-user.png": userImage };
+
 const RateText = styled.p`
   font-size: 11px;
   margin-top: 10px;
@@ -118,7 +120,7 @@ const Main = ({ review }) => {
     <MainWrapper>
       <Explain type="flex">
         <ExplainImg>
-          <UserImage src={userImage} />
+          <UserImage src={images[review.userImage]} />
         </ExplainImg>
         <ExplainName>
           <UserName>{review.userName}</UserName>
