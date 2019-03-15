@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import IntlMessages from "../../../components/utility/intlMessages";
+import IntlMessages from "../../../../components/utility/intlMessages";
 
 const OuterLayout = styled.section`
   padding: 16px;
@@ -13,7 +13,7 @@ const InnerContent = styled.div`
   box-shadow: 0 1px 3px rgba(88, 88, 88, 0.3);
 `;
 
-const Content = styled.h1`
+const Content = styled.span`
   font-size: 15px;
   font-weight: bold;
 `;
@@ -24,7 +24,10 @@ const CouponHavingCount = ({ count }) => {
       <InnerContent>
         <Content>
           <IntlMessages id="coupon.count.label" />
-          {count}
+          <IntlMessages
+            id="coupon.countNumber"
+            values={{ count: count }}
+          />
         </Content>
       </InnerContent>
     </OuterLayout>

@@ -9,13 +9,14 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import CouponHeader from "../../components/coupon/couponHeader";
-import CouponHavingCount from "../../components/coupon/couponHavingCount";
-import CouponList from "../../components/coupon/couponList";
+import CouponHavingCount from "../../components/coupon/index/couponHavingCount";
+import CouponList from "../../components/coupon/index/couponList";
 import IntlMessages from "../../../components/utility/intlMessages";
-import CouponMainGroupButton from "../../components/coupon/couponMainGroupButton";
+import CouponMainGroupButton from "../../components/coupon/index/couponMainGroupButton";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 732px;
+  padding: 0 16px 10px;
 `;
 
 class Index extends Component {

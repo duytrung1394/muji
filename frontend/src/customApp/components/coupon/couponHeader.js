@@ -3,16 +3,13 @@ import styled from "styled-components";
 
 const MainHeader = styled.section`
   line-height: 1;
-  padding: 30px 16px 30px;
-
-  @media screen and (min-width: 769px) {
-    padding-left: 0;
-  }
+  padding: 30px 16px 30px 0;
 `;
 
 const Title = styled.h1`
   color: #000;
   font-size: 19px;
+  margin-bottom: 0;
 `;
 
 const CouponHeader = ({ title }) => {
