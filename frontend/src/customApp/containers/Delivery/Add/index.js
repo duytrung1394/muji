@@ -20,6 +20,19 @@ const Title = styled.h1`
   margin-bottom: 0;
 `;
 
+const entity = {
+  customerCode: "",
+  naming: "",
+  name: "",
+  nameKana: "",
+  zipCode: "",
+  address1: "",
+  address2: "",
+  address3: "",
+  address4: "",
+  telNo: "",
+};
+
 class Index extends Component {
   render() {
     return (
@@ -28,7 +41,7 @@ class Index extends Component {
           <Title>
             <IntlMessages id="delivery.add.title" />
           </Title>
-          <Forms />
+          <Forms entity={entity} />
         </ContentLayout>
       </ContentAreaLayout>
     );

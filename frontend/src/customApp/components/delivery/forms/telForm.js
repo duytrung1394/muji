@@ -14,21 +14,32 @@ const StyledInput = styled(Input)`
   }
 `;
 
-const formItemData = [
-  {
-    label: <IntlMessages id="delivery.form.label.tel" />,
-    placeholder: "0339894191"
-  }
-];
-
 class TelForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      entity: props.entity
+    };
+  }
+
+  getFormItemData = () => {
+    return [
+      {
+        label: <IntlMessages id="delivery.form.label.tel" />,
+        placeholder: "0339894191",
+        value: this.state.entity.telNo
+      }
+    ];
+  };
+
   render() {
+    const formItemData = this.getFormItemData();
     return (
       <Fragment>
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} />
+            <StyledInput placeholder={item.placeholder} value={item.value} />
           </Form.Item>
         ))}
       </Fragment>

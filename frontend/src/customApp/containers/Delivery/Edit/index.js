@@ -28,7 +28,6 @@ class Index extends Component {
 
   render() {
     const { entity, fetching } = this.props;
-
     if (Object.keys(entity).length <= 0) {
       return null;
     }
