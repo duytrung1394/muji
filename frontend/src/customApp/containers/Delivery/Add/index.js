@@ -30,7 +30,7 @@ const entity = {
   address2: "",
   address3: "",
   address4: "",
-  telNo: "",
+  telNo: ""
 };
 
 class Index extends Component {

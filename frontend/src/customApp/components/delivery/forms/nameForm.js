@@ -27,14 +27,31 @@ class NameForm extends Component {
       {
         label: <IntlMessages id="delivery.form.label.name" />,
         placeholder: "無印太郎",
+        id: "name",
         value: this.state.entity.name
       },
       {
         label: <IntlMessages id="delivery.form.label.nameKana" />,
         placeholder: "ムジルシタロウ",
+        id: "nameKana",
         value: this.state.entity.nameKana
       }
     ];
+  };
+
+  onChange = e => {
+    this.updateState(e.target.id, e.target.value);
+  };
+
+  updateState = (keyName, value) => {
+    const state = {
+      ...this.state.entity,
+      [keyName]: value
+    };
+
+    this.setState({
+      entity: state
+    });
   };
 
   render() {
@@ -44,7 +61,12 @@ class NameForm extends Component {
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} value={item.value} />
+            <StyledInput
+              placeholder={item.placeholder}
+              value={item.value}
+              id={item.id}
+              onChange={this.onChange}
+            />
           </Form.Item>
         ))}
       </Fragment>

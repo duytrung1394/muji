@@ -26,6 +26,8 @@ class Index extends Component {
     this.props.fetchRequest(this.props.match.params.addressBookId);
   }
 
+  componentDidUpdate(prevProps, prevState, prevContext) {}
+
   render() {
     const { entity, fetching } = this.props;
     if (Object.keys(entity).length <= 0) {

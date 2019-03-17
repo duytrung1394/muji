@@ -26,7 +26,12 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-const Forms = ({ entity }) => (
+const submit = () => {
+  // TODO: Validation & API
+  console.log("delivery input submit");
+};
+
+const IndexForm = ({ entity }) => (
   <Conteiner>
     <Wrapper>
       <Form>
@@ -35,7 +40,7 @@ const Forms = ({ entity }) => (
         <TelForm entity={entity} />
       </Form>
       <ButtonArea>
-        <OutlineButton color="rgb(127, 0, 25)" reverse="true">
+        <OutlineButton color="rgb(127, 0, 25)" reverse="true" onClick={submit}>
           <Link to={"#"}>
             <IntlMessages id="delivery.button.next" />
           </Link>
@@ -45,4 +50,5 @@ const Forms = ({ entity }) => (
   </Conteiner>
 );
 
+const Forms = Form.create({})(IndexForm);
 export default Forms;

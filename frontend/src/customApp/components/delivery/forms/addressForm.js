@@ -52,6 +52,7 @@ const ZipCodeForm = ({ handler, value }) => {
         <ZipCodeInput
           onChange={onChangeZipCode}
           placeholder="1708424"
+          id="zipCode"
           value={value}
         />
         <AutofillButton
@@ -83,28 +84,32 @@ class AddressForm extends Component {
       {
         label: <IntlMessages id="delivery.form.label.address1" />,
         placeholder: "東京都豊島区",
+        id: "address1",
         value: this.state.entity.address1
       },
       {
         label: <IntlMessages id="delivery.form.label.address2" />,
         placeholder: "東池袋",
+        id: "address2",
         value: this.state.entity.address2
       },
       {
         label: <IntlMessages id="delivery.form.label.address3" />,
         placeholder: "4-26-3",
+        id: "address3",
         value: this.state.entity.address3
       },
       {
         label: <IntlMessages id="delivery.form.label.address4" />,
         placeholder: "部屋番号がある場合は入力が必須となります",
+        id: "address4",
         value: this.state.entity.address4
       }
     ];
   };
 
   onChangeZipCode = e => {
-    this.updateState("zipCode", e.target.value);
+    this.updateState(e.target.id, e.target.value);
   };
 
   onClickAutofill = () => {
@@ -112,7 +117,7 @@ class AddressForm extends Component {
   };
 
   getAddress = () => {
-    if (this.state.zipCode) {
+    if (this.state.entity.zipCode) {
       const entity = {
         ...this.state.entity,
         address1: "東京都",
@@ -122,6 +127,10 @@ class AddressForm extends Component {
       };
       this.setState({ entity });
     }
+  };
+
+  onChange = e => {
+    this.updateState(e.target.id, e.target.value);
   };
 
   updateState = (keyName, value) => {
@@ -149,7 +158,12 @@ class AddressForm extends Component {
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
             {item.label}
-            <StyledInput placeholder={item.placeholder} value={item.value} />
+            <StyledInput
+              placeholder={item.placeholder}
+              value={item.value}
+              id={item.id}
+              onChange={this.onChange}
+            />
           </Form.Item>
         ))}
       </Fragment>
