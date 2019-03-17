@@ -1,22 +1,54 @@
-# MUJI EC
 
-## 開発にあたって
+## 動作環境のセットアップ
+
+- Docker をセットアップ
+- setup.sh を実行(Windowsの場合、同様の内容をコマンドラインから実行)
+- `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8081` です。
+  - lumenの環境ファイルを作成します
+    - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
+- `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
+  - ブラウザから `localhost:4000` にアクセスするとReactの画面が出るので開発できます。
+  - デフォルトで起動するのはSSRを含まない `yarn start` 相当のものです
+  - SSRを含む `yarn dev` を実行する場合は 以下のコマンドを使用してください
+    - `docker-compose run --rm frontend yarn build`
+    - `docker-compose run --rm --service-ports frontend yarn dev`
+
+### ローカルのyarnを使う場合
+
+動作速度などの都合からローカルのyarnを使って開発したい場合があります。その場合は以下のようにしてください。
+
+```
+# SSRなし(動作が高速)
+yarn start
+# SSRあり(ソースコードが変化する度にexpress.jsを再起動するので遅い)
+yarn dev
+```
+
+## ソースコード構造の解説
 
 当座の開発にあたり、frontend以下のこれらのファイルとその役割を把握しておいてください。
 
 - routes.js : ルーティングを定義します。
   - 記法について詳しくは react-router-config のREADMEを参照してください https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 
-### ジェネレータの責任範囲の変更について
+### 環境変数の扱いについての注意
 
-ジェネレータの責任範囲がAdminよりも小さく、redux系のモジュールのみを生成するようになりました。
-ECでは画面の枠組みを共通化することが極めて困難だからです。
-逆に、全体のレイアウトやコンポーネントは使い回せるようにしていく可能性が高いです。
-モジュラリティの意識が以前よりも重要になってきます。
+稀に環境変数を読みたい場合がありますが、サーバー上でも動かす上で以下の事を守る必要があります。
 
-必要に応じてコンポーネントを切り出すことを恐れずに進めてください。
+`process` は代入などしてはいけません。 使用する時はかならず `process.env` まではこの文字列の形式でソースコード上に記載してください。
 
-## フロントエンドとサーバーサイドレンダリング
+- OKな例
+  - `"${process.env.API_SERVER}"`
+  - `const {API_SERVER} = process.env;`
+  - `cosnt env = process.env; env.API_SERVER`
+- NGな例
+  - `cosnt pr = process; pr.env.API_SERVER`
+
+とにかく文字列としての `process.env` が入っていればOKです。
+
+この動作は `config-overrides.js` で実装しているものです。 `["NODE_ENV", "API_SERVER", "API_BROWSER"]` 以外に定義が必要な外部定数がある場合、追加する必要があります。
+
+## 各コマンドの役割
 
 `frontend` 以下にフロントエンド関係のファイルが存在します。
 
@@ -29,25 +61,6 @@ ECでは画面の枠組みを共通化することが極めて困難だからで
   - 基本的に本番環境用もしくは本番環境に即したデバッグ用です。
   - `yarn build` で `./build` ディレクトリ以下にファイルが計れるのでそれを `yarn serve` で配信します。
 
-Docker 環境から立ち上げている場合、 `docker-compose.yml` 内で frontend 以下にある `yarn start` をそれぞれ手元で書き換えて利用してください。
-
-## 開発向けの動作方法
-
-1. Docker を入れます。
-2. コンテナとPHP環境,JS(npm)環境の整備
-  - `./setup.sh` を実行します。内容は以下の通り
-    - `docker-compose build` を実行します
-    - `docker-compose run --rm backend composer install` を実行してPHPの依存ライブラリを入れます
-    - `docker-compose run --rm frontend yarn install` を実行してJSの依存ライブラリを入れます
-    - `docker-compose run --rm backend php artisan migrate:refresh` を実行してDBスキーマを構築します
-    - `docker-compose run --rm backend php artisan db:seed` を実行して開発用DBデータを投入します
-  - `e2e` 以下で `yarn install` を実行してcypressを入れます
-3. ターミナルを2つ開きます
-  - `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8080` です。
-  - `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
-4. lumenの環境ファイルを作成します
-  - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
-5. ブラウザから localhost:4000 にアクセスするとReactの画面が出るので開発できます。
 
 ## コミット前のコードフォーマット
 
@@ -112,7 +125,9 @@ Dockerを用意していますが、ローカルで実行することも可能�
 - 埋め込み先htmlファイル
   - frontend/public_template/index.html
 
-## composerの使い方
+## Docker 環境の解説
+
+### composerの使い方
 
 `compose install` するときは以下。
 
@@ -132,7 +147,7 @@ docker-compose run --rm backend composer update
 docker-compose run --rm backend composer require awesome-library
 ```
 
-## yarn の使い方
+### yarn の使い方
 
 composer とほぼ一緒ですが、以下のようにします
 
@@ -140,7 +155,7 @@ composer とほぼ一緒ですが、以下のようにします
 docker-compose run --rm frontend yarn install
 ```
 
-## Dockerマシンの扱い方
+### Dockerマシンの扱い方
 
 例えばbackendインスタンスのbashコンソールを開く場合、以下のようにします
 
@@ -160,7 +175,7 @@ docker-compose run --rm develop yarn scaffold
 ```
 
 
-## プレビューサーバーでの動かし方、デプロイ方法
+# プレビューサーバーでの動かし方、デプロイ方法
 
 ※この方法は小規模な確認向けの単一サーバーでの動作を想定しています。
 本番環境を想定した内容ではありませんので、本番環境ではこの内容は参考までにお願いします。
@@ -229,4 +244,4 @@ docker-compose run --rm builder npx shipit dev deploy
 - 基本的に環境の切り替えには環境変数 `NODE_ENV` を用いる
   - ただし、原則としてソースに分岐を記載するより、環境変数を埋め込む形が望ましい
 - APIのURLは環境変数で渡す。 SSR用が `API_SERVER` , ブラウザ用が `API_BROWSER`
-- 使う環境変数が増えたときには config-overrides.js で `transform-inline-environment-variables` を用いて変換しているので、ここに設定を追加する
+- 使う環境変数が増えたときには config-overrides.js で `rewireDefinePlugin` を用いて変換しているので、ここに設定を追加する

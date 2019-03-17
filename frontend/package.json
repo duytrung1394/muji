@@ -114,14 +114,15 @@
     "uppy": "0.18.0"
   },
   "scripts": {
-    "start": "cross-env API_BROWSER=http://localhost:8081 react-app-rewired start",
-    "dev": "cross-env API_SERVER=$API_SERVER API_BROWSER=$API_BROWSER NODE_ENV=development babel-watch src/server",
-    "build": "react-app-rewired --max_old_space_size=8192 build",
-    "serve": "babel-node src/server",
+    "start": "cross-env-file -p ./.env.dev.json react-app-rewired start",
+    "dev": "IMPORT_STATIC_FIELS=1 cross-env-file -p ./.env.dev.json babel-watch src/server",
+    "build": "IMPORT_STATIC_FIELS=1 react-app-rewired --max_old_space_size=8192 build",
+    "serve": "IMPORT_STATIC_FIELS=1 babel-node src/server",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "cross-env-file": "^1.0.0"
   }
 }

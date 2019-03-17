@@ -1,3 +1,4 @@
+# 開発専用のdocker-compose.yml です。 本番動作には production.yml を使います。
 version: "3.1"
 services:
   # 開発用のscaffoldなどのコマンド実行環境
@@ -7,6 +8,7 @@ services:
       - .:/app
     working_dir: /app
 
+  # Lumenバックエンド
   backend:
     build: backend
     command: "php -S 0.0.0.0:8081 -t public"
@@ -20,19 +22,15 @@ services:
     env_file:
       - ./backend/.env.dev
   
+  # create-react-app(&react-app-rewired)ベースのフロントエンド
   frontend:
     build: frontend
-    command: "yarn serve"
+    command: "yarn start"
     ports:
-      - "4000:3000"
+      - "4000:4000"
     volumes:
       - ./frontend:/usr/src/app
-      - backend_cache:/usr/local/share/.cache
-      - built_files:/usr/src/app/build
-    environment:
-      NODE_ENV: development
-      API_SERVER: http://backend:8081
-      API_BROWSER: http://localhost:8081
+      - frontend_cache:/usr/local/share/.cache
   
   mariadb:
     image: mariadb:10.3.5
@@ -58,5 +56,4 @@ services:
       - .:/builder
 
 volumes:
-  backend_cache:
-  built_files:
+  frontend_cache:
