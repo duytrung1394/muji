@@ -6,6 +6,7 @@ const HeaderPreceding = styled.h1`
   margin-top: 30px;
   font-size: 19px;
   letter-spacing: 0.25px;
+  color: #000;
 `;
 
 const MujicardLinkHeader = () => {

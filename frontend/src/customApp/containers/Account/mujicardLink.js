@@ -12,30 +12,15 @@ import actions from "../../redux/account/entity/actions";
 import MujicardLinkHeader from "../../components/account/mujicardlink/mujicardLinkHeader";
 import MujicardLinkContent from "../../components/account/mujicardlink/mujicardLinkContent";
 import MujicardLinkForm from "../../components/account/mujicardlink/mujicardLinkForm";
-import MujicardLinkButtons from "../../components/account/mujicardlink/mujicardLinkButtons";
 
 const AreaLayout = styled(ContentAreaLayout)`
   max-width: 732px;
 `;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      card_number: "",
-      card_date: ""
-    };
-  }
 
-  onChange = data => {
-    this.setState({
-      card_number: data["card_number"],
-      card_date: data["card_date"]
-    });
-  };
-
-  onSubmit = () => {
-    // register new card
+  onSubmit = (data) => {
+    
   };
 
   render() {
@@ -44,8 +29,7 @@ class Index extends Component {
         <BaseContentLayout>
           <MujicardLinkHeader />
           <MujicardLinkContent />
-          <MujicardLinkForm onChange={this.onChange} />
-          <MujicardLinkButtons onSubmit={this.onSubmit} />
+          <MujicardLinkForm onSubmit={this.onSubmit} />
         </BaseContentLayout>
       </AreaLayout>
     );

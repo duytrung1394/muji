@@ -61,6 +61,8 @@
   "account.page.mujicardLink.detail" : "MUJI Cardのご案内",
   "account.page.mujicardLink.formTitle" : "MUJI Card IDとMUJI Card 生年月日入力",
   "account.page.mujicardLink.formCardNumber" : "MUJI Card 番号（必須）",
+  "account.page.mujicardLink.formCardNumberRequired" : "12桁の半角数字を入力してください。",
+  "account.page.mujicardLink.placeHolderCardDate" : "例 2014年12月07日の場合 20141207",
   "account.page.mujicardLink.guideEnterMujicard" : "12桁の半角数字",
   "account.page.mujicardLink.guideEnterMujicardDate" : "8桁の半角数字",
   "account.page.mujicardLink.formCardDate" : "MUJI Card 生年月日 ",

@@ -5,6 +5,7 @@ import { Link } from "../../shared/form/link";
 
 const MujicardLinkDescription = styled.div`
   margin-top: 20px;
+  color: #585858;
 `;
 
 const MujicardLinkText = styled.p`
@@ -41,7 +42,7 @@ const MujicardLinkContent = () => {
         <IntlMessages id="account.page.mujicardLink.descriptionLine3" />
       </MujicardLinkText1>
       <MujicardLinkDetail>
-        <Link to="">
+        <Link to="#">
           <IntlMessages id="account.page.mujicardLink.detail" />
         </Link>
       </MujicardLinkDetail>
