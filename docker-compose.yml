@@ -19,6 +19,21 @@ services:
       - ./backend/config/php-ini-overrides.ini:/etc/php/7.2/cli/conf.d/99-overrides.ini
     env_file:
       - ./backend/.env.dev
+
+  apisprout:
+    image: danielgtaylor/apisprout
+    volumes:
+      - ./stubapi/api.yaml:/api.yaml
+    command: /api.yaml
+  stubapi:
+    image: nginx:mainline-alpine
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./stubapi/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - apisprout
+
   frontend:
     build: frontend
     command: "yarn start"
