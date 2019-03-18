@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { injectIntl } from "react-intl";
 import { Form, Input } from "antd";
 import { OutlineButton } from "../../shared/form/button";
-import actions from "../../../redux/account/entity/actions";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "../../shared/form/link";
-import { connect } from "react-redux";
 
 const ButtonArea = styled.div`
   margin-top: 20px;
@@ -38,28 +36,30 @@ const MujicardFormCardTitle = styled.h2`
   color : rgb(88, 88, 88);
 `;
 
-
 const MujicardInput = styled(Input)`
   min-height: 40px;
   border: solid 1px #999;
-  box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3) !important;
   color: #585858;
-  width: 280px !important;
   font-size: 13px;
+  &&& {
+    box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
+    width: 320px;
+  }
 `;
 
 const MujicardFormItem = styled(Form.Item)`
-  margin-bottom : 0px !important;
+  &&& {
+    margin-bottom: 0;
+  }
 `;
 
-const MujicardFormMaxLength = styled.p`
+const MujicardFormGuideEnter = styled.p`
   margin-top: 10px;
+  margin-bottom : 0px;
   font-size: 12px;
 `;
 
-
 class MujicardLinkForm extends Component {
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -70,7 +70,6 @@ class MujicardLinkForm extends Component {
   };
 
   render() {
-    
     const { intl } = this.props;
     const { getFieldDecorator } = this.props.form;
 
@@ -80,7 +79,7 @@ class MujicardLinkForm extends Component {
           <MujicardInner>
             <MujicardFormTitle>
               <IntlMessages id="account.page.mujicardLink.formTitle" />
-            </MujicardFormTitle>    
+            </MujicardFormTitle>
             <MujicardFormCardTitle>
               <IntlMessages id="account.page.mujicardLink.formCardNumber" />
               <Link to="#">?</Link>
@@ -88,19 +87,21 @@ class MujicardLinkForm extends Component {
             <MujicardFormItem>
               {getFieldDecorator('card_number', {
                 rules: [{ required: true, message: intl.formatMessage({
-                  id: `account.page.mujicardLink.formCardNumberRequired`
+                  id: 'account.page.mujicardLink.formCardNumber.required'
                 }) }],
               })(
-                <MujicardInput  
+                <MujicardInput
                   type="tel"
-                  placeholder="01234567891012"
+                  placeholder={intl.formatMessage({
+                    id: 'account.page.mujicardLink.placeHolderCardNumber'
+                  })}
                   maxLength={12}
                 />
-              )} 
+              )}
             </MujicardFormItem>
-            <MujicardFormMaxLength>
+            <MujicardFormGuideEnter>
                 <IntlMessages id="account.page.mujicardLink.guideEnterMujicard" />
-            </MujicardFormMaxLength>     
+            </MujicardFormGuideEnter>
             <MujicardFormCardTitle>
                 <IntlMessages id="account.page.mujicardLink.formCardDate" />
                 <Link to="#">?</Link>
@@ -109,18 +110,18 @@ class MujicardLinkForm extends Component {
               {getFieldDecorator('card_date', {
                 rules: [],
               })(
-                <MujicardInput  
+                <MujicardInput
                   type="text"
                   placeholder={intl.formatMessage({
-                    id: `account.page.mujicardLink.placeHolderCardDate`
+                    id: 'account.page.mujicardLink.placeHolderCardDate'
                   })}
                   maxLength={8}
                 />
               )}
             </MujicardFormItem>
-            <MujicardFormMaxLength>
+            <MujicardFormGuideEnter>
                 <IntlMessages id="account.page.mujicardLink.guideEnterMujicardDate" />
-            </MujicardFormMaxLength>
+            </MujicardFormGuideEnter>
         </MujicardInner>
       </MujicardLayout>
       <ButtonArea>
@@ -142,20 +143,8 @@ class MujicardLinkForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
-
-const actionCreators = {
-  fetchRequest: actions.fetch.request
-};
-
 const enhance = C => {
-  const connected = connect(
-    mapStateToProps,
-    actionCreators
-  )(C);
-  const injected = injectIntl(connected, { withRef: true });
+  const injected = injectIntl(C, { withRef: true });
   return injected;
 };
 

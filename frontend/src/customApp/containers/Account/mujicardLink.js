@@ -5,51 +5,39 @@ import {
   ContentAreaLayout,
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
-
-import { connect } from "react-redux";
-import actions from "../../redux/account/entity/actions";
-
 import MujicardLinkHeader from "../../components/account/mujicardlink/mujicardLinkHeader";
 import MujicardLinkContent from "../../components/account/mujicardlink/mujicardLinkContent";
 import MujicardLinkForm from "../../components/account/mujicardlink/mujicardLinkForm";
 
-const AreaLayout = styled(ContentAreaLayout)`
-  max-width: 732px;
+const ContentLayout = styled(BaseContentLayout)`
+    max-width: 732px;
 `;
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-  onSubmit = (data) => {
-    
-  };
+  onSubmit(data) {
+
+  }
 
   render() {
     return (
-      <AreaLayout>
-        <BaseContentLayout>
+      <ContentAreaLayout>
+        <ContentLayout>
           <MujicardLinkHeader />
           <MujicardLinkContent />
           <MujicardLinkForm onSubmit={this.onSubmit} />
-        </BaseContentLayout>
-      </AreaLayout>
+        </ContentLayout>
+      </ContentAreaLayout>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return state.Account.Entity.toJS();
-};
-
-const actionCreators = {
-  postRequest: actions.create.request
-};
-
 const enhance = C => {
-  const connected = connect(
-    mapStateToProps,
-    actionCreators
-  )(C);
-  const injected = injectIntl(connected, { withRef: true });
+  const injected = injectIntl(C, { withRef: true });
   return injected;
 };
 

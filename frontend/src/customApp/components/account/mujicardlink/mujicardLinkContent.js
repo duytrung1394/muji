@@ -8,14 +8,14 @@ const MujicardLinkDescription = styled.div`
   color: #585858;
 `;
 
-const MujicardLinkText = styled.p`
+const MujicardLinkInfo = styled.p`
   line-height: 19px;
   font-size: 13px;
   letter-spacing: 0.3px;
   text-align: justify;
 `;
 
-const MujicardLinkText1 = styled.p`
+const MujicardLinkTextReward = styled.p`
   line-height: 15px;
   font-size: 11px;
   letter-spacing: 0.25px;
@@ -33,14 +33,14 @@ const MujicardLinkDetail = styled.p`
 const MujicardLinkContent = () => {
   return (
     <MujicardLinkDescription>
-      <MujicardLinkText>
+      <MujicardLinkInfo>
         <IntlMessages id="account.page.mujicardLink.descriptionLine1" />
         <br />
         <IntlMessages id="account.page.mujicardLink.descriptionLine2" />
-      </MujicardLinkText>
-      <MujicardLinkText1>
+      </MujicardLinkInfo>
+      <MujicardLinkTextReward>
         <IntlMessages id="account.page.mujicardLink.descriptionLine3" />
-      </MujicardLinkText1>
+      </MujicardLinkTextReward>
       <MujicardLinkDetail>
         <Link to="#">
           <IntlMessages id="account.page.mujicardLink.detail" />
