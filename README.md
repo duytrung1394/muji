@@ -42,9 +42,10 @@ Docker 環境から立ち上げている場合、 `docker-compose.yml` 内で fr
     - `docker-compose run --rm backend php artisan migrate:refresh` を実行してDBスキーマを構築します
     - `docker-compose run --rm backend php artisan db:seed` を実行して開発用DBデータを投入します
   - `e2e` 以下で `yarn install` を実行してcypressを入れます
-3. ターミナルを2つ開きます
+3. ターミナルを3つ開きます
   - `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8080` です。
   - `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
+  - `docker-compose up stubapi` とするとstub用APIサーバーが立ち上がります。ポートは `8000` です。
 4. lumenの環境ファイルを作成します
   - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
 5. ブラウザから localhost:4000 にアクセスするとReactの画面が出るので開発できます。
@@ -84,6 +85,20 @@ docker-compose run --rm backend composer install
 
 - ログの場所: storage/logs/lumen.log
   - `tail -f storage/logs/lumen.log` すると便利。 ただしdocker-compose upしてる画面にもほぼ同じ情報が出ているので使う機会は稀か。
+
+### stubapiの使い方
+
+- apiサーバへアクセスするための `StubApi` Facadeを用意しています．
+  - `backend/app/Services/StubApiService.php`
+- httpメソッドに合わせてI/Fを選択してください．
+- スタブのリクエスト情報はこちらを参照
+  - `stubapi/api.yaml`
+
+```
+// スタブ取得例
+
+$response = \StubApi::post('/frontMember/getAddressBook');
+```
 
 ## JS側開発Tips
 
