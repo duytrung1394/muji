@@ -24,10 +24,7 @@ const CouponHavingCount = ({ count }) => {
       <InnerContent>
         <Content>
           <IntlMessages id="coupon.count.label" />
-          <IntlMessages
-            id="coupon.countNumber"
-            values={{ count: count }}
-          />
+          <IntlMessages id="coupon.countNumber" values={{ count: count }} />
         </Content>
       </InnerContent>
     </OuterLayout>

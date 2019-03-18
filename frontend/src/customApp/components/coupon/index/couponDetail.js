@@ -1,19 +1,16 @@
-import React from "react";
+import React, {Fragment} from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { OutlineButton } from "../../shared/form/button";
 import { Link } from "../../shared/form/link";
-import { Col } from "antd";
 import moment from "moment";
 
-const CouponItem = styled(Col)`
+const CouponItem = styled.div`
   margin-top: 20px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
-  width: 48%;
-  overflow: hidden;
 `;
 
 const ImageTitle = styled.p`
@@ -28,10 +25,6 @@ const CouponImage = styled.img`
 
 const CouponInfo = styled.div`
   padding: 16px;
-
-  dl:nth-child(3) {
-    margin-top: 10px;
-  }
 `;
 
 const CouponTitle = styled.p`
@@ -41,7 +34,7 @@ const CouponTitle = styled.p`
   word-break: break-all;
   font-size: 13px;
   overflow: hidden;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 `;
 
 const DescList = styled.dl`
@@ -54,7 +47,7 @@ const DescTerm = styled.dd`
 `;
 
 const ExternalTerm = styled.p`
-  margin: 10px 0 0;
+  margin-top: 10px;
   font-size: 11px;
 `;
 

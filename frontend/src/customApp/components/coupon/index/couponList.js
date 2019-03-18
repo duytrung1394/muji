@@ -1,19 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import CouponDetail from "./couponDetail";
-import { Row } from "antd";
+import { Row,Col } from "antd";
 
 const List = styled(Row)`
-  font-size: 12px;
   color: #575757;
-  margin-top: 10px;
+  margin-top: 24px;
 `;
+const colLayout = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  lg: 12,
+  xl: 12
+};
 
 const CouponList = ({ coupons }) => {
   return (
-    <List type="flex" justify="space-between">
+    <List type="flex" justify="start" gutter={24}>
       {coupons.map((coupon, index) => {
-        return <CouponDetail coupon={coupon} key={index} />;
+        return (
+          <Col {...colLayout}>
+            <CouponDetail coupon={coupon} key={index} />
+          </Col>
+        );
       })}
     </List>
   );
