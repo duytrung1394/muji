@@ -545,21 +545,21 @@ class ProductCategoryTopsController extends Controller
                     [
                         'group_name' => '半袖・タンクトップ',
                         'category_code_in_page' => 'product-t-shirt',
-                        'total' => 321,
+                        'itemCount' => 321,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                     [
                         'group_name' => '半袖',
                         'category_code_in_page' => 'product-t-shirt',
-                        'total' => 123,
+                        'itemCount' => 123,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                     [
                         'group_name' => '半袖',
                         'category_code_in_page' => 'product-uv-cut',
-                        'total' => 123,
+                        'itemCount' => 123,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
@@ -569,21 +569,21 @@ class ProductCategoryTopsController extends Controller
                     [
                         'group_name' => 'フェザークッションソファ',
                         'category_code_in_page' => 'product-feather-sofa',
-                        'total' => 66,
+                        'itemCount' => 66,
                         'link' => '/store/cmdty/section/S20001',
                         'items'=> $this->getMockItemDataListForSofa(),
                     ],
                     [
                         'group_name' => 'ソファベンチ',
                         'category_code_in_page' => 'product-sofa-b',
-                        'total' => 31,
+                        'itemCount' => 31,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForSofa(),
                     ],
                     [
                         'group_name' => 'ユニットソファ',
                         'category_code_in_page' => 'product-unit-sofa',
-                        'total' => 25,
+                        'itemCount' => 25,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForSofa(),
                     ],
@@ -593,21 +593,21 @@ class ProductCategoryTopsController extends Controller
                     [
                         'group_name' => 'シェルフ',
                         'category_code_in_page' => 'product-shelf',
-                        'total' => 66,
+                        'itemCount' => 66,
                         'link' => '/store/cmdty/section/S20003',
                         'items'=> $this->getMockItemDataListForShelf(),
                     ],
                     [
                         'group_name' => 'キャビネット',
                         'category_code_in_page' => 'product-cabinet',
-                        'total' => 31,
+                        'itemCount' => 31,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForShelf(),
                     ],
                     [
                         'group_name' => 'ラック',
                         'category_code_in_page' => 'product-rack',
-                        'total' => 25,
+                        'itemCount' => 25,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForShelf(),
                     ],
@@ -617,19 +617,19 @@ class ProductCategoryTopsController extends Controller
                     [
                         'group_name' => '半袖・タンクトップ',
                         'category_code_in_page' => 'product-t-shirt',
-                        'total' => 321,
+                        'itemCount' => 321,
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                     [
                         'group_name' => '半袖',
                         'category_code_in_page' => 'product-t-shirt',
-                        'total' => 123,
+                        'itemCount' => 123,
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                     [
                         'group_name' => '半袖',
                         'category_code_in_page' => 'product-uv-cut',
-                        'total' => 123,
+                        'itemCount' => 123,
                         'items' => $this->getMockItemDataListForWoman(),
                     ],
                 ];
@@ -637,19 +637,19 @@ class ProductCategoryTopsController extends Controller
                 return [
                     [
                         'category_code_in_page' => 'product-3-seater',
-                        'total' => 66,
+                        'itemCount' => 66,
                         'items'=> $this->getMockItemDataListForSofa(),
                         'combine_option' => '#', 
                     ],
                     [
                         'category_code_in_page' => 'product-2-5-seater',
-                        'total' => 31,
+                        'itemCount' => 31,
                         'items' => $this->getMockItemDataListForSofa(),
                         'combine_option' => '#', 
                     ],
                     [
                         'category_code_in_page' => 'product-2-seater',
-                        'total' => 25,
+                        'itemCount' => 25,
                         'items' => $this->getMockItemDataListForSofa(),
                         'combine_option' => '#', 
                     ],
@@ -661,7 +661,7 @@ class ProductCategoryTopsController extends Controller
                         'category_code_in_page' => 'product-stacking-shelf',
                         'description' => 'タテにヨコにも自由に拡張。正方形、ワイドタイプ、オープンタイプで組み合わせ可能。',
                         'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                        'total'      => 321,
+                        'itemCount'      => 321,
                         'items'      => $this->getMockItemDataListForShelf(),
                     ],
                     [
@@ -669,7 +669,7 @@ class ProductCategoryTopsController extends Controller
                         'category_code_in_page' => 'product-stainless-shelf',
                         'description' => '錆びにくいステンレスを使用したユニットシェラフ',
                         'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                        'total'      => 123,
+                        'itemCount'      => 123,
                         'items'      => $this->getMockItemDataListForShelf(),
                     ],
                     [
@@ -677,7 +677,7 @@ class ProductCategoryTopsController extends Controller
                         'category_code_in_page' => 'product-steel-shelf',
                         'description' => '豊富なオプションを自由に組み合わせることができるユニットシェルフ。',
                         'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                        'total'      => 123,
+                        'itemCount'      => 123,
                         'items'      => $this->getMockItemDataListForShelf(),
                     ],
                     [
@@ -685,7 +685,7 @@ class ProductCategoryTopsController extends Controller
                         'category_code_in_page' => 'product-pine-wood-shelf',
                         'description' => '天然の”節”の表情が楽しめるパイン村。',
                         'img' => 'https://img.muji.net/img/item/4548718708710_08_400.jpg',
-                        'total'      => 123,
+                        'itemCount'      => 123,
                         'items'      => $this->getMockItemDataListForShelf(),
                     ],
                 ];
@@ -742,64 +742,64 @@ class ProductCategoryTopsController extends Controller
             [
                 'jancode' => '4549337263970',
                 'nostock' => false,
-                'title' => '3段x2列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x2列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => true,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
             [
                 'jancode' => '4549337263635',
                 'nostock' => false,
-                'title' => '3段x3列・オーク材',
-                'material' => 'スタッキングシェルフ',
+                'itemName' => '3段x3列・オーク材',
+                'itemMaterialName' => 'スタッキングシェルフ',
                 'price' => 26990,
                 'tags' => [],
             ],
@@ -815,32 +815,32 @@ class ProductCategoryTopsController extends Controller
             [
                 'jancode' => '4550182011463',
                 'nostock' => false,
-                'title' => 'Xシーター',
-                'material' => 'フェザークッション麻綿平織ソファ',
+                'itemName' => 'Xシーター',
+                'itemMaterialName' => 'フェザークッション麻綿平織ソファ',
                 'price' => 57900,
                 'tags' => [],
             ],
             [
                 'jancode' => '4550182011463',
                 'nostock' => false,
-                'title' => 'Xシーター',
-                'material' => 'フェザークッション綿デニム',
+                'itemName' => 'Xシーター',
+                'itemMaterialName' => 'フェザークッション綿デニム',
                 'price' => 27900,
                 'tags' => [],
             ],
             [
                 'jancode' => '4550182011463',
                 'nostock' => false,
-                'title' => 'Xシーター',
-                'material' => 'フェザークッション綿平織ソファ',
+                'itemName' => 'Xシーター',
+                'itemMaterialName' => 'フェザークッション綿平織ソファ',
                 'price' => 19900,
                 'tags' => [],
             ],
             [
                 'jancode' => '4550182011463',
                 'nostock' => false,
-                'title' => 'Xシーター',
-                'material' => 'フェザークッション綿ポリエステル変織ソファ',
+                'itemName' => 'Xシーター',
+                'itemMaterialName' => 'フェザークッション綿ポリエステル変織ソファ',
                 'price' => 27900,
                 'tags' => [],
             ],
@@ -852,18 +852,18 @@ class ProductCategoryTopsController extends Controller
      */
     private function getMockItemDataForWoman($level, $swatchNumber, $tags=[])
     {
-        $title = 'タートルネックセーター';
-        $material = 'ウールシルク洗える';
+        $itemName = 'タートルネックセーター';
+        $itemMaterialName = 'ウールシルク洗える';
         if ($level === 2) {
-            $title = 'プリントTシャツ';
-            $material = 'オーガニックコットン';
+            $itemName = 'プリントTシャツ';
+            $itemMaterialName = 'オーガニックコットン';
         }
         $item = [
             'jancode' => '4550002032364',
             'nostock' => false,
-            'title' => $title,
-            'material' => $material,
-            'price' => 2903,
+            'itemName' => $itemName,
+            'itemMaterialName' => $itemMaterialName,
+            'viewPrice' => 2903,
             'swatches' => $this->getMockSwatches($level, $swatchNumber),
             'tags' => $tags,
             'minSize' => 'XS',
@@ -871,7 +871,7 @@ class ProductCategoryTopsController extends Controller
         ];
 
         if (in_array("campaign", $tags) || in_array("discount", $tags)) {
-            $item['new_price'] = 1495;
+            $item['discountPrice'] = 1495;
         }
 
         return $item;

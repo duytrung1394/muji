@@ -107,10 +107,10 @@ class ItemView extends Component {
   render() {
     const {
       swatches,
-      title,
-      material,
-      price,
-      new_price,
+      itemName,
+      itemMaterialName,
+      viewPrice,
+      discountPrice,
       tags,
       minSize,
       maxSize,
@@ -137,8 +137,8 @@ class ItemView extends Component {
               "\u00A0"
             )}
           </Stock>
-          <Material>{material}</Material>
-          <Title>{title}</Title>
+          <Material>{itemMaterialName}</Material>
+          <Title>{itemName}</Title>
         </Link>
         <SizeRange minSize={minSize} maxSize={maxSize} />
         <ItemSwatch
@@ -147,17 +147,19 @@ class ItemView extends Component {
           changeSwatch={this.changeSwatch}
         />
         <Price>
-          <PriceValue isOldPrice={new_price}>
+          <PriceValue isOldPrice={discountPrice}>
             <IntlMessages
               id="productCategoryTop.price"
               values={{
                 price: (
-                  <span className="price">{numberFormatter.format(price)}</span>
+                  <span className="price">
+                    {numberFormatter.format(viewPrice)}
+                  </span>
                 )
               }}
             />
           </PriceValue>
-          {new_price && (
+          {discountPrice && (
             <NewPriceValue>
               <span className="arrow">→</span>
               <IntlMessages
@@ -165,7 +167,7 @@ class ItemView extends Component {
                 values={{
                   price: (
                     <span className="price">
-                      {numberFormatter.format(new_price)}
+                      {numberFormatter.format(discountPrice)}
                     </span>
                   )
                 }}
