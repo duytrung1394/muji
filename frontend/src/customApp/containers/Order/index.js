@@ -10,6 +10,8 @@ import {
   BaseContentLayout
 } from "../../components/shared/panel/contentLayout";
 import Delivery from "../../components/order/index/delivery";
+import DeliveryOption from "../../components/order/index/deliveryOption";
+import Coupon from "../../components/order/index/coupon";
 import Gift from "../../components/order/index/gift";
 import ContentsBox from "../../components/order/index/contentsBox";
 import OrderList from "../../components/order/index/orderList/orderList";
@@ -59,6 +61,11 @@ class Index extends Component {
       this.props.saveCartCleanup();
       this.props.history.push("/store/order/confirmation");
     }
+
+    if (this.props.updatedDeliveryOption) {
+      this.props.updateDeliveryOptionCleanup();
+      this.props.fetchRequest("");
+    }
   }
 
   onChangePaymentOption = e => {
@@ -99,8 +106,11 @@ class Index extends Component {
       entity,
       fetching,
       destroying,
+      updatingDeliveryOption,
       // react-router
-      history
+      history,
+      // action
+      updateDeliveryOptionRequest
     } = this.props;
 
     if (Object.keys(entity).length <= 0) {
@@ -127,7 +137,14 @@ class Index extends Component {
             <Delivery delivery={entity.delivery} />
           </ContentsBox>
           <ContentsBox>
+            <Coupon coupons={entity.coupons} />
+          </ContentsBox>
+          <ContentsBox>
             <Gift giftData={entity.delivery.gift} />
+            <DeliveryOption
+              deliveryOption={entity.delivery_option}
+              updateDeliveryOptionRequest={updateDeliveryOptionRequest}
+            />
             <OrderList orders={entity.orders} />
           </ContentsBox>
           <ContentsBox>
@@ -159,7 +176,9 @@ const actionCreators = {
   saveCartRequest: actions.saveCart.request,
   saveCartCleanup: actions.saveCart.cleanup,
   destroyRequest: actions.destroy.request,
-  destroyCleanup: actions.destroy.cleanup
+  destroyCleanup: actions.destroy.cleanup,
+  updateDeliveryOptionRequest: actions.updateDeliveryOption.request,
+  updateDeliveryOptionCleanup: actions.updateDeliveryOption.cleanup
 };
 
 const enhance = C => {

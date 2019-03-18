@@ -7,7 +7,8 @@ const actions = createActions({
     ENTITY: {
       ...restActions,
       SAVE_CART: { ...req },
-      CONFIRM_ORDER: { ...req }
+      CONFIRM_ORDER: { ...req },
+      UPDATE_DELIVERY_OPTION: { ...req }
     }
   }
 });
