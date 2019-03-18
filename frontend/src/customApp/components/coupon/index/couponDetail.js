@@ -12,6 +12,7 @@ const CouponItem = styled.div`
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
   width: 100%;
+  overflow: hidden;
 `;
 
 const ImageTitle = styled.p`

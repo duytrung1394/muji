@@ -4,6 +4,7 @@ import CouponDetail from "./couponDetail";
 import { Row, Col } from "antd";
 
 const List = styled(Row)`
+  font-size: 12px;
   color: #575757;
   margin-top: 24px;
 `;
