@@ -9,6 +9,7 @@ import Form from "../../components/productDetail/form";
 import ContentHeader from "../../components/shared/header/contentHeader";
 import StockStatus from "../../components/productDetail/stockStatus";
 import styled from "styled-components";
+import { CmsContentCmdtyDetailInclude1 } from "../../components/cms";
 import Review from "../../components/productDetail/review/index";
 
 const PictureCol = styled(Col)`
@@ -89,6 +90,7 @@ class Index extends Component {
             <Col span={11} offset={1}>
               <Form entity={entity} />
               <StockStatus entity={entity} />
+              <CmsContentCmdtyDetailInclude1 productCode="T1234567890" />
               <Review entity={entity.reviewInfo} />
             </Col>
           </StyledRow>
