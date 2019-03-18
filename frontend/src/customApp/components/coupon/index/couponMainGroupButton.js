@@ -16,10 +16,18 @@ const PrimaryButton = styled(OutlineButton)`
   margin: 30px auto 0;
 `;
 
+const colLayout = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  lg: 12,
+  xl: 12
+};
+
 const Button = props => {
   const { link, path } = props;
   return (
-    <OuterButton span={12}>
+    <OuterButton {...colLayout}>
       <PrimaryButton {...props}>
         <Link to={link}>
           <IntlMessages id={path} />

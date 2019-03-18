@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { OutlineButton } from "../../shared/form/button";
@@ -11,6 +11,7 @@ const CouponItem = styled.div`
   -webkit-border-radius: 3px;
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 rgba(88, 88, 88, 0.3);
+  width: 100%;
 `;
 
 const ImageTitle = styled.p`
