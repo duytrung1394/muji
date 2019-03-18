@@ -4,6 +4,12 @@ import IntlMessages from "../../../../components/utility/intlMessages";
 import { Form, Input } from "antd";
 import { OutlineButton } from "../../../components/shared/form/button";
 
+const Description = styled.div`
+  width: 50%;
+  font-size: 11px;
+  margin-top: 10px;
+`;
+
 const ZipCode = styled.span`
   font-size: 19px;
   margin-right: 5px;
@@ -44,7 +50,11 @@ const ZipCodeForm = ({ handler, value }) => {
     <Fragment>
       <Form.Item
         label={<IntlMessages id="delivery.form.label.zipCode" />}
-        extra={<IntlMessages id="delivery.form.zipCode.description" />}
+        extra={
+          <Description>
+            <IntlMessages id="delivery.form.zipCode.description" />
+          </Description>
+        }
       >
         <ZipCode>
           <IntlMessages id="label.zipCode" />
@@ -82,28 +92,49 @@ class AddressForm extends Component {
   getformItemData = () => {
     return [
       {
-        label: <IntlMessages id="delivery.form.label.address1" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.address1" />
+          </div>
+        ),
         placeholder: "東京都豊島区",
         id: "address1",
         value: this.state.entity.address1
       },
       {
-        label: <IntlMessages id="delivery.form.label.address2" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.address2" />
+          </div>
+        ),
         placeholder: "東池袋",
         id: "address2",
         value: this.state.entity.address2
       },
       {
-        label: <IntlMessages id="delivery.form.label.address3" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.address3" />
+          </div>
+        ),
         placeholder: "4-26-3",
         id: "address3",
         value: this.state.entity.address3
       },
       {
-        label: <IntlMessages id="delivery.form.label.address4" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.address4" />
+          </div>
+        ),
         placeholder: "部屋番号がある場合は入力が必須となります",
         id: "address4",
-        value: this.state.entity.address4
+        value: this.state.entity.address4,
+        extra: (
+          <Description>
+            <IntlMessages id="delivery.form.address.description" />
+          </Description>
+        )
       }
     ];
   };
@@ -156,7 +187,7 @@ class AddressForm extends Component {
           value={this.state.entity.zipCode}
         />
         {formItemData.map((item, index) => (
-          <Form.Item key={index}>
+          <Form.Item key={index} extra={item.extra}>
             {item.label}
             <StyledInput
               placeholder={item.placeholder}

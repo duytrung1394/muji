@@ -25,13 +25,21 @@ class NameForm extends Component {
   getFormItemData = () => {
     return [
       {
-        label: <IntlMessages id="delivery.form.label.name" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.name" />
+          </div>
+        ),
         placeholder: "無印太郎",
         id: "name",
         value: this.state.entity.name
       },
       {
-        label: <IntlMessages id="delivery.form.label.nameKana" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.nameKana" />
+          </div>
+        ),
         placeholder: "ムジルシタロウ",
         id: "nameKana",
         value: this.state.entity.nameKana

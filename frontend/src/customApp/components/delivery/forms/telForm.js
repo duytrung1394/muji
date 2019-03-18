@@ -25,7 +25,11 @@ class TelForm extends Component {
   getFormItemData = () => {
     return [
       {
-        label: <IntlMessages id="delivery.form.label.tel" />,
+        label: (
+          <div>
+            <IntlMessages id="delivery.form.label.tel" />
+          </div>
+        ),
         placeholder: "0339894191",
         value: this.state.entity.telNo
       }
