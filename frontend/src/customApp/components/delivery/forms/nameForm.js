@@ -13,6 +13,9 @@ const StyledInput = styled(Input)`
     border: 1px solid rgb(153, 153, 153);
   }
 `;
+const StyledLabel = styled.label`
+  display: block;
+`;
 
 class NameForm extends Component {
   constructor(props) {
@@ -25,21 +28,13 @@ class NameForm extends Component {
   getFormItemData = () => {
     return [
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.name" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.name" />,
         placeholder: "無印太郎",
         id: "name",
         value: this.state.entity.name
       },
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.nameKana" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.nameKana" />,
         placeholder: "ムジルシタロウ",
         id: "nameKana",
         value: this.state.entity.nameKana
@@ -68,7 +63,7 @@ class NameForm extends Component {
       <Fragment>
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
-            {item.label}
+            <StyledLabel>{item.label}</StyledLabel>
             <StyledInput
               placeholder={item.placeholder}
               value={item.value}

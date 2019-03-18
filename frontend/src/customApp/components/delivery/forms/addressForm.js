@@ -44,6 +44,10 @@ const StyledInput = styled(Input)`
   }
 `;
 
+const StyledLabel = styled.label`
+  display: block;
+`;
+
 const ZipCodeForm = ({ handler, value }) => {
   const { onChangeZipCode, onClickAutofill } = handler;
   return (
@@ -92,41 +96,25 @@ class AddressForm extends Component {
   getformItemData = () => {
     return [
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.address1" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.address1" />,
         placeholder: "東京都豊島区",
         id: "address1",
         value: this.state.entity.address1
       },
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.address2" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.address2" />,
         placeholder: "東池袋",
         id: "address2",
         value: this.state.entity.address2
       },
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.address3" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.address3" />,
         placeholder: "4-26-3",
         id: "address3",
         value: this.state.entity.address3
       },
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.address4" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.address4" />,
         placeholder: "部屋番号がある場合は入力が必須となります",
         id: "address4",
         value: this.state.entity.address4,
@@ -188,7 +176,7 @@ class AddressForm extends Component {
         />
         {formItemData.map((item, index) => (
           <Form.Item key={index} extra={item.extra}>
-            {item.label}
+            <StyledLabel>{item.label}</StyledLabel>
             <StyledInput
               placeholder={item.placeholder}
               value={item.value}

@@ -6,12 +6,15 @@ import { Form, Input } from "antd";
 const StyledInput = styled(Input)`
   box-shadow: rgba(88, 88, 88, 0.3) 0px 1px 3px 0px;
   && {
-    width: 95px;
+    width: 120px;
     height: 40px;
     padding: 8px;
     font-size: 13px;
     border: 1px solid rgb(153, 153, 153);
   }
+`;
+const StyledLabel = styled.label`
+  display: block;
 `;
 
 class TelForm extends Component {
@@ -25,11 +28,7 @@ class TelForm extends Component {
   getFormItemData = () => {
     return [
       {
-        label: (
-          <div>
-            <IntlMessages id="delivery.form.label.tel" />
-          </div>
-        ),
+        label: <IntlMessages id="delivery.form.label.tel" />,
         placeholder: "0339894191",
         value: this.state.entity.telNo
       }
@@ -42,7 +41,7 @@ class TelForm extends Component {
       <Fragment>
         {formItemData.map((item, index) => (
           <Form.Item key={index}>
-            {item.label}
+            <StyledLabel>{item.label}</StyledLabel>
             <StyledInput placeholder={item.placeholder} value={item.value} />
           </Form.Item>
         ))}
