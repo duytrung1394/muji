@@ -300,7 +300,7 @@ const routes = [
     )
   },
   {
-    path: "/account/mujicard_linked",
+    path: "/store/account/mujicard_linked",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/mujicardLinked")
