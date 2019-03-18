@@ -24,7 +24,8 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->withFacades(true, [
-    'Illuminate\Support\Facades\Hash'   => 'Hash',
+    'Illuminate\Support\Facades\Hash' => 'Hash',
+    'App\Facades\StubApiFacade'       => 'StubApi',
 ]);
 
 $app->withEloquent();

@@ -62,5 +62,7 @@ class AppServiceProvider extends ServiceProvider {
         });
 
         $this->app->alias('mailer', \Illuminate\Contracts\Mail\Mailer::class);
+
+        $this->app->bind('stub-api', 'App\Services\StubApiService');
     }
 }

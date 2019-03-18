@@ -12,8 +12,11 @@ class DeliveriesController extends Controller
      */
     public function index(Request $request)
     {
+
+        $response = \StubApi::post('/frontMember/getAddressBook');
+
         return [
-            'data'  => $this->getMockData(),
+            'data'  => $response->deliveryAddress,
             'total' => 200,
         ];
     }
