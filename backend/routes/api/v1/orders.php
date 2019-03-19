@@ -15,6 +15,14 @@ $router->get('/api/v1/orders', [
 ]);
 
 /**
+ * カート保存(注文の確認へ)
+ */
+$router->post('/api/v1/orders/saveShoppingCart', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@saveShoppingCart',
+]);
+
+/**
  * 購入履歴一覧取得
  */
 $router->get('/api/v1/orders/purchase-history', [
@@ -44,4 +52,12 @@ $router->get('/api/v1/orders/subscription', [
 $router->get('/api/v1/orders/create', [
     'middleware'    => [],
     'uses'          => 'Api\V1\OrdersController@create',
+]);
+
+/**
+  * ご注文手続き: 配送オプション更新
+  */
+$router->put('/api/v1/orders/delivery-option', [
+    'middleware'    => [],
+    'uses'          => 'Api\V1\OrdersController@updateDeliveryOption',
 ]);

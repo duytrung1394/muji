@@ -12,6 +12,7 @@
   - SSRを含む `yarn dev` を実行する場合は 以下のコマンドを使用してください
     - `docker-compose run --rm frontend yarn build`
     - `docker-compose run --rm --service-ports frontend yarn dev`
+- `docker-compose up stubapi` とするとstub用APIサーバーが立ち上がります。ポートは `8000` です。
 
 ### ローカルのyarnを使う場合
 
@@ -61,7 +62,6 @@ yarn dev
   - 基本的に本番環境用もしくは本番環境に即したデバッグ用です。
   - `yarn build` で `./build` ディレクトリ以下にファイルが計れるのでそれを `yarn serve` で配信します。
 
-
 ## コミット前のコードフォーマット
 
 多人数開発なので、コミット前にコードフォーマットを走らせるようにお願いします。
@@ -97,6 +97,20 @@ docker-compose run --rm backend composer install
 
 - ログの場所: storage/logs/lumen.log
   - `tail -f storage/logs/lumen.log` すると便利。 ただしdocker-compose upしてる画面にもほぼ同じ情報が出ているので使う機会は稀か。
+
+### stubapiの使い方
+
+- apiサーバへアクセスするための `StubApi` Facadeを用意しています．
+  - `backend/app/Services/StubApiService.php`
+- httpメソッドに合わせてI/Fを選択してください．
+- スタブのリクエスト情報はこちらを参照
+  - `stubapi/api.yaml`
+
+```
+// スタブ取得例
+
+$response = \StubApi::post('/frontMember/getAddressBook');
+```
 
 ## JS側開発Tips
 

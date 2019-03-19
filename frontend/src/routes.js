@@ -65,56 +65,7 @@ const routes = [
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/index")
-    )
-  },
-  {
-    path: "/store/review/clipped",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexClipped")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByProduct")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code/post",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/new")
-    )
-  },
-  {
-    path: "/store/review/report/:item_code/:comment_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/report")
-    )
-  },
-  {
-    path: "/store/review/detail/:review_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/show")
-    )
-  },
-  {
-    path: "/store/review/user/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByUser")
-    )
-  },
-  {
-    path: "/store/review/following/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByFollowing")
+      require("./customApp/containers/Review/history")
     )
   },
   {
@@ -216,10 +167,24 @@ const routes = [
     )
   },
   {
-    path: "/store/cust/order/itemlist",
+    path: "/store/order/index",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/index")
+    )
+  },
+  {
+    path: "/store/order/itemlist",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Order/indexPurchaseHistory")
+    )
+  },
+  {
+    path: "/store/order/confirmation",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Order/confirmation")
     )
   },
   {
@@ -269,6 +234,20 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Search/indexService")
+    )
+  },
+  {
+    path: "/store/delivery/list",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/list")
+    )
+  },
+  {
+    path: "/store/delivery/add",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Add/index")
     )
   },
   {
