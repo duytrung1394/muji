@@ -492,26 +492,27 @@ paths:
   /frontItem/searchItems:
     post:
       tags:
-      - Item
+        - Item
       summary: 商品検索
       description: 指定された条件に合致する商品情報一覧を提供する。
       operationId: searchItemsUsingPOST
       requestBody:
         description: request
         content:
-          application/json;charset=UTF-8:
+          application/json:
             schema:
               $ref: '#/components/schemas/Request202'
             example:
               sectionCode: T10000
               sort: NON_SELECTED
+              pastProduct: false
               netstoreStock: false
               startIndex: 0
               itemSize: 100
               itemSizeInGroup: 4
               itemGroupSize: 3
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -524,6 +525,7 @@ paths:
                   sectionCode: T10000
                   sort: NON_SELECTED
                   actualSort: DEFAULT@DESC
+                  pastProduct: false
                   netstoreStock: false
                   startIndex: 0
                   itemSize: 100
@@ -544,6 +546,8 @@ paths:
                     items:
                       - intensiveJanCode: '4550002964900'
                         itemName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4550002964900_400.jpg
                         description: ＵＰＦは、紫外線から皮膚を保護する効果の程度を表す数値です。最高値に近いＵＰＦ５０の生地を使いました。
                         itemDivision: A
                         deliveryDivision: TH
@@ -551,6 +555,7 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         discounts:
                           DISCOUNT:
                             startTimestamp: 1546306200000
@@ -561,6 +566,9 @@ paths:
                               storeJanCode: 02965037
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｍ・ブルー
+                              skuImages:
+                                - https://www.example.com/img/item/4550002965037_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '065'
                                 colorLabel: ブルー
@@ -578,6 +586,9 @@ paths:
                               storeJanCode: '02516604'
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｓ・ブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002516604_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '065'
                                 colorLabel: ブルー
@@ -595,6 +606,8 @@ paths:
                               storeJanCode: 02965051
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人ＸＬ・ブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002965051_400.jpg
                               color:
                                 colorCode: '065'
                                 colorLabel: ブルー
@@ -612,6 +625,9 @@ paths:
                               storeJanCode: 02965044
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｌ・ブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002965044_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '065'
                                 colorLabel: ブルー
@@ -629,6 +645,9 @@ paths:
                               storeJanCode: 02964931
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人ＸＬ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964931_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -646,6 +665,9 @@ paths:
                               storeJanCode: 02964900
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｓ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964900_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -663,6 +685,9 @@ paths:
                               storeJanCode: 02964917
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｍ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964917_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -680,6 +705,9 @@ paths:
                               storeJanCode: 02964924
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｌ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964924_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -697,6 +725,9 @@ paths:
                               storeJanCode: 02964986
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｓ・オレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964986_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '035'
                                 colorLabel: オレンジ
@@ -714,6 +745,9 @@ paths:
                               storeJanCode: 02965006
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｌ・オレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002965006_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '035'
                                 colorLabel: オレンジ
@@ -731,6 +765,9 @@ paths:
                               storeJanCode: 02965013
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人ＸＬ・オレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002965013_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '035'
                                 colorLabel: オレンジ
@@ -747,6 +784,9 @@ paths:
                               storeJanCode: 02964993
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｍ・オレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964993_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '035'
                                 colorLabel: オレンジ
@@ -764,6 +804,9 @@ paths:
                               storeJanCode: 02964979
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人ＸＬ・ネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964979_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -781,6 +824,9 @@ paths:
                               storeJanCode: 02964962
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｌ・ネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964962_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -798,6 +844,9 @@ paths:
                               storeJanCode: 02964955
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｍ・ネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964955_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -815,6 +864,9 @@ paths:
                               storeJanCode: 02964948
                               skuViewName: 日焼けを防ぐＵＰＦ５０ジップアップパーカー
                               skuName: 婦人Ｓ・ネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002964948_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -830,6 +882,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4550002958817'
                         itemName: 撥水二重編みジップアップパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4550002958817_400.jpg
                         description: 真ん中に空気層を持つ軽い素材を使い、フードにはアイマスクを付けました。オーガニックコットンを使っています。
                         itemDivision: A
                         deliveryDivision: TH
@@ -837,6 +891,7 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         discounts:
                           DISCOUNT:
                             startTimestamp: 1546306200000
@@ -852,6 +907,9 @@ paths:
                               storeJanCode: 02958817
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｓ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958817_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -868,6 +926,9 @@ paths:
                               storeJanCode: 02958824
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｍ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958824_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -884,6 +945,9 @@ paths:
                               storeJanCode: 02958831
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｌ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958831_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -900,6 +964,9 @@ paths:
                               storeJanCode: '82115970'
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人ＸＬ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182115970_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -916,6 +983,9 @@ paths:
                               storeJanCode: 02958848
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｓ・黒
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958848_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 009
                                 colorLabel: 黒
@@ -932,6 +1002,9 @@ paths:
                               storeJanCode: 02958855
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｍ・黒
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958855_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 009
                                 colorLabel: 黒
@@ -948,6 +1021,9 @@ paths:
                               storeJanCode: 02958862
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｌ・黒
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958862_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 009
                                 colorLabel: 黒
@@ -964,6 +1040,9 @@ paths:
                               storeJanCode: '82115987'
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人ＸＬ・黒
+                              skuImages:
+                                - http://www.example.com/img/item/4550182115987_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 009
                                 colorLabel: 黒
@@ -980,6 +1059,9 @@ paths:
                               storeJanCode: 02958879
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｓ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958879_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -996,6 +1078,9 @@ paths:
                               storeJanCode: 02958886
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｍ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958886_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1012,6 +1097,9 @@ paths:
                               storeJanCode: 02958893
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人Ｌ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002958893_400.jpg
+                              materialName: 綿
                               colors:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1028,6 +1116,9 @@ paths:
                               storeJanCode: '82115994'
                               skuViewName: 撥水二重編みジップアップパーカー
                               skuName: 婦人ＸＬ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182115994_400.jpg
+                              materialName: 綿
                               colors:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1042,6 +1133,8 @@ paths:
                                 quantity: 100
                       - intensiveJanCode: '4550002956714'
                         itemName: ムラ糸裏毛ジップアップパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4550002956714_400.jpg
                         description: >-
                           内側をパイル状に編み立てたふくらみ感と凹凸のある糸による表面感が特長です。オーガニックコットンを使っています。
                         itemDivision: A
@@ -1050,6 +1143,7 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         discounts:
                           MIXMATCH:
                             startTimestamp: 1546306200000
@@ -1061,6 +1155,9 @@ paths:
                               storeJanCode: 02956714
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956714_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1078,6 +1175,9 @@ paths:
                               storeJanCode: 02956721
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956721_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1095,6 +1195,9 @@ paths:
                               storeJanCode: 02956738
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956738_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1112,6 +1215,9 @@ paths:
                               storeJanCode: 02956745
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956745_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1129,6 +1235,9 @@ paths:
                               storeJanCode: 02956752
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956752_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1146,6 +1255,9 @@ paths:
                               storeJanCode: 02956776
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956776_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1163,6 +1275,9 @@ paths:
                               storeJanCode: 02956783
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956783_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1180,6 +1295,9 @@ paths:
                               storeJanCode: 02956790
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956790_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1197,6 +1315,9 @@ paths:
                               storeJanCode: 02956806
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956806_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1214,6 +1335,9 @@ paths:
                               storeJanCode: 02956813
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956813_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1231,6 +1355,8 @@ paths:
                               storeJanCode: 02956899
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956899_400.jpg
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1248,6 +1374,9 @@ paths:
                               storeJanCode: 02956905
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956905_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1265,6 +1394,9 @@ paths:
                               storeJanCode: 02956912
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956912_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1282,6 +1414,9 @@ paths:
                               storeJanCode: 02956929
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956929_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1299,6 +1434,9 @@ paths:
                               storeJanCode: 02956936
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956936_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1316,6 +1454,9 @@ paths:
                               storeJanCode: 02956837
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・ライトブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956837_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '061'
                                 colorLabel: ライトブルー
@@ -1333,6 +1474,9 @@ paths:
                               storeJanCode: 02956844
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・ライトブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956844_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '061'
                                 colorLabel: ライトブルー
@@ -1350,6 +1494,9 @@ paths:
                               storeJanCode: 02956851
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・ライトブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956851_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '061'
                                 colorLabel: ライトブルー
@@ -1367,6 +1514,9 @@ paths:
                               storeJanCode: 02956868
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・ライトブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956868_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '061'
                                 colorLabel: ライトブルー
@@ -1384,6 +1534,9 @@ paths:
                               storeJanCode: 02956875
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・ライトブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956875_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '061'
                                 colorLabel: ライトブルー
@@ -1401,6 +1554,9 @@ paths:
                               storeJanCode: 02956950
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956950_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1418,6 +1574,9 @@ paths:
                               storeJanCode: 02956967
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956967_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1435,6 +1594,9 @@ paths:
                               storeJanCode: 02956974
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956974_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1452,6 +1614,9 @@ paths:
                               storeJanCode: 02956981
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956981_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1469,6 +1634,9 @@ paths:
                               storeJanCode: 02956998
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002956998_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1486,6 +1654,9 @@ paths:
                               storeJanCode: 02957018
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・スモーキーピンク
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957018_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '027'
                                 colorLabel: スモーキーピンク
@@ -1503,6 +1674,9 @@ paths:
                               storeJanCode: 02957025
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・スモーキーピンク
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957025_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '027'
                                 colorLabel: スモーキーピンク
@@ -1520,6 +1694,9 @@ paths:
                               storeJanCode: 02957032
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・スモーキーピンク
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957032_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '027'
                                 colorLabel: スモーキーピンク
@@ -1537,6 +1714,9 @@ paths:
                               storeJanCode: 02957049
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・スモーキーピンク
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957049_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '027'
                                 colorLabel: スモーキーピンク
@@ -1554,6 +1734,9 @@ paths:
                               storeJanCode: 02957056
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・スモーキーピンク
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957056_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '027'
                                 colorLabel: スモーキーピンク
@@ -1571,6 +1754,9 @@ paths:
                               storeJanCode: 02957070
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＳ・スモーキーオレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957070_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '037'
                                 colorLabel: スモーキーオレンジ
@@ -1588,6 +1774,9 @@ paths:
                               storeJanCode: 02957087
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｓ・スモーキーオレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957087_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '037'
                                 colorLabel: スモーキーオレンジ
@@ -1605,6 +1794,9 @@ paths:
                               storeJanCode: 02957094
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｍ・スモーキーオレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957094_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '037'
                                 colorLabel: スモーキーオレンジ
@@ -1622,6 +1814,9 @@ paths:
                               storeJanCode: 02957100
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人Ｌ・スモーキーオレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957100_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '037'
                                 colorLabel: スモーキーオレンジ
@@ -1639,6 +1834,9 @@ paths:
                               storeJanCode: 02957117
                               skuViewName: ムラ糸裏毛ジップアップパーカー
                               skuName: 婦人ＸＬ・スモーキーオレンジ
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957117_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '037'
                                 colorLabel: スモーキーオレンジ
@@ -1654,6 +1852,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4550002957131'
                         itemName: ムラ糸裏毛プルオーバーパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4550002957131_400.jpg
                         description: >-
                           内側をパイル状に編み立てたふくらみ感と凹凸のある糸による表面感が特長です。オーガニックコットンを使っています。
                         itemDivision: A
@@ -1662,11 +1862,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550002957131'
                               storeJanCode: 02957131
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人ＸＳ～Ｓ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957131_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1683,6 +1887,9 @@ paths:
                               storeJanCode: 02957148
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人Ｍ～Ｌ・生成
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957148_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '010'
                                 colorLabel: 生成
@@ -1699,6 +1906,9 @@ paths:
                               storeJanCode: 02957179
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人ＸＳ～Ｓ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957179_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1715,6 +1925,9 @@ paths:
                               storeJanCode: 02957186
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人Ｍ～Ｌ・ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957186_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: ライトグレー
@@ -1731,6 +1944,9 @@ paths:
                               storeJanCode: 02957193
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人ＸＳ～Ｓ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957193_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1747,6 +1963,9 @@ paths:
                               storeJanCode: 02957209
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人Ｍ～Ｌ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957209_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -1763,6 +1982,9 @@ paths:
                               storeJanCode: 02957162
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人Ｍ～Ｌ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957162_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1779,6 +2001,9 @@ paths:
                               storeJanCode: 02957155
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人ＸＳ～Ｓ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957155_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1795,6 +2020,9 @@ paths:
                               storeJanCode: 02957216
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人ＸＳ～Ｓ・ペールグリーン
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957216_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '050'
                                 colorLabel: ペールグリーン
@@ -1811,6 +2039,9 @@ paths:
                               storeJanCode: 02957223
                               skuViewName: ムラ糸裏毛プルオーバーパーカー
                               skuName: 婦人Ｍ～Ｌ・ペールグリーン
+                              skuImages:
+                                - http://www.example.com/img/item/4550002957223_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '050'
                                 colorLabel: ペールグリーン
@@ -1830,6 +2061,8 @@ paths:
                     items:
                       - intensiveJanCode: '4550182048506'
                         itemName: ストレッチフライス編みボートネック七分袖Ｔシャツ
+                        itemImages:
+                          - http://www.example.com/img/item/4550182048506_400.jpg
                         description: 伸縮性に優れたフライス編みによる柔らかな素材とフィット感が特長です。オーガニックコットンを使っています。
                         itemDivision: A
                         deliveryDivision: TH
@@ -1837,11 +2070,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550182048506'
                               storeJanCode: '82048506'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048506_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -1858,6 +2095,9 @@ paths:
                               storeJanCode: '82048513'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048513_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -1874,6 +2114,9 @@ paths:
                               storeJanCode: '82048520'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048520_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -1890,6 +2133,9 @@ paths:
                               storeJanCode: '82048537'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048537_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -1906,6 +2152,9 @@ paths:
                               storeJanCode: '82048544'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048544_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -1922,6 +2171,9 @@ paths:
                               storeJanCode: '82048568'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＳ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048568_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1938,6 +2190,9 @@ paths:
                               storeJanCode: '82048575'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｓ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048575_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1954,6 +2209,9 @@ paths:
                               storeJanCode: '82048582'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｍ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048582_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1970,6 +2228,9 @@ paths:
                               storeJanCode: '82048599'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｌ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048599_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -1986,6 +2247,9 @@ paths:
                               storeJanCode: '82048605'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＬ・ライトシルバーグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048605_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '003'
                                 colorLabel: ライトシルバーグレー
@@ -2002,6 +2266,9 @@ paths:
                               storeJanCode: '82048629'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＳ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048629_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -2018,6 +2285,9 @@ paths:
                               storeJanCode: '82048636'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｓ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048636_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -2034,6 +2304,9 @@ paths:
                               storeJanCode: '82048643'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｍ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048643_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -2050,6 +2323,9 @@ paths:
                               storeJanCode: '82048650'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｌ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048650_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -2066,6 +2342,9 @@ paths:
                               storeJanCode: '82048667'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＬ・グレー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048667_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '005'
                                 colorLabel: グレー
@@ -2082,6 +2361,9 @@ paths:
                               storeJanCode: '82048681'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＳ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048681_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -2098,6 +2380,9 @@ paths:
                               storeJanCode: '82048698'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｓ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048698_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -2114,6 +2399,9 @@ paths:
                               storeJanCode: '82048704'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｍ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048704_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -2130,6 +2418,9 @@ paths:
                               storeJanCode: '82048711'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人Ｌ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048711_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -2146,6 +2437,9 @@ paths:
                               storeJanCode: '82048728'
                               skuViewName: ストレッチフライス編みボートネック七分袖Ｔシャツ
                               skuName: 婦人ＸＬ・ダークネイビー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182048728_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 069
                                 colorLabel: ダークネイビー
@@ -2160,6 +2454,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4549738860587'
                         itemName: 撥水二重編みジップアップパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4549738860587_400.jpg
                         description: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                         itemDivision: A
                         deliveryDivision: TH
@@ -2167,11 +2463,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4549738860587'
                               storeJanCode: '38860587'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860587_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2187,6 +2487,9 @@ paths:
                               storeJanCode: '38860594'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860594_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2202,6 +2505,9 @@ paths:
                               storeJanCode: '38860600'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860600_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2217,6 +2523,9 @@ paths:
                               storeJanCode: '38860617'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860617_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2232,6 +2541,9 @@ paths:
                               storeJanCode: '38860624'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860624_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2247,6 +2559,9 @@ paths:
                               storeJanCode: '38860648'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＳ・杢ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860648_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: 杢ライトグレー
@@ -2262,6 +2577,9 @@ paths:
                               storeJanCode: '38860655'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｓ・杢ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860655_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: 杢ライトグレー
@@ -2277,6 +2595,9 @@ paths:
                               storeJanCode: '38860662'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｍ・杢ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860662_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: 杢ライトグレー
@@ -2292,6 +2613,9 @@ paths:
                               storeJanCode: '38860679'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｌ・杢ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860679_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: 杢ライトグレー
@@ -2307,6 +2631,9 @@ paths:
                               storeJanCode: '38860686'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＬ・杢ライトグレー
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860686_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '002'
                                 colorLabel: 杢ライトグレー
@@ -2322,6 +2649,9 @@ paths:
                               storeJanCode: '38860709'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＳ・紺
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860709_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -2337,6 +2667,9 @@ paths:
                               storeJanCode: '38860716'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｓ・紺
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860716_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -2352,6 +2685,9 @@ paths:
                               storeJanCode: '38860723'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｍ・紺
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860723_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -2367,6 +2703,9 @@ paths:
                               storeJanCode: '38860747'
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＬ・紺
+                              skuImages:
+                                - http://www.example.com/img/item/4549738860747_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: 068
                                 colorLabel: ネイビー
@@ -2380,6 +2719,8 @@ paths:
                                 quantity: 100
                       - intensiveJanCode: '4550002683689'
                         itemName: ムラ糸裏毛ジップアップパーカー
+                        itemImages:
+                          - http://www.example.com/img/item/4550002683689_400.jpg
                         description: >-
                           内側をパイル状に編み立てたふくらみ感と凹凸のある糸による表面感が特長です。オーガニックコットンを使っています。
                         itemDivision: A
@@ -2388,11 +2729,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550002683689'
                               storeJanCode: 02683689
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002683689_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2409,6 +2754,9 @@ paths:
                               storeJanCode: 02683696
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002683696_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2425,6 +2773,9 @@ paths:
                               storeJanCode: 02683702
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002683702_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2441,6 +2792,9 @@ paths:
                               storeJanCode: 02683719
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002683719_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2457,6 +2811,9 @@ paths:
                               storeJanCode: 02683726
                               skuViewName: オーガニックコットンストレッチクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002683726_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2471,6 +2828,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4550002966997'
                         itemName: ストレッチフライス編みクルーネック長袖Ｔシャツ
+                        itemImages:
+                          - http://www.example.com/img/item/4550002966997_400.jpg
                         description: 伸縮性に優れたフライス編みによる柔らかな素材とフィット感が特長です。オーガニックコットンを使っています。
                         itemDivision: A
                         deliveryDivision: TH
@@ -2478,11 +2837,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550002966997'
                               storeJanCode: 02966997
                               skuViewName: ストレッチフライス編みクルーネック長袖Ｔシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002966997_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2502,6 +2865,8 @@ paths:
                     items:
                       - intensiveJanCode: '4550002658533'
                         itemName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
+                        itemImages:
+                          - http://www.example.com/img/item/4550002658533_400.jpg
                         description: ヨコ糸に丈夫で繊細な双糸を使用し、生地のコシを生かしながら、洗いをかけて着慣れた風合いを出しました。
                         itemDivision: A
                         deliveryDivision: TH
@@ -2509,11 +2874,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550002658533'
                               storeJanCode: 02658533
                               skuViewName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002658533_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2530,6 +2899,9 @@ paths:
                               storeJanCode: 02658540
                               skuViewName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002658540_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2546,6 +2918,9 @@ paths:
                               storeJanCode: 02658557
                               skuViewName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002658557_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2562,6 +2937,9 @@ paths:
                               storeJanCode: 02658564
                               skuViewName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002658564_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2578,6 +2956,9 @@ paths:
                               storeJanCode: 02658571
                               skuViewName: オーガニックコットン洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002658571_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2592,6 +2973,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4550182042177'
                         itemName: 新疆綿洗いざらしオックスボタンダウンシャツ
+                        itemImages:
+                          - http://www.example.com/img/item/4550182042177_400.jpg
                         description: 綿本来の風合いを生かすために、洗いざらしで仕上げました。オーガニックコットンを使っています。
                         itemDivision: A
                         deliveryDivision: TH
@@ -2599,11 +2982,15 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550182042177'
                               storeJanCode: '82042177'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042177_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2620,6 +3007,9 @@ paths:
                               storeJanCode: '82042184'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042184_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2636,6 +3026,9 @@ paths:
                               storeJanCode: '82042191'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042191_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2652,6 +3045,9 @@ paths:
                               storeJanCode: '82042207'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042207_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2668,6 +3064,9 @@ paths:
                               storeJanCode: '82042214'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042214_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2684,6 +3083,9 @@ paths:
                               storeJanCode: '82042221'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042221_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2700,6 +3102,9 @@ paths:
                               storeJanCode: '82042238'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＳ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042238_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2716,6 +3121,9 @@ paths:
                               storeJanCode: '82042245'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｓ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042245_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2732,6 +3140,9 @@ paths:
                               storeJanCode: '82042252'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｍ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042252_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2748,6 +3159,9 @@ paths:
                               storeJanCode: '82042269'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人Ｌ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042269_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2764,6 +3178,9 @@ paths:
                               storeJanCode: '82042276'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＬ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042276_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2780,6 +3197,9 @@ paths:
                               storeJanCode: '82042283'
                               skuViewName: 新疆綿洗いざらしオックスボタンダウンシャツ
                               skuName: 婦人ＸＸＬ・ベビーブルー
+                              skuImages:
+                                - http://www.example.com/img/item/4550182042283_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '060'
                                 colorLabel: ベビーブルー
@@ -2794,6 +3214,8 @@ paths:
                               deliveryPrice: 0
                       - intensiveJanCode: '4550002352486'
                         itemName: オーガニックコットン洗いざらしブロードシャツ
+                        itemImages:
+                          - http://www.example.com/img/item/4550002352486_400.jpg
                         description: ヨコ糸に丈夫で繊細な双糸を使用したなめらかな肌触りが特長です。洗いをかけて、着慣れた風合いに仕上げました。
                         itemDivision: A
                         deliveryDivision: TH
@@ -2801,14 +3223,18 @@ paths:
                         canReserve: false
                         storeReceive: true
                         otherStoreReceive: true
+                        postReceive: false
                         skuVariations:
                           - - janCode: '4550002352523'
                               storeJanCode: 02956950
                               skuViewName: ムラ糸裏毛ジップアップパーカー
-                              skuName: 婦人ＸＳ・ライトシルバーグレー
+                              skuName: 婦人ＸＳ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352523_400.jpg
+                              materialName: 綿
                               color:
-                                colorCode: '003'
-                                colorLabel: ライトシルバーグレー
+                                colorCode: '000'
+                                colorLabel: 白
                               size:
                                 sizeCode: '024'
                                 sizeLabel: 婦人ＸＳ
@@ -2823,6 +3249,9 @@ paths:
                               storeJanCode: 02352493
                               skuViewName: オーガニックコットン洗いざらしブロードシャツ
                               skuName: 婦人Ｓ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352493_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2839,6 +3268,9 @@ paths:
                               storeJanCode: 02352509
                               skuViewName: オーガニックコットン洗いざらしブロードシャツ
                               skuName: 婦人Ｍ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352509_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2855,6 +3287,9 @@ paths:
                               storeJanCode: '02352516'
                               skuViewName: オーガニックコットン洗いざらしブロードシャツ
                               skuName: 婦人Ｌ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352516_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2871,6 +3306,9 @@ paths:
                               storeJanCode: '02352523'
                               skuViewName: オーガニックコットン洗いざらしブロードシャツ
                               skuName: 婦人ＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352523_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2887,6 +3325,9 @@ paths:
                               storeJanCode: '02352530'
                               skuViewName: オーガニックコットン洗いざらしブロードシャツ
                               skuName: 婦人ＸＸＬ・白
+                              skuImages:
+                                - http://www.example.com/img/item/4550002352530_400.jpg
+                              materialName: 綿
                               color:
                                 colorCode: '000'
                                 colorLabel: 白
@@ -2899,16 +3340,16 @@ paths:
                                 status: STOCK
                                 quantity: 100
                               deliveryPrice: 0
-        201:
+        '201':
           description: Created
           content: {}
-        401:
+        '401':
           description: Unauthorized
           content: {}
-        403:
+        '403':
           description: Forbidden
           content: {}
-        404:
+        '404':
           description: Not Found
           content: {}
       deprecated: false
@@ -8133,7 +8574,7 @@ components:
     Front202PriceDTO:
       title: Front202PriceDTO
       required:
-      - basicPrice
+        - basicPrice
       type: object
       properties:
         basicPrice:
@@ -8142,24 +8583,25 @@ components:
           format: int64
         oldPrice:
           type: integer
-          description: ディスカウント価格（税込）
+          description: 過去価格（税込）
           format: int64
         discountPrice:
           type: integer
-          description: 過去価格（税込）
+          description: ディスカウント価格（税込）
           format: int64
     Front202ItemDTO:
       title: Front202ItemDTO
       required:
-      - canReserve
-      - deliveryDivision
-      - intensiveJanCode
-      - isNewItem
-      - itemDivision
-      - itemName
-      - otherStoreReceive
-      - skuVariations
-      - storeReceive
+        - canReserve
+        - deliveryDivision
+        - intensiveJanCode
+        - isNewItem
+        - itemDivision
+        - itemName
+        - otherStoreReceive
+        - postReceive
+        - skuVariations
+        - storeReceive
       type: object
       properties:
         intensiveJanCode:
@@ -8168,6 +8610,11 @@ components:
         itemName:
           type: string
           description: 商品名
+        itemImages:
+          type: array
+          description: 商品イメージ
+          items:
+            type: string
         itemViewName:
           type: string
           description: まとめ商品表示名
@@ -8192,11 +8639,16 @@ components:
         otherStoreReceive:
           type: boolean
           description: コンビニ受取可
+        postReceive:
+          type: boolean
+          description: ポスト受取可
         discounts:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Front202DiscountDTO'
-          description: ディスカウント情報マップ Key=割引種類名（TIMESALE/OUTLET/RECONSIDER/MIXMATCH/COMBINATION/MARKDOWN/DISCOUNT）
+          description: >-
+            ディスカウント情報マップ
+            Key=割引種類名（TIMESALE/OUTLET/RECONSIDER/MIXMATCH/COMBINATION/MARKDOWN/DISCOUNT）
         skuVariations:
           type: array
           description: カラーバリエーションリスト
@@ -8208,7 +8660,7 @@ components:
     Front202QueryParamsDTO:
       title: Front202QueryParamsDTO
       required:
-      - actualSort
+        - actualSort
       type: object
       properties:
         sectionCode:
@@ -8275,8 +8727,8 @@ components:
     Front202ItemGroupDTO:
       title: Front202ItemGroupDTO
       required:
-      - searchedItemCount
-      - totalItemCount
+        - searchedItemCount
+        - totalItemCount
       type: object
       properties:
         sectionCode:
@@ -8301,8 +8753,8 @@ components:
     Front202DiscountDTO:
       title: Front202DiscountDTO
       required:
-      - endTimeStamp
-      - startTimeStamp
+        - endTimeStamp
+        - startTimeStamp
       type: object
       properties:
         startTimeStamp:
@@ -8322,10 +8774,10 @@ components:
     Front202SectionInfoDTO:
       title: Front202SectionInfoDTO
       required:
-      - searchedItemCount
-      - searchedSubSectionCount
-      - totalItemCount
-      - totalSubSectionCount
+        - searchedItemCount
+        - searchedSubSectionCount
+        - totalItemCount
+        - totalSubSectionCount
       type: object
       properties:
         sectionCode:
@@ -8353,10 +8805,12 @@ components:
     Front202SkuDTO:
       title: Front202SkuDTO
       required:
-      - janCode
-      - price
-      - stock
-      - storeJanCode
+        - janCode
+        - materialName
+        - price
+        - skuName
+        - stock
+        - storeJanCode
       type: object
       properties:
         janCode:
@@ -8371,6 +8825,14 @@ components:
         skuName:
           type: string
           description: 商品規格名
+        skuImages:
+          type: array
+          description: 商品イメージ
+          items:
+            type: string
+        materialName:
+          type: string
+          description: 素材名
         color:
           $ref: '#/components/schemas/Front202ColorDTO'
         size:
@@ -8386,7 +8848,7 @@ components:
     Front202InventoryDTO:
       title: Front202InventoryDTO
       required:
-      - status
+        - status
       type: object
       properties:
         status:
@@ -8399,13 +8861,13 @@ components:
     Front202DTO:
       title: Front202DTO
       required:
-      - header
-      - queryParams
+        - header
+        - queryParams
       type: object
       properties:
         header:
           required:
-          - returnCode
+            - returnCode
           type: object
           properties:
             returnCode:
@@ -8437,6 +8899,9 @@ components:
         sort:
           type: string
           description: ソート順
+        pastProduct:
+          type: string
+          description: 過去商品表示
         netstoreStock:
           type: boolean
           description: ネット在庫有無
