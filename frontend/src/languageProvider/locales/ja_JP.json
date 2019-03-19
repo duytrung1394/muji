@@ -873,7 +873,7 @@
   "productDetail.closeSeeMore": "閉じる",
   "productDetail.color": "カラー : ",
   "productDetail.inventoryStatus.STOCK": "在庫あり",
-  "productDetail.inventoryStatus.FEWNESS": "残り",
+  "productDetail.inventoryStatus.FEWNESS": "残り{amount}",
   "productDetail.inventoryStatus.NONETHANDLING": "取扱なし",
   "productDetail.inventoryStatus.NOSTOCK": "在庫なし",
   "productDetail.deliveryFee": "配送料",
