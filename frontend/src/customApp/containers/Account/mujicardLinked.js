@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { injectIntl } from "react-intl";
 import {
   ContentAreaLayout,
   BaseContentLayout
@@ -11,6 +10,8 @@ import { Link } from "../../components/shared/form/link";
 
 const ContentLayout = styled(BaseContentLayout)`
   max-width: 732px;
+  padding: 0 16px 10px;
+  margin: 28px auto;
 `;
 
 const ButtonArea = styled.div`
@@ -22,73 +23,60 @@ const MujicardLinkedHeadTitle = styled.h1`
   color: #000;
   font-size: 19px;
   letter-spacing: 0.25px;
-  margin-top: 30px;
+  margin: 0;
 `;
 
-const BaseDescription = styled.p`
+const BaseLine = styled.p`
   color: #585858;
-  margin-top: 10px;
-  text-align: justify;
-`;
-
-const MujicardLinkedHeadDescriptionLine1 = styled(BaseDescription)`
+  margin: 10px 0 0;
   line-height: 19px;
-  font-size: 13px;
-  letter-spacing: .3px;
-  margin-top : 20px;
 `;
 
-const MujicardLinkedHeadDescriptionLine2 = styled(BaseDescription)`
+const DescriptionLine = styled(BaseLine)`
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  margin-top: 20px;
+`;
+
+const GlossaryLine = styled(BaseLine)`
   line-height: 15px;
   font-size: 11px;
-  letter-spacing: .25px;
+  letter-spacing: 0.25px;
 `;
 
-const MujicardLinkedHeadDetails = styled(BaseDescription)`
-  line-height: 19px;
+const LinkDetail = styled(BaseLine)`
   font-size: 12px;
-  letter-spacing: .25px;
+  letter-spacing: 0.25px;
 `;
 
-const MujicardLinkedTitle = () => {
-    return (
-      <MujicardLinkedHeadTitle>
-        <IntlMessages id="account.mujicardLinkHeadTitle" />
-      </MujicardLinkedHeadTitle>
-    );
-};
-
-class Index extends Component {
+class MujicarLinked extends Component {
   render() {
     return (
       <ContentAreaLayout>
         <ContentLayout>
-              <MujicardLinkedTitle />
-              <MujicardLinkedHeadDescriptionLine1>
-                  <IntlMessages id="account.mujicardLinked.descriptionLine1" />
-              </MujicardLinkedHeadDescriptionLine1>
-              <MujicardLinkedHeadDescriptionLine2>
-                  <IntlMessages id="account.mujicardLinked.descriptionLine2" />
-              </MujicardLinkedHeadDescriptionLine2>
-              <MujicardLinkedHeadDetails>
-                <Link to="#">
-                  <IntlMessages id="account.mujicardLinkedHeadDetails" />
-                </Link>
-              </MujicardLinkedHeadDetails>
-              <ButtonArea>
-                  <OutlineButton color="#7f0119" reverse="true">
-                      <IntlMessages id="account.mujicardLinkedButton" />
-                  </OutlineButton>
-              </ButtonArea>
-          </ContentLayout>
+          <MujicardLinkedHeadTitle>
+            <IntlMessages id="account.mujicardLinkHeadTitle" />
+          </MujicardLinkedHeadTitle>
+          <DescriptionLine>
+            <IntlMessages id="account.mujicardLinked.description" />
+          </DescriptionLine>
+          <GlossaryLine>
+            <IntlMessages id="account.mujicardLinked.glossary" />
+          </GlossaryLine>
+          <LinkDetail>
+            <Link to="#">
+              <IntlMessages id="account.mujicardLinkedHeadDetails" />
+            </Link>
+          </LinkDetail>
+          <ButtonArea>
+            <OutlineButton color="#7f0119" reverse="true">
+              <IntlMessages id="account.mujicardLinkedButton" />
+            </OutlineButton>
+          </ButtonArea>
+        </ContentLayout>
       </ContentAreaLayout>
     );
   }
 }
 
-const enhance = C => {
-  const injected = injectIntl(C, { withRef: true });
-  return injected;
-};
-
-export default enhance(Index);
+export default MujicarLinked;
