@@ -62,6 +62,9 @@ require_once 'api/v1/search.php';
 // /api/v1/favorites
 require_once 'api/v1/favorites.php';
 
+// /api/v1/coupon
+require_once 'api/v1/coupon.php';
+
 // /api/v1/mile-services
 require_once 'api/v1/mile_services.php';
 

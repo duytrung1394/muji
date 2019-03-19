@@ -263,6 +263,13 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
     )
+  },
+  {
+    path: "/store/coupon/validcoupon",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Coupon/index")
+    )
   }
 ];
 export default routes;
