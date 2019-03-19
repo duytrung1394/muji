@@ -3,7 +3,7 @@
     {
       "type": "groupMenu",
       "title": "特集",
-      "img": "commonIcon",
+      "img": "sidebarIcon2",
       "items": [
         {
           "title": "特集",
@@ -24,7 +24,7 @@
     {
       "type": "groupMenu",
       "title": "お買い得",
-      "img": "commonIcon",
+      "img": "sidebarIcon2",
       "items": [
         {
           "title": "期間限定価格",

@@ -15,21 +15,28 @@ const { Content } = Layout;
 
 const Routes = () => renderRoutes(routes);
 
+export const DashAppLayout = props => (
+  <Layout style={{ height: "100%" }}>
+    <Header />
+    {/* 注: Siderを子要素に持つ場合 hasSider オプションをつけないとSSRの時にサイドバーのレイアウトが崩れてしまう */}
+    <Layout hasSider={true}>
+      <Sider />
+      <Content id="content" style={{ position: "relative" }}>
+        {props.children}
+        <Layout>
+          <Footer />
+        </Layout>
+      </Content>
+    </Layout>
+  </Layout>
+);
+
 const DashApp = () => (
   <Hoc>
     <BrowserRouter>
-      <Layout style={{ height: "100%" }}>
-        <Header isLoggedIn={false} />
-        <Layout hasSider={true}>
-          <Sider />
-          <Content id="content" style={{ position: "relative" }}>
-            <Routes />
-            <Layout>
-              <Footer />
-            </Layout>
-          </Content>
-        </Layout>
-      </Layout>
+      <DashAppLayout>
+        <Routes />
+      </DashAppLayout>
     </BrowserRouter>
   </Hoc>
 );

@@ -12,11 +12,6 @@ const routes = [
     component: asyncComponent(() => require("./customApp/containers/Top/index"))
   },
   {
-    path: "/about",
-    exact: true,
-    component: asyncComponent(() => require("./about.js"))
-  },
-  {
     path: "/signin",
     exact: true,
     component: asyncComponent(() => require("./containers/Page/signin"))
@@ -46,6 +41,11 @@ const routes = [
     component: asyncComponent(() =>
       require("./customApp/containers/Httpbin/index")
     )
+  },
+  {
+    path: "/home_debug",
+    exact: true,
+    component: asyncComponent(() => require("./home"))
   },
   {
     path: "/store/cmdty/section/:category_code",
