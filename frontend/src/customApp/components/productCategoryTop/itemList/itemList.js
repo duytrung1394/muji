@@ -83,7 +83,13 @@ const ItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { total, groups, categories_in_page, filterFlg } = props;
+  const {
+    total,
+    groups,
+    categories_in_page,
+    filterFlg,
+    section_layout_type
+  } = props;
 
   return (
     <ContentPanelWrapper
@@ -123,12 +129,14 @@ const ItemList = props => {
                   );
                 })}
               </Slider>
-              <ItemCountButtonWrapper>
-                <ItemCountButton
-                  name={group.group_name}
-                  count={group.itemCount}
-                />
-              </ItemCountButtonWrapper>
+              {section_layout_type !== "LAST_SECTION" && (
+                <ItemCountButtonWrapper>
+                  <ItemCountButton
+                    name={group.group_name}
+                    count={group.itemCount}
+                  />
+                </ItemCountButtonWrapper>
+              )}
             </div>
           );
         })}

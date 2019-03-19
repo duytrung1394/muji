@@ -302,6 +302,7 @@ class ProductCategoryTopsController extends Controller
             'innerCategories' => $this->mockDataSecond[$sectionCode]['innerCategories'],
             'categories_in_page' => $this->mockDataSecond[$sectionCode]['categories_in_page'],
             'filterFlg' => $this->mockDataSecond[$sectionCode]['filterFlg'],
+            'section_layout_type' => $this->mockDataSecond[$sectionCode]['section_layout_type'],
             'sort_type' => 'group',
             'total' => 550,
             'groups' => $this->getMockGroups($sectionCode),
@@ -380,6 +381,7 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'filterFlg' => true,
+            'section_layout_type' => 'LAST_SECTION',
         ],
         'S20001' => [
             'links' => [
@@ -446,6 +448,7 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'filterFlg' => true,
+            'section_layout_type' => '',
         ],
         'S20002' => [
             'links' => [
@@ -472,6 +475,7 @@ class ProductCategoryTopsController extends Controller
             'innerCategories' => null,
             'categories_in_page' => null,
             'filterFlg' => false,
+            'section_layout_type' => 'LAST_SECTION',
         ],
         'S20003' => [
             'links' => [
@@ -525,6 +529,7 @@ class ProductCategoryTopsController extends Controller
             ],
             'categories_in_page' => null,
             'filterFlg' => true,
+            'section_layout_type' => '',
         ],
         'S02601' => [
             'links' => [
@@ -561,6 +566,7 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'filterFlg' => true,
+            'section_layout_type' => 'LAST_SECTION',
         ],
     ];
 
