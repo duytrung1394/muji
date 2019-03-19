@@ -7,6 +7,8 @@ import ItemTag from "./itemTag";
 import SizeRange from "./sizeRange";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { numberFormatter } from "../../../util/numberFormatter";
+import { OutlineButton } from "../../shared/form/button";
+import cartIcon from "../../../../image/cmdty/foot/ico-order-btn.png";
 
 const itemStyleParams = `
   border-radius: 4px;
@@ -74,6 +76,16 @@ const Stock = styled.div`
   color: #585858;
 `;
 
+const ButtonWrapper = styled.div`
+  margin: 20px;
+  img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+`;
+
 const colLayout = {
   xs: 10,
   sm: 10,
@@ -114,7 +126,8 @@ class ItemView extends Component {
       tags,
       minSize,
       maxSize,
-      isSlideScroll
+      isSlideScroll,
+      cartAddFlg
     } = this.props;
     const image = `https://img.muji.net/img/item/${
       this.state.currentJancode
@@ -175,6 +188,14 @@ class ItemView extends Component {
             </NewPriceValue>
           )}
         </Price>
+        {cartAddFlg && (
+          <ButtonWrapper>
+            <OutlineButton width="150px" color="#610000">
+              <img src={cartIcon} alt="" />
+              <IntlMessages id="productCategoryTop.button.cartAdd" />
+            </OutlineButton>
+          </ButtonWrapper>
+        )}
       </Item>
     );
   }

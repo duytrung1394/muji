@@ -840,6 +840,7 @@
   "productCategoryTop.attributes.stock": "在庫",
   "productCategoryTop.attributes.stock.option.all": "ネット在庫なしを含む",
   "productCategoryTop.attributes.stock.option.onlyInStock": "ネット在庫ありのみ",
+  "productCategoryTop.button.cartAdd": "カートに入れる",
   "productCategoryTop.button.combineOption": "カバー·脚·オプション品を自分で組み合わせる",
   "productCategoryTop.button.itemCount": "全{count}アイテム",
   "productCategoryTop.button.seeMore": "もっと見る",

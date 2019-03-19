@@ -59,12 +59,6 @@ const StyledLargeButton = styled(LargeButton)`
   }
 `;
 
-const SeeMoreButton = props => (
-  <StyledLargeButton>
-    <IntlMessages id="productCategoryTop.button.seeMore" />
-  </StyledLargeButton>
-);
-
 const ItemCountButtonWrapper = styled.div`
   text-align: center;
   margin: 30px 0 40px 0;
@@ -89,12 +83,11 @@ const ItemCountButton = props => (
 );
 
 const ItemList = props => {
-  const { total, groups, categories_in_page } = props;
+  const { total, groups, categories_in_page, filterFlg } = props;
 
   return (
     <ContentPanelWrapper
-      extra={<ItemListHeader total={total} />}
-      actions={categories_in_page ? [] : [<SeeMoreButton />]}
+      extra={filterFlg ? <ItemListHeader total={total} /> : null}
     >
       {!categories_in_page &&
         groups &&
@@ -121,7 +114,12 @@ const ItemList = props => {
               <Slider>
                 {group.items.map((item, index) => {
                   return (
-                    <ItemView isSlideScroll={true} {...item} key={index} />
+                    <ItemView
+                      isSlideScroll={true}
+                      cartAddFlg={group.cartAddFlg}
+                      {...item}
+                      key={index}
+                    />
                   );
                 })}
               </Slider>
