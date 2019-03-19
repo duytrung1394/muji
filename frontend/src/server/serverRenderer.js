@@ -6,42 +6,57 @@ import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { matchRoutes, renderRoutes } from "react-router-config";
 
-import routes from "./routes";
+import transit from "transit-immutable-js";
 
-import Hoc from "./serverHoc";
+import { ServerStyleSheet } from "styled-components";
+
+import routes from "../routes";
+
+import { SimpleHoc as Hoc } from "../hoc";
+
+import { store } from "../redux/store";
+import rootSaga from "../redux/sagas";
+
+import { DashAppLayout } from "../dashApp";
 
 const router = express.Router();
 
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 const ssr = async (req, res) => {
+  const rootComp = (
+    <Hoc>
+      <StaticRouter location={req.url} context={{}}>
+        <DashAppLayout>{renderRoutes(routes)}</DashAppLayout>
+      </StaticRouter>
+    </Hoc>
+  );
+
   const matchedRoutes = matchRoutes(routes, req.url);
   if (matchedRoutes.length > 1) {
     console.warn(`the url(${req.url}) matches multiple routes.`);
   }
-  const route = matchedRoutes[0].route;
-  let extraProps = {};
-  if (typeof route.component.getInitialProps == "function") {
-    extraProps = await route.component.getInitialProps();
-  } else {
-    console.warn(
-      `matched Component(${
-        route.component
-      }) should implements getInitialProps static function.`
-    );
-  }
 
-  ReactDOMServer.renderToNodeStream(
-    <Layout>
-      <Hoc>
-        <StaticRouter location={req.url}>
-          {renderRoutes(routes, extraProps)}
-        </StaticRouter>
-      </Hoc>
-    </Layout>
-  ).pipe(res);
+  const sheet = new ServerStyleSheet();
+
+  store
+    .runSaga(rootSaga)
+    .done.then(() => {
+      const stream = ReactDOMServer.renderToNodeStream(
+        <HTML
+          initialData={transit.toJSON(store.getState())}
+          styleElement={sheet.getStyleElement()}
+        >
+          {rootComp}
+        </HTML>
+      );
+      stream.pipe(res);
+    })
+    .catch(e => {
+      console.warn(e.message);
+      res.status(500).send(e.message);
+    });
+
+  ReactDOMServer.renderToStaticMarkup(rootComp);
+  store.close();
 };
 
 // TODO: ここのroutesループお行儀よくないので改善したい
@@ -56,7 +71,7 @@ routes.forEach(route => {
 });
 
 //TODO: 実ファイルの index.html と二重定義になってるのを解消したい
-const Layout = props => {
+const HTML = props => {
   return (
     <html lang="ja">
       <head>
@@ -65,10 +80,15 @@ const Layout = props => {
         <title>Muji EC</title>
         <style>{props.style}</style>
         <link rel="stylesheet" href="/main.css" />
+        {props.styleElement}
       </head>
       <body>
         <div id="root">{props.children}</div>
-        {/* <script id='initial-data' type='text/plain' data-json={JSON.stringify(props.initialData)}></script> */}
+        <script
+          id="initial-data"
+          type="text/plain"
+          data-json={props.initialData}
+        />
         <script type="text/javascript" src="/main.js" />
       </body>
     </html>

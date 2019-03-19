@@ -208,4 +208,4 @@ const PwaLoader = styled.div`
 
 `;
 
-export PwaLoader;
+export default PwaLoader;
