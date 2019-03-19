@@ -64,6 +64,10 @@ require_once 'api/v1/favorites.php';
 
 // /api/v1/coupon
 require_once 'api/v1/coupon.php';
+
+// /api/v1/mile-services
+require_once 'api/v1/mile_services.php';
+
 // /api/v1/cms: 仮実装
 require_once 'api/v1/cms.php';
 

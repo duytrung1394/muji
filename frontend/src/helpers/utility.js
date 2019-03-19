@@ -63,3 +63,10 @@ export function stringToPosetiveInt(value, defValue = 0) {
   const val = stringToInt(value, defValue);
   return val > -1 ? val : defValue;
 }
+
+export function displayNumberWithCommas(number) {
+  if (!number) {
+    return 0;
+  }
+  return parseInt(number, 10).toLocaleString();
+}

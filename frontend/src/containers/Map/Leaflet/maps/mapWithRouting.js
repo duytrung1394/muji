@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
-import "leaflet-routing-machine/dist/leaflet.routing.icons.png";
+// import "leaflet-routing-machine/dist/leaflet.routing.icons.png";
 import { mapboxConfig } from "../../../../settings";
 import LeafletMapWrapper from "./map.style";
 
