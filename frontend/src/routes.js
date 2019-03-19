@@ -237,6 +237,13 @@ const routes = [
     )
   },
   {
+    path: "/store/mileservice/history",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/MileService/history")
+    )
+  },
+  {
     path: "/store/delivery/list",
     exact: true,
     component: asyncComponent(() =>
