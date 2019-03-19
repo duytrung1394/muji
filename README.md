@@ -1,22 +1,55 @@
-# MUJI EC
 
-## 開発にあたって
+## 動作環境のセットアップ
+
+- Docker をセットアップ
+- setup.sh を実行(Windowsの場合、同様の内容をコマンドラインから実行)
+- `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8081` です。
+  - lumenの環境ファイルを作成します
+    - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
+- `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
+  - ブラウザから `localhost:4000` にアクセスするとReactの画面が出るので開発できます。
+  - デフォルトで起動するのはSSRを含まない `yarn start` 相当のものです
+  - SSRを含む `yarn dev` を実行する場合は 以下のコマンドを使用してください
+    - `docker-compose run --rm frontend yarn build`
+    - `docker-compose run --rm --service-ports frontend yarn dev`
+- `docker-compose up stubapi` とするとstub用APIサーバーが立ち上がります。ポートは `8000` です。
+
+### ローカルのyarnを使う場合
+
+動作速度などの都合からローカルのyarnを使って開発したい場合があります。その場合は以下のようにしてください。
+
+```
+# SSRなし(動作が高速)
+yarn start
+# SSRあり(ソースコードが変化する度にexpress.jsを再起動するので遅い)
+yarn dev
+```
+
+## ソースコード構造の解説
 
 当座の開発にあたり、frontend以下のこれらのファイルとその役割を把握しておいてください。
 
 - routes.js : ルーティングを定義します。
   - 記法について詳しくは react-router-config のREADMEを参照してください https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 
-### ジェネレータの責任範囲の変更について
+### 環境変数の扱いについての注意
 
-ジェネレータの責任範囲がAdminよりも小さく、redux系のモジュールのみを生成するようになりました。
-ECでは画面の枠組みを共通化することが極めて困難だからです。
-逆に、全体のレイアウトやコンポーネントは使い回せるようにしていく可能性が高いです。
-モジュラリティの意識が以前よりも重要になってきます。
+稀に環境変数を読みたい場合がありますが、サーバー上でも動かす上で以下の事を守る必要があります。
 
-必要に応じてコンポーネントを切り出すことを恐れずに進めてください。
+`process` は代入などしてはいけません。 使用する時はかならず `process.env` まではこの文字列の形式でソースコード上に記載してください。
 
-## フロントエンドとサーバーサイドレンダリング
+- OKな例
+  - `"${process.env.API_SERVER}"`
+  - `const {API_SERVER} = process.env;`
+  - `cosnt env = process.env; env.API_SERVER`
+- NGな例
+  - `cosnt pr = process; pr.env.API_SERVER`
+
+とにかく文字列としての `process.env` が入っていればOKです。
+
+この動作は `config-overrides.js` で実装しているものです。 `["NODE_ENV", "API_SERVER", "API_BROWSER"]` 以外に定義が必要な外部定数がある場合、追加する必要があります。
+
+## 各コマンドの役割
 
 `frontend` 以下にフロントエンド関係のファイルが存在します。
 
@@ -28,27 +61,6 @@ ECでは画面の枠組みを共通化することが極めて困難だからで
 - `yarn build`, `yarn serve`
   - 基本的に本番環境用もしくは本番環境に即したデバッグ用です。
   - `yarn build` で `./build` ディレクトリ以下にファイルが計れるのでそれを `yarn serve` で配信します。
-
-Docker 環境から立ち上げている場合、 `docker-compose.yml` 内で frontend 以下にある `yarn start` をそれぞれ手元で書き換えて利用してください。
-
-## 開発向けの動作方法
-
-1. Docker を入れます。
-2. コンテナとPHP環境,JS(npm)環境の整備
-  - `./setup.sh` を実行します。内容は以下の通り
-    - `docker-compose build` を実行します
-    - `docker-compose run --rm backend composer install` を実行してPHPの依存ライブラリを入れます
-    - `docker-compose run --rm frontend yarn install` を実行してJSの依存ライブラリを入れます
-    - `docker-compose run --rm backend php artisan migrate:refresh` を実行してDBスキーマを構築します
-    - `docker-compose run --rm backend php artisan db:seed` を実行して開発用DBデータを投入します
-  - `e2e` 以下で `yarn install` を実行してcypressを入れます
-3. ターミナルを3つ開きます
-  - `docker-compose up backend` とするとLumenが立ち上がります。ポートは `8080` です。
-  - `docker-compose up frontend` とするとReact用のサーバーが立ち上がります。ポートは `4000` です。
-  - `docker-compose up stubapi` とするとstub用APIサーバーが立ち上がります。ポートは `8000` です。
-4. lumenの環境ファイルを作成します
-  - `docker-compose exec backend /bin/cp /app/.env.example /app/.env`
-5. ブラウザから localhost:4000 にアクセスするとReactの画面が出るので開発できます。
 
 ## コミット前のコードフォーマット
 
@@ -127,7 +139,9 @@ Dockerを用意していますが、ローカルで実行することも可能�
 - 埋め込み先htmlファイル
   - frontend/public_template/index.html
 
-## composerの使い方
+## Docker 環境の解説
+
+### composerの使い方
 
 `compose install` するときは以下。
 
@@ -147,7 +161,7 @@ docker-compose run --rm backend composer update
 docker-compose run --rm backend composer require awesome-library
 ```
 
-## yarn の使い方
+### yarn の使い方
 
 composer とほぼ一緒ですが、以下のようにします
 
@@ -155,64 +169,12 @@ composer とほぼ一緒ですが、以下のようにします
 docker-compose run --rm frontend yarn install
 ```
 
-## Dockerマシンの扱い方
+### Dockerマシンの扱い方
 
 例えばbackendインスタンスのbashコンソールを開く場合、以下のようにします
 
 ```
 docker-compose exec backend /bin/bash
-```
-
-## プレビューサーバーURL
-
-[https://muji-admin.xenophy.info](https://muji-admin.xenophy.info)
-
-DNSサーバーにて設定されているので、どこからでもアクセスできます。
-開発用のVagrant VMの中からデプロイすることで、プレビューサーバ−に自動デプロイできます。
-（※デプロイの方法は、別途整備中です）
-
-### 認証情報
-
-```
-user: xenophy
-password: xenomaster
-```
-
-### プレビューへのデプロイ方法
-
-1. Reactの変更内容を反映するために以下のコマンドを打つ
-
-```
-./build.sh
-```
-
-2. 内容をadmin-workに反映し、originにpushする
-
-```
-git branch
-# ブランチが admin-workであるか？
-git commit -a
-git push 
-```
-
-3. 最新の `admin-work` ブランチをプレビューサーバーに反映する
-
-```
-./deploy.sh
-```
-
-## Lumen用データベース
-
-```
-データベース名: muji_admin
-```
-
-
-## 初期ログインユーザー
-
-```
-user: kotsutsumi@xenophy.com
-password: 1234
 ```
 
 ## コードジェネレータの使い方
@@ -225,3 +187,75 @@ password: 1234
 docker-compose run --rm develop yarn
 docker-compose run --rm develop yarn scaffold
 ```
+
+
+# プレビューサーバーでの動かし方、デプロイ方法
+
+※この方法は小規模な確認向けの単一サーバーでの動作を想定しています。
+本番環境を想定した内容ではありませんので、本番環境ではこの内容は参考までにお願いします。
+
+1. リポジトリを配置する
+
+`/home/admin/muji-ec` に 本リポジトリを `git clone` します。
+
+※ディレクトリを変更する場合は後述の `shipitfile.js` で `cwd` を指定してください。
+
+2. 直下に `.env` ファイルを作成する
+
+内容は `.env.sample-local` を参考にしてください。
+
+尚 .env を用いる事で以下の設定が必要/可能です。
+
+- NODE_ENV の設定
+- SSRおよびブラウザ側からAPIアクセスするホスト名(プロトコルとポートを含む)の指定
+- BASIC認証を使用するか否か、およびその認証情報の設定
+- SSLを使用するか否か(certsは後述のように配置が必要)
+
+3. SSL向けの設定(※SSLを使う場合のみ)
+
+`nginx/certs` 直下に以下のSSL向けの2ファイルを配置
+
+- `server.crt` サーバ証明書（サーバ証明書に中間CA証明書を連結したもの）
+- `server.key` (秘密鍵)
+
+4. shipitの整備
+
+`shiptfile.js` がshipitのデプロイ用ファイルなので、devに倣って各項目を設定する。
+
+- cwd でデプロイ先のディレクトリが指定できる
+- servers では複数のデプロイ先を指定できる。 ロードバランシングしている場合などに使用可能。
+
+参考:
+
+- shipit: https://github.com/shipitjs/shipit
+
+5. デプロイの実行
+
+以下 `dev` をそれぞれの環境設定名に読み替え。
+
+リポジトリ直下で以下を実行
+
+```
+yarn
+# frontendだけ更新する場合
+npx shipit dev deploy
+# backend, nginx も再起動する場合
+npx shipit dev deploy:all
+```
+
+Windows環境等直接yarn/npmが入っていない環境からはbuilderインスタンスを用いて以下のように実行できるはず。
+ただしssh接続等が未検証。 id_rsa をbuilderに共有する必要があると思われる。
+
+```
+docker-compose run --rm builder yarn
+docker-compose run --rm builder npx shipit dev deploy
+```
+
+
+## 環境変数の取り扱いの指針
+
+- ビルド時に環境変数を反映させるため `yarn build` はサーバー上で行う
+- 基本的に環境の切り替えには環境変数 `NODE_ENV` を用いる
+  - ただし、原則としてソースに分岐を記載するより、環境変数を埋め込む形が望ましい
+- APIのURLは環境変数で渡す。 SSR用が `API_SERVER` , ブラウザ用が `API_BROWSER`
+- 使う環境変数が増えたときには config-overrides.js で `rewireDefinePlugin` を用いて変換しているので、ここに設定を追加する

@@ -1,13 +1,19 @@
-const apiUrl = {
-  release: "https://muji-ec-release.xenophy.info",
-  preview: "https://muji-ec.xenophy.info",
-  development: "http://localhost:8081"
-};
+import { isServer } from "../helpers/ssr";
 
-export default {
-  apiUrl: apiUrl[process.env.REACT_APP_ENV],
+let apiUrl;
+if (isServer()) {
+  apiUrl = process.env.API_SERVER;
+} else {
+  apiUrl = process.env.API_BROWSER;
+}
+
+const settings = {
+  apiUrl,
   dc: () => "_dc=" + Math.floor(new Date().getTime() / 1000)
 };
+
+export default settings;
+
 const siteConfig = {
   siteName: "ISOMORPHIC",
   siteIcon: "ion-flash",
