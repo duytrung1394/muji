@@ -744,7 +744,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x2列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -752,7 +752,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => true,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -760,7 +760,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -768,7 +768,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -776,7 +776,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -784,7 +784,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -792,7 +792,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
             [
@@ -800,7 +800,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => '3段x3列・オーク材',
                 'itemMaterialName' => 'スタッキングシェルフ',
-                'price' => 26990,
+                'viewPrice' => 26990,
                 'tags' => [],
             ],
         ];
@@ -817,7 +817,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => 'Xシーター',
                 'itemMaterialName' => 'フェザークッション麻綿平織ソファ',
-                'price' => 57900,
+                'viewPrice' => 57900,
                 'tags' => [],
             ],
             [
@@ -825,7 +825,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => 'Xシーター',
                 'itemMaterialName' => 'フェザークッション綿デニム',
-                'price' => 27900,
+                'viewPrice' => 27900,
                 'tags' => [],
             ],
             [
@@ -833,7 +833,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => 'Xシーター',
                 'itemMaterialName' => 'フェザークッション綿平織ソファ',
-                'price' => 19900,
+                'viewPrice' => 19900,
                 'tags' => [],
             ],
             [
@@ -841,7 +841,7 @@ class ProductCategoryTopsController extends Controller
                 'nostock' => false,
                 'itemName' => 'Xシーター',
                 'itemMaterialName' => 'フェザークッション綿ポリエステル変織ソファ',
-                'price' => 27900,
+                'viewPrice' => 27900,
                 'tags' => [],
             ],
         ];
