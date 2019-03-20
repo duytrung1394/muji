@@ -53,10 +53,10 @@ const Inventory = styled.span`
   display: block;
   margin-top: 5px;
   font-size: 11px;
-`;
 
-const FewnessInventory = Inventory.extend`
-  color: #7f0019;
+  &.inventory-fewness {
+    color: #7f0019;
+  }
 `;
 
 const Color = props => {
@@ -84,24 +84,18 @@ const Color = props => {
               <ColorLabel htmlFor={color.title}>
                 <ColorImage src={img.src} />
               </ColorLabel>
-              {color.inventoryStatus === "FEWNESS" ? (
-                <FewnessInventory>
-                  <IntlMessages
-                    id={`productDetail.inventoryStatus.${
-                      color.inventoryStatus
-                    }`}
-                  />
-                  {color.amount}
-                </FewnessInventory>
-              ) : (
-                <Inventory>
-                  <IntlMessages
-                    id={`productDetail.inventoryStatus.${
-                      color.inventoryStatus
-                    }`}
-                  />
-                </Inventory>
-              )}
+              <Inventory
+                className={
+                  color.inventoryStatus === "FEWNESS" && "inventory-fewness"
+                }
+              >
+                <IntlMessages
+                  id={`productDetail.inventoryStatus.${color.inventoryStatus}`}
+                  values={{
+                    amount: color.amount
+                  }}
+                />
+              </Inventory>
             </ColorItem>
           ) : null;
         })}
