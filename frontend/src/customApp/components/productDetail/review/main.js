@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../../components/utility/intlMessages";
 import { Link } from "../../shared/form/link";
-import Rate from "./rate";
+import Rate from "../../shared/form/rate";
 import { Row, Col } from "antd";
 
 import icoReview from "../../../../image/product_detail/review/img-review-history-grey.png";
@@ -124,7 +124,7 @@ const Main = ({ review }) => {
         </ExplainImg>
         <ExplainName>
           <UserName>{review.userName}</UserName>
-          <Rate value={review.star} type={"small"} gutter={4} />
+          <Rate defaultValue={review.star} size="small" disabled />
           <RateText>
             <IntlMessages
               id="productDetail.review.starMessage"

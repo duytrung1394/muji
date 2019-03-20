@@ -47,27 +47,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ButtonIcon = styled.img`
-  width: 15px;
-  height: 20px;
-  margin-right: 16px;
-`;
-
-const CartButtonIcon = styled(ButtonIcon)`
-  width: 22px;
-`;
-
 const ButtonsBox = styled.div`
   width: 300px;
   margin: 24px auto 0;
-`;
-
-const StyledButton = styled(OutlineButton)`
-  margin-top: 16px;
-  span,
-  i {
-    vertical-align: middle;
-  }
 `;
 
 class Form extends Component {
@@ -171,12 +153,14 @@ class Form extends Component {
           changeHandler={this.changeQuantity}
         />
         <ButtonsBox>
-          <StyledButton color="#7f0019" reverse="true" onClick={this.submit}>
-            <span>
-              <CartButtonIcon src={cartIcon} />
-              <IntlMessages id="productDetail.cart" />
-            </span>
-          </StyledButton>
+          <OutlineButton
+            color="#7f0019"
+            reverse="true"
+            onClick={this.submit}
+            icon={cartIcon}
+          >
+            <IntlMessages id="productDetail.cart" />
+          </OutlineButton>
         </ButtonsBox>
       </Fragment>
     );

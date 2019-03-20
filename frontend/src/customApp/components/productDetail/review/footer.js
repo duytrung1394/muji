@@ -19,19 +19,6 @@ const FooterButton = styled.div`
   }
 `;
 
-const ReviewButton = styled(OutlineButton)`
-  & span:before {
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-right: 8px;
-    background: url(${icoCommentWhite}) no-repeat;
-    background-size: contain;
-    vertical-align: middle;
-  }
-`;
-
 const Footer = () => {
   return (
     <FooterWrapper>
@@ -41,9 +28,9 @@ const Footer = () => {
         </OutlineButton>
       </FooterButton>
       <FooterButton>
-        <ReviewButton reverse="true" color="#7f0119">
+        <OutlineButton reverse="true" color="#7f0119" icon={icoCommentWhite}>
           <IntlMessages id="productDetail.review.postReview" />
-        </ReviewButton>
+        </OutlineButton>
       </FooterButton>
     </FooterWrapper>
   );

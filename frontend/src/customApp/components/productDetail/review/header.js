@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "antd";
 import { Link } from "../../shared/form/link";
 import IntlMessages from "../../../../components/utility/intlMessages";
-import Rate from "./rate";
+import Rate from "../../shared/form/rate";
 
 const RateText = styled.p`
   font-size: 11px;
@@ -49,7 +49,7 @@ const Header = ({ entity }) => {
         <Title>
           <IntlMessages id="productDetail.review.title" />
         </Title>
-        <Rate value={entity.star} gutter={4} />
+        <Rate defaultValue={entity.star} disabled />
         <RateText>
           <IntlMessages
             id="productDetail.review.starMessage"
