@@ -51,35 +51,33 @@ const StyledLabel = styled.label`
 const ZipCodeForm = ({ handler, value }) => {
   const { onChangeZipCode, onClickAutofill } = handler;
   return (
-    <Fragment>
-      <Form.Item
-        label={<IntlMessages id="delivery.form.label.zipCode" />}
-        extra={
-          <Description>
-            <IntlMessages id="delivery.form.zipCode.description" />
-          </Description>
-        }
+    <Form.Item
+      label={<IntlMessages id="delivery.form.label.zipCode" />}
+      extra={
+        <Description>
+          <IntlMessages id="delivery.form.zipCode.description" />
+        </Description>
+      }
+    >
+      <ZipCode>
+        <IntlMessages id="label.zipCode" />
+      </ZipCode>
+      <ZipCodeInput
+        onChange={onChangeZipCode}
+        placeholder="1708424"
+        id="zipCode"
+        value={value}
+      />
+      <AutofillButton
+        width="92px"
+        height="42px"
+        color="rgb(153, 153, 153)"
+        reverse="true"
+        onClick={onClickAutofill}
       >
-        <ZipCode>
-          <IntlMessages id="label.zipCode" />
-        </ZipCode>
-        <ZipCodeInput
-          onChange={onChangeZipCode}
-          placeholder="1708424"
-          id="zipCode"
-          value={value}
-        />
-        <AutofillButton
-          width="92px"
-          height="42px"
-          color="rgb(153, 153, 153)"
-          reverse="true"
-          onClick={onClickAutofill}
-        >
-          <IntlMessages id="delivery.button.autofill" />
-        </AutofillButton>
-      </Form.Item>
-    </Fragment>
+        <IntlMessages id="delivery.button.autofill" />
+      </AutofillButton>
+    </Form.Item>
   );
 };
 
