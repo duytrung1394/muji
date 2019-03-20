@@ -909,6 +909,7 @@ class ProductCategoryTopsController extends Controller
                 'itemMaterialName' => 'ソファセット',
                 'viewPrice' => 2000,
                 'tags' => [],
+                'swatches' => $this->getMockSwatchesForFoot(),
             ],
             [
                 'jancode' => '4550002529406',
@@ -1063,5 +1064,22 @@ class ProductCategoryTopsController extends Controller
         }
 
         return array_splice($swatches, 0, $swatchNumber);
+    }
+
+    private function getMockSwatchesForFoot()
+    {
+        $swatches = [
+            [
+                'jancode' => '4550002528874',
+                'color_title' => 'ブラウン',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002528867',
+                'color_title' => 'ナチュラル',
+                'nostock' => false
+            ],
+        ];
+        return $swatches;
     }
 }
