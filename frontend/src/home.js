@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-// import actions from "./customApp/redux/task/list/actions";
+import actions from "./customApp/redux/task/list/actions";
 
 class Home extends Component {
-  componentDidMount() {
-    // this.props.fetchRequest({page: 0, filters: '[]'});
+  componentWillMount() {
+    this.props.fetchRequest({ page: 0, filters: "[]" });
   }
 
   render() {
@@ -15,7 +15,8 @@ class Home extends Component {
       <div>
         <p>Task fetch result from Redux:</p>
         <p>{JSON.stringify(this.props.entities)}</p>
-        <p>fetching: {this.props.fetching ? "true" : "false"}</p>
+        <p>fetching: {this.props.fetching ? "T" : "F"}</p>
+        <p>error: {this.props.fetchError ? "T" : "F"}</p>
         <p>total: {this.props.total}</p>
 
         <p>This Page is Home Page!!</p>
@@ -33,19 +34,19 @@ class Home extends Component {
   }
 }
 
-export default Home;
+// export default Home;
 
-// const mapStateToProps = state => {
-//   return state.Task.List.toJS();
-// };
+const mapStateToProps = state => {
+  return state.Task.List.toJS();
+};
 
-// const { fetch } = actions;
+const { fetch } = actions;
 
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     {
-//       fetchRequest: fetch.request,
-//     }
-//   )(Home)
-// );
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      fetchRequest: fetch.request
+    }
+  )(Home)
+);

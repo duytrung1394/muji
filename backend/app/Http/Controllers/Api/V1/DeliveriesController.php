@@ -12,10 +12,10 @@ class DeliveriesController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $this->getMultiMockData();
+        $response = \StubApi::post('/frontMember/getAddressBook');
         return [
-            'data'  => $data,
-            'total' => count($data),
+            'data'  => $response->deliveryAddress,
+            'total' => 200,
         ];
     }
 

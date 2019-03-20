@@ -1,5 +1,7 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import Task from "./task/reducers";
+import Coupon from "./coupon/reducers";
+import MileService from "./mile_service/reducers";
 import Cms from "./cms/reducers";
 import Review from "./review/reducers";
 import Account from "./account/reducers";
@@ -31,7 +33,9 @@ export default {
   Favorite,
   Search,
   Lottery,
+  MileService,
   Delivery,
   Account,
+  Coupon,
   Cms
 };
