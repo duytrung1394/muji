@@ -16,7 +16,7 @@ module.exports = shipit => {
     },
     release: {
       // 後で変更する？
-      branch: 'release_ssr2',
+      branch: 'master',
       servers: [{
         user: 'admin',
         host: 'muji-ec-release.xenophy.info'
