@@ -82,17 +82,25 @@ const ItemCountButton = props => (
   </StyledLargeButton>
 );
 
-const GroupItems = ({ group, isSlideScroll }) => {
+const getGroupItems = (group, isSliderScroll) => {
   return group.items.map((item, index) => {
     return (
       <ItemView
-        isSlideScroll={isSlideScroll}
+        isSlideScroll={isSliderScroll}
         cartAddFlg={group.cartAddFlg}
         {...item}
         key={index}
       />
     );
   });
+};
+
+const GroupItems = ({ group, isLastSection }) => {
+  if (isLastSection) {
+    return getGroupItems(group, false);
+  } else {
+    return <Slider>{getGroupItems(group, true)}</Slider>;
+  }
 };
 
 const ItemList = props => {
@@ -132,13 +140,8 @@ const ItemList = props => {
                   img={group.img}
                 />
               )}
-              {isLastSection ? (
-                <GroupItems group={group} isSlideScroll={false} />
-              ) : (
-                <Slider>
-                  <GroupItems group={group} isSlideScroll={true} />
-                </Slider>
-              )}
+
+              <GroupItems group={group} isLastSection={isLastSection} />
 
               {!isLastSection && (
                 <ItemCountButtonWrapper>
