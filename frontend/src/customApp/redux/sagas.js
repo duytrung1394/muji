@@ -1,6 +1,10 @@
 // 注：本ファイルを編集するとジェネレータの挙動が壊れるかもしれないので、かならず動作確認してください
 import { all } from "redux-saga/effects";
 import taskSagas from "./task/sagas";
+import couponSagas from "./coupon/sagas";
+import mileServiceSagas from "./mile_service/sagas";
+import cmsSagas from "./cms/sagas";
+import reviewSagas from "./review/sagas";
 import accountSagas from "./account/sagas";
 import productDetailSagas from "./product_detail/sagas";
 import searchSagas from "./search/sagas";
@@ -15,7 +19,6 @@ import topSagas from "./top/sagas";
 import httpbinSagas from "./httpbin/sagas";
 import fruitSagas from "./fruit/sagas";
 import deliverySagas from "./delivery/sagas";
-
 export default function* devSaga() {
   yield all([
     taskSagas(),
@@ -27,11 +30,15 @@ export default function* devSaga() {
     customerReviewSagas(),
     donationSagas(),
     orderSagas(),
+    reviewSagas(),
     productDetailSagas(),
     favoriteSagas(),
     searchSagas(),
     lotterySagas(),
+    mileServiceSagas(),
     deliverySagas(),
-    accountSagas()
+    accountSagas(),
+    couponSagas(),
+    cmsSagas()
   ]);
 }

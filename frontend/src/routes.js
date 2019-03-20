@@ -12,11 +12,6 @@ const routes = [
     component: asyncComponent(() => require("./customApp/containers/Top/index"))
   },
   {
-    path: "/about",
-    exact: true,
-    component: asyncComponent(() => require("./about.js"))
-  },
-  {
     path: "/signin",
     exact: true,
     component: asyncComponent(() => require("./containers/Page/signin"))
@@ -48,6 +43,11 @@ const routes = [
     )
   },
   {
+    path: "/home_debug",
+    exact: true,
+    component: asyncComponent(() => require("./home"))
+  },
+  {
     path: "/store/cmdty/section/:category_code",
     exact: true,
     component: asyncComponent(() =>
@@ -65,56 +65,7 @@ const routes = [
     path: "/store/review/history",
     exact: true,
     component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/index")
-    )
-  },
-  {
-    path: "/store/review/clipped",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexClipped")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByProduct")
-    )
-  },
-  {
-    path: "/store/review/item/:item_code/post",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/new")
-    )
-  },
-  {
-    path: "/store/review/report/:item_code/:comment_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/report")
-    )
-  },
-  {
-    path: "/store/review/detail/:review_code",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/show")
-    )
-  },
-  {
-    path: "/store/review/user/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByUser")
-    )
-  },
-  {
-    path: "/store/review/following/",
-    exact: true,
-    component: asyncComponent(() =>
-      require("./customApp/containers/CustomerReview/indexByFollowing")
+      require("./customApp/containers/Review/history")
     )
   },
   {
@@ -286,10 +237,24 @@ const routes = [
     )
   },
   {
+    path: "/store/mileservice/history",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/MileService/history")
+    )
+  },
+  {
     path: "/store/delivery/list",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Delivery/list")
+    )
+  },
+  {
+    path: "/store/delivery/add",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Add/index")
     )
   },
   {
@@ -304,6 +269,13 @@ const routes = [
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/mujicardLinked")
+    )
+  },
+  {
+    path: "/store/coupon/validcoupon",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Coupon/index")
     )
   }
 ];

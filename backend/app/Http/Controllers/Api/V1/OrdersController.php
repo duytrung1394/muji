@@ -68,6 +68,18 @@ class OrdersController extends Controller
     }
 
     /**
+     * ご注文手続き: 配送オプション更新.
+     *
+     * @return Response
+     */
+    public function updateDeliveryOption(Request $request)
+    {
+        return [
+            'data' => ['derivery_option' => $request->input('delivery_option')],
+        ];
+    }
+
+    /**
      * モックデータ取得用．
      *
      * @return array
@@ -110,12 +122,42 @@ class OrdersController extends Controller
                     'packIndividual' => '個々に包装する',
                 ],
             ],
+            'coupons' => [
+                [
+                    'giftCode' => '0000000001',
+                    'giftName' => '配送料無料',
+                    'giftEndDate' => '20181222235959',
+                    'activeFlag' => true, 
+                    'giftImageUrl' => 'ImgCoupon1',
+                    'giftDetailUrl' => '#',
+                    'use' => false,
+                    'combined' => true,
+                    'remaining' => '残り1回',
+                ],
+                [
+                    'giftCode' => '0000000002',
+                    'giftName' => '重ねて切るカットソー2点で2,500円',
+                    'giftEndDate' => '20181222235959',
+                    'activeFlag' => false,
+                    'giftImageUrl' => 'ImgCoupon2',
+                    'giftDetailUrl' => '#',
+                    'use' => false,
+                    'combined' => false,
+                    'remaining' => '制限なし',
+                ],
+            ],
+            'delivery_option' => 'inorder',
             'orders' => [
                 [
                     'orderNumber' => '1',
                     'deliveryInfo' => [
                         'deliveryCount' => '1',
                         'deliveryDivision' => '小物',
+                        'deliveryTimeAndDatesAttribute' => 'SELECT_ENABLE',
+                        'deliveryTimeAndDates' => $this->getDeliveryTimeAndDates(),
+                        'normalDeliveryDate' => '20190306',
+                        'normalDeliveryTimeNo' => '001',
+                        'slowDeliveryDate' => '29190309',
                     ],
                     'items' => [
                         [
@@ -129,6 +171,15 @@ class OrdersController extends Controller
                             'price' => '2,980',
                             'img' => 'OrderDeliveryImage1',
                             'discount' => false,
+                            'privateWorkItems' => [
+                                 'HEIGHT' => [
+                                     "仕上がりサイズ：100.0cm",
+                                 ],
+                                 'HEMMING' => [
+                                     "股下仕上がり寸法：61.0cm",
+                                     "裾上げ種類：シングル",
+                                 ],
+                             ],
                         ],
                         [
                             'janCode' => '4550002661052',
@@ -150,6 +201,11 @@ class OrdersController extends Controller
                     'deliveryInfo' => [
                         'deliveryCount' => '1',
                         'deliveryDivision' => '小物',
+                        'deliveryTimeAndDatesAttribute' => 'SELECT_ENABLE',
+                        'deliveryTimeAndDates' => $this->getDeliveryTimeAndDates(),
+                        'normalDeliveryDate' => '20190306',
+                        'normalDeliveryTimeNo' => '001',
+                        'slowDeliveryDate' => '29190309',
                     ],
                     'items' => [
                         [
@@ -423,5 +479,69 @@ class OrdersController extends Controller
     private function getMockConfirmationData()
     {
         return $this->getMockData();
+    }
+
+    /**
+     * モックデータ: お届け日時リスト.
+     */
+    private function getDeliveryTimeAndDates()
+    {
+        $disableTimeNoList = ["004", "006"];
+
+        return [
+            [
+                "deliveryDate" => "20190306",
+                "deliveryTimes" => $this->getDeliveryTimes()
+            ],
+            [
+                "deliveryDate" => "20190307",
+                "deliveryTimes" => $this->getDeliveryTimes()
+            ],
+            [
+                "deliveryDate" => "20190308",
+                "deliveryTimes" => $this->getDeliveryTimes($disableTimeNoList)
+            ],
+        ];
+    }
+
+    /**
+     * モックデータ: お届け時刻リスト.
+     */
+    private function getDeliveryTimes($disableTimeNoList=[])
+    {
+        $times = [
+            [
+                "deliveryStatus" => in_array("001", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "希望無し",
+                "timeNo" => "001"
+            ],
+            [
+                "deliveryStatus" => in_array("002", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "午前中",
+                "timeNo" => "002"
+            ],
+            [
+                "deliveryStatus" => in_array("003", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１４時～１６時",
+                "timeNo" => "003"
+            ],
+            [
+                "deliveryStatus" => in_array("004", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１６時～１８時",
+                "timeNo" => "004"
+            ],
+            [
+                "deliveryStatus" => in_array("005", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１８時～２０時",
+                "timeNo" => "005"
+            ],
+            [
+                "deliveryStatus" => in_array("006", $disableTimeNoList) ? false : true,
+                "deliveryTimeName" => "１９時～２１時",
+                "timeNo" => "006"
+            ],
+        ];
+
+        return $times;
     }
 }

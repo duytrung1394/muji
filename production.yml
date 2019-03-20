@@ -1,0 +1,61 @@
+version: "3.1"
+services:
+  nginx: &nginx
+    build: nginx
+    restart: always
+    volumes:
+      - ./nginx/entrypoint.sh:/entrypoint.sh
+      - ./nginx/nginx-template.conf:/etc/nginx/conf.d/default.conf.template
+      - ./nginx/certs:/etc/nginx/certs
+      - ./frontend/build/static:/usr/share/nginx/html/static
+      - ./nginx/robots.txt:/usr/share/nginx/html/robots.txt
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "bash -C /entrypoint.sh"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - frontend
+  # ローカル開発でnginxの動作検証をするための設定
+  nginx_local:
+    <<: *nginx
+    ports:
+      - "8000:80"
+    # ローカル開発時にはdepends_onが邪魔になりがちなので
+    depends_on: []
+  # APIサーバー
+  backend:
+    build: backend
+    command: "php -S 0.0.0.0:8080 -t public"
+    depends_on:
+      - mariadb
+    volumes:
+      - ./backend:/app
+      - ./backend/config/php-ini-overrides.ini:/etc/php/7.2/cli/conf.d/99-overrides.ini
+    env_file:
+      - ./backend/.env.dev
+    ports:
+      - 8080:8080
+
+  # express.js による動作
+  frontend:
+    build: frontend
+    command: "yarn serve"
+    volumes:
+      - ./frontend:/usr/src/app
+    env_file:
+      - ./.env
+    ports:
+      - 3000:3000
+
+  # DB, APIサーバー向け
+  mariadb:
+    image: mariadb:10.3.5
+    environment:
+      MYSQL_DATABASE: muji_admin
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "23306:3306"
