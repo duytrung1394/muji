@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Layout, Menu } from "antd";
 import { Link as ReactRouterLink } from "react-router-dom";
-import sidebarIcons from "./sider_icons/sidebarIcons";
+import { sidebarIcons } from "./icons";
 import { menus } from "./sidemenu.json";
 
 const menuHeight = "28px";
@@ -146,8 +146,7 @@ const Sider = () => {
               return React.createElement(menuTypes[menu.type], {
                 key: `menu-${index}`,
                 menu,
-                menuindex: index,
-                ...this.props
+                menuindex: index
               });
             } else {
               return null;

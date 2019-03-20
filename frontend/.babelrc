@@ -11,18 +11,12 @@
   ],
   "plugins": [
     "css-modules-transform",
-    [
-      "import-static-files", 
-      {
-        "baseDir": "/static",
-        "baseUri": "http://your.cdn.address"
-      }
-    ],
-    [
-      "transform-runtime", {
-        "polyfill": false,
-        "regenerator": true
-      }
-    ]
+    ["import-static-files", {
+      "hash": true,
+    }],
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }],
   ]
 }
