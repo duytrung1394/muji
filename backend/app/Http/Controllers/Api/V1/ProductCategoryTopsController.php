@@ -630,9 +630,7 @@ class ProductCategoryTopsController extends Controller
                 return [
                     [
                         'group_name' => '脚',
-                        // 'category_code_in_page' => 'product-feather-sofa',
                         'itemCount' => 4,
-                        // 'link' => '#',
                         'cartAddFlg' => true,
                         'items'=> $this->getMockItemDataListForFoot(),
                     ],
