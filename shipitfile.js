@@ -6,7 +6,7 @@ module.exports = shipit => {
       cwd: "/home/admin/muji-ec"
     },
     dev: {
-      branch: "release_ssr",
+      branch: "develop",
       servers: [
         {
           user: "admin",
