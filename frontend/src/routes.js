@@ -48,7 +48,7 @@ const routes = [
     component: asyncComponent(() => require("./home"))
   },
   {
-    path: "/store/cmdty/section/:category_code",
+    path: "/store/cmdty/section/:section_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")

@@ -6,6 +6,7 @@ import ItemSwatch from "./itemSwatch";
 import ItemTag from "./itemTag";
 import SizeRange from "./sizeRange";
 import IntlMessages from "../../../../components/utility/intlMessages";
+import { numberFormatter } from "../../../util/numberFormatter";
 
 const itemStyleParams = `
   border-radius: 4px;
@@ -56,10 +57,6 @@ const PriceValue = styled.span`
   color: ${props => (props.isOldPrice ? "#999" : "#333")};
   text-decoration: ${props =>
     props.isOldPrice ? "line-through black" : "none"};
-  font-family: "Helvetica", sans-serif;
-  span.price {
-    font-size: ${props => (props.isOldPrice ? "inherit" : "15px")};
-  }
 `;
 
 const NewPriceValue = styled(PriceValue)`
@@ -110,10 +107,10 @@ class ItemView extends Component {
   render() {
     const {
       swatches,
-      title,
-      material,
-      price,
-      new_price,
+      itemName,
+      itemMaterialName,
+      viewPrice,
+      discountPrice,
       tags,
       minSize,
       maxSize,
@@ -140,8 +137,8 @@ class ItemView extends Component {
               "\u00A0"
             )}
           </Stock>
-          <Material>{material}</Material>
-          <Title>{title}</Title>
+          <Material>{itemMaterialName}</Material>
+          <Title>{itemName}</Title>
         </Link>
         <SizeRange minSize={minSize} maxSize={maxSize} />
         <ItemSwatch
@@ -150,18 +147,30 @@ class ItemView extends Component {
           changeSwatch={this.changeSwatch}
         />
         <Price>
-          <PriceValue isOldPrice={new_price}>
+          <PriceValue isOldPrice={discountPrice}>
             <IntlMessages
               id="productCategoryTop.price"
-              values={{ price: <span className="price">{price}</span> }}
+              values={{
+                price: (
+                  <span className="price">
+                    {numberFormatter.format(viewPrice)}
+                  </span>
+                )
+              }}
             />
           </PriceValue>
-          {new_price && (
+          {discountPrice && (
             <NewPriceValue>
               <span className="arrow">→</span>
               <IntlMessages
                 id="productCategoryTop.price"
-                values={{ price: <span className="price">{new_price}</span> }}
+                values={{
+                  price: (
+                    <span className="price">
+                      {numberFormatter.format(discountPrice)}
+                    </span>
+                  )
+                }}
               />
             </NewPriceValue>
           )}

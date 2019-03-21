@@ -14,23 +14,23 @@ import Campaign from "../../components/productCategoryTop/campaign";
 
 class Index extends Component {
   componentDidMount() {
-    this.props.fetchRequest(this.props.match.params.category_code);
-    this.setState({ currentCode: this.props.match.params.category_code });
+    this.props.fetchRequest(this.props.match.params.section_code);
+    this.setState({ currentCode: this.props.match.params.section_code });
   }
 
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.match.params.category_code !==
-      nextProps.match.params.category_code
+      this.props.match.params.section_code !==
+      nextProps.match.params.section_code
     ) {
-      this.props.fetchRequest(nextProps.match.params.category_code);
+      this.props.fetchRequest(nextProps.match.params.section_code);
     }
   }
 
   componentDidUpdate(prevProps) {
     if (
-      this.props.match.params.category_code !==
-      prevProps.match.params.category_code
+      this.props.match.params.section_code !==
+      prevProps.match.params.section_code
     ) {
       this.top.scrollIntoView({ behavior: "smooth" });
     }
@@ -47,7 +47,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <a ref={ref => (this.top = ref)} />
         <Spin spinning={fetching} size="large">
-          <ContentHeader title={entity.category_title} links={entity.links} />
+          <ContentHeader title={entity.category_name} links={entity.links} />
           <Article article={entity.article} />
           <PopularityRanking rankings={entity.rankings} />
           <CategoryList innerCategories={entity.innerCategories} />
