@@ -12,12 +12,23 @@ class DeliveriesController extends Controller
      */
     public function index(Request $request)
     {
-
         $response = \StubApi::post('/frontMember/getAddressBook');
-
         return [
             'data'  => $response->deliveryAddress,
             'total' => 200,
+        ];
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string   $customerAddressCode
+     * @return Response
+     */
+    public function show($customerCode)
+    {
+        return [
+            'data' => $this->getEditMockData((int)$customerCode),
         ];
     }
 
@@ -26,22 +37,7 @@ class DeliveriesController extends Controller
      *
      * @return array
      */
-    private function getMultiMockData($page = 1)
-    {
-        $data = [];
-        $start = ((int) $page - 1) * 10;
-
-        for ($i = 0; $i < 10; $i++) {
-            $data[] = $this->getMockData('delivery_code' . ($i + $start ));
-        }
-
-        return $data;
-    }
-
-    /**
-     * モックデータを生成して取得
-     */
-    private function getMockData()
+    private function getMultiMockData()
     {
         $addressBookId = 1;
         return [
@@ -49,6 +45,7 @@ class DeliveriesController extends Controller
                 'mySelf' => true,
                 'addressBookId' => $addressBookId,
                 'naming' => '無印　花子',
+                'name' => '無印　花子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
                 'address2' => '渋谷区',
@@ -60,6 +57,7 @@ class DeliveriesController extends Controller
                 'mySelf' => false,
                 'addressBookId' => $addressBookId,
                 'naming' => '無印 良太',
+                'name' => '無印 良太',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
                 'address2' => '豊島区',
@@ -71,6 +69,7 @@ class DeliveriesController extends Controller
                 'mySelf' => false,
                 'addressBookId' => $addressBookId,
                 'naming' => '無印 計子',
+                'name' => '無印 計子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
                 'address2' => '千代田区',
@@ -82,6 +81,7 @@ class DeliveriesController extends Controller
                 'mySelf' => false,
                 'addressBookId' => $addressBookId,
                 'naming' => '無印 良太',
+                'name' => '無印 良太',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
                 'address2' => '豊島区',
@@ -93,13 +93,33 @@ class DeliveriesController extends Controller
                 'mySelf' => false,
                 'addressBookId' => $addressBookId,
                 'naming' => '無印 計子',
+                'name' => '無印 計子',
                 'zipCode' => '123-4567',
                 'address1' => '東京都',
                 'address2' => '千代田区',
                 'address3' => '丸の内2-7-2',
                 'address4' => '丸の内ＪＰタワー3Ｆ',
                 'telNo' => '01 - 2345 - 6789'
-            ],
+            ]
+        ];
+    }
+
+    /**
+     * モックデータを生成して取得
+     */
+    private function getEditMockData($addressBookId)
+    {
+        return [
+            'customerCode' => $addressBookId,
+            'naming' => '',
+            'name' => '無印花子',
+            'nameKana' => 'ムジルシハナコ',
+            'zipCode' => '1234567',
+            'address1' => '東京都渋谷区',
+            'address2' => '宇田川町',
+            'address3' => '21-1',
+            'address4' => '渋谷西武パーキング館Ｂ1Ｆ',
+            'telNo' => '0123456789',
         ];
     }
 }
