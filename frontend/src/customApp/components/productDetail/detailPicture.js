@@ -7,7 +7,7 @@ import IntlMessages from "../../../components/utility/intlMessages";
 
 const FavImg = styled.img`
   position: absolute;
-  bottom: -40px;
+  bottom: -32px;
   right: 20px;
   height: 65px;
   width: 65px;
@@ -17,8 +17,16 @@ const FavImg = styled.img`
 
 const ShowItemList = styled.a`
   position: absolute;
-  bottom: 16px;
-  left: 10px;
+  bottom: -30px;
+  left: 0;
+  font-weight: bold;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
+  }
 `;
 
 const StyledSlider = styled(Slider)`

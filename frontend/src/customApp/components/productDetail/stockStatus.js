@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "../shared/form/link";
 import IntlMessages from "../../../components/utility/intlMessages";
 import styled from "styled-components";
 import ItemStockModal from "./modal/itemStockModal";
@@ -31,7 +31,7 @@ const StoreDataList = styled.ul`
 const StoreData = styled.li`
   border-bottom: 1px solid #999;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   padding: 13px 16px;
   align-items: baseline;
   &:first-child {
@@ -61,8 +61,14 @@ const StoreDetailItem = styled.div`
   &:nth-child(2) {
     text-align: center;
   }
-  &:last-child {
-    text-align: right;
+`;
+
+const StyledLink = styled(Link)`
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
   }
 `;
 
@@ -74,12 +80,6 @@ const FindButtonStyle = {
   width: "300px",
   height: "40px",
   marginTop: "16px"
-};
-
-const ReserveButtonStyle = {
-  whiteSpace: "nowrap",
-  padding: "0 ,3px",
-  lineHeight: "1.5"
 };
 
 class StockStatus extends Component {
@@ -110,11 +110,9 @@ class StockStatus extends Component {
             <StockTitle>
               <IntlMessages id="productDetail.stockState" />
             </StockTitle>
-            <span>
-              <Link to="#">
-                <IntlMessages id="productDetail.storeSettings" />
-              </Link>
-            </span>
+            <StyledLink to="#">
+              <IntlMessages id="productDetail.storeSettings" />
+            </StyledLink>
           </p>
           <StoreDataList>
             {store_stock_list &&
@@ -123,11 +121,6 @@ class StockStatus extends Component {
                   <StoreData key={index}>
                     <StoreDetailItem>{store.name}</StoreDetailItem>
                     <StoreDetailItem>{store.state}</StoreDetailItem>
-                    <StoreDetailItem>
-                      <StyledButton style={ReserveButtonStyle}>
-                        <IntlMessages id="productDetail.reserveToStore" />
-                      </StyledButton>
-                    </StoreDetailItem>
                   </StoreData>
                 );
               })}
