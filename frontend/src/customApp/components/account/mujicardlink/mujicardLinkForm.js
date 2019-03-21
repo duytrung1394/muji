@@ -26,14 +26,14 @@ const MujicardInner = styled.div`
 const MujicardFormTitle = styled.h1`
   font-size: 15px;
   font-weight: bold;
-  color : rgb(88, 88, 88);
+  color: rgb(88, 88, 88);
 `;
 
 const MujicardFormCardTitle = styled.h2`
   margin-top: 20px;
   font-size: 13px;
   font-weight: bold;
-  color : rgb(88, 88, 88);
+  color: rgb(88, 88, 88);
 `;
 
 const MujicardInput = styled(Input)`
@@ -55,12 +55,12 @@ const MujicardFormItem = styled(Form.Item)`
 
 const MujicardFormGuideEnter = styled.p`
   margin-top: 10px;
-  margin-bottom : 0px;
+  margin-bottom: 0px;
   font-size: 12px;
 `;
 
 class MujicardLinkForm extends Component {
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -85,60 +85,61 @@ class MujicardLinkForm extends Component {
               <Link to="#">?</Link>
             </MujicardFormCardTitle>
             <MujicardFormItem>
-              {getFieldDecorator('card_number', {
-                rules: [{ required: true, message: intl.formatMessage({
-                  id: 'account.page.mujicardLink.formCardNumber.required'
-                }) }],
+              {getFieldDecorator("card_number", {
+                rules: [
+                  {
+                    required: true,
+                    message: intl.formatMessage({
+                      id: "account.page.mujicardLink.formCardNumber.required"
+                    })
+                  }
+                ]
               })(
                 <MujicardInput
                   type="tel"
                   placeholder={intl.formatMessage({
-                    id: 'account.page.mujicardLink.placeHolderCardNumber'
+                    id: "account.page.mujicardLink.placeHolderCardNumber"
                   })}
                   maxLength={12}
                 />
               )}
             </MujicardFormItem>
             <MujicardFormGuideEnter>
-                <IntlMessages id="account.page.mujicardLink.guideEnterMujicard" />
+              <IntlMessages id="account.page.mujicardLink.guideEnterMujicard" />
             </MujicardFormGuideEnter>
             <MujicardFormCardTitle>
-                <IntlMessages id="account.page.mujicardLink.formCardDate" />
-                <Link to="#">?</Link>
+              <IntlMessages id="account.page.mujicardLink.formCardDate" />
+              <Link to="#">?</Link>
             </MujicardFormCardTitle>
             <MujicardFormItem>
-              {getFieldDecorator('card_date', {
-                rules: [],
+              {getFieldDecorator("card_date", {
+                rules: []
               })(
                 <MujicardInput
                   type="text"
                   placeholder={intl.formatMessage({
-                    id: 'account.page.mujicardLink.placeHolderCardDate'
+                    id: "account.page.mujicardLink.placeHolderCardDate"
                   })}
                   maxLength={8}
                 />
               )}
             </MujicardFormItem>
             <MujicardFormGuideEnter>
-                <IntlMessages id="account.page.mujicardLink.guideEnterMujicardDate" />
+              <IntlMessages id="account.page.mujicardLink.guideEnterMujicardDate" />
             </MujicardFormGuideEnter>
-        </MujicardInner>
-      </MujicardLayout>
-      <ButtonArea>
-        <OutlineButton
-          color="#7f0119"
-          reverse="true"
-          htmlType="submit"
-        >
-          <IntlMessages id="account.page.mujicardLink.register" />
-        </OutlineButton>
-      </ButtonArea>
-      <ButtonArea>
-        <OutlineButton>
-          <IntlMessages id="account.page.mujicardLink.return" />
-        </OutlineButton>
-      </ButtonArea>
-    </Form>
+          </MujicardInner>
+        </MujicardLayout>
+        <ButtonArea>
+          <OutlineButton color="#7f0119" reverse="true" htmlType="submit">
+            <IntlMessages id="account.page.mujicardLink.register" />
+          </OutlineButton>
+        </ButtonArea>
+        <ButtonArea>
+          <OutlineButton>
+            <IntlMessages id="account.page.mujicardLink.return" />
+          </OutlineButton>
+        </ButtonArea>
+      </Form>
     );
   }
 }

@@ -10,18 +10,11 @@ import MujicardLinkContent from "../../components/account/mujicardlink/mujicardL
 import MujicardLinkForm from "../../components/account/mujicardlink/mujicardLinkForm";
 
 const ContentLayout = styled(BaseContentLayout)`
-    max-width: 732px;
+  max-width: 732px;
 `;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(data) {
-
-  }
+  onSubmit = () => {};
 
   render() {
     return (
