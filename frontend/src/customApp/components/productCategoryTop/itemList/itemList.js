@@ -126,7 +126,10 @@ const ItemList = props => {
                 })}
               </Slider>
               <ItemCountButtonWrapper>
-                <ItemCountButton name={group.group_name} count={group.total} />
+                <ItemCountButton
+                  name={group.group_name}
+                  count={group.itemCount}
+                />
               </ItemCountButtonWrapper>
             </div>
           );

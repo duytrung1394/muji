@@ -10,10 +10,15 @@ import ContentHeader from "../../components/shared/header/contentHeader";
 import StockStatus from "../../components/productDetail/stockStatus";
 import styled from "styled-components";
 import { CmsContentCmdtyDetailInclude1 } from "../../components/cms";
+import Review from "../../components/productDetail/review/index";
 
 const PictureCol = styled(Col)`
-  max-height: 700px;
   position: relative;
+`;
+
+const StyledRow = styled(Row)`
+  align-items: start;
+  margin-top: 40px;
 `;
 
 class Index extends Component {
@@ -74,7 +79,7 @@ class Index extends Component {
       <ContentAreaLayout>
         <Spin spinning={fetching} size="large">
           <ContentHeader links={entity.links} />
-          <Row type="flex">
+          <StyledRow type="flex">
             <PictureCol span={12}>
               <DetailPicture
                 images={entity.images}
@@ -86,8 +91,9 @@ class Index extends Component {
               <Form entity={entity} />
               <StockStatus entity={entity} />
               <CmsContentCmdtyDetailInclude1 productCode="T1234567890" />
+              <Review entity={entity.reviewInfo} />
             </Col>
-          </Row>
+          </StyledRow>
         </Spin>
         <Modal
           title="Basic Modal"

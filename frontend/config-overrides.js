@@ -18,7 +18,7 @@ module.exports = function override(config, env) {
     config
   );
 
-  if( process.env.IMPORT_STATIC_FIELS ){
+  if (process.env.IMPORT_STATIC_FIELS) {
     config = injectBabelPlugin(
       [
         "import-static-files",

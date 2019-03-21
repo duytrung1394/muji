@@ -48,7 +48,7 @@ const routes = [
     component: asyncComponent(() => require("./home"))
   },
   {
-    path: "/store/cmdty/section/:category_code",
+    path: "/store/cmdty/section/:section_code",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/ProductCategoryTop/index")
@@ -258,10 +258,24 @@ const routes = [
     )
   },
   {
+    path: "/store/delivery/edit/:addressBookId",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Edit/index")
+    )
+  },
+  {
     path: "/store/accounts/memberguide",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
+    )
+  },
+  {
+    path: "/store/account/mujicard_link",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicardLink")
     )
   },
   {
