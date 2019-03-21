@@ -272,6 +272,13 @@ const routes = [
     )
   },
   {
+    path: "/store/account/mujicard_link",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicardLink")
+    )
+  },
+  {
     path: "/store/coupon/validcoupon",
     exact: true,
     component: asyncComponent(() =>
