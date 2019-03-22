@@ -78,12 +78,6 @@ const Stock = styled.div`
 
 const ButtonWrapper = styled.div`
   margin: 20px;
-  img {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-  }
 `;
 
 const colLayout = {
@@ -190,8 +184,7 @@ class ItemView extends Component {
         </Price>
         {cartAddFlg && (
           <ButtonWrapper>
-            <OutlineButton width="150px" color="#610000">
-              <img src={cartIcon} alt="" />
+            <OutlineButton width="150px" color="#610000" icon={cartIcon}>
               <IntlMessages id="productCategoryTop.button.cartAdd" />
             </OutlineButton>
           </ButtonWrapper>
