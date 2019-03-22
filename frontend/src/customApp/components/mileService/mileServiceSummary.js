@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { displayNumberWithCommas } from "../../../helpers/utility";
+import { numberFormatter } from "../../util/numberFormatter";
 import moment from "../../util/moment";
 
 const LayoutSectionSummary = styled.section`
@@ -66,15 +66,15 @@ const CurrentYear = ({ entity }) => {
     <LayoutMileSummary>
       <Paragraph>
         <IntlMessages id="mileService.mileSummary.milesOfCurrentYear" />
-        {old_mile && displayNumberWithCommas(old_mile.mile)}
+        {old_mile && numberFormatter.format(old_mile.mile)}
         <IntlMessages id="mileService.mileSummary.mile" />
       </Paragraph>
       <Paragraph>
         <IntlMessages
           id="mileService.mileSummary.pointsInPoints"
           values={{
-            mile: displayNumberWithCommas(nextGiftMile),
-            point: displayNumberWithCommas(nextGiftPoint)
+            mile: numberFormatter.format(nextGiftMile),
+            point: numberFormatter.format(nextGiftPoint)
           }}
         />
       </Paragraph>
@@ -111,7 +111,7 @@ const SavingMile = ({ entity }) => {
         <IntlMessages
           id="mileService.mileSummary.savingMiles"
           values={{
-            totalMile: displayNumberWithCommas(totalMile)
+            totalMile: numberFormatter.format(totalMile)
           }}
         />
         <SpanMileStage>{stageName}</SpanMileStage>
@@ -120,7 +120,7 @@ const SavingMile = ({ entity }) => {
         <IntlMessages
           id="mileService.mileSummary.pointsInStage"
           values={{
-            mile: displayNumberWithCommas(nextStageMile)
+            mile: numberFormatter.format(nextStageMile)
           }}
         />
       </Paragraph>
