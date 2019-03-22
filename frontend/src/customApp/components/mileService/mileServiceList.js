@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IntlMessages from "../../../components/utility/intlMessages";
-import { displayNumberWithCommas } from "../../../helpers/utility";
+import { numberFormatter } from "../../util/numberFormatter";
 import moment from "../../util/moment";
 
 const LayoutSectionList = styled.div`
@@ -82,7 +82,7 @@ const ListItems = ({ miles, intl }) => {
             <IntlMessages id="mileService.mileList.miles" />
           </ListItemDT>
           <ListItemDD isValid={isValidMileAmount}>
-            {displayNumberWithCommas(mile.mileAmount)}
+            {numberFormatter.format(mile.mileAmount)}
             <IntlMessages id="mileService.mileSummary.mile" />
           </ListItemDD>
         </ListItemDL>
