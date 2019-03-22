@@ -272,10 +272,17 @@ const routes = [
     )
   },
   {
-    path: "/store/account/mujicard_link",
+    path: "/store/accounts/mujicard_link",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/mujicardLink")
+    )
+  },
+  {
+    path: "/store/accounts/mujicard_linked",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicardLinked")
     )
   },
   {
