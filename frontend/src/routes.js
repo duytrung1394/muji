@@ -258,10 +258,31 @@ const routes = [
     )
   },
   {
+    path: "/store/delivery/edit/:addressBookId",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Delivery/Edit/index")
+    )
+  },
+  {
     path: "/store/accounts/memberguide",
     exact: true,
     component: asyncComponent(() =>
       require("./customApp/containers/Account/memberguide")
+    )
+  },
+  {
+    path: "/store/account/mujicard_link",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Account/mujicardLink")
+    )
+  },
+  {
+    path: "/store/coupon/validcoupon",
+    exact: true,
+    component: asyncComponent(() =>
+      require("./customApp/containers/Coupon/index")
     )
   }
 ];

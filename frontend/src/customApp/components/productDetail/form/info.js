@@ -18,6 +18,13 @@ const DetailText = styled.p`
 
 const SeeMoreButton = styled.p`
   margin-top: 8px;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
+  }
 `;
 
 const SeeMoreIcon = styled(Icon)`

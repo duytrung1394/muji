@@ -55,6 +55,23 @@ export const OutlineButton = styled(Button)`
   &.ant-btn-two-chinese-chars > *:not(.anticon) {
     letter-spacing: normal;
   }
+
+  ${props => {
+    if (props.icon) {
+      return `
+          & span:before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+            background: url(${props.icon}) no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+          }
+        `;
+    }
+  }};
 `;
 
 const linkColor = "rgb(96, 179, 250)";

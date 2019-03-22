@@ -8,7 +8,6 @@ import IntlMessages from "../../../components/utility/intlMessages";
 import { Link } from "../shared/form/link";
 import Quantity from "../shared/form/quantity";
 import { OutlineButton } from "../shared/form/button";
-import buyNowIcon from "../../../image/cmdty/detail/ico-buy-now.png";
 import cartIcon from "../../../image/cmdty/detail/ico-cart.png";
 
 const DetailName = styled.p`
@@ -25,6 +24,7 @@ const ItemName = styled.h2`
 const DetailList = styled.ul`
   list-style: none;
   padding: 0;
+  font-size: 13px;
 `;
 const StoreJanCode = styled.li`
   font-size: 10px;
@@ -32,37 +32,24 @@ const StoreJanCode = styled.li`
 const DistributionFee = styled.li`
   margin-top: 5px;
   span {
-    font-size: 15px;
+    font-size: 13px;
   }
 `;
 
-const LinkStyle = styled.span`
+const StyledLink = styled(Link)`
   margin-left: 24px;
-  color: #60b3fa;
-  font-size: 13px;
-`;
 
-const ButtonIcon = styled.img`
-  width: 15px;
-  height: 20px;
-  margin-right: 16px;
-`;
-
-const CartButtonIcon = styled(ButtonIcon)`
-  width: 22px;
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #60b3fa;
+  }
 `;
 
 const ButtonsBox = styled.div`
   width: 300px;
   margin: 24px auto 0;
-`;
-
-const StyledButton = styled(OutlineButton)`
-  margin-top: 16px;
-  span,
-  i {
-    vertical-align: middle;
-  }
 `;
 
 class Form extends Component {
@@ -97,11 +84,6 @@ class Form extends Component {
   submit = () => {
     console.log("CartButton");
     //this.props.requestHandler();
-  };
-
-  requestHandler = () => {
-    console.log("BuyNowButton");
-    //this.props.requestHandler());
   };
 
   colorChange = color => {
@@ -147,11 +129,9 @@ class Form extends Component {
             <IntlMessages id="productDetail.deliveryFee" />
             <span> {entity.distribution_fee}</span>
             <IntlMessages id="productDetail.yen" />
-            <LinkStyle>
-              <Link to="#">
-                <IntlMessages id="productDetail.detail" />
-              </Link>
-            </LinkStyle>
+            <StyledLink to="#">
+              <IntlMessages id="productDetail.detail" />
+            </StyledLink>
           </DistributionFee>
         </DetailList>
         <Color
@@ -173,18 +153,14 @@ class Form extends Component {
           changeHandler={this.changeQuantity}
         />
         <ButtonsBox>
-          <StyledButton color="#7f0019" reverse="true" onClick={this.submit}>
-            <span>
-              <CartButtonIcon src={cartIcon} />
-              <IntlMessages id="productDetail.cart" />
-            </span>
-          </StyledButton>
-          <StyledButton color="#7f0019" onClick={this.requestHandler}>
-            <span>
-              <ButtonIcon src={buyNowIcon} />
-              <IntlMessages id="productDetail.buy" />
-            </span>
-          </StyledButton>
+          <OutlineButton
+            color="#7f0019"
+            reverse="true"
+            onClick={this.submit}
+            icon={cartIcon}
+          >
+            <IntlMessages id="productDetail.cart" />
+          </OutlineButton>
         </ButtonsBox>
       </Fragment>
     );
