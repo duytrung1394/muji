@@ -6,23 +6,22 @@ module.exports = shipit => {
       cwd: "/home/admin/muji-ec"
     },
     dev: {
-      branch: "release_ssr",
+      branch: "develop",
       servers: [
         {
           user: "admin",
           host: "muji-ec.xenophy.info"
         }
       ]
+    },
+    release: {
+      // 後で変更する？
+      branch: 'master',
+      servers: [{
+        user: 'admin',
+        host: 'muji-ec-release.xenophy.info'
+      }]
     }
-    // release側サーバーの準備が整ったらここも設定する。 今は誤動作防止のためコメントアウト。
-    // release: {
-    //   // 後で変更する？
-    //   branch: 'release_ssr',
-    //   servers: [{
-    //     user: 'admin',
-    //     host: 'muji-ec-release.xenophy.info'
-    //   }]
-    // }
   });
 
   const r = async cmd => {
