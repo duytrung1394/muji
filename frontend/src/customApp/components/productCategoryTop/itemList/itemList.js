@@ -59,12 +59,6 @@ const StyledLargeButton = styled(LargeButton)`
   }
 `;
 
-const SeeMoreButton = props => (
-  <StyledLargeButton>
-    <IntlMessages id="productCategoryTop.button.seeMore" />
-  </StyledLargeButton>
-);
-
 const ItemCountButtonWrapper = styled.div`
   text-align: center;
   margin: 30px 0 40px 0;
@@ -88,13 +82,41 @@ const ItemCountButton = props => (
   </StyledLargeButton>
 );
 
+const getGroupItems = (group, isSliderScroll) => {
+  return group.items.map((item, index) => {
+    return (
+      <ItemView
+        isSlideScroll={isSliderScroll}
+        cartAddFlg={group.cartAddFlg}
+        {...item}
+        key={index}
+      />
+    );
+  });
+};
+
+const GroupItems = ({ group, isLastSection }) => {
+  if (isLastSection) {
+    return getGroupItems(group, false);
+  } else {
+    return <Slider>{getGroupItems(group, true)}</Slider>;
+  }
+};
+
 const ItemList = props => {
-  const { total, groups, categories_in_page } = props;
+  const {
+    total,
+    groups,
+    categories_in_page,
+    filterFlg,
+    section_layout_type
+  } = props;
+
+  const isLastSection = section_layout_type === "LAST_SECTION";
 
   return (
     <ContentPanelWrapper
-      extra={<ItemListHeader total={total} />}
-      actions={categories_in_page ? [] : [<SeeMoreButton />]}
+      extra={filterFlg ? <ItemListHeader total={total} /> : null}
     >
       {!categories_in_page &&
         groups &&
@@ -118,19 +140,17 @@ const ItemList = props => {
                   img={group.img}
                 />
               )}
-              <Slider>
-                {group.items.map((item, index) => {
-                  return (
-                    <ItemView isSlideScroll={true} {...item} key={index} />
-                  );
-                })}
-              </Slider>
-              <ItemCountButtonWrapper>
-                <ItemCountButton
-                  name={group.group_name}
-                  count={group.itemCount}
-                />
-              </ItemCountButtonWrapper>
+
+              <GroupItems group={group} isLastSection={isLastSection} />
+
+              {!isLastSection && (
+                <ItemCountButtonWrapper>
+                  <ItemCountButton
+                    name={group.group_name}
+                    count={group.itemCount}
+                  />
+                </ItemCountButtonWrapper>
+              )}
             </div>
           );
         })}

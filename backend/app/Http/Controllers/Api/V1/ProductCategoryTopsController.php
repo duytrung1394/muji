@@ -46,6 +46,7 @@ class ProductCategoryTopsController extends Controller
             'article' => $this->mockDataFirst[$sectionCode]['article'],
             'rankings' => $this->mockDataFirst[$sectionCode]['rankings'],
             'innerCategories' => $this->mockDataFirst[$sectionCode]['innerCategories'],
+            'filterFlg' => true,
             'campaigns' => $this->getMockDataCampaigns($sectionCode),
             'sort_type' => 'group',
             'total' => 550,
@@ -300,6 +301,8 @@ class ProductCategoryTopsController extends Controller
             'rankings' => $this->mockDataSecond[$sectionCode]['rankings'],
             'innerCategories' => $this->mockDataSecond[$sectionCode]['innerCategories'],
             'categories_in_page' => $this->mockDataSecond[$sectionCode]['categories_in_page'],
+            'filterFlg' => $this->mockDataSecond[$sectionCode]['filterFlg'],
+            'section_layout_type' => $this->mockDataSecond[$sectionCode]['section_layout_type'],
             'sort_type' => 'group',
             'total' => 550,
             'groups' => $this->getMockGroups($sectionCode),
@@ -377,6 +380,8 @@ class ProductCategoryTopsController extends Controller
                     'img' => 'https://img.muji.net/img/item/4550002388942_05_400.jpg',
                 ],
             ],
+            'filterFlg' => true,
+            'section_layout_type' => 'LAST_SECTION',
         ],
         'S20001' => [
             'links' => [
@@ -420,7 +425,7 @@ class ProductCategoryTopsController extends Controller
                 [
                     'img_src' => 'https://img.muji.net/img/item/4550002529406_180.jpg',
                     'title' => '脚',
-                    'sectionCode' => '',
+                    'sectionCode' => 'S20002',
                 ],
                 [
                     'img_src' => 'https://img.muji.net/img/item/4548076580706_180.jpg',
@@ -442,6 +447,35 @@ class ProductCategoryTopsController extends Controller
                     'code' => 'product-2-seater',
                 ],
             ],
+            'filterFlg' => true,
+            'section_layout_type' => '',
+        ],
+        'S20002' => [
+            'links' => [
+                [
+                    'path' => '/store',
+                    'name' => '無印良品トップ',
+                ],
+                [
+                    'path' => '/store/cmdty/section/T20001',
+                    'name' => 'ソファ',
+                ],
+                [
+                    'path' => '/store/cmdty/section/S20001',
+                    'name' => 'フェザークッションソファ',
+                ],
+            ],
+            'category_name' => "ソファ用脚４本セット",
+            'article' => [
+                'title' =>"暮らしに合わせて足が選べます",
+                'description' => 'お好みに合わせて選べる脚にバリエーションが増えました。素材は木製ナチュラルとブラウンの2色に、スチール脚の黒が加わりました。',
+                'back_ground_image' => 'https://img.muji.net/img/item/4550182011463_1260.jpg',
+            ],
+            'rankings' => null,
+            'innerCategories' => null,
+            'categories_in_page' => null,
+            'filterFlg' => false,
+            'section_layout_type' => 'LAST_SECTION',
         ],
         'S20003' => [
             'links' => [
@@ -494,6 +528,8 @@ class ProductCategoryTopsController extends Controller
                 ],
             ],
             'categories_in_page' => null,
+            'filterFlg' => true,
+            'section_layout_type' => '',
         ],
         'S02601' => [
             'links' => [
@@ -529,6 +565,8 @@ class ProductCategoryTopsController extends Controller
                     'code' => 'product-scallop',
                 ],
             ],
+            'filterFlg' => true,
+            'section_layout_type' => 'LAST_SECTION',
         ],
     ];
 
@@ -586,6 +624,15 @@ class ProductCategoryTopsController extends Controller
                         'itemCount' => 25,
                         'link' => '#',
                         'items' => $this->getMockItemDataListForSofa(),
+                    ],
+                ];
+            case "S20002":
+                return [
+                    [
+                        'group_name' => '脚',
+                        'itemCount' => 4,
+                        'cartAddFlg' => true,
+                        'items'=> $this->getMockItemDataListForFoot(),
                     ],
                 ];
             case "T20003":
@@ -848,6 +895,48 @@ class ProductCategoryTopsController extends Controller
     }
 
     /**
+     * モックデータ: 脚用アイテムリスト.
+     */
+    private function getMockItemDataListForFoot()
+    {
+        return [
+            [
+                'jancode' => '4550002528874',
+                'nostock' => false,
+                'itemName' => '木製脚・１０ｃｍ／ブラウン（Ｍ８）',
+                'itemMaterialName' => 'ソファセット',
+                'viewPrice' => 2000,
+                'tags' => [],
+                'swatches' => $this->getMockSwatchesForFoot(),
+            ],
+            [
+                'jancode' => '4550002529406',
+                'nostock' => false,
+                'itemName' => '木製脚・１２ｃｍ／ナチュラル（Ｍ８）',
+                'itemMaterialName' => 'ソファセット',
+                'viewPrice' => 2500,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4550002528867',
+                'nostock' => false,
+                'itemName' => '木製脚・１０ｃｍ／ナチュラル（Ｍ８）',
+                'itemMaterialName' => 'ソファセット',
+                'viewPrice' => 2000,
+                'tags' => [],
+            ],
+            [
+                'jancode' => '4550002529437',
+                'nostock' => false,
+                'itemName' => '木製脚・２０ｃｍ／ブラウン（Ｍ８）',
+                'itemMaterialName' => 'ソファセット',
+                'viewPrice' => 2500,
+                'tags' => [],
+            ],
+        ];
+    }
+
+    /**
      * モックデータ: 婦人ウェア用アイテム.
      */
     private function getMockItemDataForWoman($level, $swatchNumber, $tags=[])
@@ -973,5 +1062,22 @@ class ProductCategoryTopsController extends Controller
         }
 
         return array_splice($swatches, 0, $swatchNumber);
+    }
+
+    private function getMockSwatchesForFoot()
+    {
+        $swatches = [
+            [
+                'jancode' => '4550002528874',
+                'color_title' => 'ブラウン',
+                'nostock' => false
+            ],
+            [
+                'jancode' => '4550002528867',
+                'color_title' => 'ナチュラル',
+                'nostock' => false
+            ],
+        ];
+        return $swatches;
     }
 }

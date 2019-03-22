@@ -20,6 +20,11 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const NoSwatch = styled.div`
+  width: 34px;
+  height: 34px;
+`;
+
 class ItemSwatch extends Component {
   state = {
     expanded: false
@@ -93,7 +98,7 @@ class ItemSwatch extends Component {
 
   render() {
     if (!this.props.swatches) {
-      return null;
+      return <NoSwatch />;
     }
 
     return (
